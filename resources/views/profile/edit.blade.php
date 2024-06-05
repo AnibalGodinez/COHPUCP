@@ -1,69 +1,62 @@
-@extends('layouts.app', ['page' => __('User Profile'), 'pageSlug' => 'profile'])
+@extends('layouts.app', ['page' => __('Editar perfil'), 'pageSlug' => 'editar'])
 
 @section('content')
     <div class="row">
         <div class="col-md-8">
+
             <div class="card">
-                <div class="card-header">
-                    <h5 class="title">{{ _('Editar perfil') }}</h5>
+                <div class="card-header text-center">
+                    <h3 class="title">{{ _('Datos del usuario') }}</h3>
                 </div>
                 <form method="post" action="{{ route('profile.update') }}" autocomplete="off">
                     <div class="card-body">
-                            @csrf
-                            @method('put')
-
-                            @include('alerts.success')
-
-                            <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                <label>{{ _('Name') }}</label>
-                                <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ _('Nombre') }}" value="{{ old('name', auth()->user()->name) }}">
-                                @include('alerts.feedback', ['field' => 'name'])
-                            </div>
-
-                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                <label>{{ _('Email address') }}</label>
-                                <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ _('Correo electrónico') }}" value="{{ old('email', auth()->user()->email) }}">
-                                @include('alerts.feedback', ['field' => 'email'])
-                            </div>
-                    </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-fill btn-primary">{{ _('Salvar') }}</button>
-                    </div>
-                </form>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="title">{{ _('Contraseña') }}</h5>
-                </div>
-                <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
-                    <div class="card-body">
                         @csrf
                         @method('put')
-
-                        @include('alerts.success', ['key' => 'password_status'])
-
-                        <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
-                            <label>{{ __('Contraseña actual') }}</label>
-                            <input type="password" name="old_password" class="form-control{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="{{ __('Contraseña actual') }}" value="" required>
-                            @include('alerts.feedback', ['field' => 'old_password'])
+                    
+                        @include('alerts.success')
+                    
+                        <!-- Campo para los nombres -->
+                        <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                            <label>Nombres</label>
+                            <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Nombres') }}" value="{{ old('name', auth()->user()->name) }}">
+                            @include('alerts.feedback', ['field' => 'name'])
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                            <label>{{ __('Nueva contraseña') }}</label>
-                            <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Nueva contraseña') }}" value="" required>
-                            @include('alerts.feedback', ['field' => 'password'])
+                        <!-- Campo para los apellidos -->
+                        <div class="form-group{{ $errors->has('apellido') ? ' has-danger' : '' }}">
+                            <label>Apellidos</label>
+                            <input type="text" name="apellido" class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" placeholder="{{ __('Apellidos') }}" value="{{ old('apellido', auth()->user()->apellido) }}">
+                            @include('alerts.feedback', ['field' => 'apellido'])
                         </div>
-                        <div class="form-group">
-                            <label>{{ __('Confirmar la nueva contraseña') }}</label>
-                            <input type="password" name="password_confirmation" class="form-control" placeholder="{{ __('Confirmar la nueva contraseña') }}" value="" required>
+                        
+                        <!-- Campo para el teléfono de casa-->
+                        <div class="form-group{{ $errors->has('telefono_casa') ? ' has-danger' : '' }}">
+                            <label>Teléfono casa</label>
+                            <input type="text" name="telefono_casa" class="form-control{{ $errors->has('telefono_casa') ? ' is-invalid' : '' }}" placeholder="{{ __('Telefono casa') }}" value="{{ old('telefono_casa', auth()->user()->telefono_casa) }}">
+                            @include('alerts.feedback', ['field' => 'telefono_casa'])
                         </div>
+
+                        <!-- Campo para el teléfono celular-->
+                        <div class="form-group{{ $errors->has('telefono_cel') ? ' has-danger' : '' }}">
+                            <label>Teléfono celular</label>
+                            <input type="text" name="telefono_cel" class="form-control{{ $errors->has('telefono_cel') ? ' is-invalid' : '' }}" placeholder="{{ __('Teléfono celular') }}" value="{{ old('telefono_cel', auth()->user()->telefono) }}">
+                            @include('alerts.feedback', ['field' => 'telefono_cel'])
+                        </div>
+
+                        <!-- Campo para el correo electrónico -->
+                        <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                            <label>Correo electrónico</label>
+                            <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Correo electrónico') }}" value="{{ old('email', auth()->user()->email) }}">
+                            @include('alerts.feedback', ['field' => 'email'])
+                        </div>
+
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-fill btn-primary">{{ _('Cambiar contraseña') }}</button>
+                        <button type="submit" class="btn btn-info btn-sm">{{ _('Salvar') }}</button>
                     </div>
                 </form>
             </div>
+
         </div>
         <div class="col-md-4">
             <div class="card card-user">
@@ -76,8 +69,10 @@
                             <div class="block block-four"></div>
                             <a href="#">
                                 <img class="avatar" src="{{ asset('white') }}/img/emilyz.jpg" alt="">
-                                <h5 class="title">{{ auth()->user()->name }}</h5>
-                            </a>
+                                <div class="name-container">
+                                    <h5 class="title">{{ auth()->user()->name }} {{ auth()->user()->apellido }}</h5>
+                                </div>
+                            </a>                            
                             <p class="description">
                                 {{ _('Desarrollador web') }}
                             </p>

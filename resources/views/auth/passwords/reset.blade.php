@@ -21,7 +21,7 @@
                                 <i class="tim-icons icon-email-85"></i>
                             </div>
                         </div>
-                        <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ _('Email') }}">
+                        <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ _('Correo electrónico') }}">
                         @include('alerts.feedback', ['field' => 'email'])
                     </div>
                     <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }}">
@@ -30,7 +30,7 @@
                                     <i class="tim-icons icon-lock-circle"></i>
                                 </div>
                             </div>
-                            <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ _('Password') }}">
+                            <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ _('Contraseña') }}">
                             @include('alerts.feedback', ['field' => 'password'])
                         </div>
                         <div class="input-group">
@@ -39,11 +39,11 @@
                                     <i class="tim-icons icon-lock-circle"></i>
                                 </div>
                             </div>
-                            <input type="password" name="password_confirmation" class="form-control" placeholder="{{ _('Confirm Password') }}">
+                            <input type="password" name="password_confirmation" class="form-control" placeholder="{{ _('Confirmar contraseña') }}">
                         </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block mb-3">{{ _('Reset Password') }}</button>
+                    <button type="submit" class="btn btn-info btn-lg btn-block mb-3">{{ _('Restablecer contraseña') }}</button>
                 </div>
             </div>
         </form>

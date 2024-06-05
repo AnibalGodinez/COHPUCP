@@ -19,6 +19,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'apellido',
+        'telefono_casa',
+        'telefono_cel',
         'email',
         'password',
     ];
@@ -41,4 +44,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Relacion de muchos a muchos (usuario-roles)
+    public function roles(){
+        return $this->belongsToMany('App\Models\Role'); 
+    }
 }

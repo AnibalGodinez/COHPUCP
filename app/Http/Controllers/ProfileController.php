@@ -9,7 +9,16 @@ use App\Http\Requests\PasswordRequest;
 class ProfileController extends Controller
 {
     /**
-     * Show the form for editing the profile.
+     * Mostrar la información del perfil del usuario logeado.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(){
+        return view('profile.index');
+    }
+
+    /**
+     * Mostrar el formulario para editar el perfil.
      *
      * @return \Illuminate\View\View
      */
@@ -19,7 +28,17 @@ class ProfileController extends Controller
     }
 
     /**
-     * Update the profile
+     * Mostrar el formulario para editar el perfil.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function cambiarContasenia()
+    {
+        return view('profile.contrasenia');
+    }
+
+    /**
+     * Actualizar el perfil
      *
      * @param  \App\Http\Requests\ProfileRequest  $request
      * @return \Illuminate\Http\RedirectResponse
@@ -28,11 +47,11 @@ class ProfileController extends Controller
     {
         auth()->user()->update($request->all());
 
-        return back()->withStatus(__('Profile successfully updated.'));
+        return back()->withStatus(__('Perfil actualizado exitosamente.'));
     }
 
     /**
-     * Change the password
+     * Cambiar la contraseña
      *
      * @param  \App\Http\Requests\PasswordRequest  $request
      * @return \Illuminate\Http\RedirectResponse
@@ -41,6 +60,6 @@ class ProfileController extends Controller
     {
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 
-        return back()->withPasswordStatus(__('Password successfully updated.'));
+        return back()->withPasswordStatus(__('Contraseña actualizada exitosamente.'));
     }
 }

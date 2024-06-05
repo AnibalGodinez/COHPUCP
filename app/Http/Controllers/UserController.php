@@ -14,8 +14,12 @@ class UserController extends Controller
      * @param  \App\Models\User  $model
      * @return \Illuminate\View\View
      */
-    public function index(User $model)
-    {
-        return view('users.index', ['users' => $model->paginate(15)]);
-    }
+    public function index()
+{
+    $usuarios = User::latest()->paginate(5); // Cambia 5 al número deseado por página
+    return view('users.index', compact('usuarios'));
 }
+
+}
+
+

@@ -43,34 +43,4 @@ class PageController extends Controller
     {
         return view('pages.notifications');
     }
-
-    /**
-     * Display rtl page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function rtl()
-    {
-        return view('pages.rtl');
-    }
-
-    /**
-     * Display typography page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function typography()
-    {
-        return view('pages.typography');
-    }
-
-    /**
-     * Display upgrade page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function upgrade()
-    {
-        return view('pages.upgrade');
-    }
 }

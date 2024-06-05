@@ -1,7 +1,7 @@
 @extends('layouts.app', ['pageSlug' => 'dashboard'])
 
 @section('content')
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-12">
             <div class="card card-chart">
                 <div class="card-header ">
@@ -12,21 +12,21 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                            <label class="btn btn-sm btn-primary btn-simple active" id="0">
+                            <label class="btn btn-sm btn-info btn-simple active" id="0">
                                 <input type="radio" name="options" checked>
                                 <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Cuentas</span>
                                 <span class="d-block d-sm-none">
                                     <i class="tim-icons icon-single-02"></i>
                                 </span>
                             </label>
-                            <label class="btn btn-sm btn-primary btn-simple" id="1">
+                            <label class="btn btn-sm btn-info btn-simple" id="1">
                                 <input type="radio" class="d-none d-sm-none" name="options">
                                 <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Compras</span>
                                 <span class="d-block d-sm-none">
                                     <i class="tim-icons icon-gift-2"></i>
                                 </span>
                             </label>
-                            <label class="btn btn-sm btn-primary btn-simple" id="2">
+                            <label class="btn btn-sm btn-info btn-simple" id="2">
                                 <input type="radio" class="d-none" name="options">
                                 <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Sesiones</span>
                                 <span class="d-block d-sm-none">
@@ -44,8 +44,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+
+    
+{{--     
     <div class="row">
+
         <div class="col-lg-4">
             <div class="card card-chart">
                 <div class="card-header">
@@ -58,7 +62,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+{{-- 
         <div class="col-lg-4">
             <div class="card card-chart">
                 <div class="card-header">
@@ -72,6 +77,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-lg-4">
             <div class="card card-chart">
                 <div class="card-header">
@@ -85,7 +91,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+
+
+
     <div class="row">
         <div class="col-lg-6 col-md-12">
             <div class="card card-tasks">
@@ -239,7 +248,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-md-12">
+
+        {{-- <div class="col-lg-6 col-md-12">
             <div class="card ">
                 <div class="card-header">
                     <h4 class="card-title">Mesa sencilla</h4>
@@ -367,7 +377,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+
+
     </div>
 @endsection
 

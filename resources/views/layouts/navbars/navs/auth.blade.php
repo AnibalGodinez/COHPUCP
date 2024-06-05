@@ -8,9 +8,9 @@
                     <span class="navbar-toggler-bar bar3"></span>
                 </button>
             </div>
-            <a class="navbar-brand" href="#">{{ $page ?? __('Dashboard') }}</a>
+            <a class="navbar-brand" href="#">{{ $page ?? __('Panel') }}</a>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="{{ __('Navegación de palanca') }}">
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -19,7 +19,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="search-bar input-group">
                     <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split"></i>
-                        <span class="d-lg-none d-md-block">{{ __('Search') }}</span>
+                        <span class="d-lg-none d-md-block">{{ __('Buscar') }}</span>
                     </button>
                 </li>
                 <li class="dropdown nav-item">
@@ -56,7 +56,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-navbar">
                         <li class="nav-link">
-                            <a href="{{ route('profile.edit') }}" class="nav-item dropdown-item">{{ __('Perfil') }}</a>
+                            <a href="{{ route('profile.index') }}" class="nav-item dropdown-item">{{ __('Perfil') }}</a>
                         </li>
                         <li class="nav-link">
                             <a href="#" class="nav-item dropdown-item">{{ __('Ajustes') }}</a>

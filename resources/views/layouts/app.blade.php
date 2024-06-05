@@ -22,7 +22,7 @@
     </head>
     <body class="white-content {{ $class ?? '' }}">
         @auth()
-            <div class="wrapper">
+            <div class="wrapper" data-color="blue">
                     @include('layouts.navbars.sidebar')
                 <div class="main-panel">
                     @include('layouts.navbars.navbar')
@@ -60,15 +60,13 @@
                 <li class="adjustments-line">
                     <a href="javascript:void(0)" class="switch-trigger background-color">
                     <div class="badge-colors text-center">
-                        <span class="badge filter badge-primary active" data-color="primary"></span>
-                        <span class="badge filter badge-info" data-color="blue"></span>
-                        <span class="badge filter badge-success" data-color="green"></span>
+                        <span class="badge filter badge-primary" data-color="blue"></span>                        
                     </div>
                     <div class="clearfix"></div>
                     </a>
                 </li>
                 <li class="button-container">
-                    <a href="https://www.creative-tim.com/product/white-dashboard-laravel" target="_blank" class="btn btn-primary btn-block btn-round">Descargar plantilla ahora</a>
+                    <a href="https://www.creative-tim.com/product/white-dashboard-laravel" target="_blank" class="btn btn-info btn-block btn-round">Descargar plantilla ahora</a>
                     <a href="https://white-dashboard-laravel.creative-tim.com/docs/getting-started/laravel-setup.html" target="_blank" class="btn btn-default btn-block btn-round">
                     Documentación
                     </a>
@@ -150,6 +148,9 @@
                             $sidebar_responsive.attr('data', new_color);
                         }
                     });
+
+                    // Establecer el color predeterminado de la barra lateral en azul
+                    $('.fixed-plugin .background-color span[data-color="blue"]').click();
 
                     $('.switch-sidebar-mini input').on("switchChange.bootstrapSwitch", function() {
                         var $btn = $(this);
