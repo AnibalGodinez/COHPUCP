@@ -7,15 +7,17 @@
         <ul class="nav">
             <li @if ($pageSlug == 'dashboard') class="active " @endif>
                 <a href="{{ route('home') }}">
-                    <i class="tim-icons icon-chart-pie-36"></i>
+                    <i class="tim-icons icon-bank"></i>
                     <p>{{ _('Cohpucp') }}</p>
                 </a>
             </li>
 
+
+{{--========================================== Sección de Perfil ===========================================--}}
             <li>
                 <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
-                    <i class="fab fa-laravel" ></i>
-                    <span class="nav-link-text" >{{ __('Perfil') }}</span>
+                    <i class="fas fa-user"></i>
+                    <span class="nav-link-text" >Perfil</span>
                     <b class="caret mt-1"></b>
                 </a>
 
@@ -24,96 +26,103 @@
                         <li @if ($pageSlug == 'profile') class="active " @endif>
                             <a href="{{ route('profile.edit')  }}">
                                 <i class="tim-icons icon-single-02"></i>
-                                <p>{{ _('Perfil de usuario') }}</p>
+                                <p>Perfil de usuario</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'users') class="active " @endif>
                             <a href="{{ route('profile.edit')  }}">
-                                <i class="tim-icons icon-bullet-list-67"></i>
-                                <p>{{ _('Cambiar contraseña') }}</p>
+                                <i class="tim-icons icon-refresh-02"></i>
+                                <p>Cambiar contraseña</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'users') class="active " @endif>
+                            <a href="{{ route('profile.edit')  }}">
+                                <i class="tim-icons icon-pin"></i>
+                                <p>Personalizar perfil</p>
                             </a>
                         </li>
                     </ul>
                 </div>
             </li>
 
-{{-- ======================================================================================================= --}}
-{{-- Se agregó el módulo de seguridad --}}
+
+{{--========================================== Sección de Seguridad ===========================================--}}
             <li>
-                <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
+                <a data-toggle="collapse" href="#security" aria-expanded="true" aria-controls="security">
                     <i class="fas fa-shield-alt"></i>
-                    <span class="nav-link-text" >{{ __('Seguridad') }}</span>
+                    <span class="nav-link-text">Seguridad</span>
                     <b class="caret mt-1"></b>
                 </a>
-
-                <div class="collapse show" id="laravel-examples">
+                <div class="collapse show" id="security">
                     <ul class="nav pl-4">
-
-                        <li @if ($pageSlug == 'profile') class="active " @endif>
-                            <a href="{{ route('profile.edit')  }}">
+                        <li @if ($pageSlug == 'usuarios') class="active " @endif>
+                            <a href="{{ route('seguridad.usuarios') }}">
+                                <i class="tim-icons icon-satisfied"></i>
+                                <p>Usuarios</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'roles_permisos') class="active " @endif>
+                            <a href="{{ route('seguridad.roles_permisos') }}">
                                 <i class="tim-icons icon-key-25"></i>
-                                <p>{{ _('Roles y permisos') }}</p>
+                                <p>Roles y permisos</p>
                             </a>
                         </li>
-
-                        <li @if ($pageSlug == 'users') class="active " @endif>
-                            <a href="{{ route('profile.edit')  }}">
+                        <li @if ($pageSlug == 'gestion_roles') class="active " @endif>
+                            <a href="{{ route('seguridad.gestion_roles') }}">
                                 <i class="tim-icons icon-lock-circle"></i>
-                                <p>{{ _('Gestión de roles') }}</p>
+                                <p>Gestión de roles</p>
                             </a>
                         </li>
+                    </ul>
+                </div>
+            </li> 
+{{-- ======================================================================================================= --}}
 
+
+
+{{--================================= Sección de Plataformas Tecnológicas ===================================--}}
+            <li>
+                <a data-toggle="collapse" href="#platform" aria-expanded="true" aria-controls="platform">
+                    <i class="fas fa-laptop"></i>
+                    <span class="nav-link-text">Plataformas Tecnológicas</span>
+                    <b class="caret mt-1"></b>
+                </a>
+                <div class="collapse show" id="platform">
+                    <ul class="nav pl-4">
+                        <li @if ($pageSlug == 'cursos') class="active " @endif>
+                            <a href="{{ route('plataforma.cursos') }}">
+                                <i class="tim-icons icon-palette"></i>
+                                <p>Cursos</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'capacitaciones') class="active " @endif>
+                            <a href="{{ route('plataforma.capacitaciones') }}">
+                                <i class="tim-icons icon-user-run"></i>
+                                <p>Capacitaciones</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'agendas') class="active " @endif>
+                            <a href="{{ route('plataforma.agendas') }}">
+                                <i class="tim-icons icon-notes"></i>
+                                <p>Agendas</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'gestiones') class="active " @endif>
+                            <a href="{{ route('plataforma.gestiones') }}">
+                                <i class="tim-icons icon-link-72"></i>
+                                <p>Gestiones</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'consultas') class="active " @endif>
+                            <a href="{{ route('plataforma.consultas') }}">
+                                <i class="tim-icons icon-tap-02"></i>
+                                <p>Consultas</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
 {{-- ======================================================================================================= --}}
-
-
-{{-- ======================================================================================================= --}}
-{{-- Se agregó el módulo de Plataformas Tecnológicas --}}
-<li>
-    <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
-        <i class="fas fa-laptop"></i>
-
-        <span class="nav-link-text" >{{ __('Plataformas Tecnológicas') }}</span>
-        <b class="caret mt-1"></b>
-    </a>
-    <div class="collapse show" id="laravel-examples">
-        <ul class="nav pl-4">
-
-            <li @if ($pageSlug == 'profile') class="active " @endif>
-                <a href="{{ route('profile.edit')  }}">
-                    <i class="tim-icons icon-user-run"></i>
-                    <p>{{ _('Cursos y capacitaciones') }}</p>
-                </a>
-            </li>
-
-            <li @if ($pageSlug == 'users') class="active " @endif>
-                <a href="{{ route('profile.edit')  }}">
-                    <i class="tim-icons icon-notes"></i>
-                    <p>{{ _('Agendas') }}</p>
-                </a>
-            </li>
-
-            <li @if ($pageSlug == 'users') class="active " @endif>
-                <a href="{{ route('profile.edit')  }}">
-                    <i class="tim-icons icon-link-72"></i>
-                    <p>{{ _('Gestiones') }}</p>
-                </a>
-            </li>
-
-            <li @if ($pageSlug == 'users') class="active " @endif>
-                <a href="{{ route('profile.edit')  }}">
-                    <i class="tim-icons icon-tap-02"></i>
-                    <p>{{ _('Consultas') }}</p>
-                </a>
-            </li>
-
-        </ul>
-    </div>
-</li>
-{{-- ======================================================================================================= --}}
-
 
 
             <li @if ($pageSlug == 'icons') class="active " @endif>
