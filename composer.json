@@ -13,7 +13,8 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
-        "san-kumar/laravel-crud": "^1.01"
+        "san-kumar/laravel-crud": "^1.01",
+        "spatie/laravel-permission": "^6.7"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

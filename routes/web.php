@@ -1,11 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PermisoController;
-use App\Http\Controllers\RolController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\CapacitacioneController;
+use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -46,10 +45,14 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 //Rutas de los modulos de la Plataforma de COHPUCP
-Route::group(['middleware' => 'auth'], function () {	
+Route::group(['middleware' => 'auth'], function () {
+
+	//Ruta para los permisos
+	Route::resource('permission', PermissionController::class);
+	Route::get('permission/{permissionId}/delete', [PermissionController::class, 'destroy']);
+
+
     Route::resource('usuarios', UserController::class);
-    Route::resource('roles', 	RolController::class);
-    Route::resource('permisos', PermisoController::class);
 	Route::resource('cursos', CursoController::class);
 	Route::resource('capacitaciones', CapacitacioneController::class);
 });

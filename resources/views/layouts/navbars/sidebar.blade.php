@@ -114,14 +114,14 @@
                 </a>                
                 <div class="collapse show" id="security">
                     <ul class="nav pl-4">
-                        <li @if ($pageSlug == 'roles') class="active " @endif>
-                            <a href="{{ route('roles.index') }}">
+                        <li @if ($pageSlug == 'rolesUsuarios') class="active " @endif>
+                            <a href="{{ route('cursos.index') }}">
                                 <i class="tim-icons icon-key-25"></i>
                                 <p>Roles</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'permisos') class="active " @endif>
-                            <a href="{{ route('permisos.index') }}">
+                        <li @if ($pageSlug == 'permisosUsuarios') class="active " @endif>
+                            <a href="{{ route('permission.index') }}">
                                 <i class="tim-icons icon-satisfied"></i>
                                 <p>Permisos</p>
                             </a>
