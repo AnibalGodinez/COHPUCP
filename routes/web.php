@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\CapacitacioneController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -51,6 +52,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('permission', PermissionController::class);
 	Route::get('permission/{permissionId}/delete', [PermissionController::class, 'destroy']);
 
+	//Ruta para los roles
+	Route::resource('roles', RoleController::class);
+	Route::get('roles/{roleId}/delete', [RoleController::class, 'destroy']);
+	
 
     Route::resource('usuarios', UserController::class);
 	Route::resource('cursos', CursoController::class);

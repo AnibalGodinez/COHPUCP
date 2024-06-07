@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Permisos'), 'pageSlug' => 'permisos'])
+@extends('layouts.app', ['page' => __('Roles'), 'pageSlug' => 'roles'])
 
 @section('content')
 <div class="container mt-5">
@@ -11,29 +11,29 @@
 
             <div class="card mt-7">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3>Permisos</h3>
-                    <a href="{{ url('permission/create') }}" class="btn btn-info btn-sm">Agregar permisos</a>
+                    <h3>Roles</h3>
+                    <a href="{{ url('roles/create') }}" class="btn btn-info btn-sm">Agregar rol</a>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th class="text-center">Id</th>
-                                <th class="text-center">Nombre</th>
+                                <th class="text-center">Nombre del rol</th>
                                 <th class="text-center">Acción</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach ($permissions as $permission)
+                            @foreach ($roles as $role)
                             <tr>
-                                <td class="text-center">{{ $permission->id }}</td>
-                                <td class="text-center">{{ $permission->name }}</td>
+                                <td class="text-center">{{ $role->id }}</td>
+                                <td class="text-center">{{ $role->name }}</td>
                                 <td class="text-center">
-                                    <a href="{{ url('permission/'.$permission->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
+                                    <a href="{{ url('roles/'.$role->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                         <i class="tim-icons icon-settings"></i>
                                     </a>
-                                    <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('permission/'.$permission->id.'/delete') }}')">
+                                    <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('roles/'.$role->id.'/delete') }}')">
                                         <i class="tim-icons icon-simple-remove"></i>
                                     </a>
                                 </td>
@@ -49,7 +49,7 @@
 
 <script>
     function confirmarEliminacion(url) {
-        if (confirm('¿Estás seguro que quieres eliminar el permiso?')) {
+        if (confirm('¿Estás seguro que quieres eliminar el rol?')) {
             window.location.href = url;
         }
     }

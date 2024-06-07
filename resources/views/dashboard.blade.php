@@ -1,7 +1,7 @@
 @extends('layouts.app', ['pageSlug' => 'dashboard'])
 
 @section('content')
-    {{-- <div class="row">
+    <div class="row">
         <div class="col-12">
             <div class="card card-chart">
                 <div class="card-header ">
@@ -44,10 +44,10 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
     
-{{--     
+    
     <div class="row">
 
         <div class="col-lg-4">
@@ -62,8 +62,8 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
-{{-- 
+        </div>
+ 
         <div class="col-lg-4">
             <div class="card card-chart">
                 <div class="card-header">
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
 
 
@@ -249,7 +249,7 @@
             </div>
         </div>
 
-        {{-- <div class="col-lg-6 col-md-12">
+             <div class="col-lg-6 col-md-12">
             <div class="card ">
                 <div class="card-header">
                     <h4 class="card-title">Mesa sencilla</h4>
@@ -377,7 +377,7 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
 
 
     </div>

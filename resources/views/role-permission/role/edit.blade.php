@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Permisos'), 'pageSlug' => 'permisos'])
+@extends('layouts.app', ['page' => __('Roles'), 'pageSlug' => 'roles'])
 
 @section('content')
 <div class="container mt-5">
@@ -7,18 +7,18 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h3>Editar permiso</h3>
-                        <a href="{{ url('permission') }}" class="btn btn-secondary btn-sm">Regresar</a>
+                        <h3>Editar rol</h3>
+                        <a href="{{ url('roles') }}" class="btn btn-secondary btn-sm">Regresar</a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ url('permission/' . $permission->id) }}" method="POST">
+                    <form action="{{ url('roles/' . $role->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         
                         <div class="mb-3">
-                            <label for="name">Nombre del permiso</label>
-                            <input type="text" id="name" name="name" value="{{ $permission->name }}" class="form-control w-50">
+                            <label for="name">Nombre del rol</label>
+                            <input type="text" id="name" name="name" value="{{ $role->name }}" class="form-control w-50">
                         </div>
 
                         <div class="mb-3">
