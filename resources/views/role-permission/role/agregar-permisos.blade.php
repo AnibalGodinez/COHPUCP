@@ -6,22 +6,20 @@
         <div class="col-md-12">
 
             @if (session('status'))
-                <div class="alert alert-succes">{{ session('status') }}</div>
+                <div class="alert alert-success">{{ session('status') }}</div>
             @endif
 
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h3>Rol : {{ $role->name }}
-                        </h3>
+                        <h3>Rol : {{ $role->name }}</h3>
                         <a href="{{ url('roles') }}" class="btn btn-secondary btn-sm">Regresar</a>
                     </div>
                 </div>
 
                 <div class="card-body">
 
-
-                    <form action="{{ 'roles/'.$role->id.'/agregar-permisos' }}" method="POST">
+                    <form action="{{ url('roles/'.$role->id.'/agregar-permisos') }}" method="POST">
                         @csrf
                         @method('PUT')
                         
@@ -34,21 +32,25 @@
 
                             <div style="margin-bottom: 20px;"></div> 
                             <div class="row">
+
                                 @foreach ($permissions as $permission)
                                 
                                 <div class="col-md-1">
                                     <label class="form-check-label">
                                         <input
                                         type="checkbox" 
-                                        id="permission[]" 
+                                        name="permission[]" 
                                         value="{{ $permission->name }}" 
                                         class="form-control"
+                                        id="permission_{{ $permission->id }}"
                                         style="width: 18px; height: 18px; margin:auto"
+                                        @if($role->hasPermissionTo($permission->name)) checked @endif
                                         />
                                         {{$permission->name}}
                                     </label>
                                 </div>
                                 @endforeach
+
                             </div>
                         </div>
 

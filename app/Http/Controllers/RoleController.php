@@ -79,4 +79,15 @@ class RoleController extends Controller
             'permissions' => $permissions
         ]);
     }
+
+    public function givePermissionRole(Request $request, $roleId)
+    {
+        $request->validate([
+            'permission' => 'required|array'
+        ]);
+
+        $role = Role::findOrFail($roleId);
+        $role->syncPermissions($request->permission);
+        return redirect()->back()->with('status', 'Permiso(s) asignado(s) al Rol');
+    }
 }
