@@ -8,16 +8,16 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
                         <h3>Crear permiso</h3>
-                        <a href="{{url('roles')}}" class="btn btn-dark btn-sm">Regresar</a>
+                        <a href="{{url('permission')}}" class="btn btn-dark btn-sm">Regresar</a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="{{url('roles')}}" method="POST">
+                    <form action="{{url('permission')}}" method="POST">
                         @csrf
                         
                         <div class="mb-3">
-                            <label for="roleName">Nombre del permiso</label>
-                            <input type="text" id="roleName" name="name" class="form-control w-50">
+                            <label for="permissionName">Nombre del permiso</label>
+                            <input type="text" id="permissionName" name="name" class="form-control w-50">
                         </div>
 
                         <div class="mb-3">

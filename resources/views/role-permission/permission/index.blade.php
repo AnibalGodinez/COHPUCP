@@ -1,6 +1,9 @@
 @extends('layouts.app', ['page' => __('Permisos'), 'pageSlug' => 'permisos'])
 
 @section('content')
+
+@include('role-permission.nav-links')
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
@@ -12,7 +15,7 @@
             <div class="card mt-7">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3>Permisos</h3>
-                    <a href="{{ url('permission/create') }}" class="btn btn-info btn-sm">Agregar permisos</a>
+                    <a href="{{ url('permission/create') }}" class="btn btn-info btn-sm">Agregar permiso</a>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-striped">

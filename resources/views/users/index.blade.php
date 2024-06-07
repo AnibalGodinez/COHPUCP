@@ -1,11 +1,14 @@
 @extends('layouts.app', ['page' => __('Usuarios'), 'pageSlug' => 'users'])
 
 @section('content')
+
+@include('role-permission.nav-links')
+
     <div class="row">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">
-                    <h3 class="title">Lista de Usuarios</h3>
+                <div class="card-header">
+                    <h3 class="title">Usuarios</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

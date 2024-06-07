@@ -36,7 +36,6 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::resource	('user', 'App\Http\Controllers\UserController', ['except' 	=> ['show']]);
 	Route::get		('perfil', 										['as' 		=> 'profile.index', 	'uses' => 'App\Http\Controllers\ProfileController@index']);
 	Route::get		('editar-perfil', 								['as' 		=> 'profile.edit', 		'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put		('profile', 									['as' 		=> 'profile.update', 	'uses' => 'App\Http\Controllers\ProfileController@update']);
@@ -55,8 +54,8 @@ Route::group(['middleware' => 'auth'], function () {
 	//Ruta para los roles
 	Route::resource('roles', RoleController::class);
 	Route::get('roles/{roleId}/delete', [RoleController::class, 'destroy']);
+	Route::get('roles/{roleId}/agregar-permisos', [RoleController::class, 'AddPermissionRole']);
 	
-
     Route::resource('usuarios', UserController::class);
 	Route::resource('cursos', CursoController::class);
 	Route::resource('capacitaciones', CapacitacioneController::class);

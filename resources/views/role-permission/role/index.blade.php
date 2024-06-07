@@ -1,6 +1,9 @@
 @extends('layouts.app', ['page' => __('Roles'), 'pageSlug' => 'roles'])
 
 @section('content')
+
+@include('role-permission.nav-links')
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
@@ -35,6 +38,10 @@
                                     </a>
                                     <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('roles/'.$role->id.'/delete') }}')">
                                         <i class="tim-icons icon-simple-remove"></i>
+                                    </a>
+
+                                    <a href="{{url('roles/' .$role->id.'/agregar-permisos')}}" class="btn btn-info btn-sm">
+                                        Agregar permisos
                                     </a>
                                 </td>
                             </tr>
