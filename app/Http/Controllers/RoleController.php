@@ -12,12 +12,12 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::get();
-        return view('role-permission.role.index', ['roles' => $roles]);
+        return view('roles-permisos.role.index', ['roles' => $roles]);
     }
 
     public function create()
     {
-        return view('role-permission.role.create');
+        return view('roles-permisos.role.create');
     }
 
     public function store(Request $request)
@@ -43,7 +43,7 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
-        return view('role-permission.role.edit', ['role' => $role]);
+        return view('roles-permisos.role.edit', ['role' => $role]);
     }
 
     public function update(Request $request, Role $role)
@@ -79,7 +79,7 @@ class RoleController extends Controller
                                 ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
                                 ->all();
 
-        return view('role-permission.role.agregar-permisos', [
+        return view('roles-permisos.role.agregar-permisos', [
             'role' => $role,
             'permissions' => $permissions,
             'rolePermissions' => $rolePermissions

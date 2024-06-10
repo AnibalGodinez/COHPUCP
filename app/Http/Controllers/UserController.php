@@ -3,23 +3,48 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Http\Requests\UserRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the users
-     *
-     * @param  \App\Models\User  $model
-     * @return \Illuminate\View\View
-     */
+        // Cargar los usuarios con sus roles
     public function index()
-{
-    $usuarios = User::latest()->paginate(5); // Cambia 5 al número deseado por página
-    return view('users.index', compact('usuarios'));
+    {
+        $users = User::with('roles')->get();
+        return view('roles-permisos.user.index',[
+            'users' => $users
+        ]);
+    }
+        // Obtener todos los roles
+    public function create()
+    {
+        $roles = Role::pluck('name', 'name')->all();
+        return view('roles-permisos.user.create', [
+            'roles' => $roles
+        ]);
+    }
+        // Validar los datos del formulario
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'required|string|min:8|max:20',
+            'roles' => 'required'
+        ]);
+
+        // Crear el usuario
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        // Asignar los roles al usuario
+        $user->syncRoles($request->roles);
+
+        return redirect('/usuarios')->with('status', 'Usuario creado exitosamente con roles');
+    }
 }
-
-}
-
-

@@ -10,12 +10,12 @@ class PermissionController extends Controller
     public function index()
     {
         $permissions = Permission::get();
-        return view('role-permission.permission.index', ['permissions' => $permissions]);
+        return view('roles-permisos.permission.index', ['permissions' => $permissions]);
     }
 // --------------------------------------------------------------------------------------
     public function create()
     {
-        return view('role-permission.permission.create');
+        return view('roles-permisos.permission.create');
     }
 // --------------------------------------------------------------------------------------
     public function store(Request $request)
@@ -38,7 +38,7 @@ class PermissionController extends Controller
 // --------------------------------------------------------------------------------------
     public function edit(Permission $permission)
     {
-        return view('role-permission.permission.edit', ['permission' => $permission]);
+        return view('roles-permisos.permission.edit', ['permission' => $permission]);
     }
 // --------------------------------------------------------------------------------------
     public function update(Request $request, Permission $permission)

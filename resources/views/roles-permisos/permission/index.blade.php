@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('role-permission.nav-links')
+@include('roles-permisos.nav-links')
 
 <div class="container mt-5">
     <div class="row">

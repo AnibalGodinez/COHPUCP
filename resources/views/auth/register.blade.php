@@ -15,19 +15,6 @@
                 </div>
             </div>
 
-
-            <div class="info-area info-horizontal mt-5">
-                <div class="icon icon-warning">
-                    <i class="tim-icons icon-book"></i>
-                </div>
-                <div class="description">
-                    <h3 class="info-title">{{ _('Plataforma de Gestión') }}</h3>
-                    <p class="description">
-                        {{ _(' Esta plataforma facilita el acceso a recursos de aprendizaje, permite la participación en actividades formativas y promueve un estricto código de ética profesional, garantizando la confianza del público en la profesión.') }}
-                    </p>
-                </div>
-            </div>
-
         </div>    
         <div class="col-md-7 mr-auto">
             <div class="card card-register card-white">
@@ -51,7 +38,7 @@
                             @include('alerts.feedback', ['field' => 'name'])
                         </div>
 
-                        <!-- Campo para los apellidos -->
+                        {{-- <!-- Campo para los apellidos -->
                         <div class="input-group{{ $errors->has('apellido') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -82,7 +69,7 @@
                             </div>
                             <input type="text" name="telefono_cel" class="form-control{{ $errors->has('telefono_cel') ? ' is-invalid' : '' }}" placeholder="{{ _('Teléfono celular') }}" value="{{ old('telefono_cel') }}">
                             @include('alerts.feedback', ['field' => 'telefono_cel'])
-                        </div>
+                        </div> --}}
 
                         <!-- Campo para el correo electrónico -->
                         <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
