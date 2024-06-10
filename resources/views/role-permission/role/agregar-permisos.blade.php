@@ -35,16 +35,17 @@
 
                                 @foreach ($permissions as $permission)
                                 
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <label class="form-check-label">
                                         <input
-                                        type="checkbox" 
-                                        name="permission[]" 
-                                        value="{{ $permission->name }}" 
-                                        class="form-control"
-                                        id="permission_{{ $permission->id }}"
-                                        style="width: 18px; height: 18px; margin:auto"
+                                            type="checkbox" 
+                                            name="permission[]" 
+                                            value="{{ $permission->name }}" 
+                                            class="form-control"
+                                            id="permission_{{ $permission->id }}"
+                                            style="width: 18px; height: 18px; margin:auto"
                                         @if($role->hasPermissionTo($permission->name)) checked @endif
+                                            {{in_array($permission->id, $rolePermissions) ? 'checked':''}}
                                         />
                                         {{$permission->name}}
                                     </label>
