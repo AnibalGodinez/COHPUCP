@@ -37,13 +37,11 @@
                                 <td class="text-center">{{ $user->email }}</td>
 
                                 <td class="text-center">
-
-                                    @if ($user->roles->isNotEmpty())
-                                        @foreach ($user->roles as $role)
-                                        <span class="badge bg-info mx-1 text-white">{{ $role->name }}</span>
+                                    @if (!empty($user->getRoleNames()))
+                                        @foreach ($user->getRoleNames() as $rolename)
+                                        <label class="badge bg-info mx-1 text-white">{{ $rolename }}</label>
                                         @endforeach
                                     @endif
-
                                 </td>
                                 
                                 <td class="text-center">
