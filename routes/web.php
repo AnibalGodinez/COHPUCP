@@ -58,6 +58,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('roles/{roleId}/agregar-permisos', [RoleController::class, 'givePermissionRole']);
 	
     Route::resource('usuarios', UserController::class);
+	Route::get('usuarios/{userId}/delete', [UserController::class, 'destroy']);
+
 	Route::resource('cursos', CursoController::class);
 	Route::resource('capacitaciones', CapacitacioneController::class);
 });

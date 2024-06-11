@@ -47,4 +47,46 @@ class UserController extends Controller
 
         return redirect('/usuarios')->with('status', 'Usuario creado exitosamente con roles');
     }
+
+    public function edit(User $user)
+    {
+        $roles = Role::pluck('name', 'name')->all();
+        $userRoles = $user -> roles -> pluck('name', 'name')-> all();
+        return view('roles-permisos.user.edit', [
+            'user' => $user,
+            'roles' => $roles,
+            'userRoles' => $userRoles
+      ]);
+    }
+
+    public function update(Request $request, user $user)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'password' => 'nullable|string|min:8|max:20',
+            'roles' => 'required'
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+        ];
+
+        if(!empty($request->password)){
+            $data += [
+                'password' => Hash::make($request -> password)
+            ];
+        }
+        $user->update($data);
+        $user->syncRoles($request->roles);
+
+        return redirect('/usuarios')->with('status', 'Usuario actualizado exitosamente con roles');
+    }
+
+    public function destroy($userId)
+    {
+        $user = User::findOrfail($userId);
+        $user->delete();
+        return redirect('/usuarios')->with('status', 'El usuario ha sido eliminado exitosamente');
+    }
 }
