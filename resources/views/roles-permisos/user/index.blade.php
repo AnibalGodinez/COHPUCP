@@ -1,9 +1,6 @@
 @extends('layouts.app', ['page' => __('Usuarios'), 'pageSlug' => 'usuarios'])
 
 @section('content')
-
-@include('roles-permisos.nav-links')
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
@@ -56,6 +53,47 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    @if ($users->hasPages())
+                        <nav>
+                            <ul class="pagination justify-content-start">
+                                {{-- Enlace a la página anterior --}}
+                                @if ($users->onFirstPage())
+                                    <li class="page-item disabled">
+                                        <span class="page-link">
+                                            <i class="fas fa-angle-double-left fa-lg"></i>
+                                            Anterior
+                                        </span>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $users->previousPageUrl() }}" rel="prev">
+                                            <i class="fas fa-angle-double-left fa-lg"></i>
+                                            Anterior
+                                        </a>
+                                    </li>
+                                @endif
+
+                                {{-- Enlace a la página siguiente --}}
+                                @if ($users->hasMorePages())
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $users->nextPageUrl() }}" rel="next">
+                                            Siguiente
+                                            <i class="fas fa-angle-double-right fa-lg"></i>
+                                        </a>
+                                    </li>
+                                @else
+                                    <li class="page-item disabled">
+                                        <span class="page-link">
+                                            Siguiente
+                                            <i class="fas fa-angle-double-right fa-lg"></i>
+                                        </span>
+                                    </li>
+                                @endif
+                            </ul>
+                        </nav>
+                    @endif
+                    
                 </div>
             </div>
         </div>

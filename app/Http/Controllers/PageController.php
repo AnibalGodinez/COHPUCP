@@ -13,34 +13,4 @@ class PageController extends Controller
     {
         return view('pages.icons');
     }
-
-    /**
-     * Display maps page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function maps()
-    {
-        return view('pages.maps');
-    }
-
-    /**
-     * Display tables page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function tables()
-    {
-        return view('pages.tables');
-    }
-
-    /**
-     * Display notifications page
-     *
-     * @return \Illuminate\View\View
-     */
-    public function notifications()
-    {
-        return view('pages.notifications');
-    }
 }

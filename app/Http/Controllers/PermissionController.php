@@ -9,15 +9,15 @@ class PermissionController extends Controller
 {
     public function index()
     {
-        $permissions = Permission::get();
+        $permissions = Permission::paginate(8);
         return view('roles-permisos.permission.index', ['permissions' => $permissions]);
     }
-// --------------------------------------------------------------------------------------
+
     public function create()
     {
         return view('roles-permisos.permission.create');
     }
-// --------------------------------------------------------------------------------------
+
     public function store(Request $request)
     {
         $request->validate([
@@ -30,17 +30,17 @@ class PermissionController extends Controller
 
         return redirect('permission')->with('status', 'El permiso se ha creado exitosamente');
     }
-// --------------------------------------------------------------------------------------
+
     public function show($id)
     {
         //
     }
-// --------------------------------------------------------------------------------------
+
     public function edit(Permission $permission)
     {
         return view('roles-permisos.permission.edit', ['permission' => $permission]);
     }
-// --------------------------------------------------------------------------------------
+
     public function update(Request $request, Permission $permission)
     {
         $request->validate([
@@ -53,7 +53,7 @@ class PermissionController extends Controller
 
         return redirect('permission')->with('status', 'El permiso se ha actualizado exitosamente');
     }
-// --------------------------------------------------------------------------------------
+
     public function destroy($permissionId)
     {
         $permission = Permission::find($permissionId);

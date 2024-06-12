@@ -1,9 +1,6 @@
 @extends('layouts.app', ['page' => __('Permisos'), 'pageSlug' => 'permisos'])
 
 @section('content')
-
-@include('roles-permisos.nav-links')
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
@@ -15,7 +12,7 @@
             <div class="card mt-7">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3>Permisos</h3>
-                    <a href="{{ url('permission/create') }}" class="btn btn-info btn-sm">Agregar permiso</a>
+                    <a href="{{ url('permission/create') }}" class="btn btn-info btn-sm">Agregar nuevo permiso</a>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-striped">
@@ -44,6 +41,47 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    @if ($permissions->hasPages())
+                        <nav>
+                            <ul class="pagination justify-content-start">
+                                {{-- Enlace a la página anterior --}}
+                                @if ($permissions->onFirstPage())
+                                    <li class="page-item disabled">
+                                        <span class="page-link">
+                                            <i class="fas fa-angle-double-left fa-lg"></i>
+                                            Anterior
+                                        </span>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $permissions->previousPageUrl() }}" rel="prev">
+                                            <i class="fas fa-angle-double-left fa-lg"></i>
+                                            Anterior
+                                        </a>
+                                    </li>
+                                @endif
+
+                                {{-- Enlace a la página siguiente --}}
+                                @if ($permissions->hasMorePages())
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $permissions->nextPageUrl() }}" rel="next">
+                                            Siguiente
+                                            <i class="fas fa-angle-double-right fa-lg"></i>
+                                        </a>
+                                    </li>
+                                @else
+                                    <li class="page-item disabled">
+                                        <span class="page-link">
+                                            Siguiente
+                                            <i class="fas fa-angle-double-right fa-lg"></i>
+                                        </span>
+                                    </li>
+                                @endif
+                            </ul>
+                        </nav>
+                    @endif
+
                 </div>
             </div>
         </div>

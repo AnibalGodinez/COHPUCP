@@ -146,24 +146,6 @@
                     <p>{{ _('Iconos') }}</p>
                 </a>
             </li>
-            <li @if ($pageSlug == 'maps') class="active " @endif>
-                <a href="{{ route('pages.maps') }}">
-                    <i class="tim-icons icon-globe-2"></i>
-                    <p>{{ _('Ubicación') }}</p>
-                </a>
-            </li>
-            <li @if ($pageSlug == 'notifications') class="active " @endif>
-                <a href="{{ route('pages.notifications') }}">
-                    <i class="tim-icons icon-bell-55"></i>
-                    <p>{{ _('Notificationes') }}</p>
-                </a>
-            </li>
-            <li @if ($pageSlug == 'tables') class="active " @endif>
-                <a href="{{ route('pages.tables') }}">
-                    <i class="tim-icons icon-puzzle-10"></i>
-                    <p>{{ _('Lista de tablas') }}</p>
-                </a>
-            </li>
         </ul>
     </div>
 </div>
