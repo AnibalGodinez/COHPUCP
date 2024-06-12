@@ -42,45 +42,7 @@
                         </tbody>
                     </table>
 
-                    @if ($permissions->hasPages())
-                        <nav>
-                            <ul class="pagination justify-content-start">
-                                {{-- Enlace a la página anterior --}}
-                                @if ($permissions->onFirstPage())
-                                    <li class="page-item disabled">
-                                        <span class="page-link">
-                                            <i class="fas fa-angle-double-left fa-lg"></i>
-                                            Anterior
-                                        </span>
-                                    </li>
-                                @else
-                                    <li class="page-item">
-                                        <a class="page-link" href="{{ $permissions->previousPageUrl() }}" rel="prev">
-                                            <i class="fas fa-angle-double-left fa-lg"></i>
-                                            Anterior
-                                        </a>
-                                    </li>
-                                @endif
-
-                                {{-- Enlace a la página siguiente --}}
-                                @if ($permissions->hasMorePages())
-                                    <li class="page-item">
-                                        <a class="page-link" href="{{ $permissions->nextPageUrl() }}" rel="next">
-                                            Siguiente
-                                            <i class="fas fa-angle-double-right fa-lg"></i>
-                                        </a>
-                                    </li>
-                                @else
-                                    <li class="page-item disabled">
-                                        <span class="page-link">
-                                            Siguiente
-                                            <i class="fas fa-angle-double-right fa-lg"></i>
-                                        </span>
-                                    </li>
-                                @endif
-                            </ul>
-                        </nav>
-                    @endif
+                    {{ $permissions->links('vendor.pagination.simple-bootstrap-4') }}
 
                 </div>
             </div>
