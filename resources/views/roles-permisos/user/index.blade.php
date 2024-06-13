@@ -6,7 +6,7 @@
         <div class="col-md-12">
 
             @if (session('status'))
-            <div class="alert alert-success">{{ session('status') }}</div>
+            <div class="alert alert-success text-center">{{ session('status') }}</div>
             @endif
 
             <div class="card mt-7">
@@ -16,57 +16,60 @@
                 </div>
                 <div class="card-body">
 
-                         {{-- Formulario de búsqueda --}}
+                    {{-- Formulario de búsqueda --}}
                     <form action="{{ url('usuarios') }}" method="GET" class="mb-4">
                         <div class="input-group">
-                             <input type="text" name="search" class="form-control" placeholder="Buscar usuarios" value="{{ request()->query('search') }}">
-                             <button class="btn btn-info btn-round btn-simple">
-                                 <i class="tim-icons icon-zoom-split"></i> Buscar
-                               </button>
-                         </div>
-                     </form>
-                     
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Id</th>
-                                <th class="text-center">Nombre del usuario</th>
-                                <th class="text-center">Correo electrónico</th>
-                                <th class="text-center">Roles</th>
-                                <th class="text-center">Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                            <input type="text" name="search" class="form-control" placeholder="Buscar usuarios" value="{{ request()->query('search') }}">
+                            <button class="btn btn-info btn-round btn-simple">
+                                <i class="tim-icons icon-zoom-split"></i> Buscar
+                            </button>
+                        </div>
+                    </form>
 
-                            @foreach ($users as $user)
-                            <tr>
-                                <td class="text-center">{{ $user->id }}</td>
-                                <td class="text-center">{{ $user->name }}</td>
-                                <td class="text-center">{{ $user->email }}</td>
+                    @if($users->isEmpty())
+                        <div class="alert alert-default text-center" role="alert">
+                            No hay ningún resultado de su búsqueda.
+                        </div>
+                    @else
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Id</th>
+                                    <th class="text-center">Nombre del usuario</th>
+                                    <th class="text-center">Correo electrónico</th>
+                                    <th class="text-center">Roles</th>
+                                    <th class="text-center">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $user)
+                                <tr>
+                                    <td class="text-center">{{ $user->id }}</td>
+                                    <td class="text-center">{{ $user->name }}</td>
+                                    <td class="text-center">{{ $user->email }}</td>
+                                    <td class="text-center">
+                                        @if (!empty($user->getRoleNames()))
+                                            @foreach ($user->getRoleNames() as $roleName)
+                                                <label class="badge bg-info mx-1 text-white">{{ $roleName }}</label>
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{{ url('usuarios/'.$user->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
+                                            <i class="tim-icons icon-settings"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('usuarios/'.$user->id.'/delete') }}')">
+                                            <i class="tim-icons icon-simple-remove"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
 
-                                <td class="text-center">
-                                    @if (!empty($user->getRoleNames()))
-                                        @foreach ($user->getRoleNames() as $rolename)
-                                        <label class="badge bg-info mx-1 text-white">{{ $rolename }}</label>
-                                        @endforeach
-                                    @endif
-                                </td>
-                                
-                                <td class="text-center">
-                                    <a href="{{ url('usuarios/'.$user->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
-                                        <i class="tim-icons icon-settings"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('usuarios/'.$user->id.'/delete') }}')">
-                                        <i class="tim-icons icon-simple-remove"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        {{ $users->links('paginacion.simple-bootstrap-4') }}
+                    @endif
 
-                    {{ $users->links('paginacion.simple-bootstrap-4') }}
-                    
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h3 class="title">Lista de Cursos</h3>
                 <div>
-                    <a href="{{ route('cursos.create') }}" class="btn btn-info">
+                    <a href="{{ route('cursos.create') }}" class="btn btn-info btn-sm">
                         <i class="fas fa-plus-circle"></i> Agregar un nuevo curso
                     </a>
                 </div>
@@ -28,7 +28,9 @@
                 </form>
 
                 @if ($cursos->isEmpty())
-                    <p>No hay cursos</p>
+                    <div class="alert alert-default text-center" role="alert">
+                        No hay ningún resultado de su búsqueda.
+                    </div>
                 @else
                     <div class="row">
                         @foreach ($cursos as $curso)

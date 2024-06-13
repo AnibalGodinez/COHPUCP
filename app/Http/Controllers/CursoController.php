@@ -104,9 +104,9 @@ class CursoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Curso $curso)
-{
-    $curso->delete();
+    {
+        $curso->delete();
 
-    return redirect()->route('cursos.index')->with('success', 'Curso eliminado con éxito');
-}
+        return redirect()->route('cursos.index')->with('success', 'Curso eliminado con éxito');
+    }
 }

@@ -8,7 +8,7 @@
                     <h5 class="title">{{ __('Actualizar Curso') }}</h5>
                 </div>
                 <div class="card-body">
-                    <div class="alert alert-success" role="alert">
+                    <div class="alert alert-success text-center" role="alert">
                         {{ __('El curso se actualizó correctamente.') }}
                     </div>
                 </div>
