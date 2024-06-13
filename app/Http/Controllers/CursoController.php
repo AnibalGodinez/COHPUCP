@@ -14,7 +14,7 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $cursos = Curso::where('user_id', auth()->id())->get(); // Obtener solo los cursos del usuario autenticado
+        $cursos = Curso::where('user_id', auth()->id())->paginate(3);; // Obtener solo los cursos del usuario autenticado
 
         return view('cursos.index', compact('cursos'));
     }

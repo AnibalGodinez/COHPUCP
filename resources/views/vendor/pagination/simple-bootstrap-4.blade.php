@@ -26,17 +26,22 @@
 
                 {{-- Conjunto de enlaces --}}
                 @if (is_array($element))
-                    @foreach ($element as $page => $url)
+                    @php
+                        $start = max($paginator->currentPage() - 1, 1);
+                        $end = min($paginator->currentPage() + 1, $paginator->lastPage());
+                    @endphp
+
+                    @for ($page = $start; $page <= $end; $page++)
                         @if ($page == $paginator->currentPage())
                             <li class="page-item" style="background-color: #007bff;">
                                 <span class="page-link" style="color: #ffffff;">{{ $page }}</span>
                             </li>
                         @else
                             <li class="page-item">
-                                <a class="page-link" href="{{ $url }}" style="color: #000000;">{{ $page }}</a>
+                                <a class="page-link" href="{{ $paginator->url($page) }}" style="color: #000000;">{{ $page }}</a>
                             </li>
                         @endif
-                    @endforeach
+                    @endfor
                 @endif
             @endforeach
 
