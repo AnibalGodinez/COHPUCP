@@ -9,9 +9,22 @@ use Illuminate\Support\facades\DB;
 
 class RoleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $roles = Role::paginate(8);
+        $search = $request->query('search');
+
+        if ($search) {
+            $roles = Role::where(function($query) use ($search) {
+                $query->where('id', 'LIKE', "%{$search}%")
+                      ->orWhere('name', 'LIKE', "%{$search}%");
+                    //   ->orWhere('description', 'LIKE', "%{$search}%");
+                // Añadir más orWhere según las columnas que se necesiten buscar
+            })->paginate(8);
+            
+        } else {
+            $roles = Role::paginate(8);
+        }
+
         return view('roles-permisos.role.index', ['roles' => $roles]);
     }
 

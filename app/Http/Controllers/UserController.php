@@ -9,12 +9,23 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::with('roles')->paginate(8);
-        return view('roles-permisos.user.index',[
-            'users' => $users
-        ]);
+        $search = $request->query('search');
+
+        if ($search) {
+            $users = User::where(function($query) use ($search) {
+                $query->where('id', 'LIKE', "%{$search}%")
+                      ->orWhere('name', 'LIKE', "%{$search}%")
+                      ->orWhere('email', 'LIKE', "%{$search}%");
+                // Añadir más orWhere según las columnas que se necesiten buscar
+            })->with('roles')->paginate(8);
+
+        } else {
+            $users = User::with('roles')->paginate(8);
+        }
+
+        return view('roles-permisos.user.index', ['users' => $users]);
     }
 
     public function create()

@@ -12,12 +12,23 @@ class CursoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $cursos = Curso::where('user_id', auth()->id())->paginate(3);; // Obtener solo los cursos del usuario autenticado
+    public function index(Request $request)
+{
+    $search = $request->query('search');
 
-        return view('cursos.index', compact('cursos'));
+    $cursos = Curso::query();
+
+    if ($search) {
+        $cursos->where('id', 'LIKE', "%{$search}%")
+               ->orWhere('nombre', 'LIKE', "%{$search}%")
+               ->orWhere('descripcion', 'LIKE', "%{$search}%");
     }
+
+    $cursos = $cursos->paginate(3);
+
+    return view('cursos.index', compact('cursos', 'search'));
+}
+
 
     /**
      * Show the form for creating a new resource.

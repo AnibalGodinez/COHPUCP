@@ -15,6 +15,17 @@
                     <a href="{{ url('usuarios/create') }}" class="btn btn-info btn-sm">Agregar usuario</a>
                 </div>
                 <div class="card-body">
+
+                         {{-- Formulario de búsqueda --}}
+                    <form action="{{ url('usuarios') }}" method="GET" class="mb-4">
+                        <div class="input-group">
+                             <input type="text" name="search" class="form-control" placeholder="Buscar usuarios" value="{{ request()->query('search') }}">
+                             <button class="btn btn-info btn-round btn-simple">
+                                 <i class="tim-icons icon-zoom-split"></i> Buscar
+                               </button>
+                         </div>
+                     </form>
+                     
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>

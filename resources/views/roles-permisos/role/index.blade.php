@@ -15,6 +15,17 @@
                     <a href="{{ url('roles/create') }}" class="btn btn-info btn-sm">Agregar nuevo Rol</a>
                 </div>
                 <div class="card-body">
+
+                        {{-- Formulario de búsqueda --}}
+                    <form action="{{ url('roles') }}" method="GET" class="mb-4">
+                        <div class="input-group">
+                             <input type="text" name="search" class="form-control" placeholder="Buscar roles" value="{{ request()->query('search') }}">
+                             <button class="btn btn-info btn-round btn-simple">
+                                 <i class="tim-icons icon-zoom-split"></i> Buscar
+                             </button>
+                         </div>
+                     </form> 
+
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>

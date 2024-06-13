@@ -10,39 +10,28 @@ class CapacitacioneController extends Controller {
         $this->authorizeResource(Capacitacione::class, 'capacitacione');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request) {
-        $capacitaciones = Capacitacione::query();
-    
-        if (!empty($request->search)) {
-            $capacitaciones->where('nombre', 'like', '%' . $request->search . '%');
-        }
-    
-        $capacitaciones = $capacitaciones->paginate(4); // Mostrar 4 capacitaciones por página
-    
-        return view('capacitaciones.index', compact('capacitaciones'));
+    public function index(Request $request)
+{
+    $search = $request->query('search');
+
+    if ($search) {
+        $capacitaciones = Capacitacione::where(function($query) use ($search) {
+            $query->where('id', 'LIKE', "%{$search}%")
+                  ->orWhere('nombre', 'LIKE', "%{$search}%")
+                  ->orWhere('descripcion', 'LIKE', "%{$search}%");
+        })->paginate(4);
+    } else {
+        $capacitaciones = Capacitacione::paginate(3);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    return view('capacitaciones.index', compact('capacitaciones'));
+}
+
+    
     public function create() {
         return view('capacitaciones.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request) {
         $request->validate([
             'nombre' => 'required|string|max:255',
@@ -53,7 +42,7 @@ class CapacitacioneController extends Controller {
             $capacitacione = new Capacitacione();
             $capacitacione->nombre = $request->nombre;
             $capacitacione->descripcion = $request->descripcion;
-            $capacitacione->user_id = auth()->id(); // Asignar el id del usuario actual
+            $capacitacione->user_id = auth()->id();
             $capacitacione->save();
 
             return redirect()->route('capacitaciones.index')->with('success', __('Capacitación creada exitosamente.'));
@@ -62,36 +51,14 @@ class CapacitacioneController extends Controller {
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Capacitacione $capacitacione
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function show(Capacitacione $capacitacione) {
         return view('capacitaciones.show', compact('capacitacione'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Capacitacione $capacitacione
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Capacitacione $capacitacione) {
         return view('capacitaciones.edit', compact('capacitacione'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Capacitacione $capacitacione
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Capacitacione $capacitacione) {
         $request->validate([
             'nombre' => 'required|string|max:255',
@@ -109,13 +76,6 @@ class CapacitacioneController extends Controller {
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\Capacitacione $capacitacione
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Capacitacione $capacitacione) {
         try {
             $capacitacione->delete();

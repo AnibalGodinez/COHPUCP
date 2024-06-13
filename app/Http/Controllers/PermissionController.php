@@ -7,9 +7,22 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $permissions = Permission::paginate(4);
+        $search = $request->query('search');
+
+        if ($search) {
+            $permissions = Permission::where(function($query) use ($search) {
+                $query->where('id', 'LIKE', "%{$search}%")
+                      ->orWhere('name', 'LIKE', "%{$search}%");
+                    //   ->orWhere('description', 'LIKE', "%{$search}%");
+                // Añadir más orWhere según las columnas que se necesiten buscar
+            })->paginate(4);
+
+        } else {
+            $permissions = Permission::paginate(4);
+        }
+
         return view('roles-permisos.permission.index', ['permissions' => $permissions]);
     }
 
