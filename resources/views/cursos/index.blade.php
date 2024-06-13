@@ -40,7 +40,7 @@
                             @endforeach
                         </div>
                     @endif
-                    {{ $cursos->links('vendor.pagination.simple-bootstrap-4') }}
+                    {{ $cursos->links('paginacion.simple-bootstrap-4') }}
                 </div>
             </div>
         </div>

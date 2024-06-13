@@ -46,7 +46,7 @@
                         </tbody>
                     </table>
 
-                    {{ $roles->links('vendor.pagination.simple-bootstrap-4') }}
+                    {{ $roles->links('paginacion.simple-bootstrap-4') }}
                     
                 </div>
             </div>

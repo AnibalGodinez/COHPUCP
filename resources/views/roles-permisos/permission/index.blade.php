@@ -42,7 +42,7 @@
                         </tbody>
                     </table>
 
-                    {{ $permissions->links('vendor.pagination.simple-bootstrap-4') }}
+                    {{ $permissions->links('paginacion.simple-bootstrap-4') }}
 
                 </div>
             </div>

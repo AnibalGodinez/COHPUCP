@@ -57,7 +57,7 @@
                             @endforelse
                         </tbody>
                     </table>
-                    {{ $capacitaciones->links('vendor.pagination.simple-bootstrap-4') }}
+                    {{ $capacitaciones->links('paginacion.simple-bootstrap-4') }}
                 </div>
             </div>
         </div>
