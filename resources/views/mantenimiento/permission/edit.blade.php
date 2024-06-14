@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Permisos'), 'pageSlug' => 'permisos'])
+@extends('layouts.app', ['page' => __('Permisos'), 'pageSlug' => 'mantenimientoPermisos'])
 
 @section('content')
 <div class="container mt-5">

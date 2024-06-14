@@ -13,12 +13,12 @@
 
             {{-- Perfil del Agremiado --}}
             <li>
-                <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
+                <a data-toggle="collapse" href="#perfil-agremiado" aria-expanded="{{ $pageSlug == 'profile' || $pageSlug == 'editar' || $pageSlug == 'contrasenia' ? 'true' : 'false' }}">
                     <i class="fas fa-user"></i>
                     <span class="nav-link-text">Perfil del Agremiado</span>
                     <b class="caret mt-1"></b>
                 </a>
-                <div class="collapse" id="laravel-examples">
+                <div class="collapse {{ $pageSlug == 'profile' || $pageSlug == 'editar' || $pageSlug == 'contrasenia' ? 'show' : '' }}" id="perfil-agremiado">
                     <ul class="nav pl-4">
                         <li @if ($pageSlug == 'profile') class="active" @endif>
                             <a href="{{ route('profile.index') }}">
@@ -42,35 +42,14 @@
                 </div>
             </li>
 
-            {{-- Personas --}}
-            <li>
-                <a data-toggle="collapse" href="#personas" aria-expanded="true">
-                    <i class="fas fa-users"></i>
-                    <span class="nav-link-text">Personas</span>
-                    <b class="caret mt-1"></b>
-                </a>
-
-                <div class="collapse @if ($pageSlug == 'users') show @endif" id="personas">
-                    <ul class="nav pl-4">
-                        <li @if ($pageSlug == 'users') class="active" @endif>
-                            <a href="{{ route('usuarios.index') }}">
-                                <i class="tim-icons icon-badge"></i>
-                                <p>Usuarios</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
             {{-- Plataformas Tecnológicas --}}
             <li>
-                <a data-toggle="collapse" href="#plataforma" aria-expanded="true">
+                <a data-toggle="collapse" href="#plataformas" aria-expanded="{{ $pageSlug == 'cursosPlataforma' || $pageSlug == 'capacitacionesPlataforma' || $pageSlug == 'agendaPlataforma' || $pageSlug == 'gestionesPlataforma' || $pageSlug == 'consultasPlataforma' ? 'true' : 'false' }}">
                     <i class="fas fa-laptop"></i>
                     <span class="nav-link-text">Plataformas Tecnológicas</span>
                     <b class="caret mt-1"></b>
                 </a>
-
-                <div class="collapse @if ($pageSlug == 'cursosPlataforma' || $pageSlug == 'capacitacionesPlataforma' || $pageSlug == 'profile') show @endif" id="plataforma">
+                <div class="collapse {{ $pageSlug == 'cursosPlataforma' || $pageSlug == 'capacitacionesPlataforma' || $pageSlug == 'agendaPlataforma' || $pageSlug == 'gestionesPlataforma' || $pageSlug == 'consultasPlataforma' ? 'show' : '' }}" id="plataformas">
                     <ul class="nav pl-4">
                         <li @if ($pageSlug == 'cursosPlataforma') class="active" @endif>
                             <a href="{{ route('cursos.index') }}">
@@ -84,20 +63,20 @@
                                 <p>Capacitaciones</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'profile') class="active" @endif>
-                            <a href="{{ route('profile.edit') }}">
+                        <li @if ($pageSlug == 'agendaPlataforma') class="active" @endif>
+                            <a href="{{ route('pages.icons') }}">
                                 <i class="tim-icons icon-notes"></i>
                                 <p>Agendas</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'profile') class="active" @endif>
-                            <a href="{{ route('profile.edit') }}">
+                        <li @if ($pageSlug == 'gestionesPlataforma') class="active" @endif>
+                            <a href="{{ route('pages.icons') }}">
                                 <i class="tim-icons icon-link-72"></i>
                                 <p>Gestiones</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'profile') class="active" @endif>
-                            <a href="{{ route('profile.edit') }}">
+                        <li @if ($pageSlug == 'consultasPlataforma') class="active" @endif>
+                            <a href="{{ route('pages.icons') }}">
                                 <i class="tim-icons icon-tap-02"></i>
                                 <p>Consultas</p>
                             </a>
@@ -108,20 +87,63 @@
 
             {{-- Seguridad --}}
             <li>
-                <a data-toggle="collapse" href="#security" aria-expanded="true">
+                <a data-toggle="collapse" href="#seguridad" aria-expanded="{{ $pageSlug == 'seguridad' ? 'true' : 'false' }}">
                     <i class="fas fa-shield-alt"></i>
                     <span class="nav-link-text">Seguridad</span>
                     <b class="caret mt-1"></b>
                 </a>
-                <div class="collapse @if ($pageSlug == 'roles' || $pageSlug == 'permisos') show @endif" id="security">
+                <div class="collapse {{ $pageSlug == 'seguridad' ? 'show' : '' }}" id="seguridad">
+                    <ul class="nav">
+                        {{-- Submódulo Usuarios --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('seguridad.usuarios') }}">
+                                <span class="sidebar-mini-icon"> U </span>
+                                <span class="sidebar-normal"> Usuarios </span>
+                            </a>
+                        </li>
+
+                        {{-- Submódulo Roles --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('roles.index') }}">
+                                <span class="sidebar-mini-icon"> R </span>
+                                <span class="sidebar-normal"> Roles </span>
+                            </a>
+                        </li>
+
+                        {{-- Submódulo Permisos --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('permission.index') }}">
+                                <span class="sidebar-mini-icon"> P </span>
+                                <span class="sidebar-normal"> Permisos </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+            {{-- Mantenimientos --}}
+            <li>
+                <a data-toggle="collapse" href="#mantenimiento" aria-expanded="{{ $pageSlug == 'mantenimientoUsuarios' || $pageSlug == 'mantenimientoRoles' || $pageSlug == 'mantenimientoPermisos' ? 'true' : 'false' }}">
+                    <i class="fas fa-cogs"></i>
+                    <span class="nav-link-text">Mantenimientos</span>
+                    <b class="caret mt-1"></b>
+                </a>
+                <div class="collapse {{ $pageSlug == 'mantenimientoUsuarios' || $pageSlug == 'mantenimientoRoles' || $pageSlug == 'mantenimientoPermisos' ? 'show' : '' }}" id="mantenimiento">
                     <ul class="nav pl-4">
-                        <li @if ($pageSlug == 'roles') class="active" @endif>
+                        <li @if ($pageSlug == 'mantenimientoUsuarios' || $pageSlug == 'usuarios') class="active" @endif>
+                            <a href="{{ route('usuarios.index') }}">
+                                <i class="tim-icons icon-badge"></i>
+                                <p>Usuarios</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'mantenimientoRoles') class="active" @endif>
                             <a href="{{ route('roles.index') }}">
                                 <i class="tim-icons icon-key-25"></i>
                                 <p>Roles</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'permisos') class="active" @endif>
+                        <li @if ($pageSlug == 'mantenimientoPermisos') class="active" @endif>
                             <a href="{{ route('permission.index') }}">
                                 <i class="tim-icons icon-satisfied"></i>
                                 <p>Permisos</p>
@@ -129,15 +151,6 @@
                         </li>
                     </ul>
                 </div>
-            </li>
-
-            {{-- Mantenimientos --}}
-            <li>
-                <a data-toggle="collapse" href="#platform" aria-expanded="true">
-                    <i class="fas fa-cogs"></i>
-                    <span class="nav-link-text">Mantenimientos</span>
-                    <b class="caret mt-1"></b>
-                </a>
             </li>
 
             {{-- Iconos --}}

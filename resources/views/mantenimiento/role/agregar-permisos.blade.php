@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Roles'), 'pageSlug' => 'roles'])
+@extends('layouts.app', ['page' => __('Roles'), 'pageSlug' => 'mantenimientoRoles'])
 
 @section('content')
 <div class="container mt-5">
