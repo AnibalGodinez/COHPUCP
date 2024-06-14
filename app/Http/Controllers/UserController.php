@@ -25,13 +25,13 @@ class UserController extends Controller
             $users = User::with('roles')->paginate(8);
         }
 
-        return view('roles-permisos.user.index', ['users' => $users]);
+        return view('mantenimiento.user.index', ['users' => $users]);
     }
 
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
-        return view('roles-permisos.user.create', [
+        return view('mantenimiento.user.create', [
             'roles' => $roles
         ]);
     }
@@ -60,7 +60,7 @@ class UserController extends Controller
     {
         $roles = Role::pluck('name', 'name')->all();
         $userRoles = $user -> roles -> pluck('name', 'name')-> all();
-        return view('roles-permisos.user.edit', [
+        return view('mantenimiento.user.edit', [
             'user' => $user,
             'roles' => $roles,
             'userRoles' => $userRoles

@@ -23,25 +23,31 @@ class PermissionController extends Controller
             $permissions = Permission::paginate(4);
         }
 
-        return view('roles-permisos.permission.index', ['permissions' => $permissions]);
+        return view('mantenimiento.permission.index', ['permissions' => $permissions]);
     }
 
     public function create()
     {
-        return view('roles-permisos.permission.create');
+        return view('mantenimiento.permission.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'unique:permissions,name']
+        ], [
+            'name.unique' => 'Este Permiso ya existe'
         ]);
 
-        Permission::create([
-            'name' => $request->name
-        ]);
+        try {
+            Permission::create([
+                'name' => $request->name
+            ]);
 
-        return redirect('permission')->with('status', 'El permiso se ha creado exitosamente');
+            return redirect('permission')->with('status', 'El permiso se ha creado exitosamente');
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->withErrors(['error' => 'Error inesperado: ' . $e->getMessage()]);
+        }
     }
 
     public function show($id)
@@ -51,7 +57,7 @@ class PermissionController extends Controller
 
     public function edit(Permission $permission)
     {
-        return view('roles-permisos.permission.edit', ['permission' => $permission]);
+        return view('mantenimiento.permission.edit', ['permission' => $permission]);
     }
 
     public function update(Request $request, Permission $permission)

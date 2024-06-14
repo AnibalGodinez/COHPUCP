@@ -25,38 +25,37 @@ class RoleController extends Controller
             $roles = Role::paginate(8);
         }
 
-        return view('roles-permisos.role.index', ['roles' => $roles]);
+        return view('mantenimiento.role.index', ['roles' => $roles]);
     }
 
     public function create()
     {
-        return view('roles-permisos.role.create');
+        return view('mantenimiento.role.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => [
-                'required', 
-                'string', 
-                'unique:roles,name']
+            'name' => ['required', 'string', 'unique:roles,name']
+        ], [
+            'name.unique' => 'Este Rol ya existe'
         ]);
 
-        Role::create([
-            'name' => $request->name
-        ]);
+        try {
+            Role::create([
+                'name' => $request->name
+            ]);
 
-        return redirect('roles')->with('status', 'El rol se ha creado exitosamente');
+            return redirect('roles')->with('status', 'El rol se ha creado exitosamente');
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->withErrors(['error' => 'Error inesperado: ' . $e->getMessage()]);
+        }
     }
 
-    public function show($id)
-    {
-        //
-    }
 
     public function edit(Role $role)
     {
-        return view('roles-permisos.role.edit', ['role' => $role]);
+        return view('mantenimiento.role.edit', ['role' => $role]);
     }
 
     public function update(Request $request, Role $role)
@@ -92,7 +91,7 @@ class RoleController extends Controller
                                 ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
                                 ->all();
 
-        return view('roles-permisos.role.agregar-permisos', [
+        return view('mantenimiento.role.agregar-permisos', [
             'role' => $role,
             'permissions' => $permissions,
             'rolePermissions' => $rolePermissions
