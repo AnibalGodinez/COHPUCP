@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User; 
 
+use App\Models\User;
+use App\Models\Role;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 
 class SeguridadController extends Controller
@@ -21,5 +23,33 @@ class SeguridadController extends Controller
             ->paginate(10);
 
         return view('seguridad.usuarios', compact('users'));
+    }
+
+    public function verRoles(Request $request)
+    {
+        $search = $request->input('search');
+
+        $roles = Role::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('id', 'like', "%{$search}%")
+                             ->orWhere('name', 'like', "%{$search}%");
+            })
+            ->paginate(10);
+
+        return view('seguridad.roles', compact('roles'));
+    }
+
+    public function verPermisos(Request $request)
+    {
+        $search = $request->input('search');
+
+        $permissions = Permission::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('id', 'like', "%{$search}%")
+                             ->orWhere('name', 'like', "%{$search}%");
+            })
+            ->paginate(10);
+
+        return view('seguridad.permisos', compact('permissions'));
     }
 }

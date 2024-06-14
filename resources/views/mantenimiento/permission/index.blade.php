@@ -17,14 +17,12 @@
                 <div class="card-body">
 
                     {{-- Formulario de búsqueda --}}
-                    <form action="{{ url('permission') }}" method="GET" class="mb-4">
-                       <div class="input-group">
-                            <input type="text" name="search" class="form-control "  placeholder="Buscar permisos" value="{{ request()->query('search') }}">
-                            <button class="btn btn-info btn-round btn-simple">
-                                <i class="tim-icons icon-zoom-split"></i> Buscar
-                              </button>
-                        </div>
-                    </form> 
+                    <form action="{{ url('permission') }}" method="GET" class="form-inline mt-3">
+                        <input type="text" name="search" class="form-control" placeholder="Buscar permisos" value="{{ request()->query('search') }}">
+                        <button class="btn btn-info btn-round btn-simple">
+                            <i class="tim-icons icon-zoom-split"></i> Buscar
+                        </button>
+                    </form><br>
 
                     @if($permissions->isEmpty())
                         <div class="alert alert-default text-center" role="alert">

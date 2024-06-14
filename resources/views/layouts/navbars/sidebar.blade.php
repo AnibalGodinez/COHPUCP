@@ -5,9 +5,9 @@
         </div>
         <ul class="nav">
             <li>
-                <a href="{{ route('home') }}" class="d-flex justify-content-center">
+                <a href="{{ route('home') }}">
                     <i class="tim-icons icon-bank"></i>
-                    <p>{{ _('Cohpucp') }}</p>
+                    <p>Cohpucp</p>
                 </a>
             </li>
 
@@ -87,40 +87,34 @@
 
             {{-- Seguridad --}}
             <li>
-                <a data-toggle="collapse" href="#seguridad" aria-expanded="{{ $pageSlug == 'seguridad' ? 'true' : 'false' }}">
+                <a data-toggle="collapse" href="#seguridad" aria-expanded="{{ $pageSlug == 'seguridadUsuarios' || $pageSlug == 'seguridadRoles' || $pageSlug == 'seguridadPermisos' ? 'true' : 'false' }}">
                     <i class="fas fa-shield-alt"></i>
                     <span class="nav-link-text">Seguridad</span>
                     <b class="caret mt-1"></b>
                 </a>
-                <div class="collapse {{ $pageSlug == 'seguridad' ? 'show' : '' }}" id="seguridad">
-                    <ul class="nav">
-                        {{-- Submódulo Usuarios --}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('seguridad.usuarios') }}">
-                                <span class="sidebar-mini-icon"> U </span>
-                                <span class="sidebar-normal"> Usuarios </span>
+                <div class="collapse {{ $pageSlug == 'seguridadUsuarios' || $pageSlug == 'seguridadRoles' || $pageSlug == 'seguridadPermisos' ? 'show' : '' }}" id="seguridad">
+                    <ul class="nav pl-4">
+                        <li @if ($pageSlug == 'seguridadUsuarios') class="active" @endif>
+                            <a href="{{ route('seguridad.usuarios') }}">
+                                <i class="fas fa-users"></i>
+                                <p>Usuarios</p>
                             </a>
                         </li>
-
-                        {{-- Submódulo Roles --}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('roles.index') }}">
-                                <span class="sidebar-mini-icon"> R </span>
-                                <span class="sidebar-normal"> Roles </span>
+                        <li @if ($pageSlug == 'seguridadRoles') class="active" @endif>
+                            <a href="{{ route('seguridad.roles') }}">
+                                <i class="tim-icons icon-pin"></i>
+                                <p>Roles</p>
                             </a>
                         </li>
-
-                        {{-- Submódulo Permisos --}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('permission.index') }}">
-                                <span class="sidebar-mini-icon"> P </span>
-                                <span class="sidebar-normal"> Permisos </span>
+                        <li @if ($pageSlug == 'seguridadPermisos') class="active" @endif>
+                            <a href="{{ route('seguridad.permisos') }}">
+                                <i class="tim-icons icon-refresh-02"></i>
+                                <p>Permisos</p>
                             </a>
                         </li>
                     </ul>
                 </div>
             </li>
-
 
             {{-- Mantenimientos --}}
             <li>
@@ -157,7 +151,7 @@
             <li @if ($pageSlug == 'icons') class="active" @endif>
                 <a href="{{ route('pages.icons') }}">
                     <i class="tim-icons icon-atom"></i>
-                    <p>{{ _('Iconos') }}</p>
+                    <p>Iconos</p>
                 </a>
             </li>
         </ul>

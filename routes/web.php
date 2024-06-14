@@ -26,6 +26,8 @@ use Illuminate\Support\Facades\Auth;
 	Route::group(['middleware' => 'auth'], function () {
 		Route::get('icons', 'App\Http\Controllers\PageController@icons')->name('pages.icons');
 		Route::get('ver-usuarios', 		['as' => 'seguridad.usuarios', 'uses' => 'App\Http\Controllers\SeguridadController@verUsuarios']);
+		Route::get('ver-roles', 		['as' => 'seguridad.roles', 'uses' => 'App\Http\Controllers\SeguridadController@verRoles']);
+		Route::get('ver-permisos', 		['as' => 'seguridad.permisos', 'uses' => 'App\Http\Controllers\SeguridadController@verPermisos']);
 	});
 
 	// RUTAS DE MANTENIMIENTO
