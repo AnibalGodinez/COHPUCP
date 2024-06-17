@@ -38,39 +38,6 @@
                             @include('alerts.feedback', ['field' => 'name'])
                         </div>
 
-                        {{-- <!-- Campo para los apellidos -->
-                        <div class="input-group{{ $errors->has('apellido') ? ' has-danger' : '' }}">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </div>
-                            </div>
-                            <input type="text" name="apellido" class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" placeholder="{{ _('Apellidos') }}" value="{{ old('apellido') }}">
-                            @include('alerts.feedback', ['field' => 'apellido'])
-                        </div>
-
-                        <!-- Campo para el teléfono de casa-->
-                        <div class="input-group{{ $errors->has('telefono_casa') ? ' has-danger' : '' }}">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="tim-icons icon-mobile"></i>
-                                </div>
-                            </div>
-                            <input type="text" name="telefono_casa" class="form-control{{ $errors->has('telefono_casa') ? ' is-invalid' : '' }}" placeholder="{{ _('Teléfono casa') }}" value="{{ old('telefono_casa') }}">
-                            @include('alerts.feedback', ['field' => 'telefono_casa'])
-                        </div>
-
-                        <!-- Campo para el teléfono celular-->
-                        <div class="input-group{{ $errors->has('telefono_cel') ? ' has-danger' : '' }}">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="tim-icons icon-mobile"></i>
-                                </div>
-                            </div>
-                            <input type="text" name="telefono_cel" class="form-control{{ $errors->has('telefono_cel') ? ' is-invalid' : '' }}" placeholder="{{ _('Teléfono celular') }}" value="{{ old('telefono_cel') }}">
-                            @include('alerts.feedback', ['field' => 'telefono_cel'])
-                        </div> --}}
-
                         <!-- Campo para el correo electrónico -->
                         <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
