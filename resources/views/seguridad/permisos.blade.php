@@ -32,6 +32,7 @@
                                 <thead class="text-primary">
                                     <th>ID</th>
                                     <th>Nombre</th>
+                                    <th>Descripción</th>
                                     <th>Fecha de Registro</th>
                                 </thead>
                                 <tbody>
@@ -39,6 +40,7 @@
                                         <tr>
                                             <td>{{ $permission->id }}</td>
                                             <td>{{ $permission->name }}</td>
+                                            <td>{{ $permission->description }}</td>
                                             <td>{{ $permission->created_at->format('d/m/Y H:i:s') }}</td>
                                         </tr>
                                     @endforeach

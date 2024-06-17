@@ -16,8 +16,8 @@ class RoleController extends Controller
         if ($search) {
             $roles = Role::where(function($query) use ($search) {
                 $query->where('id', 'LIKE', "%{$search}%")
-                      ->orWhere('name', 'LIKE', "%{$search}%");
-                    //   ->orWhere('description', 'LIKE', "%{$search}%");
+                      ->orWhere('name', 'LIKE', "%{$search}%")
+                      ->orWhere('description', 'LIKE', "%{$search}%");
                 // Añadir más orWhere según las columnas que se necesiten buscar
             })->paginate(8);
             
@@ -36,14 +36,16 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'unique:roles,name']
+            'name' => ['required', 'string', 'unique:roles,name'],
+            'description' => ['nullable', 'string'] // Validación para el campo description
         ], [
             'name.unique' => 'Este Rol ya existe'
         ]);
 
         try {
             Role::create([
-                'name' => $request->name
+                'name' => $request->name,
+                'description' => $request->description // Almacenamiento del campo description
             ]);
 
             return redirect('roles')->with('status', 'El rol se ha creado exitosamente');
@@ -65,11 +67,13 @@ class RoleController extends Controller
                 'required', 
                 'string', 
                 'unique:roles,name,' . $role->id
-                ]
+            ],
+            'description' => ['nullable', 'string'] // Validación para el campo description
         ]);
 
         $role->update([
-            'name' => $request->name
+            'name' => $request->name,
+            'description' => $request->description // Actualización del campo description
         ]);
 
         return redirect('roles')->with('status', 'El rol se ha actualizado exitosamente');
@@ -78,7 +82,7 @@ class RoleController extends Controller
     public function destroy($roleId)
     {
         $roles = Role::find($roleId);
-        $roles -> delete();
+        $roles->delete();
         return redirect('roles')->with('status', 'El rol se ha eliminado');
     }
 

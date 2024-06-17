@@ -22,6 +22,11 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="description">Descripción del permiso</label>
+                            <textarea id="description" name="description" class="form-control w-50">{{ $permission->description }}</textarea>
+                        </div>
+
+                        <div class="mb-3">
                             <button type="submit" class="btn btn-success btn-sm">Actualizar</button>
                         </div>
                     </form>

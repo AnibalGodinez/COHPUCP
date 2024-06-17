@@ -20,6 +20,11 @@
                             <label for="name">Nombre del rol</label>
                             <input type="text" id="name" name="name" value="{{ $role->name }}" class="form-control w-50">
                         </div>
+                        
+                        <div class="mb-3">
+                            <label for="description">Descripción del rol</label>
+                            <textarea id="description" name="description" class="form-control w-50">{{ $role->description }}</textarea>
+                        </div>
 
                         <div class="mb-3">
                             <button type="submit" class="btn btn-success btn-sm">Actualizar</button>

@@ -32,6 +32,7 @@
                                 <thead class="text-primary">
                                     <th>ID</th>
                                     <th>Nombre</th>
+                                    <th>Descripción</th>
                                     <th>Fecha de Registro</th>
                                 </thead>
                                 <tbody>
@@ -39,6 +40,7 @@
                                         <tr>
                                             <td>{{ $role->id }}</td>
                                             <td>{{ $role->name }}</td>
+                                            <td>{{ $role->description }}</td>
                                             <td>{{ $role->created_at->format('d/m/Y H:i:s') }}</td>
                                         </tr>
                                     @endforeach

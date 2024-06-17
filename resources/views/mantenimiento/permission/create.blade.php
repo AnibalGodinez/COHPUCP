@@ -34,6 +34,10 @@
                             <label for="name">Nombre del Permiso</label>
                             <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}">
                         </div>
+                        <div class="form-group">
+                            <label for="description">Descripción del Permiso</label>
+                            <textarea id="description" name="description" class="form-control">{{ old('description') }}</textarea>
+                        </div>
                         <button type="submit" class="btn btn-info">Guardar</button>
                     </form>
                 </div>

@@ -34,6 +34,7 @@
                                 <tr>
                                     <th class="text-center">Id</th>
                                     <th class="text-center">Nombre del rol</th>
+                                    <th class="text-center">Descripción</th>
                                     <th class="text-center">Acción</th>
                                 </tr>
                             </thead>
@@ -42,6 +43,7 @@
                                 <tr>
                                     <td class="text-center">{{ $role->id }}</td>
                                     <td class="text-center">{{ $role->name }}</td>
+                                    <td class="text-center">{{ $role->description }}</td>
                                     <td class="text-center">
                                         <a href="{{ url('roles/'.$role->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                             <i class="tim-icons icon-settings"></i>

@@ -5,7 +5,7 @@
         </div>
         <ul class="nav">
             <li>
-                <a href="{{ route('home') }}">
+                <a href="{{ route('home') }}" class="d-flex justify-content-center">
                     <i class="tim-icons icon-bank"></i>
                     <p>Cohpucp</p>
                 </a>
