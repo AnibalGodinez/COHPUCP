@@ -10,12 +10,13 @@
             @endif
 
             <div class="card mt-7">
+
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3>Usuarios</h3>
-                    <a href="{{ url('usuarios/create') }}" class="btn btn-info btn-sm">Agregar usuario</a>
+                    <a href="{{ url('usuarios/create') }}" class="btn btn-info btn-sm"><i class="fas fa-plus-circle"> </i> Crear nuevo usuario</a>
                 </div>
-                <div class="card-body">
 
+                <div class="card-body">
                     {{-- Formulario de búsqueda --}}
                     <form action="{{ url('usuarios') }}" method="GET" class="form-inline mt-3">
                         <input type="text" name="search" class="form-control" placeholder="Buscar usuarios" value="{{ request()->query('search') }}">
@@ -68,7 +69,6 @@
 
                         {{ $users->links('paginacion.simple-bootstrap-4') }}
                     @endif
-
                 </div>
             </div>
         </div>

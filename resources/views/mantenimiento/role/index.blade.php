@@ -12,7 +12,7 @@
             <div class="card mt-7">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3>Roles</h3>
-                    <a href="{{ url('roles/create') }}" class="btn btn-info btn-sm">Agregar nuevo Rol</a>
+                    <a href="{{ url('roles/create') }}" class="btn btn-info btn-sm"> <i class="fas fa-plus-circle"></i> Crear nuevo Rol</a>
                 </div>
                 <div class="card-body">
                     
@@ -53,7 +53,7 @@
                                         </a>
 
                                         <a href="{{ url('roles/'.$role->id.'/agregar-permisos') }}" class="btn btn-info btn-sm">
-                                            Agregar permisos
+                                            Asignar permisos
                                         </a>
                                     </td>
                                 </tr>

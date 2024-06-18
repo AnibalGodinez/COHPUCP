@@ -12,7 +12,7 @@
             <div class="card mt-7">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3>Permisos</h3>
-                    <a href="{{ url('permission/create') }}" class="btn btn-info btn-sm ">Agregar nuevo permiso</a>
+                    <a href="{{ url('permission/create') }}" class="btn btn-info btn-sm ">  <i class="fas fa-plus-circle"></i> Crear nuevo permiso</a>
                 </div>
                 
                 <div class="card-body">
