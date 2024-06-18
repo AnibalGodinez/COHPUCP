@@ -1,7 +1,7 @@
 @extends('layouts.app', ['page' => __('Permisos'), 'pageSlug' => 'mantenimientoPermisos'])
 
 @section('content')
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     <div class="row">
         <div class="col-md-12">
 
@@ -14,6 +14,7 @@
                     <h3>Permisos</h3>
                     <a href="{{ url('permission/create') }}" class="btn btn-info btn-sm ">Agregar nuevo permiso</a>
                 </div>
+                
                 <div class="card-body">
 
                     {{-- Formulario de búsqueda --}}

@@ -19,28 +19,29 @@
                             <i class="tim-icons icon-zoom-split"></i> Buscar
                         </button>
                     </form>
-
                 </div>
 
                 <div class="card-body">
                     @if($users->isEmpty())
-                        <div class="alert alert-default text-center" user="alert">
+                        <div class="alert alert-default text-center" role="alert">
                             No hay ningún resultado de su búsqueda.
                         </div>
                     @else
                         <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead class="text-primary">
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Email</th>
-                                    <th>Roles</th>
-                                    <th>Fecha de Registro</th>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">ID</th>
+                                        <th class="text-center">Nombre</th>
+                                        <th class="text-center">Email</th>
+                                        <th class="text-center">Roles</th>
+                                        <th class="text-center">Fecha de Registro</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ $user->id }}</td>
+                                            <td class="text-center">{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>
@@ -50,7 +51,7 @@
                                                     @endforeach
                                                 @endif
                                             </td>
-                                            <td>{{ $user->created_at->format('d/m/Y H:i:s') }}</td>
+                                            <td class="text-center">{{ $user->created_at->format('d/m/Y H:i:s') }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
