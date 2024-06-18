@@ -28,7 +28,6 @@
                                 No hay ningún resultado de su búsqueda.
                             </div>
                         @else
-                            <div class="table-responsive">
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -50,7 +49,6 @@
                                     </tbody>
                                 </table>
                                 {{ $permissions->links('paginacion.simple-bootstrap-4') }}
-                            </div>
                         @endif
                     </div>
                 </div>

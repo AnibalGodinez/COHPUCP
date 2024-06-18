@@ -27,7 +27,6 @@
                             No hay ningún resultado de su búsqueda.
                         </div>
                     @else
-                        <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -40,16 +39,15 @@
                                 <tbody>
                                     @foreach ($roles as $role)
                                         <tr>
-                                            <td class="text-center">{{ $role->id }}</td>
-                                            <td class="text-center">{{ $role->name }}</td>
-                                            <td class="text-center">{{ $role->description }}</td>
-                                            <td class="text-center">{{ $role->created_at->format('d/m/Y H:i:s') }}</td>
+                                            <td>{{ $role->id }}</td>
+                                            <td>{{ $role->name }}</td>
+                                            <td>{{ $role->description }}</td>
+                                            <td>{{ $role->created_at->format('d/m/Y H:i:s') }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                             {{ $roles->links('paginacion.simple-bootstrap-4') }}
-                        </div>
                     @endif
                 </div>
             </div>

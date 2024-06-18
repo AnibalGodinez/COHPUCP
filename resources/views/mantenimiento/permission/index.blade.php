@@ -42,10 +42,10 @@
                             <tbody>
                                 @foreach ($permissions as $permission)
                                 <tr>
-                                    <td class="text-center">{{ $permission->id }}</td>
-                                    <td class="text-center">{{ $permission->name }}</td>
-                                    <td class="text-center">{{ $permission->description }}</td>
-                                    <td class="text-center">
+                                    <td>{{ $permission->id }}</td>
+                                    <td>{{ $permission->name }}</td>
+                                    <td>{{ $permission->description }}</td>
+                                    <td>
                                         <a href="{{ url('permission/'.$permission->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                             <i class="tim-icons icon-settings"></i>
                                         </a>

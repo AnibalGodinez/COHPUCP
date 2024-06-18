@@ -41,10 +41,10 @@
                             <tbody>
                                 @foreach ($roles as $role)
                                 <tr>
-                                    <td class="text-center">{{ $role->id }}</td>
-                                    <td class="text-center">{{ $role->name }}</td>
-                                    <td class="text-center">{{ $role->description }}</td>
-                                    <td class="text-center">
+                                    <td>{{ $role->id }}</td>
+                                    <td>{{ $role->name }}</td>
+                                    <td>{{ $role->description }}</td>
+                                    <td>
                                         <a href="{{ url('roles/'.$role->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                             <i class="tim-icons icon-settings"></i>
                                         </a>
@@ -60,10 +60,8 @@
                                 @endforeach
                             </tbody>
                         </table>
-
                         {{ $roles->links('paginacion.simple-bootstrap-4') }}
                     @endif
-
                 </div>
             </div>
         </div>

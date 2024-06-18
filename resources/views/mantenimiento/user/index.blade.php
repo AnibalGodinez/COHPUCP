@@ -32,11 +32,11 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Nombre del usuario</th>
-                                    <th>Correo electrónico</th>
-                                    <th>Roles</th>
-                                    <th>Acción</th>
+                                    <th class="text-center">Id</th>
+                                    <th class="text-center">Nombre del usuario</th>
+                                    <th class="text-center">Correo electrónico</th>
+                                    <th class="text-center">Roles</th>
+                                    <th class="text-center">Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
