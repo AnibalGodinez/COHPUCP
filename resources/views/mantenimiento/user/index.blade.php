@@ -36,6 +36,7 @@
                                     <th class="text-center">Id</th>
                                     <th class="text-center">Nombre del usuario</th>
                                     <th class="text-center">Correo electrónico</th>
+                                    <th class="text-center">Estado</th>
                                     <th class="text-center">Roles</th>
                                     <th class="text-center">Acción</th>
                                 </tr>
@@ -46,6 +47,7 @@
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td class="text-center">{{ $user->estado }}</td>
                                     <td>
                                         @if (!empty($user->getRoleNames()))
                                             @foreach ($user->getRoleNames() as $roleName)

@@ -16,31 +16,42 @@
                     <form action="{{url('usuarios')}}" method="POST">
                         @csrf
                         
-                        <div class="mb-3">
-                            <label for="">Nombre</label>
-                            <input type="text" name="name" class="form-control w-50">
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+                                <label for="">Nombre</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="">Correo electrónico</label>
+                                <input type="text" name="email" class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="estado">Estado</label>
+                                <select name="estado" class="form-control" id="estado">
+                                    <option value="activo">Activo</option>
+                                    <option value="inactivo">Inactivo</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group col-md-6">
+                                <label for="">Contraseña</label>
+                                <input type="text" name="password" class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="">Roles</label>
+                                <select name="roles[]" class="form-control" multiple>
+                                    <option value="">Seleccionar rol</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{$role}}">{{$role}}</option>  
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="">Correo electrónico</label>
-                            <input type="text" name="email" class="form-control w-50">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="">Contraseña</label>
-                            <input type="text" name="password" class="form-control w-50">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="">Roles</label>
-                            <select name="roles[]" class="form-control" multiple>
-                                <option value="">Seleccionar rol</option>
-                                @foreach ($roles as $role)
-                                    <option value="{{$role}}">{{$role}}</option>  
-                                @endforeach
-                            </select>
-                        </div>
-                        
                         <div class="mb-3">
                             <button type="submit" class="btn btn-info btn-sm">Guardar</button>
                         </div>

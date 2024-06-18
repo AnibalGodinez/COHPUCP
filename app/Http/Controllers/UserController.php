@@ -17,14 +17,15 @@ class UserController extends Controller
         $users = User::where(function($query) use ($search) {
             $query->where('id', 'LIKE', "%{$search}%")
                   ->orWhere('name', 'LIKE', "%{$search}%")
-                  ->orWhere('email', 'LIKE', "%{$search}%");
+                  ->orWhere('email', 'LIKE', "%{$search}%")
+                  ->orWhere('estado', 'LIKE', "%{$search}%");
             // Añadir más orWhere según las columnas que se necesiten buscar
         })
         ->orderBy('id', 'desc') // Ordenar por el campo 'id' de forma descendente
         ->with('roles')->paginate(8);
 
     } else {
-        $users = User::orderBy('id', 'desc') // Ordenar por el campo 'id' de forma descendente
+        $users = User::orderBy('id', 'desc') 
                      ->with('roles')->paginate(8);
     }
 
@@ -46,12 +47,14 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|max:20',
-            'roles' => 'required'
+            'roles' => 'required',
+            'estado' => 'required|string'
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'estado' => $request->estado,
             'password' => Hash::make($request->password),
         ]);
 
@@ -76,12 +79,14 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'password' => 'nullable|string|min:8|max:20',
-            'roles' => 'required'
+            'roles' => 'required',
+            'estado' => 'required|string'
         ]);
 
         $data = [
             'name' => $request->name,
             'email' => $request->email,
+            'estado' => $request->estado,
         ];
 
         if(!empty($request->password)){
