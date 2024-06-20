@@ -93,6 +93,65 @@
                             @include('alerts.feedback', ['field' => 'numero_colegiacion'])
                         </div>
 
+                        <!-- Campo para RTN -->
+                        <div class="input-group{{ $errors->has('rtn') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-single-02"></i>
+                                </div>
+                            </div>
+                            <input type="text" name="rtn" class="form-control{{ $errors->has('rtn') ? ' is-invalid' : '' }}" placeholder="{{ _('RTN') }}" value="{{ old('rtn') }}">
+                            @include('alerts.feedback', ['field' => 'rtn'])
+                        </div>
+
+                        <!-- Campo para sexo -->
+                        <div class="input-group{{ $errors->has('sexo') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-single-02"></i>
+                                </div>
+                            </div>
+                            <select name="sexo" class="form-control{{ $errors->has('sexo') ? ' is-invalid' : '' }}">
+                                <option value="">{{ _('Seleccione sexo') }}</option>
+                                <option value="masculino" {{ old('sexo') == 'masculino' ? 'selected' : '' }}>{{ _('Masculino') }}</option>
+                                <option value="femenino" {{ old('sexo') == 'femenino' ? 'selected' : '' }}>{{ _('Femenino') }}</option>
+                            </select>
+                            @include('alerts.feedback', ['field' => 'sexo'])
+                        </div>
+
+                        <!-- Campo para fecha de nacimiento -->
+                        <div class="input-group{{ $errors->has('fecha_nacimiento') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-calendar-60"></i>
+                                </div>
+                            </div>
+                            <input type="date" name="fecha_nacimiento" class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}" placeholder="{{ _('Fecha de nacimiento') }}" value="{{ old('fecha_nacimiento') }}">
+                            @include('alerts.feedback', ['field' => 'fecha_nacimiento'])
+                        </div>
+
+                        <!-- Campo para telefono -->
+                        <div class="input-group{{ $errors->has('telefono') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-phone-2"></i>
+                                </div>
+                            </div>
+                            <input type="text" name="telefono" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" placeholder="{{ _('Teléfono') }}" value="{{ old('telefono') }}">
+                            @include('alerts.feedback', ['field' => 'telefono'])
+                        </div>
+
+                        <!-- Campo para telefono_celular -->
+                        <div class="input-group{{ $errors->has('telefono_celular') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-mobile"></i>
+                                </div>
+                            </div>
+                            <input type="text" name="telefono_celular" class="form-control{{ $errors->has('telefono_celular') ? ' is-invalid' : '' }}" placeholder="{{ _('Teléfono celular') }}" value="{{ old('telefono_celular') }}">
+                            @include('alerts.feedback', ['field' => 'telefono_celular'])
+                        </div>
+
                         <!-- Campo para el correo electrónico -->
                         <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">

@@ -22,17 +22,22 @@ class UserController extends Controller
                   ->orWhere('apellido2', 'LIKE', "%{$search}%")
                   ->orWhere('numero_identidad', 'LIKE', "%{$search}%")
                   ->orWhere('numero_colegiacion', 'LIKE', "%{$search}%")
-
+                  ->orWhere('rtn', 'LIKE', "%{$search}%")
+                  ->orWhere('sexo', 'LIKE', "%{$search}%")
+                  ->orWhere('fecha_nacimiento', 'LIKE', "%{$search}%")
+                  ->orWhere('telefono', 'LIKE', "%{$search}%")
+                  ->orWhere('telefono_celular', 'LIKE', "%{$search}%")
+                  
                   ->orWhere('email', 'LIKE', "%{$search}%")
                   ->orWhere('estado', 'LIKE', "%{$search}%");
             // Añadir más orWhere según las columnas que se necesiten buscar
         })
         ->orderBy('id', 'desc') // Ordenar por el campo 'id' de forma descendente
-        ->with('roles')->paginate(8);
+        ->with('roles')->paginate(4);
 
     } else {
         $users = User::orderBy('id', 'desc') 
-                     ->with('roles')->paginate(8);
+                     ->with('roles')->paginate(4);
     }
 
     return view('users.index', ['users' => $users]);
@@ -56,7 +61,12 @@ class UserController extends Controller
             'apellido2' => 'required|string|max:255',
             'numero_identidad' => 'required|string|unique:users,numero_identidad',
             'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
-
+            'rtn' => 'nullable|string|max:20|unique:users,rtn',
+            'sexo' => 'required|in:masculino,femenino',
+            'fecha_nacimiento' => 'required|date',
+            'telefono' => 'nullable|string|max:20',
+            'telefono_celular' => 'required|string|max:20',
+            
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|max:20',
             'roles' => 'required',
@@ -70,6 +80,11 @@ class UserController extends Controller
             'apellido2' => $request->apellido2,
             'numero_identidad' => $request->numero_identidad,
             'numero_colegiacion' => $request->numero_colegiacion,
+            'rtn' => $request->rtn,
+            'sexo' => $request->sexo,
+            'fecha_nacimiento' => $request->fecha_nacimiento,
+            'telefono' => $request->telefono,
+            'telefono_celular' => $request->telefono_celular,
 
             'email' => $request->email,
             'estado' => $request->estado,
@@ -101,6 +116,11 @@ class UserController extends Controller
             'apellido2' => 'required|string|max:255',
             'numero_identidad' => 'required|string|unique:users,numero_identidad',
             'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
+            'rtn' => 'nullable|string|max:20|unique:users,rtn',
+            'sexo' => 'required|in:masculino,femenino',
+            'fecha_nacimiento' => 'required|date',
+            'telefono' => 'nullable|string|max:20',
+            'telefono_celular' => 'required|string|max:20',
 
             'password' => 'nullable|string|min:8|max:20',
             'roles' => 'required',
@@ -114,6 +134,11 @@ class UserController extends Controller
             'apellido2' => $request->apellido2,
             'numero_identidad' => $request->numero_identidad,
             'numero_colegiacion' => $request->numero_colegiacion,
+            'rtn' => $request->rtn,
+            'sexo' => $request->sexo,
+            'fecha_nacimiento' => $request->fecha_nacimiento,
+            'telefono' => $request->telefono,
+            'telefono_celular' => $request->telefono_celular,
 
             'email' => $request->email,
             'estado' => $request->estado,
@@ -151,17 +176,22 @@ class UserController extends Controller
                       ->orWhere('apellido2', 'LIKE', "%{$search}%")
                       ->orWhere('numero_identidad', 'LIKE', "%{$search}%")
                       ->orWhere('numero_colegiacion', 'LIKE', "%{$search}%")
+                      ->orWhere('rtn', 'LIKE', "%{$search}%")
+                      ->orWhere('sexo', 'LIKE', "%{$search}%")
+                      ->orWhere('fecha_nacimiento', 'LIKE', "%{$search}%")
+                      ->orWhere('telefono', 'LIKE', "%{$search}%")
+                      ->orWhere('telefono_celular', 'LIKE', "%{$search}%")
 
                       ->orWhere('email', 'LIKE', "%{$search}%")
                       ->orWhere('estado', 'LIKE', "%{$search}%");
             })
             ->orderBy('id', 'desc')
             ->with('roles')
-            ->paginate(8);
+            ->paginate(4);
         } else {
             $users = User::orderBy('id', 'desc')
                          ->with('roles')
-                         ->paginate(8);
+                         ->paginate(4);
         }
 
         return view('users.view', ['users' => $users]);

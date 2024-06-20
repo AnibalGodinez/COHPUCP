@@ -21,7 +21,12 @@ class CreateUsersTable extends Migration
             $table->string('apellido2')->nullable();
             $table->string('numero_identidad')->unique();
             $table->string('numero_colegiacion')->nullable()->unique();
-
+            $table->string('rtn', 20)->nullable()->unique();
+            $table->enum('sexo', ['masculino', 'femenino']);
+            $table->date('fecha_nacimiento');
+            $table->string('telefono');
+            $table->string('telefono_celular');
+            
             $table->string('email')->unique();
             $table->enum('estado',['activo', 'inactivo'])->default('activo');
 

@@ -25,7 +25,12 @@ class User extends Authenticatable
         'apellido2',
         'numero_identidad',
         'numero_colegiacion',
-        
+        'rtn',
+        'sexo',
+        'fecha_nacimiento',
+        'telefono',
+        'telefono_celular',
+
         'email',
         'estado',
         'password',

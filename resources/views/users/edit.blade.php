@@ -17,38 +17,95 @@
                         @csrf
                         @method('PUT')
                         
-                        <div class="mb-3">
-                            <label for="">Nombre</label>
-                            <input type="text" name="name" value="{{$user->name}}" class="form-control w-50">
-                            @error('name') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
+                        <div class="form-row">
 
-                        <div class="mb-3">
-                            <label for="">Correo electrónico</label>
-                            <input type="text" name="email" value="{{$user->email}}"  class="form-control w-50">
-                        </div>
+                            <div class="form-group col-md-6">
+                                <label for="">Primer nombre</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
 
-                        <div class="mb-3">
-                            <label for="">Contraseña</label>
-                            <input type="text" name="password" class="form-control w-50">
-                            @error('password') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
+                            <div class="form-group col-md-6">
+                                <label for="name2">Segundo Nombre</label>
+                                <input type="text" name="name2" class="form-control" id="name2">
+                            </div>
 
-                        <div class="mb-3">
-                            <label for="">Roles</label>
-                            <select name="roles[]" class="form-control" multiple>
-                                <option value="">Seleccionar rol</option>
-                                @foreach ($roles as $role)
-                                    <option 
-                                        value="{{$role}}"
-                                        {{in_array($role, $userRoles) ? 'selected':''}}
-                                        >
-                                        {{$role}}
-                                    </option>  
-                                @endforeach
-                            </select>
-                            @error('roles') <span class="text-danger">{{ $message }}</span> @enderror
-                        </div>
+                            <div class="form-group col-md-6">
+                                <label for="apellido">Primer apellido</label>
+                                <input type="text" name="apellido" class="form-control" id="apellido">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="apellido2">Segundo apellido</label>
+                                <input type="text" name="apellido2" class="form-control" id="apellido2">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="numero_identidad">Número de identidad</label>
+                                <input type="text" name="numero_identidad" class="form-control" id="numero_identidad">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="numero_colegiacion">Número de colegiación</label>
+                                <input type="text" name="numero_colegiacion" class="form-control" id="numero_colegiacion">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="rtn">RTN</label>
+                                <input type="text" name="rtn" class="form-control" id="rtn">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="sexo">Sexo</label>
+                                <select name="sexo" class="form-control" id="sexo">
+                                    <option value="masculino">Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                                <input type="date" name="fecha_nacimiento" class="form-control" id="fecha_nacimiento">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="telefono">Teléfono</label>
+                                <input type="text" name="telefono" class="form-control" id="telefono">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="telefono_celular">Teléfono Celular</label>
+                                <input type="text" name="telefono_celular" class="form-control" id="telefono_celular">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="">Correo electrónico</label>
+                                <input type="text" name="email" value="{{$user->email}}"  class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="">Contraseña</label>
+                                <input type="text" name="password" class="form-control">
+                                @error('password') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="">Roles</label>
+                                    <select name="roles[]" class="form-control" multiple>
+                                        <option value="">Seleccionar rol</option>
+                                            @foreach ($roles as $role)
+                                                <option 
+                                                    value="{{$role}}"
+                                                    {{in_array($role, $userRoles) ? 'selected':''}}
+                                                    >
+                                                    {{$role}}
+                                                </option>  
+                                            @endforeach
+                                    </select>
+                                @error('roles') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+
+                            </div>
+
                         <div class="mb-3">
                             <button type="submit" class="btn btn-info btn-sm">Actualizar</button>
                         </div>

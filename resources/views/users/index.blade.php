@@ -33,8 +33,19 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Id</th>
-                                    <th class="text-center">Nombre del usuario</th>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Primer nombre</th>
+                                    <th class="text-center">Segundo nombre</th>
+                                    <th class="text-center">Primer apellido</th>
+                                    <th class="text-center">Segundo apellido</th>
+                                    <th class="text-center">Número de identidad </th>
+                                    <th class="text-center">Número de colegiación</th>
+                                    <th class="text-center">RTN</th>
+                                    <th class="text-center">Sexo</th>
+                                    <th class="text-center">Fecha de nacimiento</th>
+                                    <th class="text-center">Teléfono</th>
+                                    <th class="text-center">Teléfono celular</th>
+
                                     <th class="text-center">Correo electrónico</th>
                                     <th class="text-center">Estado</th>
                                     <th class="text-center">Roles</th>
@@ -46,6 +57,17 @@
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
+                                    <td>{{ $user->name2 }}</td>
+                                    <td>{{ $user->apellido }}</td>
+                                    <td>{{ $user->apellido2 }}</td>
+                                    <td>{{ $user->numero_identidad }}</td>
+                                    <td>{{ $user->numero_colegiacion }}</td>
+                                    <td>{{ $user->rtn }}</td>
+                                    <td>{{ $user->sexo }}</td>
+                                    <td>{{ $user->fecha_nacimiento }}</td>
+                                    <td>{{ $user->telefono }}</td>
+                                    <td>{{ $user->telefono_celular }}</td>
+
                                     <td>{{ $user->email }}</td>
                                     <td class="text-center">{{ $user->estado }}</td>
                                     <td>
@@ -68,7 +90,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-
                         {{ $users->links('paginacion.simple-bootstrap-4') }}
                     @endif
                 </div>
