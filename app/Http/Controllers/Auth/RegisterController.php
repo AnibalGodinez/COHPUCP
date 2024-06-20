@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'rtn' => ['nullable', 'string', 'max:20', 'unique:users,rtn'],
             'sexo' => ['required', 'in:masculino,femenino'],
             'fecha_nacimiento' => ['required', 'date'],
-            'telefono' => ['required', 'string', 'max:20'],
+            'telefono' => ['nullable', 'string', 'max:20'],
             'telefono_celular' => ['required', 'string', 'max:20'],
             
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
