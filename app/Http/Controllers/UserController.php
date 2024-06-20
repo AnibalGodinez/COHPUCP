@@ -17,6 +17,12 @@ class UserController extends Controller
         $users = User::where(function($query) use ($search) {
             $query->where('id', 'LIKE', "%{$search}%")
                   ->orWhere('name', 'LIKE', "%{$search}%")
+                  ->orWhere('name2', 'LIKE', "%{$search}%")
+                  ->orWhere('apellido', 'LIKE', "%{$search}%")
+                  ->orWhere('apellido2', 'LIKE', "%{$search}%")
+                  ->orWhere('numero_identidad', 'LIKE', "%{$search}%")
+                  ->orWhere('numero_colegiacion', 'LIKE', "%{$search}%")
+
                   ->orWhere('email', 'LIKE', "%{$search}%")
                   ->orWhere('estado', 'LIKE', "%{$search}%");
             // Añadir más orWhere según las columnas que se necesiten buscar
@@ -45,6 +51,12 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'name2' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'apellido2' => 'required|string|max:255',
+            'numero_identidad' => 'required|string|unique:users,numero_identidad',
+            'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
+
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|max:20',
             'roles' => 'required',
@@ -53,6 +65,12 @@ class UserController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+            'name2' => $request->name2,
+            'apellido' => $request->apellido,
+            'apellido2' => $request->apellido2,
+            'numero_identidad' => $request->numero_identidad,
+            'numero_colegiacion' => $request->numero_colegiacion,
+
             'email' => $request->email,
             'estado' => $request->estado,
             'password' => Hash::make($request->password),
@@ -78,6 +96,12 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'name2' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'apellido2' => 'required|string|max:255',
+            'numero_identidad' => 'required|string|unique:users,numero_identidad',
+            'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
+
             'password' => 'nullable|string|min:8|max:20',
             'roles' => 'required',
             'estado' => 'required|string'
@@ -85,6 +109,12 @@ class UserController extends Controller
 
         $data = [
             'name' => $request->name,
+            'name2' => $request->name2,
+            'apellido' => $request->apellido,
+            'apellido2' => $request->apellido2,
+            'numero_identidad' => $request->numero_identidad,
+            'numero_colegiacion' => $request->numero_colegiacion,
+
             'email' => $request->email,
             'estado' => $request->estado,
         ];
@@ -116,6 +146,12 @@ class UserController extends Controller
             $users = User::where(function($query) use ($search) {
                 $query->where('id', 'LIKE', "%{$search}%")
                       ->orWhere('name', 'LIKE', "%{$search}%")
+                      ->orWhere('name2', 'LIKE', "%{$search}%")
+                      ->orWhere('apellido', 'LIKE', "%{$search}%")
+                      ->orWhere('apellido2', 'LIKE', "%{$search}%")
+                      ->orWhere('numero_identidad', 'LIKE', "%{$search}%")
+                      ->orWhere('numero_colegiacion', 'LIKE', "%{$search}%")
+
                       ->orWhere('email', 'LIKE', "%{$search}%")
                       ->orWhere('estado', 'LIKE', "%{$search}%");
             })

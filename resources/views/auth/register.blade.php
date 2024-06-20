@@ -27,15 +27,70 @@
 
                     <div class="card-body">
 
-                        <!-- Campo para los nombres -->
+                        <!-- Campo para el primer nombre -->
                         <div class="input-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <i class="tim-icons icon-single-02"></i>
                                 </div>
                             </div>
-                            <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ _('Nombres') }}" value="{{ old('name') }}">
+                            <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ _('Primer nombre') }}" value="{{ old('name') }}">
                             @include('alerts.feedback', ['field' => 'name'])
+                        </div>
+
+                        <!-- Campo para el segundo nombre -->
+                        <div class="input-group{{ $errors->has('name2') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-single-02"></i>
+                                </div>
+                            </div>
+                            <input type="text" name="name2" class="form-control{{ $errors->has('name2') ? ' is-invalid' : '' }}" placeholder="{{ _('Segundo nombre') }}" value="{{ old('name2') }}">
+                            @include('alerts.feedback', ['field' => 'name2'])
+                        </div>
+
+                         <!-- Campo para el primer apellido -->
+                         <div class="input-group{{ $errors->has('apellido') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-single-02"></i>
+                                </div>
+                            </div>
+                            <input type="text" name="apellido" class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" placeholder="{{ _('Primer apellido') }}" value="{{ old('apellido') }}">
+                            @include('alerts.feedback', ['field' => 'apellido'])
+                        </div>
+
+                        <!-- Campo para el segundo apellido -->
+                        <div class="input-group{{ $errors->has('apellido2') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-single-02"></i>
+                                </div>
+                            </div>
+                            <input type="text" name="apellido2" class="form-control{{ $errors->has('apellido2') ? ' is-invalid' : '' }}" placeholder="{{ _('Segundo apellido') }}" value="{{ old('apellido2') }}">
+                            @include('alerts.feedback', ['field' => 'apellido2'])
+                        </div>
+
+                        <!-- Campo para el numero de identidad -->
+                        <div class="input-group{{ $errors->has('numero_identidad') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-single-02"></i>
+                                </div>
+                            </div>
+                            <input type="text" name="numero_identidad" class="form-control{{ $errors->has('numero_identidad') ? ' is-invalid' : '' }}" placeholder="{{ _('Número de identidad') }}" value="{{ old('numero_identidad') }}">
+                            @include('alerts.feedback', ['field' => 'numero_identidad'])
+                        </div>
+
+                        <!-- Campo para el numero de colegiacion -->
+                        <div class="input-group{{ $errors->has('numero_colegiacion') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-single-02"></i>
+                                </div>
+                            </div>
+                            <input type="text" name="numero_colegiacion" class="form-control{{ $errors->has('numero_colegiacion') ? ' is-invalid' : '' }}" placeholder="{{ _('Número de colegiación') }}" value="{{ old('numero_colegiacion') }}">
+                            @include('alerts.feedback', ['field' => 'numero_colegiacion'])
                         </div>
 
                         <!-- Campo para el correo electrónico -->

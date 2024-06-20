@@ -17,6 +17,12 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'name2' => $this->faker->name2(),
+            'apellido' => $this->faker->apellido(),
+            'apellido2' => $this->faker->apellido2(),
+            'numero_identidad' => $this->faker->numero_identidad(),
+            'numero_colegiacion' => $this->faker->numero_colegiacion(),
+
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$zrR4KHv2nDcQjSUp6yBq4OqKD1PDjo8fndTK4sGd1YUuKPwfMRqM6', // password
