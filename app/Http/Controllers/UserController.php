@@ -29,14 +29,14 @@ class UserController extends Controller
                      ->with('roles')->paginate(8);
     }
 
-    return view('mantenimiento.user.index', ['users' => $users]);
+    return view('users.index', ['users' => $users]);
 }
 
 
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
-        return view('mantenimiento.user.create', [
+        return view('users.create', [
             'roles' => $roles
         ]);
     }
@@ -67,7 +67,7 @@ class UserController extends Controller
     {
         $roles = Role::pluck('name', 'name')->all();
         $userRoles = $user -> roles -> pluck('name', 'name')-> all();
-        return view('mantenimiento.user.edit', [
+        return view('users.edit', [
             'user' => $user,
             'roles' => $roles,
             'userRoles' => $userRoles
@@ -105,5 +105,29 @@ class UserController extends Controller
         $user = User::findOrfail($userId);
         $user->delete();
         return redirect('/usuarios')->with('status', 'El usuario ha sido eliminado exitosamente');
+    }
+
+    // Método para ver usuarios
+    public function verUsuarios(Request $request)
+    {
+        $search = $request->query('search');
+
+        if ($search) {
+            $users = User::where(function($query) use ($search) {
+                $query->where('id', 'LIKE', "%{$search}%")
+                      ->orWhere('name', 'LIKE', "%{$search}%")
+                      ->orWhere('email', 'LIKE', "%{$search}%")
+                      ->orWhere('estado', 'LIKE', "%{$search}%");
+            })
+            ->orderBy('id', 'desc')
+            ->with('roles')
+            ->paginate(8);
+        } else {
+            $users = User::orderBy('id', 'desc')
+                         ->with('roles')
+                         ->paginate(8);
+        }
+
+        return view('users.view', ['users' => $users]);
     }
 }

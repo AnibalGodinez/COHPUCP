@@ -19,18 +19,20 @@ class RoleController extends Controller
                       ->orWhere('name', 'LIKE', "%{$search}%")
                       ->orWhere('description', 'LIKE', "%{$search}%");
                 // Añadir más orWhere según las columnas que se necesiten buscar
-            })->paginate(8);
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(8);
             
         } else {
             $roles = Role::paginate(8);
         }
 
-        return view('mantenimiento.role.index', ['roles' => $roles]);
+        return view('roles.index', ['roles' => $roles]);
     }
 
     public function create()
     {
-        return view('mantenimiento.role.create');
+        return view('roles.create');
     }
 
     public function store(Request $request)
@@ -57,7 +59,7 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
-        return view('mantenimiento.role.edit', ['role' => $role]);
+        return view('roles.edit', ['role' => $role]);
     }
 
     public function update(Request $request, Role $role)
@@ -95,7 +97,7 @@ class RoleController extends Controller
                                 ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
                                 ->all();
 
-        return view('mantenimiento.role.agregar-permisos', [
+        return view('roles.agregar-permisos', [
             'role' => $role,
             'permissions' => $permissions,
             'rolePermissions' => $rolePermissions
@@ -111,5 +113,21 @@ class RoleController extends Controller
         $role = Role::findOrFail($roleId);
         $role->syncPermissions($request->permission);
         return redirect()->back()->with('status', 'Permiso(s) asignado(s) al Rol');
+    }
+
+    public function verRoles(Request $request)
+    {
+        $search = $request->input('search');
+
+        $roles = Role::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('id', 'like', "%{$search}%")
+                             ->orWhere('name', 'like', "%{$search}%")
+                             ->orWhere('description', 'like', "%{$search}%");
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+
+        return view('roles.view', compact('roles'));
     }
 }

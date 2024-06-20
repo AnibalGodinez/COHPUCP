@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Usuarios'), 'pageSlug' => 'usuariosMantenimiento'])
+@extends('layouts.app', ['page' => __('Usuarios'), 'pageSlug' => 'verUsuarios'])
 
 @section('content')
     <div class="row">
@@ -13,7 +13,7 @@
                     <h3 class="card-title text-center">Lista de Usuarios</h3>
 
                     {{-- Formulario de búsqueda --}}
-                    <form method="GET" action="{{ route('seguridad.usuarios') }}" class="form-inline mt-3">
+                    <form method="GET" action="{{ route('usuarios.ver') }}" class="form-inline mt-3">
                         <input type="text" name="search" class="form-control" placeholder="Buscar usuarios" value="{{ request()->query('search') }}">
                         <button class="btn btn-info btn-round btn-simple">
                             <i class="tim-icons icon-zoom-split"></i> Buscar

@@ -25,9 +25,6 @@ use Illuminate\Support\Facades\Auth;
 	// RUTAS QUE SOLO MUESTRAN VISTAS
 	Route::group(['middleware' => 'auth'], function () {
 		Route::get('icons', 'App\Http\Controllers\PageController@icons')->name('pages.icons');
-		Route::get('ver-usuarios', 		['as' => 'seguridad.usuarios', 'uses' => 'App\Http\Controllers\SeguridadController@verUsuarios']);
-		Route::get('ver-roles', 		['as' => 'seguridad.roles', 'uses' => 'App\Http\Controllers\SeguridadController@verRoles']);
-		Route::get('ver-permisos', 		['as' => 'seguridad.permisos', 'uses' => 'App\Http\Controllers\SeguridadController@verPermisos']);
 	});
 
 	// RUTAS DE MANTENIMIENTO
@@ -35,16 +32,19 @@ use Illuminate\Support\Facades\Auth;
 		// Rutas de permisos
 		Route::resource('permission', PermissionController::class);
 		Route::get('permission/{permissionId}/delete', [PermissionController::class, 'destroy']);
+		Route::get('ver-permisos', [PermissionController::class, 'verPermisos'])->name('permissions.ver');
 
 		// Rutas de roles
 		Route::resource('roles', RoleController::class);
 		Route::get('roles/{roleId}/delete', 		  [RoleController::class, 'destroy']);
 		Route::get('roles/{roleId}/agregar-permisos', [RoleController::class, 'AddPermissionRole']);
 		Route::put('roles/{roleId}/agregar-permisos', [RoleController::class, 'givePermissionRole']);
+		Route::get('ver-roles', 					  [RoleController::class, 'verRoles'])->name('roles.ver');
 
 		// Rutas de usuarios
 		Route::resource('usuarios', UserController::class);
 		Route::get('usuarios/{userId}/delete', [UserController::class, 'destroy']);
+		Route::get('ver-usuarios', 			   [UserController::class, 'verUsuarios'])->name('usuarios.ver');
 
 		// Rutas de perfil
 		Route::get('perfil', 			['as' => 'profile.index', 'uses' => 'App\Http\Controllers\ProfileController@index']);

@@ -17,18 +17,20 @@ class PermissionController extends Controller
                       ->orWhere('name', 'LIKE', "%{$search}%")
                       ->orWhere('description', 'LIKE', "%{$search}%"); // Añadido para buscar por descripción
                 // Añadir más orWhere según las columnas que se necesiten buscar
-            })->paginate(4);
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(4);
 
         } else {
             $permissions = Permission::paginate(4);
         }
 
-        return view('mantenimiento.permission.index', ['permissions' => $permissions]);
+        return view('permissions.index', ['permissions' => $permissions]);
     }
 
     public function create()
     {
-        return view('mantenimiento.permission.create');
+        return view('permissions.create');
     }
 
     public function store(Request $request)
@@ -58,7 +60,7 @@ class PermissionController extends Controller
 
     public function edit(Permission $permission)
     {
-        return view('mantenimiento.permission.edit', ['permission' => $permission]);
+        return view('permissions.edit', ['permission' => $permission]);
     }
 
     public function update(Request $request, Permission $permission)
@@ -81,4 +83,21 @@ class PermissionController extends Controller
         $permission -> delete();
         return redirect('permission')->with('status', 'El permiso se ha eliminado');
     }
+
+    public function verPermisos(Request $request)
+    {
+        $search = $request->input('search');
+
+        $permissions = Permission::query()
+            ->when($search, function ($query, $search) {
+                return $query->where('id', 'like', "%{$search}%")
+                             ->orWhere('name', 'like', "%{$search}%")
+                             ->orWhere('description', 'like', "%{$search}%");
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+
+        return view('permissions.view', compact('permissions'));
+    }
+
 }

@@ -42,6 +42,37 @@
                 </div>
             </li>
 
+            {{-- Personas --}}
+            <li>
+                <a data-toggle="collapse" href="#personas" aria-expanded="{{ $pageSlug == 'verUsuarios' || $pageSlug == 'crearUsuario' || $pageSlug == 'gestionarUsuarios' ? 'true' : 'false' }}">
+                    <i class="fas fa-users"></i>
+                    <span class="nav-link-text">Personas</span>
+                    <b class="caret mt-1"></b>
+                </a>
+                <div class="collapse {{ $pageSlug == 'verUsuarios' || $pageSlug == 'crearUsuario' || $pageSlug == 'gestionarUsuarios' ? 'show' : '' }}" id="personas">
+                    <ul class="nav pl-4">
+                        <li @if ($pageSlug == 'verUsuarios') class="active" @endif>
+                            <a href="{{ route('usuarios.ver') }}">
+                                <i class="tim-icons icon-badge"></i>
+                                <p>Ver usuarios</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'crearUsuario') class="active" @endif>
+                            <a href="{{ route('usuarios.create') }}">
+                                <i class="tim-icons icon-simple-add"></i>
+                                <p>Crear usuario</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'gestionarUsuarios') class="active" @endif>
+                            <a href="{{ route('usuarios.index') }}">
+                                <i class="tim-icons icon-settings"></i>
+                                <p>Gestionar usuarios</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
             {{-- Plataformas Tecnológicas --}}
             <li>
                 <a data-toggle="collapse" href="#plataformas" aria-expanded="{{ $pageSlug == 'cursosPlataforma' || $pageSlug == 'capacitacionesPlataforma' || $pageSlug == 'agendaPlataforma' || $pageSlug == 'gestionesPlataforma' || $pageSlug == 'consultasPlataforma' ? 'true' : 'false' }}">
@@ -85,6 +116,8 @@
                 </div>
             </li>
 
+            
+
             {{-- Seguridad --}}
             <li>
                 <a data-toggle="collapse" href="#seguridad" aria-expanded="{{ $pageSlug == 'seguridadUsuarios' || $pageSlug == 'seguridadRoles' || $pageSlug == 'seguridadPermisos' ? 'true' : 'false' }}">
@@ -94,20 +127,14 @@
                 </a>
                 <div class="collapse {{ $pageSlug == 'seguridadUsuarios' || $pageSlug == 'seguridadRoles' || $pageSlug == 'seguridadPermisos' ? 'show' : '' }}" id="seguridad">
                     <ul class="nav pl-4">
-                        <li @if ($pageSlug == 'seguridadUsuarios') class="active" @endif>
-                            <a href="{{ route('seguridad.usuarios') }}">
-                                <i class="fas fa-users"></i>
-                                <p>Usuarios</p>
-                            </a>
-                        </li>
                         <li @if ($pageSlug == 'seguridadRoles') class="active" @endif>
-                            <a href="{{ route('seguridad.roles') }}">
+                            <a href="{{ route('roles.ver') }}">
                                 <i class="tim-icons icon-pin"></i>
                                 <p>Roles</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'seguridadPermisos') class="active" @endif>
-                            <a href="{{ route('seguridad.permisos') }}">
+                            <a href="{{ route('permissions.ver') }}">
                                 <i class="tim-icons icon-refresh-02"></i>
                                 <p>Permisos</p>
                             </a>
@@ -125,12 +152,6 @@
                 </a>
                 <div class="collapse {{ $pageSlug == 'mantenimientoUsuarios' || $pageSlug == 'mantenimientoRoles' || $pageSlug == 'mantenimientoPermisos' ? 'show' : '' }}" id="mantenimiento">
                     <ul class="nav pl-4">
-                        <li @if ($pageSlug == 'mantenimientoUsuarios' || $pageSlug == 'usuarios') class="active" @endif>
-                            <a href="{{ route('usuarios.index') }}">
-                                <i class="tim-icons icon-badge"></i>
-                                <p>Usuarios</p>
-                            </a>
-                        </li>
                         <li @if ($pageSlug == 'mantenimientoRoles') class="active" @endif>
                             <a href="{{ route('roles.index') }}">
                                 <i class="tim-icons icon-key-25"></i>
