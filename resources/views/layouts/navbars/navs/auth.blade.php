@@ -1,86 +1,173 @@
-<nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
-    <div class="container-fluid">
-        <div class="navbar-wrapper d-none">
-            <div class="navbar-toggle d-inline">
-                <button type="button" class="navbar-toggler">
-                    <span class="navbar-toggler-bar bar1"></span>
-                    <span class="navbar-toggler-bar bar2"></span>
-                    <span class="navbar-toggler-bar bar3"></span>
-                </button>
-            </div>
-            <a class="navbar-brand" href="#">{{ $page ?? __('Panel') }}</a>
-        </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="{{ __('Navegación de palanca') }}">
+<nav class="navbar navbar-expand-lg bg-info">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navigation">
+        <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav ml-auto">
-                <li class="search-bar input-group">
-                    <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split"></i>
-                        <span class="d-lg-none d-md-block">{{ __('Buscar') }}</span>
-                    </button>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ route('home') }}" >COHPUCP <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item dropdown" style="margin-bottom: 10px;">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRoles" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Roles y permisos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownRoles">
+                        <a class="dropdown-item" id="rolesLink" href="#">Roles</a>
+                        <a class="dropdown-item" id="permisosLink" href="#">Permisos</a>
+                    </div>
+                    <!-- Submenú para Roles -->
+                    <div class="dropdown-menu" id="subMenuRoles" style="position: absolute; top: 0; left: 100%; display: none;">
+                        <a class="dropdown-item" href="{{route('roles.ver')}}">Ver roles</a>
+                        <a class="dropdown-item" href="{{route('roles.create')}}">Crear roles</a>
+                        <a class="dropdown-item" href="{{route('roles.index')}}">Gestionar roles</a>
+                    </div>
+                    <!-- Submenú para Permisos -->
+                    <div class="dropdown-menu" id="subMenuPermisos" style="position: absolute; top: 0; left: 100%; display: none;">
+                        <a class="dropdown-item" href="{{ route('permissions.ver')}}">Ver permisos</a>
+                        <a class="dropdown-item" href="{{route('permission.create')}}">Crear permisos</a>
+                        <a class="dropdown-item" href="{{ route('permission.index')}}">Gestionar permisos</a>
+                    </div>
+                </li>
+                
+                <script>
+                    // Obtener los elementos del DOM
+                    const navbarDropdownRoles = document.getElementById('navbarDropdownRoles');
+                    const subMenuRoles = document.getElementById('subMenuRoles');
+                    const subMenuPermisos = document.getElementById('subMenuPermisos');
+                    const rolesLink = document.getElementById('rolesLink');
+                    const permisosLink = document.getElementById('permisosLink');
+                
+                    // Función para mostrar el submenú de Roles
+                    const showSubMenuRoles = () => {
+                        subMenuRoles.style.display = 'block';
+                        subMenuPermisos.style.display = 'none';
+                    };
+                
+                    // Función para mostrar el submenú de Permisos
+                    const showSubMenuPermisos = () => {
+                        subMenuPermisos.style.display = 'block';
+                        subMenuRoles.style.display = 'none';
+                    };
+                
+                    // Función para ocultar los submenús
+                    const hideSubMenus = () => {
+                        subMenuRoles.style.display = 'none';
+                        subMenuPermisos.style.display = 'none';
+                    };
+                
+                    // Mostrar el submenú de Roles cuando el cursor está sobre el enlace de Roles
+                    rolesLink.addEventListener('mouseenter', showSubMenuRoles);
+                
+                    // Mostrar el submenú de Permisos cuando el cursor está sobre el enlace de Permisos
+                    permisosLink.addEventListener('mouseenter', showSubMenuPermisos);
+                
+                    // Mantener visible el submenú de Roles mientras el cursor esté sobre él
+                    subMenuRoles.addEventListener('mouseenter', showSubMenuRoles);
+                
+                    // Ocultar el submenú de Roles cuando el cursor salga de él
+                    subMenuRoles.addEventListener('mouseleave', hideSubMenus);
+                
+                    // Mantener visible el submenú de Permisos mientras el cursor esté sobre él
+                    subMenuPermisos.addEventListener('mouseenter', showSubMenuPermisos);
+                
+                    // Ocultar el submenú de Permisos cuando el cursor salga de él
+                    subMenuPermisos.addEventListener('mouseleave', hideSubMenus);
+                
+                    // Ocultar los submenús cuando el cursor no esté sobre "Roles y permisos", "Roles" o "Permisos"
+                    navbarDropdownRoles.addEventListener('mouseleave', hideSubMenus);
+                </script>
+                
+                
+
+                <li class="nav-item dropdown" style="margin-bottom: 10px;">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Perfil del Agremiado
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('profile.index') }}">Ver mi perfil</a>
+                        <a class="dropdown-item" href="{{ route('profile.edit') }}">Personalizar perfil</a>
+                        <a class="dropdown-item" href="{{ route('cambiar-contrasenia.contrasenia') }}">Cambiar contraseña</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Personas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('usuarios.ver') }}">Ver usuarios</a>
+                        <a class="dropdown-item" href="{{ route('usuarios.create')}}">Crear usuarios</a>
+                        <a class="dropdown-item" href="{{ route('usuarios.index')}}">Gestionar usuarios</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Gestiones
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Compra de timbres</a>
+                        <a class="dropdown-item" href="#">Inscribirse al colegio</a>
+                        <a class="dropdown-item" href="#">Estado de cuenta</a>
+                        <a class="dropdown-item" href="#">Consultas</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Desarrollo Profesional
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('cursos.index')}}">Cursos</a>
+                        <a class="dropdown-item" href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
+                        <a class="dropdown-item" href="#">Certificaciones</a>
+                        <a class="dropdown-item" href="#">Talleres</a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Bolsa de empleo</a>
                 </li>
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <div class="notification d-none d-lg-block d-xl-block"></div>
                         <i class="tim-icons icon-bell-55"></i>
-                        <p class="d-lg-none"> {{ __('Notificationes') }} </p>
+                        <p class="d-lg-none"> Notifications </p>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                        <li class="nav-link">
-                            <a href="#" class="nav-item dropdown-item">{{ __('Mike Jonh respondió tu correo') }}</a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="#" class="nav-item dropdown-item">{{ __('Tienes 5 tareas más') }}</a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="#" class="nav-item dropdown-item">{{ __('Tu amiga Jennifer está en la ciudad') }}</a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="#" class="nav-item dropdown-item">{{ __('Otra notificación') }}</a>
-                        </li>
-                        <li class="nav-link">
-                            <a href="#" class="nav-item dropdown-item">{{ __('Otra') }}</a>
+                        <li class="dropdown-item">
+                            <a href="#" class="nav-link">Mike Jonh responded to your email</a>
                         </li>
                     </ul>
                 </li>
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <div class="photo">
-                            <img src="{{ asset('white') }}/img/anime3.png" alt="{{ __('Foto de perfil') }}">
+                            <img src="{{ asset('white') }}/img/anime3.png" alt="Profile photo">
                         </div>
-                        <b class="caret d-none d-lg-block d-xl-block"></b>
-                        <p class="d-lg-none">{{ __('Log out') }}</p>
+                        <p class="d-lg-none"> Log out </p>
                     </a>
                     <ul class="dropdown-menu dropdown-navbar">
-                        <li class="nav-link">
-                            <a href="{{ route('profile.index') }}" class="nav-item dropdown-item">{{ __('Perfil') }}</a>
+                        <li class="dropdown-item">
+                            <a href="{{ route('profile.index') }}" class="nav-link" style="color: black;">Perfil</a>
                         </li>
-                        <li class="nav-link">
-                            <a href="#" class="nav-item dropdown-item">{{ __('Ajustes') }}</a>
+                        <li class="dropdown-item">
+                            <a href="#" class="nav-link" style="color: black;">Settings</a>
                         </li>
                         <li class="dropdown-divider"></li>
-                        <li class="nav-link">
-                            <a href="{{ route('logout') }}" class="nav-item dropdown-item" onclick="event.preventDefault();  document.getElementById('logout-form').submit();">{{ __('Cerar sesión') }}</a>
+                        <li class="dropdown-item">
+                            <a href="{{ route('logout') }}" class="nav-link"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color: black;">Cerrar sesión</a>
                         </li>
                     </ul>
                 </li>
-                <li class="separator d-lg-none"></li>
             </ul>
         </div>
     </div>
 </nav>
-<div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="{{ __('BUSCAR') }}">
-                <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('Cerrar') }}">
-                    <i class="tim-icons icon-simple-remove"></i>
-              </button>
-            </div>
-        </div>
-    </div>
-</div>
