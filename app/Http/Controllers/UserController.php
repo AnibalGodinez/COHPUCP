@@ -56,9 +56,9 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'name2' => 'required|string|max:255',
+            'name2' => 'nullable|string|max:255',
             'apellido' => 'required|string|max:255',
-            'apellido2' => 'required|string|max:255',
+            'apellido2' => 'nullable|string|max:255',
             'numero_identidad' => 'required|string|unique:users,numero_identidad',
             'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
             'rtn' => 'nullable|string|max:20|unique:users,rtn',
@@ -111,9 +111,9 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'name2' => 'required|string|max:255',
+            'name2' => 'nullable|string|max:255',
             'apellido' => 'required|string|max:255',
-            'apellido2' => 'required|string|max:255',
+            'apellido2' => 'nullable|string|max:255',
             'numero_identidad' => 'required|string|unique:users,numero_identidad',
             'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
             'rtn' => 'nullable|string|max:20|unique:users,rtn',
