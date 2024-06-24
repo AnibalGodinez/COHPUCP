@@ -6,7 +6,7 @@
             
             <div class="card">
                 <div class="card-header text-center">
-                    <h3 class="title">{{ _('Datos del usuario') }}</h3>
+                    <h3 class="title">{{ _('Perfil') }}</h3>
                 </div>
                 <form method="post" action="{{ route('profile.update') }}" autocomplete="off">
                     <div class="card-body">

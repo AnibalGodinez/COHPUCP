@@ -11,20 +11,17 @@ class PermissionController extends Controller
     {
         $search = $request->query('search');
 
+        $permissions = Permission::query();
+
         if ($search) {
             $permissions = Permission::where(function($query) use ($search) {
                 $query->where('id', 'LIKE', "%{$search}%")
                       ->orWhere('name', 'LIKE', "%{$search}%")
-                      ->orWhere('description', 'LIKE', "%{$search}%"); // Añadido para buscar por descripción
-                // Añadir más orWhere según las columnas que se necesiten buscar
-            })
-            ->orderBy('id', 'desc')
-            ->paginate(4);
-
-        } else {
-            $permissions = Permission::paginate(4);
+                      ->orWhere('description', 'LIKE', "%{$search}%");
+            });
         }
-
+        $permissions->orderBy('id', 'desc'); 
+        $permissions = $permissions->paginate(8);
         return view('permissions.index', ['permissions' => $permissions]);
     }
 
@@ -95,7 +92,7 @@ class PermissionController extends Controller
                              ->orWhere('description', 'like', "%{$search}%");
             })
             ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->paginate(8);
 
         return view('permissions.view', compact('permissions'));
     }

@@ -20,9 +20,10 @@
             <div class="card card-register card-white">
                 <div class="card-header">
                     <img class="card-img" src="{{ asset('white') }}/img/card-primary.png" alt="Card image">
-                    <h4 class="card-title">{{ _('Registrarse') }}</h4>
+                    <h4 class="card-title">Registrarse</h4>
                 </div>
-                <form class="form" method="post" action="{{ route('register') }}">
+
+                <form class="form" method="post" action="{{ route('login') }}">
                     @csrf
 
                     <div class="card-body">
@@ -196,7 +197,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-info btn-round btn-lg">{{ _('Registrarse') }}</button>
+                        <button type="submit" class="btn btn-info btn-round btn-lg">Registrarse</button>
                     </div>
                 </form>
             </div>

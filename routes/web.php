@@ -18,14 +18,7 @@ use Illuminate\Support\Facades\Auth;
 	Auth::routes();
 
 	// RUTA DE INICIO (DASHBOARD)
-	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
-		->name('home')
-		->middleware('auth');
-
-	// RUTAS QUE SOLO MUESTRAN VISTAS
-	Route::group(['middleware' => 'auth'], function () {
-		Route::get('icons', 'App\Http\Controllers\PageController@icons')->name('pages.icons');
-	});
+	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 	// RUTAS DE MANTENIMIENTO
 	Route::group(['middleware' => 'auth'], function () {

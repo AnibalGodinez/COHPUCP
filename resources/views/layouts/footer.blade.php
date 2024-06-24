@@ -1,31 +1,31 @@
-<footer class="footer">
+<footer class="footer bg-dark text-white py-4">
     <div class="container-fluid">
-        <ul class="nav">
-            <li class="nav-item">
-                <a href="https://www.cohpucphn.org" target="blank" class="nav-link">
-                    {{ _('COHPUCP') }}
+            <li class="nav-item ">
+                <a href="https://www.cohpucphn.org" target="_blank" class="nav-link text-white font-weight-bold">
+                    COHPUCP
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" target="blank" class="nav-link">
-                    {{ _('Contacto') }}
+                <a href="#" target="_blank" class="nav-link text-white font-weight-bold">
+                    CONTACTO
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    {{ _('Sobre nosotros') }}
+                <a href="#" class="nav-link text-white font-weight-bold">
+                    SOBRE NOSOTROS
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    {{ _('Blog') }}
+                <a href="#" class="nav-link text-white font-weight-bold">
+                    BLOG
                 </a>
             </li>
-        </ul>
-        <div class="copyright">
-            &copy; {{ now()->year }} {{ _('Elaborado por') }} 
-            <a href="#" target="_blank">{{ _('Anibal Godinez') }}</a> {{ _('y') }}
-            <a href="https://www.cohpucphn.org" target="_blank">{{ _('COHPUCP') }}</a> {{ _('todos los derechos reservados') }}.
-        </div>
+    </div>
+    
+        <div class="copyright text-white text-center font-weight-bold">
+            &copy; {{ now()->year }} <span class="text-white">ELABORADO POR</span>
+            <a href="#" target="_blank" class="text-white">Anibal Godinez</a> y
+            <a href="https://www.cohpucphn.org" target="_blank" class="text-white">COHPUCP</a> TODOS LOS DERECHOS RESERVADOS.
+        </div>        
     </div>
 </footer>

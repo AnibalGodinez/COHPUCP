@@ -1,20 +1,16 @@
-@extends('layouts.app', ['page' => __('Roles'), 'pageSlug' => 'mantenimientoRoles'])
+@extends('layouts.app')
 
 @section('content')
-<div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
 
             @if (session('status'))
             <div class="alert alert-success text-center">{{ session('status') }}</div>
             @endif
 
-            <div class="card mt-7">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3>Roles</h3>
-                    <a href="{{ url('roles/create') }}" class="btn btn-info btn-sm"> <i class="fas fa-plus-circle"></i> Crear nuevo Rol</a>
-                </div>
-                <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title text-center">Gestión de Roles</h3>
                     
                     {{-- Formulario de búsqueda --}}
                     <form action="{{ url('roles') }}" method="GET" class="form-inline mt-3">
@@ -23,7 +19,9 @@
                             <i class="tim-icons icon-zoom-split"></i> Buscar
                         </button>
                     </form><br>
+                </div>
 
+                <div class="card-body">
                     @if($roles->isEmpty())
                         <div class="alert alert-default text-center" role="alert">
                             No hay ningún resultado de su búsqueda.
@@ -66,14 +64,11 @@
             </div>
         </div>
     </div>
-</div>
-
-<script>
-    function confirmarEliminacion(url) {
-        if (confirm('¿Estás seguro que quieres eliminar el rol?')) {
-            window.location.href = url;
+    <script>
+        function confirmarEliminacion(url) {
+            if (confirm('¿Estás seguro que quieres eliminar el rol?')) {
+                window.location.href = url;
+            }
         }
-    }
-</script>
-
+    </script>
 @endsection

@@ -1,8 +1,8 @@
-@extends('layouts.app', ['class' => 'home-page', 'page' => __('Inicio'), 'contentClass' => 'home-page'])
+@extends('layouts.app')
 
 @section('content')
 
-        <div class="header py-7 py-lg-8">
+        <div class="header py-3 ">
             <div class="container">
                 <div class="header-body text-center mb-7">
                     <div class="row justify-content-center">

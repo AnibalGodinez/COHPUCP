@@ -13,20 +13,17 @@ class RoleController extends Controller
     {
         $search = $request->query('search');
 
+        $roles = Role::query();
+
         if ($search) {
             $roles = Role::where(function($query) use ($search) {
                 $query->where('id', 'LIKE', "%{$search}%")
                       ->orWhere('name', 'LIKE', "%{$search}%")
                       ->orWhere('description', 'LIKE', "%{$search}%");
-                // Añadir más orWhere según las columnas que se necesiten buscar
-            })
-            ->orderBy('id', 'desc')
-            ->paginate(8);
-            
-        } else {
-            $roles = Role::paginate(8);
-        }
-
+            }); 
+        } 
+        $roles->orderBy('id', 'desc');
+        $roles = $roles->paginate(4); 
         return view('roles.index', ['roles' => $roles]);
     }
 

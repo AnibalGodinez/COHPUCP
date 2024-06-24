@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent fixed-top">
-    <div class="container-fluid">
+<nav  class="navbar navbar-expand-lg bg-info py-3">
+    <div class="container">
         <div class="navbar-wrapper">
             <div class="navbar-toggle d-inline">
                 <button type="button" class="navbar-toggler">
@@ -15,21 +15,23 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navigation">
+            
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link text-primary">
-                        <i class="tim-icons icon-minimal-left"></i> {{ _('Volver a la página principal') }}
+                    <a href="{{ url('/') }}" class="nav-link">
+                        <i class="tim-icons icon-bank"></i> Página principal
                     </a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item">
                     <a href="{{ route('register') }}" class="nav-link">
-                        <i class="tim-icons icon-laptop"></i> {{ _('Registrase') }}
+                        <i class="tim-icons icon-laptop"></i>Registrase
                     </a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item">
                     <a href="{{ route('login') }}" class="nav-link">
-                        <i class="tim-icons icon-single-02"></i> {{ _('Iniciar sesión') }}
+                        <i class="tim-icons icon-single-02"></i>Iniciar sesión
                     </a>
                 </li>
             </ul>
