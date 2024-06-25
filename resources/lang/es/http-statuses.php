@@ -81,4 +81,5 @@ return [
     '598'          => 'Error de tiempo de espera de lectura de red',
     '599'          => 'Error de tiempo de espera de conexión de red',
     'unknownError' => 'Error desconocido',
+    'required' => 'El campo :attribute es obligatorio.',
 ];

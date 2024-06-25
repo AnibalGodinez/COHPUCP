@@ -124,5 +124,6 @@ return [
         'username'                 => 'usuario',
         'value'                    => 'valor',
         'year'                     => 'año',
+        'required' => 'El campo :attribute es obligatorio.',
     ],
 ];

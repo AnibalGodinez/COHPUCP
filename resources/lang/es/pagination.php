@@ -15,5 +15,5 @@ return [
 
     'previous' => '&laquo; Anterior',
     'next' => 'Siguiente &raquo;',
-
+    'required' => 'El campo :attribute es obligatorio.',
 ];
