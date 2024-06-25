@@ -30,7 +30,6 @@ class User extends Authenticatable
         'fecha_nacimiento',
         'telefono',
         'telefono_celular',
-
         'email',
         'estado',
         'password',
@@ -54,4 +53,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Verifica si el usuario está activo.
+     *
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->estado === 'activo';
+    }
 }
