@@ -63,4 +63,35 @@ class User extends Authenticatable
     {
         return $this->estado === 'activo';
     }
+
+    /**
+     * Find the user instance for the given username.
+     *
+     * @param  string  $username
+     * @return \App\Models\User|null
+     */
+    public function findForPassport($username)
+    {
+        return $this->orWhere('email', $username)->orWhere('numero_colegiacion', $username)->first();
+    }
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getAuthIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
 }

@@ -2,11 +2,15 @@
 
 @section('content')
     <div class="col-md-10 text-center ml-auto mr-auto">
-        <h3 class="mb-5">Inica sesión para que ingreses a la plataforma Tecnológica del COHPUCP</h3>
+        <h3 class="mb-5">Inicia sesión para que ingreses a la plataforma Tecnológica del COHPUCP</h3>
     </div>
-    <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+    
+    <div class="col-lg-5 col-md-6 ml-auto mr-auto">
         <form class="form" method="post" action="{{ route('login') }}">
             @csrf
+
+            <!-- Campo oculto para enviar el tipo de inicio de sesión -->
+            <input type="hidden" name="login_type" value="email_or_numero_colegiacion">
 
             <div class="card card-login card-white">
                 <div class="card-header">
@@ -15,14 +19,14 @@
                 </div>
                 <div class="card-body">
                     <p class="text-dark mb-2">Inicia sesión con <strong>contacto@correo.com </strong> y la contraseña <strong>secreta </strong></p>
-                    <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                    <div class="input-group{{ $errors->has('login_type') ? ' has-danger' : '' }}">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <i class="tim-icons icon-email-85"></i>
                             </div>
                         </div>
-                        <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ _('Correo electrónico') }}" value="{{ old('email') }}">
-                        @include('alerts.feedback', ['field' => 'email'])
+                        <input type="text" name="login_type" class="form-control{{ $errors->has('login_type') ? ' is-invalid' : '' }}" placeholder="{{ _('Correo electrónico o número de colegiación') }}" value="{{ old('login_type') }}">
+                        @include('alerts.feedback', ['field' => 'login_type'])
                     </div>
                     <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                         <div class="input-group-prepend">

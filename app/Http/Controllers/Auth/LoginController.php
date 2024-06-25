@@ -20,6 +20,26 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        $loginType = request()->input('login_type');
+        $field = filter_var($loginType, FILTER_VALIDATE_EMAIL) ? 'email' : 'numero_colegiacion';
+        request()->merge([$field => $loginType]);
+
+        return $field;
+    }
+
+    /**
+     * Attempt to log the user into the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
     protected function attemptLogin(Request $request)
     {
         $credentials = $this->credentials($request);
@@ -38,24 +58,96 @@ class LoginController extends Controller
         return false;
     }
 
-    protected function sendFailedLoginResponse(Request $request)
+    /**
+     * Send the response after the user was authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    protected function sendLoginResponse(Request $request)
     {
-        $user = \App\Models\User::where('email', $request->email)->first();
+        $request->session()->regenerate();
 
-        if (!$user) {
-            throw ValidationException::withMessages([
-                'email' => [trans('auth.email')],
-            ]);
-        }
+        return $this->authenticated($request, Auth::user())
+                ?: redirect()->intended($this->redirectPath());
+    }
 
-        if (!$user->isActive()) {
-            throw ValidationException::withMessages([
-                'estado' => [trans('auth.inactive')],
-            ]);
+    /**
+     * Handle a login request to the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function login(Request $request)
+    {
+        $request->validate([
+            'login_type' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        if ($this->attemptLogin($request)) {
+            return $this->sendLoginResponse($request);
         }
 
         throw ValidationException::withMessages([
-            'password' => [trans('auth.password')],
+            'login_type' => [trans('auth.failed')],
         ]);
+    }
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        return $request->only($this->username(), 'password');
+    }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        //
+    }
+
+    /**
+     * Handle an authentication attempt.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            'login_type' => [trans('auth.failed')],
+        ]);
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
