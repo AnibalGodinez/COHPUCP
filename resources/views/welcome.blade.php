@@ -6,6 +6,19 @@
             <div class="container">
                 <div class="header-body text-center mb-7">
                     <div class="row justify-content-center">
+                        <div class="col-md-5 ml-auto">
+                            <div class="info-area info-horizontal mt-5">
+                                <div class="icon icon-warning">
+                                    <i class="tim-icons icon-pencil"></i>
+                                </div>
+                                <div class="description">
+                                    <h3 class="info-title">{{ _('Plataforma Educativa') }}</h3>
+                                    <p class="description">
+                                        {{ _(' Esta plataforma facilita el acceso a recursos de aprendizaje, permite la participación en actividades formativas y promueve un estricto código de ética profesional, garantizando la confianza del público en la profesión.') }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div> 
                         <div class="col-lg-10 col-md-10">
                             <h1 class="text-black">{{ __('Plataforma tecnológica COHPUCP') }}</h1>
                             <p class="text-lead text-grey">

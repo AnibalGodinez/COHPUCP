@@ -1,24 +1,22 @@
 @extends('layouts.app', ['class' => 'login-page', 'page' => _('Inicio de sesión'), 'contentClass' => 'login-page'])
 
 @section('content')
-    <div class="col-md-10 text-center ml-auto mr-auto">
-        <h3 class="mb-5">Inicia sesión para que ingreses a la plataforma Tecnológica del COHPUCP</h3>
-    </div>
-    
-    <div class="col-lg-5 col-md-6 ml-auto mr-auto">
+
+    <div class="col-lg-5 col-md-6 ml-auto mr-auto" style="margin-top: -70px;">
+
         <form class="form" method="post" action="{{ route('login') }}">
             @csrf
-
-            <!-- Campo oculto para enviar el tipo de inicio de sesión -->
             <input type="hidden" name="login_type" value="email_or_numero_colegiacion">
 
             <div class="card card-login card-white">
+
                 <div class="card-header">
                     <img src="{{ asset('white') }}/img/card-primary.png" alt="">
-                    <h1 class="card-title">{{ _('Iniciar sesión') }}</h1>
+                    <h1 class="card-title" style="top: 20px; left: 4px; text-transform: none;">Iniciar sesión</h1>
                 </div>
+
                 <div class="card-body">
-                    <p class="text-dark mb-2">Inicia sesión con <strong>contacto@correo.com </strong> y la contraseña <strong>secreta </strong></p>
+                    <p class="text-dark mb-2" style="margin-bottom: 20px;">Inicia sesión con <strong>contacto@correo.com </strong> y la contraseña <strong>secreta </strong></p> <!-- Ajuste del margen bottom -->
                     <div class="input-group{{ $errors->has('login_type') ? ' has-danger' : '' }}">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
