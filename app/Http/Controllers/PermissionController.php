@@ -44,7 +44,7 @@ class PermissionController extends Controller
                 'description' => $request->description // Añadido para guardar la descripción
             ]);
 
-            return redirect('permission')->with('status', 'El permiso se ha creado exitosamente');
+            return redirect('permission/create')->with('status', 'El permiso se ha creado exitosamente');
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->withErrors(['error' => 'Error inesperado: ' . $e->getMessage()]);
         }

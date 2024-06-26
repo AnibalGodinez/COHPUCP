@@ -8,6 +8,31 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase font-weight-bold" href="home">Inicio</a>
+                </li>
+                <li class="nav-item dropdown" style="margin-bottom: 10px;">
+                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Perfil del Agremiado
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-uppercase" href="{{ route('profile.index') }}">Ver mi perfil</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('profile.edit') }}">Personalizar perfil</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('cambiar-contrasenia.contrasenia') }}">Cambiar contraseña</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Personas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-uppercase" href="{{ route('usuarios.ver') }}">Ver usuarios</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('usuarios.create')}}">Crear usuarios</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('usuarios.index')}}">Gestionar usuarios</a>
+                    </div>
+                </li>
                 <li class="nav-item dropdown" style="margin-bottom: 10px;">
                     <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdownRoles" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -78,31 +103,7 @@
                     // Ocultar los submenús cuando el cursor no esté sobre "Roles y permisos", "Roles" o "Permisos"
                     navbarDropdownRoles.addEventListener('mouseleave', hideSubMenus);
                 </script>
-                
-                
 
-                <li class="nav-item dropdown" style="margin-bottom: 10px;">
-                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Perfil del Agremiado
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase" href="{{ route('profile.index') }}">Ver mi perfil</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('profile.edit') }}">Personalizar perfil</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('cambiar-contrasenia.contrasenia') }}">Cambiar contraseña</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Personas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase" href="{{ route('usuarios.ver') }}">Ver usuarios</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('usuarios.create')}}">Crear usuarios</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('usuarios.index')}}">Gestionar usuarios</a>
-                    </div>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -130,6 +131,10 @@
                 
                 <li class="nav-item">
                     <a class="nav-link text-uppercase font-weight-bold" href="#">Bolsa de empleo</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase font-weight-bold" href="#">Mantenimientos</a>
                 </li>
                 
                 <li class="dropdown nav-item">

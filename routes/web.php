@@ -20,8 +20,17 @@ use Illuminate\Support\Facades\Auth;
 	// RUTA DE INICIO (DASHBOARD)
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
+	// Rutas de usuarios
+	Route::group(['middleware' =>[ 'auth', 'role:Administrador|Usuario|Invitado']], function () {
+	Route::resource('usuarios', UserController::class);
+	Route::get('usuarios/{userId}/delete', [UserController::class, 'destroy']);
+	Route::get('ver-usuarios', 			   [UserController::class, 'verUsuarios'])->name('usuarios.ver');
+	});
+
+	
+
 	// RUTAS DE MANTENIMIENTO
-	Route::group(['middleware' => 'auth'], function () {
+		Route::group(['middleware' => 'auth', 'Administrador' ], function () {
 		// Rutas de permisos
 		Route::resource('permission', PermissionController::class);
 		Route::get('permission/{permissionId}/delete', [PermissionController::class, 'destroy']);
@@ -34,10 +43,7 @@ use Illuminate\Support\Facades\Auth;
 		Route::put('roles/{roleId}/agregar-permisos', [RoleController::class, 'givePermissionRole']);
 		Route::get('ver-roles', 					  [RoleController::class, 'verRoles'])->name('roles.ver');
 
-		// Rutas de usuarios
-		Route::resource('usuarios', UserController::class);
-		Route::get('usuarios/{userId}/delete', [UserController::class, 'destroy']);
-		Route::get('ver-usuarios', 			   [UserController::class, 'verUsuarios'])->name('usuarios.ver');
+		
 
 		// Rutas de perfil
 		Route::get('perfil', 			['as' => 'profile.index', 'uses' => 'App\Http\Controllers\ProfileController@index']);

@@ -41,7 +41,7 @@ class LoginController extends Controller
      * @return bool
      */
     protected function attemptLogin(Request $request)
-{
+    {
     $credentials = $this->credentials($request);
 
     if (Auth::attempt($credentials)) {
@@ -59,7 +59,7 @@ class LoginController extends Controller
     }
 
     return false;
-}
+    }
 
 
 
