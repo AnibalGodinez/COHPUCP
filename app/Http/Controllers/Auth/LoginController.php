@@ -41,22 +41,27 @@ class LoginController extends Controller
      * @return bool
      */
     protected function attemptLogin(Request $request)
-    {
-        $credentials = $this->credentials($request);
-        
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            
-            if ($user->isActive()) {
-                return true;
-            }
-            
-            Auth::logout();
-            return false;
+{
+    $credentials = $this->credentials($request);
+
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();
+
+        if ($user->isActive()) {
+            return true;
         }
 
-        return false;
+        Auth::logout();
+        // Aquí es donde agregamos el mensaje de error personalizado
+        throw ValidationException::withMessages([
+            'estado' => 'Tu cuenta está inactiva, favor comunícate con el administrador de la página.'
+        ]);
     }
+
+    return false;
+}
+
+
 
     /**
      * Send the response after the user was authenticated.

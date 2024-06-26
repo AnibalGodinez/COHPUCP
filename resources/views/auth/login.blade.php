@@ -6,7 +6,6 @@
 
         <form class="form" method="post" action="{{ route('login') }}">
             @csrf
-            <input type="hidden" name="login_type" value="email_or_numero_colegiacion">
 
             <div class="card card-login card-white">
 
@@ -17,6 +16,7 @@
 
                 <div class="card-body">
                     <p class="text-dark mb-2" style="margin-bottom: 20px;">Inicia sesión con <strong>contacto@correo.com </strong> y la contraseña <strong>secreta </strong></p> <!-- Ajuste del margen bottom -->
+                    
                     <div class="input-group{{ $errors->has('login_type') ? ' has-danger' : '' }}">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -26,6 +26,7 @@
                         <input type="text" name="login_type" class="form-control{{ $errors->has('login_type') ? ' is-invalid' : '' }}" placeholder="{{ _('Correo electrónico o número de colegiación') }}" value="{{ old('login_type') }}">
                         @include('alerts.feedback', ['field' => 'login_type'])
                     </div>
+                    
                     <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -35,12 +36,14 @@
                         <input type="password" placeholder="{{ _('Contraseña') }}" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
                         @include('alerts.feedback', ['field' => 'password'])
                     </div>
+                    
                     @if ($errors->has('estado'))
                         <div class="alert alert-danger" role="alert">
                             {{ $errors->first('estado') }}
                         </div>
                     @endif
                 </div>
+                
                 <div class="card-footer">
                     <button type="submit" href="" class="btn btn-info btn-lg btn-block mb-3">Ingresar</button>
                     <div class="pull-left">

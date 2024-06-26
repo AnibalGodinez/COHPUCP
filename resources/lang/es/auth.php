@@ -15,7 +15,7 @@ return [
 
     'failed' => 'Estas credenciales no coinciden con nuestros registros.',
     'password' => 'La contraseña es incorrecta.',
-    'inactive' => 'Tu cuenta está inactiva, favor comunicate con el administrador de la página.',
+    'inactive' => 'Tu cuenta está inactiva, favor comunícate con el administrador de la página.',
     'email' => 'No existe una cuenta con este correo electrónico.',
     'throttle' => 'Demasiados intentos de inicio de sesión. Por favor, intente nuevamente en :seconds segundos.',
     'required' => 'El campo :attribute es obligatorio.',
