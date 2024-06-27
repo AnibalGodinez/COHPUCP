@@ -11,11 +11,6 @@
 
             <div class="card mt-7">
 
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3>Usuarios</h3>
-                    <a href="{{ url('usuarios/create') }}" class="btn btn-info btn-sm"><i class="fas fa-plus-circle"> </i> Crear nuevo usuario</a>
-                </div>
-
                 <div class="card-body">
                     {{-- Formulario de búsqueda --}}
                     <form action="{{ url('usuarios') }}" method="GET" class="form-inline mt-3">

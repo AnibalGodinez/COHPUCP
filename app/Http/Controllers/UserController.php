@@ -12,15 +12,16 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('permission:view user', ['only' => ['verUsuarios']]);
-        $this->middleware('permission:index user', ['only' => ['index']]);
-        $this->middleware('permission:update user', ['only' => ['update','edit']]);
-        $this->middleware('permission:create user', ['only' => ['create','store']]);
-        $this->middleware('permission:delete user', ['only' => ['destroy']]);
+        $this->middleware('permission:ver usuario', ['only' => ['verUsuarios']]);
+        $this->middleware('permission:indice usuario', ['only' => ['index']]);
+        $this->middleware('permission:actualizar usuario', ['only' => ['update','edit']]);
+        $this->middleware('permission:crear usuario', ['only' => ['create','store']]);
+        $this->middleware('permission:borrar usuario', ['only' => ['destroy']]);
     }
 
+//-----------------------------------------------------------------------------------------------------------------
     public function index(Request $request)
-{
+    {
     $search = $request->query('search');
 
     if ($search) {
@@ -52,7 +53,7 @@ class UserController extends Controller
     return view('users.index', ['users' => $users]);
 }
 
-
+//-----------------------------------------------------------------------------------------------------------------
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
@@ -61,6 +62,7 @@ class UserController extends Controller
         ]);
     }
 
+//-----------------------------------------------------------------------------------------------------------------
     public function store(Request $request)
     {
         $request->validate([
@@ -78,7 +80,6 @@ class UserController extends Controller
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|max:20',
             'estado' => 'required|in:activo,inactivo',
-            'rol' => 'required|in:Usuario,Administrador'
         ]);
 
         $user = User::create([
@@ -96,7 +97,6 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'estado' => $request->estado,
-            'rol' => $request->rol,
         ]);
 
         $user->syncRoles($request->roles);
@@ -104,6 +104,7 @@ class UserController extends Controller
         return redirect('/usuarios')->with('status', 'Usuario creado exitosamente con roles');
     }
 
+//-----------------------------------------------------------------------------------------------------------------
     public function edit(User $user)
     {
         $roles = Role::pluck('name', 'name')->all();
@@ -115,6 +116,7 @@ class UserController extends Controller
       ]);
     }
 
+//-----------------------------------------------------------------------------------------------------------------
     public function update(Request $request, user $user)
     {
         $request->validate([
@@ -132,7 +134,6 @@ class UserController extends Controller
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|max:20',
             'estado' => 'required|in:activo,inactivo',
-            'rol' => 'required|in:Usuario,Administrador'
         ]);
 
         $data = [
@@ -149,7 +150,6 @@ class UserController extends Controller
             'telefono_celular' => $request->telefono_celular,
             'email' => $request->email,
             'estado' => $request->estado,
-            'rol' => $request->rol,
         ];
 
         if(!empty($request->password)){
@@ -163,6 +163,7 @@ class UserController extends Controller
         return redirect('/usuarios')->with('status', 'Usuario actualizado exitosamente con roles');
     }
 
+//-----------------------------------------------------------------------------------------------------------------
     public function destroy($userId)
     {
         $user = User::findOrfail($userId);
@@ -170,7 +171,7 @@ class UserController extends Controller
         return redirect('/usuarios')->with('status', 'El usuario ha sido eliminado exitosamente');
     }
 
-    // Método para ver usuarios
+//-----------------------------------------------------------------------------------------------------------------
     public function verUsuarios(Request $request)
     {
         $search = $request->query('search');

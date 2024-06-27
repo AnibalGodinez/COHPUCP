@@ -32,7 +32,6 @@ class UserFactory extends Factory
             'password' => '$2y$10$zrR4KHv2nDcQjSUp6yBq4OqKD1PDjo8fndTK4sGd1YUuKPwfMRqM6', // password
             'remember_token' => Str::random(10),
             'estado' => $this->faker->randomElement(['activo', 'inactivo']),
-            'rol' => 'Administrador',
         ];
     }
 
