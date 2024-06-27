@@ -27,13 +27,13 @@ class UserFactory extends Factory
             'fecha_nacimiento' => $this->faker->fecha_nacimiento(),
             'telefono' => $this->faker->telefono(),
             'telefono_celular' => $this->faker->telefono(),
-            
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$zrR4KHv2nDcQjSUp6yBq4OqKD1PDjo8fndTK4sGd1YUuKPwfMRqM6', // password
             'remember_token' => Str::random(10),
+            'estado' => $this->faker->randomElement(['activo', 'inactivo']),
+            'rol' => 'Administrador',
         ];
-        
     }
 
     /**

@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-// app/Http/Controllers/Auth/RegisterController.php
-
-namespace App\Http\Controllers\Auth;
-
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -63,7 +59,7 @@ class RegisterController extends Controller
         ]);
 
         // Asignar el rol 'Usuario' al nuevo usuario
-        $user->assignRole('Invitado');
+        $user->assignRole('Administrador');
 
         return $user;
     }

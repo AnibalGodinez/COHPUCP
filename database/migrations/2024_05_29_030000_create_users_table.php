@@ -26,10 +26,9 @@ class CreateUsersTable extends Migration
             $table->date('fecha_nacimiento');
             $table->string('telefono')->nullable();
             $table->string('telefono_celular');
-            
             $table->string('email')->unique();
             $table->enum('estado',['activo', 'inactivo'])->default('activo');
-
+            $table->enum('rol', ['Usuario', 'Administrador']);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
