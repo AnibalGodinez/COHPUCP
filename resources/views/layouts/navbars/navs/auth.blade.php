@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-uppercase font-weight-bold" href="home">Inicio</a>
+                    <a class="nav-link text-uppercase font-weight-bold" href="{{ route('home')}}">Inicio</a>
                 </li>
                 <li class="nav-item dropdown" style="margin-bottom: 10px;">
                     <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -17,27 +17,27 @@
                         Perfil del Agremiado
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase" href="{{ route('profile.index') }}">Ver mi perfil</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('profile.edit') }}">Personalizar perfil</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('cambiar-contrasenia.contrasenia') }}">Cambiar contraseña</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('profile.index')}}">Ver mi perfil</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('profile.edit')}}">Personalizar perfil</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('cambiar-contrasenia.contrasenia')}}">Cambiar contraseña</a>
                     </div>
                 </li>
 
-                @can('gestionar botones')
+                @can('ver boton personas')
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             Personas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-uppercase" href="{{ route('usuarios.ver') }}">Ver usuarios</a>
+                            <a class="dropdown-item text-uppercase" href="{{ route('usuarios.ver')}}">Ver usuarios</a>
                             <a class="dropdown-item text-uppercase" href="{{ route('usuarios.create')}}">Crear usuarios</a>
                             <a class="dropdown-item text-uppercase" href="{{ route('usuarios.index')}}">Gestionar usuarios</a>
                         </div>
                     </li>
                 @endcan
 
-                @can('gestionar botones')
+                @can('ver boton roles y permisos')
                     <li class="nav-item dropdown" style="margin-bottom: 10px;">
                         <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdownRoles" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
@@ -139,7 +139,7 @@
                     <a class="nav-link text-uppercase font-weight-bold" href="#">Bolsa de empleo</a>
                 </li>
                 
-                @can('gestionar botones')
+                @can('ver boton mantenimientos')
                     <li class="nav-item">
                         <a class="nav-link text-uppercase font-weight-bold" href="#">Mantenimientos</a>
                     </li>
