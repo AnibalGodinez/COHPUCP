@@ -77,10 +77,18 @@
                                         <a href="{{ url('usuarios/'.$user->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                             <i class="tim-icons icon-settings"></i>
                                         </a>
-                                        <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('usuarios/'.$user->id.'/delete') }}')">
+
+                                        {{-- BOTÓN HABILITADO PARA ELIMINAR USUARIOS --}}
+                                        {{-- <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('usuarios/'.$user->id.'/delete') }}')">
+                                            <i class="tim-icons icon-simple-remove"></i>
+                                        </a> --}}
+
+                                        {{-- BOTÓN INHABILITADO PARA ELIMINAR USUARIOS --}}
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon disabled" onclick="return false;" aria-disabled="true">
                                             <i class="tim-icons icon-simple-remove"></i>
                                         </a>
                                     </td>
+                                    
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -92,13 +100,4 @@
         </div>
     </div>
 </div>
-
-<script>
-function confirmarEliminacion(url) {
-    if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
-        window.location.href = url;
-    }
-}
-</script>
-
 @endsection

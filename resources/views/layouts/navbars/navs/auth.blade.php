@@ -164,7 +164,7 @@
                         <div class="photo">
                             <img src="{{ asset('white') }}/img/anime3.png" alt="Profile photo">
                         </div>
-                        <p class="d-lg-none"> Log out </p>
+                        <p class="d-lg-none"> Botón de usuario </p>
                     </a>
                     <ul class="dropdown-menu dropdown-navbar">
                         <li class="dropdown-item text-uppercase">

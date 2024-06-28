@@ -25,7 +25,8 @@ use App\Http\Requests\PasswordRequest;
 //-----------------------------------------------------------------------------------------------------------------
     public function edit()
     {
-        return view('profile.edit');
+        $editMode = true;
+        return view('profile.edit', compact('editMode'));
     }
 
 //-----------------------------------------------------------------------------------------------------------------
