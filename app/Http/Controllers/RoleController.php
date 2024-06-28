@@ -9,6 +9,17 @@ use Illuminate\Support\facades\DB;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:ver roles', ['only' => ['verRoles']]);
+        $this->middleware('permission:indice rol', ['only' => ['index']]);
+        $this->middleware('permission:actualizar rol', ['only' => ['update','edit']]);
+        $this->middleware('permission:crear rol', ['only' => ['create','store']]);
+        $this->middleware('permission:borrar rol', ['only' => ['destroy']]);
+        $this->middleware('permission:agregar permisos al rol', ['only' => ['AddPermissionRole', 'givePermissionRole']]);
+    }
+    
+//-----------------------------------------------------------------------------------------------------------------
     public function index(Request $request)
     {
         $search = $request->query('search');
@@ -26,12 +37,14 @@ class RoleController extends Controller
         $roles = $roles->paginate(4); 
         return view('roles.index', ['roles' => $roles]);
     }
-
+    
+//-----------------------------------------------------------------------------------------------------------------
     public function create()
     {
         return view('roles.create');
     }
 
+//-----------------------------------------------------------------------------------------------------------------
     public function store(Request $request)
     {
         $request->validate([
@@ -53,12 +66,13 @@ class RoleController extends Controller
         }
     }
 
-
+//-----------------------------------------------------------------------------------------------------------------
     public function edit(Role $role)
     {
         return view('roles.edit', ['role' => $role]);
     }
 
+//-----------------------------------------------------------------------------------------------------------------
     public function update(Request $request, Role $role)
     {
         $request->validate([
@@ -78,13 +92,15 @@ class RoleController extends Controller
         return redirect('roles')->with('status', 'El rol se ha actualizado exitosamente');
     }
 
+//-----------------------------------------------------------------------------------------------------------------
     public function destroy($roleId)
     {
         $roles = Role::find($roleId);
         $roles->delete();
         return redirect('roles')->with('status', 'El rol se ha eliminado');
     }
-
+    
+//-----------------------------------------------------------------------------------------------------------------
     public function AddPermissionRole($roleId)
     {
         $permissions = Permission::get();
@@ -100,7 +116,8 @@ class RoleController extends Controller
             'rolePermissions' => $rolePermissions
         ]);
     }
-
+ 
+//-----------------------------------------------------------------------------------------------------------------
     public function givePermissionRole(Request $request, $roleId)
     {
         $request->validate([
@@ -111,7 +128,8 @@ class RoleController extends Controller
         $role->syncPermissions($request->permission);
         return redirect()->back()->with('status', 'Permiso(s) asignado(s) al Rol');
     }
-
+   
+//-----------------------------------------------------------------------------------------------------------------
     public function verRoles(Request $request)
     {
         $search = $request->input('search');

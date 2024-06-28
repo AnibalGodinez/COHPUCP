@@ -7,6 +7,16 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:ver permisos', ['only' => ['verPermisos']]);
+        $this->middleware('permission:indice permiso', ['only' => ['index']]);
+        $this->middleware('permission:actualizar permiso', ['only' => ['update','edit']]);
+        $this->middleware('permission:crear permiso', ['only' => ['create','store']]);
+        $this->middleware('permission:borrar permiso', ['only' => ['destroy']]);
+    }
+
+//-----------------------------------------------------------------------------------------------------------------
     public function index(Request $request)
     {
         $search = $request->query('search');
@@ -25,11 +35,13 @@ class PermissionController extends Controller
         return view('permissions.index', ['permissions' => $permissions]);
     }
 
+//-----------------------------------------------------------------------------------------------------------------
     public function create()
     {
         return view('permissions.create');
     }
 
+//-----------------------------------------------------------------------------------------------------------------
     public function store(Request $request)
     {
         $request->validate([
@@ -50,16 +62,13 @@ class PermissionController extends Controller
         }
     }
 
-    public function show($id)
-    {
-        //
-    }
-
+//-----------------------------------------------------------------------------------------------------------------
     public function edit(Permission $permission)
     {
         return view('permissions.edit', ['permission' => $permission]);
     }
 
+//-----------------------------------------------------------------------------------------------------------------
     public function update(Request $request, Permission $permission)
     {
         $request->validate([
@@ -74,6 +83,7 @@ class PermissionController extends Controller
         return redirect('permission')->with('status', 'El permiso se ha actualizado exitosamente');
     }
 
+//-----------------------------------------------------------------------------------------------------------------
     public function destroy($permissionId)
     {
         $permission = Permission::find($permissionId);
@@ -81,6 +91,7 @@ class PermissionController extends Controller
         return redirect('permission')->with('status', 'El permiso se ha eliminado');
     }
 
+//-----------------------------------------------------------------------------------------------------------------
     public function verPermisos(Request $request)
     {
         $search = $request->input('search');

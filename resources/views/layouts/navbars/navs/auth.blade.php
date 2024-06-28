@@ -22,40 +22,46 @@
                         <a class="dropdown-item text-uppercase" href="{{ route('cambiar-contrasenia.contrasenia') }}">Cambiar contraseña</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Personas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase" href="{{ route('usuarios.ver') }}">Ver usuarios</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('usuarios.create')}}">Crear usuarios</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('usuarios.index')}}">Gestionar usuarios</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown" style="margin-bottom: 10px;">
-                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdownRoles" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        Roles y permisos
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownRoles">
-                        <a class="dropdown-item text-uppercase" id="rolesLink" href="#">Roles</a>
-                        <a class="dropdown-item text-uppercase" id="permisosLink" href="#">Permisos</a>
-                    </div>
-                    <!-- Submenú para Roles -->
-                    <div class="dropdown-menu" id="subMenuRoles" style="position: absolute; top: 0; left: 100%; display: none;">
-                        <a class="dropdown-item text-uppercase" href="{{route('roles.ver')}}">Ver roles</a>
-                        <a class="dropdown-item text-uppercase" href="{{route('roles.create')}}">Crear rol</a>
-                        <a class="dropdown-item text-uppercase" href="{{route('roles.index')}}">Gestionar roles</a>
-                    </div>
-                    <!-- Submenú para Permisos -->
-                    <div class="dropdown-menu" id="subMenuPermisos" style="position: absolute; top: 0; left: 100%; display: none;">
-                        <a class="dropdown-item text-uppercase" href="{{ route('permissions.ver')}}">Ver permisos</a>
-                        <a class="dropdown-item text-uppercase" href="{{route('permission.create')}}">Crear permiso</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('permission.index')}}">Gestionar permisos</a>
-                    </div>
-                </li>
-                
+
+                @can('gestionar botones')
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Personas
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-uppercase" href="{{ route('usuarios.ver') }}">Ver usuarios</a>
+                            <a class="dropdown-item text-uppercase" href="{{ route('usuarios.create')}}">Crear usuarios</a>
+                            <a class="dropdown-item text-uppercase" href="{{ route('usuarios.index')}}">Gestionar usuarios</a>
+                        </div>
+                    </li>
+                @endcan
+
+                @can('gestionar botones')
+                    <li class="nav-item dropdown" style="margin-bottom: 10px;">
+                        <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdownRoles" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Roles y permisos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownRoles">
+                            <a class="dropdown-item text-uppercase" id="rolesLink" href="#">Roles</a>
+                            <a class="dropdown-item text-uppercase" id="permisosLink" href="#">Permisos</a>
+                        </div>
+                        <!-- Submenú para Roles -->
+                        <div class="dropdown-menu" id="subMenuRoles" style="position: absolute; top: 0; left: 100%; display: none;">
+                            <a class="dropdown-item text-uppercase" href="{{route('roles.ver')}}">Ver roles</a>
+                            <a class="dropdown-item text-uppercase" href="{{route('roles.create')}}">Crear rol</a>
+                            <a class="dropdown-item text-uppercase" href="{{route('roles.index')}}">Gestionar roles</a>
+                        </div>
+                        <!-- Submenú para Permisos -->
+                        <div class="dropdown-menu" id="subMenuPermisos" style="position: absolute; top: 0; left: 100%; display: none;">
+                            <a class="dropdown-item text-uppercase" href="{{ route('permissions.ver')}}">Ver permisos</a>
+                            <a class="dropdown-item text-uppercase" href="{{route('permission.create')}}">Crear permiso</a>
+                            <a class="dropdown-item text-uppercase" href="{{ route('permission.index')}}">Gestionar permisos</a>
+                        </div>
+                    </li>
+                @endcan
+
                 <script>
                     // Obtener los elementos del DOM
                     const navbarDropdownRoles = document.getElementById('navbarDropdownRoles');
@@ -132,22 +138,26 @@
                 <li class="nav-item">
                     <a class="nav-link text-uppercase font-weight-bold" href="#">Bolsa de empleo</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link text-uppercase font-weight-bold" href="#">Mantenimientos</a>
-                </li>
                 
-                <li class="dropdown nav-item">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <i class="tim-icons icon-bell-55"></i>
-                        <p class="d-lg-none text-uppercase" style="color: black;"> Notificationes </p>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                        <li class="dropdown-item text-uppercase">
-                            <a href="#" class="nav-link" style="color: black;">Mike Jonh responded to your email</a>
-                        </li>
-                    </ul>
-                </li>
+                @can('gestionar botones')
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase font-weight-bold" href="#">Mantenimientos</a>
+                    </li>
+                @endcan
+
+                @can('gestionar botones')
+                    <li class="dropdown nav-item">
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                            <i class="tim-icons icon-bell-55"></i>
+                            <p class="d-lg-none text-uppercase" style="color: black;"> Notificationes </p>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
+                            <li class="dropdown-item text-uppercase">
+                                <a href="#" class="nav-link" style="color: black;">Mike Jonh responded to your email</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
 
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
