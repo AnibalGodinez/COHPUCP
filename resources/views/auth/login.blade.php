@@ -44,7 +44,7 @@
                     @endif
                 </div>
                 
-                <div class="card-footer">
+                <div class="card-footer" style="margin-top: -40px;">
                     <button type="submit" href="" class="btn btn-info btn-lg btn-block mb-3">Ingresar</button>
                     <div class="pull-left">
                         <h6>

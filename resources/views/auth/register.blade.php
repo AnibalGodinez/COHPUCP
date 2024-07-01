@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="col-lg-6 col-md-6 ml-auto mr-auto" style="margin-top: -100px;">
+<div class="col-lg-6 col-md-6 ml-auto mr-auto" style="margin-top: -120px;">
     <form method="POST" action="{{ route('register') }}">
         @csrf
         <div class="card card-register card-white">
@@ -167,10 +167,10 @@
                     </div>
                 </div>
 
-                <div class="card-footer">
+                <div class="card-footer" style="margin-top: -10px;">
                     <button type="submit" class="btn btn-info btn-lg btn-block mb-3">Registrarse</button>
                     <div class="pull-left">
-                        <h6 class="card-footer">
+                        <h6 class="card-footer" style="margin-top: -5px;">
                             <a href="{{ route('login') }}" class="link footer-link">¿Ya tienes una cuenta? Inicia sesión aquí</a>
                         </h6>
                     </div>
