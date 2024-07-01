@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="col-lg-5 col-md-6 ml-auto mr-auto" style="margin-top: -70px;">
+    <div class="col-lg-5 col-md-6 ml-auto mr-auto" style="margin-top: -100px;">
 
         <form class="form" method="post" action="{{ route('login') }}">
             @csrf
