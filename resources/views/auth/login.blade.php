@@ -53,7 +53,7 @@
                     </div>
                     <div class="pull-right">
                         <h6>
-                            <a href="{{ route('password.request') }}" class="link footer-link">¿Has olvidado tu contraseña?</a>
+                            <a href="{{ route('opcion.recuperacion') }}">¿Has olvidado tu contraseña?</a>
                         </h6>
                     </div>
                 </div>

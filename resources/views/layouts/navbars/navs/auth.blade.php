@@ -145,7 +145,7 @@
                     </li>
                 @endcan
 
-                @can('gestionar botones')
+                @can('ver boton notificaciones')
                     <li class="dropdown nav-item">
                         <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                             <i class="tim-icons icon-bell-55"></i>

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\CapacitacioneController;
@@ -8,6 +7,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SecurityQuestionController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -19,6 +19,12 @@ use Illuminate\Support\Facades\Auth;
 
 	// RUTA DE INICIO (DASHBOARD)
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+
+	// RUTAS DE RECUPERACIÓN DE CONTRASEÑA MEDIANTE PREGUNTAS DE SEGURIDAD
+	Route::resource('security_questions', SecurityQuestionController::class);
+	Route::get('security_questions/{question}/delete', [SecurityQuestionController::class, 'destroy'])->name('security_questions.delete');
+	Route::get('opcion-recuperacionContrasenia', [SecurityQuestionController::class, 'viewOpcionRecuperacion'])->name('opcion.recuperacion');
+
 
 	// RUTAS DE USUARIOS
 	Route::group(['middleware' =>[ 'auth', 'role:Administrador|Usuario']], function () {
