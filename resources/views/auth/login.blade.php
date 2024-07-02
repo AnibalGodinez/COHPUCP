@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="card-body">
-                    <p class="text-dark mb-2" style="margin-bottom: 20px;">Inicia sesión con <strong>contacto@correo.com </strong> y la contraseña <strong>secreta </strong></p> <!-- Ajuste del margen bottom -->
+                    <p class="text-dark mb-2" style="margin-bottom: 20px;">Inicia sesión con <strong>contacto@correo.com </strong> y la contraseña <strong>secreta </strong></p>
                     
                     <div class="input-group{{ $errors->has('login_type') ? ' has-danger' : '' }}">
                         <div class="input-group-prepend">

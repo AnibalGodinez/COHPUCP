@@ -1,16 +1,18 @@
 @extends('layouts.app', ['class' => 'login-page', 'page' => _('Reset password'), 'contentClass' => 'login-page'])
 
 @section('content')
-    <div class="col-lg-5 col-md-7 ml-auto mr-auto">
+    <div class="col-lg-6 col-md-6 ml-auto mr-auto">
         <form class="form" method="post" action="{{ route('password.email') }}">
             @csrf
 
-            <div class="card card-login card-white">
+            <div class="card card-login card-white" style="margin-top: -100px;">
+                
                 <div class="card-header">
                     <img src="{{ asset('white') }}/img/card-primary.png" alt="">
-                    <h1 class="card-title">{{ _('Reset password') }}</h1>
+                    <h1 class="card-title" style=" left: 4px; text-transform: none">Reestablecer contraseña</h1>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="margin-top: 40px;">
+                    <p class="text-dark mb-2" style="margin-bottom: 20px;">Te enviaremos un <strong>link </strong>a tu <strong>correo electrónico </strong> para que puedas cambiar tu contraseña.</p><br>
                     @include('alerts.success')
 
                     <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
