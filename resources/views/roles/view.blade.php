@@ -1,16 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="row">
         <div class="col-md-10">
-
-            @if (session('status'))
-            <div class="alert alert-success text-center">{{ session('status') }}</div>
-            @endif
 
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title text-center">Lista de Roles</h3>
+
+                    @if (session('status'))
+                        <div class="alert alert-success text-center">{{ session('status') }}</div>
+                    @endif
 
                     {{-- Formulario de búsqueda --}}
                     <form method="GET" action="{{ route('roles.ver') }}" class="form-inline mt-3">

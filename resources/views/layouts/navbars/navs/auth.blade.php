@@ -140,9 +140,15 @@
                 </li>
                 
                 @can('ver boton mantenimientos')
-                    <li class="nav-item">
-                        <a class="nav-link text-uppercase font-weight-bold" href="#">Mantenimientos</a>
-                    </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Mantenimientos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-uppercase" href="{{ route('security_questions.index')}}">Preguntas de seguridad</a>
+                    </div>
+                </li>
                 @endcan
 
                 @can('ver boton notificaciones')

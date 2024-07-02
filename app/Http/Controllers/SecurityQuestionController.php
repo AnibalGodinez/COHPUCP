@@ -23,7 +23,9 @@ class SecurityQuestionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'question' => 'required|string|max:255',
+            'question' => 'required|string|max:255|unique:security_questions,question',
+        ], [
+            'question.unique' => 'Esta pregunta ya existe.',
         ]);
 
         SecurityQuestion::create([
@@ -31,16 +33,16 @@ class SecurityQuestionController extends Controller
         ]);
 
         return redirect()->route('security_questions.index')
-            ->with('success', 'Pregunta de seguridad creada correctamente.');
+            ->with('success', 'Pregunta de seguridad se ha creado exitosamente');
     }
 
 //------------------------------------------------------------------------------------------
-public function show($id)
-{
-    $question = SecurityQuestion::findOrFail($id);
-    $questions = SecurityQuestion::all();
-    return view('preguntas-seguridad.show', compact('question', 'questions'));
-}
+    public function show($id)
+    {
+        $question = SecurityQuestion::findOrFail($id);
+        $questions = SecurityQuestion::all();
+        return view('preguntas-seguridad.show', compact('question', 'questions'));
+    }
 
 //------------------------------------------------------------------------------------------
     public function edit($id)
@@ -54,29 +56,32 @@ public function show($id)
     {
         $request->validate([
             'question' => 'required|string|max:255|unique:security_questions,question,'.$id,
+        ], [
+            'question.unique' => 'Esta pregunta ya existe',
         ]);
+
         $question = SecurityQuestion::findOrFail($id);
         $question->update([
             'question' => $request->question,
         ]);
 
-        return redirect()->route('security_questions.index')->with('success', 'Pregunta de seguridad actualizada correctamente.');
+        return redirect()->route('security_questions.index')->with('success', 'La pregunta de seguridad se ha actualizado exitosamente');
     }
 
 //------------------------------------------------------------------------------------------
-public function destroy($id)
-{
-    $question = SecurityQuestion::findOrFail($id);
-    $question->delete();
+    public function destroy($id)
+    {
+        $question = SecurityQuestion::findOrFail($id);
+        $question->delete();
 
-    return redirect()->route('security_questions.index')->with('success', 'Pregunta de seguridad eliminada correctamente.');
-}
+        return redirect()->route('security_questions.index')->with('success', 'Pregunta de seguridad se ha eliminado exitosamente');
+    }
 
 //------------------------------------------------------------------------------------------
     // Muestra la vista de opciones de recuperación (si por preguntas o correo)
     public function viewOpcionRecuperacion()
     {
-    $securityQuestions = SecurityQuestion::all();
-    return view('preguntas-seguridad.view-options', compact('securityQuestions'));
+        $securityQuestions = SecurityQuestion::all();
+        return view('preguntas-seguridad.view-options', compact('securityQuestions'));
     }
 }

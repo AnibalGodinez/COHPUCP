@@ -1,15 +1,16 @@
-@extends('layouts.app', ['page' => __('Permisos'), 'pageSlug' => 'permisosMantenimiento'])
+@extends('layouts.app')
 
 @section('content')
     <div class="row">
         <div class="col-md-10">
 
-            @if (session('status'))
-            <div class="alert alert-success text-center">{{ session('status') }}</div>
-            @endif
             <div class="card">
+
                 <div class="card-header">
                     <h3 class="card-title text-center">Lista de Permisos</h3>
+                    @if (session('status'))
+                    <div class="alert alert-success text-center">{{ session('status') }}</div>
+                    @endif        
                     {{-- Formulario de búsqueda --}}
                     <form method="GET" action="{{ route('permissions.ver') }}" class="form-inline mt-3">
                         <input type="text" name="search" class="form-control" placeholder="Buscar permisos" value="{{ request()->query('search') }}">
@@ -18,6 +19,7 @@
                         </button>
                     </form>
                 </div>
+                
                 <div class="card-body">
                     @if( $permissions ->isEmpty())
                         <div class="alert alert-default text-center" permission="alert">

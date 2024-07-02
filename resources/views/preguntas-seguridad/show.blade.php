@@ -3,7 +3,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="margin-top: -100px;">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -45,9 +45,8 @@
                                 </select>
                                 <label for="answer3">Respuesta</label>
                                 <input type="text" name="answer3" id="answer3" class="form-control">
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Recuperar Contraseña</button>
+                            </div class="text-center">
+                                <button type="submit" class="btn btn-info btn-lg btn-block mb-7">Recuperar Contraseña</button>
                         </form>
                     </div>
                 </div>

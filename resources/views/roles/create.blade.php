@@ -8,9 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title text-center">Crear Rol</h3>
-                </div>   
 
-                <div class="card-body">
                     @if($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -21,6 +19,10 @@
                         </div>
                     @endif
 
+                </div>   
+
+                <div class="card-body">
+                    
                     <form action="{{ url('roles') }}" method="POST">
                         @csrf
                         <div class="form-group">
@@ -31,6 +33,7 @@
                             <label for="description">Descripción del Rol</label>
                             <textarea id="description" name="description" class="form-control">{{ old('description') }}</textarea>
                         </div>
+                        
                         <div class="text-center">
                             <button type="submit" class="btn btn-info">Guardar</button>
                             <a href="{{ url('roles') }}" class="btn btn-secondary">Cancelar</a>
