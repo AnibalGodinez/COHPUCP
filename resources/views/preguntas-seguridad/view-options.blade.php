@@ -12,7 +12,7 @@
             <p class="text-dark mb-2" style="margin-bottom: 20px;">Seleccione el método de recuperación de contraseña:</p><br>
 
             <div>
-                <a href="{{ route('security_questions.index') }}" class="btn btn-info btn-lg btn-block mb-3">
+                <a href="{{ route('security_questions.show', ['security_question' => $securityQuestions->first()->id]) }}" class="btn btn-info btn-lg btn-block mb-3">
                     Recuperación por Preguntas de Seguridad
                 </a><br>
                 <a href="{{ route('password.request') }}" class="btn btn-success btn-lg btn-block mb-3">
