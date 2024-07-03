@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-center">Gestión de Roles</h3>
+                    <h3 class="card-title text-center font-weight-bold">Gestión de roles</h3>
                     
                     @if (session('status'))
                     <div class="alert alert-success text-center">{{ session('status') }}</div>
@@ -42,7 +43,7 @@
                                     <td>{{ $role->id }}</td>
                                     <td>{{ $role->name }}</td>
                                     <td>{{ $role->description }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         <a href="{{ url('roles/'.$role->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                             <i class="tim-icons icon-settings"></i>
                                         </a>
@@ -64,6 +65,7 @@
             </div>
         </div>
     </div>
+</div>
     <script>
         function confirmarEliminacion(url) {
             if (confirm('¿Estás seguro que quieres eliminar el rol?')) {

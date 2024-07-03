@@ -22,18 +22,18 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-center">Agregar nueva pregunta de seguridad</h3>
+                    <h2 class="card-title text-center">Agregar nueva pregunta de seguridad</h2>
                 </div>  
                 <div class="card-body">
                     <form action="{{ route('security_questions.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="question">Pregunta de Seguridad</label>
+                            <label for="question">Pregunta de seguridad</label>
                             <input type="text" name="question" id="question" class="form-control" required>
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-success">Guardar Pregunta</button>
+                            <button type="submit" class="btn btn-success">Guardar pregunta</button>
                             <a href="{{ route('security_questions.index') }}" class="btn btn-warning">Cancelar</a>
                         </div>
                     </form>

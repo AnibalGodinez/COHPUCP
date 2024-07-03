@@ -1,4 +1,3 @@
-<!-- resources/views/security_questions/show.blade.php -->
 
 @extends('layouts.app')
 

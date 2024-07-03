@@ -1,8 +1,8 @@
-@extends('layouts.app', ['page' => __('Permisos'), 'pageSlug' => 'mantenimientoPermisos'])
+@extends('layouts.app')
 
 @section('content')
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
 
             @if (session('status'))
             <div class="alert alert-success text-center">{{ session('status') }}</div>
@@ -10,7 +10,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-center">Gestión de Permisos</h3>
+                    <h3 class="card-title text-center">Gestión de permisos</h3>
 
                     {{-- Formulario de búsqueda --}}
                     <form action="{{ url('permission') }}" method="GET" class="form-inline mt-3">
@@ -40,7 +40,7 @@
                                     <td>{{ $permission->id }}</td>
                                     <td>{{ $permission->name }}</td>
                                     <td>{{ $permission->description }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         <a href="{{ url('permission/'.$permission->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                             <i class="tim-icons icon-settings"></i>
                                         </a>

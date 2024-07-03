@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Actualizar Curso'), 'pageSlug' => 'cursosPlataforma'])
+@extends('layouts.app')
 
 @section('content')
     <div class="row">

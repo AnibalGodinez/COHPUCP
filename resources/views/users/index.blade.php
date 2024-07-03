@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Usuarios'), 'pageSlug' => 'usuarios'])
+@extends('layouts.app')
 
 @section('content')
 <div class="container-fluid mt-5">
@@ -12,6 +12,8 @@
             <div class="card mt-7">
 
                 <div class="card-body">
+                    <h2 class="text-center font-weight-bold">Gestionar usuarios</h2>
+
                     {{-- Formulario de búsqueda --}}
                     <form action="{{ url('usuarios') }}" method="GET" class="form-inline mt-3">
                         <input type="text" name="search" class="form-control" placeholder="Buscar usuarios" value="{{ request()->query('search') }}">
@@ -65,7 +67,7 @@
 
                                     <td>{{ $user->email }}</td>
                                     <td class="text-center">{{ $user->estado }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         @if (!empty($user->getRoleNames()))
                                             @foreach ($user->getRoleNames() as $roleName)
                                                 <label class="badge bg-info mx-1 text-white">{{ $roleName }}</label>
@@ -88,7 +90,6 @@
                                             <i class="tim-icons icon-simple-remove"></i>
                                         </a>
                                     </td>
-                                    
                                 </tr>
                                 @endforeach
                             </tbody>

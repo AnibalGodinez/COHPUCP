@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             
             <div class="card">
                 <div class="card-header">
@@ -25,15 +25,15 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Pregunta</th>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Pregunta</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($questions as $question)
                                 <tr>
-                                    <td>{{ $question->id }}</td>
+                                    <td class="text-center">{{ $question->id }}</td>
                                     <td>{{ $question->question }}</td>
                                     <td class="text-center">
                                         <a href="{{ route('security_questions.edit', $question->id) }}" class="btn btn-info btn-sm">Editar</a>

@@ -2,16 +2,15 @@
 
 @section('content')
 
-        <div class="col-md-10" style="margin-top: -40px;">
+    <div class="container d-flex justify-content-center" style="margin-top: 15px">
+        <div class="col-md-12">
             <div class="card card-user">
                 <div class="card-body">
-
+                    <h2 class="card-title text-center">Perfil</h2>
                     <p class="card-text">
                         <div class="author">
                             <div class="block block-one bg-info"></div>
-                            <div class="block block-two"></div>
-                            <div class="block block-three bg-info"></div>
-                            <div class="block block-four"></div>
+
                             <a href="#">
                                 <img class="avatar" src="{{ asset('white') }}/img/emilyz.jpg" alt="">
                                 <div class="name-container">
@@ -39,11 +38,13 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-md-10">
+    <div class="container d-flex justify-content-center" style="margin-top: 0px">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header text-center">
-                    <h3 class="title">Actualizar contraseña</h3>
+                    <h2 class="title">Actualizar contraseña</h2>
                 </div>
                 <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
                     <div class="card-body">
@@ -75,10 +76,11 @@
 
                     <div class="card-footer">
                         <div class="col-md-12 text-center">
-                            <button type="submit" class="btn btn-info btn-lg">Cambiar contraseña</button>
+                            <button type="submit" class="btn btn-success px-4">Cambiar contraseña</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
+    </div>
 @endsection

@@ -100,7 +100,7 @@ class UserController extends Controller
 
         $user->syncRoles($request->roles);
 
-        return redirect('/usuarios')->with('status', 'Usuario creado exitosamente con roles');
+        return redirect('/usuarios')->with('status', 'El usuario se ha creado exitosamente con su respectivo rol');
     }
 
 //-----------------------------------------------------------------------------------------------------------------

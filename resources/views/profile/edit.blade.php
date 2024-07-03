@@ -1,51 +1,51 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container d-flex justify-content-center col-sm-8" style="margin-top: 15px">
+        <div class="col-md-12">
+            <div class="card card-user">
+                <div class="card-body">
+                    <h2 class="card-title text-center font-weight-bold">Editar perfil</h2>
+                    
+                    <p class="card-text">
+                        <div class="author">
+                            <div class="block block-one bg-info"></div>
+                            <a href="#">
+                                <img class="avatar" src="{{ asset('white') }}/img/emilyz.jpg" alt="">
+                                <div class="name-container">
+                                    <h5 class="title">{{ auth()->user()->name }} {{ auth()->user()->apellido }}</h5>
+                                </div>
+                            </a>                            
+                        </div>
+                    </p>
 
-    <div class="col-md-10" style="margin-top: -40px;">
-        <div class="card card-user">
-            <div class="card-body">
-
-                <p class="card-text">
-                    <div class="author">
-                        <div class="block block-one bg-info"></div>
-                        <div class="block block-two"></div>
-                        <div class="block block-three bg-info"></div>
-                        <div class="block block-four"></div>
-                        <a href="#">
-                            <img class="avatar" src="{{ asset('white') }}/img/emilyz.jpg" alt="">
-                            <div class="name-container">
-                                <h5 class="title">{{ auth()->user()->name }} {{ auth()->user()->apellido }}</h5>
-                            </div>
-                        </a>                            
+                    <div class="card-description">
+                        {{ _('Apasionado por la tecnología y el desarrollo web. Disfruto aprender nuevas habilidades y colaborar en proyectos innovadores. En mi tiempo libre, me gusta leer libros de ciencia ficción y practicar senderismo.') }}
                     </div>
-                </p>
-
-                <div class="card-description">
-                    {{ _('Apasionado por la tecnología y el desarrollo web. Disfruto aprender nuevas habilidades y colaborar en proyectos innovadores. En mi tiempo libre, me gusta leer libros de ciencia ficción y practicar senderismo.') }}
                 </div>
-            </div>
-            <div class="card-footer">
-                <div class="button-container">
-                    <button class="btn btn-icon btn-round btn-facebook">
-                        <i class="fab fa-facebook"></i>
-                    </button>
-                    <button class="btn btn-icon btn-round btn-instagram">
-                        <i class="fab fa-instagram"></i>
-                    </button>
-                    <button class="btn btn-icon btn-round btn-linkedin">
-                        <i class="fab fa-linkedin"></i>
-                    </button>
+                <div class="card-footer">
+                    <div class="button-container">
+                        <button class="btn btn-icon btn-round btn-facebook">
+                            <i class="fab fa-facebook"></i>
+                        </button>
+                        <button class="btn btn-icon btn-round btn-instagram">
+                            <i class="fab fa-instagram"></i>
+                        </button>
+                        <button class="btn btn-icon btn-round btn-linkedin">
+                            <i class="fab fa-linkedin"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div class="row">
-        <div class="col-md-10">
+
+    <div class="container d-flex justify-content-center col-sm-8">
+        <div class="col-md-12">
             <div class="card">
                 <form method="post" action="{{ route('profile.update') }}" autocomplete="off">
                     <div class="card-body">
+                        <h2 class="card-title text-center">Información</h2>
                         @csrf
                         @method('put')
                     
@@ -140,7 +140,7 @@
                             </div>
 
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-info btn-lg">Actualizar información</button>
+                                <button type="submit" class="btn btn-success px-4">Actualizar información</button>
                             </div>
 
                         </div>

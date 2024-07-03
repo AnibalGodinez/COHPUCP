@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-center">Lista de Roles</h3>
+                    <h2 class="card-title text-center font-weight-bold">Lista de roles</h2>
 
                     @if (session('status'))
                         <div class="alert alert-success text-center">{{ session('status') }}</div>
@@ -43,7 +43,7 @@
                                             <td>{{ $role->id }}</td>
                                             <td>{{ $role->name }}</td>
                                             <td>{{ $role->description }}</td>
-                                            <td>{{ $role->created_at->format('d/m/Y H:i:s') }}</td>
+                                            <td class="text-center">{{ $role->created_at->format('d/m/Y H:i:s') }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -54,4 +54,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
