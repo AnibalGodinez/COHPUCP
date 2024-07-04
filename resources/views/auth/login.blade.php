@@ -1,21 +1,21 @@
-@extends('layouts.app', ['class' => 'login-page', 'page' => _('Inicio de sesión'), 'contentClass' => 'login-page'])
+@extends('layouts.app')
 
 @section('content')
+<div class="col-lg-3 col-md-6 ml-auto mr-auto" style="margin-top: -120px;">
 
-    <div class="col-lg-5 col-md-6 ml-auto mr-auto" style="margin-top: -100px;">
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
 
-        <form class="form" method="post" action="{{ route('login') }}">
-            @csrf
+        <div class="card card-register card-white">
+            <div class="card-header">
+                <img src="{{ asset('white/img/card-primary.png')}}" class="card-img-top" alt="Card image">
+                <h2 class="card-title" style="position: absolute; top: 20px; left: 4px; text-transform: none;">Iniciar sesión</h2>
+            </div>
 
-            <div class="card card-login card-white">
+            <div class="card-body" style="margin-top: -70px;">
+                <p class="text-dark mb-2" style="margin-bottom: 50px;">Inicia sesión con <strong>contacto@correo.com </strong> y la contraseña <strong>secreta </strong></p>
 
-                <div class="card-header">
-                    <img src="{{ asset('white') }}/img/card-primary.png" alt="">
-                    <h1 class="card-title" style="top: 20px; left: 4px; text-transform: none;">Iniciar sesión</h1>
-                </div>
-
-                <div class="card-body">
-                    <p class="text-dark mb-2" style="margin-bottom: 20px;">Inicia sesión con <strong>contacto@correo.com </strong> y la contraseña <strong>secreta </strong></p>
+                <div class="form-row">
                     
                     <div class="input-group{{ $errors->has('login_type') ? ' has-danger' : '' }}">
                         <div class="input-group-prepend">
@@ -35,29 +35,32 @@
                         </div>
                         <input type="password" placeholder="{{ _('Contraseña') }}" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
                         @include('alerts.feedback', ['field' => 'password'])
-                    </div>
+                    </div><br>
                     
                     @if ($errors->has('estado'))
                         <div class="alert alert-danger" role="alert">
                             {{ $errors->first('estado') }}
                         </div>
                     @endif
+
                 </div>
-                
-                <div class="card-footer" style="margin-top: -40px;">
+
+                <div class="card-footer" style="margin-top: -10px;">
                     <button type="submit" href="" class="btn btn-info btn-lg btn-block mb-3">Ingresar</button>
                     <div class="pull-left">
                         <h6>
-                            <a href="{{ route('register') }}" class="link footer-link">Crear una cuenta</a>
+                            <a href="{{ route('register') }}" class="link footer-link" style="color: rgb(38, 119, 246); font-weight: bold;">Crear una cuenta</a>
                         </h6>
                     </div>
                     <div class="pull-right">
                         <h6>
-                            <a href="{{ route('opcion.recuperacion') }}">¿Has olvidado tu contraseña?</a>
+                            <a href="{{ route('opcion.recuperacion') }}" style="color: rgb(38, 119, 246); font-weight: bold;">¿Has olvidado tu contraseña?</a>
                         </h6>
                     </div>
-                </div>
+                </div>                
+                
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>
 @endsection
