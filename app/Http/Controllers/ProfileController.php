@@ -40,13 +40,13 @@ use App\Http\Requests\PasswordRequest;
     {
         auth()->user()->update($request->all());
 
-        return back()->withStatus(__('Perfil actualizado exitosamente.'));
+        return back()->withStatus(__('El perfil se ha actualizado exitosamente'));
     }
     
     public function password(PasswordRequest $request)
     {
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 
-        return back()->withPasswordStatus(__('Contraseña actualizada exitosamente.'));
+        return back()->withPasswordStatus(__('La contraseña actualizada exitosamente'));
     }
 }

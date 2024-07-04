@@ -19,9 +19,8 @@
         </ul>
     </div>
 
-    <!-- Texto "Contactanos" con estilo similar a "BLOG" -->
     <div class="text-center mt-4">
-        <p class="text-white font-weight-bold" style="font-size: 12px; ">CONTACTANOS</p>
+        <p class="text-white font-weight-bold" style="font-size: 12px;">CONTACTANOS</p>
     </div>
 
     <div class="social-icons text-center mt-2">

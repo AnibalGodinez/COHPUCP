@@ -19,23 +19,21 @@
     <body class="white-content {{ $class ?? '' }}">
 
         @auth()
+        <div class="wrapper" data-color="blue">
+            <div class="main-panel">
+                @include('layouts.navbars.navbar')
 
-            <div class="wrapper" data-color="blue">
-                <div class="main-panel">
-                    @include('layouts.navbars.navbar')
-
-                    <div class="main-content">
-                        @yield('content')
-                    </div>
-
-                    @include('layouts.footer')
+                <div class="main-content" style="min-height: calc(100vh - 100px);"> <!-- Ajusta 100px según el tamaño de tu navbar -->
+                    @yield('content')
                 </div>
-            </div>
-            
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
 
+                @include('layouts.footer')
+            </div>
+        </div>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
         @else
             @include('layouts.navbars.navbar')
             <div class="wrapper wrapper-full-page">

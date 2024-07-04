@@ -163,7 +163,7 @@
                     <div class="form-check mt-3 {{ $errors->has('agree_terms_and_conditions') ? ' has-danger' : '' }} form-group col-md-8">
                         <label class="form-check-label">
                             <input class="form-check-input {{ $errors->has('agree_terms_and_conditions') ? ' is-invalid' : '' }}" name="agree_terms_and_conditions" type="checkbox" {{ old('agree_terms_and_conditions') ? 'checked' : '' }} style="accent-color: blue;">
-                            <span class="form-check-sign"></span> Estoy de acuerdo con los 
+                            <span class="form-check-sign"></span> HE LEÍDO Y ACEPTO 
                             <a href="{{ route('register') }}" style="color: rgb(38, 119, 246); font-weight: bold;">TÉRMINOS Y CONDICIONES</a>
                             @include('alerts.feedback', ['field' => 'agree_terms_and_conditions'])
                         </label>
