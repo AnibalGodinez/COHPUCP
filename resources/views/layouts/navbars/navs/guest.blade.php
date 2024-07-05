@@ -11,23 +11,23 @@
             <ul class="navbar-nav ml-auto">
                 
                 <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link font-weight-bold">
-                        <i class="tim-icons icon-bank"></i> Página principal
+                    <a href="{{ url('/') }}" class="nav-link font-weight-bold {{ Request::is('/') ? 'text-dark' : '' }}">
+                        <i class="fas fa-home"></i> Página principal
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('register') }}" class="nav-link font-weight-bold">
+                    <a href="{{ route('register') }}" class="nav-link font-weight-bold {{ Request::is('register') ? 'text-dark' : '' }}">
                         <i class="tim-icons icon-laptop"></i> Registrarse
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('login') }}" class="nav-link font-weight-bold">
+                    <a href="{{ route('login') }}" class="nav-link font-weight-bold {{ Request::is('login') ? 'text-dark' : '' }}">
                         <i class="tim-icons icon-single-02"></i> Iniciar sesión
                     </a>
                 </li>
-
+                
             </ul>
         </div>
     </div>
