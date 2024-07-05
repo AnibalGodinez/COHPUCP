@@ -12,7 +12,7 @@ class RoleController extends Controller
     public function __construct()
     {
         $this->middleware('permission:ver roles', ['only' => ['verRoles']]);
-        $this->middleware('permission:indice rol', ['only' => ['index']]);
+        $this->middleware('permission:indice roles', ['only' => ['index']]);
         $this->middleware('permission:actualizar rol', ['only' => ['update','edit']]);
         $this->middleware('permission:crear rol', ['only' => ['create','store']]);
         $this->middleware('permission:borrar rol', ['only' => ['destroy']]);

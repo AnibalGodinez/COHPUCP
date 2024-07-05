@@ -18,7 +18,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item text-uppercase" href="{{ route('profile.index')}}">Ver mi perfil</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('profile.edit')}}">Editar perfil</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('profile.edit')}}">Actualizar perfil</a>
                         <a class="dropdown-item text-uppercase" href="{{ route('cambiar-contrasenia.contrasenia')}}">Cambiar contraseña</a>
                     </div>
                 </li>
@@ -29,11 +29,21 @@
                             aria-haspopup="true" aria-expanded="false">
                             Personas
                         </a>
+
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @can('ver boton ver usuarios')
                             <a class="dropdown-item text-uppercase" href="{{ route('usuarios.ver')}}">Ver usuarios</a>
+                            @endcan
+
+                            @can('ver boton crear usuarios')
                             <a class="dropdown-item text-uppercase" href="{{ route('usuarios.create')}}">Crear usuarios</a>
+                            @endcan
+
+                            @can('ver boton gestionar usuarios')
                             <a class="dropdown-item text-uppercase" href="{{ route('usuarios.index')}}">Gestionar usuarios</a>
+                            @endcan
                         </div>
+
                     </li>
                 @endcan
 

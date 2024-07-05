@@ -13,7 +13,7 @@ use App\Http\Requests\PasswordRequest;
     {
         $this->middleware('permission:ver perfil', ['only' => ['index']]);
         $this->middleware('permission:actualizar perfil', ['only' => ['update','edit']]);
-        $this->middleware('permission:actualizar contrasenia perfil', ['only' => ['cambiarContasenia']]);
+        $this->middleware('permission:actualizar contraseña perfil', ['only' => ['cambiarContasenia']]);
     }
 
 //-----------------------------------------------------------------------------------------------------------------
