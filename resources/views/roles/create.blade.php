@@ -30,7 +30,8 @@
                         
                         <div class="form-group">
                             <label for="description">Descripción del rol</label>
-                            <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" rows="4" placeholder="Ingrese una descripción del rol">{{ old('description') }}</textarea>
+                            <textarea id="description" name="description" class="form-control w-70 @error('description') is-invalid @enderror" rows="4" placeholder="Ingrese una descripción del rol">{{ old('description') }}</textarea>
+                            
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -39,7 +40,7 @@
                         </div>
                         
 
-                        <div class="text-center mt-4">
+                        <div class="mb-3">
                             <button type="submit" class="btn btn-success px-4">Guardar</button>
                             <a href="{{ url('roles') }}" class="btn btn-danger px-4">Cancelar</a>
                         </div>

@@ -23,7 +23,12 @@
 
                         <div class="mb-3">
                             <label for="description">Descripción del permiso</label>
-                            <textarea id="description" name="description" class="form-control w-50">{{ $permission->description }}</textarea>
+                            <textarea id="description" name="description" rows="4" class="form-control w-70 @error('description') is-invalid @enderror">{{ old('description', $permission->description) }}</textarea>
+                            @error('description')
+                                <span class="invalid-feedback" permission="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="mb-3">

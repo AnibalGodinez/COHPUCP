@@ -34,7 +34,13 @@
                         <div class="form-group">
                             <label for="description">Descripción del permiso</label>
                             <textarea id="description" name="description" class="form-control" rows="4" placeholder="Ingrese una descripción del permiso">{{ old('description') }}</textarea>
+                            @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
+
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn-success px-4">Guardar</button>
                             <a href="{{ url('permission') }}" class="btn btn-danger px-4">Cancelar</a>

@@ -16,14 +16,15 @@
                         @csrf
                         @method('PUT')
                         
-                        <div class="mb-3">
+                        <div class="form-group">
                             <label for="name">Nombre del rol</label>
                             <input type="text" id="name" name="name" value="{{ $role->name }}" class="form-control w-50">
                         </div>
                         
-                        <div class="mb-3">
+                        <div class="form-group">
                             <label for="description">Descripción del rol</label>
-                            <textarea id="description" name="description" class="form-control w-70 @error('description') is-invalid @enderror">{{ old('description', $role->description) }}</textarea>
+                            <textarea id="description" name="description" rows="4" class="form-control w-70 @error('description') is-invalid @enderror">{{ old('description', $role->description) }}</textarea>
+                            
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
