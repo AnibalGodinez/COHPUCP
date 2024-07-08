@@ -22,14 +22,23 @@
                 <div class="card-body">
                     <form action="{{ url('roles') }}" method="POST">
                         @csrf
+
                         <div class="form-group">
                             <label for="name">Nombre del rol</label>
                             <input type="text" id="name" name="name" class="form-control" style="max-width: 300px;" value="{{ old('name') }}" placeholder="Ingrese el nombre del rol">
                         </div>
+                        
                         <div class="form-group">
                             <label for="description">Descripción del rol</label>
-                            <textarea id="description" name="description" class="form-control" rows="4" placeholder="Ingrese una descripción del rol">{{ old('description') }}</textarea>
+                            <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" rows="4" placeholder="Ingrese una descripción del rol">{{ old('description') }}</textarea>
+                            @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
+                        
+
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn-success px-4">Guardar</button>
                             <a href="{{ url('roles') }}" class="btn btn-danger px-4">Cancelar</a>

@@ -51,7 +51,7 @@ class RoleController extends Controller
     {
     $request->validate([
         'name' => ['required', 'string', 'unique:roles,name'],
-        'description' => ['nullable', 'string']
+        'description' => ['nullable', 'string', 'max:255']
     ], [
         'name.unique' => 'Este Rol ya existe.'
     ]);
@@ -94,7 +94,7 @@ class RoleController extends Controller
                 'string', 
                 'unique:roles,name,' . $role->id
             ],
-            'description' => ['nullable', 'string'] // Validación para el campo description
+            'description' => ['nullable', 'string', 'max:255'] // Validación para el campo description
         ]);
 
         $role->update([

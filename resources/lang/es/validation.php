@@ -126,4 +126,11 @@ return [
         'year'                     => 'año',
         'required' => 'El campo :attribute es obligatorio.',
     ],
+
+    'max' => [
+        'numeric' => 'El :attribute no debe ser mayor que :max.',
+        'file'    => 'El :attribute no debe ser mayor que :max kilobytes.',
+        'string'  => 'La :attribute no debe ser mayor que :max caracteres.',
+        'array'   => 'El :attribute no debe tener más de :max elementos.',
+    ],
 ];
