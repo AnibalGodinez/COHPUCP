@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Spatie\Permission\Models\Role; // Importa el modelo Role
 
 class RegisterController extends Controller
 {
@@ -58,8 +57,14 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        // Asignar el rol 'Usuario' al nuevo usuario
-        $user->assignRole('Administrador');
+        // Verificar si se ingresó el número de colegiación
+        if ($data['numero_colegiacion']) {
+            // Asignar el rol 'Agremiado'
+            $user->assignRole('Agremiado');
+        } else {
+            // Asignar el rol 'Invitado'
+            $user->assignRole('Invitado');
+        }
 
         return $user;
     }

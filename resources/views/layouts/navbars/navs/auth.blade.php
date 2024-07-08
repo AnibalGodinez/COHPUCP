@@ -23,7 +23,7 @@
                     </div>
                 </li>
 
-                @can('ver boton personas')
+                {{-- @can('ver boton personas') --}}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
@@ -31,13 +31,13 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @can('ver boton ver usuarios')
+                            {{-- @can('ver boton ver usuarios') --}}
                             <a class="dropdown-item text-uppercase" href="{{ route('usuarios.ver')}}">Ver usuarios</a>
-                            @endcan
+                            {{-- @endcan --}}
 
-                            @can('ver boton crear usuarios')
+                            {{-- @can('ver boton crear usuarios') --}}
                             <a class="dropdown-item text-uppercase" href="{{ route('usuarios.create')}}">Crear usuarios</a>
-                            @endcan
+                            {{-- @endcan --}}
 
                             @can('ver boton gestionar usuarios')
                             <a class="dropdown-item text-uppercase" href="{{ route('usuarios.index')}}">Gestionar usuarios</a>
@@ -45,9 +45,9 @@
                         </div>
 
                     </li>
-                @endcan
+                {{-- @endcan --}}
 
-                @can('ver boton roles y permisos')
+                {{-- @can('ver boton roles y permisos') --}}
                     <li class="nav-item dropdown" style="margin-bottom: 10px;">
                         <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdownRoles" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
@@ -70,7 +70,7 @@
                             <a class="dropdown-item text-uppercase" href="{{ route('permission.index')}}">Gestionar permisos</a>
                         </div>
                     </li>
-                @endcan
+                {{-- @endcan --}}
 
                 <script>
                     // Obtener los elementos del DOM

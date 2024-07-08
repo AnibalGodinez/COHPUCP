@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => '$2y$10$zrR4KHv2nDcQjSUp6yBq4OqKD1PDjo8fndTK4sGd1YUuKPwfMRqM6', // password
             'remember_token' => Str::random(10),
-            'estado' => $this->faker->randomElement(['activo', 'inactivo']),
+            'estado' => 'activo'
         ];
     }
 

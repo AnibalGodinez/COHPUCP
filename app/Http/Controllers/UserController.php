@@ -9,14 +9,14 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('permission:ver usuarios', ['only' => ['verUsuarios']]);
-        $this->middleware('permission:indice usuarios', ['only' => ['index']]);
-        $this->middleware('permission:actualizar usuario', ['only' => ['update','edit']]);
-        $this->middleware('permission:crear usuario', ['only' => ['create','store']]);
-        $this->middleware('permission:borrar usuario', ['only' => ['destroy']]);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('permission:ver usuarios', ['only' => ['verUsuarios']]);
+    //     $this->middleware('permission:indice usuarios', ['only' => ['index']]);
+    //     $this->middleware('permission:actualizar usuario', ['only' => ['update','edit']]);
+    //     $this->middleware('permission:crear usuario', ['only' => ['create','store']]);
+    //     $this->middleware('permission:borrar usuario', ['only' => ['destroy']]);
+    // }
 
 //-----------------------------------------------------------------------------------------------------------------
     public function index(Request $request)
@@ -37,9 +37,7 @@ class UserController extends Controller
                   ->orWhere('fecha_nacimiento', 'LIKE', "%{$search}%")
                   ->orWhere('telefono', 'LIKE', "%{$search}%")
                   ->orWhere('telefono_celular', 'LIKE', "%{$search}%")
-                  ->orWhere('email', 'LIKE', "%{$search}%")
-                  ->orWhere('estado', 'LIKE', "%{$search}%")
-                  ->orWhere('rol', 'LIKE', "%{$search}%");
+                  ->orWhere('email', 'LIKE', "%{$search}%");
         })
         ->orderBy('id', 'desc')
         ->with('roles')->paginate(4);
@@ -78,7 +76,6 @@ class UserController extends Controller
             'telefono_celular' => 'required|string|max:20', 
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|max:20',
-            'estado' => 'required|in:activo,inactivo',
         ]);
 
         $user = User::create([
@@ -95,7 +92,6 @@ class UserController extends Controller
             'telefono_celular' => $request->telefono_celular,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'estado' => $request->estado,
         ]);
 
         $user->syncRoles($request->roles);
@@ -132,7 +128,7 @@ class UserController extends Controller
             'telefono_celular' => 'required|string|max:20', 
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|max:20',
-            'estado' => 'required|in:activo,inactivo',
+     
         ]);
 
         $data = [
@@ -148,7 +144,6 @@ class UserController extends Controller
             'telefono' => $request->telefono,
             'telefono_celular' => $request->telefono_celular,
             'email' => $request->email,
-            'estado' => $request->estado,
         ];
 
         if(!empty($request->password)){
@@ -189,9 +184,7 @@ class UserController extends Controller
                     ->orWhere('fecha_nacimiento', 'LIKE', "%{$search}%")
                     ->orWhere('telefono', 'LIKE', "%{$search}%")
                     ->orWhere('telefono_celular', 'LIKE', "%{$search}%")
-                    ->orWhere('email', 'LIKE', "%{$search}%")
-                    ->orWhere('estado', 'LIKE', "%{$search}%")
-                    ->orWhere('rol', 'LIKE', "%{$search}%");
+                    ->orWhere('email', 'LIKE', "%{$search}%");
             })
             ->orderBy('id', 'desc')
             ->with('roles')
