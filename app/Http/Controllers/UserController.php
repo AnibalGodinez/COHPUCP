@@ -9,14 +9,14 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('permission:ver usuarios', ['only' => ['verUsuarios']]);
-    //     $this->middleware('permission:indice usuarios', ['only' => ['index']]);
-    //     $this->middleware('permission:actualizar usuario', ['only' => ['update','edit']]);
-    //     $this->middleware('permission:crear usuario', ['only' => ['create','store']]);
-    //     $this->middleware('permission:borrar usuario', ['only' => ['destroy']]);
-    // }
+    public function __construct()
+    {
+        $this->middleware('permission:ver usuarios', ['only' => ['verUsuarios']]);
+        $this->middleware('permission:indice usuarios', ['only' => ['index']]);
+        $this->middleware('permission:actualizar usuario', ['only' => ['update','edit']]);
+        $this->middleware('permission:crear usuario', ['only' => ['create','store']]);
+        $this->middleware('permission:borrar usuario', ['only' => ['destroy']]);
+    }
 
 //-----------------------------------------------------------------------------------------------------------------
     public function index(Request $request)

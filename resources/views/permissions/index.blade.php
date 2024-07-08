@@ -4,13 +4,13 @@
     <div class="row">
         <div class="col-md-12">
 
-            @if (session('status'))
-            <div class="alert alert-success text-center">{{ session('status') }}</div>
-            @endif
-
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title text-center">Gestión de permisos</h3>
+
+                    @if (session('status'))
+                        <div class="alert alert-success text-center">{{ session('status') }}</div>
+                    @endif
 
                     {{-- Formulario de búsqueda --}}
                     <form action="{{ url('permission') }}" method="GET" class="form-inline mt-3">

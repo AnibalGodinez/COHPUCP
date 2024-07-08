@@ -6,19 +6,21 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\facades\DB;
+use Illuminate\Support\Facades\Route;
 
 class RoleController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('permission:ver roles', ['only' => ['verRoles']]);
-    //     $this->middleware('permission:indice roles', ['only' => ['index']]);
-    //     $this->middleware('permission:actualizar rol', ['only' => ['update','edit']]);
-    //     $this->middleware('permission:crear rol', ['only' => ['create','store']]);
-    //     $this->middleware('permission:borrar rol', ['only' => ['destroy']]);
-    //     $this->middleware('permission:agregar permisos al rol', ['only' => ['AddPermissionRole', 'givePermissionRole']]);
-    // }
-    
+
+    public function __construct()
+    {
+        $this->middleware('permission:ver roles', ['only' => ['verRoles']]);
+        $this->middleware('permission:indice roles', ['only' => ['index']]);
+        $this->middleware('permission:actualizar rol', ['only' => ['update','edit']]);
+        $this->middleware('permission:crear rol', ['only' => ['create','store']]);
+        $this->middleware('permission:eliminar rol', ['only' => ['destroy']]);
+        $this->middleware('permission:agregar permisos al rol', ['only' => ['AddPermissionRole', 'givePermissionRole']]);
+    }
+
 //-----------------------------------------------------------------------------------------------------------------
     public function index(Request $request)
     {
@@ -34,7 +36,7 @@ class RoleController extends Controller
             }); 
         } 
         $roles->orderBy('id', 'desc');
-        $roles = $roles->paginate(4); 
+        $roles = $roles->paginate(8); 
         return view('roles.index', ['roles' => $roles]);
     }
     
@@ -47,23 +49,34 @@ class RoleController extends Controller
 //-----------------------------------------------------------------------------------------------------------------
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'unique:roles,name'],
-            'description' => ['nullable', 'string'] // Validación para el campo description
-        ], [
-            'name.unique' => 'Este Rol ya existe'
+    $request->validate([
+        'name' => ['required', 'string', 'unique:roles,name'],
+        'description' => ['nullable', 'string']
+    ], [
+        'name.unique' => 'Este Rol ya existe.'
+    ]);
+
+    try {
+        $role = Role::create([
+            'name' => $request->name,
+            'description' => $request->description
         ]);
 
-        try {
-            Role::create([
-                'name' => $request->name,
-                'description' => $request->description // Almacenamiento del campo description
-            ]);
+        $this->addToRouteGroup($role); // Llamar función para agregar al grupo de rutas
 
-            return redirect('roles')->with('status', 'El rol se ha creado exitosamente');
-        } catch (\Exception $e) {
-            return redirect()->back()->withInput()->withErrors(['error' => 'Error inesperado: ' . $e->getMessage()]);
-        }
+        return redirect('roles')->with('status', 'El rol se ha creado exitosamente.');
+    } catch (\Exception $e) {
+        return redirect()->back()->withInput()->withErrors(['error' => 'Error inesperado: ' . $e->getMessage()]);
+    }
+    }
+
+    protected function addToRouteGroup($role)
+    {
+    $roleName = strtolower($role->name);
+
+    Route::group(['middleware' => ['auth', "role:$roleName"]], function () {
+        // Aquí puedes definir las rutas específicas para este nuevo rol si lo deseas
+    });
     }
 
 //-----------------------------------------------------------------------------------------------------------------
@@ -141,7 +154,7 @@ class RoleController extends Controller
                              ->orWhere('description', 'like', "%{$search}%");
             })
             ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->paginate(8);
 
         return view('roles.view', compact('roles'));
     }
