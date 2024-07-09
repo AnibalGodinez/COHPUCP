@@ -367,16 +367,40 @@
                             </div>
                         </div>
                         <input 
-                        type="password" 
-                        name="password" 
-                        class="form-control" 
-                        placeholder="********"
-                        minlength="8"
-                        maxlength="20" 
-                        value="{{ old('password') }}" 
-                        required>
+                            type="password" 
+                            name="password" 
+                            id="password" 
+                            class="form-control" 
+                            placeholder="********"
+                            minlength="8"
+                            maxlength="20" 
+                            value="{{ old('password') }}" 
+                            required>
+                        @if ($errors->has('password'))
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
                     </div>
-                    
+
+                    @push('scripts')
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            document.getElementById('password').addEventListener('input', function () {
+                                var password = this.value;
+                                var regex = /^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
+                                var isValid = regex.test(password);
+
+                                if (!isValid) {
+                                    this.setCustomValidity('La contraseña debe contener al menos un símbolo o caracter especial.');
+                                } else {
+                                    this.setCustomValidity('');
+                                }
+                            });
+                        });
+                    </script>
+                    @endpush
+
                     <!-- Campo para la confirmación de la contraseña -->
                     <div class="input-group form-group col-md-6">
                         <div class="input-group-prepend">
@@ -392,6 +416,11 @@
                         minlength="8"
                         maxlength="20"
                         required>
+                        @if ($errors->has('password_confirmation'))
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $errors->first('password_confirmation') }}</strong>
+                            </span>
+                        @endif
                     </div>
 
                     <!-- Campo para los términos y condiciones -->

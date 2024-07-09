@@ -75,7 +75,7 @@ class UserController extends Controller
             'telefono' => 'nullable|string|max:20',
             'telefono_celular' => 'required|string|max:20', 
             'email' => 'required|email|max:255|unique:users,email',
-            'password' => 'required|string|min:8|max:20',
+            'password' => ['required', 'string', 'min:8', 'max:20', 'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/'],
         ]);
 
         $user = User::create([
@@ -127,8 +127,7 @@ class UserController extends Controller
             'telefono' => 'nullable|string|max:20',
             'telefono_celular' => 'required|string|max:20', 
             'email' => 'required|email|max:255|unique:users,email',
-            'password' => 'required|string|min:8|max:20',
-     
+            'password' => ['required', 'string', 'min:8', 'max:20', 'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/'],     
         ]);
 
         $data = [

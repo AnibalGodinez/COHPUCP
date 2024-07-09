@@ -293,22 +293,31 @@
                                 placeholder="********"
                                 minlength="8"
                                 maxlength="20"
-                                 
                                 value="{{ old('password') }}" 
                                 required>
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                             </div>
 
                             <div class="form-group col-md-3">
                                 <label for=""><strong>Confirmar Contraseña *</strong></label>
                                 <input 
-                                    type="password" 
-                                    name="password_confirmation" 
-                                    class="form-control" 
-                                    placeholder="********"
-                                    minlength="8"
-                                    maxlength="20" 
-                                    value="{{ old('password_confirmation') }}" 
-                                    required>
+                                type="password" 
+                                name="password_confirmation" 
+                                class="form-control" 
+                                placeholder="********"
+                                minlength="8"
+                                maxlength="20" 
+                                value="{{ old('password_confirmation') }}" 
+                                required>
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             
                             <div class="form-group col-md-3">
