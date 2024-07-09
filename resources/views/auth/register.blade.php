@@ -23,9 +23,19 @@
                                 <i class="tim-icons icon-single-02"></i>
                             </div>
                         </div>
-                        <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ _('Primer nombre') }}" value="{{ old('name') }}">
-                        @include('alerts.feedback', ['field' => 'name'])
+                        <input 
+                        type="text" 
+                        name="name" 
+                        class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" 
+                        placeholder="Primer nombre" 
+                        value="{{ old('name') }}"                         
+                        pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
+                        title="Solo se permiten letras"
+                        maxlength="40"
+                        required>
                     </div>
+
+                    
                     <!-- Campo para el segundo nombre -->
                     <div class="input-group{{ $errors->has('name2') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
@@ -33,9 +43,17 @@
                                 <i class="tim-icons icon-single-02"></i>
                             </div>
                         </div>
-                        <input type="text" name="name2" class="form-control{{ $errors->has('name2') ? ' is-invalid' : '' }}" placeholder="{{ _('Segundo nombre') }}" value="{{ old('name2') }}">
-                        @include('alerts.feedback', ['field' => 'name2'])
+                        <input 
+                        type="text" 
+                        name="name2" 
+                        class="form-control{{ $errors->has('name2') ? ' is-invalid' : '' }}" 
+                        placeholder="Segundo nombre" 
+                        value="{{ old('name2') }}"                         
+                        pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
+                        title="Solo se permiten letras"
+                        maxlength="40">
                     </div>
+
                     <!-- Campo para el primer apellido -->
                     <div class="input-group{{ $errors->has('apellido') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
@@ -43,9 +61,18 @@
                                 <i class="tim-icons icon-single-02"></i>
                             </div>
                         </div>
-                        <input type="text" name="apellido" class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" placeholder="{{ _('Primer apellido') }}" value="{{ old('apellido') }}">
-                        @include('alerts.feedback', ['field' => 'apellido'])
+                        <input 
+                        type="text" 
+                        name="apellido" 
+                        class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" 
+                        placeholder="Primer apellido" 
+                        value="{{ old('apellido') }}"                         
+                        pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
+                        title="Solo se permiten letras"
+                        maxlength="40" 
+                        required>
                     </div>
+
                     <!-- Campo para el segundo apellido -->
                     <div class="input-group{{ $errors->has('apellido2') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
@@ -53,9 +80,17 @@
                                 <i class="tim-icons icon-single-02"></i>
                             </div>
                         </div>
-                        <input type="text" name="apellido2" class="form-control{{ $errors->has('apellido2') ? ' is-invalid' : '' }}" placeholder="{{ _('Segundo apellido') }}" value="{{ old('apellido2') }}">
-                        @include('alerts.feedback', ['field' => 'apellido2'])
+                        <input 
+                        type="text" 
+                        name="apellido2" 
+                        class="form-control{{ $errors->has('apellido2') ? ' is-invalid' : '' }}" 
+                        placeholder="Segundo apellido" 
+                        value="{{ old('apellido2') }}"                         
+                        pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
+                        title="Solo se permiten letras"
+                        maxlength="40">
                     </div>
+{{-- ============================================================================================================================== --}}
                     <!-- Campo para el número de identidad -->
                     <div class="input-group{{ $errors->has('numero_identidad') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
@@ -63,9 +98,32 @@
                                 <i class="tim-icons icon-badge"></i>
                             </div>
                         </div>
-                        <input type="text" name="numero_identidad" class="form-control{{ $errors->has('numero_identidad') ? ' is-invalid' : '' }}" placeholder="{{ _('Número de identidad') }}" value="{{ old('numero_identidad') }}">
-                        @include('alerts.feedback', ['field' => 'numero_identidad'])
+                        <input 
+                        type="num" 
+                        name="numero_identidad" 
+                        class="form-control" 
+                        id="numero_identidad" 
+                        placeholder="Ingrese su DNI (SIN GUIONES)" 
+                        maxlength="15" 
+                        pattern="\d{4}-\d{4}-\d{5}" 
+                        required>
                     </div>
+
+                    <script>
+                        document.getElementById('numero_identidad').addEventListener('input', function (e) {
+                            var input = e.target.value.replace(/[^0-9]/g, '');
+                            if (input.length <= 4) {
+                                input = input;
+                            } else if (input.length <= 8) {
+                                input = input.slice(0, 4) + '-' + input.slice(4);
+                            } else if (input.length <= 13) {
+                                input = input.slice(0, 4) + '-' + input.slice(4, 8) + '-' + input.slice(8);
+                            }
+                            e.target.value = input;
+                        });
+                    </script>
+{{-- ============================================================================================================================== --}}
+
                     <!-- Campo para el número de colegiación -->
                     <div class="input-group{{ $errors->has('numero_colegiacion') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
@@ -73,9 +131,34 @@
                                 <i class="tim-icons icon-badge"></i>
                             </div>
                         </div>
-                        <input type="text" name="numero_colegiacion" class="form-control{{ $errors->has('numero_colegiacion') ? ' is-invalid' : '' }}" placeholder="{{ _('Número de colegiación') }}" value="{{ old('numero_colegiacion') }}">
-                        @include('alerts.feedback', ['field' => 'numero_colegiacion'])
+                        <input 
+                        type="num" 
+                        name="numero_colegiacion" 
+                        class="form-control" 
+                        id="numero_colegiacion" 
+                        placeholder="Nº de coleagiación (SIN GUIONES)" 
+                        maxlength="12" 
+                        pattern="\d{4}-\d{2}-\d{4}">
                     </div>
+
+                    <script>
+                        document.getElementById('numero_colegiacion').addEventListener('input', function (e) {
+                            var input = e.target.value.replace(/\D/g, '');
+                            var formatted = '';
+                    
+                            if (input.length <= 4) {
+                                formatted = input;
+                            } else if (input.length <= 6) {
+                                formatted = input.slice(0, 4) + '-' + input.slice(4);
+                            } else {
+                                formatted = input.slice(0, 4) + '-' + input.slice(4, 6) + '-' + input.slice(6, 10);
+                            }
+                    
+                            e.target.value = formatted;
+                        });
+                    </script>
+{{-- ============================================================================================================================== --}}
+
                     <!-- Campo para RTN -->
                     <div class="input-group{{ $errors->has('rtn') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
@@ -158,7 +241,9 @@
                             </div>
                         </div>
                         <input type="password" name="password_confirmation" class="form-control" placeholder="{{ _('Confirmar contraseña') }}">
+                        @include('alerts.feedback', ['field' => 'password_confirmation'])
                     </div>
+
                     <!-- Campo para los términos y condiciones -->
                     <div class="form-check mt-3 {{ $errors->has('agree_terms_and_conditions') ? ' has-danger' : '' }} form-group col-md-8">
                         <label class="form-check-label">
