@@ -325,8 +325,13 @@
                                 <i class="tim-icons icon-email-85"></i>
                             </div>
                         </div>
-                        <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ _('Correo electrónico') }}" value="{{ old('email') }}">
-                        @include('alerts.feedback', ['field' => 'email'])
+                        <input 
+                        type="email" 
+                        name="email" 
+                        class="form-control" 
+                        placeholder="Ingrese su correo electrónico" 
+                        value="{{ old('email') }}" 
+                        required>
                     </div>
 
                     
@@ -337,9 +342,17 @@
                                 <i class="tim-icons icon-lock-circle"></i>
                             </div>
                         </div>
-                        <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ _('Contraseña') }}">
-                        @include('alerts.feedback', ['field' => 'password'])
+                        <input 
+                        type="password" 
+                        name="password" 
+                        class="form-control" 
+                        placeholder="********"
+                        minlength="8"
+                        maxlength="20" 
+                        value="{{ old('password') }}" 
+                        required>
                     </div>
+                    
                     <!-- Campo para la confirmación de la contraseña -->
                     <div class="input-group form-group col-md-6">
                         <div class="input-group-prepend">
@@ -347,8 +360,14 @@
                                 <i class="tim-icons icon-lock-circle"></i>
                             </div>
                         </div>
-                        <input type="password" name="password_confirmation" class="form-control" placeholder="{{ _('Confirmar contraseña') }}">
-                        @include('alerts.feedback', ['field' => 'password_confirmation'])
+                        <input 
+                        type="password" 
+                        name="password_confirmation" 
+                        class="form-control" 
+                        placeholder="********"
+                        minlength="8"
+                        maxlength="20"
+                        required>
                     </div>
 
                     <!-- Campo para los términos y condiciones -->
