@@ -221,33 +221,57 @@
                             </div>
                         </div>
                         <input 
-                        type="date" 
-                        name="fecha_nacimiento" 
-                        class="form-control"
-                        value="{{ old('fecha_nacimiento') }}"
-                        id="fecha_nacimiento"                                                           
-                        min="1924-01-01" 
-                        max="2006-12-31" 
-                        oninvalid="this.setCustomValidity('Por favor, ingrese una fecha entre 1924 y 2006.')"
-                        required>
+                            type="date" 
+                            name="fecha_nacimiento" 
+                            class="form-control"
+                            value="{{ old('fecha_nacimiento') }}"
+                            id="fecha_nacimiento"                                                           
+                            required>
                     </div>
 
                     <script>
-                        document.getElementById('fecha_nacimiento').addEventListener('input', function () {
-                            var fechaInput = this.value;
-                            var fechaMinima = new Date('1924-01-01');
-                            var fechaMaxima = new Date('2006-12-31');
-                            var fechaSeleccionada = new Date(fechaInput);
-                    
-                            if (fechaSeleccionada < fechaMinima || fechaSeleccionada > fechaMaxima) {
-                                this.setCustomValidity('Por favor, ingrese una fecha entre 1924 y 2006.');
-                                this.classList.add('is-invalid');
-                            } else {
-                                this.setCustomValidity('');
-                                this.classList.remove('is-invalid');
+                    document.addEventListener('DOMContentLoaded', function () {
+                        // Obtener el elemento del campo de fecha de nacimiento
+                        var fechaNacimiento = document.getElementById('fecha_nacimiento');
+
+                        // Calcular el año máximo permitido (100 años atrás desde el año actual)
+                        var fechaActual = new Date();
+                        var yearActual = fechaActual.getFullYear();
+                        var yearMin = yearActual - 100;
+                        var yearMax = 2005; // Año máximo permitido para la fecha de nacimiento
+
+                        // Calcular el año mínimo permitido (100 años atrás desde el año máximo permitido)
+                        var yearMinAllowed = yearMax - 100;
+
+                        // Formatear la fecha mínima permitida en formato YYYY-MM-DD
+                        var fechaMin = yearMinAllowed + '-' + ('0' + (fechaActual.getMonth() + 1)).slice(-2) + '-' + ('0' + fechaActual.getDate()).slice(-2);
+
+                        // Establecer los atributos mínimos y máximos en el campo de fecha de nacimiento
+                        fechaNacimiento.setAttribute('min', fechaMin);
+                        fechaNacimiento.setAttribute('max', yearMax + '-12-31'); // Establecer el último día del año máximo
+
+                        // Función para actualizar el rango de años permitido cada año nuevo
+                        function actualizarRangoAnios() {
+                            var newYearMinAllowed = yearMax - 100;
+                            fechaNacimiento.setAttribute('min', newYearMinAllowed + '-01-01');
+                            yearMinAllowed = newYearMinAllowed;
+                            yearMax++;
+                            fechaNacimiento.setAttribute('max', yearMax + '-12-31');
+                        }
+
+                        // Llamar a la función para establecer inicialmente el rango de años
+                        actualizarRangoAnios();
+
+                        // Llamar a la función para actualizar el rango de años cada vez que se inicie un nuevo año
+                        setInterval(function() {
+                            var currentYear = new Date().getFullYear();
+                            if (currentYear > yearMax) {
+                                actualizarRangoAnios();
                             }
-                        });
+                        }, 1000 * 60 * 60); // Revisar cada hora si es necesario actualizar el rango de años
+                    });
                     </script>
+
 
 {{-- ============================================================================================================================== --}}
 
