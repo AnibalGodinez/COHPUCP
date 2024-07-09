@@ -104,6 +104,7 @@
                         class="form-control" 
                         id="numero_identidad" 
                         placeholder="Ingrese su DNI (SIN GUIONES)" 
+                        value="{{ old('numero_identidad') }}" 
                         maxlength="15" 
                         pattern="\d{4}-\d{4}-\d{5}" 
                         required>
@@ -136,7 +137,8 @@
                         name="numero_colegiacion" 
                         class="form-control" 
                         id="numero_colegiacion" 
-                        placeholder="Nº de coleagiación (SIN GUIONES)" 
+                        placeholder="Nº de coleagiación (SIN GUIONES)"
+                        value="{{ old('numero_colegiacion') }}" 
                         maxlength="12" 
                         pattern="\d{4}-\d{2}-\d{4}">
                     </div>
@@ -166,9 +168,35 @@
                                 <i class="tim-icons icon-notes"></i>
                             </div>
                         </div>
-                        <input type="text" name="rtn" class="form-control{{ $errors->has('rtn') ? ' is-invalid' : '' }}" placeholder="{{ _('RTN') }}" value="{{ old('rtn') }}">
-                        @include('alerts.feedback', ['field' => 'rtn'])
+                        <input 
+                        type="num" 
+                        name="rtn" 
+                        class="form-control" 
+                        id="rtn" 
+                        placeholder="Ingrese su RTN (SIN GUIONES)"
+                        value="{{ old('rtn') }}"
+                        maxlength="16" 
+                        pattern="\d{4}-\d{4}-\d{6}">
                     </div>
+
+                    <script>
+                        document.getElementById('rtn').addEventListener('input', function (e) {
+                            var input = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+                            var formatted = '';
+                    
+                            if (input.length <= 4) {
+                                formatted = input;
+                            } else if (input.length <= 8) {
+                                formatted = input.slice(0, 4) + '-' + input.slice(4);
+                            } else {
+                                formatted = input.slice(0, 4) + '-' + input.slice(4, 8) + '-' + input.slice(8, 14);
+                            }
+                    
+                            e.target.value = formatted;
+                        });
+                    </script>
+{{-- ============================================================================================================================== --}}
+
                     <!-- Campo para sexo -->
                     <div class="input-group{{ $errors->has('sexo') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
@@ -176,13 +204,15 @@
                                 <i class="tim-icons icon-single-02"></i>
                             </div>
                         </div>
-                        <select name="sexo" class="form-control{{ $errors->has('sexo') ? ' is-invalid' : '' }}">
+                        <select name="sexo" class="form-control{{ $errors->has('sexo') ? ' is-invalid' : '' }}" value="{{ old('sexo') }}" required>
                             <option value="">{{ _('Seleccione sexo') }}</option>
-                            <option value="masculino" {{ old('sexo') == 'masculino' ? 'selected' : '' }}>{{ _('Masculino') }}</option>
-                            <option value="femenino" {{ old('sexo') == 'femenino' ? 'selected' : '' }}>{{ _('Femenino') }}</option>
+                            <option value="masculino" {{ old('sexo') == 'masculino' ? 'selected' : '' }}>Masculino</option>
+                            <option value="femenino" {{ old('sexo') == 'femenino' ? 'selected' : '' }}>Femenino</option>
                         </select>
                         @include('alerts.feedback', ['field' => 'sexo'])
                     </div>
+{{-- ============================================================================================================================== --}}
+
                     <!-- Campo para fecha de nacimiento -->
                     <div class="input-group{{ $errors->has('fecha_nacimiento') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
@@ -190,9 +220,37 @@
                                 <i class="tim-icons icon-calendar-60"></i>
                             </div>
                         </div>
-                        <input type="date" name="fecha_nacimiento" class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}" placeholder="{{ _('Fecha de nacimiento') }}" value="{{ old('fecha_nacimiento') }}">
-                        @include('alerts.feedback', ['field' => 'fecha_nacimiento'])
+                        <input 
+                        type="date" 
+                        name="fecha_nacimiento" 
+                        class="form-control"
+                        value="{{ old('fecha_nacimiento') }}"
+                        id="fecha_nacimiento"                                                           
+                        min="1924-01-01" 
+                        max="2006-12-31" 
+                        oninvalid="this.setCustomValidity('Por favor, ingrese una fecha entre 1924 y 2006.')"
+                        required>
                     </div>
+
+                    <script>
+                        document.getElementById('fecha_nacimiento').addEventListener('input', function () {
+                            var fechaInput = this.value;
+                            var fechaMinima = new Date('1924-01-01');
+                            var fechaMaxima = new Date('2006-12-31');
+                            var fechaSeleccionada = new Date(fechaInput);
+                    
+                            if (fechaSeleccionada < fechaMinima || fechaSeleccionada > fechaMaxima) {
+                                this.setCustomValidity('Por favor, ingrese una fecha entre 1924 y 2006.');
+                                this.classList.add('is-invalid');
+                            } else {
+                                this.setCustomValidity('');
+                                this.classList.remove('is-invalid');
+                            }
+                        });
+                    </script>
+
+{{-- ============================================================================================================================== --}}
+
                     <!-- Campo para teléfono -->
                     <div class="input-group{{ $errors->has('telefono') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
@@ -200,9 +258,17 @@
                                 <i class="tim-icons icon-mobile"></i>
                             </div>
                         </div>
-                        <input type="text" name="telefono" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" placeholder="{{ _('Teléfono') }}" value="{{ old('telefono') }}">
-                        @include('alerts.feedback', ['field' => 'telefono'])
+                        <input 
+                        type="num" 
+                        name="telefono" 
+                        class="form-control" 
+                        id="telefono" 
+                        placeholder="Teléfono casa (SIN GUIONES)"
+                        value="{{ old('telefono') }}"
+                        pattern="\d{4}-\d{4}"
+                        maxlength="9">
                     </div>
+
                     <!-- Campo para teléfono celular -->
                     <div class="input-group{{ $errors->has('telefono_celular') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
@@ -210,9 +276,48 @@
                                 <i class="tim-icons icon-mobile"></i>
                             </div>
                         </div>
-                        <input type="text" name="telefono_celular" class="form-control{{ $errors->has('telefono_celular') ? ' is-invalid' : '' }}" placeholder="{{ _('Teléfono celular') }}" value="{{ old('telefono_celular') }}">
-                        @include('alerts.feedback', ['field' => 'telefono_celular'])
+                        <input 
+                        type="num" 
+                        name="telefono_celular" 
+                        class="form-control" 
+                        id="telefono_celular" 
+                        placeholder="Teléfono celular (SIN GUIONES)"
+                        value="{{ old('telefono_celular') }}"
+                        pattern="\d{4}-\d{4}"
+                        maxlength="9"
+                        required>
                     </div>
+
+                    <script>
+                        document.getElementById('telefono').addEventListener('input', function (e) {
+                            var input = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+                            var formatted = '';
+                    
+                            if (input.length <= 4) {
+                                formatted = input;
+                            } else {
+                                formatted = input.slice(0, 4) + '-' + input.slice(4, 8);
+                            }
+                    
+                            e.target.value = formatted;
+                        });
+                    
+                        document.getElementById('telefono_celular').addEventListener('input', function (e) {
+                            var input = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+                            var formatted = '';
+                    
+                            if (input.length <= 4) {
+                                formatted = input;
+                            } else {
+                                formatted = input.slice(0, 4) + '-' + input.slice(4, 8);
+                            }
+                    
+                            e.target.value = formatted;
+                        });
+                    </script>
+                    
+{{-- ============================================================================================================================== --}}
+
                     <!-- Campo para correo electrónico -->
                     <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
@@ -223,6 +328,8 @@
                         <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ _('Correo electrónico') }}" value="{{ old('email') }}">
                         @include('alerts.feedback', ['field' => 'email'])
                     </div>
+
+                    
                     <!-- Campo para la contraseña -->
                     <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
