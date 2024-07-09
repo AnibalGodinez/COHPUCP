@@ -30,7 +30,7 @@
                         placeholder="Primer nombre" 
                         value="{{ old('name') }}"                         
                         pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
-                        title="Solo se permiten letras"
+                        title="En este campo sólo se permiten letras"
                         maxlength="40"
                         required>
                     </div>
@@ -50,7 +50,7 @@
                         placeholder="Segundo nombre" 
                         value="{{ old('name2') }}"                         
                         pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
-                        title="Solo se permiten letras"
+                        title="En este campo sólo se permiten letras"
                         maxlength="40">
                     </div>
 
@@ -68,7 +68,7 @@
                         placeholder="Primer apellido" 
                         value="{{ old('apellido') }}"                         
                         pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
-                        title="Solo se permiten letras"
+                        title="En este campo sólo se permiten letras"
                         maxlength="40" 
                         required>
                     </div>
@@ -87,7 +87,7 @@
                         placeholder="Segundo apellido" 
                         value="{{ old('apellido2') }}"                         
                         pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
-                        title="Solo se permiten letras"
+                        title="En este campo sólo se permiten letras"
                         maxlength="40">
                     </div>
 {{-- ============================================================================================================================== --}}

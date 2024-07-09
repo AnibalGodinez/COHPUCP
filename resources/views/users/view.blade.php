@@ -12,7 +12,7 @@
                 <div class="card m-7">
                     
                     <div class="card-body">
-                        <h2 class="card-title text-center font-weight-bold">Lista de Usuarios</h2>
+                        <h2 class="card-title text-center font-weight-bold">Lista de usuarios</h2>
 
                         {{-- Formulario de búsqueda --}}
                         <form method="GET" action="{{ route('usuarios.ver') }}" class="form-inline mt-3">
@@ -22,7 +22,6 @@
                             </button>
                         </form>
                     
-
                         @if($users->isEmpty())
                             <div class="alert alert-default text-center" role="alert">
                                 No hay ningún resultado de su búsqueda.
@@ -36,19 +35,16 @@
                                             <th class="text-center">Segundo nombre</th>
                                             <th class="text-center">Primer apellido</th>
                                             <th class="text-center">Segundo apellido</th>
-                                            <th class="text-center">Número de identidad </th>
-                                            <th class="text-center">Número de colegiación</th>
+                                            <th class="text-center">DNI</th>
+                                            <th class="text-center">Nº colegiación</th>
                                             <th class="text-center">RTN</th>
                                             <th class="text-center">Sexo</th>
                                             <th class="text-center">Fecha de nacimiento</th>
                                             <th class="text-center">Teléfono</th>
-                                            <th class="text-center">Teléfono celular</th>
-
-
+                                            <th class="text-center">Celular</th>
                                             <th class="text-center">Correo electrónico</th>
                                             <th class="text-center">Estado</th>
-                                            <th class="text-center">Roles</th>
-                                            <th class="text-center">Fecha de Registro</th>
+                                            <th class="text-center">Rol</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -66,7 +62,6 @@
                                                 <td>{{ $user->fecha_nacimiento }}</td>
                                                 <td>{{ $user->telefono }}</td>
                                                 <td>{{ $user->telefono_celular }}</td>
-
                                                 <td>{{ $user->email }}</td>
                                                 <td class="text-center">{{ $user->estado }}</td>
                                                 <td class="text-center">
@@ -76,7 +71,6 @@
                                                         @endforeach
                                                     @endif
                                                 </td>
-                                                <td class="text-center">{{ $user->created_at->format('d/m/Y H:i:s') }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
