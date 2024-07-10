@@ -4,15 +4,14 @@
 <div class="container-fluid mt-5">
     <div class="row">
         <div class="col-md-12">
-
-            @if (session('status'))
-            <div class="alert alert-success text-center">{{ session('status') }}</div>
-            @endif
-
             <div class="card mt-7">
 
                 <div class="card-body">
                     <h2 class="text-center font-weight-bold">Gestionar usuarios</h2>
+
+                    @if (session('status'))
+                        <div class="alert alert-success text-center">{{ session('status') }}</div>
+                    @endif
 
                     {{-- Formulario de búsqueda --}}
                     <form action="{{ url('usuarios') }}" method="GET" class="form-inline mt-3">

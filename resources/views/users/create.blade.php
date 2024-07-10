@@ -18,6 +18,7 @@
                                 type="text" 
                                 name="name" class="form-control" 
                                 placeholder="Ingrese el primer nombre"
+                                value="{{ old('name') }}"
                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                                 title="En este campo sólo se permiten letras"
                                 maxlength="40"
@@ -31,6 +32,7 @@
                                 type="text" 
                                 name="name2" class="form-control" 
                                 placeholder="Ingrese el primer nombre"
+                                value="{{ old('name2') }}"
                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                                 title="En este campo sólo se permiten letras"
                                 maxlength="40">
@@ -159,17 +161,18 @@
                             <!-- Campo para el Sexo -->
                             <div class="form-group col-md-3">
                                 <label for="sexo"><strong>Sexo *</strong></label>
-                                <select 
-                                name="sexo" 
-                                class="form-control" 
-                                id="sexo"
-                                value="{{ old('sexo') }}" 
-                                required>
+                                <select name="sexo" class="form-control @error('sexo') is-invalid @enderror" id="sexo" required>
                                     <option value="">Seleccione una opción</option>
-                                    <option value="masculino">Masculino</option>
-                                    <option value="femenino">Femenino</option>
+                                    <option value="masculino" {{ old('sexo') == 'masculino' ? 'selected' : '' }}>Masculino</option>
+                                    <option value="femenino" {{ old('sexo') == 'femenino' ? 'selected' : '' }}>Femenino</option>
                                 </select>
+                                @error('sexo')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
+
 
                             <!-- Campo para la Fecha de Nacimiento -->
                             <div class="form-group col-md-3">
@@ -294,55 +297,60 @@
                                 value="{{ old('email') }}" 
                                 required>
                             </div>
+                          
+                            <!-- Campo para el Rol -->
+                            <div class="form-group col-md-3">
+                                <label for=""><strong>Rol *</strong></label>
+                                <select name="roles[]" class="form-control @error('roles') is-invalid @enderror" required>
+                                    <option value="">Seleccione un rol</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role }}" {{ in_array($role, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
+                                    @endforeach
+                                </select>
+                                @error('roles')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
 
                             <!-- Campo para la contraseña  -->
                             <div class="form-group col-md-3">
-                                <label for=""><strong>Contraseña *</strong></label>
+                                <label for="password"><strong>Contraseña *</strong></label>
                                 <input 
-                                type="password" 
-                                name="password" 
-                                class="form-control" 
-                                placeholder="Ingrese la contraseña"
-                                minlength="8"
-                                maxlength="20"
-                                value="{{ old('password') }}" 
-                                required>
-                                @if ($errors->has('password'))
+                                    type="password" 
+                                    name="password" 
+                                    class="form-control @error('password') is-invalid @enderror" 
+                                    placeholder="Ingrese la contraseña"
+                                    minlength="8"
+                                    maxlength="20"
+                                    required>
+                                @error('password')
                                     <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
 
                             <!-- Campo para la confirmación de la contraseña  -->
                             <div class="form-group col-md-3">
-                                <label for=""><strong>Confirmar Contraseña *</strong></label>
+                                <label for="password_confirmation"><strong>Confirmar Contraseña *</strong></label>
                                 <input 
-                                type="password" 
-                                name="password_confirmation" 
-                                class="form-control" 
-                                placeholder="********"
-                                minlength="8"
-                                maxlength="20" 
-                                value="{{ old('password_confirmation') }}" 
-                                required>
-                                @if ($errors->has('password_confirmation'))
+                                    type="password" 
+                                    name="password_confirmation" 
+                                    class="form-control @error('password_confirmation') is-invalid @enderror" 
+                                    placeholder="Ingrese la confirmación de la contraseña"
+                                    minlength="8"
+                                    maxlength="20" 
+                                    required>
+                                @error('password_confirmation')
                                     <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                @endif
+                                @enderror
                             </div>
-                            
-                            <!-- Campo para el Rol -->
-                            <div class="form-group col-md-3">
-                                <label for=""><strong>Rol *</strong></label>
-                                <select name="roles[]" class="form-control" required>
-                                    <option value="">Seleccione un rol</option>
-                                    @foreach ($roles as $role)
-                                        <option value="{{$role}}">{{$role}}</option>  
-                                    @endforeach
-                                </select>
-                            </div>
+
                         </div>
 
                         <div class="mb-3 text-center">

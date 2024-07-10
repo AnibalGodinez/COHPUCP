@@ -62,42 +62,63 @@ class UserController extends Controller
 //-----------------------------------------------------------------------------------------------------------------
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'name2' => 'nullable|string|max:255',
-            'apellido' => 'required|string|max:255',
-            'apellido2' => 'nullable|string|max:255',
-            'numero_identidad' => 'required|string|unique:users,numero_identidad',
-            'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
-            'rtn' => 'nullable|string|max:20|unique:users,rtn',
-            'sexo' => 'required|in:masculino,femenino',
-            'fecha_nacimiento' => 'required|date',
-            'telefono' => 'nullable|string|max:20',
-            'telefono_celular' => 'required|string|max:20', 
-            'email' => 'required|email|max:255|unique:users,email',
-            'password' => ['required', 'string', 'min:8', 'max:20', 'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/'],
-        ]);
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'name2' => 'nullable|string|max:255',
+        'apellido' => 'required|string|max:255',
+        'apellido2' => 'nullable|string|max:255',
+        'numero_identidad' => 'required|string|unique:users,numero_identidad',
+        'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
+        'rtn' => 'nullable|string|max:20|unique:users,rtn',
+        'sexo' => 'required|in:masculino,femenino',
+        'fecha_nacimiento' => 'required|date',
+        'telefono' => 'nullable|string|max:20',
+        'telefono_celular' => 'required|string|max:20',
+        'email' => 'required|email|max:255|unique:users,email',
+        'password' => [
+            'required', 
+            'string', 
+            'min:8', 
+            'max:20', 
+            'confirmed', 
+            'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/'
+        ],
+    ], [
+        'name.required' => 'El campo nombre es obligatorio.',
+        'apellido.required' => 'El campo apellido es obligatorio.',
+        'numero_identidad.required' => 'El campo número de identidad es obligatorio.',
+        'numero_identidad.unique' => 'El número de identidad ya está en uso.',
+        'sexo.required' => 'El campo sexo es obligatorio.',
+        'fecha_nacimiento.required' => 'El campo fecha de nacimiento es obligatorio.',
+        'telefono_celular.required' => 'El campo teléfono celular es obligatorio.',
+        'email.required' => 'El campo email es obligatorio.',
+        'email.unique' => 'El email ya está en uso.',
+        'password.required' => 'El campo contraseña es obligatorio.',
+        'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+        'password.confirmed' => 'La confirmación de la contraseña no coincide.',
+        'password.regex' => 'La contraseña debe contener al menos un carácter especial.',
+    ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'name2' => $request->name2,
-            'apellido' => $request->apellido,
-            'apellido2' => $request->apellido2,
-            'numero_identidad' => $request->numero_identidad,
-            'numero_colegiacion' => $request->numero_colegiacion,
-            'rtn' => $request->rtn,
-            'sexo' => $request->sexo,
-            'fecha_nacimiento' => $request->fecha_nacimiento,
-            'telefono' => $request->telefono,
-            'telefono_celular' => $request->telefono_celular,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+    $user = User::create([
+        'name' => $request->name,
+        'name2' => $request->name2,
+        'apellido' => $request->apellido,
+        'apellido2' => $request->apellido2,
+        'numero_identidad' => $request->numero_identidad,
+        'numero_colegiacion' => $request->numero_colegiacion,
+        'rtn' => $request->rtn,
+        'sexo' => $request->sexo,
+        'fecha_nacimiento' => $request->fecha_nacimiento,
+        'telefono' => $request->telefono,
+        'telefono_celular' => $request->telefono_celular,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+    ]);
 
-        $user->syncRoles($request->roles);
+    $user->syncRoles($request->roles);
 
-        return redirect('/usuarios')->with('status', 'El usuario se ha creado exitosamente con su respectivo rol');
-    }
+    return redirect('/usuarios')->with('status', 'El usuario se ha creado exitosamente con su respectivo rol');
+}
 
 //-----------------------------------------------------------------------------------------------------------------
     public function edit(User $user)
@@ -125,9 +146,23 @@ class UserController extends Controller
             'sexo' => 'required|in:masculino,femenino',
             'fecha_nacimiento' => 'required|date',
             'telefono' => 'nullable|string|max:20',
-            'telefono_celular' => 'required|string|max:20', 
+            'telefono_celular' => 'required|string|max:20',
             'email' => 'required|email|max:255|unique:users,email',
-            'password' => ['required', 'string', 'min:8', 'max:20', 'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/'],     
+            'password' => ['required', 'string', 'min:8', 'max:20', 'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/'],
+        ], [
+            'name.required' => 'El campo nombre es obligatorio.',
+            'apellido.required' => 'El campo apellido es obligatorio.',
+            'numero_identidad.required' => 'El campo número de identidad es obligatorio.',
+            'numero_identidad.unique' => 'El número de identidad ya está en uso.',
+            'sexo.required' => 'El campo sexo es obligatorio.',
+            'fecha_nacimiento.required' => 'El campo fecha de nacimiento es obligatorio.',
+            'telefono_celular.required' => 'El campo teléfono celular es obligatorio.',
+            'email.required' => 'El campo email es obligatorio.',
+            'email.unique' => 'El email ya está en uso.',
+            'password.required' => 'El campo contraseña es obligatorio.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+            'password.confirmed' => 'La confirmación de la contraseña no coincide.',
+            'password.regex' => 'La contraseña debe contener al menos un carácter especial.',
         ]);
 
         $data = [
