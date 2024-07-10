@@ -39,7 +39,7 @@ use App\Http\Controllers\SecurityQuestionController;
 		Route::get('editar-perfil', 	['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 		Route::put('profile', 			['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 		Route::put('profile/password',  ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-		Route::get('cambiar-contrasenia', 'App\Http\Controllers\ProfileController@cambiarContasenia')->name('cambiar-contrasenia.contrasenia');
+		Route::get('cambiar-contrasenia', 'App\Http\Controllers\ProfileController@cambiarContrasenia')->name('cambiar-contrasenia.contrasenia');
 	});
 
 	// RUTAS DE ROLES

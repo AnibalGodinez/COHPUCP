@@ -1,33 +1,31 @@
 <?php
 
 namespace App\Http\Requests;
-
-use App\Models\User;
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProfileRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+
     public function authorize()
     {
         return auth()->check();
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
-            'name' => ['required', 'min:3'],
-            'email' => ['required', 'email', Rule::unique((new User)->getTable())->ignore(auth()->id())],
+            'name' => 'required|string|max:255',
+            'name2' => 'nullable|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'apellido2' => 'nullable|string|max:255',
+            'numero_identidad' => 'required|string|max:15|unique:users,numero_identidad,' . auth()->id(),
+            'numero_colegiacion' => 'nullable|string|max:12|unique:users,numero_colegiacion,' . auth()->id(),
+            'rtn' => 'nullable|string|max:16|unique:users,rtn,' . auth()->id(),
+            'sexo' => 'required|string|in:masculino,femenino',
+            'fecha_nacimiento' => 'required|date',
+            'telefono' => 'nullable|string|max:9',
+            'telefono_celular' => 'required|string|max:9',
+            'email' => 'required|string|email|max:255|unique:users,email,' . auth()->id(),
         ];
     }
 }

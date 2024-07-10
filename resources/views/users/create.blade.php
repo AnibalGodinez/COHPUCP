@@ -11,7 +11,7 @@
                         @csrf
                         
                         <div class="form-row">
-
+                            <!-- Campo para el primer nombre -->
                             <div class="form-group col-md-3">
                                 <label for="name"><strong>Primer nombre *</strong></label>
                                 <input 
@@ -24,6 +24,7 @@
                                 required>
                             </div>
 
+                            <!-- Campo para el segundo nombre -->
                             <div class="form-group col-md-3">
                                 <label for="name2"><strong>Segundo nombre</strong></label>
                                 <input 
@@ -35,6 +36,7 @@
                                 maxlength="40">
                             </div>
 
+                            <!-- Campo para el primer apellido -->
                             <div class="form-group col-md-3">
                                 <label for="apellido"><strong>Primer apellido *</strong></label>
                                 <input 
@@ -49,6 +51,7 @@
                                 required>
                             </div>
 
+                            <!-- Campo para el segundo apellido -->
                             <div class="form-group col-md-3">
                                 <label for="apellido2"><strong>Segundo apellido</strong></label>
                                 <input 
@@ -62,6 +65,7 @@
                                 maxlength="40">
                             </div>
 
+                            <!-- Campo para el número de identidad -->
                             <div class="form-group col-md-3">
                                 <label for="numero_identidad"><strong>DNI *</strong></label>
                                 <input 
@@ -90,6 +94,7 @@
                                 });
                             </script>
 
+                            <!-- Campo para el número de colegiación -->
                             <div class="form-group col-md-3">
                                 <label for="numero_colegiacion"><strong>Nº colegiación</strong></label>
                                 <input 
@@ -120,6 +125,7 @@
                                 });
                             </script>
 
+                            <!-- Campo para el RTN -->
                             <div class="form-group col-md-3">
                                 <label for="rtn"><strong>RTN</strong></label>
                                 <input 
@@ -150,6 +156,7 @@
                                 });
                             </script>
 
+                            <!-- Campo para el Sexo -->
                             <div class="form-group col-md-3">
                                 <label for="sexo"><strong>Sexo *</strong></label>
                                 <select 
@@ -164,6 +171,7 @@
                                 </select>
                             </div>
 
+                            <!-- Campo para la Fecha de Nacimiento -->
                             <div class="form-group col-md-3">
                                 <label for="fecha_nacimiento"><strong>Fecha de nacimiento *</strong></label>
                                 <input 
@@ -218,19 +226,21 @@
                                 });
                                 </script>
 
+                            <!-- Campo para el teléfono -->
                             <div class="form-group col-md-3">
-                                <label for="telefono"><strong>Teléfono</strong></label>
+                                <label for="telefono"><strong>Teléfono fijo</strong></label>
                                 <input 
                                 type="num" 
                                 name="telefono" 
                                 class="form-control" 
                                 id="telefono" 
-                                placeholder="Teléfono casa (SIN GUIONES)"
+                                placeholder="Teléfono casa (SIN GUION)"
                                 value="{{ old('telefono') }}"
                                 pattern="\d{4}-\d{4}"
                                 maxlength="9">
                             </div>
 
+                            <!-- Campo para el teléfono celular -->
                             <div class="form-group col-md-3">
                                 <label for="telefono_celular"><strong>Celular *</strong></label>
                                 <input 
@@ -238,7 +248,7 @@
                                 name="telefono_celular" 
                                 class="form-control" 
                                 id="telefono_celular" 
-                                placeholder="Teléfono celular (SIN GUIONES)"
+                                placeholder="Teléfono celular (SIN GUION)"
                                 value="{{ old('telefono_celular') }}"
                                 pattern="\d{4}-\d{4}"
                                 maxlength="9"
@@ -273,6 +283,7 @@
                                 });
                             </script>
 
+                            <!-- Campo para el correo electrónico -->
                             <div class="form-group col-md-3">
                                 <label for=""><strong>Correo electrónico *</strong></label>
                                 <input 
@@ -284,6 +295,7 @@
                                 required>
                             </div>
 
+                            <!-- Campo para la contraseña  -->
                             <div class="form-group col-md-3">
                                 <label for=""><strong>Contraseña *</strong></label>
                                 <input 
@@ -302,6 +314,7 @@
                                 @endif
                             </div>
 
+                            <!-- Campo para la confirmación de la contraseña  -->
                             <div class="form-group col-md-3">
                                 <label for=""><strong>Confirmar Contraseña *</strong></label>
                                 <input 
@@ -320,6 +333,7 @@
                                 @endif
                             </div>
                             
+                            <!-- Campo para el Rol -->
                             <div class="form-group col-md-3">
                                 <label for=""><strong>Rol *</strong></label>
                                 <select name="roles[]" class="form-control" required>

@@ -39,13 +39,12 @@
             </div>
         </div>
     </div>
-
     <div class="container d-flex justify-content-center col-sm-8">
         <div class="col-md-12">
             <div class="card">
                 <form method="post" action="{{ route('profile.update') }}" autocomplete="off">
                     <div class="card-body">
-                        <h2 class="card-title text-center">Información</h2>
+                        <h2 class="card-title text-center">Información</h2><br>
                         @csrf
                         @method('put')
                     
@@ -54,56 +53,105 @@
                         <div class="form-row">
                             <!-- Campo para el primer nombre -->
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }} col-md-3">
-                                <label>Primer nombre</label>
-                                <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Primer nombre') }}" value="{{ old('name', auth()->user()->name) }}">
+                                <label><strong>Primer nombre *</strong></label>
+                                <input 
+                                type="text" 
+                                name="name"
+                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
+                                title="En este campo sólo se permiten letras" 
+                                class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" 
+                                placeholder="Primer nombre" 
+                                value="{{ old('name', auth()->user()->name) }}">
                                 @include('alerts.feedback', ['field' => 'name'])
                             </div>
 
                             <!-- Campo para el segundo nombre -->
                             <div class="form-group{{ $errors->has('name2') ? ' has-danger' : '' }} col-md-3">
-                                <label>Segundo nombre</label>
-                                <input type="text" name="name2" class="form-control{{ $errors->has('name2') ? ' is-invalid' : '' }}" placeholder="{{ __('Segundo nombre') }}" value="{{ old('name2', auth()->user()->name2) }}">
+                                <label><strong>Segundo nombre</strong></label>
+                                <input 
+                                type="text" 
+                                name="name2" 
+                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
+                                title="En este campo sólo se permiten letras"
+                                class="form-control{{ $errors->has('name2') ? ' is-invalid' : '' }}" 
+                                placeholder="Segundo nombre" 
+                                value="{{ old('name2', auth()->user()->name2) }}">
                                 @include('alerts.feedback', ['field' => 'name2'])
                             </div>
 
                             <!-- Campo para el primer apellido -->
                             <div class="form-group{{ $errors->has('apellido') ? ' has-danger' : '' }} col-md-3">
-                                <label>Primer apellido</label>
-                                <input type="text" name="apellido" class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" placeholder="{{ __('Primer apellido') }}" value="{{ old('apellido', auth()->user()->apellido) }}">
+                                <label><strong>Primer apellido *</strong></label>
+                                <input 
+                                type="text" 
+                                name="apellido"
+                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
+                                title="En este campo sólo se permiten letras" 
+                                class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" 
+                                placeholder="Primer apellido" 
+                                value="{{ old('apellido', auth()->user()->apellido) }}">
                                 @include('alerts.feedback', ['field' => 'apellido'])
                             </div>
 
                             <!-- Campo para el segundo apellido -->
                             <div class="form-group{{ $errors->has('apellido2') ? ' has-danger' : '' }} col-md-3">
-                                <label>Segundo apellido</label>
-                                <input type="text" name="apellido2" class="form-control{{ $errors->has('apellido2') ? ' is-invalid' : '' }}" placeholder="{{ __('Segundo apellido') }}" value="{{ old('apellido2', auth()->user()->apellido2) }}">
+                                <label><strong>Segundo apellido</strong></label>
+                                <input 
+                                type="text" 
+                                name="apellido2"
+                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
+                                title="En este campo sólo se permiten letras"
+                                class="form-control{{ $errors->has('apellido2') ? ' is-invalid' : '' }}" 
+                                placeholder="{{ __('Segundo apellido') }}" 
+                                value="{{ old('apellido2', auth()->user()->apellido2) }}">
                                 @include('alerts.feedback', ['field' => 'apellido2'])
                             </div>
 
                             <!-- Campo para el número de identidad -->
                             <div class="form-group{{ $errors->has('numero_identidad') ? ' has-danger' : '' }} col-md-3">
-                                <label>Número de identidad</label>
-                                <input type="text" name="numero_identidad" class="form-control{{ $errors->has('numero_identidad') ? ' is-invalid' : '' }}" placeholder="{{ __('Número de identidad') }}" value="{{ old('numero_identidad', auth()->user()->numero_identidad) }}">
+                                <label><strong>DNI *</strong></label>
+                                <input 
+                                type="text" 
+                                name="numero_identidad" 
+                                class="form-control{{ $errors->has('numero_identidad') ? ' is-invalid' : '' }}" 
+                                placeholder="0000-0000-00000 (INGRESE LOS GUIONES)"
+                                maxlength="15" 
+                                pattern="\d{4}-\d{4}-\d{5}"
+                                value="{{ old('numero_identidad', auth()->user()->numero_identidad) }}">
                                 @include('alerts.feedback', ['field' => 'numero_identidad'])
                             </div>
 
                             <!-- Campo para el número de colegiación -->
                             <div class="form-group{{ $errors->has('numero_colegiacion') ? ' has-danger' : '' }} col-md-3">
-                                <label>Número de colegiación</label>
-                                <input type="text" name="numero_colegiacion" class="form-control{{ $errors->has('numero_colegiacion') ? ' is-invalid' : '' }}" placeholder="{{ __('Número de colegiación') }}" value="{{ old('numero_colegiacion', auth()->user()->numero_colegiacion) }}">
+                                <label><strong>Número de colegiación</strong></label>
+                                <input 
+                                type="text" 
+                                name="numero_colegiacion" 
+                                class="form-control{{ $errors->has('numero_colegiacion') ? ' is-invalid' : '' }}" 
+                                placeholder="0000-00-0000 (INGRESE LOS GUIONES)"
+                                value="{{ old('numero_colegiacion', auth()->user()->numero_colegiacion) }}"
+                                maxlength="12" 
+                                pattern="\d{4}-\d{2}-\d{4}">
                                 @include('alerts.feedback', ['field' => 'numero_colegiacion'])
                             </div>
 
                             <!-- Campo para el RTN -->
                             <div class="form-group{{ $errors->has('rtn') ? ' has-danger' : '' }} col-md-3">
-                                <label>RTN</label>
-                                <input type="text" name="rtn" class="form-control{{ $errors->has('rtn') ? ' is-invalid' : '' }}" placeholder="{{ __('RTN') }}" value="{{ old('rtn', auth()->user()->rtn) }}">
+                                <label><strong>RTN</strong></label>
+                                <input 
+                                type="text" 
+                                name="rtn" 
+                                class="form-control{{ $errors->has('rtn') ? ' is-invalid' : '' }}" 
+                                placeholder="0000-0000-000000 (INGRESE LOS GUIONES)"
+                                value="{{ old('rtn', auth()->user()->rtn) }}"
+                                maxlength="16" 
+                                pattern="\d{4}-\d{4}-\d{6}">
                                 @include('alerts.feedback', ['field' => 'rtn'])
                             </div>
 
                             <!-- Campo para el Sexo -->
                             <div class="form-group{{ $errors->has('sexo') ? ' has-danger' : '' }} col-md-3">
-                                <label>Sexo</label>
+                                <label><strong>Sexo *</strong></label>
                                 <select name="sexo" class="form-control{{ $errors->has('sexo') ? ' is-invalid' : '' }}">
                                     <option value="masculino" {{ old('sexo', auth()->user()->sexo) == 'masculino' ? 'selected' : '' }}>Masculino</option>
                                     <option value="femenino" {{ old('sexo', auth()->user()->sexo) == 'femenino' ? 'selected' : '' }}>Femenino</option>
@@ -113,38 +161,59 @@
 
                             <!-- Campo para la Fecha de Nacimiento -->
                             <div class="form-group{{ $errors->has('fecha_nacimiento') ? ' has-danger' : '' }} col-md-3">
-                                <label>Fecha de Nacimiento</label>
-                                <input type="date" name="fecha_nacimiento" class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}" value="{{ old('fecha_nacimiento', auth()->user()->fecha_nacimiento) }}">
+                                <label><strong>Fecha de nacimiento *</strong></label>
+                                <input 
+                                type="date" 
+                                name="fecha_nacimiento" 
+                                class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}" 
+                                value="{{ old('fecha_nacimiento', auth()->user()->fecha_nacimiento) }}">
                                 @include('alerts.feedback', ['field' => 'fecha_nacimiento'])
                             </div>
 
                             <!-- Campo para el teléfono -->
                             <div class="form-group{{ $errors->has('telefono') ? ' has-danger' : '' }} col-md-3">
-                                <label>Teléfono</label>
-                                <input type="text" name="telefono" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" placeholder="{{ __('Teléfono') }}" value="{{ old('telefono', auth()->user()->telefono) }}">
+                                <label><strong>Teléfono fijo</strong></label>
+                                <input 
+                                type="text" 
+                                name="telefono" 
+                                class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" 
+                                placeholder="0000-0000 (INGRESE EL GUION)"
+                                value="{{ old('telefono', auth()->user()->telefono) }}"
+                                pattern="\d{4}-\d{4}"
+                                maxlength="9">
                                 @include('alerts.feedback', ['field' => 'telefono'])
                             </div>
 
                             <!-- Campo para el teléfono celular -->
                             <div class="form-group{{ $errors->has('telefono_celular') ? ' has-danger' : '' }} col-md-3">
-                                <label>Teléfono celular</label>
-                                <input type="text" name="telefono_celular" class="form-control{{ $errors->has('telefono_celular') ? ' is-invalid' : '' }}" placeholder="{{ __('telefono_celular') }}" value="{{ old('telefono', auth()->user()->telefono_celular) }}">
+                                <label><strong>Celular *</strong></label>
+                                <input 
+                                type="text" 
+                                name="telefono_celular" 
+                                class="form-control{{ $errors->has('telefono_celular') ? ' is-invalid' : '' }}" 
+                                placeholder="0000-0000 (INGRESE EL GUION)"
+                                value="{{ old('telefono_celular', auth()->user()->telefono_celular) }}"
+                                pattern="\d{4}-\d{4}"
+                                maxlength="9">
                                 @include('alerts.feedback', ['field' => 'telefono_celular'])
                             </div>
 
                             <!-- Campo para el correo electrónico -->
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} col-md-3">
-                                <label>Correo electrónico</label>
-                                <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Correo electrónico') }}" value="{{ old('email', auth()->user()->email) }}">
+                                <label><strong>Correo electrónico *</strong></label>
+                                <input 
+                                type="email" 
+                                name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" 
+                                placeholder="Ingrese su correo electrónico" 
+                                value="{{ old('email', auth()->user()->email) }}">
                                 @include('alerts.feedback', ['field' => 'email'])
                             </div>
-
-                            <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-success px-4">Actualizar información</button>
-                            </div>
-
                         </div>
-                    </div>                   
+
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-info">Actualizar información</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

@@ -123,13 +123,13 @@
                 
                                             <!-- Campo para el teléfono -->
                                             <div class="form-group col-md-3">
-                                                <label>Teléfono</label>
+                                                <label>Teléfono fijo</label>
                                                 <input type="text" name="telefono" class="form-control" value="{{ auth()->user()->telefono }}" readonly>
                                             </div>
                 
                                             <!-- Campo para el teléfono celular -->
                                             <div class="form-group col-md-3">
-                                                <label>Teléfono celular</label>
+                                                <label>Celular</label>
                                                 <input type="text" name="telefono_celular" class="form-control" value="{{ auth()->user()->telefono_celular }}" readonly>
                                             </div>
                 

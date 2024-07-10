@@ -287,7 +287,7 @@
                         name="telefono" 
                         class="form-control" 
                         id="telefono" 
-                        placeholder="Teléfono casa (SIN GUIONES)"
+                        placeholder="Teléfono fijo (SIN GUIONES)"
                         value="{{ old('telefono') }}"
                         pattern="\d{4}-\d{4}"
                         maxlength="9">
@@ -305,7 +305,7 @@
                         name="telefono_celular" 
                         class="form-control" 
                         id="telefono_celular" 
-                        placeholder="Teléfono celular (SIN GUIONES)"
+                        placeholder="Número de celular (SIN GUIONES)"
                         value="{{ old('telefono_celular') }}"
                         pattern="\d{4}-\d{4}"
                         maxlength="9"
