@@ -13,7 +13,7 @@
             </div>
 
             <div class="card-body" style="margin-top: -70px;">
-                <p class="text-dark mb-2" style="margin-bottom: 50px;">Inicia sesión con <strong>contacto@correo.com </strong> y la contraseña <strong>secreta </strong></p>
+                <p class="text-dark mb-2" style="margin-bottom: 50px;">Inicia sesión con tu <strong>correo electrónico </strong> y <strong>contraseña secreta </strong></p>
 
                 <div class="form-row">
                     
@@ -23,7 +23,13 @@
                                 <i class="tim-icons icon-email-85"></i>
                             </div>
                         </div>
-                        <input type="text" name="login_type" class="form-control{{ $errors->has('login_type') ? ' is-invalid' : '' }}" placeholder="{{ _('Correo electrónico o número de colegiación') }}" value="{{ old('login_type') }}">
+                        <input 
+                        type="text" 
+                        name="login_type" 
+                        class="form-control{{ $errors->has('login_type') ? ' is-invalid' : '' }}" 
+                        placeholder="{{ _('Correo electrónico o número de colegiación') }}" 
+                        value="{{ old('login_type') }}"
+                        required>
                         @include('alerts.feedback', ['field' => 'login_type'])
                     </div>
                     
@@ -33,7 +39,12 @@
                                 <i class="tim-icons icon-lock-circle"></i>
                             </div>
                         </div>
-                        <input type="password" placeholder="{{ _('Contraseña') }}" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
+                        <input 
+                        type="password" 
+                        placeholder="{{ _('Contraseña') }}" 
+                        name="password" 
+                        class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                        required>
                         @include('alerts.feedback', ['field' => 'password'])
                     </div><br>
                     

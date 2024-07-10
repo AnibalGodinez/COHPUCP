@@ -371,7 +371,7 @@
                             name="password" 
                             id="password" 
                             class="form-control" 
-                            placeholder="********"
+                            placeholder="Ingrese su contraseña"
                             minlength="8"
                             maxlength="20" 
                             value="{{ old('password') }}" 
@@ -412,7 +412,7 @@
                         type="password" 
                         name="password_confirmation" 
                         class="form-control" 
-                        placeholder="********"
+                        placeholder="Confirme su contraseña"
                         minlength="8"
                         maxlength="20"
                         required>
