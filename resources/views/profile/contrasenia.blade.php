@@ -53,23 +53,63 @@
                     
                         @include('alerts.success', ['key' => 'password_status'])
                     
-                        <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }} text-center">
-                            <label>Contraseña actual</label>
-                            <div class="col-md-4 mx-auto">
-                                <input type="password" name="old_password" class="form-control{{ $errors->has('old_password') ? ' is-invalid' : '' }} text-center" placeholder="{{ __('Contraseña actual') }}" value="" required>
-                                @include('alerts.feedback', ['field' => 'old_password'])
-                            </div>
-                        </div><br>                        
+                        <!-- Campo para la nueva contraseña actual -->
+                        <div class="form-row justify-content-center">
+                            <div class="form-group text-center col-md-4">
+                                <label for=""><strong>Contraseña actual *</strong></label>
+                                    <input 
+                                    type="password" 
+                                    name="old_password" 
+                                    class="form-control" 
+                                    placeholder="Contraseña actual" 
+                                    value="{{ old('old_password') }}"  
+                                    required>
+                                    @if ($errors->has('old_password'))
+                                        <span class="invalid-feedback d-block text-center" role="alert">
+                                            <strong>{{ $errors->first('old_password') }}</strong>
+                                        </span>
+                                    @endif
+                            </div><br>
+                        </div>                       
                     
                         <div class="form-row justify-content-center">
-                            <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }} text-center col-md-3">
-                                <label>Nueva contraseña</label>
-                                <input type="password" name="password" class="form-control form-control {{ $errors->has('password') ? ' is-invalid' : '' }} text-center" placeholder="{{ __('Nueva contraseña') }}" value="" required>
-                                @include('alerts.feedback', ['field' => 'password'])
+
+                            <!-- Campo para la nueva contraseña  -->
+                            <div class="form-group text-center col-md-4">
+                                <label for=""><strong>Nueva contraseña *</strong></label>
+                                <input 
+                                type="password" 
+                                name="password" 
+                                class="form-control" 
+                                placeholder="Ingrese la nueva contraseña"
+                                minlength="8"
+                                maxlength="20"
+                                value="{{ old('password') }}" 
+                                required>
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback d-block text-center" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                             </div>
-                            <div class="form-group text-center col-md-3">
-                                <label>Confirmar la nueva contraseña</label>
-                                <input type="password" name="password_confirmation" class="form-control form-control text-center" placeholder="{{ __('Confirmar la nueva contraseña') }}" value="" required>
+
+                            <!-- Campo para la confirmación de la contraseña  -->
+                            <div class="form-group text-center col-md-4">
+                                <label for=""><strong>Confirmar Contraseña *</strong></label>
+                                <input 
+                                type="password" 
+                                name="password_confirmation" 
+                                class="form-control" 
+                                placeholder="Confirme la nueva contraseña"
+                                minlength="8"
+                                maxlength="20" 
+                                value="{{ old('password_confirmation') }}" 
+                                required>
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="invalid-feedback d-block text-center" role="alert">
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
                     </div>                    

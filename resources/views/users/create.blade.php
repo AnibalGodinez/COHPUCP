@@ -302,7 +302,7 @@
                                 type="password" 
                                 name="password" 
                                 class="form-control" 
-                                placeholder="********"
+                                placeholder="Ingrese la contraseña"
                                 minlength="8"
                                 maxlength="20"
                                 value="{{ old('password') }}" 

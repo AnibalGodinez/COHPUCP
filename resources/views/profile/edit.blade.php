@@ -205,13 +205,14 @@
                                 type="email" 
                                 name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" 
                                 placeholder="Ingrese su correo electrónico" 
-                                value="{{ old('email', auth()->user()->email) }}">
+                                value="{{ old('email', auth()->user()->email) }}"
+                                readonly>
                                 @include('alerts.feedback', ['field' => 'email'])
                             </div>
                         </div>
 
                         <div class="card-footer text-center">
-                            <button type="submit" class="btn btn-info">Actualizar información</button>
+                            <button type="submit" class="btn btn-success">Actualizar información</button>
                         </div>
                     </div>
                 </form>
