@@ -288,7 +288,7 @@
 
                             <!-- Campo para el correo electrónico -->
                             <div class="form-group col-md-3">
-                                <label for=""><strong>Correo electrónico *</strong></label>
+                                <label for="email"><strong>Correo electrónico *</strong></label>
                                 <input 
                                 type="email" 
                                 name="email" 
@@ -300,7 +300,7 @@
                           
                             <!-- Campo para el Rol -->
                             <div class="form-group col-md-3">
-                                <label for=""><strong>Rol *</strong></label>
+                                <label><strong>Rol *</strong></label>
                                 <select name="roles[]" class="form-control @error('roles') is-invalid @enderror" required>
                                     <option value="">Seleccione un rol</option>
                                     @foreach ($roles as $role)
