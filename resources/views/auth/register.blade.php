@@ -137,7 +137,7 @@
                         name="numero_colegiacion" 
                         class="form-control" 
                         id="numero_colegiacion" 
-                        placeholder="Nº de coleagiación (SIN GUIONES)"
+                        placeholder="Nº de colegiación (SIN GUIONES)"
                         value="{{ old('numero_colegiacion') }}" 
                         maxlength="12" 
                         pattern="\d{4}-\d{2}-\d{4}">
