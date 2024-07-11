@@ -77,6 +77,7 @@ class RoleController extends Controller
     Route::group(['middleware' => ['auth', "role:$roleName"]], function () {
         // Aquí puedes definir las rutas específicas para este nuevo rol si lo deseas
     });
+    
     }
 
 //-----------------------------------------------------------------------------------------------------------------

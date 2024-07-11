@@ -67,7 +67,6 @@ class RegisterController extends Controller
             // Asignar el rol 'Invitado'
             $user->assignRole('Invitado');
         }
-
         return $user;
     }
 }

@@ -205,13 +205,14 @@
                             </div>
                         </div>
                         <select name="sexo" class="form-control{{ $errors->has('sexo') ? ' is-invalid' : '' }}" value="{{ old('sexo') }}" required>
-                            <option value="">{{ _('Seleccione sexo') }}</option>
+                            <option disabled selected>Seleccione el sexo</option>
                             <option value="masculino" {{ old('sexo') == 'masculino' ? 'selected' : '' }}>Masculino</option>
                             <option value="femenino" {{ old('sexo') == 'femenino' ? 'selected' : '' }}>Femenino</option>
                         </select>
                         @include('alerts.feedback', ['field' => 'sexo'])
                     </div>
 {{-- ============================================================================================================================== --}}
+
 
                     <!-- Campo para fecha de nacimiento -->
                     <div class="input-group{{ $errors->has('fecha_nacimiento') ? ' has-danger' : '' }} form-group col-md-6">
@@ -234,29 +235,24 @@
                         // Obtener el elemento del campo de fecha de nacimiento
                         var fechaNacimiento = document.getElementById('fecha_nacimiento');
 
-                        // Calcular el año máximo permitido (100 años atrás desde el año actual)
-                        var fechaActual = new Date();
-                        var yearActual = fechaActual.getFullYear();
-                        var yearMin = yearActual - 100;
-                        var yearMax = 2005; // Año máximo permitido para la fecha de nacimiento
-
-                        // Calcular el año mínimo permitido (100 años atrás desde el año máximo permitido)
-                        var yearMinAllowed = yearMax - 100;
-
-                        // Formatear la fecha mínima permitida en formato YYYY-MM-DD
-                        var fechaMin = yearMinAllowed + '-' + ('0' + (fechaActual.getMonth() + 1)).slice(-2) + '-' + ('0' + fechaActual.getDate()).slice(-2);
+                        // Calcular el año máximo permitido (2005)
+                        var yearMax = 2005; 
+                        // Calcular el año mínimo permitido (1925)
+                        var yearMin = 1925; 
 
                         // Establecer los atributos mínimos y máximos en el campo de fecha de nacimiento
-                        fechaNacimiento.setAttribute('min', fechaMin);
-                        fechaNacimiento.setAttribute('max', yearMax + '-12-31'); // Establecer el último día del año máximo
+                        fechaNacimiento.setAttribute('min', yearMin + '-01-01');
+                        fechaNacimiento.setAttribute('max', yearMax + '-12-31');
 
                         // Función para actualizar el rango de años permitido cada año nuevo
                         function actualizarRangoAnios() {
-                            var newYearMinAllowed = yearMax - 100;
-                            fechaNacimiento.setAttribute('min', newYearMinAllowed + '-01-01');
-                            yearMinAllowed = newYearMinAllowed;
-                            yearMax++;
-                            fechaNacimiento.setAttribute('max', yearMax + '-12-31');
+                            var currentYear = new Date().getFullYear();
+                            var newYearMin = currentYear - 80;
+                            var newYearMax = newYearMin + 80;
+
+                            // Establecer los nuevos límites en el campo de fecha de nacimiento
+                            fechaNacimiento.setAttribute('min', newYearMin + '-01-01');
+                            fechaNacimiento.setAttribute('max', newYearMax + '-12-31');
                         }
 
                         // Llamar a la función para establecer inicialmente el rango de años
@@ -265,15 +261,16 @@
                         // Llamar a la función para actualizar el rango de años cada vez que se inicie un nuevo año
                         setInterval(function() {
                             var currentYear = new Date().getFullYear();
-                            if (currentYear > yearMax) {
+                            var newYearMin = currentYear - 80;
+                            var newYearMax = newYearMin + 80;
+                            if (parseInt(fechaNacimiento.getAttribute('max').split('-')[0]) !== newYearMax) {
                                 actualizarRangoAnios();
                             }
                         }, 1000 * 60 * 60); // Revisar cada hora si es necesario actualizar el rango de años
                     });
                     </script>
-
-
 {{-- ============================================================================================================================== --}}
+
 
                     <!-- Campo para teléfono -->
                     <div class="input-group{{ $errors->has('telefono') ? ' has-danger' : '' }} form-group col-md-6">
