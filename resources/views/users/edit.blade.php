@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-md-12">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="text-center font-weight-bold">Editar usuario</h2>
-                    <form action="{{ url('usuarios/' . $user->id) }}" method="POST">
+                    <h3 class="text-center mb-4">Editar Usuario</h3>
+                    <form action="{{ route('usuarios.update', $user->id) }}" method="POST">
                         @csrf
                         @method('PUT')
 
@@ -17,7 +17,7 @@
                                 <label for="name"><strong>Primer nombre *</strong></label>
                                 <input 
                                 type="text" 
-                                name="name" class="form-control" 
+                                name="name" class="form-control"
                                 placeholder="Ingrese el primer nombre"
                                 value="{{ old('name', $user->name) }}"
                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
@@ -31,7 +31,7 @@
                                 <label for="name2"><strong>Segundo nombre</strong></label>
                                 <input 
                                 type="text" 
-                                name="name2" class="form-control" 
+                                name="name2" class="form-control"
                                 placeholder="Ingrese el segundo nombre"
                                 value="{{ old('name2', $user->name2) }}"
                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
@@ -45,12 +45,12 @@
                                 <input 
                                 type="text" 
                                 name="apellido" 
-                                class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" 
-                                placeholder="Primer apellido" 
-                                value="{{ old('apellido', $user->apellido) }}"                         
-                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
+                                class="form-control"
+                                placeholder="Primer apellido"
+                                value="{{ old('apellido', $user->apellido) }}"
+                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                                 title="En este campo sólo se permiten letras"
-                                maxlength="40" 
+                                maxlength="40"
                                 required>
                             </div>
 
@@ -60,10 +60,10 @@
                                 <input 
                                 type="text" 
                                 name="apellido2" 
-                                class="form-control{{ $errors->has('apellido2') ? ' is-invalid' : '' }}" 
+                                class="form-control"
                                 placeholder="Segundo apellido" 
-                                value="{{ old('apellido2', $user->apellido2) }}"                         
-                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
+                                value="{{ old('apellido2', $user->apellido2) }}"
+                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                                 title="En este campo sólo se permiten letras"
                                 maxlength="40">
                             </div>
@@ -74,28 +74,13 @@
                                 <input 
                                 type="text" 
                                 name="numero_identidad" 
-                                class="form-control" 
-                                id="numero_identidad" 
+                                class="form-control"
                                 placeholder="Ingrese su DNI (SIN GUIONES)" 
-                                value="{{ old('numero_identidad', $user->numero_identidad) }}" 
-                                maxlength="15" 
-                                pattern="\d{4}-\d{4}-\d{5}" 
+                                value="{{ old('numero_identidad', $user->numero_identidad) }}"
+                                maxlength="15"
+                                pattern="\d{4}-\d{4}-\d{5}"
                                 required>
                             </div>
-
-                            <script>
-                                document.getElementById('numero_identidad').addEventListener('input', function (e) {
-                                    var input = e.target.value.replace(/[^0-9]/g, '');
-                                    if (input.length <= 4) {
-                                        input = input;
-                                    } else if (input.length <= 8) {
-                                        input = input.slice(0, 4) + '-' + input.slice(4);
-                                    } else if (input.length <= 13) {
-                                        input = input.slice(0, 4) + '-' + input.slice(4, 8) + '-' + input.slice(8);
-                                    }
-                                    e.target.value = input;
-                                });
-                            </script>
 
                             <!-- Campo para el número de colegiación -->
                             <div class="form-group col-md-3">
@@ -103,12 +88,11 @@
                                 <input 
                                 type="text" 
                                 name="numero_colegiacion" 
-                                class="form-control" 
-                                id="numero_colegiacion" 
+                                class="form-control"
                                 placeholder="Nº de colegiación (SIN GUIONES)"
-                                value="{{ old('numero_colegiacion', $user->numero_colegiacion) }}" 
-                                maxlength="12" 
-                                pattern="\d{4}-\d{2}-\d{4}">
+                                    value="{{ old('numero_colegiacion', $user->numero_colegiacion) }}"
+                                    maxlength="12"
+                                    pattern="\d{4}-\d{2}-\d{4}">
                             </div>
 
                             <script>
@@ -134,12 +118,12 @@
                                 <input 
                                 type="text" 
                                 name="rtn" 
-                                class="form-control" 
-                                id="rtn" 
+                                class="form-control"
+
                                 placeholder="Ingrese su RTN (SIN GUIONES)"
-                                value="{{ old('rtn', $user->rtn) }}"
-                                maxlength="16" 
-                                pattern="\d{4}-\d{4}-\d{6}">
+                                    value="{{ old('rtn', $user->rtn) }}"
+                                    maxlength="16"
+                                    pattern="\d{4}-\d{4}-\d{6}">
                             </div>
 
                             <script>
@@ -162,16 +146,10 @@
                             <!-- Campo para el Sexo -->
                             <div class="form-group col-md-3">
                                 <label for="sexo"><strong>Sexo *</strong></label>
-                                <select name="sexo" class="form-control @error('sexo') is-invalid @enderror" id="sexo" required>
-                                    <option value="">Seleccione una opción</option>
+                                <select name="sexo" class="form-control" required>
                                     <option value="masculino" {{ old('sexo', $user->sexo) == 'masculino' ? 'selected' : '' }}>Masculino</option>
                                     <option value="femenino" {{ old('sexo', $user->sexo) == 'femenino' ? 'selected' : '' }}>Femenino</option>
                                 </select>
-                                @error('sexo')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
 
                             <!-- Campo para la Fecha de Nacimiento -->
@@ -181,9 +159,8 @@
                                 type="date" 
                                 name="fecha_nacimiento" 
                                 class="form-control"
-                                value="{{ old('fecha_nacimiento', $user->fecha_nacimiento) }}"
-                                id="fecha_nacimiento"                                                           
-                                required>
+                                    value="{{ old('fecha_nacimiento', $user->fecha_nacimiento) }}"
+                                    required>
                             </div>
 
                             <script>
@@ -221,16 +198,15 @@
 
                             <!-- Campo para el teléfono -->
                             <div class="form-group col-md-3">
-                                <label for="telefono"><strong>Teléfono</strong></label>
+                                <label for="telefono"><strong>Teléfono fijo</strong></label>
                                 <input 
-                                type="tel" 
+                                type="text" 
                                 name="telefono" 
-                                class="form-control" 
-                                id="telefono" 
-                                placeholder="0000-0000" 
-                                value="{{ old('telefono', $user->telefono) }}" 
-                                maxlength="9" 
-                                pattern="\d{4}-\d{4}">
+                                class="form-control"
+                                placeholder="0000-0000"
+                                    value="{{ old('telefono', $user->telefono) }}"
+                                    maxlength="9"
+                                    pattern="\d{4}-\d{4}">
                             </div>
 
                             <script>
@@ -245,17 +221,16 @@
 
                             <!-- Campo para el teléfono celular -->
                             <div class="form-group col-md-3">
-                                <label for="telefono_celular"><strong>Teléfono celular *</strong></label>
+                                <label for="telefono_celular"><strong>Celular *</strong></label>
                                 <input 
-                                type="tel" 
+                                type="text" 
                                 name="telefono_celular" 
-                                class="form-control" 
-                                id="telefono_celular" 
-                                placeholder="0000-0000" 
-                                value="{{ old('telefono_celular', $user->telefono_celular) }}" 
-                                maxlength="9" 
-                                pattern="\d{4}-\d{4}" 
-                                required>
+                                class="form-control"
+                                placeholder="0000-0000"
+                                    value="{{ old('telefono_celular', $user->telefono_celular) }}"                                 
+                                    maxlength="9"
+                                    pattern="\d{4}-\d{4}"
+                                    required>
                             </div>
 
                             <script>
@@ -274,37 +249,27 @@
                                 <input 
                                 type="email" 
                                 name="email" 
-                                class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" 
-                                placeholder="Correo electrónico" 
-                                value="{{ old('email', $user->email) }}"
-                                required>
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                class="form-control"
+                                placeholder="Correo electrónico"
+                                    value="{{ old('email', $user->email) }}"
+                                    required>
                             </div>
 
-                            <!-- Campo para el estado -->
+                            <!-- Campo para el Rol -->
                             <div class="form-group col-md-3">
-                                <label for="estado"><strong>Estado</strong></label>
-                                <select 
-                                name="estado" 
-                                class="form-control{{ $errors->has('estado') ? ' is-invalid' : '' }}" 
-                                required>
-                                    <option value="activo" {{ old('estado', $user->estado) == 'activo' ? 'selected' : '' }}>Activo</option>
-                                    <option value="inactivo" {{ old('estado', $user->estado) == 'inactivo' ? 'selected' : '' }}>Inactivo</option>
+                                <label><strong>Rol *</strong></label>
+                                <select name="roles[]" class="form-control" multiple required>
+                                    @foreach ($roles as $role => $roleName)
+                                        <option value="{{ $role }}" {{ in_array($role, $user->roles->pluck('name')->toArray()) ? 'selected' : '' }}>{{ $roleName }}</option>
+                                    @endforeach
                                 </select>
-                                @error('estado')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            </div>                            
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                        <a href="{{ url('usuarios') }}" class="btn btn-secondary">Cancelar</a>
+                        <div class="mb-3 text-center">
+                            <button type="submit" class="btn btn-success px-4">Actualizar</button>
+                            <a href="{{ url('usuarios') }}" class="btn btn-danger px-4">Cancelar</a>
+                        </div>
                     </form>
                 </div>
             </div>
