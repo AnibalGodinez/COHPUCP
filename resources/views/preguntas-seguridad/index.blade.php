@@ -6,7 +6,7 @@
             
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-center">Lista de preguntas de seguridad</h3>
+                    <h3 class="card-title text-center">LISTA DE PREGUNTAS DE SEGURIDAD</h3>
 
                     @if (session('success'))
                         <div class="alert alert-success text-center">

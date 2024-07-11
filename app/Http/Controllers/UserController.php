@@ -149,7 +149,7 @@ public function update(Request $request, $userId)
         'roles' => 'required|array',
     ], [
         // Mensajes personalizados de validación
-        // Puedes agregar los mensajes personalizados aquí si es necesario
+        'password.regex' => 'La contraseña debe contener al menos un símbolo o caractér especial, como por Ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
     ]);
 
     // Obtener el usuario por su ID

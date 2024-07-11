@@ -3,10 +3,10 @@
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-center mb-4">Editar Usuario</h3>
+                    <h3 class="text-center mb-4">EDITAR USUARIO</h3>
                     <form action="{{ route('usuarios.update', $user->id) }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -46,7 +46,7 @@
                                 type="text" 
                                 name="apellido" 
                                 class="form-control"
-                                placeholder="Primer apellido"
+                                placeholder="Ingrese el primer apellido"
                                 value="{{ old('apellido', $user->apellido) }}"
                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                                 title="En este campo sólo se permiten letras"
@@ -61,7 +61,7 @@
                                 type="text" 
                                 name="apellido2" 
                                 class="form-control"
-                                placeholder="Segundo apellido" 
+                                placeholder="Ingrese el segundo apellido" 
                                 value="{{ old('apellido2', $user->apellido2) }}"
                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                                 title="En este campo sólo se permiten letras"
@@ -75,7 +75,7 @@
                                 type="text" 
                                 name="numero_identidad" 
                                 class="form-control"
-                                placeholder="Ingrese su DNI (SIN GUIONES)" 
+                                placeholder="Ingrese su DNI (CON GUIONES)" 
                                 value="{{ old('numero_identidad', $user->numero_identidad) }}"
                                 maxlength="15"
                                 pattern="\d{4}-\d{4}-\d{5}"
@@ -89,7 +89,7 @@
                                 type="text" 
                                 name="numero_colegiacion" 
                                 class="form-control"
-                                placeholder="Nº de colegiación (SIN GUIONES)"
+                                placeholder="Nº de colegiación (CON GUIONES)"
                                     value="{{ old('numero_colegiacion', $user->numero_colegiacion) }}"
                                     maxlength="12"
                                     pattern="\d{4}-\d{2}-\d{4}">
@@ -120,7 +120,7 @@
                                 name="rtn" 
                                 class="form-control"
 
-                                placeholder="Ingrese su RTN (SIN GUIONES)"
+                                placeholder="Ingrese su RTN (CON GUIONES)"
                                     value="{{ old('rtn', $user->rtn) }}"
                                     maxlength="16"
                                     pattern="\d{4}-\d{4}-\d{6}">
@@ -203,7 +203,7 @@
                                 type="text" 
                                 name="telefono" 
                                 class="form-control"
-                                placeholder="0000-0000"
+                                placeholder="0000-0000 (INGRESE EL GUIÓN)"
                                     value="{{ old('telefono', $user->telefono) }}"
                                     maxlength="9"
                                     pattern="\d{4}-\d{4}">
@@ -226,7 +226,7 @@
                                 type="text" 
                                 name="telefono_celular" 
                                 class="form-control"
-                                placeholder="0000-0000"
+                                placeholder="0000-0000 (INGRESE EL GUIÓN)"
                                     value="{{ old('telefono_celular', $user->telefono_celular) }}"                                 
                                     maxlength="9"
                                     pattern="\d{4}-\d{4}"
@@ -252,7 +252,7 @@
                                 class="form-control"
                                 placeholder="Correo electrónico"
                                     value="{{ old('email', $user->email) }}"
-                                    required>
+                                    readonly>
                             </div>
 
                             <!-- Campo para el Rol -->
