@@ -96,7 +96,7 @@ class UserController extends Controller
         'password.required' => 'El campo contraseña es obligatorio.',
         'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
         'password.confirmed' => 'La confirmación de la contraseña no coincide.',
-        'password.regex' => 'La contraseña debe contener al menos un carácter especial.',
+        'password.regex' => 'La contraseña debe contener al menos un símbolo o caractér especial, como por Ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
     ]);
 
     $user = User::create([
@@ -162,7 +162,7 @@ class UserController extends Controller
             'password.required' => 'El campo contraseña es obligatorio.',
             'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
             'password.confirmed' => 'La confirmación de la contraseña no coincide.',
-            'password.regex' => 'La contraseña debe contener al menos un carácter especial.',
+            'password.regex' => 'La contraseña debe contener al menos un símbolo o caractér especial, como por Ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
         ]);
 
         $data = [

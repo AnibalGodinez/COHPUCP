@@ -71,11 +71,11 @@
                             <div class="form-group col-md-3">
                                 <label for="numero_identidad"><strong>DNI *</strong></label>
                                 <input 
-                                type="num" 
+                                type="text" 
                                 name="numero_identidad" 
                                 class="form-control" 
                                 id="numero_identidad" 
-                                placeholder="Ingrese su DNI (SIN GUIONES)" 
+                                placeholder="Ingrese el DNI (SIN GUIONES)" 
                                 value="{{ old('numero_identidad') }}" 
                                 maxlength="15" 
                                 pattern="\d{4}-\d{4}-\d{5}" 
@@ -100,7 +100,7 @@
                             <div class="form-group col-md-3">
                                 <label for="numero_colegiacion"><strong>Nº colegiación</strong></label>
                                 <input 
-                                type="num" 
+                                type="text" 
                                 name="numero_colegiacion" 
                                 class="form-control" 
                                 id="numero_colegiacion" 
@@ -131,11 +131,11 @@
                             <div class="form-group col-md-3">
                                 <label for="rtn"><strong>RTN</strong></label>
                                 <input 
-                                type="num" 
+                                type="text" 
                                 name="rtn" 
                                 class="form-control" 
                                 id="rtn" 
-                                placeholder="Ingrese su RTN (SIN GUIONES)"
+                                placeholder="Ingrese el RTN (SIN GUIONES)"
                                 value="{{ old('rtn') }}"
                                 maxlength="16" 
                                 pattern="\d{4}-\d{4}-\d{6}">
@@ -233,7 +233,7 @@
                             <div class="form-group col-md-3">
                                 <label for="telefono"><strong>Teléfono fijo</strong></label>
                                 <input 
-                                type="num" 
+                                type="text" 
                                 name="telefono" 
                                 class="form-control" 
                                 id="telefono" 
@@ -247,7 +247,7 @@
                             <div class="form-group col-md-3">
                                 <label for="telefono_celular"><strong>Celular *</strong></label>
                                 <input 
-                                type="num" 
+                                type="text" 
                                 name="telefono_celular" 
                                 class="form-control" 
                                 id="telefono_celular" 
@@ -293,7 +293,7 @@
                                 type="email" 
                                 name="email" 
                                 class="form-control" 
-                                placeholder="Ingrese su correo electrónico" 
+                                placeholder="Ingrese el correo electrónico" 
                                 value="{{ old('email') }}" 
                                 required>
                             </div>
@@ -334,7 +334,7 @@
                             </div>
 
                             <!-- Campo para la confirmación de la contraseña  -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label for="password_confirmation"><strong>Confirmar Contraseña *</strong></label>
                                 <input 
                                     type="password" 

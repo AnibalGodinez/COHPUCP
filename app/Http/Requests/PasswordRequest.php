@@ -7,21 +7,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PasswordRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+
     public function authorize()
     {
         return auth()->check();
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
@@ -39,11 +30,6 @@ class PasswordRequest extends FormRequest
         ];
     }
 
-    /**
-     * Get the validation attributes that apply to the request.
-     *
-     * @return array
-     */
     public function attributes()
     {
         return [
@@ -53,17 +39,12 @@ class PasswordRequest extends FormRequest
         ];
     }
 
-    /**
-     * Get the validation messages that apply to the request.
-     *
-     * @return array
-     */
     public function messages()
     {
         return [
             'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
             'password.max' => 'La contraseña no debe tener más de 20 caracteres.',
-            'password.regex' => 'La contraseña debe incluir al menos un símbolo o caracter especial.',
+            'password.regex' => 'La contraseña debe contener al menos un símbolo o caractér especial, como por Ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
             'password.confirmed' => 'La confirmación de la contraseña no coincide.',
             'old_password.required' => 'La contraseña actual es requerida.',
             'password_confirmation.required' => 'La confirmación de la contraseña es requerida.'

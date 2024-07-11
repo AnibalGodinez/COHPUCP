@@ -37,7 +37,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/'],
             'agree_terms_and_conditions' => ['required'],
         ], [
-            'password.regex' => 'La contraseña debe contener al menos un símbolo o caracter especial.',
+            'password.regex' => 'La contraseña debe contener al menos un símbolo o caractér especial, como por Ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
         ]);
     }
 

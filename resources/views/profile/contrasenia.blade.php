@@ -1,6 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="container d-flex justify-content-center col-sm-8" style="margin-top: 15px">
+    <div class="col-md-12">
+        <div class="card card-user">
+            <div class="card-body">
+                <h2 class="card-title text-center font-weight-bold">Editar perfil</h2>
+                
+                <p class="card-text">
+                    <div class="author">
+                        <div class="block block-one bg-info"></div>
+                        <a href="#">
+                            <img class="avatar" src="{{ asset('white') }}/img/emilyz.jpg" alt="">
+                            <div class="name-container">
+                                <h5 class="title">{{ auth()->user()->name }} {{ auth()->user()->apellido }}</h5>
+                            </div>
+                        </a>                            
+                    </div>
+                </p>
+
+                <div class="card-description">
+                    {{ _('Apasionado por la tecnología y el desarrollo web. Disfruto aprender nuevas habilidades y colaborar en proyectos innovadores. En mi tiempo libre, me gusta leer libros de ciencia ficción y practicar senderismo.') }}
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="button-container">
+                    <button class="btn btn-icon btn-round btn-facebook">
+                        <i class="fab fa-facebook"></i>
+                    </button>
+                    <button class="btn btn-icon btn-round btn-instagram">
+                        <i class="fab fa-instagram"></i>
+                    </button>
+                    <button class="btn btn-icon btn-round btn-linkedin">
+                        <i class="fab fa-linkedin"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container d-flex justify-content-center" style="margin-top: 0px">
     <div class="col-md-12">
         <div class="card">
@@ -21,8 +61,9 @@
                                 type="password" 
                                 name="old_password" 
                                 class="form-control @error('old_password') is-invalid @enderror" 
-                                placeholder="Contraseña actual" 
-                                value="{{ old('old_password') }}"  
+                                placeholder="Ingrese la contraseña actual" 
+                                value="{{ old('old_password') }}" 
+                                style="text-align: center;" 
                                 required>
                             @error('old_password')
                                 <span class="invalid-feedback d-block text-center" role="alert">
@@ -33,7 +74,7 @@
                     </div>                       
                     
                     <div class="form-row justify-content-center">
-                        <div class="form-group text-center col-md-4">
+                        <div class="form-group text-center col-md-3">
                             <label for="password"><strong>Nueva contraseña *</strong></label>
                             <input 
                                 type="password" 
@@ -51,7 +92,7 @@
                             @enderror
                         </div>
     
-                        <div class="form-group text-center col-md-4">
+                        <div class="form-group text-center col-md-3">
                             <label for="password_confirmation"><strong>Confirmar Contraseña *</strong></label>
                             <input 
                                 type="password" 
