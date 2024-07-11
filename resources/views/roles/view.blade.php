@@ -7,7 +7,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title text-center font-weight-bold">Lista de roles</h2>
+                    <h3 class="card-title text-center">LISTA DE ROLES</h3>
 
                     @if (session('status'))
                         <div class="alert alert-success text-center">{{ session('status') }}</div>

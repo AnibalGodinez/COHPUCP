@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h3>Editar permiso</h3>
+                        <h3>EDITAR PERMISO</h3>
                         <a href="{{ url('permission') }}" class="btn btn-secondary btn-sm">Regresar</a>
                     </div>
                 </div>

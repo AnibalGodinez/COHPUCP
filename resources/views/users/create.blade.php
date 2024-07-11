@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="text-center font-weight-bold">Crear usuario</h2>
+                    <h3 class="text-center">CREAR USUARIO</h3>
                     <form action="{{url('usuarios')}}" method="POST">
                         @csrf
                         

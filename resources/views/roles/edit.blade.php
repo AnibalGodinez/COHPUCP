@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h3>Editar rol</h3>
+                        <h3>EDITAR ROL</h3>
                         <a href="{{ url('roles') }}" class="btn btn-secondary btn-sm">Regresar</a>
                     </div>
                 </div>
@@ -17,12 +17,18 @@
                         @method('PUT')
                         
                         <div class="form-group">
-                            <label for="name">Nombre del rol</label>
-                            <input type="text" id="name" name="name" value="{{ $role->name }}" class="form-control w-50">
+                            <label for="name"><strong>Nombre del rol *</strong></label>
+                            <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            value="{{ $role->name }}" 
+                            class="form-control w-50"
+                            required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="description">Descripción del rol</label>
+                            <label for="description"><strong>Descripción del rol</strong></label>
                             <textarea id="description" name="description" rows="4" class="form-control w-70 @error('description') is-invalid @enderror">{{ old('description', $role->description) }}</textarea>
                             
                             @error('description')

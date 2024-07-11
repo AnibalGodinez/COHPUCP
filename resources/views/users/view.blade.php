@@ -12,7 +12,7 @@
                 <div class="card m-7">
                     
                     <div class="card-body">
-                        <h2 class="card-title text-center font-weight-bold">Lista de usuarios</h2>
+                        <h3 class="card-title text-center">LISTA DE USUARIOS</h3>
 
                         {{-- Formulario de búsqueda --}}
                         <form method="GET" action="{{ route('usuarios.ver') }}" class="form-inline mt-3">

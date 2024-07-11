@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card shadow-lg">
                 <div class="card-header bg-warning text-white text-center">
-                    <h3 class="card-title">Crear rol</h3>
+                    <h3 class="card-title"><strong>CREAR ROL</strong></h3>
                 </div>
 
                 @if($errors->any())
@@ -24,19 +24,26 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="name">Nombre del rol</label>
-                            <input type="text" id="name" name="name" class="form-control" style="max-width: 300px;" value="{{ old('name') }}" placeholder="Ingrese el nombre del rol">
+                            <label for="name"><strong>Nombre del rol *</strong></label>
+                            <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            class="form-control" 
+                            style="max-width: 300px;" 
+                            value="{{ old('name') }}" 
+                            placeholder="Ingrese el nombre del rol"
+                            required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="description">Descripción del rol</label>
-                            <textarea id="description" name="description" class="form-control w-70 @error('description') is-invalid @enderror" rows="4" placeholder="Ingrese una descripción del rol">{{ old('description') }}</textarea>
-                            
-                            @error('description')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <label for="description"><strong>Descripción del rol</strong></label>
+                            <textarea 
+                            id="description" 
+                            name="description" 
+                            class="form-control" 
+                            rows="4" 
+                            placeholder="Ingrese una descripción del rol">{{ old('description') }}</textarea>
                         </div>
                         
 

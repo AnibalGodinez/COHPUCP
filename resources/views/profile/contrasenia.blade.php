@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="card card-user">
             <div class="card-body">
-                <h2 class="card-title text-center font-weight-bold">Editar perfil</h2>
+                <h3 class="card-title text-center">Perfil</h3>
                 
                 <p class="card-text">
                     <div class="author">
@@ -45,7 +45,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header text-center">
-                <h2 class="title">Actualizar contraseña</h2>
+                <h2 class="card-title">Actualizar contraseña</h2>
             </div>
             <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
                 <div class="card-body">

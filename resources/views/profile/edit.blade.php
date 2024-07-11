@@ -4,10 +4,10 @@
     <div class="container d-flex justify-content-center col-sm-8" style="margin-top: 15px">
         <div class="col-md-12">
             <div class="card card-user">
+
                 <div class="card-body">
-                    <h2 class="card-title text-center font-weight-bold">Editar perfil</h2>
-                    
                     <p class="card-text">
+                        <h3 class="card-title text-center"><strong>Editar perfil</strong></h3>
                         <div class="author">
                             <div class="block block-one bg-info"></div>
                             <a href="#">
@@ -15,7 +15,7 @@
                                 <div class="name-container">
                                     <h5 class="title">{{ auth()->user()->name }} {{ auth()->user()->apellido }}</h5>
                                 </div>
-                            </a>                            
+                            </a>
                         </div>
                     </p>
 
@@ -23,6 +23,7 @@
                         {{ _('Apasionado por la tecnología y el desarrollo web. Disfruto aprender nuevas habilidades y colaborar en proyectos innovadores. En mi tiempo libre, me gusta leer libros de ciencia ficción y practicar senderismo.') }}
                     </div>
                 </div>
+
                 <div class="card-footer">
                     <div class="button-container">
                         <button class="btn btn-icon btn-round btn-facebook">
@@ -44,7 +45,7 @@
             <div class="card">
                 <form method="post" action="{{ route('profile.update') }}" autocomplete="off">
                     <div class="card-body">
-                        <h2 class="card-title text-center">Información</h2><br>
+                        <h3 class="card-title text-center">Información</h3><br>
                         @csrf
                         @method('put')
                     

@@ -7,7 +7,7 @@
             <div class="card mt-7">
 
                 <div class="card-body">
-                    <h2 class="text-center font-weight-bold">Gestionar usuarios</h2>
+                    <h3 class="text-center">GESTIONAR USUARIOS</h3>
 
                     @if (session('status'))
                         <div class="alert alert-success text-center">{{ session('status') }}</div>
