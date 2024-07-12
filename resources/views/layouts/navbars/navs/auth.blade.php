@@ -31,17 +31,13 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @can('ver boton ver usuarios')
+
                             <a class="dropdown-item text-uppercase" href="{{ route('usuarios.ver')}}">Ver usuarios</a>
-                            @endcan
 
-                            @can('ver boton crear usuarios')
                             <a class="dropdown-item text-uppercase" href="{{ route('usuarios.create')}}">Crear usuarios</a>
-                            @endcan
 
-                            @can('ver boton gestionar usuarios')
                             <a class="dropdown-item text-uppercase" href="{{ route('usuarios.index')}}">Gestionar usuarios</a>
-                            @endcan
+
                         </div>
 
                     </li>
@@ -172,8 +168,9 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item text-uppercase" href="{{ route('security_questions.index')}}">Preguntas de seguridad</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('pais.index') }}">Países</a>
                     </div>
-                </li>
+                </li>                
                 @endcan
 
                 @can('ver boton notificaciones')

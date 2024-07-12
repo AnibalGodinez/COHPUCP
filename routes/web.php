@@ -5,6 +5,7 @@ use App\Http\Controllers\CursoController;
 use App\Http\Controllers\CapacitacioneController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PaisController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SecurityQuestionController;
@@ -61,6 +62,12 @@ use App\Http\Controllers\SecurityQuestionController;
 	// RUTAS DE CAPACITACIONES
 	Route::group(['middleware' =>['auth']], function () {
 		Route::resource('capacitaciones', CapacitacioneController::class);
+	});
+
+	Route::group(['middleware' =>['auth']], function () {
+	Route::resource('pais', PaisController::class);
+	Route::get('/paises', [PaisController::class, 'view'])->name('pais.view');
+
 	});
 
 	// RUTAS DE CURSOS

@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
-
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
@@ -26,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->enum('estado',['activo', 'inactivo'])->default('activo');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->unsignedBigInteger('pais_id')->nullable(); // Agregar campo pais_id
+            $table->foreign('pais_id')->references('id')->on('pais')->onDelete('set null'); // Agregar la relación
             $table->rememberToken();
             $table->timestamps();
         });
