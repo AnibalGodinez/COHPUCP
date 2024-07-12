@@ -41,10 +41,10 @@
                                     <th class="text-center">Fecha de nacimiento</th>
                                     <th class="text-center">Teléfono</th>
                                     <th class="text-center">Teléfono celular</th>
-
                                     <th class="text-center">Correo electrónico</th>
                                     <th class="text-center">Estado</th>
                                     <th class="text-center">Roles</th>
+                                    <th class="text-center">País</th> <!-- Añadir encabezado para país -->
                                     <th class="text-center">Acción</th>
                                 </tr>
                             </thead>
@@ -63,7 +63,6 @@
                                     <td>{{ $user->fecha_nacimiento }}</td>
                                     <td>{{ $user->telefono }}</td>
                                     <td>{{ $user->telefono_celular }}</td>
-
                                     <td>{{ $user->email }}</td>
                                     <td class="text-center">{{ $user->estado }}</td>
                                     <td class="text-center">
@@ -73,7 +72,9 @@
                                             @endforeach
                                         @endif
                                     </td>
-                                    
+                                    <td class="text-center">
+                                        {{ $user->pais ? $user->pais->nombre : 'No asignado' }} <!-- Muestra el país si está asignado -->
+                                    </td>
                                     <td class="text-center">
                                         <a href="{{ url('usuarios/'.$user->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                             <i class="tim-icons icon-settings"></i>

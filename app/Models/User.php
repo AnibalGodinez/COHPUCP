@@ -26,6 +26,7 @@ class User extends Authenticatable
         'telefono_celular',
         'email',
         'password',
+        'pais_id', // Añadir pais_id a los campos rellenables
     ];
 
     protected $hidden = [
@@ -59,6 +60,7 @@ class User extends Authenticatable
 
     public function pais()
     {
-        return $this->belongsTo(Pais::class);
+        return $this->belongsTo(Pais::class, 'pais_id'); 
     }
+
 }

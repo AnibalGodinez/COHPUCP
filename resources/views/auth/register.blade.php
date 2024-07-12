@@ -269,6 +269,25 @@
                         }, 1000 * 60 * 60); // Revisar cada hora si es necesario actualizar el rango de años
                     });
                     </script>
+
+{{-- ============================================================================================================================== --}}
+
+                    <!-- Campo para seleccionar país -->
+                    <div class="input-group{{ $errors->has('pais_id') ? ' has-danger' : '' }} form-group col-md-6">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="tim-icons icon-world"></i> <!-- Cambia el ícono según tu preferencia -->
+                            </div>
+                        </div>
+                        <select name="pais_id" class="form-control{{ $errors->has('pais_id') ? ' is-invalid' : '' }}" value="{{ old('pais_id') }}" required>
+                            <option disabled selected>Seleccione el país</option>
+                            @foreach ($paises as $pais)
+                                <option value="{{ $pais->id }}" {{ old('pais_id') == $pais->id ? 'selected' : '' }}>{{ $pais->nombre }}</option>
+                            @endforeach
+                        </select>
+                        @include('alerts.feedback', ['field' => 'pais_id'])
+                    </div>
+
 {{-- ============================================================================================================================== --}}
 
 

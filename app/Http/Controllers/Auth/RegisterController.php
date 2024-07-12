@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\Pais;
+
 
 class RegisterController extends Controller
 {
@@ -42,31 +44,41 @@ class RegisterController extends Controller
     }
 
     protected function create(array $data)
-    {
-        $user = User::create([
-            'name' => $data['name'],
-            'name2' => $data['name2'],
-            'apellido' => $data['apellido'],
-            'apellido2' => $data['apellido2'],
-            'numero_identidad' => $data['numero_identidad'],
-            'numero_colegiacion' => $data['numero_colegiacion'],
-            'rtn' => $data['rtn'],
-            'sexo' => $data['sexo'],
-            'fecha_nacimiento' => $data['fecha_nacimiento'],
-            'telefono' => $data['telefono'],
-            'telefono_celular' => $data['telefono_celular'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+{
+    $user = User::create([
+        'name' => $data['name'],
+        'name2' => $data['name2'],
+        'apellido' => $data['apellido'],
+        'apellido2' => $data['apellido2'],
+        'numero_identidad' => $data['numero_identidad'],
+        'numero_colegiacion' => $data['numero_colegiacion'],
+        'rtn' => $data['rtn'],
+        'sexo' => $data['sexo'],
+        'fecha_nacimiento' => $data['fecha_nacimiento'],
+        'telefono' => $data['telefono'],
+        'telefono_celular' => $data['telefono_celular'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+        'pais_id' => $data['pais_id'], // Guardar el país seleccionado
+    ]);
 
-        // Verificar si se ingresó el número de colegiación
-        if ($data['numero_colegiacion']) {
-            // Asignar el rol 'Agremiado'
-            $user->assignRole('Agremiado');
-        } else {
-            // Asignar el rol 'Invitado'
-            $user->assignRole('Invitado');
-        }
-        return $user;
+    // Verificar si se ingresó el número de colegiación
+    if ($data['numero_colegiacion']) {
+        // Asignar el rol 'Agremiado'
+        $user->assignRole('Agremiado');
+    } else {
+        // Asignar el rol 'Invitado'
+        $user->assignRole('Invitado');
     }
+
+    return $user;
+    }
+
+
+    public function showRegistrationForm()
+    {
+        $paises = Pais::all(); // Obtén todos los países
+        return view('auth.register', compact('paises'));
+    }
+
 }

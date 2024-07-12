@@ -3,28 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Pais;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('permission:ver usuarios', ['only' => ['verUsuarios']]);
-    //     $this->middleware('permission:indice usuarios', ['only' => ['index']]);
-    //     $this->middleware('permission:actualizar usuario', ['only' => ['update','edit']]);
-    //     $this->middleware('permission:crear usuario', ['only' => ['create','store']]);
-    //     $this->middleware('permission:borrar usuario', ['only' => ['destroy']]);
-    // }
-
-//-----------------------------------------------------------------------------------------------------------------
-    public function index(Request $request)
+    public function __construct()
     {
-    $search = $request->query('search');
+        $this->middleware('permission:ver usuarios', ['only' => ['verUsuarios']]);
+        $this->middleware('permission:indice usuarios', ['only' => ['index']]);
+        $this->middleware('permission:actualizar usuario', ['only' => ['update','edit']]);
+        $this->middleware('permission:crear usuario', ['only' => ['create','store']]);
+        $this->middleware('permission:borrar usuario', ['only' => ['destroy']]);
+    }
 
-    if ($search) {
-        $users = User::where(function($query) use ($search) {
+    private function searchUsers($search)
+    {
+        return User::where(function($query) use ($search) {
             $query->where('id', 'LIKE', "%{$search}%")
                   ->orWhere('name', 'LIKE', "%{$search}%")
                   ->orWhere('name2', 'LIKE', "%{$search}%")
@@ -40,187 +37,157 @@ class UserController extends Controller
                   ->orWhere('email', 'LIKE', "%{$search}%");
         })
         ->orderBy('id', 'desc')
-        ->with('roles')->paginate(4);
-
-    } else {
-        $users = User::orderBy('id', 'desc') 
-                     ->with('roles')->paginate(4);
+        ->with('roles')
+        ->paginate(4);
     }
 
-    return view('users.index', ['users' => $users]);
-}
+    public function index(Request $request)
+    {
+    $search = $request->query('search');
+    $users = $search 
+        ? $this->searchUsers($search)->with('pais') 
+        : User::orderBy('id', 'desc')->with('roles', 'pais')->paginate(4);
 
-//-----------------------------------------------------------------------------------------------------------------
+    return view('users.index', ['users' => $users]);
+    }
+
+
+
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
+        $paises = Pais::pluck('nombre', 'id')->all(); // Asegúrate de reemplazar 'nombre' con el campo correcto en tu modelo Pais
         return view('users.create', [
-            'roles' => $roles
+            'roles' => $roles,
+            'paises' => $paises
         ]);
     }
 
-//-----------------------------------------------------------------------------------------------------------------
     public function store(Request $request)
     {
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'name2' => 'nullable|string|max:255',
-        'apellido' => 'required|string|max:255',
-        'apellido2' => 'nullable|string|max:255',
-        'numero_identidad' => 'required|string|unique:users,numero_identidad',
-        'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
-        'rtn' => 'nullable|string|max:20|unique:users,rtn',
-        'sexo' => 'required|in:masculino,femenino',
-        'fecha_nacimiento' => 'required|date',
-        'telefono' => 'nullable|string|max:20',
-        'telefono_celular' => 'required|string|max:20',
-        'email' => 'required|email|max:255|unique:users,email',
-        'password' => [
-            'required', 
-            'string', 
-            'min:8', 
-            'max:20', 
-            'confirmed', 
-            'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/'
-        ],
-    ], [
-        'name.required' => 'El campo nombre es obligatorio.',
-        'apellido.required' => 'El campo apellido es obligatorio.',
-        'numero_identidad.required' => 'El campo número de identidad es obligatorio.',
-        'numero_identidad.unique' => 'El número de identidad ya está en uso.',
-        'sexo.required' => 'El campo sexo es obligatorio.',
-        'fecha_nacimiento.required' => 'El campo fecha de nacimiento es obligatorio.',
-        'telefono_celular.required' => 'El campo teléfono celular es obligatorio.',
-        'email.required' => 'El campo email es obligatorio.',
-        'email.unique' => 'El email ya está en uso.',
-        'password.required' => 'El campo contraseña es obligatorio.',
-        'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
-        'password.confirmed' => 'La confirmación de la contraseña no coincide.',
-        'password.regex' => 'La contraseña debe contener al menos un símbolo o caractér especial, como por Ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
-    ]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'name2' => 'nullable|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'apellido2' => 'nullable|string|max:255',
+            'numero_identidad' => 'required|string|unique:users,numero_identidad',
+            'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
+            'rtn' => 'nullable|string|max:20|unique:users,rtn',
+            'sexo' => 'required|in:masculino,femenino',
+            'fecha_nacimiento' => 'required|date',
+            'telefono' => 'nullable|string|max:20',
+            'telefono_celular' => 'required|string|max:20',
+            'email' => 'required|email|max:255|unique:users,email',
+            'pais_id' => 'nullable|exists:pais,id',
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'max:20',
+                'confirmed',
+                'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/'
+            ],
+        ], [
+            // Mensajes personalizados de validación
+            'name.required' => 'El campo nombre es obligatorio.',
+            'apellido.required' => 'El campo apellido es obligatorio.',
+            'numero_identidad.required' => 'El campo número de identidad es obligatorio.',
+            'numero_identidad.unique' => 'El número de identidad ya está en uso.',
+            'sexo.required' => 'El campo sexo es obligatorio.',
+            'fecha_nacimiento.required' => 'El campo fecha de nacimiento es obligatorio.',
+            'telefono_celular.required' => 'El campo teléfono celular es obligatorio.',
+            'email.required' => 'El campo email es obligatorio.',
+            'email.unique' => 'El email ya está en uso.',
+            'password.required' => 'El campo contraseña es obligatorio.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+            'password.confirmed' => 'La confirmación de la contraseña no coincide.',
+            'password.regex' => 'La contraseña debe contener al menos un símbolo o carácter especial, como por Ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
+        ]);
 
-    $user = User::create([
-        'name' => $request->name,
-        'name2' => $request->name2,
-        'apellido' => $request->apellido,
-        'apellido2' => $request->apellido2,
-        'numero_identidad' => $request->numero_identidad,
-        'numero_colegiacion' => $request->numero_colegiacion,
-        'rtn' => $request->rtn,
-        'sexo' => $request->sexo,
-        'fecha_nacimiento' => $request->fecha_nacimiento,
-        'telefono' => $request->telefono,
-        'telefono_celular' => $request->telefono_celular,
-        'email' => $request->email,
-        'password' => Hash::make($request->password),
-    ]);
+        $user = User::create([
+            'name' => $request->name,
+            'name2' => $request->name2,
+            'apellido' => $request->apellido,
+            'apellido2' => $request->apellido2,
+            'numero_identidad' => $request->numero_identidad,
+            'numero_colegiacion' => $request->numero_colegiacion,
+            'rtn' => $request->rtn,
+            'sexo' => $request->sexo,
+            'fecha_nacimiento' => $request->fecha_nacimiento,
+            'telefono' => $request->telefono,
+            'telefono_celular' => $request->telefono_celular,
+            'email' => $request->email,
+            'pais_id' => $request->pais_id,
+            'password' => Hash::make($request->password),
+        ]);
 
-    $user->syncRoles($request->roles);
-
-    return redirect('/usuarios')->with('status', 'El usuario se ha creado exitosamente con su respectivo rol');
-}
-
-//-----------------------------------------------------------------------------------------------------------------
-     public function edit($userId)
-    {
-        $user = User::findOrFail($userId); // Buscar el usuario por ID
-        $roles = Role::pluck('name', 'name')->all(); // Ejemplo de obtención de roles, ajustar según tu lógica
-        
-        return view('users.edit', compact('user', 'roles'));
-    }
-
-//-----------------------------------------------------------------------------------------------------------------
-public function update(Request $request, $userId)
-{
-    // Validar los datos del formulario
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'name2' => 'nullable|string|max:255',
-        'apellido' => 'required|string|max:255',
-        'apellido2' => 'nullable|string|max:255',
-        'numero_identidad' => 'required|string|max:15|unique:users,numero_identidad,'.$userId,
-        'numero_colegiacion' => 'nullable|string|max:12|unique:users,numero_colegiacion,'.$userId,
-        'rtn' => 'nullable|string|max:16|unique:users,rtn,'.$userId,
-        'sexo' => 'required|in:masculino,femenino',
-        'fecha_nacimiento' => 'required|date',
-        'telefono' => 'nullable|string|max:9',
-        'telefono_celular' => 'required|string|max:9',
-        'email' => 'required|string|email|max:255|unique:users,email,'.$userId,
-        'roles' => 'required|array',
-    ], [
-        // Mensajes personalizados de validación
-        'password.regex' => 'La contraseña debe contener al menos un símbolo o caractér especial, como por Ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
-    ]);
-
-    // Obtener el usuario por su ID
-    $user = User::findOrFail($userId);
-
-    // Actualizar los datos del usuario
-    $user->update([
-        'name' => $request->name,
-        'name2' => $request->name2,
-        'apellido' => $request->apellido,
-        'apellido2' => $request->apellido2,
-        'numero_identidad' => $request->numero_identidad,
-        'numero_colegiacion' => $request->numero_colegiacion,
-        'rtn' => $request->rtn,
-        'sexo' => $request->sexo,
-        'fecha_nacimiento' => $request->fecha_nacimiento,
-        'telefono' => $request->telefono,
-        'telefono_celular' => $request->telefono_celular,
-        'email' => $request->email,
-    ]);
-
-    // Obtener los roles seleccionados y sincronizarlos
-    if ($request->roles) {
         $user->syncRoles($request->roles);
-    } else {
-        // Si no se seleccionó ningún rol, desasignar todos los roles
-        $user->roles()->detach();
+
+        return redirect('/usuarios')->with('status', 'El usuario se ha creado exitosamente con su respectivo rol');
     }
 
-    // Redirigir con mensaje de éxito
-    return redirect()->route('usuarios.index')->with('status', 'Usuario actualizado exitosamente.');
-}
+    public function edit($userId)
+    {
+        $user = User::findOrFail($userId);
+        $roles = Role::pluck('name', 'name')->all();
+        $paises = Pais::pluck('nombre', 'id')->all(); // Asegúrate de reemplazar 'nombre' con el campo correcto en tu modelo Pais
+        return view('users.edit', compact('user', 'roles', 'paises'));
+    }
 
-//-----------------------------------------------------------------------------------------------------------------
+    public function update(Request $request, $userId)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'name2' => 'nullable|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'apellido2' => 'nullable|string|max:255',
+            'numero_identidad' => 'required|string|max:15|unique:users,numero_identidad,'.$userId,
+            'numero_colegiacion' => 'nullable|string|max:12|unique:users,numero_colegiacion,'.$userId,
+            'rtn' => 'nullable|string|max:16|unique:users,rtn,'.$userId,
+            'sexo' => 'required|in:masculino,femenino',
+            'fecha_nacimiento' => 'required|date',
+            'telefono' => 'nullable|string|max:20',
+            'telefono_celular' => 'required|string|max:20',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$userId,
+            'pais_id' => 'nullable|exists:pais,id',
+            'roles' => 'required|array',
+        ], [
+            'pais_id.exists' => 'El país seleccionado es inválido.',
+        ]);
+
+        $user = User::findOrFail($userId);
+
+        $user->update([
+            'name' => $request->name,
+            'name2' => $request->name2,
+            'apellido' => $request->apellido,
+            'apellido2' => $request->apellido2,
+            'numero_identidad' => $request->numero_identidad,
+            'numero_colegiacion' => $request->numero_colegiacion,
+            'rtn' => $request->rtn,
+            'sexo' => $request->sexo,
+            'fecha_nacimiento' => $request->fecha_nacimiento,
+            'telefono' => $request->telefono,
+            'telefono_celular' => $request->telefono_celular,
+            'email' => $request->email,
+            'pais_id' => $request->pais_id,
+        ]);
+
+        $user->syncRoles($request->roles);
+
+        return redirect('/usuarios')->with('status', 'El usuario se ha actualizado exitosamente');
+    }
+
     public function destroy($userId)
     {
-        $user = User::findOrfail($userId);
-        $user->delete();
+        User::findOrFail($userId)->delete();
         return redirect('/usuarios')->with('status', 'El usuario ha sido eliminado exitosamente');
     }
 
-//-----------------------------------------------------------------------------------------------------------------
     public function verUsuarios(Request $request)
     {
         $search = $request->query('search');
-
-        if ($search) {
-            $users = User::where(function($query) use ($search) {
-                $query->where('id', 'LIKE', "%{$search}%")
-                    ->orWhere('name', 'LIKE', "%{$search}%")
-                    ->orWhere('name2', 'LIKE', "%{$search}%")
-                    ->orWhere('apellido', 'LIKE', "%{$search}%")
-                    ->orWhere('apellido2', 'LIKE', "%{$search}%")
-                    ->orWhere('numero_identidad', 'LIKE', "%{$search}%")
-                    ->orWhere('numero_colegiacion', 'LIKE', "%{$search}%")
-                    ->orWhere('rtn', 'LIKE', "%{$search}%")
-                    ->orWhere('sexo', 'LIKE', "%{$search}%")
-                    ->orWhere('fecha_nacimiento', 'LIKE', "%{$search}%")
-                    ->orWhere('telefono', 'LIKE', "%{$search}%")
-                    ->orWhere('telefono_celular', 'LIKE', "%{$search}%")
-                    ->orWhere('email', 'LIKE', "%{$search}%");
-            })
-            ->orderBy('id', 'desc')
-            ->with('roles')
-            ->paginate(4);
-        } else {
-            $users = User::orderBy('id', 'desc')
-                         ->with('roles')
-                         ->paginate(4);
-        }
-
+        $users = $this->searchUsers($search);
         return view('users.view', ['users' => $users]);
     }
 }
