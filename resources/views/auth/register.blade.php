@@ -29,7 +29,7 @@
                             type="text" 
                             name="name" 
                             class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" 
-                            placeholder="Primer nombre" 
+                            placeholder="Ingrese su primer nombre" 
                             value="{{ old('name') }}"                         
                             pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
                             title="En este campo sólo se permiten letras"
@@ -51,7 +51,7 @@
                             type="text" 
                             name="name2" 
                             class="form-control{{ $errors->has('name2') ? ' is-invalid' : '' }}" 
-                            placeholder="Segundo nombre" 
+                            placeholder="Ingrese su segundo nombre" 
                             value="{{ old('name2') }}"                         
                             pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
                             title="En este campo sólo se permiten letras"
@@ -72,7 +72,7 @@
                             type="text" 
                             name="apellido" 
                             class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" 
-                            placeholder="Primer apellido" 
+                            placeholder="Ingrese su primer apellido" 
                             value="{{ old('apellido') }}"                         
                             pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
                             title="En este campo sólo se permiten letras"
@@ -94,7 +94,7 @@
                             type="text" 
                             name="apellido2" 
                             class="form-control{{ $errors->has('apellido2') ? ' is-invalid' : '' }}" 
-                            placeholder="Segundo apellido" 
+                            placeholder="Ingrese su segundo apellido" 
                             value="{{ old('apellido2') }}"                         
                             pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
                             title="En este campo sólo se permiten letras"
@@ -143,7 +143,6 @@
                             e.target.value = input;
                         });
                     </script>
-{{-- ============================================================================================================================== --}}
 
                     <!-- Campo para el número de colegiación -->
                     <div class="form-group col-md-6">
@@ -187,32 +186,29 @@
                         });
                     </script>
 
-{{-- ============================================================================================================================== --}}
-
                     <!-- Campo para RTN -->
-<div class="form-group col-md-6">
-    <label for="rtn">RTN</label>
-    <div class="input-group{{ $errors->has('rtn') ? ' has-danger' : '' }}">
-        <div class="input-group-prepend">
-            <div class="input-group-text">
-                <i class="tim-icons icon-notes"></i>
-            </div>
-        </div>
-        <input 
-        type="num" 
-        name="rtn" 
-        class="form-control" 
-        id="rtn" 
-        placeholder="Ingrese RTN (SIN GUIONES)"
-        value="{{ old('rtn') }}"
-        maxlength="16" 
-        pattern="\d{4}-\d{4}-\d{6}">
-        @error('rtn')
-            <span class="text-danger">{{ $message }}</span>
-        @enderror
-    </div>
-</div>
-
+                    <div class="form-group col-md-6">
+                        <label for="rtn">RTN</label>
+                        <div class="input-group{{ $errors->has('rtn') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-notes"></i>
+                                </div>
+                            </div>
+                            <input 
+                            type="num" 
+                            name="rtn" 
+                            class="form-control" 
+                            id="rtn" 
+                            placeholder="Ingrese RTN (SIN GUIONES)"
+                            value="{{ old('rtn') }}"
+                            maxlength="16" 
+                            pattern="\d{4}-\d{4}-\d{6}">
+                            @error('rtn')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
 
                     <script>
                         document.getElementById('rtn').addEventListener('input', function (e) {
@@ -230,7 +226,6 @@
                             e.target.value = formatted;
                         });
                     </script>
-{{-- ============================================================================================================================== --}}
 
                     <!-- Campo para sexo -->
                     <div class="form-group col-md-6">
@@ -253,10 +248,6 @@
                             @include('alerts.feedback', ['field' => 'sexo'])
                         </div>
                     </div>
-
-
-{{-- ============================================================================================================================== --}}
-
 
                     <!-- Campo para fecha de nacimiento -->
                     <div class="form-group col-md-6">
@@ -329,31 +320,17 @@
                         });
                     </script>
 
-{{-- ============================================================================================================================== --}}
-
                     <!-- Campo para seleccionar país -->
                     <div class="col-md-6">
-                        <label for="pais_id"><strong>País *</strong></label>
-                        <div class="input-group{{ $errors->has('pais_id') ? ' has-danger' : '' }}">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="tim-icons icon-world"></i>
-                                </div>
-                            </div>
-                            <select id="pais" name="pais_id" class="form-control{{ $errors->has('pais_id') ? ' is-invalid' : '' }}" required>
-                                <option value="{{ old('pais_id') }}"  disabled selected>Seleccionar país</option>
-                                @foreach($paises as $pais)
-                                    <option value="{{ $pais->id }}" data-codigo="{{ $pais->codigo }}">{{ $pais->nombre }}</option>
-                                @endforeach
-                            </select>
-                            @error('pais_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                        <label for="telefono"><strong>País *</strong></label>
+                        <select id="pais" name="pais_id" class="form-control{{ $errors->has('pais_id') ? ' is-invalid' : '' }}" required>
+                            <option value="" disabled selected>Seleccionar país</option>
+                            @foreach($paises as $pais)
+                                <option value="{{ $pais->id }}" data-codigo="{{ $pais->codigo }}">{{ $pais->nombre }}</option>
+                            @endforeach
+                        </select>
                     </div>
-
+                    
 
                     <!-- Campo para el teléfono fijo -->
                     <div class="col-md-6">
@@ -366,7 +343,7 @@
                                 type="text" 
                                 class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" 
                                 name="telefono" 
-                                placeholder="Teléfono fijo"
+                                placeholder="Ingrese su número de teléfono fijo"
                                 maxlength="15" 
                                 value="{{ old('telefono') }}">
                             </div>
@@ -385,7 +362,7 @@
                                 type="text" 
                                 class="form-control{{ $errors->has('telefono_celular') ? ' is-invalid' : '' }}" 
                                 name="telefono_celular" 
-                                placeholder="Teléfono Celular"
+                                placeholder="Ingrese su número de celular"
                                 maxlength="15" 
                                 value="{{ old('telefono_celular') }}" 
                                 required>
@@ -399,27 +376,26 @@
                     </div>
 
                     <!-- Campo para correo electrónico -->
-<div class="col-md-6">
-    <label for="email"><strong>Correo electrónico *</strong></label>
-    <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-        <div class="input-group-prepend">
-            <div class="input-group-text">
-                <i class="tim-icons icon-email-85"></i>
-            </div>
-        </div>
-        <input 
-            type="email" 
-            name="email" 
-            class="form-control" 
-            placeholder="Ingrese su correo electrónico" 
-            value="{{ old('email') }}" 
-            required>
-        @error('email')
-            <span class="text-danger">{{ $message }}</span>
-        @enderror
-    </div>
-</div>
-
+                    <div class="col-md-6">
+                        <label for="email"><strong>Correo electrónico *</strong></label>
+                        <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-email-85"></i>
+                                </div>
+                            </div>
+                            <input 
+                                type="email" 
+                                name="email" 
+                                class="form-control" 
+                                placeholder="Ingrese su correo electrónico" 
+                                value="{{ old('email') }}" 
+                                required>
+                            @error('email')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
 
                     <!-- Campo para confirmación del correo electrónico -->
                     <div class="col-md-6">
@@ -527,10 +503,7 @@
                                 @include('alerts.feedback', ['field' => 'agree_terms_and_conditions'])
                             </label>
                         </div>
-                    </div>
-                    
-                    
-                                                       
+                    </div>                                   
                 </div>
 
                 <div class="card-footer" style="margin-top: -10px;">
@@ -551,6 +524,7 @@
         </div>
     </form>
 </div>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const paisSelect = document.getElementById('pais');
@@ -578,6 +552,5 @@
         });
     });
 </script>
-
 
 @endsection
