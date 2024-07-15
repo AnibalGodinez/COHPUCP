@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Models\Pais;
-
+use Illuminate\Support\Carbon;
 
 class RegisterController extends Controller
 {
@@ -23,6 +23,12 @@ class RegisterController extends Controller
 
     protected function validator(array $data)
     {
+        // Obtener el año actual
+        $yearNow = Carbon::now()->year;
+        // Calcular los años mínimo y máximo permitidos
+        $yearMin = $yearNow - 106;
+        $yearMax = $yearNow - 18;
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'name2' => ['nullable', 'string', 'max:255'],
@@ -32,53 +38,63 @@ class RegisterController extends Controller
             'numero_colegiacion' => ['nullable', 'string', 'unique:users,numero_colegiacion'],
             'rtn' => ['nullable', 'string', 'max:20', 'unique:users,rtn'],
             'sexo' => ['required', 'in:masculino,femenino'],
-            'fecha_nacimiento' => ['required', 'date'],
+            'fecha_nacimiento' => [
+                'required',
+                'date',
+                function ($attribute, $value, $fail) use ($yearMin, $yearMax) {
+                    $birthYear = Carbon::parse($value)->year;
+
+                    if ($birthYear > $yearMax) {
+                        $fail('Debe tener al menos 18 años para registrarse.');
+                    } elseif ($birthYear < $yearMin) {
+                        $fail('La fecha de nacimiento debe estar dentro del rango de 106 años.');
+                    }
+                },
+            ],
             'telefono' => ['nullable', 'string', 'max:20'],
             'telefono_celular' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/'],
             'agree_terms_and_conditions' => ['required'],
         ], [
-            'password.regex' => 'La contraseña debe contener al menos un símbolo o caractér especial, como por Ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
+            'password.regex' => 'La contraseña debe contener al menos un símbolo o carácter especial, como por ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
         ]);
     }
 
     protected function create(array $data)
-{
-    $user = User::create([
-        'name' => $data['name'],
-        'name2' => $data['name2'],
-        'apellido' => $data['apellido'],
-        'apellido2' => $data['apellido2'],
-        'numero_identidad' => $data['numero_identidad'],
-        'numero_colegiacion' => $data['numero_colegiacion'],
-        'rtn' => $data['rtn'],
-        'sexo' => $data['sexo'],
-        'fecha_nacimiento' => $data['fecha_nacimiento'],
-        'telefono' => $data['telefono'],
-        'telefono_celular' => $data['telefono_celular'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password']),
-        'pais_id' => $data['pais_id'], // Guardar el país seleccionado
-    ]);
+    {
+        $user = User::create([
+            'name' => $data['name'],
+            'name2' => $data['name2'],
+            'apellido' => $data['apellido'],
+            'apellido2' => $data['apellido2'],
+            'numero_identidad' => $data['numero_identidad'],
+            'numero_colegiacion' => $data['numero_colegiacion'],
+            'rtn' => $data['rtn'],
+            'sexo' => $data['sexo'],
+            'fecha_nacimiento' => $data['fecha_nacimiento'],
+            'telefono' => $data['telefono'],
+            'telefono_celular' => $data['telefono_celular'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'pais_id' => $data['pais_id'], // Guardar el país seleccionado
+        ]);
 
-    // Verificar si se ingresó el número de colegiación
-    if ($data['numero_colegiacion']) {
-        // Asignar el rol 'Agremiado'
-        $user->assignRole('Agremiado');
-    } else {
-        // Asignar el rol 'Invitado'
-        $user->assignRole('Invitado');
+        // Verificar si se ingresó el número de colegiación
+        if ($data['numero_colegiacion']) {
+            // Asignar el rol 'Agremiado'
+            $user->assignRole('Agremiado');
+        } else {
+            // Asignar el rol 'Invitado'
+            $user->assignRole('Invitado');
+        }
+
+        return $user;
     }
-
-    return $user;
-    }
-
 
     public function showRegistrationForm()
     {
         $paises = Pais::all(); // Obtén todos los países
         return view('auth.register', compact('paises'));
     }
-
 }

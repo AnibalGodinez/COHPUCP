@@ -137,7 +137,7 @@
                         name="numero_colegiacion" 
                         class="form-control" 
                         id="numero_colegiacion" 
-                        placeholder="Nº de colegiación (SIN GUIONES)"
+                        placeholder="Nº colegiación (SIN GUIONES)"
                         value="{{ old('numero_colegiacion') }}" 
                         maxlength="12" 
                         pattern="\d{4}-\d{2}-\d{4}">
@@ -204,7 +204,7 @@
                                 <i class="tim-icons icon-single-02"></i>
                             </div>
                         </div>
-                        <select name="sexo" class="form-control{{ $errors->has('sexo') ? ' is-invalid' : '' }}" value="{{ old('sexo') }}" required>
+                        <select name="sexo" class="form-control{{ $errors->has('sexo') ? ' is-invalid' : '' }}" value="{{ old('sexo') }}">
                             <option disabled selected>Seleccione el sexo</option>
                             <option value="masculino" {{ old('sexo') == 'masculino' ? 'selected' : '' }}>Masculino</option>
                             <option value="femenino" {{ old('sexo') == 'femenino' ? 'selected' : '' }}>Femenino</option>
@@ -215,59 +215,68 @@
 
 
                     <!-- Campo para fecha de nacimiento -->
-                    <div class="input-group{{ $errors->has('fecha_nacimiento') ? ' has-danger' : '' }} form-group col-md-6">
+                        <div class="input-group{{ $errors->has('fecha_nacimiento') ? ' has-danger' : '' }} form-group col-md-6">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-birthday-cake"></i>
+                                </div>
+                            </div>
+                            <input 
+                                type="date" 
+                                name="fecha_nacimiento" 
+                                class="form-control"
+                                value="{{ old('fecha_nacimiento') }}"
+                                id="fecha_nacimiento"                                                           
+                                required>
+                        </div>
+
+                        <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const today = new Date();
+                            const currentYear = today.getFullYear();
+                            const minYear = currentYear - 106;
+                            const maxYear = currentYear - 18;
+
+                            const minDate = `${minYear}-01-01`;
+                            const maxDate = `${maxYear}-12-31`;
+
+                            const fechaNacimientoInput = document.getElementById('fecha_nacimiento');
+                            fechaNacimientoInput.setAttribute('min', minDate);
+                            fechaNacimientoInput.setAttribute('max', maxDate);
+                        });
+                        </script>
+    
+
+                    <!-- Campo para edad -->
+                    <div class="input-group form-group col-md-6">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
-                                <i class="tim-icons icon-calendar-60"></i>
+                                <i class="fas fa-calendar-alt"></i>
                             </div>
                         </div>
                         <input 
-                            type="date" 
-                            name="fecha_nacimiento" 
+                            type="text" 
+                            name="edad" 
                             class="form-control"
-                            value="{{ old('fecha_nacimiento') }}"
-                            id="fecha_nacimiento"                                                           
-                            required>
+                            placeholder="Edad"
+                            id="edad" 
+                            readonly>
                     </div>
 
                     <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        // Obtener el elemento del campo de fecha de nacimiento
-                        var fechaNacimiento = document.getElementById('fecha_nacimiento');
-
-                        // Calcular el año máximo permitido (2005)
-                        var yearMax = 2005; 
-                        // Calcular el año mínimo permitido (1925)
-                        var yearMin = 1925; 
-
-                        // Establecer los atributos mínimos y máximos en el campo de fecha de nacimiento
-                        fechaNacimiento.setAttribute('min', yearMin + '-01-01');
-                        fechaNacimiento.setAttribute('max', yearMax + '-12-31');
-
-                        // Función para actualizar el rango de años permitido cada año nuevo
-                        function actualizarRangoAnios() {
-                            var currentYear = new Date().getFullYear();
-                            var newYearMin = currentYear - 80;
-                            var newYearMax = newYearMin + 80;
-
-                            // Establecer los nuevos límites en el campo de fecha de nacimiento
-                            fechaNacimiento.setAttribute('min', newYearMin + '-01-01');
-                            fechaNacimiento.setAttribute('max', newYearMax + '-12-31');
-                        }
-
-                        // Llamar a la función para establecer inicialmente el rango de años
-                        actualizarRangoAnios();
-
-                        // Llamar a la función para actualizar el rango de años cada vez que se inicie un nuevo año
-                        setInterval(function() {
-                            var currentYear = new Date().getFullYear();
-                            var newYearMin = currentYear - 80;
-                            var newYearMax = newYearMin + 80;
-                            if (parseInt(fechaNacimiento.getAttribute('max').split('-')[0]) !== newYearMax) {
-                                actualizarRangoAnios();
+                        document.getElementById('fecha_nacimiento').addEventListener('change', function() {
+                            var birthDate = new Date(this.value);
+                            var today = new Date();
+                            var age = today.getFullYear() - birthDate.getFullYear();
+                            var monthDifference = today.getMonth() - birthDate.getMonth();
+                    
+                            // Ajusta la edad si aún no ha pasado el cumpleaños este año
+                            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                                age--;
                             }
-                        }, 1000 * 60 * 60); // Revisar cada hora si es necesario actualizar el rango de años
-                    });
+                    
+                            document.getElementById('edad').value = age;
+                        });
                     </script>
 
 {{-- ============================================================================================================================== --}}
@@ -276,22 +285,23 @@
                     <div class="input-group{{ $errors->has('pais_id') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
-                                <i class="tim-icons icon-world"></i> <!-- Cambia el ícono según tu preferencia -->
+                                <i class="tim-icons icon-world"></i>
                             </div>
                         </div>
-                        <select name="pais_id" class="form-control{{ $errors->has('pais_id') ? ' is-invalid' : '' }}" value="{{ old('pais_id') }}" required>
-                            <option disabled selected>Seleccione el país</option>
-                            @foreach ($paises as $pais)
-                                <option value="{{ $pais->id }}" {{ old('pais_id') == $pais->id ? 'selected' : '' }}>{{ $pais->nombre }}</option>
+                        <select id="pais" name="pais_id" class="form-control{{ $errors->has('pais_id') ? ' is-invalid' : '' }}" required>
+                            <option value="" disabled selected>Seleccionar país</option>
+                            @foreach($paises as $pais)
+                                <option value="{{ $pais->id }}" data-codigo="{{ $pais->codigo }}">{{ $pais->nombre }}</option>
                             @endforeach
                         </select>
-                        @include('alerts.feedback', ['field' => 'pais_id'])
+                        @error('pais_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-
-{{-- ============================================================================================================================== --}}
-
-
-                    <!-- Campo para teléfono -->
+                    
+                    <!-- Campo para el teléfono fijo -->
                     <div class="input-group{{ $errors->has('telefono') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -299,17 +309,22 @@
                             </div>
                         </div>
                         <input 
-                        type="num" 
-                        name="telefono" 
-                        class="form-control" 
                         id="telefono" 
-                        placeholder="Teléfono fijo (SIN GUIONES)"
-                        value="{{ old('telefono') }}"
-                        pattern="\d{4}-\d{4}"
-                        maxlength="9">
+                        type="text" 
+                        class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" 
+                        name="telefono" 
+                        placeholder="Teléfono" 
+                        value="{{ old('telefono') }}" 
+                        required>
+                        @error('telefono')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
+                    
 
-                    <!-- Campo para teléfono celular -->
+                    <!-- Campo para el teléfono celular -->
                     <div class="input-group{{ $errors->has('telefono_celular') ? ' has-danger' : '' }} form-group col-md-6">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -317,45 +332,21 @@
                             </div>
                         </div>
                         <input 
-                        type="num" 
-                        name="telefono_celular" 
-                        class="form-control" 
                         id="telefono_celular" 
-                        placeholder="Número de celular (SIN GUIONES)"
-                        value="{{ old('telefono_celular') }}"
-                        pattern="\d{4}-\d{4}"
-                        maxlength="9"
+                        type="text" 
+                        class="form-control{{ $errors->has('telefono_celular') ? ' is-invalid' : '' }}" 
+                        name="telefono_celular" 
+                        placeholder="Teléfono Celular" 
+                        value="{{ old('telefono_celular') }}" 
                         required>
+                        @error('telefono_celular')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
+                    
 
-                    <script>
-                        document.getElementById('telefono').addEventListener('input', function (e) {
-                            var input = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
-                            var formatted = '';
-                    
-                            if (input.length <= 4) {
-                                formatted = input;
-                            } else {
-                                formatted = input.slice(0, 4) + '-' + input.slice(4, 8);
-                            }
-                    
-                            e.target.value = formatted;
-                        });
-                    
-                        document.getElementById('telefono_celular').addEventListener('input', function (e) {
-                            var input = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
-                            var formatted = '';
-                    
-                            if (input.length <= 4) {
-                                formatted = input;
-                            } else {
-                                formatted = input.slice(0, 4) + '-' + input.slice(4, 8);
-                            }
-                    
-                            e.target.value = formatted;
-                        });
-                    </script>
-                    
 {{-- ============================================================================================================================== --}}
 
                     <!-- Campo para correo electrónico -->
@@ -374,6 +365,21 @@
                         required>
                     </div>
 
+                    <!-- Campo para confirmación del correo electrónico -->
+                    <div class="input-group{{ $errors->has('email_confirmation') ? ' has-danger' : '' }} form-group col-md-6">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <i class="tim-icons icon-email-85"></i>
+                            </div>
+                        </div>
+                        <input 
+                            type="email" 
+                            name="email_confirmation" 
+                            class="form-control" 
+                            placeholder="Confirme su correo electrónico" 
+                            value="{{ old('email_confirmation') }}" 
+                            required>
+                    </div>
                     
                     <!-- Campo para la contraseña -->
                     <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }} form-group col-md-6">
@@ -468,4 +474,18 @@
         </div>
     </form>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const paisSelect = document.getElementById('pais');
+        const telefonoInput = document.getElementById('telefono');
+        const telefonoCelularInput = document.getElementById('telefono_celular');
+    
+        paisSelect.addEventListener('change', function () {
+            const selectedOption = paisSelect.options[paisSelect.selectedIndex];
+            const codigoPais = selectedOption.getAttribute('data-codigo');
+            telefonoInput.value = codigoPais;
+            telefonoCelularInput.value = codigoPais;
+        });
+    });
+    </script>
 @endsection
