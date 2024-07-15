@@ -34,7 +34,7 @@
                                     <th class="text-center">Segundo nombre</th>
                                     <th class="text-center">Primer apellido</th>
                                     <th class="text-center">Segundo apellido</th>
-                                    <th class="text-center">Número de identidad </th>
+                                    <th class="text-center">Número de identidad</th>
                                     <th class="text-center">Número de colegiación</th>
                                     <th class="text-center">RTN</th>
                                     <th class="text-center">Sexo</th>
@@ -61,8 +61,20 @@
                                     <td>{{ $user->rtn }}</td>
                                     <td>{{ $user->sexo }}</td>
                                     <td>{{ $user->fecha_nacimiento }}</td>
-                                    <td>{{ $user->telefono }}</td>
-                                    <td>{{ $user->telefono_celular }}</td>
+                                    <td>
+                                        @if ($user->pais)
+                                            {{ $user->pais->codigo }} {{ $user->telefono }}
+                                        @else
+                                            {{ $user->telefono }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($user->pais)
+                                            {{ $user->pais->codigo }} {{ $user->telefono_celular }}
+                                        @else
+                                            {{ $user->telefono_celular }}
+                                        @endif
+                                    </td>
                                     <td>{{ $user->email }}</td>
                                     <td class="text-center">{{ $user->estado }}</td>
                                     <td class="text-center">
