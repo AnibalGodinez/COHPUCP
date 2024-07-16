@@ -11,27 +11,34 @@
                         @csrf
                         
                         <div class="form-row">
+
                             <!-- Campo para el primer nombre -->
                             <div class="form-group col-md-3">
-                                <label for="name"><strong>Primer nombre *</strong></label>
+                                <label for="name">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>Primer nombre *</strong>
+                                </label>
                                 <input 
-                                type="text" 
-                                name="name" class="form-control" 
-                                placeholder="Ingrese el primer nombre"
-                                value="{{ old('name') }}"
-                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
-                                title="En este campo sólo se permiten letras"
-                                maxlength="40"
-                                required>
+                                    type="text" 
+                                    name="name" class="form-control" 
+                                    placeholder="Ingrese el primer nombre"
+                                    value="{{ old('name') }}"
+                                    pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
+                                    title="En este campo sólo se permiten letras"
+                                    maxlength="40"
+                                    required>
                             </div>
 
                             <!-- Campo para el segundo nombre -->
                             <div class="form-group col-md-3">
-                                <label for="name2"><strong>Segundo nombre</strong></label>
+                                <label for="name2">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    Segundo nombre
+                                </label>
                                 <input 
                                 type="text" 
                                 name="name2" class="form-control" 
-                                placeholder="Ingrese el primer nombre"
+                                placeholder="Ingrese el segundo nombre"
                                 value="{{ old('name2') }}"
                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                                 title="En este campo sólo se permiten letras"
@@ -40,12 +47,15 @@
 
                             <!-- Campo para el primer apellido -->
                             <div class="form-group col-md-3">
-                                <label for="apellido"><strong>Primer apellido *</strong></label>
+                                <label for="apellido">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>Primer apellido *</strong>
+                                </label>
                                 <input 
                                 type="text" 
                                 name="apellido" 
                                 class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" 
-                                placeholder="Primer apellido" 
+                                placeholder="Ingrese el primer apellido" 
                                 value="{{ old('apellido') }}"                         
                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
                                 title="En este campo sólo se permiten letras"
@@ -55,12 +65,15 @@
 
                             <!-- Campo para el segundo apellido -->
                             <div class="form-group col-md-3">
-                                <label for="apellido2"><strong>Segundo apellido</strong></label>
+                                <label for="apellido2">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    Segundo apellido
+                                </label>
                                 <input 
                                 type="text" 
                                 name="apellido2" 
                                 class="form-control{{ $errors->has('apellido2') ? ' is-invalid' : '' }}" 
-                                placeholder="Segundo apellido" 
+                                placeholder="Ingrese el segundo apellido" 
                                 value="{{ old('apellido2') }}"                         
                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
                                 title="En este campo sólo se permiten letras"
@@ -69,7 +82,10 @@
 
                             <!-- Campo para el número de identidad -->
                             <div class="form-group col-md-3">
-                                <label for="numero_identidad"><strong>DNI *</strong></label>
+                                <label for="numero_identidad">
+                                    <i class="fas fa-id-card" style="margin-right: 8px;"></i>
+                                    <strong>DNI *</strong>
+                                </label>                                
                                 <input 
                                 type="text" 
                                 name="numero_identidad" 
@@ -81,7 +97,6 @@
                                 pattern="\d{4}-\d{4}-\d{5}" 
                                 required>
                             </div>
-
                             <script>
                                 document.getElementById('numero_identidad').addEventListener('input', function (e) {
                                     var input = e.target.value.replace(/[^0-9]/g, '');
@@ -98,7 +113,10 @@
 
                             <!-- Campo para el número de colegiación -->
                             <div class="form-group col-md-3">
-                                <label for="numero_colegiacion"><strong>Nº colegiación</strong></label>
+                                <label for="numero_colegiacion">
+                                    <i class="fas fa-address-card" style="margin-right: 8px;"></i>
+                                    Nº colegiación
+                                </label>                                                             
                                 <input 
                                 type="text" 
                                 name="numero_colegiacion" 
@@ -109,12 +127,10 @@
                                 maxlength="12" 
                                 pattern="\d{4}-\d{2}-\d{4}">
                             </div>
-
                             <script>
                                 document.getElementById('numero_colegiacion').addEventListener('input', function (e) {
                                     var input = e.target.value.replace(/\D/g, '');
                                     var formatted = '';
-                            
                                     if (input.length <= 4) {
                                         formatted = input;
                                     } else if (input.length <= 6) {
@@ -122,14 +138,16 @@
                                     } else {
                                         formatted = input.slice(0, 4) + '-' + input.slice(4, 6) + '-' + input.slice(6, 10);
                                     }
-                            
                                     e.target.value = formatted;
                                 });
                             </script>
 
                             <!-- Campo para el RTN -->
                             <div class="form-group col-md-3">
-                                <label for="rtn"><strong>RTN</strong></label>
+                                <label for="rtn">
+                                    <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
+                                    RTN
+                                </label>       
                                 <input 
                                 type="text" 
                                 name="rtn" 
@@ -140,7 +158,6 @@
                                 maxlength="16" 
                                 pattern="\d{4}-\d{4}-\d{6}">
                             </div>
-
                             <script>
                                 document.getElementById('rtn').addEventListener('input', function (e) {
                                     var input = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
@@ -160,9 +177,13 @@
 
                             <!-- Campo para el Sexo -->
                             <div class="form-group col-md-3">
-                                <label for="sexo"><strong>Sexo *</strong></label>
+                                <label for="sexo">
+                                    <i class="fas fa-transgender" style="margin-right: 8px;"></i>
+                                    <strong>Sexo *</strong>
+                                </label>
+                                
                                 <select name="sexo" class="form-control @error('sexo') is-invalid @enderror" id="sexo" required>
-                                    <option disabled selected>Seleccione una opción</option>
+                                    <option disabled selected>Seleccione el sexo</option>
                                     <option value="masculino" {{ old('sexo') == 'masculino' ? 'selected' : '' }}>Masculino</option>
                                     <option value="femenino" {{ old('sexo') == 'femenino' ? 'selected' : '' }}>Femenino</option>
                                 </select>
@@ -173,87 +194,101 @@
                                 @enderror
                             </div>
 
-
                             <!-- Campo para la Fecha de Nacimiento -->
                             <div class="form-group col-md-3">
-                                <label for="fecha_nacimiento"><strong>Fecha de nacimiento *</strong></label>
+                                <label for="fecha_nacimiento">
+                                    <i class="fas fa-birthday-cake" style="margin-right: 8px;"></i>
+                                    <strong>Fecha de nacimiento *</strong>
+                                </label>
                                 <input 
-                                type="date" 
-                                name="fecha_nacimiento" 
-                                class="form-control"
-                                value="{{ old('fecha_nacimiento') }}"
-                                id="fecha_nacimiento"                                                           
-                                required>
+                                    type="date" 
+                                    name="fecha_nacimiento" 
+                                    class="form-control"
+                                    value="{{ old('fecha_nacimiento') }}"
+                                    id="fecha_nacimiento"                                                           
+                                    required>
                             </div>
-
                             <script>
-                                document.addEventListener('DOMContentLoaded', function () {
-                                    // Obtener el elemento del campo de fecha de nacimiento
-                                    var fechaNacimiento = document.getElementById('fecha_nacimiento');
-                                
-                                    // Calcular el año máximo permitido (2005)
-                                    var yearMax = 2005; 
-                                    // Calcular el año mínimo permitido (1925)
-                                    var yearMin = 1925; 
-                                
-                                    // Establecer los atributos mínimos y máximos en el campo de fecha de nacimiento
-                                    fechaNacimiento.setAttribute('min', yearMin + '-01-01');
-                                    fechaNacimiento.setAttribute('max', yearMax + '-12-31');
-                                
-                                    // Función para actualizar el rango de años permitido cada año nuevo
-                                    function actualizarRangoAnios() {
-                                        var currentYear = new Date().getFullYear();
-                                        var newYearMin = currentYear - 80;
-                                        var newYearMax = newYearMin + 80;
-                                
-                                        // Establecer los nuevos límites en el campo de fecha de nacimiento
-                                        fechaNacimiento.setAttribute('min', newYearMin + '-01-01');
-                                        fechaNacimiento.setAttribute('max', newYearMax + '-12-31');
-                                    }
-                                
-                                    // Llamar a la función para establecer inicialmente el rango de años
-                                    actualizarRangoAnios();
-                                
-                                    // Llamar a la función para actualizar el rango de años cada vez que se inicie un nuevo año
-                                    setInterval(function() {
-                                        var currentYear = new Date().getFullYear();
-                                        var newYearMin = currentYear - 80;
-                                        var newYearMax = newYearMin + 80;
-                                        if (parseInt(fechaNacimiento.getAttribute('max').split('-')[0]) !== newYearMax) {
-                                            actualizarRangoAnios();
-                                        }
-                                    }, 1000 * 60 * 60); // Revisar cada hora si es necesario actualizar el rango de años
-                                });
-                                </script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const today = new Date();
+                                    const currentYear = today.getFullYear();
+                                    const minYear = currentYear - 106;
+                                    const maxYear = currentYear - 18;
+                                    const minDate = `${minYear}-01-01`;
+                                    const maxDate = `${maxYear}-12-31`;
+                                    const fechaNacimientoInput = document.getElementById('fecha_nacimiento');
+                                    fechaNacimientoInput.setAttribute('min', minDate);
+                                    fechaNacimientoInput.setAttribute('max', maxDate);
+                                    });
+                            </script>
 
-                            <!-- Campo para el teléfono -->
+                            <!-- Campo para edad -->
                             <div class="form-group col-md-3">
-                                <label for="telefono"><strong>Teléfono fijo</strong></label>
+                                <label for="edad">Edad</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </div>
+                                    </div>
+                                    <input 
+                                        type="text" 
+                                        name="edad" 
+                                        class="form-control"
+                                        placeholder="Edad"
+                                        id="edad" 
+                                        readonly>
+                                </div>
+                            </div>
+                            <script>
+                                document.getElementById('fecha_nacimiento').addEventListener('change', function() {
+                                    var birthDate = new Date(this.value);
+                                    var today = new Date();
+                                    var age = today.getFullYear() - birthDate.getFullYear();
+                                    var monthDifference = today.getMonth() - birthDate.getMonth();                
+                                    // Ajusta la edad si aún no ha pasado el cumpleaños este año
+                                    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                                        age--;
+                                    }                
+                                    document.getElementById('edad').value = age;
+                                });
+                            </script>
+
+                            <!-- Campo para el teléfono fijo -->
+                            <div class="form-group col-md-3">
+                                <label for="telefono">
+                                    <i class="fas fa-phone" style="margin-right: 8px;"></i>
+                                    Teléfono fijo
+                                </label>
                                 <input 
-                                type="text" 
-                                name="telefono" 
-                                class="form-control" 
-                                id="telefono" 
-                                placeholder="Teléfono casa (SIN GUION)"
-                                value="{{ old('telefono') }}"
-                                pattern="\d{4}-\d{4}"
-                                maxlength="9">
+                                    type="text" 
+                                    name="telefono" 
+                                    class="form-control" 
+                                    id="telefono" 
+                                    placeholder="Teléfono casa (SIN GUION)"
+                                    value="{{ old('telefono') }}"
+                                    pattern="\d{4}-\d{4}"
+                                    maxlength="9">
                             </div>
 
                             <!-- Campo para el teléfono celular -->
                             <div class="form-group col-md-3">
-                                <label for="telefono_celular"><strong>Celular *</strong></label>
+                                <label for="telefono_celular">
+                                    <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
+                                    <strong>Celular *</strong>
+                                </label>
                                 <input 
-                                type="text" 
-                                name="telefono_celular" 
-                                class="form-control" 
-                                id="telefono_celular" 
-                                placeholder="Teléfono celular (SIN GUION)"
-                                value="{{ old('telefono_celular') }}"
-                                pattern="\d{4}-\d{4}"
-                                maxlength="9"
-                                required>
+                                    type="text" 
+                                    name="telefono_celular" 
+                                    class="form-control" 
+                                    id="telefono_celular" 
+                                    placeholder="Teléfono celular (SIN GUION)"
+                                    value="{{ old('telefono_celular') }}"
+                                    pattern="\d{4}-\d{4}"
+                                    maxlength="9"
+                                    required>
                             </div>
+
 
                             <script>
                                 document.getElementById('telefono').addEventListener('input', function (e) {
@@ -285,7 +320,10 @@
 
                             <!-- Campo para el correo electrónico -->
                             <div class="form-group col-md-3">
-                                <label for="email"><strong>Correo electrónico *</strong></label>
+                                <label for="email">
+                                    <i class="fas fa-envelope-open" style="margin-right: 8px;"></i>
+                                    <strong>Correo electrónico *</strong>
+                                </label>
                                 <input 
                                 type="email" 
                                 name="email" 
@@ -294,10 +332,14 @@
                                 value="{{ old('email') }}" 
                                 required>
                             </div>
+                            
                           
                             <!-- Campo para el Rol -->
                             <div class="form-group col-md-3">
-                                <label><strong>Rol *</strong></label>
+                                <label>
+                                    <i class="fas fa-user-tag" style="margin-right: 8px;"></i>
+                                    <strong>Rol *</strong>
+                                </label>
                                 <select name="roles[]" class="form-control @error('roles') is-invalid @enderror" required>
                                     <option disabled selected>Seleccione un rol</option>
                                     @foreach ($roles as $role)
@@ -314,7 +356,10 @@
 
                             <!-- Campo para la contraseña  -->
                             <div class="form-group col-md-3">
-                                <label for="password"><strong>Contraseña *</strong></label>
+                                <label for="password">
+                                    <i class="fas fa-lock" style="margin-right: 8px;"></i>
+                                    <strong>Contraseña *</strong>
+                                </label>
                                 <input 
                                     type="password" 
                                     name="password" 
@@ -332,7 +377,10 @@
 
                             <!-- Campo para la confirmación de la contraseña  -->
                             <div class="form-group col-md-4">
-                                <label for="password_confirmation"><strong>Confirmar Contraseña *</strong></label>
+                                <label for="password_confirmation">
+                                    <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                                    <strong>Confirmar Contraseña *</strong>
+                                </label>
                                 <input 
                                     type="password" 
                                     name="password_confirmation" 

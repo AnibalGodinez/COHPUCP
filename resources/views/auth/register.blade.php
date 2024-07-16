@@ -106,13 +106,11 @@
                     <div class="form-group col-md-6">
                         <label for="numero_identidad"><strong>DNI *</strong></label>
                         <div class="input-group{{ $errors->has('numero_identidad') ? ' has-danger' : '' }}">
-
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <i class="tim-icons icon-badge"></i>
                                 </div>
                             </div>
-
                             <input 
                             type="num" 
                             name="numero_identidad" 
@@ -128,8 +126,6 @@
                             @enderror
                         </div>
                     </div>
-
-
                     <script>
                         document.getElementById('numero_identidad').addEventListener('input', function (e) {
                             var input = e.target.value.replace(/[^0-9]/g, '');
@@ -146,7 +142,7 @@
 
                     <!-- Campo para el número de colegiación -->
                     <div class="form-group col-md-6">
-                        <label for="numero_colegiacion">Número de colegiación</label>
+                        <label for="numero_colegiacion">Nº colegiación</label>
                         <div class="input-group{{ $errors->has('numero_colegiacion') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -167,21 +163,17 @@
                             @enderror
                         </div>
                     </div>
-
-
                     <script>
                         document.getElementById('numero_colegiacion').addEventListener('input', function (e) {
                             var input = e.target.value.replace(/\D/g, '');
-                            var formatted = '';
-                        
+                            var formatted = ''; 
                             if (input.length <= 4) {
                                 formatted = input;
                             } else if (input.length <= 6) {
                                 formatted = input.slice(0, 4) + '-' + input.slice(4);
                             } else {
                                 formatted = input.slice(0, 4) + '-' + input.slice(4, 6) + '-' + input.slice(6, 10);
-                            }
-                        
+                            }                 
                             e.target.value = formatted;
                         });
                     </script>
@@ -209,12 +201,10 @@
                             @enderror
                         </div>
                     </div>
-
                     <script>
                         document.getElementById('rtn').addEventListener('input', function (e) {
                             var input = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
-                            var formatted = '';
-                    
+                            var formatted = '';       
                             if (input.length <= 4) {
                                 formatted = input;
                             } else if (input.length <= 8) {
@@ -222,7 +212,6 @@
                             } else {
                                 formatted = input.slice(0, 4) + '-' + input.slice(4, 8) + '-' + input.slice(8, 14);
                             }
-                    
                             e.target.value = formatted;
                         });
                     </script>
@@ -267,24 +256,20 @@
                                 required>
                         </div>
                     </div>
-
-                        <script>
+                    <script>
                         document.addEventListener('DOMContentLoaded', function() {
                             const today = new Date();
                             const currentYear = today.getFullYear();
                             const minYear = currentYear - 106;
                             const maxYear = currentYear - 18;
-
                             const minDate = `${minYear}-01-01`;
                             const maxDate = `${maxYear}-12-31`;
-
                             const fechaNacimientoInput = document.getElementById('fecha_nacimiento');
                             fechaNacimientoInput.setAttribute('min', minDate);
                             fechaNacimientoInput.setAttribute('max', maxDate);
-                        });
-                        </script>
+                            });
+                    </script>
     
-
                     <!-- Campo para edad -->
                     <div class="col-md-6">
                         <label for="edad">Edad</label>
@@ -303,19 +288,16 @@
                                 readonly>
                         </div>
                     </div>
-
                     <script>
                         document.getElementById('fecha_nacimiento').addEventListener('change', function() {
                             var birthDate = new Date(this.value);
                             var today = new Date();
                             var age = today.getFullYear() - birthDate.getFullYear();
-                            var monthDifference = today.getMonth() - birthDate.getMonth();
-                    
+                            var monthDifference = today.getMonth() - birthDate.getMonth();                
                             // Ajusta la edad si aún no ha pasado el cumpleaños este año
                             if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
                                 age--;
-                            }
-                    
+                            }                
                             document.getElementById('edad').value = age;
                         });
                     </script>
@@ -330,8 +312,7 @@
                             @endforeach
                         </select>
                     </div>
-                    
-
+               
                     <!-- Campo para el teléfono fijo -->
                     <div class="col-md-6">
                         <label for="telefono">Teléfono fijo</label>
@@ -354,7 +335,6 @@
                     <div class="col-md-12">
                         <label for="telefono_celular"><strong>Celular *</strong></label>
                         <div class="input-group{{ $errors->has('telefono_celular') ? ' has-danger' : '' }}">
-
                             <div class="input-group">
                                 <span id="codigo_telefono_celular" class="input-group-text"></span>
                                 <input 
@@ -445,7 +425,6 @@
                             @endif
                         </div>
                     </div>
-
                     @push('scripts')
                     <script>
                         document.addEventListener('DOMContentLoaded', function () {
@@ -467,15 +446,12 @@
                     <!-- Campo para la confirmación de la contraseña -->
                         <div class="col-md-6">
                             <label for="password_confirmation"><strong>Contraseña *</strong></label>
-
-                            <div class="input-group{{ $errors->has('password_confirmation') ? ' has-danger' : '' }}">
-                                    
+                            <div class="input-group{{ $errors->has('password_confirmation') ? ' has-danger' : '' }}">      
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                         <i class="tim-icons icon-lock-circle"></i>
                                     </div>
                                 </div>
-
                                 <input 
                                 type="password" 
                                 name="password_confirmation" 
@@ -484,7 +460,6 @@
                                 minlength="8"
                                 maxlength="20"
                                 required>
-
                                 @if ($errors->has('password_confirmation'))
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -518,8 +493,7 @@
                             <a href="{{ route('login') }}" class="link footer-info" style="color: rgb(38, 119, 246); font-weight: bold">Inicia sesión aquí</a>
                         </h6>
                     </div>
-                </div>                
-                
+                </div>                   
             </div>
         </div>
     </form>
