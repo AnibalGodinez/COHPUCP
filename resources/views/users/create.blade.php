@@ -9,9 +9,8 @@
                     <h3 class="text-center">CREAR USUARIO</h3>
                     <form action="{{url('usuarios')}}" method="POST">
                         @csrf
-                        
+                    
                         <div class="form-row">
-
                             <!-- Campo para el primer nombre -->
                             <div class="form-group col-md-3">
                                 <label for="name">
@@ -178,10 +177,9 @@
                             <!-- Campo para el Sexo -->
                             <div class="form-group col-md-3">
                                 <label for="sexo">
-                                    <i class="fas fa-transgender" style="margin-right: 8px;"></i>
+                                    <i class="fas fa-venus-mars" style="margin-right: 8px;"></i>
                                     <strong>Sexo *</strong>
                                 </label>
-                                
                                 <select name="sexo" class="form-control @error('sexo') is-invalid @enderror" id="sexo" required>
                                     <option disabled selected>Seleccione el sexo</option>
                                     <option value="masculino" {{ old('sexo') == 'masculino' ? 'selected' : '' }}>Masculino</option>
@@ -254,86 +252,124 @@
                                 });
                             </script>
 
+                            <!-- Campo para seleccionar el país -->
+                            <div class="col-md-6">
+                                <label for="pais"><strong>País *</strong></label>
+                                <select id="pais" name="pais_id" class="form-control" required>
+                                    <option value="">Seleccione un país</option>
+                                    @foreach($paises as $pais)
+                                        <option value="{{ $pais->id }}" data-codigo="{{ $pais->codigo }}">
+                                            {{ $pais->nombre }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    const paisSelect = document.getElementById('pais');
+                                    const codigoTelefonoSpan = document.getElementById('codigo_telefono');
+                                    const codigoTelefonoCelularSpan = document.getElementById('codigo_telefono_celular');
+                                    const telefonoInput = document.getElementById('telefono');
+                                    const telefonoCelularInput = document.getElementById('telefono_celular');
+                                
+                                    paisSelect.addEventListener('change', function () {
+                                        const selectedOption = paisSelect.options[paisSelect.selectedIndex];
+                                        const codigoPais = selectedOption.getAttribute('data-codigo');
+                                        
+                                        // Actualizar los span con el código del país
+                                        codigoTelefonoSpan.textContent = codigoPais;
+                                        codigoTelefonoCelularSpan.textContent = codigoPais;
+                                        
+                                        // Obtener el valor actual del teléfono y eliminar el código del país si existe
+                                        const telefonoValue = telefonoInput.value;
+                                        const telefonoSinCodigo = telefonoValue.startsWith(codigoPais) ? telefonoValue.slice(codigoPais.length) : telefonoValue;
+                                        telefonoInput.value = telefonoSinCodigo; // Solo el número sin el código
+                                        
+                                        const telefonoCelularValue = telefonoCelularInput.value;
+                                        const telefonoCelularSinCodigo = telefonoCelularValue.startsWith(codigoPais) ? telefonoCelularValue.slice(codigoPais.length) : telefonoCelularValue;
+                                        telefonoCelularInput.value = telefonoCelularSinCodigo; // Solo el número sin el código
+                                    });
+                                });
+                            </script>
+
                             <!-- Campo para el teléfono fijo -->
                             <div class="form-group col-md-3">
-                                <label for="telefono">
-                                    <i class="fas fa-phone" style="margin-right: 8px;"></i>
-                                    Teléfono fijo
-                                </label>
-                                <input 
-                                    type="text" 
-                                    name="telefono" 
-                                    class="form-control" 
-                                    id="telefono" 
-                                    placeholder="Teléfono casa (SIN GUION)"
-                                    value="{{ old('telefono') }}"
-                                    pattern="\d{4}-\d{4}"
-                                    maxlength="9">
+                                <label for="telefono">Teléfono fijo</label>
+                                <div class="input-group{{ $errors->has('telefono') ? ' has-danger' : '' }}">
+                                    <div class="input-group">
+                                        <span id="codigo_telefono" class="input-group-text"></span>
+                                        <input 
+                                        id="telefono" 
+                                        type="text" 
+                                        class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" 
+                                        name="telefono"
+                                        placeholder="Ingrese su número de teléfono fijo"
+                                        maxlength="15" 
+                                        value="{{ old('telefono') }}"
+                                        pattern="^[\d-]*$">
+                                        @include('alerts.feedback', ['field' => 'telefono'])
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- Campo para el teléfono celular -->
                             <div class="form-group col-md-3">
-                                <label for="telefono_celular">
-                                    <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
-                                    <strong>Celular *</strong>
-                                </label>
-                                <input 
-                                    type="text" 
-                                    name="telefono_celular" 
-                                    class="form-control" 
-                                    id="telefono_celular" 
-                                    placeholder="Teléfono celular (SIN GUION)"
-                                    value="{{ old('telefono_celular') }}"
-                                    pattern="\d{4}-\d{4}"
-                                    maxlength="9"
-                                    required>
+                                <label for="telefono_celular"><strong>Celular *</strong></label>
+                                <div class="input-group{{ $errors->has('telefono_celular') ? ' has-danger' : '' }}">
+                                    <div class="input-group">
+                                        <span id="codigo_telefono_celular" class="input-group-text"></span>
+                                        <input 
+                                        id="telefono_celular" 
+                                        type="text" 
+                                        class="form-control{{ $errors->has('telefono_celular') ? ' is-invalid' : '' }}" 
+                                        name="telefono_celular" 
+                                        placeholder="Ingrese su número de celular"
+                                        maxlength="15" 
+                                        value="{{ old('telefono_celular') }}"
+                                        pattern="^[\d-]*$"
+                                        required>
+                                        @include('alerts.feedback', ['field' => 'telefono_celular'])
+                                    </div>
+                                </div>
                             </div>
 
-
-                            <script>
-                                document.getElementById('telefono').addEventListener('input', function (e) {
-                                    var input = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
-                                    var formatted = '';
-                            
-                                    if (input.length <= 4) {
-                                        formatted = input;
-                                    } else {
-                                        formatted = input.slice(0, 4) + '-' + input.slice(4, 8);
-                                    }
-                            
-                                    e.target.value = formatted;
-                                });
-                            
-                                document.getElementById('telefono_celular').addEventListener('input', function (e) {
-                                    var input = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
-                                    var formatted = '';
-                            
-                                    if (input.length <= 4) {
-                                        formatted = input;
-                                    } else {
-                                        formatted = input.slice(0, 4) + '-' + input.slice(4, 8);
-                                    }
-                            
-                                    e.target.value = formatted;
-                                });
-                            </script>
-
-                            <!-- Campo para el correo electrónico -->
+                           <!-- Campo para el correo electrónico -->
                             <div class="form-group col-md-3">
                                 <label for="email">
-                                    <i class="fas fa-envelope-open" style="margin-right: 8px;"></i>
+                                    <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                                     <strong>Correo electrónico *</strong>
                                 </label>
                                 <input 
                                 type="email" 
                                 name="email" 
+                                id="email"
                                 class="form-control" 
                                 placeholder="Ingrese el correo electrónico" 
                                 value="{{ old('email') }}" 
                                 required>
                             </div>
-                            
-                          
+
+                            <!-- Campo para la confirmación del correo electrónico -->
+                            <div class="form-group col-md-3">
+                                <label for="email_confirmation">
+                                    <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                                    <strong>Confirmar correo electrónico *</strong>
+                                </label>
+                                <input 
+                                type="email" 
+                                name="email_confirmation" 
+                                id="email_confirmation"
+                                class="form-control" 
+                                placeholder="Confirme el correo electrónico" 
+                                value="{{ old('email_confirmation') }}" 
+                                required>
+                                @error('email_confirmation')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                                                      
                             <!-- Campo para el Rol -->
                             <div class="form-group col-md-3">
                                 <label>
@@ -352,7 +388,6 @@
                                     </span>
                                 @enderror
                             </div>
-
 
                             <!-- Campo para la contraseña  -->
                             <div class="form-group col-md-3">
@@ -395,7 +430,6 @@
                                     </span>
                                 @enderror
                             </div>
-
                         </div>
 
                         <div class="mb-3 text-center">

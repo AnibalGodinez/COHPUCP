@@ -14,8 +14,8 @@ class UserController extends Controller
     {
         $this->middleware('permission:ver usuarios', ['only' => ['verUsuarios']]);
         $this->middleware('permission:indice usuarios', ['only' => ['index']]);
-        $this->middleware('permission:actualizar usuario', ['only' => ['update','edit']]);
-        $this->middleware('permission:crear usuario', ['only' => ['create','store']]);
+        $this->middleware('permission:actualizar usuario', ['only' => ['update', 'edit']]);
+        $this->middleware('permission:crear usuario', ['only' => ['create', 'store']]);
         $this->middleware('permission:borrar usuario', ['only' => ['destroy']]);
     }
 
@@ -43,20 +43,18 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-    $search = $request->query('search');
-    $users = $search 
-        ? $this->searchUsers($search)->with('pais') 
-        : User::orderBy('id', 'desc')->with('roles', 'pais')->paginate(4);
+        $search = $request->query('search');
+        $users = $search 
+            ? $this->searchUsers($search)->with('pais') 
+            : User::orderBy('id', 'desc')->with('roles', 'pais')->paginate(4);
 
-    return view('users.index', ['users' => $users]);
+        return view('users.index', ['users' => $users]);
     }
-
-
 
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
-        $paises = Pais::pluck('nombre', 'id')->all(); // Asegúrate de reemplazar 'nombre' con el campo correcto en tu modelo Pais
+        $paises = Pais::all(); // Asegúrate de que aquí obtienes una colección de objetos Pais
         return view('users.create', [
             'roles' => $roles,
             'paises' => $paises
@@ -75,10 +73,11 @@ class UserController extends Controller
             'rtn' => 'nullable|string|max:20|unique:users,rtn',
             'sexo' => 'required|in:masculino,femenino',
             'fecha_nacimiento' => 'required|date',
-            'telefono' => 'nullable|string|max:20',
-            'telefono_celular' => 'required|string|max:20',
+            'telefono' => 'nullable|string|max:20|regex:/^[\d-]*$/',
+            'telefono_celular' => 'required|string|max:20|regex:/^[\d-]*$/',
             'email' => 'required|email|max:255|unique:users,email',
-            'pais_id' => 'nullable|exists:pais,id',
+            'email_confirmation' => 'required|email|same:email',
+            'pais_id' => 'nullable|exists:pais,id', // Validación para el campo país
             'password' => [
                 'required',
                 'string',
@@ -89,19 +88,22 @@ class UserController extends Controller
             ],
         ], [
             // Mensajes personalizados de validación
-            'name.required' => 'El campo nombre es obligatorio.',
-            'apellido.required' => 'El campo apellido es obligatorio.',
-            'numero_identidad.required' => 'El campo número de identidad es obligatorio.',
-            'numero_identidad.unique' => 'El número de identidad ya está en uso.',
-            'sexo.required' => 'El campo sexo es obligatorio.',
-            'fecha_nacimiento.required' => 'El campo fecha de nacimiento es obligatorio.',
-            'telefono_celular.required' => 'El campo teléfono celular es obligatorio.',
-            'email.required' => 'El campo email es obligatorio.',
-            'email.unique' => 'El email ya está en uso.',
-            'password.required' => 'El campo contraseña es obligatorio.',
-            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
-            'password.confirmed' => 'La confirmación de la contraseña no coincide.',
+            'name.required' => 'El campo nombre es obligatorio',
+            'apellido.required' => 'El campo apellido es obligatorio',
+            'numero_identidad.required' => 'El campo número de identidad es obligatorio',
+            'numero_identidad.unique' => 'El número de identidad ya está en uso',
+            'sexo.required' => 'El campo sexo es obligatorio',
+            'fecha_nacimiento.required' => 'El campo fecha de nacimiento es obligatorio',
+            'telefono_celular.required' => 'El campo teléfono celular es obligatorio',
+            'email.required' => 'El campo email es obligatorio',
+            'email.unique' => 'El email ya está en uso',
+            'email_confirmation' => 'La confirmación del correo eletrónico no coincide',
+            'password.required' => 'El campo contraseña es obligatorio',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres',
+            'password.confirmed' => 'La confirmación de la contraseña no coincide',
             'password.regex' => 'La contraseña debe contener al menos un símbolo o carácter especial, como por Ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
+            'telefono.regex' => 'El número de teléfono fijo sólo debe contener números y guiones',
+            'telefono_celular.regex' => 'El número de celular sólo debe contener números y guiones',
         ]);
 
         $user = User::create([
@@ -117,7 +119,7 @@ class UserController extends Controller
             'telefono' => $request->telefono,
             'telefono_celular' => $request->telefono_celular,
             'email' => $request->email,
-            'pais_id' => $request->pais_id,
+            'pais_id' => $request->pais_id, // Guardar el país
             'password' => Hash::make($request->password),
         ]);
 
@@ -130,7 +132,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($userId);
         $roles = Role::pluck('name', 'name')->all();
-        $paises = Pais::pluck('nombre', 'id')->all(); // Asegúrate de reemplazar 'nombre' con el campo correcto en tu modelo Pais
+        $paises = Pais::pluck('nombre', 'id')->all(); // Reemplaza 'nombre' con el campo correcto en tu modelo Pais
         return view('users.edit', compact('user', 'roles', 'paises'));
     }
 
@@ -146,13 +148,15 @@ class UserController extends Controller
             'rtn' => 'nullable|string|max:16|unique:users,rtn,'.$userId,
             'sexo' => 'required|in:masculino,femenino',
             'fecha_nacimiento' => 'required|date',
-            'telefono' => 'nullable|string|max:20',
-            'telefono_celular' => 'required|string|max:20',
+            'telefono' => 'nullable|string|max:20|regex:/^[\d-]*$/',
+            'telefono_celular' => 'required|string|max:20|regex:/^[\d-]*$/',
             'email' => 'required|string|email|max:255|unique:users,email,'.$userId,
-            'pais_id' => 'nullable|exists:pais,id',
+            'pais_id' => 'nullable|exists:pais,id', // Validación para el campo país
             'roles' => 'required|array',
         ], [
             'pais_id.exists' => 'El país seleccionado es inválido.',
+            'telefono.regex' => 'El número de teléfono debe contener solo números y guiones.',
+            'telefono_celular.regex' => 'El número de celular debe contener solo números y guiones.',
         ]);
 
         $user = User::findOrFail($userId);
@@ -170,7 +174,7 @@ class UserController extends Controller
             'telefono' => $request->telefono,
             'telefono_celular' => $request->telefono_celular,
             'email' => $request->email,
-            'pais_id' => $request->pais_id,
+            'pais_id' => $request->pais_id, // Actualizar el país
         ]);
 
         $user->syncRoles($request->roles);
