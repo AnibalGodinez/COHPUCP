@@ -128,13 +128,16 @@ class UserController extends Controller
         return redirect('/usuarios')->with('status', 'El usuario se ha creado exitosamente con su respectivo rol');
     }
 
-    public function edit($userId)
+
+    public function edit($id)
     {
-        $user = User::findOrFail($userId);
+        $user = User::with('pais')->findOrFail($id); // Asegúrate de cargar la relación 'pais'
+        $paises = Pais::all(); // Obtén todos los países de la base de datos
         $roles = Role::pluck('name', 'name')->all();
-        $paises = Pais::pluck('nombre', 'id')->all(); // Reemplaza 'nombre' con el campo correcto en tu modelo Pais
+
         return view('users.edit', compact('user', 'roles', 'paises'));
     }
+
 
     public function update(Request $request, $userId)
     {

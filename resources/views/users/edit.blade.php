@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-center mb-4">EDITAR USUARIO</h3>
+                    <h3 class="text-center mb-4">GESTIONAR USUARIO</h3>
                     <form action="{{ route('usuarios.update', $user->id) }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -14,7 +14,10 @@
                         <div class="form-row">
                             <!-- Campo para el primer nombre -->
                             <div class="form-group col-md-3">
-                                <label for="name"><strong>Primer nombre *</strong></label>
+                                <label for="name">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>Primer nombre *</strong>
+                                </label>
                                 <input 
                                 type="text" 
                                 name="name" class="form-control"
@@ -28,7 +31,10 @@
 
                             <!-- Campo para el segundo nombre -->
                             <div class="form-group col-md-3">
-                                <label for="name2"><strong>Segundo nombre</strong></label>
+                                <label for="name2">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    Segundo nombre
+                                </label>
                                 <input 
                                 type="text" 
                                 name="name2" class="form-control"
@@ -41,7 +47,10 @@
 
                             <!-- Campo para el primer apellido -->
                             <div class="form-group col-md-3">
-                                <label for="apellido"><strong>Primer apellido *</strong></label>
+                                <label for="apellido">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>Primer apellido *</strong>
+                                </label>
                                 <input 
                                 type="text" 
                                 name="apellido" 
@@ -56,7 +65,10 @@
 
                             <!-- Campo para el segundo apellido -->
                             <div class="form-group col-md-3">
-                                <label for="apellido2"><strong>Segundo apellido</strong></label>
+                                <label for="apellido2">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    Segundo apellido
+                                </label>
                                 <input 
                                 type="text" 
                                 name="apellido2" 
@@ -68,85 +80,116 @@
                                 maxlength="40">
                             </div>
 
-                            <!-- Campo para el número de identidad -->
+                            <!-- Campo para el DNI -->
                             <div class="form-group col-md-3">
-                                <label for="numero_identidad"><strong>DNI *</strong></label>
+                                <label for="numero_identidad">
+                                    <i class="fas fa-id-card" style="margin-right: 8px;"></i>
+                                    <strong>DNI *</strong>
+                                </label> 
                                 <input 
-                                type="text" 
-                                name="numero_identidad" 
-                                class="form-control"
-                                placeholder="Ingrese su DNI (CON GUIONES)" 
-                                value="{{ old('numero_identidad', $user->numero_identidad) }}"
-                                maxlength="15"
-                                pattern="\d{4}-\d{4}-\d{5}"
-                                required>
+                                    type="text" 
+                                    name="numero_identidad" 
+                                    id="numero_identidad"
+                                    class="form-control"
+                                    placeholder="Ingrese su DNI (SIN GUIONES)" 
+                                    value="{{ old('numero_identidad', $user->numero_identidad) }}"
+                                    maxlength="15"
+                                    pattern="\d{4}-\d{4}-\d{5}"
+                                    title="Formato: 0000-0000-00000"
+                                    required>
                             </div>
+
+                            <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var input = document.getElementById('numero_identidad');
+                                input.addEventListener('input', function(e) {
+                                    var value = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+                                    var formattedValue = value;
+                                    if (value.length > 8) {
+                                        formattedValue = value.slice(0, 4) + '-' + value.slice(4, 8) + '-' + value.slice(8, 13);
+                                    } else if (value.length > 4) {
+                                        formattedValue = value.slice(0, 4) + '-' + value.slice(4, 8);
+                                    }
+                                    e.target.value = formattedValue;
+                                });
+                            });
+                            </script>
 
                             <!-- Campo para el número de colegiación -->
                             <div class="form-group col-md-3">
-                                <label for="numero_colegiacion"><strong>Nº colegiación</strong></label>
+                                <label for="numero_colegiacion">
+                                    <i class="fas fa-address-card" style="margin-right: 8px;"></i>
+                                    Nº colegiación
+                                </label>
                                 <input 
-                                type="text" 
-                                name="numero_colegiacion" 
-                                class="form-control"
-                                placeholder="Nº de colegiación (CON GUIONES)"
+                                    type="text" 
+                                    name="numero_colegiacion" 
+                                    id="numero_colegiacion"
+                                    class="form-control"
+                                    placeholder="Nº de colegiación (SIN GUIONES)"
                                     value="{{ old('numero_colegiacion', $user->numero_colegiacion) }}"
                                     maxlength="12"
-                                    pattern="\d{4}-\d{2}-\d{4}">
+                                    pattern="\d{4}-\d{2}-\d{4}"
+                                    title="Formato: 0000-00-0000">
                             </div>
 
                             <script>
-                                document.getElementById('numero_colegiacion').addEventListener('input', function (e) {
-                                    var input = e.target.value.replace(/\D/g, '');
-                                    var formatted = '';
-                            
-                                    if (input.length <= 4) {
-                                        formatted = input;
-                                    } else if (input.length <= 6) {
-                                        formatted = input.slice(0, 4) + '-' + input.slice(4);
-                                    } else {
-                                        formatted = input.slice(0, 4) + '-' + input.slice(4, 6) + '-' + input.slice(6, 10);
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var input = document.getElementById('numero_colegiacion');
+                                input.addEventListener('input', function(e) {
+                                    var value = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+                                    var formattedValue = value;
+                                    if (value.length > 6) {
+                                        formattedValue = value.slice(0, 4) + '-' + value.slice(4, 6) + '-' + value.slice(6, 10);
+                                    } else if (value.length > 4) {
+                                        formattedValue = value.slice(0, 4) + '-' + value.slice(4, 6);
                                     }
-                            
-                                    e.target.value = formatted;
+                                    e.target.value = formattedValue;
                                 });
+                            });
                             </script>
 
-                            <!-- Campo para el RTN -->
+                           <!-- Campo para el RTN -->
                             <div class="form-group col-md-3">
-                                <label for="rtn"><strong>RTN</strong></label>
+                                <label for="rtn">
+                                    <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
+                                    RTN
+                                </label> 
                                 <input 
-                                type="text" 
-                                name="rtn" 
-                                class="form-control"
-
-                                placeholder="Ingrese su RTN (CON GUIONES)"
+                                    type="text" 
+                                    name="rtn" 
+                                    id="rtn"
+                                    class="form-control"
+                                    placeholder="Ingrese su RTN (SIN GUIONES)"
                                     value="{{ old('rtn', $user->rtn) }}"
                                     maxlength="16"
-                                    pattern="\d{4}-\d{4}-\d{6}">
+                                    pattern="\d{4}-\d{4}-\d{6}"
+                                    title="Formato: 0000-0000-000000">
                             </div>
-
                             <script>
-                                document.getElementById('rtn').addEventListener('input', function (e) {
-                                    var input = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
-                                    var formatted = '';
-                            
-                                    if (input.length <= 4) {
-                                        formatted = input;
-                                    } else if (input.length <= 8) {
-                                        formatted = input.slice(0, 4) + '-' + input.slice(4);
-                                    } else {
-                                        formatted = input.slice(0, 4) + '-' + input.slice(4, 8) + '-' + input.slice(8, 14);
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var input = document.getElementById('rtn');
+                                input.addEventListener('input', function(e) {
+                                    var value = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+                                    var formattedValue = value;
+                                    if (value.length > 8) {
+                                        formattedValue = value.slice(0, 4) + '-' + value.slice(4, 8) + '-' + value.slice(8, 14);
+                                    } else if (value.length > 4) {
+                                        formattedValue = value.slice(0, 4) + '-' + value.slice(4, 8);
                                     }
-                            
-                                    e.target.value = formatted;
+                                    e.target.value = formattedValue;
                                 });
+                            });
                             </script>
 
                             <!-- Campo para el Sexo -->
                             <div class="form-group col-md-3">
-                                <label for="sexo"><strong>Sexo *</strong></label>
+                                <label for="sexo">
+                                    <i class="fas fa-venus-mars" style="margin-right: 8px;"></i>
+                                    <strong>Sexo *</strong>
+                                </label>
                                 <select name="sexo" class="form-control" required>
+                                    <option value="" disabled selected>Selecciona una opción</option>
                                     <option value="masculino" {{ old('sexo', $user->sexo) == 'masculino' ? 'selected' : '' }}>Masculino</option>
                                     <option value="femenino" {{ old('sexo', $user->sexo) == 'femenino' ? 'selected' : '' }}>Femenino</option>
                                 </select>
@@ -154,99 +197,162 @@
 
                             <!-- Campo para la Fecha de Nacimiento -->
                             <div class="form-group col-md-3">
-                                <label for="fecha_nacimiento"><strong>Fecha de nacimiento *</strong></label>
+                                <label for="fecha_nacimiento">
+                                    <i class="fas fa-birthday-cake" style="margin-right: 8px;"></i>
+                                    <strong>Fecha de nacimiento *</strong>
+                                </label>
                                 <input 
-                                type="date" 
-                                name="fecha_nacimiento" 
-                                class="form-control"
+                                    type="date" 
+                                    name="fecha_nacimiento" 
+                                    class="form-control"
                                     value="{{ old('fecha_nacimiento', $user->fecha_nacimiento) }}"
+                                    id="fecha_nacimiento" 
                                     required>
                             </div>
-
                             <script>
-                                document.addEventListener('DOMContentLoaded', function () {
-                                    // Obtener el elemento del campo de fecha de nacimiento
-                                    var fechaNacimiento = document.getElementById('fecha_nacimiento');
-                                
-                                    // Calcular el año máximo permitido (2005)
-                                    var yearMax = 2005; 
-                                    // Calcular el año mínimo permitido (1925)
-                                    var yearMin = 1925; 
-                                
-                                    // Establecer los atributos mínimos y máximos en el campo de fecha de nacimiento
-                                    fechaNacimiento.setAttribute('min', yearMin + '-01-01');
-                                    fechaNacimiento.setAttribute('max', yearMax + '-12-31');
-                                
-                                    // Función para actualizar el rango de años permitido cada año nuevo
-                                    function actualizarRangoAnios() {
-                                        var currentYear = new Date().getFullYear();
-                                        var newYearMin = currentYear - 80;
-                                        var newYearMax = newYearMin + 80;
-                                
-                                        // Establecer los nuevos límites en el campo de fecha de nacimiento
-                                        fechaNacimiento.setAttribute('min', newYearMin + '-01-01');
-                                        fechaNacimiento.setAttribute('max', newYearMax + '-12-31');
-                                    }
-                                
-                                    // Llamar a la función para establecer inicialmente el rango de años
-                                    actualizarRangoAnios();
-                                
-                                    // Llamar a la función para actualizar el rango de años cada vez que se inicie un nuevo año
-                                    setInterval(function() {
-                                        var currentYear = new Date().getFullYear();
-                                        var newYearMin = currentYear - 80;
-                                        var newYearMax = newYearMin + 80;
-                                        if (parseInt(fechaNacimiento.getAttribute('max').split('-')[0]) !== newYearMax) {
-                                            actualizarRangoAnios();
-                                        }
-                                    }, 1000 * 60 * 60); // Revisar cada hora si es necesario actualizar el rango de años
-                                });
-                                </script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const today = new Date();
+                                    const currentYear = today.getFullYear();
+                                    const minYear = currentYear - 106;
+                                    const maxYear = currentYear - 18;
+                                    const minDate = `${minYear}-01-01`;
+                                    const maxDate = `${maxYear}-12-31`;
+                                    const fechaNacimientoInput = document.getElementById('fecha_nacimiento');
+                                    fechaNacimientoInput.setAttribute('min', minDate);
+                                    fechaNacimientoInput.setAttribute('max', maxDate);
+                                    });
+                            </script>
 
-                            <!-- Campo para el teléfono -->
+                            <!-- Campo para la Edad -->
                             <div class="form-group col-md-3">
-                                <label for="telefono"><strong>Teléfono fijo</strong></label>
-                                <input 
-                                type="text" 
-                                name="telefono" 
-                                class="form-control"
-                                placeholder="0000-0000 (INGRESE EL GUIÓN)"
-                                    value="{{ old('telefono', $user->telefono) }}"
-                                    maxlength="9"
-                                    pattern="\d{4}-\d{4}">
+                                <label for="edad">
+                                    <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
+                                    Edad
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i></i>
+                                        </div>
+                                    </div>
+                                    <input 
+                                        type="text" 
+                                        name="edad" 
+                                        class="form-control"
+                                        placeholder="Edad"
+                                        id="edad" 
+                                        value="{{ $user->edad }}"
+                                        readonly>
+                                </div>
                             </div>
 
                             <script>
-                                document.getElementById('telefono').addEventListener('input', function (e) {
-                                    var input = e.target.value.replace(/\D/g, '');
-                                    if (input.length > 4) {
-                                        input = input.slice(0, 4) + '-' + input.slice(4, 8);
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    function calcularEdad(fechaNacimiento) {
+                                        var birthDate = new Date(fechaNacimiento);
+                                        var today = new Date();
+                                        var age = today.getFullYear() - birthDate.getFullYear();
+                                        var monthDifference = today.getMonth() - birthDate.getMonth();                
+                                        // Ajusta la edad si aún no ha pasado el cumpleaños este año
+                                        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                                            age--;
+                                        }                
+                                        return age;
                                     }
-                                    e.target.value = input;
+                                    // Actualiza la edad cuando cambia la fecha de nacimiento
+                                    document.getElementById('fecha_nacimiento').addEventListener('change', function() {
+                                        var edad = calcularEdad(this.value);
+                                        document.getElementById('edad').value = edad;
+                                    });
+                                    // Calcula y muestra la edad inicialmente
+                                    var edadInicial = calcularEdad(document.getElementById('fecha_nacimiento').value);
+                                    document.getElementById('edad').value = edadInicial;
                                 });
                             </script>
 
-                            <!-- Campo para el teléfono celular -->
-                            <div class="form-group col-md-3">
-                                <label for="telefono_celular"><strong>Celular *</strong></label>
-                                <input 
-                                type="text" 
-                                name="telefono_celular" 
-                                class="form-control"
-                                placeholder="0000-0000 (INGRESE EL GUIÓN)"
-                                    value="{{ old('telefono_celular', $user->telefono_celular) }}"                                 
-                                    maxlength="9"
-                                    pattern="\d{4}-\d{4}"
-                                    required>
+                            <!-- Campo para seleccionar el país -->
+                            <div class="col-md-3">
+                                <label for="pais">
+                                    <i class="fas fa-globe" style="margin-right: 8px;"></i>
+                                    <strong>País *</strong>
+                                </label>
+                                <select id="pais" name="pais_id" class="form-control" required>
+                                    <option value="">Seleccione un país</option>
+                                    @foreach($paises as $pais)
+                                        <option value="{{ $pais->id }}" data-codigo="{{ $pais->codigo }}" {{ $user->pais_id == $pais->id ? 'selected' : '' }}>
+                                            {{ $pais->nombre }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
 
+                            <!-- Campo para el teléfono fijo -->
+                            <div class="form-group col-md-3">
+                                <label for="telefono">
+                                    <i class="fas fa-phone" style="margin-right: 8px;"></i>
+                                    Teléfono fijo
+                                </label>                                                             
+                                <div class="input-group{{ $errors->has('telefono') ? ' has-danger' : '' }}">
+                                    <div class="input-group">
+                                        <span id="codigo_telefono" class="input-group-text">{{ $user->pais->codigo ?? '' }}</span>
+                                        <input 
+                                            id="telefono" 
+                                            type="text" 
+                                            class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" 
+                                            name="telefono"
+                                            placeholder="Ingrese su número de teléfono fijo"
+                                            maxlength="15" 
+                                            value="{{ old('telefono', $user->telefono) }}"
+                                            pattern="^[\d-]*$">
+                                        @include('alerts.feedback', ['field' => 'telefono'])
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Campo para el teléfono celular -->
+                            <div class="form-group col-md-3">
+                                <label for="telefono_celular">
+                                    <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
+                                    <strong>Celular *</strong>
+                                </label>                                
+                                <div class="input-group{{ $errors->has('telefono_celular') ? ' has-danger' : '' }}">
+                                    <div class="input-group">
+                                        <span id="codigo_telefono_celular" class="input-group-text">{{ $user->pais->codigo ?? '' }}</span>
+                                        <input 
+                                            id="telefono_celular" 
+                                            type="text" 
+                                            class="form-control{{ $errors->has('telefono_celular') ? ' is-invalid' : '' }}" 
+                                            name="telefono_celular" 
+                                            placeholder="Ingrese su número de celular"
+                                            maxlength="15" 
+                                            value="{{ old('telefono_celular', $user->telefono_celular) }}"
+                                            pattern="^[\d-]*$"
+                                            required>
+                                        @include('alerts.feedback', ['field' => 'telefono_celular'])
+                                    </div>
+                                </div>
+                            </div>
                             <script>
-                                document.getElementById('telefono_celular').addEventListener('input', function (e) {
-                                    var input = e.target.value.replace(/\D/g, '');
-                                    if (input.length > 4) {
-                                        input = input.slice(0, 4) + '-' + input.slice(4, 8);
-                                    }
-                                    e.target.value = input;
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    const paisSelect = document.getElementById('pais');
+                                    const codigoTelefonoSpan = document.getElementById('codigo_telefono');
+                                    const codigoTelefonoCelularSpan = document.getElementById('codigo_telefono_celular');
+                                    const telefonoInput = document.getElementById('telefono');
+                                    const telefonoCelularInput = document.getElementById('telefono_celular');                            
+                                    paisSelect.addEventListener('change', function () {
+                                        const selectedOption = paisSelect.options[paisSelect.selectedIndex];
+                                        const codigoPais = selectedOption.getAttribute('data-codigo');
+                                        // Actualizar los span con el código del país
+                                        codigoTelefonoSpan.textContent = codigoPais;
+                                        codigoTelefonoCelularSpan.textContent = codigoPais;                                     
+                                        // Obtener el valor actual del teléfono y eliminar el código del país si existe
+                                        const telefonoValue = telefonoInput.value;
+                                        const telefonoSinCodigo = telefonoValue.startsWith(codigoPais) ? telefonoValue.slice(codigoPais.length) : telefonoValue;
+                                        telefonoInput.value = telefonoSinCodigo; // Solo el número sin el código                                
+                                        const telefonoCelularValue = telefonoCelularInput.value;
+                                        const telefonoCelularSinCodigo = telefonoCelularValue.startsWith(codigoPais) ? telefonoCelularValue.slice(codigoPais.length) : telefonoCelularValue;
+                                        telefonoCelularInput.value = telefonoCelularSinCodigo; // Solo el número sin el código
+                                    });
                                 });
                             </script>
 
@@ -258,8 +364,7 @@
                                 name="email" 
                                 class="form-control"
                                 placeholder="Correo electrónico"
-                                    value="{{ old('email', $user->email) }}"
-                                    readonly>
+                                    value="{{ old('email', $user->email) }}">
                             </div>
 
                             <!-- Campo para el Rol -->
@@ -270,7 +375,23 @@
                                         <option value="{{ $role }}" {{ in_array($role, $user->roles->pluck('name')->toArray()) ? 'selected' : '' }}>{{ $roleName }}</option>
                                     @endforeach
                                 </select>
-                            </div>                            
+                            </div>
+                            
+                            <!-- Campo para la contraseña  -->
+                            <div class="form-group col-md-3">
+                                <label for="password">
+                                    <i class="fas fa-lock" style="margin-right: 8px;"></i>
+                                    <strong>Contraseña *</strong>
+                                </label>
+                                <input 
+                                    type="password" 
+                                    name="password" 
+                                    class="form-control" 
+                                    placeholder="Contraseña actual"
+                                    value="**********" 
+                                    disabled>
+                            </div>
+
                         </div>
 
                         <div class="mb-3 text-center">

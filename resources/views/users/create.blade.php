@@ -79,7 +79,7 @@
                                 maxlength="40">
                             </div>
 
-                            <!-- Campo para el número de identidad -->
+                            <!-- Campo para el DNI -->
                             <div class="form-group col-md-3">
                                 <label for="numero_identidad">
                                     <i class="fas fa-id-card" style="margin-right: 8px;"></i>
@@ -169,7 +169,6 @@
                                     } else {
                                         formatted = input.slice(0, 4) + '-' + input.slice(4, 8) + '-' + input.slice(8, 14);
                                     }
-                            
                                     e.target.value = formatted;
                                 });
                             </script>
@@ -222,7 +221,10 @@
 
                             <!-- Campo para edad -->
                             <div class="form-group col-md-3">
-                                <label for="edad">Edad</label>
+                                <label for="edad">
+                                    <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
+                                    Edad
+                                </label> 
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
@@ -254,11 +256,15 @@
 
                             <!-- Campo para seleccionar el país -->
                             <div class="col-md-6">
-                                <label for="pais"><strong>País *</strong></label>
+                                <label for="pais">
+                                    <i class="fas fa-globe" style="margin-right: 8px;"></i>
+                                    <strong>País *</strong>
+                                </label>
                                 <select id="pais" name="pais_id" class="form-control" required>
                                     <option value="">Seleccione un país</option>
                                     @foreach($paises as $pais)
-                                        <option value="{{ $pais->id }}" data-codigo="{{ $pais->codigo }}">
+                                        <option value="{{ $pais->id }}" data-codigo="{{ $pais->codigo }}"
+                                            {{ old('pais_id') == $pais->id ? 'selected' : '' }}>
                                             {{ $pais->nombre }}
                                         </option>
                                     @endforeach
@@ -294,7 +300,10 @@
 
                             <!-- Campo para el teléfono fijo -->
                             <div class="form-group col-md-3">
-                                <label for="telefono">Teléfono fijo</label>
+                                <label for="telefono">
+                                    <i class="fas fa-phone" style="margin-right: 8px;"></i>
+                                    Teléfono fijo
+                                </label>                                                             
                                 <div class="input-group{{ $errors->has('telefono') ? ' has-danger' : '' }}">
                                     <div class="input-group">
                                         <span id="codigo_telefono" class="input-group-text"></span>
@@ -314,7 +323,10 @@
 
                             <!-- Campo para el teléfono celular -->
                             <div class="form-group col-md-3">
-                                <label for="telefono_celular"><strong>Celular *</strong></label>
+                                <label for="telefono_celular">
+                                    <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
+                                    <strong>Celular *</strong>
+                                </label>                                
                                 <div class="input-group{{ $errors->has('telefono_celular') ? ' has-danger' : '' }}">
                                     <div class="input-group">
                                         <span id="codigo_telefono_celular" class="input-group-text"></span>
