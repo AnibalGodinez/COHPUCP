@@ -51,8 +51,8 @@ class RegisterController extends Controller
                 }
             },
         ],
-        'telefono' => ['nullable', 'string', 'max:20'],
-        'telefono_celular' => ['required', 'string', 'max:20'],
+        'telefono' => ['nullable', 'string', 'max:15', 'regex:/^\d{4}-\d{4}$/'],
+        'telefono_celular' => ['required', 'string', 'max:15', 'regex:/^\d{4}-\d{4}$/'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email', 'confirmed'],
         'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/'],
         'agree_terms_and_conditions' => ['required'],
@@ -63,6 +63,8 @@ class RegisterController extends Controller
         'email.unique' => 'Este correo electrónico ya se encuentra registrado',
         'email.confirmed' => 'La confirmación del correo electrónico no coincide',
         'password.regex' => 'La contraseña debe contener al menos un símbolo o carácter especial, como por ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
+        'telefono.regex' => 'El número de teléfono fijo debe contener solo números y guiones',
+        'telefono_celular.regex' => 'El número de celular debe contener solo números y guiones',
     ]);
 }
 

@@ -73,8 +73,8 @@ class UserController extends Controller
             'rtn' => 'nullable|string|max:20|unique:users,rtn',
             'sexo' => 'required|in:masculino,femenino',
             'fecha_nacimiento' => 'required|date',
-            'telefono' => 'nullable|string|max:20|regex:/^[\d-]*$/',
-            'telefono_celular' => 'required|string|max:20|regex:/^[\d-]*$/',
+            'telefono' => 'nullable|string|max:15|regex:/^[\d-]*$/',
+            'telefono_celular' => 'required|string|max:15|regex:/^[\d-]*$/',
             'email' => 'required|email|max:255|unique:users,email',
             'email_confirmation' => 'required|email|same:email',
             'pais_id' => 'nullable|exists:pais,id', // Validación para el campo país
@@ -157,9 +157,9 @@ class UserController extends Controller
             'pais_id' => 'nullable|exists:pais,id', // Validación para el campo país
             'roles' => 'required|array',
         ], [
-            'pais_id.exists' => 'El país seleccionado es inválido.',
-            'telefono.regex' => 'El número de teléfono fijo debe contener solo números y guiones.',
-            'telefono_celular.regex' => 'El número de celular debe contener solo números y guiones.',
+            'pais_id.exists' => 'El país seleccionado es inválido',
+            'telefono.regex' => 'El número de teléfono fijo debe contener solo números y guiones',
+            'telefono_celular.regex' => 'El número de celular debe contener solo números y guiones',
         ]);
 
         $user = User::findOrFail($userId);
