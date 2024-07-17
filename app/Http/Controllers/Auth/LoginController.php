@@ -11,7 +11,6 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
-
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
@@ -34,59 +33,51 @@ class LoginController extends Controller
 
     protected function attemptLogin(Request $request)
     {
-    $credentials = $this->credentials($request);
+        $credentials = $this->credentials($request);
 
-    if (Auth::attempt($credentials)) {
-        $user = Auth::user();
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
 
-        if ($user->isActive()) {
-            return true;
+            if ($user->isActive()) {
+                return true;
+            }
+
+            Auth::logout();
+            throw ValidationException::withMessages([
+                'estado' => 'Tu cuenta está inactiva, favor comunícate con el administrador de la página'
+            ]);
         }
 
-        Auth::logout();
-        // Aquí agregamos el mensaje de error personalizado
-        throw ValidationException::withMessages([
-            'estado' => 'Tu cuenta está inactiva, favor comunícate con el administrador de la página.'
-        ]);
+        return false;
     }
 
-    return false;
-    }
-
-    protected function sendLoginResponse(Request $request)
+    public function login(Request $request)
     {
-        $request->session()->regenerate();
-
-        return $this->authenticated($request, Auth::user())
-                ?: redirect()->intended($this->redirectPath());
-    }
-
-     public function login(Request $request)
-    {
-        // Validar los campos de entrada
         $request->validate([
             'login_type' => 'required|string',
             'password' => 'required|string',
         ]);
 
-        // Obtener el usuario por el correo electrónico
-        $user = User::where('email', $request->login_type)->first();
+        $loginType = $request->input('login_type');
+        $field = filter_var($loginType, FILTER_VALIDATE_EMAIL) ? 'email' : 'numero_colegiacion';
 
-        // Si el usuario no existe, mostrar mensaje de error del correo
+        $user = User::where($field, $loginType)->first();
+
         if (!$user) {
-            return back()->withErrors(['login_type' => 'El correo electrónico no está registrado.'])->withInput($request->only('login_type'));
+            return back()->withErrors(['login_type' => 'El correo electrónico o número de colegiación no está registrado'])->withInput($request->only('login_type'));
         }
 
-        // Si la contraseña es incorrecta, mostrar mensaje de error
         if (!Hash::check($request->password, $user->password)) {
             return back()->withErrors(['password' => 'La contraseña es incorrecta.'])->withInput($request->only('login_type'));
         }
 
-        // Intentar iniciar sesión con las credenciales proporcionadas
-        if (Auth::attempt(['email' => $request->login_type, 'password' => $request->password])) {
-            // Redirigir a la página de inicio
+        if ($this->attemptLogin($request)) {
             return redirect()->intended('home');
         }
+
+        return back()->withErrors([
+            'login_type' => 'Estas credenciales no coinciden con nuestros registros',
+        ])->withInput($request->only('login_type'));
     }
 
     protected function credentials(Request $request)

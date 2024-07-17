@@ -30,7 +30,11 @@
                         placeholder="{{ _('Correo electrónico o número de colegiación') }}" 
                         value="{{ old('login_type') }}"
                         required>
-                        @include('alerts.feedback', ['field' => 'login_type'])
+                        @error('login_type')
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     
                     <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }}">
@@ -45,7 +49,11 @@
                         name="password" 
                         class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                         required>
-                        @include('alerts.feedback', ['field' => 'password'])
+                        @error('password')
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div><br>
                     
                     @if ($errors->has('estado'))

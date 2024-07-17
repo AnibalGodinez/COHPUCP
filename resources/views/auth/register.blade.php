@@ -354,14 +354,14 @@
                                 <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                                 <strong>Correo electrónico *</strong>
                             </label>
-                                <input 
-                                    type="email" 
-                                    name="email" 
-                                    class="form-control" 
-                                    placeholder="Ingrese su correo electrónico" 
-                                    value="{{ old('email') }}" 
-                                    required>
-                                    @error('email')
+                            <input 
+                                type="email" 
+                                name="email" 
+                                class="form-control" 
+                                placeholder="Ingrese su correo electrónico" 
+                                value="{{ old('email') }}" 
+                                required>
+                                @error('email')
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
