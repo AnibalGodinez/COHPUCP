@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
+use App\Models\Pais;
 
 class ProfileController extends Controller
 {
@@ -21,10 +22,14 @@ class ProfileController extends Controller
     }
 
     public function edit()
-    {
-        $editMode = true;
-        return view('profile.edit', compact('editMode'));
-    }
+{
+    $editMode = true;
+    $user = auth()->user();
+    $paises = Pais::all();
+
+    return view('profile.edit', compact('editMode', 'user', 'paises'));
+}
+
 
     public function cambiarContrasenia()
     {

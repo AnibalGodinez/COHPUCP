@@ -158,7 +158,7 @@ class UserController extends Controller
             'roles' => 'required|array',
         ], [
             'pais_id.exists' => 'El país seleccionado es inválido.',
-            'telefono.regex' => 'El número de teléfono debe contener solo números y guiones.',
+            'telefono.regex' => 'El número de teléfono fijo debe contener solo números y guiones.',
             'telefono_celular.regex' => 'El número de celular debe contener solo números y guiones.',
         ]);
 

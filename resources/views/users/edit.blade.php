@@ -229,12 +229,6 @@
                                     <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
                                     Edad
                                 </label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i></i>
-                                        </div>
-                                    </div>
                                     <input 
                                         type="text" 
                                         name="edad" 
@@ -243,7 +237,6 @@
                                         id="edad" 
                                         value="{{ $user->edad }}"
                                         readonly>
-                                </div>
                             </div>
 
                             <script>
@@ -304,9 +297,13 @@
                                             maxlength="15" 
                                             value="{{ old('telefono', $user->telefono) }}"
                                             pattern="^[\d-]*$">
-                                        @include('alerts.feedback', ['field' => 'telefono'])
                                     </div>
                                 </div>
+                                @error('telefono')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- Campo para el teléfono celular -->
@@ -328,9 +325,13 @@
                                             value="{{ old('telefono_celular', $user->telefono_celular) }}"
                                             pattern="^[\d-]*$"
                                             required>
-                                        @include('alerts.feedback', ['field' => 'telefono_celular'])
                                     </div>
                                 </div>
+                                @error('telefono_celular')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <script>
                                 document.addEventListener('DOMContentLoaded', function () {

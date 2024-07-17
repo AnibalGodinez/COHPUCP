@@ -43,7 +43,7 @@
                                     <th class="text-center">Teléfono celular</th>
                                     <th class="text-center">Correo electrónico</th>
                                     <th class="text-center">Estado</th>
-                                    <th class="text-center">Roles</th>
+                                    <th class="text-center">Rol</th>
                                     <th class="text-center">País</th> <!-- Añadir encabezado para país -->
                                     <th class="text-center">Acción</th>
                                 </tr>

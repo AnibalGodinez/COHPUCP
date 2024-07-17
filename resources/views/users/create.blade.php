@@ -121,7 +121,7 @@
                                 name="numero_colegiacion" 
                                 class="form-control" 
                                 id="numero_colegiacion" 
-                                placeholder="Nº de coleagiación (SIN GUIONES)"
+                                placeholder="Nº de colegiación (SIN GUIONES)"
                                 value="{{ old('numero_colegiacion') }}" 
                                 maxlength="12" 
                                 pattern="\d{4}-\d{2}-\d{4}">
@@ -226,11 +226,6 @@
                                     Edad
                                 </label> 
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-calendar-alt"></i>
-                                        </div>
-                                    </div>
                                     <input 
                                         type="text" 
                                         name="edad" 
@@ -315,10 +310,14 @@
                                         placeholder="Ingrese su número de teléfono fijo"
                                         maxlength="15" 
                                         value="{{ old('telefono') }}"
-                                        pattern="^[\d-]*$">
-                                        @include('alerts.feedback', ['field' => 'telefono'])
+                                        pattern="^[\d-]*$">                                       
                                     </div>
                                 </div>
+                                @error('telefono')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                             </div>
 
                             <!-- Campo para el teléfono celular -->
@@ -339,10 +338,14 @@
                                         maxlength="15" 
                                         value="{{ old('telefono_celular') }}"
                                         pattern="^[\d-]*$"
-                                        required>
-                                        @include('alerts.feedback', ['field' => 'telefono_celular'])
+                                        required>                                       
                                     </div>
                                 </div>
+                                @error('telefono_celular')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                            <!-- Campo para el correo electrónico -->
