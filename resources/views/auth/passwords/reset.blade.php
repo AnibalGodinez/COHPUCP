@@ -1,4 +1,4 @@
-@extends('layouts.app', ['class' => 'login-page', 'page' => _('Reset password'), 'contentClass' => 'login-page'])
+@extends('layouts.app')
 
 @section('content')
     <div class="col-lg-3 col-md-6 ml-auto mr-auto" style="margin-top: -120px;">
