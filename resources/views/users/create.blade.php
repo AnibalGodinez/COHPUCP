@@ -109,7 +109,6 @@
                                     e.target.value = input;
                                 });
                             </script>
-
                             <!-- Campo para el número de colegiación -->
                             <div class="form-group col-md-3">
                                 <label for="numero_colegiacion">
@@ -384,7 +383,7 @@
                                     </span>
                                 @enderror
                             </div>
-                                                      
+
                             <!-- Campo para el Rol -->
                             <div class="form-group col-md-3">
                                 <label>
@@ -445,6 +444,7 @@
                                     </span>
                                 @enderror
                             </div>
+                        
                         </div>
 
                         <div class="mb-3 text-center">
@@ -457,4 +457,22 @@
         </div>
     </div>
 </div>
+
+<script>
+    var numero_colegiacion = document.getElementById('numero_colegiacion');
+    var roles = document.querySelector('select[name="roles[]"]');
+
+    function checkAgremiadoStatus() {
+        var agremiadoOption = Array.from(roles.options).find(option => option.textContent === 'Agremiado');
+        if (numero_colegiacion.value.trim() === '') {
+            agremiadoOption.disabled = true;
+        } else {
+            agremiadoOption.disabled = false;
+        }
+    }
+
+    numero_colegiacion.addEventListener('input', checkAgremiadoStatus);
+    window.addEventListener('load', checkAgremiadoStatus);
+</script>
+
 @endsection

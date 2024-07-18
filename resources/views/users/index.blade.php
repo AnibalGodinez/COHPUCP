@@ -37,12 +37,12 @@
                                     <th class="text-center">Sexo</th>
                                     <th class="text-center">Fecha de nacimiento</th>
                                     <th class="text-center">Edad</th>
+                                    <th class="text-center">País</th>
                                     <th class="text-center">Teléfono</th>
                                     <th class="text-center">Teléfono celular</th>
                                     <th class="text-center">Correo electrónico</th>
                                     <th class="text-center">Estado</th>
                                     <th class="text-center">Rol</th>
-                                    <th class="text-center">País</th> <!-- Añadir encabezado para país -->
                                     <th class="text-center">Acción</th>
                                 </tr>
                             </thead>
@@ -60,6 +60,9 @@
                                         @if (!empty($user->fecha_nacimiento))
                                             {{ \Carbon\Carbon::parse($user->fecha_nacimiento)->age }} años
                                         @endif
+                                    </td>
+                                    <td class="text-center">
+                                        {{ $user->pais ? $user->pais->nombre : 'No asignado' }}
                                     </td>
                                     <td>
                                         @if ($user->pais)
@@ -83,9 +86,6 @@
                                                 <label class="badge bg-info mx-1 text-white">{{ $roleName }}</label>
                                             @endforeach
                                         @endif
-                                    </td>
-                                    <td class="text-center">
-                                        {{ $user->pais ? $user->pais->nombre : 'No asignado' }} <!-- Muestra el país si está asignado -->
                                     </td>
                                     <td class="text-center">
                                         <a href="{{ url('usuarios/'.$user->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
