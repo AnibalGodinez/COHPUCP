@@ -64,7 +64,7 @@
                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                                 title="En este campo sólo se permiten letras" 
                                 class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" 
-                                placeholder="Primer nombre" 
+                                placeholder="Ingrese su primer nombre" 
                                 value="{{ old('name', auth()->user()->name) }}"
                                 required>
                             </div>
@@ -81,7 +81,7 @@
                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                                 title="En este campo sólo se permiten letras"
                                 class="form-control{{ $errors->has('name2') ? ' is-invalid' : '' }}" 
-                                placeholder="Segundo nombre" 
+                                placeholder="Ingrese su segundo nombre" 
                                 value="{{ old('name2', auth()->user()->name2) }}">
                             </div>
 
@@ -97,7 +97,7 @@
                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                                 title="En este campo sólo se permiten letras" 
                                 class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" 
-                                placeholder="Primer apellido" 
+                                placeholder="Ingrese su primer apellido" 
                                 value="{{ old('apellido', auth()->user()->apellido) }}"
                                 required>
                             </div>
@@ -114,7 +114,7 @@
                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+"
                                 title="En este campo sólo se permiten letras"
                                 class="form-control{{ $errors->has('apellido2') ? ' is-invalid' : '' }}" 
-                                placeholder="{{ __('Segundo apellido') }}" 
+                                placeholder="Ingrese su segundo apellido" 
                                 value="{{ old('apellido2', auth()->user()->apellido2) }}">
                             </div>
 

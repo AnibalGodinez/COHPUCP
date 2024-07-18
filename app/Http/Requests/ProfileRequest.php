@@ -23,9 +23,17 @@ class ProfileRequest extends FormRequest
             'rtn' => 'nullable|string|max:16|unique:users,rtn,' . auth()->id(),
             'sexo' => 'required|string|in:masculino,femenino',
             'fecha_nacimiento' => 'required|date',
-            'telefono' => 'nullable|string|max:9',
-            'telefono_celular' => 'required|string|max:9',
+            'telefono' => ['nullable', 'string', 'regex:/^[\d-]*$/', 'max:40'],
+            'telefono_celular' => ['required', 'string', 'regex:/^[\d-]*$/', 'max:40'],
             'email' => 'required|string|email|max:255|unique:users,email,' . auth()->id(),
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'telefono.regex' => 'El teléfono fijo solo puede contener números y guiones.',
+            'telefono_celular.required' => 'El campo celular es obligatorio.',
+            'telefono_celular.regex' => 'El celular solo puede contener números y guiones.',
         ];
     }
 }

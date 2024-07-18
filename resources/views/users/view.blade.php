@@ -5,9 +5,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card mt-7">
-
                 <div class="card-body">
-                    <h3 class="text-center">LISTA DE USUARIOS</h3>
+                    <h3 class="text-center">GESTIONAR USUARIOS</h3>
 
                     @if (session('status'))
                         <div class="alert alert-success text-center">{{ session('status') }}</div>
@@ -43,7 +42,6 @@
                                     <th class="text-center">Correo electrónico</th>
                                     <th class="text-center">Estado</th>
                                     <th class="text-center">Rol</th>
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,17 +63,21 @@
                                         {{ $user->pais ? $user->pais->nombre : 'No asignado' }}
                                     </td>
                                     <td>
-                                        @if ($user->pais)
-                                            {{ $user->pais->codigo }} {{ $user->telefono }}
-                                        @else
-                                            {{ $user->telefono }}
+                                        @if ($user->telefono)
+                                            @if ($user->pais)
+                                                {{ $user->pais->codigo }} {{ $user->telefono }}
+                                            @else
+                                                {{ $user->telefono }}
+                                            @endif
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($user->pais)
-                                            {{ $user->pais->codigo }} {{ $user->telefono_celular }}
-                                        @else
-                                            {{ $user->telefono_celular }}
+                                        @if ($user->telefono_celular)
+                                            @if ($user->pais)
+                                                {{ $user->pais->codigo }} {{ $user->telefono_celular }}
+                                            @else
+                                                {{ $user->telefono_celular }}
+                                            @endif
                                         @endif
                                     </td>
                                     <td>{{ $user->email }}</td>
@@ -86,7 +88,7 @@
                                                 <label class="badge bg-info mx-1 text-white">{{ $roleName }}</label>
                                             @endforeach
                                         @endif
-                                    </td>   
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
