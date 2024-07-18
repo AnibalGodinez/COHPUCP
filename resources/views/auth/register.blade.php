@@ -6,14 +6,14 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <div class="card card-register card-white">
+            <div class="card card-register card-white" style="border-radius: 16px">
                 <div class="card-header">
-                    <img src="{{ asset('white/img/card-primary.png')}}" class="card-img-top" alt="Card image">
-                    <h2 class="card-title" style="position: absolute; top: 20px; left: 4px; text-transform: none;">Registrarse</h2>
+                    <img src="{{ asset('white/img/blue-background-vector.jpg')}}" class="card-img-top" alt="Card image">
+                    <h3 class="card-title" style="position: absolute; top: 20px; left: 72px; text-transform: none; font-size: 46px;">Registrarse</h3>
                 </div>
 
-                <div class="card-body" style="margin-top: -70px;">
-                    <p class="text-dark mb-2" style="margin-bottom: 50px;">Registrate para que ingreses a la <strong>Plataforma Tecnológica del COHPUCP.</strong></p><br>
+                <div class="card-body" style="margin-top: -80px;">
+                    <p class="text-dark mb-2" style="margin-bottom: 50px;">Registrate para que ingreses a la <strong>Plataforma Tecnológica del COHPUCP</strong></p><br>
                     {{-- ---------------------------------------------------------------------------------------------- --}}
                     <div class="form-row">
                         <!-- Campo para el primer nombre -->

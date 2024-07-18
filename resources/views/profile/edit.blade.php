@@ -129,7 +129,7 @@
                                 id="dni"
                                 name="numero_identidad" 
                                 class="form-control{{ $errors->has('numero_identidad') ? ' is-invalid' : '' }}" 
-                                placeholder="Ingrese SU DNI (SIN GUIONES)"
+                                placeholder="Ingrese su DNI (SIN GUIONES)"
                                 maxlength="15" 
                                 value="{{ old('numero_identidad', auth()->user()->numero_identidad) }}"
                                 required>
@@ -182,7 +182,7 @@
                                 id="rtn"
                                 name="rtn" 
                                 class="form-control{{ $errors->has('rtn') ? ' is-invalid' : '' }}" 
-                                placeholder="0000-0000-000000"
+                                placeholder="Ingrese su RTN (SIN GUIONES)"
                                 value="{{ old('rtn', auth()->user()->rtn) }}"
                                 maxlength="16">
                             </div>
@@ -217,27 +217,29 @@
                                     <strong>Fecha de nacimiento *</strong>
                                 </label>
                                 <input 
-                                type="date" 
-                                id="fecha_nacimiento"
-                                name="fecha_nacimiento" 
-                                class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}" 
-                                value="{{ old('fecha_nacimiento', auth()->user()->fecha_nacimiento) }}"
-                                required>
+                                    type="date" 
+                                    id="fecha_nacimiento"
+                                    name="fecha_nacimiento" 
+                                    class="form-control{{ $errors->has('fecha_nacimiento') ? ' is-invalid' : '' }}" 
+                                    value="{{ old('fecha_nacimiento', auth()->user()->fecha_nacimiento) }}"
+                                    required>
                                 @include('alerts.feedback', ['field' => 'fecha_nacimiento'])
                             </div>
 
                             <!-- Campo para la Edad -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="edad">
                                     <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
                                     Edad
                                 </label>
                                 <input 
-                                type="text" 
-                                id="edad"
-                                name="edad" 
-                                class="form-control" 
-                                readonly>
+                                    type="text" 
+                                    id="edad"
+                                    name="edad" 
+                                    class="form-control" 
+                                    value="{{ \Carbon\Carbon::parse(auth()->user()->fecha_nacimiento)->age }} años" 
+                                    style="text-align: center;" 
+                                    readonly>
                             </div>
                             <script>
                                 function calculateAge() {
@@ -245,14 +247,17 @@
                                     var today = new Date();
                                     var age = today.getFullYear() - birthDate.getFullYear();
                                     var monthDifference = today.getMonth() - birthDate.getMonth();                
+                                    
                                     // Ajusta la edad si aún no ha pasado el cumpleaños este año
                                     if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
                                         age--;
-                                    }                
+                                    }
+                                    
                                     document.getElementById('edad').value = age;
                                 }
+                                
                                 document.getElementById('fecha_nacimiento').addEventListener('change', calculateAge);
-                                window.onload = calculateAge;
+                                window.onload = calculateAge;  // Calcula la edad al cargar la página
                             </script>
 
                             <!-- Campo para seleccionar el país -->
@@ -273,7 +278,7 @@
                             </div>
 
                             <!-- Campo para el teléfono fijo -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label for="telefono">
                                     <i class="fas fa-phone" style="margin-right: 8px;"></i>
                                     Teléfono fijo
@@ -300,7 +305,7 @@
                             </div>
 
                             <!-- Campo para el teléfono celular -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label for="telefono_celular">
                                     <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
                                     <strong>Celular *</strong>
@@ -362,7 +367,7 @@
 
 
                             <!-- Campo para el correo electrónico -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <label for="email">
                                     <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                                     <strong>Correo electrónico *</strong>

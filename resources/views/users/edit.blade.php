@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-center mb-4">GESTIONAR USUARIO</h3>
+                    <h3 class="text-center mb-4">EDITAR INFORMACIÓN DEL USUARIO</h3>
                     <form action="{{ route('usuarios.update', $user->id) }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -377,20 +377,17 @@
                                     @endforeach
                                 </select>
                             </div>
-                            
-                            <!-- Campo para la contraseña  -->
+
+                            <!-- Campo para el Estado -->
                             <div class="form-group col-md-3">
-                                <label for="password">
-                                    <i class="fas fa-lock" style="margin-right: 8px;"></i>
-                                    <strong>Contraseña *</strong>
+                                <label for="estado">
+                                    <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                                    Estado
                                 </label>
-                                <input 
-                                    type="password" 
-                                    name="password" 
-                                    class="form-control" 
-                                    placeholder="Contraseña actual"
-                                    value="**********" 
-                                    disabled>
+                                <select name="estado" class="form-control" required>
+                                    <option value="activo" {{ old('estado', $user->estado) == 'activo' ? 'selected' : '' }}>Activo</option>
+                                    <option value="inactivo" {{ old('estado', $user->estado) == 'inactivo' ? 'selected' : '' }}>Inactivo</option>
+                                </select>
                             </div>
 
                         </div>

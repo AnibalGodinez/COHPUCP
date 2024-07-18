@@ -6,14 +6,15 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <div class="card card-register card-white">
+        <div class="card card-register card-white" style="border-radius: 16px">
             <div class="card-header">
-                <img src="{{ asset('white/img/card-primary.png')}}" class="card-img-top" alt="Card image">
-                <h2 class="card-title" style="position: absolute; top: 20px; left: 4px; text-transform: none;">Iniciar sesión</h2>
+                <img src="{{ asset('white/img/blue-background-vector.jpg')}}" class="card-img-top" alt="Card image">
+                <h3 class="card-title" style="position: absolute; top: 20px; left: 54px; text-transform: none; font-size: 34px;">Inicio de sesión</h3>
             </div>
+            
 
             <div class="card-body" style="margin-top: -70px;">
-                <p class="text-dark mb-2" style="margin-bottom: 50px;">Inicia sesión con tu <strong>correo electrónico </strong> y <strong>contraseña secreta </strong></p>
+                <p class="text-dark mb-2" style="margin-bottom: 50px;">Inicia sesión con tu <strong>correo electrónico </strong> y <strong>contraseña secreta </strong></p><br>
 
                 <div class="form-row">
                     
@@ -55,13 +56,11 @@
                             </span>
                         @enderror
                     </div><br>
-                    
-                    @if ($errors->has('estado'))
-                        <div class="alert alert-danger" role="alert">
-                            {{ $errors->first('estado') }}
-                        </div>
-                    @endif
-
+                    @error('estado')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                            </span>
+                    @enderror
                 </div>
 
                 <div class="card-footer" style="margin-top: -10px;">

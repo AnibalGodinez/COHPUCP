@@ -30,15 +30,13 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">ID</th>
-                                    <th class="text-center">Primer nombre</th>
-                                    <th class="text-center">Segundo nombre</th>
-                                    <th class="text-center">Primer apellido</th>
-                                    <th class="text-center">Segundo apellido</th>
+                                    <th class="text-center">Nombre completo</th>
                                     <th class="text-center">Número de identidad</th>
                                     <th class="text-center">Número de colegiación</th>
                                     <th class="text-center">RTN</th>
                                     <th class="text-center">Sexo</th>
                                     <th class="text-center">Fecha de nacimiento</th>
+                                    <th class="text-center">Edad</th>
                                     <th class="text-center">Teléfono</th>
                                     <th class="text-center">Teléfono celular</th>
                                     <th class="text-center">Correo electrónico</th>
@@ -52,15 +50,17 @@
                                 @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->name2 }}</td>
-                                    <td>{{ $user->apellido }}</td>
-                                    <td>{{ $user->apellido2 }}</td>
+                                    <td>{{ $user->name }} {{ $user->name2 }} {{ $user->apellido }} {{ $user->apellido2 }}</td>
                                     <td>{{ $user->numero_identidad }}</td>
                                     <td>{{ $user->numero_colegiacion }}</td>
                                     <td>{{ $user->rtn }}</td>
                                     <td>{{ $user->sexo }}</td>
                                     <td>{{ $user->fecha_nacimiento }}</td>
+                                    <td>
+                                        @if (!empty($user->fecha_nacimiento))
+                                            {{ \Carbon\Carbon::parse($user->fecha_nacimiento)->age }} años
+                                        @endif
+                                    </td>
                                     <td>
                                         @if ($user->pais)
                                             {{ $user->pais->codigo }} {{ $user->telefono }}
@@ -91,14 +91,8 @@
                                         <a href="{{ url('usuarios/'.$user->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                             <i class="tim-icons icon-settings"></i>
                                         </a>
-
                                         {{-- BOTÓN HABILITADO PARA ELIMINAR USUARIOS --}}
-                                        {{-- <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('usuarios/'.$user->id.'/delete') }}')">
-                                            <i class="tim-icons icon-simple-remove"></i>
-                                        </a> --}}
-
-                                        {{-- BOTÓN INHABILITADO PARA ELIMINAR USUARIOS --}}
-                                        <a href="#" class="btn btn-danger btn-sm btn-icon disabled" onclick="return false;" aria-disabled="true">
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('usuarios/'.$user->id.'/delete') }}')">
                                             <i class="tim-icons icon-simple-remove"></i>
                                         </a>
                                     </td>
@@ -113,4 +107,11 @@
         </div>
     </div>
 </div>
+<script>
+    function confirmarEliminacion(url) {
+        if (confirm('¿Estás seguro que quieres eliminar el usuario?')) {
+            window.location.href = url;
+        }
+    }
+</script>
 @endsection

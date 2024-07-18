@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="row">
         <div class="col-12">
             <div class="card card-chart">
@@ -65,28 +64,10 @@
                                         @include('alerts.success')
                 
                                         <div class="form-row">
-                                            <!-- Campo para el primer nombre -->
-                                            <div class="form-group col-md-3">
-                                                <label><strong>Primer nombre</strong></label>
-                                                <input type="text" name="name" class="form-control" value="{{ auth()->user()->name }}" style="text-align: center;" readonly>
-                                            </div>
-                
-                                            <!-- Campo para el segundo nombre -->
-                                            <div class="form-group col-md-3">
-                                                <label><strong>Segundo nombre</strong></label>
-                                                <input type="text" name="name2" class="form-control" value="{{ auth()->user()->name2 }}" style="text-align: center;" readonly>
-                                            </div>
-
-                                            <!-- Campo para el primer apellido -->
-                                            <div class="form-group col-md-3">
-                                                <label><strong>Primer apellido</strong></label>
-                                                <input type="text" name="apellido" class="form-control" value="{{ auth()->user()->apellido }}" style="text-align: center;" readonly>
-                                            </div>
-                
-                                            <!-- Campo para el segundo apellido -->
-                                            <div class="form-group col-md-3">
-                                                <label><strong>Segundo apellido</strong></label>
-                                                <input type="text" name="apellido2" class="form-control" value="{{ auth()->user()->apellido2 }}" style="text-align: center;" readonly>
+                                            <!-- Campo para el nombre completo -->
+                                            <div class="form-group col-md-6">
+                                                <label><strong>Nombre completo</strong></label>
+                                                <input type="text" class="form-control" value="{{ auth()->user()->name }} {{ auth()->user()->name2 }} {{ auth()->user()->apellido }} {{ auth()->user()->apellido2 }}" style="text-align: center;" readonly>
                                             </div>
                 
                                             <!-- Campo para el número de identidad -->
@@ -97,7 +78,7 @@
                 
                                             <!-- Campo para el número de colegiación -->
                                             <div class="form-group col-md-3">
-                                                <label><strong>Número de colegiación</strong></label>
+                                                <label><strong>Nº de colegiación</strong></label>
                                                 <input type="text" name="numero_colegiacion" class="form-control" value="{{ auth()->user()->numero_colegiacion }}" style="text-align: center;" readonly>
                                             </div>
                 
@@ -108,7 +89,7 @@
                                             </div>
                 
                                             <!-- Campo para el Sexo -->
-                                            <div class="form-group col-md-3">
+                                            <div class="form-group col-md-2">
                                                 <label><strong>Sexo</strong></label>
                                                 <select name="sexo" class="form-control" style="text-align: center;" disabled>
                                                     <option value="masculino" {{ auth()->user()->sexo == 'masculino' ? 'selected' : '' }}>Masculino</option>
@@ -117,25 +98,43 @@
                                             </div>
                 
                                             <!-- Campo para la Fecha de Nacimiento -->
-                                            <div class="form-group col-md-3">
+                                            <div class="form-group col-md-2">
                                                 <label><strong>Fecha de Nacimiento</strong></label>
                                                 <input type="date" name="fecha_nacimiento" class="form-control" value="{{ auth()->user()->fecha_nacimiento }}" style="text-align: center;" readonly>
                                             </div>
                 
+                                            <!-- Campo para la Edad -->
+                                            <div class="form-group col-md-2">
+                                                <label><strong>Edad</strong></label>
+                                                <input type="text" class="form-control" value="{{ \Carbon\Carbon::parse(auth()->user()->fecha_nacimiento)->age }} años" style="text-align: center;" readonly>
+                                            </div>
+                
+                                            <!-- Campo para el País -->
+                                            <div class="form-group col-md-3">
+                                                <label><strong>País</strong></label>
+                                                <input type="text" class="form-control" value="{{ auth()->user()->pais->nombre }}" style="text-align: center;" readonly>
+                                            </div>
+
                                             <!-- Campo para el teléfono -->
-                                            <div class="form-group col-md-3">
+                                            <div class="form-group col-md-4">
                                                 <label><strong>Teléfono fijo</strong></label>
-                                                <input type="text" name="telefono" class="form-control" value="{{ auth()->user()->telefono }}" style="text-align: center;" readonly>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">{{ auth()->user()->pais->codigo }}</span>
+                                                    <input type="text" name="telefono" class="form-control" value="{{ auth()->user()->telefono }}" style="text-align: center;" readonly>
+                                                </div>
                                             </div>
-                
+
                                             <!-- Campo para el teléfono celular -->
-                                            <div class="form-group col-md-3">
+                                            <div class="form-group col-md-4">
                                                 <label><strong>Celular</strong></label>
-                                                <input type="text" name="telefono_celular" class="form-control" value="{{ auth()->user()->telefono_celular }}" style="text-align: center;" readonly>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">{{ auth()->user()->pais->codigo }}</span>
+                                                    <input type="text" name="telefono_celular" class="form-control" value="{{ auth()->user()->telefono_celular }}" style="text-align: center;" readonly>
+                                                </div>
                                             </div>
-                
+
                                             <!-- Campo para el correo electrónico -->
-                                            <div class="form-group col-md-3">
+                                            <div class="form-group col-md-4">
                                                 <label><strong>Correo electrónico</strong></label>
                                                 <input type="email" name="email" class="form-control" value="{{ auth()->user()->email }}" style="text-align: center;" readonly>
                                             </div>
