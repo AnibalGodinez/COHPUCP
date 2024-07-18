@@ -6,16 +6,20 @@
         <form method="post" action="{{ route('password.email') }}">
             @csrf
 
-            <div class="card card-register card-white">
+            <div class="card card-register card-white" style="border-radius: 14px">
                 <div class="card-header">
-                    <img src="{{ asset('white/img/card-primary.png')}}" class="card-img-top" alt="Card image">
-                    <h2 class="card-title" style="position: absolute; top: 20px; left: 4px; text-transform: none;">Restablecer contraseña</h2>
+                    <img src="{{ asset('white/img/background-1.jpg')}}" class="card-img-top" alt="Card image">
+                    <h3 class="card-title" style="position: absolute; top: 20px; left: 14px; text-transform: none; font-size: 34px;">Restablecer contraseña</h3>
                 </div>
 
                 <div class="card-body" style="margin-top: -70px;">
-                    <p class="text-dark mb-2" style="margin-bottom: 20px;">Te enviaremos un <strong>link </strong>a tu <strong>correo electrónico </strong> para que puedas cambiar tu contraseña.</p><br>
+                    <p class="text-dark mb-2" style="margin-bottom: 20px;">
+                        Te enviaremos un <strong>link </strong>a tu <strong>correo electrónico </strong> para que puedas cambiar tu contraseña.
+                    </p><br>
+                    
                     @include('alerts.success')
 
+                    <!-- Campo para correo electrónico -->
                     <div class="form-group col-md-10">
                         <label for="email">
                             <i class="fas fa-envelope" style="margin-right: 8px;"></i>

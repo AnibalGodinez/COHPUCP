@@ -6,13 +6,12 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <div class="card card-register card-white" style="border-radius: 16px">
+        <div class="card card-register card-white" style="border-radius: 14px">
             <div class="card-header">
-                <img src="{{ asset('white/img/blue-background-vector.jpg')}}" class="card-img-top" alt="Card image">
+                <img src="{{ asset('white/img/background-vector.jpg')}}" class="card-img-top" alt="Card image">
                 <h3 class="card-title" style="position: absolute; top: 20px; left: 54px; text-transform: none; font-size: 34px;">Inicio de sesión</h3>
             </div>
             
-
             <div class="card-body" style="margin-top: -70px;">
                 <p class="text-dark mb-2" style="margin-bottom: 50px;">Inicia sesión con tu <strong>correo electrónico </strong> y <strong>contraseña secreta </strong></p><br>
 
