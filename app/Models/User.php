@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\Notifications\MyResetPassword;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
@@ -27,7 +28,7 @@ class User extends Authenticatable
         'telefono_celular',
         'email',
         'password',
-        'pais_id', // Añadir pais_id a los campos rellenables
+        'pais_id',
     ];
 
     protected $hidden = [
@@ -47,6 +48,13 @@ class User extends Authenticatable
     public function findForPassport($username)
     {
         return $this->orWhere('email', $username)->orWhere('numero_colegiacion', $username)->first();
+    }
+
+    public function markEmailAsVerified()
+    {
+        return $this->forceFill([
+            'email_verified_at' => $this->freshTimestamp(),
+        ])->save();
     }
 
     public function getAuthIdentifier()

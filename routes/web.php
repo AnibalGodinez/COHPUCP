@@ -9,6 +9,7 @@ use App\Http\Controllers\PaisController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SecurityQuestionController;
+use App\Http\Controllers\Auth\VerificationController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -17,6 +18,27 @@ use App\Http\Controllers\SecurityQuestionController;
 
 	// RUTA DE AUTENTICACIÓN
 	Auth::routes();
+
+	// RUTA DE AUTENTICACIÓN CON VERIFICACION DE CORREO ELECTRÓNICO
+	Auth::routes(['verify' => true]);
+		
+	// RUTA PARA MOSTRAR LA VISTA DE VERIFICACIÓN DE CORREO ELECTRÓNICO
+	Route::get('/email/verify', [VerificationController::class, 'show'])
+    ->middleware('auth')
+    ->name('verification.notice');
+	
+
+	// RUTA PARA MANEJAR LA VERIFICACIÓN DEL CORREO ELECTRÓNICO
+	Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
+    ->middleware(['auth', 'signed'])
+    ->name('verification.verify');
+
+
+	// RUTA PARA REENVIAR EL CORREO ELECTRÓNICO
+	Route::post('/email/verification-notification', [VerificationController::class, 'resend'])
+    ->middleware(['auth', 'throttle:6,1'])
+    ->name('verification.send');
+
 
 	// RUTA DE INICIO (DASHBOARD)
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
