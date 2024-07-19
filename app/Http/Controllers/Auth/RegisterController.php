@@ -55,6 +55,7 @@ class RegisterController extends Controller
         'telefono_celular' => ['required', 'string', 'max:15', 'regex:/^\d{4}-\d{4}$/'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email', 'confirmed'],
         'password' => ['required', 'string', 'min:8', 'confirmed', 'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/'],
+        'pais_id' => ['nullable', 'exists:pais,id'],
         'agree_terms_and_conditions' => ['required'],
     ], [
         'numero_identidad.unique' => 'Este número de identidad ya se encuentra registrado',
@@ -85,7 +86,7 @@ class RegisterController extends Controller
             'telefono_celular' => $data['telefono_celular'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'pais_id' => $data['pais_id'], // Guardar el país seleccionado
+            'pais_id' => $data['pais_id'] ?? null, // Guardar el país seleccionado
         ]);
 
         // Verificar si se ingresó el número de colegiación

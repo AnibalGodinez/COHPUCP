@@ -20,13 +20,13 @@ class CreateUsersTable extends Migration
             $table->enum('sexo', ['masculino', 'femenino']);
             $table->date('fecha_nacimiento');
             $table->foreign('pais_id')->references('id')->on('pais')->onDelete('cascade')->onUpdate('cascade'); // Agregar la relación
+            $table->unsignedBigInteger('pais_id')->nullable();
             $table->string('telefono')->nullable();
             $table->string('telefono_celular');
             $table->string('email')->unique();
             $table->enum('estado',['activo', 'inactivo'])->default('activo');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->unsignedBigInteger('pais_id')->nullable(); 
+            $table->string('password');  
             $table->rememberToken();
             $table->timestamps();
         });
