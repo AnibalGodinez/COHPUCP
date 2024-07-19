@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Pais;
 
 class ProfileController extends Controller
@@ -18,7 +19,11 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('profile.index');
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+
+        // Pasar el usuario a la vista
+        return view('profile.index', compact('user'));
     }
 
     public function edit()

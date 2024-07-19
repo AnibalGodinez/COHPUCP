@@ -269,7 +269,7 @@
                                     <i class="fas fa-globe" style="margin-right: 8px;"></i>
                                     <strong>País *</strong>
                                 </label>
-                                <select id="pais" name="pais_id" class="form-control" required>
+                                <select id="pais" name="pais_id" class="form-control">
                                     <option value="">Seleccione un país</option>
                                     @foreach($paises as $pais)
                                         <option value="{{ $pais->id }}" data-codigo="{{ $pais->codigo }}" {{ $user->pais_id == $pais->id ? 'selected' : '' }}>

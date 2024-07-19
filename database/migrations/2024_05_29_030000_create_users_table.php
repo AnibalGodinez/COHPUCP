@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('rtn')->nullable()->unique();
             $table->enum('sexo', ['masculino', 'femenino']);
             $table->date('fecha_nacimiento');
+            $table->foreign('pais_id')->references('id')->on('pais')->onDelete('cascade')->onUpdate('cascade'); // Agregar la relación
             $table->string('telefono')->nullable();
             $table->string('telefono_celular');
             $table->string('email')->unique();
@@ -26,7 +27,6 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->unsignedBigInteger('pais_id')->nullable(); 
-            $table->foreign('pais_id')->references('id')->on('pais')->onDelete('cascade')->onUpdate('cascade'); // Agregar la relación
             $table->rememberToken();
             $table->timestamps();
         });

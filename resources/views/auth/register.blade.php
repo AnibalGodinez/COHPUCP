@@ -261,7 +261,7 @@
                                 <i class="fas fa-globe" style="margin-right: 8px;"></i>
                                 <strong>País *</strong>
                             </label>
-                            <select id="pais" name="pais_id" class="form-control{{ $errors->has('pais_id') ? ' is-invalid' : '' }}" required>
+                            <select id="pais" name="pais_id" class="form-control{{ $errors->has('pais_id') ? ' is-invalid' : '' }}">
                                 <option value="" disabled selected>Seleccionar país</option>
                                 @foreach($paises as $pais)
                                     <option value="{{ $pais->id }}" data-codigo="{{ $pais->codigo }}">{{ $pais->nombre }}</option>
@@ -466,7 +466,7 @@
                     <button type="submit" class="btn btn-info btn-lg btn-block mb-3">Registrarse</button>
                     <div class="pull-left">
                         <h6>
-                            <a>¿Ya tienes cuenta?</a>
+                            <a><strong><strong>¿Ya tienes cuenta?</strong></strong></a>
                         </h6>
                     </div>
                     <div class="pull-right">
