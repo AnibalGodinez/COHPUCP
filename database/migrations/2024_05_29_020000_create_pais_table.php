@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePaisTable extends Migration
 {
-
     public function up()
     {
         Schema::create('pais', function (Blueprint $table) {
@@ -16,7 +15,6 @@ class CreatePaisTable extends Migration
             $table->timestamps();
         });
     }
-
 
     public function down()
     {

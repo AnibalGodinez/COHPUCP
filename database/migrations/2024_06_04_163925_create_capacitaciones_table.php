@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCapacitacionesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('capacitaciones', function (Blueprint $table) {
@@ -28,11 +24,6 @@ class CreateCapacitacionesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
          // Elimina la restricción de clave foránea antes de eliminar la tabla

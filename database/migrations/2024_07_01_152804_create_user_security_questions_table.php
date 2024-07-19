@@ -11,8 +11,8 @@ class CreateUserSecurityQuestionsTable extends Migration
     {
         Schema::create('user_security_questions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('security_question_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('security_question_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('answer');
             $table->timestamps();
         });

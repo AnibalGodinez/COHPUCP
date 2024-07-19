@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCursosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('cursos', function (Blueprint $table) {
@@ -21,16 +17,15 @@ class CreateCursosTable extends Migration
             $table->unsignedBigInteger('user_id'); // Agrega el campo user_id
             $table->timestamps();
         
-            // Define la restricción de clave externa
-            $table->foreign('user_id')->references('id')->on('users');
+            // Define la restricción de clave externa con acciones en cascada
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onUpdate('cascade')
+                  ->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('cursos');
