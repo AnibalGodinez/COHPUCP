@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SecurityQuestionController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\WelcomeContentController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -86,6 +87,7 @@ use App\Http\Controllers\Auth\VerificationController;
 		Route::resource('capacitaciones', CapacitacioneController::class);
 	});
 
+	// RUTAS DE CODIGOS TELÉFONICOS DE LOS PAISES
 	Route::group(['middleware' =>['auth']], function () {
 	Route::resource('pais', PaisController::class);
 	Route::get('/paises', [PaisController::class, 'view'])->name('pais.view');
@@ -95,4 +97,9 @@ use App\Http\Controllers\Auth\VerificationController;
 	// RUTAS DE CURSOS
 	Route::group(['middleware' =>['auth']], function () {
 		Route::resource('cursos', CursoController::class);
+	});
+
+	// RUTAS DE CONTENIDO DE LA PÁGINA DE INICIO
+	Route::group(['middleware' => ['auth']], function () {
+		Route::resource('welcome-content', WelcomeContentController::class);
 	});

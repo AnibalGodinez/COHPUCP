@@ -169,6 +169,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item text-uppercase" href="{{ route('security_questions.index')}}">Preguntas de seguridad</a>
                         <a class="dropdown-item text-uppercase" href="{{ route('pais.index') }}">Países</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('welcome-content.index') }}">Gestionar vista welcome</a> 
                     </div>
                 </li>                
                 @endcan
