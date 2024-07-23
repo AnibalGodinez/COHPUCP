@@ -15,7 +15,7 @@
                         </div>
                         <div class="card-body">
                             @if($content->image_path)
-                                <img src="{{ asset('storage/' . $content->image_path) }}" alt="{{ $content->title }}" class="img-fluid mb-3" style="max-width: 100%; height: auto;">
+                                <img src="{{ asset('storage/' . $content->image_path) }}" alt="{{ $content->title }}" class="img-fluid mb-12" style="max-width: 100%; height: auto;">
                             @endif
                             <p class="card-text">{!! nl2br(e($content->description)) !!}</p>
                         </div>

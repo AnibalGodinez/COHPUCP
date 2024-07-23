@@ -9,34 +9,49 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-uppercase font-weight-bold" href="{{ route('home')}}">Inicio</a>
+                    <a href="{{ route('home')}}" class="nav-link text-uppercase font-weight-bold {{request()->routeIs('home') ? 'text-default' : ''}}" >Inicio</a>
                 </li>
+
                 <li class="nav-item dropdown" style="margin-bottom: 10px;">
-                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
+                    {{  request()->routeIs('profile.*') || 
+                        request()->routeIs('cambiar-contrasenia.contrasenia') ? 'text-default' : '' }}" 
+                        href="#" 
+                        id="navbarDropdown" 
+                        role="button" 
+                        data-toggle="dropdown"
+                        aria-haspopup="true" 
+                        aria-expanded="false">
                         Perfil
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase" href="{{ route('profile.index')}}">Ver mi perfil</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('profile.edit')}}">Actualizar perfil</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('cambiar-contrasenia.contrasenia')}}">Cambiar contraseña</a>
+                        <a class="dropdown-item text-uppercase {{ request()->routeIs('profile.index') ? 'text-default font-weight-bold' : '' }}" href="{{ route('profile.index') }}">Ver mi perfil</a>
+                        <a class="dropdown-item text-uppercase {{ request()->routeIs('profile.edit') ? 'text-default font-weight-bold' : '' }}" href="{{ route('profile.edit') }}">Actualizar perfil</a>
+                        <a class="dropdown-item text-uppercase {{ request()->routeIs('cambiar-contrasenia.contrasenia') ? 'text-default font-weight-bold' : '' }}" href="{{ route('cambiar-contrasenia.contrasenia') }}">Cambiar contraseña</a>
                     </div>
                 </li>
+                
 
                 @can('ver boton personas')
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
+                        {{  request()->routeIs('usuarios.*') ? 'text-default' : ''}}" 
+                            href="#" 
+                            id="navbarDropdown" 
+                            role="button" 
+                            data-toggle="dropdown"
+                            aria-haspopup="true" 
+                            aria-expanded="false">
                             Personas
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                            <a class="dropdown-item text-uppercase" href="{{ route('usuarios.ver')}}">Ver usuarios</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('usuarios.ver') ? 'text-default font-weight-bold' : ''}}" href="{{ route('usuarios.ver')}}">Ver usuarios</a>
 
-                            <a class="dropdown-item text-uppercase" href="{{ route('usuarios.create')}}">Crear usuarios</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('usuarios.create') ? 'text-default font-weight-bold' : ''}}" href="{{ route('usuarios.create')}}">Crear usuarios</a>
 
-                            <a class="dropdown-item text-uppercase" href="{{ route('usuarios.index')}}">Gestionar usuarios</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('usuarios.index') ? 'text-default font-weight-bold' : ''}}" href="{{ route('usuarios.index')}}">Gestionar usuarios</a>
 
                         </div>
 
@@ -45,25 +60,32 @@
 
                 @can('ver boton roles y permisos')
                     <li class="nav-item dropdown" style="margin-bottom: 10px;">
-                        <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdownRoles" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
+                        {{  request()->routeIs('roles.*') || 
+                            request()->routeIs('permissions.ver') || 
+                            request()->routeIs('permission.*')? 'text-default' : '' }}"
+                            href="#" id="navbarDropdownRoles" 
+                            role="button" 
+                            data-toggle="dropdown"
+                            aria-haspopup="true" 
+                            aria-expanded="false">
                             Roles y permisos
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownRoles">
-                            <a class="dropdown-item text-uppercase" id="rolesLink" href="#">Roles</a>
-                            <a class="dropdown-item text-uppercase" id="permisosLink" href="#">Permisos</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('roles.*') ? 'text-default font-weight-bold' : ''}}" id="rolesLink" href="#">Roles</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('permissions.*') || request()->routeIs('permission.*')? 'text-default font-weight-bold' : ''}}" id="permisosLink" href="#">Permisos</a>
                         </div>
                         <!-- Submenú para Roles -->
                         <div class="dropdown-menu" id="subMenuRoles" style="position: absolute; top: 0; left: 100%; display: none;">
-                            <a class="dropdown-item text-uppercase" href="{{route('roles.ver')}}">Ver roles</a>
-                            <a class="dropdown-item text-uppercase" href="{{route('roles.create')}}">Crear rol</a>
-                            <a class="dropdown-item text-uppercase" href="{{route('roles.index')}}">Gestionar roles</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('roles.ver') ? 'text-default font-weight-bold' : ''}}" href="{{route('roles.ver')}}">Ver roles</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('roles.create') ? 'text-default font-weight-bold' : ''}}" href="{{route('roles.create')}}">Crear rol</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('roles.index') ? 'text-default font-weight-bold' : ''}}" href="{{route('roles.index')}}">Gestionar roles</a>
                         </div>
                         <!-- Submenú para Permisos -->
                         <div class="dropdown-menu" id="subMenuPermisos" style="position: absolute; top: 0; left: 100%; display: none;">
-                            <a class="dropdown-item text-uppercase" href="{{ route('permissions.ver')}}">Ver permisos</a>
-                            <a class="dropdown-item text-uppercase" href="{{route('permission.create')}}">Crear permiso</a>
-                            <a class="dropdown-item text-uppercase" href="{{ route('permission.index')}}">Gestionar permisos</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('permissions.ver') ? 'text-default font-weight-bold' : ''}}" href="{{ route('permissions.ver')}}">Ver permisos</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('permission.create') ? 'text-default font-weight-bold' : ''}}" href="{{route('permission.create')}}">Crear permiso</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('permission.index') ? 'text-default font-weight-bold' : ''}}" href="{{ route('permission.index')}}">Gestionar permisos</a>
                         </div>
                     </li>
                 @endcan
@@ -129,13 +151,19 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
+                    {{  request()->routeIs('cursos.index') || 
+                        request()->routeIs('capacitaciones.index') ? 'text-default' : '' }}" 
+                        href="#" 
+                        id="navbarDropdown" 
+                        role="button" 
+                        data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         Desarrollo Profesional
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase" href="{{ route('cursos.index')}}">Cursos</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.index') ? 'text-default font-weight-bold' : ''}}" href="{{ route('cursos.index')}}">Cursos</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('capacitaciones.index') ? 'text-default font-weight-bold' : ''}}" href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
                         <a class="dropdown-item text-uppercase" href="#">Certificaciones</a>
                         <a class="dropdown-item text-uppercase" href="#">Talleres</a>
                     </div>
@@ -162,14 +190,22 @@
                 
                 @can('ver boton mantenimientos')
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
+                    {{  request()->routeIs('security_questions.index') || 
+                        request()->routeIs('pais.index') ||
+                        request()->routeIs('welcome-content.index')? 'text-default' : '' }}" 
+                        href="#" 
+                        id="navbarDropdown" 
+                        role="button" 
+                        data-toggle="dropdown"
+                        aria-haspopup="true" 
+                        aria-expanded="false">
                         Mantenimientos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase" href="{{ route('security_questions.index')}}">Preguntas de seguridad</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('pais.index') }}">Países</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('welcome-content.index') }}">Gestionar vista welcome</a> 
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('security_questions.index') ? 'text-default font-weight-bold' : ''}}" href="{{ route('security_questions.index')}}">Preguntas de seguridad</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('pais.index') ? 'text-default font-weight-bold' : ''}}" href="{{ route('pais.index') }}">Países</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('welcome-content.index') ? 'text-default font-weight-bold' : ''}}" href="{{ route('welcome-content.index') }}">Gestionar vista welcome</a> 
                     </div>
                 </li>                
                 @endcan
@@ -178,7 +214,7 @@
                     <li class="dropdown nav-item">
                         <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                             <i class="tim-icons icon-bell-55"></i>
-                            <p class="d-lg-none text-uppercase" style="color: black;"> Notificationes </p>
+                            <p class="d-lg-none text-uppercase"> Notificationes </p>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
                             <li class="dropdown-item text-uppercase">
