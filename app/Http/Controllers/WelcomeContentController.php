@@ -22,8 +22,8 @@ class WelcomeContentController extends Controller
     {
         // Validar la solicitud
         $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
+            'title' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
@@ -41,7 +41,7 @@ class WelcomeContentController extends Controller
             'user_id' => auth()->id(), // Asignar el ID del usuario autenticado
         ]);
 
-        return redirect()->route('welcome-content.index')->with('success', 'Contenido de bienvenida creado correctamente.');
+        return redirect()->route('welcome-content.index')->with('success', 'El contenido se ha añadido exitosamente.');
     }
 
     public function edit(WelcomeContent $welcomeContent)
@@ -69,7 +69,7 @@ class WelcomeContentController extends Controller
 
         $welcomeContent->update($validated);
 
-        return redirect()->route('welcome-content.index')->with('success', 'Contenido actualizado con éxito');
+        return redirect()->route('welcome-content.index')->with('success', 'El contenido se ha actualizado exitosamente.');
     }
 
     public function destroy(WelcomeContent $welcomeContent)
@@ -79,6 +79,6 @@ class WelcomeContentController extends Controller
             \Storage::disk('public')->delete($welcomeContent->image_path);
         }
         $welcomeContent->delete();
-        return redirect()->route('welcome-content.index')->with('success', 'Contenido eliminado con éxito');
+        return redirect()->route('welcome-content.index')->with('success', 'El contenido se ha eliminado exitosamente.');
     }
 }

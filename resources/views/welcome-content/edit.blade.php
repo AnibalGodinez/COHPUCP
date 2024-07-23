@@ -1,8 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1>Editar Contenido de la Página de Inicio</h1>
+    <div class="container-fluid" style="margin-top: 20px">
+        <h1 class="text-center">Editar contenido de la Página de Inicio</h1>
+
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <form action="{{ route('welcome-content.update', $welcomeContent->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -22,6 +29,7 @@
                 @endif
             </div>
             <button type="submit" class="btn btn-success">Actualizar</button>
+            <a href="{{ route('welcome-content.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 @endsection

@@ -9,7 +9,11 @@ class WelcomeContent extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'image_path', 'user_id'];
+    protected $fillable = [
+        'title', 
+        'description', 
+        'image_path', 
+        'user_id'];
 
     public function user()
     {
