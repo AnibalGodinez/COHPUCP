@@ -147,7 +147,8 @@
                         <a class="dropdown-item text-uppercase" href="#">Compra de timbres</a>
                         <a class="dropdown-item text-uppercase" href="#">Inscribirse al colegio</a>
                         <a class="dropdown-item text-uppercase" href="#">Estado de cuenta</a>
-                        <a class="dropdown-item text-uppercase" href="#">Consultas</a>
+                        <a class="dropdown-item text-uppercase" href="#">Mesa de ayuda</a>
+                        <a class="dropdown-item text-uppercase" href="#">Pagos</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -173,21 +174,7 @@
                 <li class="nav-item">
                     <a class="nav-link text-uppercase font-weight-bold" href="#">Bolsa de empleo</a>
                 </li>
-
-                @can('ver boton de invitado')
-                <li class="nav-item">
-                    <a class="nav-link text-uppercase font-weight-bold" href="#">Botón de invitado</a>
-                </li>
-                @endcan
-
-
-                @can('ver boton de agremiado')
-                <li class="nav-item">
-                    <a class="nav-link text-uppercase font-weight-bold" href="#">Botón de agremiado</a>
-                </li>
-                @endcan
-
-                
+     
                 @can('ver boton mantenimientos')
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
