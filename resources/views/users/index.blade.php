@@ -90,15 +90,17 @@
                                             @endforeach
                                         @endif
                                     </td>
+                                        {{-- BOTONES PARA LAS ACCIONES --}}
                                     <td class="text-center">
                                         <a href="{{ url('usuarios/'.$user->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                             <i class="tim-icons icon-settings"></i>
                                         </a>
-                                        {{-- BOTÓN HABILITADO PARA ELIMINAR USUARIOS --}}
+
                                         <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('usuarios/'.$user->id.'/delete') }}')">
                                             <i class="tim-icons icon-simple-remove"></i>
                                         </a>
                                     </td>
+
                                 </tr>
                                 @endforeach
                             </tbody>

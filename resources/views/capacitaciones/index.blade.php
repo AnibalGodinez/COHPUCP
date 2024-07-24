@@ -7,6 +7,7 @@
         <div class="card card-tasks">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h3 class="title">Capacitaciones</h3>
+                
                 <div>
                     <a href="{{ route('capacitaciones.create') }}" class="btn btn-info btn-sm">
                         <i class="fas fa-plus"></i> Agregar nueva Capacitación

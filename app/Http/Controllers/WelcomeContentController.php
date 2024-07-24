@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\WelcomeContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class WelcomeContentController extends Controller
 {
@@ -35,8 +36,8 @@ class WelcomeContentController extends Controller
 
         // Crear el nuevo contenido de bienvenida
         WelcomeContent::create([
-            'title' => $validatedData['title'],
-            'description' => $validatedData['description'],
+            'title' => $validatedData['title'] ?? null,
+            'description' => $validatedData['description'] ?? null,
             'image_path' => $imagePath,
             'user_id' => auth()->id(), // Asignar el ID del usuario autenticado
         ]);
@@ -51,32 +52,48 @@ class WelcomeContentController extends Controller
 
     public function update(Request $request, WelcomeContent $welcomeContent)
     {
+        // Validar la solicitud
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'remove_image' => 'nullable|boolean', // Para manejar la eliminación de imagen
         ]);
 
-        // Manejar la imagen si se ha subido
-        if ($request->hasFile('image_path')) {
-            // Borrar la imagen anterior si existe
+        // Manejar la eliminación de imagen si el checkbox está marcado
+        if ($request->input('remove_image')) {
             if ($welcomeContent->image_path) {
-                \Storage::disk('public')->delete($welcomeContent->image_path);
+                // Eliminar la imagen del almacenamiento
+                Storage::disk('public')->delete($welcomeContent->image_path);
+                $welcomeContent->image_path = null; // Establecer image_path a null
             }
-            $imagePath = $request->file('image_path')->store('welcome_images', 'public');
-            $validated['image_path'] = $imagePath;
+        } else {
+            // Manejar la imagen si se ha subido una nueva
+            if ($request->hasFile('image_path')) {
+                // Borrar la imagen anterior si existe
+                if ($welcomeContent->image_path) {
+                    Storage::disk('public')->delete($welcomeContent->image_path);
+                }
+                $imagePath = $request->file('image_path')->store('welcome_images', 'public');
+                $validated['image_path'] = $imagePath;
+            } else {
+                // Mantener la imagen actual si no se sube una nueva
+                $validated['image_path'] = $welcomeContent->image_path;
+            }
         }
 
+        // Actualizar el contenido de bienvenida con los datos validados
         $welcomeContent->update($validated);
 
         return redirect()->route('welcome-content.index')->with('success', 'El contenido se ha actualizado exitosamente.');
     }
 
+
     public function destroy(WelcomeContent $welcomeContent)
     {
         // Borrar la imagen si existe
         if ($welcomeContent->image_path) {
-            \Storage::disk('public')->delete($welcomeContent->image_path);
+            Storage::disk('public')->delete($welcomeContent->image_path);
         }
         $welcomeContent->delete();
         return redirect()->route('welcome-content.index')->with('success', 'El contenido se ha eliminado exitosamente.');

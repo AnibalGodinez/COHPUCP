@@ -205,7 +205,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item text-uppercase {{request()->routeIs('security_questions.index') ? 'text-default font-weight-bold' : ''}}" href="{{ route('security_questions.index')}}">Preguntas de seguridad</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('pais.index') ? 'text-default font-weight-bold' : ''}}" href="{{ route('pais.index') }}">Países</a>
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('welcome-content.index') ? 'text-default font-weight-bold' : ''}}" href="{{ route('welcome-content.index') }}">Gestionar vista welcome</a> 
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('welcome-content.index') ? 'text-default font-weight-bold' : ''}}" href="{{ route('welcome-content.index') }}">Vista principal</a> 
                     </div>
                 </li>                
                 @endcan
