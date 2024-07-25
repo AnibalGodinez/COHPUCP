@@ -26,7 +26,7 @@ class WelcomeContentController extends Controller
             'layout' => 'required|string|in:default,image-right', // Validar el campo layout
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
-            'image_path' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:2048',
         ]);
 
         // Manejar la imagen si se ha subido
@@ -59,7 +59,7 @@ class WelcomeContentController extends Controller
             'layout' => 'required|string|in:default,image-right', // Validación para el campo layout
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
-            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:2048',
             'remove_image' => 'nullable|boolean', // Para manejar la eliminación de imagen
         ]);
 
