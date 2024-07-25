@@ -33,7 +33,7 @@
                             <tbody>
                                 @foreach($contents as $content)
                                     <tr>
-                                        <td class="text-center">{{ $content->design }}</td>
+                                        <td class="text-center">{{ $content->layout}}</td>
                                         <td class="text-center">{{ $content->title }}</td>
                                         <td>{{ $content->description }}</td>
                                         <td class="text-center">

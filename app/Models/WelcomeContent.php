@@ -10,7 +10,7 @@ class WelcomeContent extends Model
     use HasFactory;
 
     protected $fillable = [
-        'design',
+        'layout',
         'title', 
         'description', 
         'image_path', 

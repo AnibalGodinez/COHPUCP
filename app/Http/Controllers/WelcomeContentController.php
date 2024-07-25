@@ -23,7 +23,7 @@ class WelcomeContentController extends Controller
     {
         // Validar la solicitud
         $validatedData = $request->validate([
-            'design' => 'nullable|string',
+            'layout' => 'required|string|in:default,image-right', // Validar el campo layout
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -40,6 +40,7 @@ class WelcomeContentController extends Controller
             'title' => $validatedData['title'] ?? null,
             'description' => $validatedData['description'] ?? null,
             'image_path' => $imagePath,
+            'layout' => $validatedData['layout'], // Guardar el diseño seleccionado
             'user_id' => auth()->id(), // Asignar el ID del usuario autenticado
         ]);
 
@@ -55,7 +56,7 @@ class WelcomeContentController extends Controller
     {
         // Validar la solicitud
         $validated = $request->validate([
-            'design' => 'nullable|string',
+            'layout' => 'required|string|in:default,image-right', // Validación para el campo layout
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -85,7 +86,9 @@ class WelcomeContentController extends Controller
         }
 
         // Actualizar el contenido de bienvenida con los datos validados
-        $welcomeContent->update($validated);
+        $welcomeContent->update(array_merge($validated, [
+            'layout' => $request->input('layout'), // Actualizar el diseño
+        ]));
 
         return redirect()->route('welcome-content.index')->with('success', 'El contenido se ha actualizado exitosamente.');
     }

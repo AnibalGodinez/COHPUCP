@@ -25,14 +25,17 @@
                         @method('PUT')
 
                         <div class="form-group">
-                            <label for="design"><strong>DISEÑO:</strong></label>
-                            <select name="design" id="design" class="form-control">
-                                <option value="">Select Design</option>
-                                <option value="default">Default</option>
-                                <option value="image_left">Image Left</option>
-                                <!-- Agrega más opciones según tus necesidades -->
+                            <label for="layout"><strong>DISEÑO:</strong></label>
+                            <select 
+                                name="layout" 
+                                id="layout"
+                                class="form-control">
+                                <option value="default" {{ old('layout') == 'default' ? 'selected' : '' }}>Por Defecto</option>
+                                <option value="image-right" {{ old('layout') == 'image-right' ? 'selected' : '' }}>Imagen a la Derecha</option>
+                                <!-- Añadir más opciones si es necesario -->
                             </select>
-                        </div> 
+                        </div>
+                        
 
                         <div class="form-group">
                             <label for="title"><strong>TÍTULO:</strong></label>
