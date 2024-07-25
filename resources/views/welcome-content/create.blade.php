@@ -29,11 +29,14 @@
                                 name="layout" 
                                 id="layout"
                                 class="form-control">
+                                <option value="" disabled selected>Selecciona una opción</option>
                                 <option value="default" {{ old('layout') == 'default' ? 'selected' : '' }}>Por Defecto</option>
                                 <option value="image-right" {{ old('layout') == 'image-right' ? 'selected' : '' }}>Imagen a la Derecha</option>
                                 <!-- Añadir más opciones si es necesario -->
                             </select>
                         </div>
+
+                        
                                                
 
                         <div class="form-group">

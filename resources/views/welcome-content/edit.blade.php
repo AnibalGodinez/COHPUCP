@@ -30,13 +30,13 @@
                                 name="layout" 
                                 id="layout"
                                 class="form-control">
-                                <option value="default" {{ old('layout') == 'default' ? 'selected' : '' }}>Por Defecto</option>
-                                <option value="image-right" {{ old('layout') == 'image-right' ? 'selected' : '' }}>Imagen a la Derecha</option>
+                                <option disabled value="">Seleccione el diseño</option>
+                                <option value="default" {{ old('layout', $welcomeContent->layout) == 'default' ? 'selected' : '' }}>Por Defecto</option>
+                                <option value="image-right" {{ old('layout', $welcomeContent->layout) == 'image-right' ? 'selected' : '' }}>Imagen a la Derecha</option>
                                 <!-- Añadir más opciones si es necesario -->
                             </select>
                         </div>
                         
-
                         <div class="form-group">
                             <label for="title"><strong>TÍTULO:</strong></label>
                             <input  
@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="image_path" class="btn btn-default btn-simple"><strong>CLICK PARA CAMBIAR LA IMAGEN</strong></label>
+                            <label for="image_path" class="btn btn-default btn-simple"><strong>CLICK PARA AGREGAR O CAMBIAR IMAGEN</strong></label>
                             <input 
                                 type="file" 
                                 name="image_path" 
@@ -68,10 +68,12 @@
                                 onchange="previewImage()">
                         </div><br>
                         
-                        <!-- Imagen de previsualización -->
-                        <div class="form-group">
-                            <img id="imagePreview" src="{{ $welcomeContent->image_path ? asset('storage/' . $welcomeContent->image_path) : '#' }}" alt="Vista previa de la imagen" style="max-width: 100%; height: auto;">
-                        </div>
+                        <!-- Mostrar la imagen de previsualización solo si hay una imagen seleccionada -->
+                        @if($welcomeContent->image_path)
+                            <div class="form-group">
+                                <img id="imagePreview" src="{{ asset('storage/' . $welcomeContent->image_path) }}" alt="Vista previa de la imagen" style="max-width: 100%; height: auto;">
+                            </div>
+                        @endif
 
                         <!-- Checkbox para eliminar imagen -->
                         @if($welcomeContent->image_path)
