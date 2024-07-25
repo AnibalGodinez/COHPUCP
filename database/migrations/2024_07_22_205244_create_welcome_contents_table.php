@@ -11,6 +11,7 @@ class CreateWelcomeContentsTable extends Migration
     {
         Schema::create('welcome_contents', function (Blueprint $table) {
             $table->id();
+            $table->string('design')->nullable();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->string('image_path')->nullable();

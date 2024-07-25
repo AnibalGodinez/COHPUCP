@@ -1,11 +1,9 @@
-
 @extends('layouts.app')
 
 @section('content')
     <div class="container-fluid" style="margin-top: 20px">
         <div class="row">
             <div class="col-md-12">
-
                 <div class="card">
                     <div class="card-header">
                         <h3 class="text-center">CONTENIDO DE LA PÁGINA PRINCIPAL</h3>
@@ -21,9 +19,11 @@
                         </a>
                     </div>
 
-                        <table class="table table-bordered table-striped">
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped mt-4">
                             <thead>
                                 <tr>
+                                    <th class="text-center">Diseño</th>
                                     <th class="text-center">Título</th>
                                     <th class="text-center">Descripción</th>
                                     <th class="text-center">Imagen</th>
@@ -33,17 +33,16 @@
                             <tbody>
                                 @foreach($contents as $content)
                                     <tr>
+                                        <td class="text-center">{{ $content->design }}</td>
                                         <td class="text-center">{{ $content->title }}</td>
                                         <td>{{ $content->description }}</td>
-                                        <td>
+                                        <td class="text-center">
                                             @if($content->image_path)
                                                 <img src="{{ asset('storage/' . $content->image_path) }}" alt="{{ $content->title }}" width="100">
                                             @else
                                                 Sin imagen
                                             @endif
                                         </td>
-
-                                            {{-- BOTONES PARA LAS ACCIONES --}}
                                         <td class="text-center">
                                             <a href="{{ route('welcome-content.edit', $content->id) }}" class="btn btn-success btn-sm btn-icon">
                                                 <i class="tim-icons icon-settings"></i>

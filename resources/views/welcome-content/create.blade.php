@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-default text-white text-center">
-                    <h3 class="card-title" style="color: beige"><strong>AÑADIR NUEVO CONTENIDO A LA VISTA PRINCIPAL</strong></h3>
+                    <h3 class="card-title" style="color: beige"><strong>AÑADIR NUEVO CONTENIDO A LA PÁGINA PRINCIPAL</strong></h3>
                 </div>
 
                 @if($errors->any())
@@ -22,6 +22,16 @@
                 <div class="card-body">
                     <form action="{{ route('welcome-content.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="form-group">
+                            <label for="design">Design</label>
+                            <select name="design" id="design" class="form-control">
+                                <option value="">Select Design</option>
+                                <option value="default">Default</option>
+                                <option value="image_left">Image Left</option>
+                                <!-- Agrega más opciones según tus necesidades -->
+                            </select>
+                        </div>                        
 
                         <div class="form-group">
                             <label for="title"><strong>TÍTULO:</strong></label>

@@ -23,6 +23,7 @@ class WelcomeContentController extends Controller
     {
         // Validar la solicitud
         $validatedData = $request->validate([
+            'design' => 'nullable|string',
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -54,8 +55,9 @@ class WelcomeContentController extends Controller
     {
         // Validar la solicitud
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
+            'design' => 'nullable|string',
+            'title' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'remove_image' => 'nullable|boolean', // Para manejar la eliminación de imagen
         ]);
