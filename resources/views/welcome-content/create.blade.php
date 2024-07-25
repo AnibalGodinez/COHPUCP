@@ -30,14 +30,13 @@
                                 id="layout"
                                 class="form-control">
                                 <option value="" disabled selected>Selecciona una opción</option>
-                                <option value="default" {{ old('layout') == 'default' ? 'selected' : '' }}>Por Defecto</option>
-                                <option value="image-right" {{ old('layout') == 'image-right' ? 'selected' : '' }}>Imagen a la Derecha</option>
+                                <option value="Por defecto" {{ old('layout') == 'Por defecto' ? 'selected' : '' }}>Por Defecto</option>
+                                <option value="Imagen a la derecha" {{ old('layout') == 'Imagen a la derecha' ? 'selected' : '' }}>Imagen a la derecha</option>
+                                <option value="Imagen a la izquierda" {{ old('layout') == 'Imagen a la izquierda' ? 'selected' : '' }}>Imagen a la izquierda</option>
+                                <option value="Imagen de fondo" {{ old('layout') == 'Imagen de fondo' ? 'selected' : '' }}>Imagen de fondo</option>
                                 <!-- Añadir más opciones si es necesario -->
                             </select>
-                        </div>
-
-                        
-                                               
+                        </div>                   
 
                         <div class="form-group">
                             <label for="title"><strong>TÍTULO:</strong></label>

@@ -31,8 +31,11 @@
                                 id="layout"
                                 class="form-control">
                                 <option disabled value="">Seleccione el diseño</option>
-                                <option value="default" {{ old('layout', $welcomeContent->layout) == 'default' ? 'selected' : '' }}>Por Defecto</option>
-                                <option value="image-right" {{ old('layout', $welcomeContent->layout) == 'image-right' ? 'selected' : '' }}>Imagen a la Derecha</option>
+                                <option value="Por defecto" {{ old('layout', $welcomeContent->layout) == 'Por defecto' ? 'selected' : '' }}>Por Defecto</option>
+                                <option value="Imagen a la derecha" {{ old('layout', $welcomeContent->layout) == 'Imagen a la derecha' ? 'selected' : '' }}>Imagen a la derecha</option>
+                                <option value="Imagen a la izquierda" {{ old('layout', $welcomeContent->layout) == 'Imagen a la izquierda' ? 'selected' : '' }}>Imagen a la izquierda</option>
+                                <option value="Imagen de fondo" {{ old('layout', $welcomeContent->layout) == 'Imagen de fondo' ? 'selected' : '' }}>Imagen de fondo</option>
+                                <!-- Añadir más opciones si es necesario -->
                                 <!-- Añadir más opciones si es necesario -->
                             </select>
                         </div>
