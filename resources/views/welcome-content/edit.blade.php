@@ -29,18 +29,19 @@
                             <select 
                                 name="layout" 
                                 id="layout"
-                                class="form-control">
+                                class="form-control"
+                                onchange="toggleFields()">
                                 <option disabled value="">Seleccione el diseño</option>
                                 <option value="Por defecto" {{ old('layout', $welcomeContent->layout) == 'Por defecto' ? 'selected' : '' }}>Por Defecto</option>
                                 <option value="Imagen a la derecha" {{ old('layout', $welcomeContent->layout) == 'Imagen a la derecha' ? 'selected' : '' }}>Imagen a la derecha</option>
                                 <option value="Imagen a la izquierda" {{ old('layout', $welcomeContent->layout) == 'Imagen a la izquierda' ? 'selected' : '' }}>Imagen a la izquierda</option>
-                                <option value="Imagen de fondo" {{ old('layout', $welcomeContent->layout) == 'Imagen de fondo' ? 'selected' : '' }}>Imagen de fondo</option>
-                                <!-- Añadir más opciones si es necesario -->
-                                <!-- Añadir más opciones si es necesario -->
+                                <option value="Imagen" {{ old('layout', $welcomeContent->layout) == 'Imagen' ? 'selected' : '' }}>Imagen</option>
+                                <option value="Imagen de fondo oscuro" {{ old('layout', $welcomeContent->layout) == 'Imagen de fondo oscuro' ? 'selected' : '' }}>Imagen de fondo oscuro</option>
+                                <option value="Imagen de fondo claro" {{ old('layout', $welcomeContent->layout) == 'Imagen de fondo claro' ? 'selected' : '' }}>Imagen de fondo oscuro claro</option>
                             </select>
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group" id="titleField">
                             <label for="title"><strong>TÍTULO:</strong></label>
                             <input  
                                 type="text" 
@@ -51,7 +52,7 @@
                                 placeholder="Ingrese el título">
                         </div><br>
 
-                        <div class="form-group">
+                        <div class="form-group" id="descriptionField">
                             <label for="description"><strong>DESCRIPCIÓN:</strong></label>
                             <textarea 
                                 name="description" 
@@ -72,11 +73,9 @@
                         </div><br>
                         
                         <!-- Mostrar la imagen de previsualización solo si hay una imagen seleccionada -->
-                        @if($welcomeContent->image_path)
-                            <div class="form-group">
-                                <img id="imagePreview" src="{{ asset('storage/' . $welcomeContent->image_path) }}" alt="Vista previa de la imagen" style="max-width: 100%; height: auto;">
-                            </div>
-                        @endif
+                        <div class="form-group">
+                            <img id="imagePreview" src="{{ $welcomeContent->image_path ? asset('storage/' . $welcomeContent->image_path) : '#' }}" alt="Vista previa de la imagen" style="max-width: 100%; height: auto; display: {{ $welcomeContent->image_path ? 'block' : 'none' }};">
+                        </div>
 
                         <!-- Checkbox para eliminar imagen -->
                         @if($welcomeContent->image_path)
@@ -118,5 +117,24 @@
             preview.style.display = 'block';
         }
     }
+
+    function toggleFields() {
+        const layout = document.getElementById('layout').value;
+        const titleField = document.getElementById('titleField');
+        const descriptionField = document.getElementById('descriptionField');
+
+        if (layout === 'Imagen') {
+            titleField.style.display = 'none';
+            descriptionField.style.display = 'none';
+        } else {
+            titleField.style.display = 'block';
+            descriptionField.style.display = 'block';
+        }
+    }
+
+    // Ejecutar al cargar la página para manejar la persistencia de los campos después de un error
+    document.addEventListener('DOMContentLoaded', function() {
+        toggleFields();
+    });
 </script>
 @endsection

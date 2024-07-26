@@ -23,7 +23,7 @@ class WelcomeContentController extends Controller
     {
         // Validar la solicitud
         $validatedData = $request->validate([
-            'layout' => 'nullable|string|in:Por defecto,Imagen a la derecha,Imagen a la izquierda,Imagen de fondo', // Validar el campo layout
+            'layout' => 'nullable|string|in:Por defecto,Imagen a la derecha,Imagen a la izquierda,Imagen,Imagen de fondo oscuro,Imagen de fondo claro',
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:2048',
@@ -56,7 +56,7 @@ class WelcomeContentController extends Controller
     {
         // Validar la solicitud
         $validated = $request->validate([
-            'layout' => 'nullable|string|in:Por defecto,Imagen a la derecha,Imagen a la izquierda,Imagen de fondo', // Validar el campo layout
+            'layout' => 'nullable|string|in:Por defecto,Imagen a la derecha,Imagen a la izquierda,Imagen,Imagen de fondo oscuro',
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:2048',

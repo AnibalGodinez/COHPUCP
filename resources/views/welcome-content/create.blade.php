@@ -28,17 +28,19 @@
                             <select 
                                 name="layout" 
                                 id="layout"
-                                class="form-control">
+                                class="form-control"
+                                onchange="toggleFields()">
                                 <option value="" disabled selected>Selecciona una opción</option>
                                 <option value="Por defecto" {{ old('layout') == 'Por defecto' ? 'selected' : '' }}>Por Defecto</option>
                                 <option value="Imagen a la derecha" {{ old('layout') == 'Imagen a la derecha' ? 'selected' : '' }}>Imagen a la derecha</option>
                                 <option value="Imagen a la izquierda" {{ old('layout') == 'Imagen a la izquierda' ? 'selected' : '' }}>Imagen a la izquierda</option>
-                                <option value="Imagen de fondo" {{ old('layout') == 'Imagen de fondo' ? 'selected' : '' }}>Imagen de fondo</option>
-                                <!-- Añadir más opciones si es necesario -->
+                                <option value="Imagen" {{ old('layout') == 'Imagen' ? 'selected' : '' }}>Imagen</option>
+                                <option value="Imagen de fondo oscuro" {{ old('layout') == 'Imagen de fondo oscuro' ? 'selected' : '' }}>Imagen de fondo oscuro</option>
+                                <option value="Imagen de fondo claro" {{ old('layout') == 'Imagen de fondo claro' ? 'selected' : '' }}>Imagen de fondo claro</option>
                             </select>
                         </div>                   
 
-                        <div class="form-group">
+                        <div class="form-group" id="titleField">
                             <label for="title"><strong>TÍTULO:</strong></label>
                             <input  
                                 type="text" 
@@ -49,7 +51,7 @@
                                 placeholder="Ingrese el título">
                         </div><br>
 
-                        <div class="form-group">
+                        <div class="form-group" id="descriptionField">
                             <label for="description"><strong>DESCRIPCIÓN:</strong></label>
                             <textarea 
                                 name="description" 
@@ -106,5 +108,24 @@
             preview.style.display = 'none';
         }
     }
+
+    function toggleFields() {
+        const layout = document.getElementById('layout').value;
+        const titleField = document.getElementById('titleField');
+        const descriptionField = document.getElementById('descriptionField');
+
+        if (layout === 'Imagen') {
+            titleField.style.display = 'none';
+            descriptionField.style.display = 'none';
+        } else {
+            titleField.style.display = 'block';
+            descriptionField.style.display = 'block';
+        }
+    }
+
+    // Ejecutar al cargar la página para manejar la persistencia de los campos después de un error
+    document.addEventListener('DOMContentLoaded', function() {
+        toggleFields();
+    });
 </script>
 @endsection
