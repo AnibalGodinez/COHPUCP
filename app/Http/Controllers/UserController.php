@@ -84,7 +84,11 @@ class UserController extends Controller
                 'min:8',
                 'max:20',
                 'confirmed',
-                'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/'
+                'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/',
+            'profile_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'facebook_link' => 'nullable|url',
+            'twitter_link' => 'nullable|url',
+            'bio' => 'nullable|string|max:1000',
             ],
         ], [
             // Mensajes personalizados de validación
@@ -104,6 +108,12 @@ class UserController extends Controller
             'password.regex' => 'La contraseña debe contener al menos un símbolo o carácter especial, como por Ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
             'telefono.regex' => 'El número de teléfono fijo sólo debe contener números y guiones',
             'telefono_celular.regex' => 'El número de celular sólo debe contener números y guiones',
+            'profile_image.image' => 'El archivo debe ser una imagen.',
+            'profile_image.mimes' => 'La imagen debe ser de tipo: jpg, jpeg, png.',
+            'profile_image.max' => 'La imagen no debe exceder los 2MB.',
+            'facebook_link.url' => 'El enlace de Facebook debe ser una URL válida.',
+            'twitter_link.url' => 'El enlace de Twitter debe ser una URL válida.',
+            'bio.max' => 'La biografía no debe exceder los 1000 caracteres.',
         ]);
 
         $user = User::create([

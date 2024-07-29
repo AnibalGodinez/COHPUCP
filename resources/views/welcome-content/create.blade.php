@@ -59,7 +59,7 @@
                                 name="description" 
                                 id="description"
                                 class="form-control" 
-                                style="min-height: 400px;" 
+                                style="min-height: 300px" 
                                 placeholder="Ingrese la descripción">{{ old('description') }}</textarea>
                         </div>
 
