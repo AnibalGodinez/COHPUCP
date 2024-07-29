@@ -21,12 +21,15 @@ class WelcomeContentController extends Controller
 
     public function store(Request $request)
     {
-        // Validar la solicitud
+        // Validar la solicitud con mensajes personalizados
         $validatedData = $request->validate([
-            'layout' => 'nullable|string|in:Por defecto,Imagen a la derecha,Imagen a la izquierda,Imagen,Imagen de fondo oscuro,Imagen de fondo claro',
+            'layout' => 'required|string|in:Por defecto,Imagen a la derecha,Imagen a la izquierda,Imagen,Imagen de fondo oscuro,Imagen de fondo claro',
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
-            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:2048',
+            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,avif,tiff|max:2048',
+        ], [
+            'image_path.image' => 'No se aceptan imágenes con extensión .avif',
+            'image_path.mimes' => 'El archivo debe de los siguientes tipos extensiones: jpeg, png, jpg, gif, svg, webp, bmp, tiff.',
         ]);
 
         // Manejar la imagen si se ha subido
@@ -54,13 +57,16 @@ class WelcomeContentController extends Controller
 
     public function update(Request $request, WelcomeContent $welcomeContent)
     {
-        // Validar la solicitud
+        // Validar la solicitud con mensajes personalizados
         $validated = $request->validate([
-            'layout' => 'nullable|string|in:Por defecto,Imagen a la derecha,Imagen a la izquierda,Imagen,Imagen de fondo oscuro',
+            'layout' => 'required|string|in:Por defecto,Imagen a la derecha,Imagen a la izquierda,Imagen,Imagen de fondo oscuro,Imagen de fondo claro',
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
-            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:2048',
+            'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,avif,tiff|max:2048',
             'remove_image' => 'nullable|boolean', // Para manejar la eliminación de imagen
+        ], [
+            'image_path.image' => 'No se aceptan imágenes con extensión .avif',
+            'image_path.mimes' => 'El archivo debe de los siguientes tipos extensiones: jpeg, png, jpg, gif, svg, webp, bmp, tiff.',
         ]);
 
         // Manejar la eliminación de imagen si el checkbox está marcado
@@ -93,7 +99,6 @@ class WelcomeContentController extends Controller
         return redirect()->route('welcome-content.index')->with('success', 'El contenido se ha actualizado exitosamente.');
     }
 
-
     public function destroy(WelcomeContent $welcomeContent)
     {
         // Borrar la imagen si existe
@@ -104,3 +109,4 @@ class WelcomeContentController extends Controller
         return redirect()->route('welcome-content.index')->with('success', 'El contenido se ha eliminado exitosamente.');
     }
 }
+

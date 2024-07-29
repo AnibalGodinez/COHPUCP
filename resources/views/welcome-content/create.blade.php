@@ -9,10 +9,11 @@
                     <h3 class="card-title" style="color: beige"><strong>AÑADIR NUEVO CONTENIDO A LA PÁGINA PRINCIPAL</strong></h3>
                 </div>
 
-                @if($errors->any())
+                <!-- Mostrar mensajes de error para el campo de imagen -->
+                @if ($errors->has('image_path'))
                     <div class="alert alert-danger mx-4 mt-3">
                         <ul class="mb-0">
-                            @foreach($errors->all() as $error)
+                            @foreach ($errors->get('image_path') as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
@@ -29,7 +30,8 @@
                                 name="layout" 
                                 id="layout"
                                 class="form-control"
-                                onchange="toggleFields()">
+                                onchange="toggleFields()"
+                                required>
                                 <option value="" disabled selected>Selecciona una opción</option>
                                 <option value="Por defecto" {{ old('layout') == 'Por defecto' ? 'selected' : '' }}>Por Defecto</option>
                                 <option value="Imagen a la derecha" {{ old('layout') == 'Imagen a la derecha' ? 'selected' : '' }}>Imagen a la derecha</option>
@@ -38,7 +40,7 @@
                                 <option value="Imagen de fondo oscuro" {{ old('layout') == 'Imagen de fondo oscuro' ? 'selected' : '' }}>Imagen de fondo oscuro</option>
                                 <option value="Imagen de fondo claro" {{ old('layout') == 'Imagen de fondo claro' ? 'selected' : '' }}>Imagen de fondo claro</option>
                             </select>
-                        </div>                   
+                        </div>                                        
 
                         <div class="form-group" id="titleField">
                             <label for="title"><strong>TÍTULO:</strong></label>

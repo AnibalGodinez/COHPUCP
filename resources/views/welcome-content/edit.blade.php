@@ -9,10 +9,11 @@
                     <h3 class="card-title" style="color: beige"><strong>EDITAR CONTENIDO DE LA PÁGINA PRINCIPAL</strong></h3>
                 </div>
 
-                @if($errors->any())
+                <!-- Mostrar mensajes de error para el campo de imagen -->
+                @if ($errors->has('image_path'))
                     <div class="alert alert-danger mx-4 mt-3">
                         <ul class="mb-0">
-                            @foreach($errors->all() as $error)
+                            @foreach ($errors->get('image_path') as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
@@ -37,7 +38,7 @@
                                 <option value="Imagen a la izquierda" {{ old('layout', $welcomeContent->layout) == 'Imagen a la izquierda' ? 'selected' : '' }}>Imagen a la izquierda</option>
                                 <option value="Imagen" {{ old('layout', $welcomeContent->layout) == 'Imagen' ? 'selected' : '' }}>Imagen</option>
                                 <option value="Imagen de fondo oscuro" {{ old('layout', $welcomeContent->layout) == 'Imagen de fondo oscuro' ? 'selected' : '' }}>Imagen de fondo oscuro</option>
-                                <option value="Imagen de fondo claro" {{ old('layout', $welcomeContent->layout) == 'Imagen de fondo claro' ? 'selected' : '' }}>Imagen de fondo oscuro claro</option>
+                                <option value="Imagen de fondo claro" {{ old('layout', $welcomeContent->layout) == 'Imagen de fondo claro' ? 'selected' : '' }}>Imagen de fondo claro</option>
                             </select>
                         </div>
                         
