@@ -30,8 +30,8 @@
                                 <tr>
                                     <th class="text-center">ID</th>
                                     <th class="text-center">Nombre completo</th>
-                                    <th class="text-center">Número de identidad</th>
-                                    <th class="text-center">Número de colegiación</th>
+                                    <th class="text-center">DNI</th>
+                                    <th class="text-center">Nº colegiación</th>
                                     <th class="text-center">RTN</th>
                                     <th class="text-center">Sexo</th>
                                     <th class="text-center">Fecha de nacimiento</th>

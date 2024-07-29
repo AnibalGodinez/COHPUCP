@@ -5,7 +5,7 @@
 @endphp
 
 @section('content')
-    <div class="container-fluid" style="margin-top: -140px;">
+    <div class="container-fluid" style="margin-top: -130px;">
         <div class="row">
             @foreach($contents as $content)
                 <div class="col-12">
@@ -20,7 +20,7 @@
                             @endif
                             <div class="card-body">
                                 <h1 class="card-title text-center"><strong>{{ $content->title }}</strong></h1>
-                                <p class="card-text" style="font-size: 1.50rem;">{!! nl2br(e($content->description)) !!}</p>
+                                <p class="card-text" style="font-size: 1.2rem;">{!! nl2br(e($content->description)) !!}</p>
                             </div>
                         </div>
 
@@ -31,7 +31,7 @@
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h1 class="card-title text-center"><strong>{{ $content->title }}</strong></h1>
-                                        <p class="card-text" style="font-size: 1.50rem;">{!! nl2br(e($content->description)) !!}</p>
+                                        <p class="card-text" style="font-size: 1.2rem;">{!! nl2br(e($content->description)) !!}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-4 d-flex align-items-center justify-content-center">
@@ -54,7 +54,7 @@
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h1 class="card-title text-center"><strong>{{ $content->title }}</strong></h1>
-                                        <p class="card-text" style="font-size: 1.50rem;">{!! nl2br(e($content->description)) !!}</p>
+                                        <p class="card-text" style="font-size: 1.2rem;">{!! nl2br(e($content->description)) !!}</p>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                             @endif
                             <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center" style="background-color: rgba(0, 0, 0, 0.315);">
                                 <h1 class="card-title text-center text-white">{{ $content->title }}</h1>
-                                <p class="card-text text-center text-white" style="font-size: 1.50rem;">{!! nl2br(e($content->description)) !!}</p>
+                                <p class="card-text text-center text-white" style="font-size: 1.2rem;">{!! nl2br(e($content->description)) !!}</p>
                             </div>
                         </div>
 
@@ -88,7 +88,7 @@
                             @endif
                             <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center" style="background-color: rgba(0, 0, 0, 0.144);">
                                 <h1 class="card-title text-center">{{ $content->title }}</h1>
-                                <p class="card-text text-center" style="font-size: 1.50rem;">{!! nl2br(e($content->description)) !!}</p>
+                                <p class="card-text text-center" style="font-size: 1.2rem;">{!! nl2br(e($content->description)) !!}</p>
                             </div>
                         </div>
                     @endif
