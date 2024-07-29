@@ -13,9 +13,7 @@
                 </li>
 
                 <li class="nav-item dropdown" style="margin-bottom: 10px;">
-                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
-                    {{  request()->routeIs('profile.*') || 
-                        request()->routeIs('cambiar-contrasenia.contrasenia') ? 'text-dark' : '' }}" 
+                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" 
                         href="#" 
                         id="navbarDropdown" 
                         role="button" 
@@ -25,13 +23,11 @@
                         Perfil
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase {{ request()->routeIs('profile.index') ? 'text-dark font-weight-bold' : '' }}" href="{{ route('profile.index') }}">Ver mi perfil</a>
-                        <a class="dropdown-item text-uppercase {{ request()->routeIs('profile.edit') ? 'text-dark font-weight-bold' : '' }}" href="{{ route('profile.edit') }}">Actualizar perfil</a>
-                        <a class="dropdown-item text-uppercase {{ request()->routeIs('cambiar-contrasenia.contrasenia') ? 'text-dark font-weight-bold' : '' }}" href="{{ route('cambiar-contrasenia.contrasenia') }}">Cambiar contraseña</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('profile.show') }}">Ver mi perfil</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('profile.edit') }}">Editar perfil</a>
                     </div>
                 </li>
                 
-
                 @can('ver boton personas')
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
@@ -220,7 +216,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-navbar">
                         <li class="dropdown-item text-uppercase">
-                            <a href="{{ route('profile.index') }}" class="nav-link" style="color: black;">Perfil</a>
+                            <a href="{{ route('profile.show') }}" class="nav-link" style="color: black;">Perfil</a>
                         </li>
                         <li class="dropdown-item text-uppercase">
                             <a href="#" class="nav-link" style="color: black;">Ajustes</a>

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SecurityQuestionController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\WelcomeContentController;
+use App\Http\Controllers\ProfileController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -59,12 +60,10 @@ use App\Http\Controllers\WelcomeContentController;
 
 	// RUTAS DE PERFIL DE USUARIO
 	Route::group(['middleware' =>['auth']], function () {
-		Route::get('perfil', 			['as' => 'profile.index', 'uses' => 'App\Http\Controllers\ProfileController@index']);
-		Route::get('editar-perfil', 	['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
-		Route::put('profile', 			['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
-		Route::put('profile/password',  ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-		Route::get('cambiar-contrasenia', 'App\Http\Controllers\ProfileController@cambiarContrasenia')->name('cambiar-contrasenia.contrasenia');
-	});
+		Route::get('/profile/ver', [ProfileController::class, 'show'])->name('profile.show');
+		Route::get('/profile/editar', [ProfileController::class, 'edit'])->name('profile.edit');
+		Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+		});
 
 	// RUTAS DE ROLES
 	Route::group(['middleware' =>['auth']], function () {

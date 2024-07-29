@@ -2,56 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\ProfileRequest;
-use App\Http\Requests\PasswordRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Pais;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
-    public function __construct()
+    public function show()
     {
-        $this->middleware('permission:ver perfil', ['only' => ['index']]);
-        $this->middleware('permission:actualizar perfil', ['only' => ['update', 'edit']]);
-        $this->middleware('permission:actualizar contraseña perfil', ['only' => ['cambiarContrasenia', 'password']]);
-    }
-
-    public function index()
-    {
-        // Obtener el usuario autenticado
-        $user = Auth::user();
-
-        // Pasar el usuario a la vista
-        return view('profile.index', compact('user'));
+        return view('profile.view');
     }
 
     public function edit()
-{
-    $editMode = true;
-    $user = auth()->user();
-    $paises = Pais::all();
-
-    return view('profile.edit', compact('editMode', 'user', 'paises'));
-}
-
-
-    public function cambiarContrasenia()
     {
-        return view('profile.contrasenia');
+        return view('profile.edit');
     }
 
-    public function update(ProfileRequest $request)
+    public function update(Request $request)
     {
-        auth()->user()->update($request->all());
+        $request->validate([
+            'profile_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'facebook_link' => 'nullable|url',
+            'twitter_link' => 'nullable|url',
+            'bio' => 'nullable|string|max:1000',
+        ]);
 
-        return back()->withStatus(__('La información del perfil se ha actualizado exitosamente'));
-    }
+        $user = Auth::user();
 
-    public function password(PasswordRequest $request)
-    {
-        auth()->user()->update(['password' => Hash::make($request->get('password'))]);
+        if ($request->hasFile('profile_image')) {
+            if ($user->profile_image && Storage::exists('public/' . $user->profile_image)) {
+                Storage::delete('public/' . $user->profile_image);
+            }
 
-        return back()->withPasswordStatus(__('La contraseña se ha actualizado exitosamente'));
+            $user->profile_image = $request->file('profile_image')->store('profile_images', 'public');
+        }
+
+        $user->facebook_link = $request->input('facebook_link');
+        $user->twitter_link = $request->input('twitter_link');
+        $user->bio = $request->input('bio');
+
+        $user->save();
+
+        return redirect()->route('profile.show')->with('success', 'Perfil actualizado con éxito.');
     }
 }
