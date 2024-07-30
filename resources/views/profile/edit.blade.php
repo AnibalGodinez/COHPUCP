@@ -7,7 +7,8 @@
                 <div class="card mb-3" style="border: 6px solid #ebeff3; width: 100%; border-radius: 15px;">
                     <div class="card shadow-lg">
                         <h1 class="card-header bg-info text-white text-center">
-                            Editar perfil</h1><br>
+                            Editar perfil
+                        </h1><br>
 
                         @if (session('success'))
                             <div class="alert alert-success">
@@ -30,8 +31,6 @@
                                     </div>
                                 @endif
                             </div>
-                            
-
 
                             <div class="form-row">
                                 <!-- Campo para el primer nombre -->
@@ -188,6 +187,7 @@
                                         pattern="\d{4}-\d{4}-\d{6}"
                                         title="Formato: 0000-0000-000000">
                                 </div>
+
                                 <script>
                                 document.addEventListener('DOMContentLoaded', function() {
                                     var input = document.getElementById('rtn');
@@ -211,7 +211,7 @@
                                         <strong>Sexo *</strong>
                                     </label>
                                     <select name="sexo" class="form-control" required>
-                                        <option value="" disabled selected>Selecciona una opción</option>
+                                        <option value="" disabled selected>Seleccione el sexo</option>
                                         <option value="masculino" {{ old('sexo', $user->sexo) == 'masculino' ? 'selected' : '' }}>Masculino</option>
                                         <option value="femenino" {{ old('sexo', $user->sexo) == 'femenino' ? 'selected' : '' }}>Femenino</option>
                                     </select>
@@ -225,10 +225,10 @@
                                     </label>
                                     <input 
                                         type="date" 
-                                        name="fecha_nacimiento" 
+                                        name="fecha_nacimiento"                                        
                                         class="form-control"
                                         value="{{ old('fecha_nacimiento', $user->fecha_nacimiento) }}"
-                                        id="fecha_nacimiento" 
+                                        id="fecha_nacimiento"
                                         required>
                                 </div>
                                 <script>
@@ -248,17 +248,17 @@
                                 <!-- Campo para la Edad -->
                                 <div class="form-group col-md-3 p-4">
                                     <label for="edad">
-                                        <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
-                                        Edad
+                                        <i class="fas fa-calendar-day" style="margin-right: 8px;"></i>
+                                        <strong>Edad</strong>
                                     </label>
-                                        <input 
-                                            type="text" 
-                                            name="edad" 
-                                            class="form-control"
-                                            placeholder="Edad"
-                                            id="edad" 
-                                            value="{{ $user->edad }}"
-                                            readonly>
+                                    <input 
+                                        type="text" 
+                                        name="edad"                                      
+                                        class="form-control"
+                                        placeholder="Edad"
+                                        id="edad"
+                                        value="{{ old('edad', $user->edad) }}"
+                                        readonly>
                                 </div>
 
                                 <script>
@@ -355,6 +355,7 @@
                                         </span>
                                     @enderror
                                 </div>
+
                                 <script>
                                     document.addEventListener('DOMContentLoaded', function () {
                                         const paisSelect = document.getElementById('pais');
@@ -379,20 +380,6 @@
                                     });
                                 </script>
 
-                                <!-- Campo para el correo electrónico -->
-                                <div class="form-group col-md-3 p-4">
-                                    <label for="email">
-                                        <i class="fas fa-envelope" style="margin-right: 8px;"></i>
-                                        <strong>Correo electrónico</strong>
-                                    </label>
-                                    <input 
-                                    type="email" 
-                                    name="email" 
-                                    class="form-control"
-                                    placeholder="Correo electrónico"
-                                        value="{{ old('email', $user->email) }}">
-                                </div>
-
                                 <!-- Campo para el link de facebook -->
                                 <div class="form-group col-md-3 p-4">
                                     <label for="facebook_link">Enlace de Facebook</label>
@@ -415,6 +402,21 @@
                                         value="{{ old('twitter_link', $user->twitter_link) }}">
                                 </div>
 
+                                <!-- Campo para el correo electrónico -->
+                                <div class="form-group col-md-3 p-4">
+                                    <label for="email">
+                                        <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                                        <strong>Correo Electrónico *</strong>
+                                    </label>
+                                    <input 
+                                        type="email" 
+                                        name="email" 
+                                        class="form-control"
+                                        placeholder="Ingrese su correo electrónico"
+                                        value="{{ old('email', $user->email) }}"
+                                        required>
+                                </div>
+
                                 <!-- Campo para el link de descripción -->
                                 <div class="form-group col-md-12 p-4">
                                     <label for="bio">Descripción</label>
@@ -425,9 +427,11 @@
                                     style="min-height: 200px">
                                     {{ old('bio', $user->bio) }}</textarea>
                                 </div>
+
+
+                            <div class="form-group text-center mt-4">
+                                <button type="submit" class="btn btn-success">Actualizar</button>
                             </div>
-                            
-                            <button type="submit" class="btn btn-success">Actualizar</button>
                         </form>
                     </div>
                 </div>

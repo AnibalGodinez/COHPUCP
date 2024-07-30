@@ -25,6 +25,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item text-uppercase" href="{{ route('profile.show') }}">Ver mi perfil</a>
                         <a class="dropdown-item text-uppercase" href="{{ route('profile.edit') }}">Editar perfil</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('profile.changePassword') }}">Cambiar contraseña</a>
                     </div>
                 </li>
                 

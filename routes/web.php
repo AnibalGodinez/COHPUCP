@@ -63,6 +63,8 @@ use App\Http\Controllers\ProfileController;
 		Route::get('/profile/ver', [ProfileController::class, 'show'])->name('profile.show');
 		Route::get('/profile/editar', [ProfileController::class, 'edit'])->name('profile.edit');
 		Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+		Route::get('/profile/cambiar-contrasenia', [ProfileController::class, 'showChangePasswordForm'])->name('profile.changePassword');
+		Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
 		});
 
 	// RUTAS DE ROLES

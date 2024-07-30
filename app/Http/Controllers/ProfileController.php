@@ -118,4 +118,40 @@ class ProfileController extends Controller
 
         return redirect()->route('profile.show')->with('success', 'Perfil actualizado correctamente');
     }
+
+    public function updatePassword(Request $request)
+    {
+        // Validar los datos del formulario
+        $request->validate([
+            'current_password' => 'required|string',
+            'new_password' => 'required|string|min:8|confirmed|regex:/[A-Za-z]/|regex:/[0-9]/|regex:/[@$!%*?&]/',
+        ], [
+            'current_password.required' => 'La contraseña actual es obligatoria.',
+            'new_password.required' => 'La nueva contraseña es obligatoria.',
+            'new_password.min' => 'La nueva contraseña debe tener al menos 8 caracteres.',
+            'new_password.confirmed' => 'La confirmación de la nueva contraseña no coincide.',
+            'new_password.regex' => 'La nueva contraseña debe contener al menos una letra, un número y un símbolo especial.',
+        ]);
+
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+
+        // Verificar la contraseña actual
+        if (!\Hash::check($request->input('current_password'), $user->password)) {
+            return back()->withErrors(['current_password' => 'La contraseña actual es incorrecta.']);
+        }
+
+        // Actualizar la contraseña
+        $user->password = \Hash::make($request->input('new_password'));
+        $user->save();
+
+        // Redirigir con mensaje de éxito
+        return redirect()->route('profile.show')->with('success', 'Contraseña actualizada correctamente.');
+    }
+
+    public function showChangePasswordForm()
+    {
+        return view('profile.cambiar-contrasenia');
+    }
+
 }
