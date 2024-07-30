@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid" style="margin-top: 20px; padding: 6px;">
+    <div class="container-fluid" style="margin-top: 20px; padding: 6px">
         <div class="row no-gutters">
             <div class="col-md-12">
-                <div class="card mb-3" style="border: 3px solid #ebeff3; width: 100%;">
+                <div class="card mb-3" style="border: 6px solid #ebeff3; width: 100%; border-radius: 15px;">
                     <div class="card shadow-lg">
                         <h1 class="card-header bg-info text-white text-center">
                             Editar perfil</h1><br>
@@ -19,18 +19,23 @@
                             @csrf
                             @method('PUT')
 
-                            <div class="form-group">
+                            <div class="form-group text-center">
                                 <label for="profile_image">Foto de Perfil</label>
-                                <input type="file" class="form-control-file" id="profile_image" name="profile_image">
+                                <div class="mb-3">
+                                    <input type="file" class="form-control-file" id="profile_image" name="profile_image">
+                                </div>
                                 @if (Auth::user()->profile_image)
-                                    <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="Profile Image" class="img-fluid mt-2" style="width: 150px; height: auto;">
+                                    <div class="text-center">
+                                        <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="Profile Image" class="img-fluid mt-2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
+                                    </div>
                                 @endif
                             </div>
+                            
 
 
                             <div class="form-row">
                                 <!-- Campo para el primer nombre -->
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="name">
                                         <i class="fas fa-user" style="margin-right: 8px;"></i>
                                         <strong>Primer nombre *</strong>
@@ -47,7 +52,7 @@
                                 </div>
 
                                 <!-- Campo para el segundo nombre -->
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="name2">
                                         <i class="fas fa-user" style="margin-right: 8px;"></i>
                                         Segundo nombre
@@ -63,7 +68,7 @@
                                 </div>
 
                                 <!-- Campo para el primer apellido -->
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="apellido">
                                         <i class="fas fa-user" style="margin-right: 8px;"></i>
                                         <strong>Primer apellido *</strong>
@@ -81,7 +86,7 @@
                                 </div>
 
                                 <!-- Campo para el segundo apellido -->
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="apellido2">
                                         <i class="fas fa-user" style="margin-right: 8px;"></i>
                                         Segundo apellido
@@ -98,7 +103,7 @@
                                 </div>
 
                                 <!-- Campo para el DNI -->
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="numero_identidad">
                                         <i class="fas fa-id-card" style="margin-right: 8px;"></i>
                                         <strong>DNI *</strong>
@@ -133,7 +138,7 @@
                                 </script>
 
                                 <!-- Campo para el número de colegiación -->
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="numero_colegiacion">
                                         <i class="fas fa-address-card" style="margin-right: 8px;"></i>
                                         Nº colegiación
@@ -167,7 +172,7 @@
                                 </script>
 
                                 <!-- Campo para el RTN -->
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="rtn">
                                         <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
                                         RTN
@@ -200,7 +205,7 @@
                                 </script>
 
                                 <!-- Campo para el Sexo -->
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="sexo">
                                         <i class="fas fa-venus-mars" style="margin-right: 8px;"></i>
                                         <strong>Sexo *</strong>
@@ -213,7 +218,7 @@
                                 </div>
 
                                 <!-- Campo para la Fecha de Nacimiento -->
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="fecha_nacimiento">
                                         <i class="fas fa-birthday-cake" style="margin-right: 8px;"></i>
                                         <strong>Fecha de nacimiento *</strong>
@@ -241,7 +246,7 @@
                                 </script>
 
                                 <!-- Campo para la Edad -->
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="edad">
                                         <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
                                         Edad
@@ -281,7 +286,7 @@
                                 </script>
 
                                 <!-- Campo para seleccionar el país -->
-                                <div class="col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="pais">
                                         <i class="fas fa-globe" style="margin-right: 8px;"></i>
                                         <strong>País *</strong>
@@ -297,7 +302,7 @@
                                 </div>
 
                                 <!-- Campo para el teléfono fijo -->
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="telefono">
                                         <i class="fas fa-phone" style="margin-right: 8px;"></i>
                                         Teléfono fijo
@@ -324,7 +329,7 @@
                                 </div>
 
                                 <!-- Campo para el teléfono celular -->
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="telefono_celular">
                                         <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
                                         <strong>Celular *</strong>
@@ -375,8 +380,11 @@
                                 </script>
 
                                 <!-- Campo para el correo electrónico -->
-                                <div class="form-group col-md-3">
-                                    <label for="email"><strong>Correo electrónico *</strong></label>
+                                <div class="form-group col-md-3 p-4">
+                                    <label for="email">
+                                        <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                                        <strong>Correo electrónico</strong>
+                                    </label>
                                     <input 
                                     type="email" 
                                     name="email" 
@@ -386,7 +394,7 @@
                                 </div>
 
                                 <!-- Campo para el link de facebook -->
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-3 p-4">
                                     <label for="facebook_link">Enlace de Facebook</label>
                                     <input 
                                         type="text" 
@@ -396,7 +404,8 @@
                                         value="{{ old('facebook_link', $user->facebook_link) }}">
                                 </div>
 
-                                <div class="form-group col-md-3">
+                                <!-- Campo para el link de twitter -->
+                                <div class="form-group col-md-3 p-4">
                                     <label for="twitter_link">Enlace de Twitter</label>
                                     <input 
                                         type="text" 
@@ -406,18 +415,19 @@
                                         value="{{ old('twitter_link', $user->twitter_link) }}">
                                 </div>
 
-                                <div class="form-group col-md-12">
+                                <!-- Campo para el link de descripción -->
+                                <div class="form-group col-md-12 p-4">
                                     <label for="bio">Descripción</label>
                                     <textarea 
                                     class="form-control" 
                                     id="bio" 
                                     name="bio" 
-                                    style="min-height: 400px">
+                                    style="min-height: 200px">
                                     {{ old('bio', $user->bio) }}</textarea>
                                 </div>
                             </div>
                             
-                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                            <button type="submit" class="btn btn-success">Actualizar</button>
                         </form>
                     </div>
                 </div>

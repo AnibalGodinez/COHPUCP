@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Pais;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
-    public function show()
+
+        public function show()
     {
-        return view('profile.view');
+        $user = Auth::user()->load('pais');
+        $age = $user->fecha_nacimiento ? \Carbon\Carbon::parse($user->fecha_nacimiento)->age : null;
+        return view('profile.view', compact('user', 'age'));
     }
 
     public function edit()
@@ -22,8 +23,6 @@ class ProfileController extends Controller
 
         return view('profile.edit', compact('user', 'paises'));
     }
-
-
 
     protected function validateProfile(Request $request)
     {
