@@ -5,13 +5,13 @@
         <div class="row no-gutters">
             <div class="col-md-12">
                 <div class="card mb-3" style="border: 3px solid #ebeff3; border-radius: 15px; width: 100%">
-                    <div class="card-body">
+                    <div class="card shadow-lg">
                         <h1 class="card-header bg-info text-white text-center">
                             Perfil
                         </h1><br>
 
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 p-4">
                                 <div class="card mb-3" style="border: 1px solid #0e7ddf; border-radius: 30px;">
                                     <div class="card-body text-center">
                                         @if(Auth::user()->profile_image)

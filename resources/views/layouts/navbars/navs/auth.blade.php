@@ -141,13 +141,17 @@
                         Gestiones
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-uppercase" href="#">Inscribirse al cohpucp</a>
                         <a class="dropdown-item text-uppercase" href="#">Compra de timbres</a>
-                        <a class="dropdown-item text-uppercase" href="#">Inscribirse al colegio</a>
-                        <a class="dropdown-item text-uppercase" href="#">Estado de cuenta</a>
-                        <a class="dropdown-item text-uppercase" href="#">Mesa de ayuda</a>
-                        <a class="dropdown-item text-uppercase" href="#">Pagos</a>
+                        <a class="dropdown-item text-uppercase" href="#">Compra de sellos</a>
+                        <a class="dropdown-item text-uppercase" href="#">Solictud de constancias</a>
+                        <a class="dropdown-item text-uppercase" href="#">Renovación de carnet</a>
+                        <a class="dropdown-item text-uppercase" href="#">Solicitud de estado de cuenta</a>
+                        <a class="dropdown-item text-uppercase" href="#">Solicitud de plan de pago</a>
+                        <a class="dropdown-item text-uppercase" href="#">Actualización de poliza de seguro de vida</a> 
                     </div>
                 </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
                     {{  request()->routeIs('cursos.index') || 
@@ -164,6 +168,42 @@
                         <a class="dropdown-item text-uppercase {{request()->routeIs('capacitaciones.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
                         <a class="dropdown-item text-uppercase" href="#">Certificaciones</a>
                         <a class="dropdown-item text-uppercase" href="#">Talleres</a>
+                        <a class="dropdown-item text-uppercase" href="#">Diplomados</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown" style="margin-bottom: 10px;">
+                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" 
+                        href="#" 
+                        id="navbarDropdown" 
+                        role="button" 
+                        data-toggle="dropdown"
+                        aria-haspopup="true" 
+                        aria-expanded="false">
+                        Eventos sociales
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-uppercase" href="#">Día del Padre</a>
+                        <a class="dropdown-item text-uppercase" href="#">Día de la Madre </a>
+                        <a class="dropdown-item text-uppercase" href="#">Fiesta del contador</a>
+                        <a class="dropdown-item text-uppercase" href="#">Cena navideña</a>
+                        <a class="dropdown-item text-uppercase" href="#">Otros eventos</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown" style="margin-bottom: 10px;">
+                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" 
+                        href="#" 
+                        id="navbarDropdown" 
+                        role="button" 
+                        data-toggle="dropdown"
+                        aria-haspopup="true" 
+                        aria-expanded="false">
+                        Pagos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-uppercase" href='#'>Pagos 1</a>
+                        <a class="dropdown-item text-uppercase" href='#'>Pagos 2</a>
                     </div>
                 </li>
             

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pais;
+
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Pais;
 
 class ProfileController extends Controller
 {
@@ -41,7 +44,7 @@ class ProfileController extends Controller
             'email' => 'required|email|max:255|unique:users,email',
             'email_confirmation' => 'required|email|same:email',
             'pais_id' => 'nullable|exists:pais,id',
-            'profile_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'profile_image' => 'nullable|image|mimes:jpg,jpeg,png, webp|max:2048',
             'facebook_link' => 'nullable|url',
             'twitter_link' => 'nullable|url',
             'bio' => 'nullable|string|max:1000',
@@ -63,11 +66,12 @@ class ProfileController extends Controller
             'telefono.regex' => 'El número de teléfono fijo sólo debe contener números y guiones',
             'telefono_celular.regex' => 'El número de celular sólo debe contener números y guiones',
             'profile_image.image' => 'El archivo debe ser una imagen.',
-            'profile_image.mimes' => 'La imagen debe ser de tipo: jpg, jpeg, png.',
+            'profile_image.mimes' => 'La imagen debe ser de tipo: jpg, jpeg, png, webp.',
             'profile_image.max' => 'La imagen no debe exceder los 2MB.',
             'facebook_link.url' => 'El enlace de Facebook debe ser una URL válida.',
             'twitter_link.url' => 'El enlace de Twitter debe ser una URL válida.',
             'bio.max' => 'La biografía no debe exceder los 1000 caracteres.',
+            'old_password' => 'El campo de contraseña actual no coincide con su contraseña'
         ]);
     }
 
@@ -108,6 +112,7 @@ class ProfileController extends Controller
             'facebook_link',
             'twitter_link',
             'bio',
+            'pais_id',
         ]));
 
         if ($request->hasFile('profile_image')) {
@@ -119,39 +124,18 @@ class ProfileController extends Controller
         return redirect()->route('profile.show')->with('success', 'Perfil actualizado correctamente');
     }
 
-    public function updatePassword(Request $request)
-    {
-        // Validar los datos del formulario
-        $request->validate([
-            'current_password' => 'required|string',
-            'new_password' => 'required|string|min:8|confirmed|regex:/[A-Za-z]/|regex:/[0-9]/|regex:/[@$!%*?&]/',
-        ], [
-            'current_password.required' => 'La contraseña actual es obligatoria.',
-            'new_password.required' => 'La nueva contraseña es obligatoria.',
-            'new_password.min' => 'La nueva contraseña debe tener al menos 8 caracteres.',
-            'new_password.confirmed' => 'La confirmación de la nueva contraseña no coincide.',
-            'new_password.regex' => 'La nueva contraseña debe contener al menos una letra, un número y un símbolo especial.',
-        ]);
-
-        // Obtener el usuario autenticado
-        $user = Auth::user();
-
-        // Verificar la contraseña actual
-        if (!\Hash::check($request->input('current_password'), $user->password)) {
-            return back()->withErrors(['current_password' => 'La contraseña actual es incorrecta.']);
-        }
-
-        // Actualizar la contraseña
-        $user->password = \Hash::make($request->input('new_password'));
-        $user->save();
-
-        // Redirigir con mensaje de éxito
-        return redirect()->route('profile.show')->with('success', 'Contraseña actualizada correctamente.');
-    }
+    
 
     public function showChangePasswordForm()
     {
         return view('profile.cambiar-contrasenia');
+    }
+
+    public function password(PasswordRequest $request)
+    {
+        auth()->user()->update(['password' => Hash::make($request->get('password'))]);
+
+        return back()->withPasswordStatus(__('La contraseña se ha actualizado exitosamente'));
     }
 
 }

@@ -10,6 +10,8 @@
                             Perfil
                         </h1><br>
 
+                        @include('alerts.success', ['key' => 'password_status'])
+
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="card mb-3" style="border: 1px solid #0e7ddf; border-radius: 30px;">
@@ -41,61 +43,75 @@
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <h3 class="card-title">Cambiar contraseña</h3>
-                                        
-                                        @if(session('success'))
-                                            <div class="alert alert-success">
-                                                {{ session('success') }}
-                                            </div>
-                                        @endif
 
-                                        @if($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
-
-                                        <form action="{{ route('profile.updatePassword') }}" method="POST">
-                                            @csrf
-                                            @method('PATCH')
-
-                                            <!-- Campo para la Contraseña Actual -->
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
-                                                        <label for="current_password">Contraseña actual</label>
-                                                    <input type="password" name="current_password" id="current_password" class="form-control" required>
-                                                    @error('current_password')
-                                                        <div class="text-danger">{{ $message }}</div>
-                                                    @enderror
-                                                </div> 
-                                            </div>
-
-                                            <!-- Campo para la Nueva Contraseña -->
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
-                                                    <label for="new_password">Nueva contraseña</label>
-                                                    <input type="password" name="new_password" id="new_password" class="form-control" required>
-                                                    @error('new_password')
-                                                        <div class="text-danger">{{ $message }}</div>
-                                                    @enderror
-                                                </div>                                               
-                                            </div>
-
-                                            <!-- Campo para Confirmar Nueva Contraseña -->
-                                            <div class="form-group">
-                                                <div class="col-sm-4">
-                                                    <label for="new_password_confirmation">Confirmar nueva contraseña</label>
-                                                    <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="form-control" required>
+                                        <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
+                                            <div class="card-body">
+                                                @csrf
+                                                @method('put')
+                                            
+                                                @include('alerts.success', ['key' => 'password_status'])
+                                            
+                                                <div class="form-row justify-content-center">
+                                                    <div class="form-group text-center col-md-4">
+                                                        <label for="old_password"><strong>Contraseña actual *</strong></label>
+                                                        <input 
+                                                            type="password" 
+                                                            name="old_password" 
+                                                            class="form-control @error('old_password') is-invalid @enderror" 
+                                                            placeholder="Ingrese la contraseña actual" 
+                                                            value="{{ old('old_password') }}" 
+                                                            style="text-align: center;" 
+                                                            required>
+                                                        @error('old_password')
+                                                            <span class="invalid-feedback d-block text-center" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>                       
+                                                
+                                                <div class="form-row justify-content-center">
+                                                    <div class="form-group text-center col-md-3">
+                                                        <label for="password"><strong>Nueva contraseña *</strong></label>
+                                                        <input 
+                                                            type="password" 
+                                                            name="password" 
+                                                            class="form-control @error('password') is-invalid @enderror" 
+                                                            placeholder="Ingrese la nueva contraseña"
+                                                            minlength="8"
+                                                            maxlength="20"
+                                                            value="{{ old('password') }}" 
+                                                            required>
+                                                        
+                                                    </div>
+                                
+                                                    <div class="form-group text-center col-md-3">
+                                                        <label for="password_confirmation"><strong>Confirmar Contraseña *</strong></label>
+                                                        <input 
+                                                            type="password" 
+                                                            name="password_confirmation" 
+                                                            class="form-control @error('password_confirmation') is-invalid @enderror" 
+                                                            placeholder="Confirme la nueva contraseña"
+                                                            minlength="8"
+                                                            maxlength="20" 
+                                                            value="{{ old('password_confirmation') }}" 
+                                                            required>
+                                                            @error('password')
+                                                                <span class="invalid-feedback d-block text-center" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                    </div>
                                                 </div>
-                                            </div><br>
-
-                                            <div class="form-group mt-4">
-                                                <button type="submit" class="btn btn-success">Actualizar contraseña</button>
-                                            </div> 
+                                            </div>                    
+                            
+                                            <div class="card-footer">
+                                                <div class="col-md-12 text-center">
+                                                    <button type="submit" class="btn btn-success px-4">Cambiar contraseña</button>
+                                                </div>
+                                            </div>
                                         </form>
+                                        
                                     </div>
                                 </div>
                             </div>

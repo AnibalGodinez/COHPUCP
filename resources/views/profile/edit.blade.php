@@ -20,24 +20,39 @@
                             @csrf
                             @method('PUT')
 
+                            <!-- Campo para la foto de perfil -->
                             <div class="form-group text-center">
                                 <label for="profile_image">Foto de Perfil</label>
                                 <div class="mb-3">
-                                    <input type="file" class="form-control-file" id="profile_image" name="profile_image">
+                                    <input type="file" class="form-control-file" id="profile_image" name="profile_image" accept="image/*" onchange="previewImage(event)">
                                 </div>
-                                @if (Auth::user()->profile_image)
-                                    <div class="text-center">
-                                        <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="Profile Image" class="img-fluid mt-2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
-                                    </div>
-                                @endif
+                                <div class="d-flex justify-content-center">
+                                    @if (Auth::user()->profile_image)
+                                        <img id="profile_image_preview" src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="Profile Image" class="img-fluid mt-2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
+                                    @else
+                                        <img id="profile_image_preview" src="" alt="Profile Image" class="img-fluid mt-2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; display: none;">
+                                    @endif
+                                </div>
                             </div>
+
+                            <script>
+                                function previewImage(event) {
+                                    var reader = new FileReader();
+                                    reader.onload = function(){
+                                        var output = document.getElementById('profile_image_preview');
+                                        output.src = reader.result;
+                                        output.style.display = 'block';
+                                    }
+                                    reader.readAsDataURL(event.target.files[0]);
+                                }
+</script>
 
                             <div class="form-row">
                                 <!-- Campo para el primer nombre -->
                                 <div class="form-group col-md-3 p-4">
                                     <label for="name">
                                         <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                        <strong>Primer nombre *</strong>
+                                        <strong>PRIMER NOMBRE *</strong>
                                     </label>
                                     <input 
                                     type="text" 
@@ -54,7 +69,7 @@
                                 <div class="form-group col-md-3 p-4">
                                     <label for="name2">
                                         <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                        Segundo nombre
+                                        <strong>SEGUNDO NOMBRE</strong>
                                     </label>
                                     <input 
                                     type="text" 
@@ -70,7 +85,7 @@
                                 <div class="form-group col-md-3 p-4">
                                     <label for="apellido">
                                         <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                        <strong>Primer apellido *</strong>
+                                        <strong>PRIMER APELLIDO *</strong>
                                     </label>
                                     <input 
                                     type="text" 
@@ -88,7 +103,7 @@
                                 <div class="form-group col-md-3 p-4">
                                     <label for="apellido2">
                                         <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                        Segundo apellido
+                                        <strong>SEGUNDO APELLIDO</strong>
                                     </label>
                                     <input 
                                     type="text" 
@@ -140,7 +155,7 @@
                                 <div class="form-group col-md-3 p-4">
                                     <label for="numero_colegiacion">
                                         <i class="fas fa-address-card" style="margin-right: 8px;"></i>
-                                        Nº colegiación
+                                        <strong>Nº COLEGIACIÓN</strong>
                                     </label>
                                     <input 
                                         type="text" 
@@ -174,7 +189,7 @@
                                 <div class="form-group col-md-3 p-4">
                                     <label for="rtn">
                                         <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
-                                        RTN
+                                        <strong>RTN</strong>
                                     </label> 
                                     <input 
                                         type="text" 
@@ -208,7 +223,7 @@
                                 <div class="form-group col-md-3 p-4">
                                     <label for="sexo">
                                         <i class="fas fa-venus-mars" style="margin-right: 8px;"></i>
-                                        <strong>Sexo *</strong>
+                                        <strong>SEXO *</strong>
                                     </label>
                                     <select name="sexo" class="form-control" required>
                                         <option value="" disabled selected>Seleccione el sexo</option>
@@ -221,7 +236,7 @@
                                 <div class="form-group col-md-3 p-4">
                                     <label for="fecha_nacimiento">
                                         <i class="fas fa-birthday-cake" style="margin-right: 8px;"></i>
-                                        <strong>Fecha de nacimiento *</strong>
+                                        <strong>FECHA DE NACIMIENTO *</strong>
                                     </label>
                                     <input 
                                         type="date" 
@@ -245,11 +260,11 @@
                                         });
                                 </script>
 
-                                <!-- Campo para la Edad -->
+                                <!-- Campo para la EDAD -->
                                 <div class="form-group col-md-3 p-4">
                                     <label for="edad">
                                         <i class="fas fa-calendar-day" style="margin-right: 8px;"></i>
-                                        <strong>Edad</strong>
+                                        <strong>EDAD</strong>
                                     </label>
                                     <input 
                                         type="text" 
@@ -289,7 +304,7 @@
                                 <div class="form-group col-md-3 p-4">
                                     <label for="pais">
                                         <i class="fas fa-globe" style="margin-right: 8px;"></i>
-                                        <strong>País *</strong>
+                                        <strong>PAÍS *</strong>
                                     </label>
                                     <select id="pais" name="pais_id" class="form-control">
                                         <option value="">Seleccione un país</option>
@@ -305,7 +320,7 @@
                                 <div class="form-group col-md-3 p-4">
                                     <label for="telefono">
                                         <i class="fas fa-phone" style="margin-right: 8px;"></i>
-                                        Teléfono fijo
+                                        <strong>TELÉFONO FIJO</strong>
                                     </label>                                                             
                                     <div class="input-group{{ $errors->has('telefono') ? ' has-danger' : '' }}">
                                         <div class="input-group">
@@ -332,7 +347,7 @@
                                 <div class="form-group col-md-3 p-4">
                                     <label for="telefono_celular">
                                         <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
-                                        <strong>Celular *</strong>
+                                        <strong>CELULAR *</strong>
                                     </label>                                
                                     <div class="input-group{{ $errors->has('telefono_celular') ? ' has-danger' : '' }}">
                                         <div class="input-group">
@@ -382,7 +397,10 @@
 
                                 <!-- Campo para el link de facebook -->
                                 <div class="form-group col-md-3 p-4">
-                                    <label for="facebook_link">Enlace de Facebook</label>
+                                    <label for="facebook_link">
+                                        <i class="fab fa-facebook" style="margin-right: 8px;"></i>
+                                        Enlace de Facebook
+                                    </label>
                                     <input 
                                         type="text" 
                                         class="form-control" 
@@ -393,7 +411,10 @@
 
                                 <!-- Campo para el link de twitter -->
                                 <div class="form-group col-md-3 p-4">
-                                    <label for="twitter_link">Enlace de Twitter</label>
+                                    <label for="twitter_link">
+                                        <i class="fab fa-twitter" style="margin-right: 8px;"></i>
+                                        Enlace de Twitter
+                                    </label>
                                     <input 
                                         type="text" 
                                         class="form-control" 
@@ -418,15 +439,21 @@
                                 </div>
 
                                 <!-- Campo para el link de descripción -->
+
                                 <div class="form-group col-md-12 p-4">
-                                    <label for="bio">Descripción</label>
+                                    <label for="description">
+                                        <i class="fas fa-align-left" style="margin-right: 8px;"></i>
+                                        Descripción
+                                    </label>
                                     <textarea 
-                                    class="form-control" 
-                                    id="bio" 
-                                    name="bio" 
-                                    style="min-height: 200px">
+                                        class="form-control"
+                                        id="bio"
+                                        name="bio"
+                                        placeholder="Ingrese una descripción"
+                                        style="min-height: 200px">
                                     {{ old('bio', $user->bio) }}</textarea>
                                 </div>
+                                
 
 
                             <div class="form-group text-center mt-4">
