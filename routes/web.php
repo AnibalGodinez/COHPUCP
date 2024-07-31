@@ -12,6 +12,7 @@ use App\Http\Controllers\SecurityQuestionController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\WelcomeContentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardContentController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -49,7 +50,6 @@ use App\Http\Controllers\ProfileController;
 	Route::resource('security_questions', SecurityQuestionController::class);
 	Route::get('security_questions/{question}/delete', [SecurityQuestionController::class, 'destroy'])->name('security_questions.delete');
 	Route::get('opcion-recuperacionContrasenia', [SecurityQuestionController::class, 'viewOpcionRecuperacion'])->name('opcion.recuperacion');
-
 
 	// RUTAS DE USUARIOS
 	Route::group(['middleware' =>['auth']], function () {
@@ -104,4 +104,9 @@ use App\Http\Controllers\ProfileController;
 	// RUTAS DE CONTENIDO DE LA PÁGINA DE INICIO
 	Route::group(['middleware' => ['auth']], function () {
 		Route::resource('welcome-content', WelcomeContentController::class);
+	});
+
+	// RUTAS DE CONTENIDO DEL DASHBOARD
+	Route::group(['middleware' => ['auth']], function () {
+		Route::resource('dashboard-contents', DashboardContentController::class);
 	});

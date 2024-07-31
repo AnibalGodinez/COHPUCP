@@ -22,7 +22,7 @@
 
         @auth()
         <div class="wrapper" data-color="blue">
-            <div class="main-panel">
+            <div class="main">
                 @include('layouts.navbars.navbar')
 
                 <div class="main-content" style="min-height: calc(100vh - 100px);"> <!-- Ajusta 100px según el tamaño de tu navbar -->

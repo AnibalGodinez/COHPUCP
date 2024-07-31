@@ -124,8 +124,6 @@ class ProfileController extends Controller
         return redirect()->route('profile.show')->with('success', 'Perfil actualizado correctamente');
     }
 
-    
-
     public function showChangePasswordForm()
     {
         return view('profile.cambiar-contrasenia');
