@@ -61,7 +61,8 @@
                         {{  request()->routeIs('roles.*') || 
                             request()->routeIs('permissions.ver') || 
                             request()->routeIs('permission.*')? 'text-dark' : '' }}"
-                            href="#" id="navbarDropdownRoles" 
+                            href="#" 
+                            id="navbarDropdownRoles" 
                             role="button" 
                             data-toggle="dropdown"
                             aria-haspopup="true" 
@@ -72,6 +73,7 @@
                             <a class="dropdown-item text-uppercase {{request()->routeIs('roles.*') ? 'text-dark font-weight-bold' : ''}}" id="rolesLink" href="#">Roles</a>
                             <a class="dropdown-item text-uppercase {{request()->routeIs('permissions.*') || request()->routeIs('permission.*')? 'text-dark font-weight-bold' : ''}}" id="permisosLink" href="#">Permisos</a>
                         </div>
+
                         <!-- Submenú para Roles -->
                         <div class="dropdown-menu" id="subMenuRoles" style="position: absolute; top: 0; left: 100%; display: none;">
                             <a class="dropdown-item text-uppercase {{request()->routeIs('roles.ver') ? 'text-dark font-weight-bold' : ''}}" href="{{route('roles.ver')}}">Ver roles</a>
@@ -135,22 +137,88 @@
                     navbarDropdownRoles.addEventListener('mouseleave', hideSubMenus);
                 </script>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                {{-- ----------------------------------------------------------------------------------------------------------------------------------------------------- --}}
+
+                <li class="nav-item dropdown" style="margin-bottom: 10px; position: relative;">
+                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" 
+                       href="#" 
+                       id="navbarDropdownGestiones" 
+                       role="button" 
+                       data-toggle="dropdown"
+                       aria-haspopup="true" 
+                       aria-expanded="false">
                         Gestiones
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase" href="#">Inscribirse al cohpucp</a>
-                        <a class="dropdown-item text-uppercase" href="#">Compra de timbres</a>
-                        <a class="dropdown-item text-uppercase" href="#">Compra de sellos</a>
-                        <a class="dropdown-item text-uppercase" href="#">Solictud de constancias</a>
-                        <a class="dropdown-item text-uppercase" href="#">Renovación de carnet</a>
-                        <a class="dropdown-item text-uppercase" href="#">Solicitud de estado de cuenta</a>
-                        <a class="dropdown-item text-uppercase" href="#">Solicitud de plan de pago</a>
-                        <a class="dropdown-item text-uppercase" href="#">Actualización de poliza de seguro de vida</a> 
+                
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownGestiones">
+                        <a class="dropdown-item text-uppercase" id="inscribirseCohpucpLink" href="#">Inscribirse al cohpucp</a>
+                        <a class="dropdown-item text-uppercase" id="compraSellosLink" href="#">Compra de sellos</a>
+                    </div>
+                
+                    <!-- Submenú para Inscribirse al cohpucp -->
+                    <div class="dropdown-menu" id="subMenuInscribirseCohpucp" style="position: absolute; top: 100%; left: 100%; margin-left: 86px; display: none; z-index: 1000;">
+                        <a class="dropdown-item text-uppercase" href="#">Inscripción de firma de Auditoría</a>
+                        <a class="dropdown-item text-uppercase" href="#">Inscripción de agremiado</a>
+                    </div>
+                
+                    <!-- Submenú para Compra de sellos -->
+                    <div class="dropdown-menu" id="subMenuCompraSellos" style="position: absolute; top: 100%; left: 100%; margin-left: 86px; display: none; z-index: 1000;">
+                        <a class="dropdown-item text-uppercase" href="#">Sello de bolsillo</a>
+                        <a class="dropdown-item text-uppercase" href="#">Sello automático</a>
                     </div>
                 </li>
+                
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Obtener los elementos del DOM
+                        const navbarDropdownGestiones = document.getElementById('navbarDropdownGestiones');
+                        const subMenuInscribirseCohpucp = document.getElementById('subMenuInscribirseCohpucp');
+                        const subMenuCompraSellos = document.getElementById('subMenuCompraSellos');
+                        const inscribirseCohpucpLink = document.getElementById('inscribirseCohpucpLink');
+                        const compraSellosLink = document.getElementById('compraSellosLink');
+                
+                        // Función para mostrar el submenú de Inscribirse al Cohpucp
+                        const showSubMenuInscribirseCohpucp = () => {
+                            subMenuInscribirseCohpucp.style.display = 'block';
+                            subMenuCompraSellos.style.display = 'none';
+                        };
+                
+                        // Función para mostrar el submenú de Compra de sellos
+                        const showSubMenuCompraSellos = () => {
+                            subMenuCompraSellos.style.display = 'block';
+                            subMenuInscribirseCohpucp.style.display = 'none';
+                        };
+                
+                        // Función para ocultar los submenús
+                        const hideSubMenus = () => {
+                            subMenuInscribirseCohpucp.style.display = 'none';
+                            subMenuCompraSellos.style.display = 'none';
+                        };
+                
+                        // Mostrar el submenú de Inscribirse al Cohpucp cuando el cursor está sobre el enlace correspondiente
+                        inscribirseCohpucpLink.addEventListener('mouseenter', showSubMenuInscribirseCohpucp);
+                
+                        // Mostrar el submenú de Compra de sellos cuando el cursor está sobre el enlace correspondiente
+                        compraSellosLink.addEventListener('mouseenter', showSubMenuCompraSellos);
+                
+                        // Mantener visible el submenú de Inscribirse al Cohpucp mientras el cursor esté sobre él
+                        subMenuInscribirseCohpucp.addEventListener('mouseenter', showSubMenuInscribirseCohpucp);
+                
+                        // Ocultar el submenú de Inscribirse al Cohpucp cuando el cursor salga de él
+                        subMenuInscribirseCohpucp.addEventListener('mouseleave', hideSubMenus);
+                
+                        // Mantener visible el submenú de Compra de sellos mientras el cursor esté sobre él
+                        subMenuCompraSellos.addEventListener('mouseenter', showSubMenuCompraSellos);
+                
+                        // Ocultar el submenú de Compra de sellos cuando el cursor salga de él
+                        subMenuCompraSellos.addEventListener('mouseleave', hideSubMenus);
+                
+                        // Ocultar los submenús cuando el cursor no esté sobre "Gestión prueba", "Inscribirse al cohpucp" o "Compra de sellos"
+                        navbarDropdownGestiones.addEventListener('mouseleave', hideSubMenus);
+                    });
+                </script>
+                
+                {{-- ----------------------------------------------------------------------------------------------------------------------------------------------------- --}}
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
