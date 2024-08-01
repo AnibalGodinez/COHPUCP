@@ -398,6 +398,7 @@
                         <a class="dropdown-item text-uppercase {{request()->routeIs('pais.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('pais.index') }}">Países</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('dashboard-content.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('dashboard-content.index') }}">Inicio</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('welcome-content.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('welcome-content.index') }}">Home</a> 
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('footer-content.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('footer-content.index') }}">Pie de página</a> 
                     </div>
                 </li>                
                 @endcan

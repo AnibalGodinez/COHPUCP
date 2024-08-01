@@ -30,8 +30,12 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('Prueba%291'),
         ]);
 
-        // Crear el rol Administrador
-        $role = Role::create(['name' => 'Administrador']);
+        // Crear el rol Administrador con descripción
+        $role = Role::create([
+            'name' => 'Administrador',
+            'guard_name' => 'web',
+            'description' => 'El rol Administrador en la plataforma del Colegio Hondureño de Profesionales Universitarios en Contaduría Pública (COHPUCP), tiene el acceso completo a todas las funciones y datos del sistema. Los administradores pueden gestionar usuarios, configurar el sitio y realizar cualquier acción necesaria para mantener optimizada la plataforma.',
+        ]);
 
         // Crear los permisos
         $permissions = [

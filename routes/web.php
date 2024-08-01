@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\WelcomeContentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardContentController;
+use App\Http\Controllers\FooterContentController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -109,4 +110,9 @@ use App\Http\Controllers\DashboardContentController;
 	// RUTAS DE CONTENIDO DEL DASHBOARD
 	Route::group(['middleware' => ['auth']], function () {
 		Route::resource('dashboard-content', DashboardContentController::class);
+	});
+
+	// RUTAS DE CONTENIDO DEL PIE DE PÁGINA
+	Route::group(['middleware' => ['auth']], function () {
+	Route::resource('footer-content', FooterContentController::class);
 	});
