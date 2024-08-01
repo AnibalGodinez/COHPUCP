@@ -74,7 +74,7 @@
                             @if($content->image_path)
                                 <img src="{{ asset('storage/' . $content->image_path) }}" alt="{{ $content->title }}" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;">
                             @endif
-                            <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center" style="background-color: rgba(0, 0, 0, 0.315);">
+                            <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center" style="background-color: rgba(0, 0, 0, 0.788);">
                                 <h1 class="card-title text-center text-white">{{ $content->title }}</h1>
                                 <p class="card-text text-center text-white" style="font-size: 1.2rem;">{!! nl2br(e($content->description)) !!}</p>
                             </div>

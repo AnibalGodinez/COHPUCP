@@ -10,36 +10,18 @@ class CreateDashboardContentsTable extends Migration
     {
         Schema::create('dashboard_contents', function (Blueprint $table) {
             $table->id(); // ID autoincremental
-            $table->string('layout')->nullable(); // Layout del dashboard
+            $table->string('layout')->nullable(); // estilos de contenidos que se agregarán en el dashboard
             $table->string('title')->nullable(); // Título principal
             $table->string('subtitle')->nullable(); // Subtítulo
             $table->text('description')->nullable(); // Descripción del contenido
 
-            // Gráficos e Indicadores
-            $table->json('bar_charts')->nullable(); // Gráficos de barras
-            $table->json('pie_charts')->nullable(); // Gráficos de pastel
-
-            // Tablas y Listas
-            $table->json('data_tables')->nullable(); // Tablas de datos
-            $table->json('task_lists')->nullable(); // Listas de tareas
-
             // Archivos
-            $table->json('pdf_files')->nullable(); // Archivos PDF
-            $table->json('documents')->nullable(); // Documentos
-
-            // Enlaces
-            $table->json('internal_links')->nullable(); // Enlaces internos
-            $table->json('external_links')->nullable(); // Enlaces externos
-
-            // Medios
-            $table->json('images')->nullable(); // Imágenes
-            $table->json('videos')->nullable(); // Videos
-
-            // Widgets y Componentes Interactivos
-            $table->json('calendars')->nullable(); // Calendarios
-            $table->json('maps')->nullable(); // Mapas
+            $table->string('pdf')->nullable(); // Archivos PDF
+            $table->string('images')->nullable(); // Imágenes
+            $table->string('videos')->nullable(); // Videos
 
             // Links de Redes Sociales
+            $table->string('links')->nullable(); // Enlaces
             $table->string('facebook_link')->nullable(); // Enlace de Facebook
             $table->string('twitter_link')->nullable(); // Enlace de Twitter
             $table->string('youtube_link')->nullable(); // Enlace de YouTube

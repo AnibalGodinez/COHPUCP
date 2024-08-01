@@ -86,12 +86,19 @@
                             </div><br>
                         @endif
 
-                        <div class="form-group">
-                            <div class="d-flex justify-content-start">
-                                <button type="submit" class="btn btn-success me-2">Actualizar</button>
-                                <a href="{{ route('welcome-content.index') }}" class="btn btn-secondary">Cancelar</a>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-save" style="margin-right: 8px;"></i>
+                                    {{ __('Actualizar') }}
+                                </button>
+                                <a href="{{ route('welcome-content.index') }}" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                                    {{ __('Volver') }}
+                                </a>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>

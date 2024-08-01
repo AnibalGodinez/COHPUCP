@@ -11,10 +11,11 @@ class DashboardContentController extends Controller
 {
     // Mostrar una lista de todos los contenidos del dashboard
     public function index()
-    {
-        $dashboardContents = DashboardContent::all();
-        return view('dashboard-content.index', compact('contents'));
-    }
+{
+    $dashboardContents = DashboardContent::all();
+    return view('dashboard-content.index', compact('dashboardContents'));
+}
+
 
     // Mostrar el formulario para crear un nuevo contenido del dashboard
     public function create()
@@ -26,22 +27,16 @@ class DashboardContentController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'layout' => 'required|string|in:Por defecto,Imagen a la derecha,Imagen a la izquierda,Imagen,Imagen de fondo oscuro,Imagen de fondo claro',
+            'layout' => 'required|string|in:Por defecto,Imagen',
             'title' => 'nullable|string|max:255',
             'subtitle' => 'nullable|string|max:255',
             'description' => 'nullable|string',
+
+            'pdf' => 'nullable|file',
             'images' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:2048',
-            'videos' => 'nullable|file|mimes:mp4,mov,avi,wmv,flv|max:10240',
-            'bar_charts' => 'nullable|json',
-            'pie_charts' => 'nullable|json',
-            'data_tables' => 'nullable|json',
-            'task_lists' => 'nullable|json',
-            'pdf_files' => 'nullable|json',
-            'documents' => 'nullable|json',
-            'internal_links' => 'nullable|json',
-            'external_links' => 'nullable|json',
-            'calendars' => 'nullable|json',
-            'maps' => 'nullable|json',
+            'videos' => 'nullable|file|mimes:mp4,mov,avi,wmv,3gp,flv|max:10240',
+
+            'links' => 'nullable|string',
             'facebook_link' => 'nullable|url',
             'twitter_link' => 'nullable|url',
             'youtube_link' => 'nullable|url',
@@ -65,12 +60,6 @@ class DashboardContentController extends Controller
         return Redirect::route('dashboard-content.index')->with('success', 'Contenido del dashboard creado exitosamente.');
     }
 
-    // Mostrar el contenido del dashboard específico
-    public function show(DashboardContent $dashboardContent)
-    {
-        return view('dashboard-content.show', compact('dashboardContent'));
-    }
-
     // Mostrar el formulario para editar un contenido del dashboard
     public function edit(DashboardContent $dashboardContent)
     {
@@ -81,22 +70,16 @@ class DashboardContentController extends Controller
     public function update(Request $request, DashboardContent $dashboardContent)
     {
         $validatedData = $request->validate([
-            'layout' => 'required|string|in:Por defecto,Imagen a la derecha,Imagen a la izquierda,Imagen,Imagen de fondo oscuro,Imagen de fondo claro',
+            'layout' => 'required|string|in:Por defecto,Imagen',
             'title' => 'nullable|string|max:255',
             'subtitle' => 'nullable|string|max:255',
             'description' => 'nullable|string',
+
+            'pdf' => 'nullable|file',
             'images' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:2048',
             'videos' => 'nullable|file|mimes:mp4,mov,avi,wmv,flv|max:10240',
-            'bar_charts' => 'nullable|json',
-            'pie_charts' => 'nullable|json',
-            'data_tables' => 'nullable|json',
-            'task_lists' => 'nullable|json',
-            'pdf_files' => 'nullable|json',
-            'documents' => 'nullable|json',
-            'internal_links' => 'nullable|json',
-            'external_links' => 'nullable|json',
-            'calendars' => 'nullable|json',
-            'maps' => 'nullable|json',
+
+            'links' => 'nullable|string',
             'facebook_link' => 'nullable|url',
             'twitter_link' => 'nullable|url',
             'youtube_link' => 'nullable|url',

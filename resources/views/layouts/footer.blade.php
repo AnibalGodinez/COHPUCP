@@ -20,12 +20,12 @@
     </div>
 
     <div class="text-center mt-4">
-        <p class="text-white font-weight-bold" style="font-size: 12px;">CONTACTANOS</p>
+        <p class="text-white font-weight-bold" style="font-size: 12px;">NUESTRAS REDES SOCIALES</p>
     </div>
 
     <div class="social-icons text-center mt-2">
         <!-- Replace # with your actual social media links -->
-        <a href="https://www.facebook.com/people/Cohpucp-Sps/100063917986775/" target="_blank" class="mr-3">
+        <a href="https://www.facebook.com/share/xcP8gQUMYwfeVb52/?mibextid=LQQJ4d" target="_blank" class="mr-3">
             <i class="fab fa-facebook fa-lg" style="color: rgb(8, 102, 255);"></i>
         </a>
         <a href="https://www.instagram.com/cohpucphn/" target="_blank" class="mr-3">

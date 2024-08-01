@@ -43,6 +43,7 @@
                                             Sin imagen
                                         @endif
                                     </td>
+
                                     <td class="text-center">
                                         <a href="{{ route('welcome-content.edit', $content->id) }}" class="btn btn-success btn-sm btn-icon">
                                             <i class="tim-icons icon-settings"></i>
@@ -55,6 +56,7 @@
                                                 <i class="tim-icons icon-simple-remove"></i>
                                             </button>
                                         </form>
+                                        
                                     </td>
                                 </tr>
                             @endforeach
