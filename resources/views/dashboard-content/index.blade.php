@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <h1>Contenido del Dashboard</h1>
-        <a href="{{ route('dashboard-contents.create') }}" class="btn btn-primary">Crear Nuevo Contenido</a>
+        <a href="{{ route('dashboard-content.create') }}" class="btn btn-primary">Crear Nuevo Contenido</a>
 
         <table class="table mt-4">
             <thead>

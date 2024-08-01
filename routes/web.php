@@ -108,5 +108,5 @@ use App\Http\Controllers\DashboardContentController;
 
 	// RUTAS DE CONTENIDO DEL DASHBOARD
 	Route::group(['middleware' => ['auth']], function () {
-		Route::resource('dashboard-contents', DashboardContentController::class);
+		Route::resource('dashboard-content', DashboardContentController::class);
 	});

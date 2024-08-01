@@ -9,7 +9,6 @@ class DashboardContent extends Model
 {
     use HasFactory;
 
-    // Especifica los campos que se pueden asignar masivamente
     protected $fillable = [
         'layout',
         'title',
@@ -35,7 +34,6 @@ class DashboardContent extends Model
         'user_id',
     ];
 
-    // Definir la relación con el modelo User
     public function user()
     {
         return $this->belongsTo(User::class);

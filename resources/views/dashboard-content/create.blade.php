@@ -6,7 +6,7 @@
     <div class="container">
         <h1>Crear Nuevo Contenido del Dashboard</h1>
 
-        <form action="{{ route('dashboard-contents.store') }}" method="POST">
+        <form action="{{ route('dashboard-content.store') }}" method="POST">
             @csrf
 
             <div class="form-group">
@@ -112,11 +112,6 @@
             <div class="form-group">
                 <label for="instagram_link">Enlace de Instagram:</label>
                 <input type="text" name="instagram_link" id="instagram_link" class="form-control" value="{{ old('instagram_link') }}">
-            </div>
-
-            <div class="form-group">
-                <label for="user_id">ID de Usuario:</label>
-                <input type="number" name="user_id" id="user_id" class="form-control" value="{{ old('user_id') }}">
             </div>
 
             <button type="submit" class="btn btn-primary">Guardar</button>
