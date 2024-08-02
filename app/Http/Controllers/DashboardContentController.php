@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\DashboardContent;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 class DashboardContentController extends Controller
 {
@@ -56,37 +56,23 @@ class DashboardContentController extends Controller
 
             // Manejar el video si se ha subido
             if ($request->hasFile('videos')) {
-                $videoPath = $request->file('videos')->store('dashboard_videos', 'public');
-                $validatedData['videos'] = $videoPath;
+                $validatedData['videos'] = $request->file('videos')->store('dashboard_videos', 'public');
             }
 
             // Crear el contenido del dashboard con todos los campos
-            DashboardContent::create([
-                'layout' => $validatedData['layout'],
-                'title' => $validatedData['title'] ?? null,
-                'subtitle' => $validatedData['subtitle'] ?? null,
-                'description' => $validatedData['description'] ?? null,
-                'pdf' => $validatedData['pdf'] ?? null,
-                'images' => $validatedData['images'] ?? null,
-                'videos' => $validatedData['videos'] ?? null,
-                'links' => $validatedData['links'] ?? null,
-                'facebook_link' => $validatedData['facebook_link'] ?? null,
-                'twitter_link' => $validatedData['twitter_link'] ?? null,
-                'youtube_link' => $validatedData['youtube_link'] ?? null,
-                'whatsapp_link' => $validatedData['whatsapp_link'] ?? null,
-                'instagram_link' => $validatedData['instagram_link'] ?? null,
-                'user_id' => auth()->id(),
-            ]);
+            DashboardContent::create(array_merge(
+                $validatedData,
+                ['user_id' => auth()->id()]
+            ));
 
             return redirect()->route('dashboard-content.index')->with('success', 'Contenido del dashboard creado exitosamente.');
         } catch (\Exception $e) {
             // Log the error message
-            \Log::error('Error uploading video: ' . $e->getMessage());
+            Log::error('Error al subir archivo: ' . $e->getMessage());
 
-            return redirect()->back()->with('error', 'El video no se pudo subir.')->withInput();
+            return redirect()->back()->with('error', 'No se pudo subir el contenido.')->withInput();
         }
     }
-
 
     // Mostrar el formulario para editar un contenido del dashboard
     public function edit(DashboardContent $dashboardContent)
@@ -113,47 +99,56 @@ class DashboardContentController extends Controller
             'youtube_link' => 'nullable|url',
             'whatsapp_link' => 'nullable|url',
             'instagram_link' => 'nullable|url',
-            'user_id' => 'nullable|exists:users,id',
         ]);
 
-        // Manejar la imagen si se ha subido una nueva
-        if ($request->hasFile('images')) {
-            // Borrar la imagen anterior si existe
-            if ($dashboardContent->images) {
-                Storage::disk('public')->delete($dashboardContent->images);
+        try {
+            // Manejar la imagen si se ha subido una nueva
+            if ($request->hasFile('images')) {
+                if ($dashboardContent->images) {
+                    Storage::disk('public')->delete($dashboardContent->images);
+                }
+                $validatedData['images'] = $request->file('images')->store('dashboard_images', 'public');
             }
-            $validatedData['images'] = $request->file('images')->store('dashboard_images', 'public');
-        }
 
-        // Manejar el video si se ha subido uno nuevo
-        if ($request->hasFile('videos')) {
-            // Borrar el video anterior si existe
-            if ($dashboardContent->videos) {
-                Storage::disk('public')->delete($dashboardContent->videos);
+            // Manejar el video si se ha subido uno nuevo
+            if ($request->hasFile('videos')) {
+                if ($dashboardContent->videos) {
+                    Storage::disk('public')->delete($dashboardContent->videos);
+                }
+                $validatedData['videos'] = $request->file('videos')->store('dashboard_videos', 'public');
             }
-            $validatedData['videos'] = $request->file('videos')->store('dashboard_videos', 'public');
+
+            $dashboardContent->update($validatedData);
+
+            return redirect()->route('dashboard-content.index')->with('success', 'Contenido del dashboard actualizado exitosamente.');
+        } catch (\Exception $e) {
+            // Log the error message
+            Log::error('Error al actualizar contenido: ' . $e->getMessage());
+
+            return redirect()->back()->with('error', 'No se pudo actualizar el contenido.')->withInput();
         }
-
-        $dashboardContent->update($validatedData);
-
-        return Redirect::route('dashboard-content.index')->with('success', 'Contenido del dashboard actualizado exitosamente.');
     }
 
     // Eliminar un contenido del dashboard
     public function destroy(DashboardContent $dashboardContent)
     {
-        // Borrar la imagen si existe
-        if ($dashboardContent->images) {
-            Storage::disk('public')->delete($dashboardContent->images);
+        try {
+            if ($dashboardContent->images) {
+                Storage::disk('public')->delete($dashboardContent->images);
+            }
+
+            if ($dashboardContent->videos) {
+                Storage::disk('public')->delete($dashboardContent->videos);
+            }
+
+            $dashboardContent->delete();
+
+            return redirect()->route('dashboard-content.index')->with('success', 'Contenido del dashboard eliminado exitosamente.');
+        } catch (\Exception $e) {
+            // Log the error message
+            Log::error('Error al eliminar contenido: ' . $e->getMessage());
+
+            return redirect()->back()->with('error', 'No se pudo eliminar el contenido.');
         }
-
-        // Borrar el video si existe
-        if ($dashboardContent->videos) {
-            Storage::disk('public')->delete($dashboardContent->videos);
-        }
-
-        $dashboardContent->delete();
-
-        return Redirect::route('dashboard-content.index')->with('success', 'Contenido del dashboard eliminado exitosamente.');
     }
 }

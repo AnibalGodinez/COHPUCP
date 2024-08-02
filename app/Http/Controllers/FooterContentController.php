@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\FooterContent;
+use Illuminate\Http\Request;
+
 
 class FooterContentController extends Controller
 {
@@ -33,7 +34,7 @@ class FooterContentController extends Controller
             'whatsapp_link' => 'nullable|url',
             'instagram_link' => 'nullable|url',
             'telegram_link' => 'nullable|url',
-            'linkendin_link' => 'nullable|url', // Corrección aquí
+            'linkendin_link' => 'nullable|url', 
             'boton' => 'nullable|string|max:255',
             'user_id' => 'nullable|exists:users,id',
         ]);

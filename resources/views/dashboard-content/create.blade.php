@@ -40,8 +40,11 @@
                                     <option value="Por defecto" {{ old('layout') == 'Por defecto' ? 'selected' : '' }}>Por Defecto</option>
                                     <option value="Archivos" {{ old('layout') == 'Archivos' ? 'selected' : '' }}>Archivos</option>
                                 </select>
-                            </div> 
-                        
+                            </div>
+
+                            <!-- Salto de línea -->
+                            <div class="w-100"></div>
+
                             <div class="form-group col-md-4" id="titleField">
                                 <label for="title">
                                     <i class="fa-font fa-quote-left" style="margin-right: 8px;"></i>
@@ -56,7 +59,7 @@
                                     placeholder="Ingrese el título">
                             </div>
                         
-                            <div class="form-group col-md-4" id="descriptionField">
+                            <div class="form-group col-md-4" id="subtitleField">
                                 <label for="subtitle">
                                     <i class="fa-text-height" style="margin-right: 8px;"></i>
                                     <strong>SUBTÍTULO:</strong>
@@ -68,6 +71,9 @@
                                     class="form-control" 
                                     value="{{ old('subtitle') }}">
                             </div>
+
+                            <!-- Salto de línea -->
+                            <div class="w-100"></div>
 
                             <div class="form-group col-md-12" id="descriptionField">
                                 <label for="description">
@@ -82,8 +88,11 @@
                                     placeholder="Ingrese la descripción">{{ old('description') }}</textarea>
                             </div>
 
+                            <!-- Salto de línea -->
+                            <div class="w-100"></div>
+
                             <!-- Campo para el link de agregar un archivo pdf -->
-                            <div class="form-group col-md-4 text-center">
+                            <div class="form-group col-md-4" id="pdfField">
                                 <label for="pdf" class="btn btn-default btn-simple">
                                     <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
                                     <strong>CLICK PARA AGREGAR UN ARCHIVO PDF</strong>
@@ -102,7 +111,7 @@
                             </div>
 
                             <!-- Campo para el link de agregar una imagen -->
-                            <div class="form-group col-md-4 text-center">
+                            <div class="form-group col-md-4" id="imageField">
                                 <label for="images" class="btn btn-default btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     <strong>CLICK PARA AGREGAR UNA IMAGEN</strong>
@@ -121,7 +130,7 @@
                             </div>
 
                             <!-- Campo para el link de agregar un video -->
-                            <div class="form-group col-md-4 text-center">
+                            <div class="form-group col-md-4" id="videoField">
                                 <label for="videos" class="btn btn-default btn-simple">
                                     <i class="fas fa-file-video" style="margin-right: 8px;"></i>
                                     <strong>CLICK PARA AGREGAR UN VIDEO</strong>
@@ -143,8 +152,20 @@
                             </div>
 
                             <!-- Campos de enlaces -->
-                            @foreach (['links', 'facebook_link', 'twitter_link', 'youtube_link', 'whatsapp_link', 'instagram_link'] as $link)
-                                <div class="form-group col-md-4">
+                            <div class="form-group col-md-4" id="linksField">
+                                <label for="links">
+                                    <i class="fas fa-link" style="margin-right: 8px;"></i>
+                                    <strong>LINKS:</strong>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="links" 
+                                    name="links" 
+                                    value="{{ old('links') }}">
+                            </div>
+                            @foreach (['facebook_link', 'twitter_link', 'youtube_link', 'whatsapp_link', 'instagram_link'] as $link)
+                                <div class="form-group col-md-4" id="{{ $link }}Field">
                                     <label for="{{ $link }}">
                                         <i class="fas fa-link" style="margin-right: 8px;"></i>
                                         <strong> {{ strtoupper(str_replace('_', ' ', $link)) }}</strong>
@@ -158,6 +179,7 @@
                                 </div>
                             @endforeach
                         </div>
+
                         <div class="form-group text">
                             <button type="submit" class="btn btn-success me-2">Guardar</button>
                             <a href="{{ route('dashboard-content.index') }}" class="btn btn-secondary">Cancelar</a>
@@ -168,83 +190,94 @@
         </div>
     </div>
 </div>
-    <script>
-        function previewImage() {
-            const file = document.getElementById('images').files[0];
-            const imagePreview = document.getElementById('imagePreview');
-            
-            if (file) {
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    imagePreview.src = e.target.result;
-                    imagePreview.style.display = 'block';
-                }
-                
-                reader.readAsDataURL(file);
-            } else {
-                imagePreview.src = '#';
-                imagePreview.style.display = 'none';
-            }
-        }
-    
-        function previewPDF() {
-            const file = document.getElementById('pdf').files[0];
-            const pdfPreview = document.getElementById('pdfPreview');
-            
-            if (file) {
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    pdfPreview.src = e.target.result;
-                    pdfPreview.style.display = 'block';
-                }
-                
-                reader.readAsDataURL(file);
-            } else {
-                pdfPreview.src = '#';
-                pdfPreview.style.display = 'none';
-            }
-        }
 
-        function previewVideo() {
-            const file = document.getElementById('videos').files[0];
-            const video = document.getElementById('videoPreview');
-            const source = document.getElementById('videoSource');
+<script>
+    function previewImage() {
+        const file = document.getElementById('images').files[0];
+        const imagePreview = document.getElementById('imagePreview');
+        
+        if (file) {
+            const reader = new FileReader();
             
-            if (file) {
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    source.src = e.target.result;
-                    video.style.display = 'block';
-                    video.load();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+            }
+            
+            reader.readAsDataURL(file);
+        } else {
+            imagePreview.src = '#';
+            imagePreview.style.display = 'none';
+        }
+    }
+
+    function previewPDF() {
+        const file = document.getElementById('pdf').files[0];
+        const pdfPreview = document.getElementById('pdfPreview');
+        
+        if (file) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                pdfPreview.src = e.target.result;
+                pdfPreview.style.display = 'block';
+            }
+            
+            reader.readAsDataURL(file);
+        } else {
+            pdfPreview.src = '#';
+            pdfPreview.style.display = 'none';
+        }
+    }
+
+    function previewVideo() {
+        const file = document.getElementById('videos').files[0];
+        const video = document.getElementById('videoPreview');
+        const source = document.getElementById('videoSource');
+        
+        if (file) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                source.src = e.target.result;
+                video.style.display = 'block';
+                video.load();
+            }
+            
+            reader.readAsDataURL(file);
+        } else {
+            source.src = '#';
+            video.style.display = 'none';
+        }
+    }
+
+    function toggleFields() {
+        const layout = document.getElementById('layout').value;
+        
+        const fieldsToShow = ['pdfField', 'imageField', 'videoField'];
+        const fieldsToHide = ['linksField', 'facebook_linkField', 'twitter_linkField', 'youtube_linkField', 'whatsapp_linkField', 'instagram_linkField'];
+        const allFields = ['titleField', 'subtitleField', 'descriptionField'].concat(fieldsToShow).concat(fieldsToHide);
+
+        if (layout === 'Archivos') {
+            // Mostrar campos de archivos y ocultar campos de enlaces y otros
+            fieldsToShow.forEach(id => document.getElementById(id).style.display = 'block');
+            fieldsToHide.forEach(id => document.getElementById(id).style.display = 'none');
+            allFields.forEach(id => {
+                if (!fieldsToShow.includes(id) && !fieldsToHide.includes(id)) {
+                    document.getElementById(id).style.display = 'none';
                 }
-                
-                reader.readAsDataURL(file);
-            } else {
-                source.src = '#';
-                video.style.display = 'none';
-            }
+            });
+        } else {
+            // Mostrar todos los campos
+            allFields.forEach(id => document.getElementById(id).style.display = 'block');
         }
+    }
 
-        function toggleFields() {
-            const layout = document.getElementById('layout').value;
-            const titleField = document.getElementById('titleField');
-            const descriptionField = document.getElementById('descriptionField');
-            
-            if (layout === 'Imagen') {
-                titleField.style.display = 'none';
-                descriptionField.style.display = 'none';
-            } else {
-                titleField.style.display = 'block';
-                descriptionField.style.display = 'block';
-            }
-        }
+    // Ejecutar al cargar la página para manejar la persistencia de los campos después de un error
+    document.addEventListener('DOMContentLoaded', function() {
+        toggleFields();
+    });
+</script>
 
-        // Ejecutar al cargar la página para manejar la persistencia de los campos después de un error
-        document.addEventListener('DOMContentLoaded', function() {
-            toggleFields();
-        });
-    </script>
+
 @endsection
