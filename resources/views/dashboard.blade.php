@@ -54,7 +54,7 @@
                         </div>
 
                     {{-- CONTENEDOR IMAGEN --}}
-                    @elseif($dashboardContent->layout == 'Imagen')
+                    @elseif($dashboardContent->layout == 'Archivos')
                         <div class="card border-0 position-relative p-0">
                             @if($dashboardContent->images)
                                 <img src="{{ asset('storage/' . $dashboardContent->images) }}" alt="{{ $dashboardContent->title }}" class="img-fluid w-100 h-100" style="object-fit: cover;">

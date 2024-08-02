@@ -39,7 +39,7 @@
                                     required>
                                     <option value="" disabled>Selecciona una opción</option>
                                     <option value="Por defecto" {{ $dashboardContent->layout == 'Por defecto' ? 'selected' : '' }}>Por Defecto</option>
-                                    <option value="Imagen" {{ $dashboardContent->layout == 'Imagen' ? 'selected' : '' }}>Imagen</option>
+                                    <option value="Archivos" {{ $dashboardContent->layout == 'Archivos' ? 'selected' : '' }}>Archivos</option>
                                 </select>
                             </div> 
                         

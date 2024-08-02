@@ -38,7 +38,7 @@
                                     required>
                                     <option value="" disabled selected>Selecciona una opción</option>
                                     <option value="Por defecto" {{ old('layout') == 'Por defecto' ? 'selected' : '' }}>Por Defecto</option>
-                                    <option value="Imagen" {{ old('layout') == 'Imagen' ? 'selected' : '' }}>Imagen</option>
+                                    <option value="Archivos" {{ old('layout') == 'Archivos' ? 'selected' : '' }}>Archivos</option>
                                 </select>
                             </div> 
                         

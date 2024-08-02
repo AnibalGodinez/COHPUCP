@@ -27,7 +27,7 @@ class DashboardContentController extends Controller
     public function store(Request $request)
 {
     $validatedData = $request->validate([
-        'layout' => 'required|string|in:Por defecto,Imagen',
+        'layout' => 'required|string|in:Por defecto,Archivos',
         'title' => 'nullable|string|max:255',
         'subtitle' => 'nullable|string|max:255',
         'description' => 'nullable|string',
@@ -91,7 +91,7 @@ class DashboardContentController extends Controller
     public function update(Request $request, DashboardContent $dashboardContent)
     {
         $validatedData = $request->validate([
-            'layout' => 'required|string|in:Por defecto,Imagen',
+            'layout' => 'required|string|in:Por defecto,archivos',
             'title' => 'nullable|string|max:255',
             'subtitle' => 'nullable|string|max:255',
             'description' => 'nullable|string',
