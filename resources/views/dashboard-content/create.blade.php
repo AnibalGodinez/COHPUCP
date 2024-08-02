@@ -9,11 +9,11 @@
                     <h3 class="card-title" style="color: beige"><strong>AÑADIR NUEVO CONTENIDO A LA PÁGINA PRINCIPAL</strong></h3>
                 </div>
 
-                <!-- Mostrar mensajes de error para el campo de imagen -->
-                @if ($errors->has('image_path'))
+                <!-- Mostrar mensajes de error para los campos -->
+                @if ($errors->any())
                     <div class="alert alert-danger mx-4 mt-3">
                         <ul class="mb-0">
-                            @foreach ($errors->get('image_path') as $error)
+                            @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
@@ -42,9 +42,9 @@
                                 </select>
                             </div> 
                         
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-4" id="titleField">
                                 <label for="title">
-                                    <i class=" fa-font fa-quote-left" style="margin-right: 8px;"></i>
+                                    <i class="fa-font fa-quote-left" style="margin-right: 8px;"></i>
                                     <strong>TÍTULO:</strong>
                                 </label>
                                 <input  
@@ -56,9 +56,9 @@
                                     placeholder="Ingrese el título">
                             </div>
                         
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-4" id="descriptionField">
                                 <label for="subtitle">
-                                    <i class="fa-text-height" style="margin-right: 8px;"></i> <!-- Icono de texto adicional -->
+                                    <i class="fa-text-height" style="margin-right: 8px;"></i>
                                     <strong>SUBTÍTULO:</strong>
                                 </label>
                                 <input 
@@ -69,7 +69,7 @@
                                     value="{{ old('subtitle') }}">
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-12" id="descriptionField">
                                 <label for="description">
                                     <i class="fas fa-align-left" style="margin-right: 8px;"></i>
                                     <strong>DESCRIPCIÓN:</strong>
@@ -142,95 +142,26 @@
                                     </div>
                             </div>
 
-                            <!-- Campo para el link de facebook -->
-                            <div class="form-group col-md-4">
-                                <label for="links">
-                                    <i class="fas fa-link" style="margin-right: 8px;"></i>
-                                    <strong>ENLACE</strong>
-                                </label>
-                                <input 
-                                    type="text" 
-                                    class="form-control" 
-                                    id="links" 
-                                    name="links" 
-                                    value="{{ old('links')}}">
-                            </div>
-
-                            <!-- Campo para el link de facebook -->
-                            <div class="form-group col-md-4">
-                                <label for="facebook_link">
-                                    <i class="fab fa-facebook" style="color: #0865FE; margin-right: 8px;"></i>
-                                    <strong>ENLACE DE FACEBOOK</strong>
-                                </label>
-                                <input 
-                                    type="text" 
-                                    class="form-control" 
-                                    id="facebook_link" 
-                                    name="facebook_link" 
-                                    value="{{ old('facebook_link')}}">
-                            </div>
-
-                            <!-- Campo para el link de twitter -->
-                            <div class="form-group col-md-4">
-                                <label for="twitter_link">
-                                    <i class="fab fa-twitter" style="color: #00A2F3; margin-right: 8px;"></i>
-                                    <strong>ENLACE DE TWITTER</strong>
-                                </label>
-                                <input 
-                                    type="text" 
-                                    class="form-control" 
-                                    id="twitter_link" 
-                                    name="twitter_link"
-                                    value="{{ old('twitter_link')}}">
-                            </div>
-
-                            <!-- Campo para el link de youtube -->
-                            <div class="form-group col-md-4">
-                                <label for="youtube_link">
-                                    <i class="fab fa-youtube" style="color: #fa0404; margin-right: 8px;"></i>
-                                    <strong>ENLACE DE YOUTUBE</strong>
-                                </label>
-                                <input 
-                                    type="text" 
-                                    class="form-control" 
-                                    id="youtube_link" 
-                                    name="youtube_link" 
-                                    value="{{ old('youtube_link')}}">
-                            </div>
-
-                            <!-- Campo para el link de whatsapp -->
-                            <div class="form-group col-md-4">
-                                <label for="whatsapp_link">
-                                    <i class="fab fa-whatsapp" style="color: #4FCB5B; margin-right: 8px;"></i>
-                                    <strong>ENLACE DE WHATSAPP</strong>
-                                </label>
-                                <input 
-                                    type="text" 
-                                    class="form-control" 
-                                    id="whatsapp_link" 
-                                    name="whatsapp_link" 
-                                    value="{{ old('whatsapp_link')}}">
-                            </div>
-
-                            <!-- Campo para el link de instagram -->
-                            <div class="form-group col-md-4">
-                                <label for="instagram_link">
-                                    <i class="fab fa-instagram" style="color: #d46363; margin-right: 8px;"></i>
-                                    <strong>ENLACE DE INSTAGRAM</strong>
-                                </label>
-                                <input 
-                                    type="text" 
-                                    class="form-control" 
-                                    id="instagram_link" 
-                                    name="instagram_link" 
-                                    value="{{ old('instagram_link')}}">
-                            </div>
-
+                            <!-- Campos de enlaces -->
+                            @foreach (['links', 'facebook_link', 'twitter_link', 'youtube_link', 'whatsapp_link', 'instagram_link'] as $link)
+                                <div class="form-group col-md-4">
+                                    <label for="{{ $link }}">
+                                        <i class="fas fa-link" style="margin-right: 8px;"></i>
+                                        <strong> {{ strtoupper(str_replace('_', ' ', $link)) }}</strong>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="{{ $link }}" 
+                                        name="{{ $link }}" 
+                                        value="{{ old($link) }}">
+                                </div>
+                            @endforeach
                         </div>
                         <div class="form-group text">
                             <button type="submit" class="btn btn-success me-2">Guardar</button>
                             <a href="{{ route('dashboard-content.index') }}" class="btn btn-secondary">Cancelar</a>
-                    </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -275,7 +206,7 @@
                 pdfPreview.style.display = 'none';
             }
         }
-    
+
         function previewVideo() {
             const file = document.getElementById('videos').files[0];
             const video = document.getElementById('videoPreview');
@@ -296,12 +227,12 @@
                 video.style.display = 'none';
             }
         }
-    
+
         function toggleFields() {
             const layout = document.getElementById('layout').value;
             const titleField = document.getElementById('titleField');
             const descriptionField = document.getElementById('descriptionField');
-    
+            
             if (layout === 'Imagen') {
                 titleField.style.display = 'none';
                 descriptionField.style.display = 'none';
@@ -310,7 +241,7 @@
                 descriptionField.style.display = 'block';
             }
         }
-    
+
         // Ejecutar al cargar la página para manejar la persistencia de los campos después de un error
         document.addEventListener('DOMContentLoaded', function() {
             toggleFields();

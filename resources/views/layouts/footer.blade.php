@@ -1,4 +1,4 @@
-<footer class="footer bg-dark text-white py-4">
+<footer class="footer text-white py-4" style="background-color: #0A152F;">
     <div class="container-fluid">
         <ul class="nav">
             <li class="nav-item">

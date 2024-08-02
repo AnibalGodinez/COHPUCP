@@ -40,33 +40,33 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dashboardContents as $content)
+                                @foreach ($dashboardContents as $dashboardContent)
                                     <tr>
-                                        <td class="text-center">{{ $content->layout }}</td>
-                                        <td>{{ $content->title }}</td>
-                                        <td>{{ $content->subtitle }}</td>
-                                        <td>{{ $content->description }}</td>
-                                        <td>{{ $content->pdf }}</td>
+                                        <td class="text-center">{{ $dashboardContent->layout }}</td>
+                                        <td>{{ $dashboardContent->title }}</td>
+                                        <td>{{ $dashboardContent->subtitle }}</td>
+                                        <td>{{ $dashboardContent->description }}</td>
+                                        <td>{{ $dashboardContent->pdf }}</td>
                                         <td class="text-center">
-                                            @if($content->images)
-                                                <img src="{{ asset('storage/' . $content->images) }}" alt="{{ $content->title }}" width="100">
+                                            @if($dashboardContent->images)
+                                                <img src="{{ asset('storage/' . $dashboardContent->images) }}" alt="{{ $dashboardContent->title }}" width="100">
                                             @else
                                                 Sin imagen
                                             @endif
                                         </td>
-                                        <td>{{ $content->videos }}</td>
-                                        <td>{{ $content->links }}</td>
-                                        <td>{{ $content->facebook_link }}</td>
-                                        <td>{{ $content->twitter_link }}</td>
-                                        <td>{{ $content->youtube_link }}</td>
-                                        <td>{{ $content->whatsapp_link }}</td>
-                                        <td>{{ $content->instagram_link }}</td>
+                                        <td>{{ $dashboardContent->videos }}</td>
+                                        <td>{{ $dashboardContent->links }}</td>
+                                        <td>{{ $dashboardContent->facebook_link }}</td>
+                                        <td>{{ $dashboardContent->twitter_link }}</td>
+                                        <td>{{ $dashboardContent->youtube_link }}</td>
+                                        <td>{{ $dashboardContent->whatsapp_link }}</td>
+                                        <td>{{ $dashboardContent->instagram_link }}</td>
                                         <td class="text-center">
-                                            <a href="{{ route('dashboard-content.edit', $content->id) }}" class="btn btn-success btn-sm btn-icon">
+                                            <a href="{{ route('dashboard-content.edit', $dashboardContent->id) }}" class="btn btn-success btn-sm btn-icon">
                                                 <i class="tim-icons icon-settings"></i>
                                             </a>
     
-                                            <form action="{{ route('dashboard-content.destroy', $content->id) }}" method="POST" style="display:inline;">
+                                            <form action="{{ route('dashboard-content.destroy', $dashboardContent->id) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm btn-icon" onclick="return confirm('¿Estás seguro de que deseas eliminar este contenido?')">

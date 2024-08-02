@@ -25,40 +25,61 @@ class DashboardContentController extends Controller
 
     // Almacenar un nuevo contenido del dashboard
     public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'layout' => 'required|string|in:Por defecto,Imagen',
-            'title' => 'nullable|string|max:255',
-            'subtitle' => 'nullable|string|max:255',
-            'description' => 'nullable|string',
+{
+    $validatedData = $request->validate([
+        'layout' => 'required|string|in:Por defecto,Imagen',
+        'title' => 'nullable|string|max:255',
+        'subtitle' => 'nullable|string|max:255',
+        'description' => 'nullable|string',
 
-            'pdf' => 'nullable|file',
-            'images' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:2048',
-            'videos' => 'nullable|file|mimes:mp4,mov,avi,wmv,3gp,flv|max:10240',
+        'pdf' => 'nullable|file|mimes:pdf|max:5120',
+        'images' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:2048',
+        'videos' => 'nullable|file|mimes:mp4,mov,avi,wmv,3gp,flv|max:10240',
 
-            'links' => 'nullable|string',
-            'facebook_link' => 'nullable|url',
-            'twitter_link' => 'nullable|url',
-            'youtube_link' => 'nullable|url',
-            'whatsapp_link' => 'nullable|url',
-            'instagram_link' => 'nullable|url',
-            'user_id' => 'nullable|exists:users,id',
-        ]);
+        'links' => 'nullable|string|url',
+        'facebook_link' => 'nullable|url',
+        'twitter_link' => 'nullable|url',
+        'youtube_link' => 'nullable|url',
+        'whatsapp_link' => 'nullable|url',
+        'instagram_link' => 'nullable|url',
+    ]);
 
-        // Manejar la imagen si se ha subido
-        if ($request->hasFile('images')) {
-            $validatedData['images'] = $request->file('images')->store('dashboard_images', 'public');
-        }
-
-        // Manejar el video si se ha subido
-        if ($request->hasFile('videos')) {
-            $validatedData['videos'] = $request->file('videos')->store('dashboard_videos', 'public');
-        }
-
-        DashboardContent::create($validatedData);
-
-        return Redirect::route('dashboard-content.index')->with('success', 'Contenido del dashboard creado exitosamente.');
+    // Manejar el archivo PDF si se ha subido
+    if ($request->hasFile('pdf')) {
+        $validatedData['pdf'] = $request->file('pdf')->store('dashboard_pdfs', 'public');
     }
+
+    // Manejar la imagen si se ha subido
+    if ($request->hasFile('images')) {
+        $validatedData['images'] = $request->file('images')->store('dashboard_images', 'public');
+    }
+
+    // Manejar el video si se ha subido
+    if ($request->hasFile('videos')) {
+        $validatedData['videos'] = $request->file('videos')->store('dashboard_videos', 'public');
+    }
+
+    // Crear el contenido del dashboard con todos los campos
+    DashboardContent::create([
+        'layout' => $validatedData['layout'], // Guardar el diseño seleccionado
+        'title' => $validatedData['title'] ?? null,
+        'subtitle' => $validatedData['subtitle'] ?? null,
+        'description' => $validatedData['description'] ?? null,
+        'pdf' => $validatedData['pdf'] ?? null,
+        'images' => $validatedData['images'] ?? null,
+        'videos' => $validatedData['videos'] ?? null,
+        'links' => $validatedData['links'] ?? null,
+        'facebook_link' => $validatedData['facebook_link'] ?? null,
+        'twitter_link' => $validatedData['twitter_link'] ?? null,
+        'youtube_link' => $validatedData['youtube_link'] ?? null,
+        'whatsapp_link' => $validatedData['whatsapp_link'] ?? null,
+        'instagram_link' => $validatedData['instagram_link'] ?? null,
+        'user_id' => auth()->id(), // Asignar el ID del usuario autenticado
+    ]);
+
+    return redirect()->route('dashboard-content.index')->with('success', 'Contenido del dashboard creado exitosamente.');
+}
+
 
     // Mostrar el formulario para editar un contenido del dashboard
     public function edit(DashboardContent $dashboardContent)
@@ -77,7 +98,7 @@ class DashboardContentController extends Controller
 
             'pdf' => 'nullable|file',
             'images' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:2048',
-            'videos' => 'nullable|file|mimes:mp4,mov,avi,wmv,flv|max:10240',
+            'videos' => 'nullable|file|mimes:mp4,mov,avi,wmv,3gp,flv|max:10240',
 
             'links' => 'nullable|string',
             'facebook_link' => 'nullable|url',
