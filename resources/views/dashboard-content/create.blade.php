@@ -167,8 +167,18 @@
                             @foreach (['facebook_link', 'twitter_link', 'youtube_link', 'whatsapp_link', 'instagram_link'] as $link)
                                 <div class="form-group col-md-4" id="{{ $link }}Field">
                                     <label for="{{ $link }}">
-                                        <i class="fas fa-link" style="margin-right: 8px;"></i>
-                                        <strong> {{ strtoupper(str_replace('_', ' ', $link)) }}</strong>
+                                        @if($link == 'facebook_link')
+                                            <i class="fab fa-facebook" style="margin-right: 8px; color:#0865FE"></i>
+                                        @elseif($link == 'twitter_link')
+                                            <i class="fab fa-x" style="margin-right: 8px; color:#000000"></i>
+                                        @elseif($link == 'youtube_link')
+                                            <i class="fab fa-youtube" style="margin-right: 8px; color:#FF0000"></i>
+                                        @elseif($link == 'whatsapp_link')
+                                            <i class="fab fa-whatsapp" style="margin-right: 8px; color:#4AC958"></i>
+                                        @elseif($link == 'instagram_link')
+                                            <i class="fab fa-instagram" style="margin-right: 8px; color:#FE0967"></i>
+                                        @endif
+                                        <strong>{{ strtoupper(str_replace('_', ' ', $link)) }}</strong>
                                     </label>
                                     <input 
                                         type="text" 
@@ -180,9 +190,17 @@
                             @endforeach
                         </div>
 
-                        <div class="form-group text">
-                            <button type="submit" class="btn btn-success me-2">Guardar</button>
-                            <a href="{{ route('dashboard-content.index') }}" class="btn btn-secondary">Cancelar</a>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-save" style="margin-right: 8px;"></i>
+                                    Guardar
+                                </button>
+                                <a href="{{ route('dashboard-content.index') }}" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                                    Volver
+                                </a>
+                            </div>
                         </div>
                     </form>
                 </div>

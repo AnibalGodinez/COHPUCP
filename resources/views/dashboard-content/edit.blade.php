@@ -152,11 +152,11 @@
                                     </div>
                             </div>
 
-                            <!-- Campo para el link de facebook -->
+                            <!-- Campo para el link -->
                             <div class="form-group col-md-4">
                                 <label for="links">
                                     <i class="fas fa-link" style="margin-right: 8px;"></i>
-                                    <strong>ENLACE</strong>
+                                    <strong>LINKS</strong>
                                 </label>
                                 <input 
                                     type="text" 
@@ -166,11 +166,25 @@
                                     value="{{ old('links', $dashboardContent->links) }}">
                             </div>
 
+                            <!-- Campo para facebook -->
+                            <div class="form-group col-md-4">
+                                <label for="facebook_link">
+                                    <i class="fab fa-facebook" style="margin-right: 8px; color:#0865FE"></i>
+                                    <strong>FACEBOOK LINK</strong>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="facebook_link" 
+                                    name="facebook_link" 
+                                    value="{{ old('facebook_link', $dashboardContent->facebook_link) }}">
+                            </div>
+
                             <!-- Campo para el link de twitter -->
                             <div class="form-group col-md-4">
                                 <label for="twitter_link">
-                                    <i class="fab fa-twitter" style="color: #1DA1F2; margin-right: 8px;"></i>
-                                    <strong>ENLACE DE TWITTER</strong>
+                                    <i class="fab fa-x" style="color:#000000; margin-right: 8px;"></i>
+                                    <strong>TWITTER LINK</strong>
                                 </label>
                                 <input 
                                     type="text" 
@@ -180,11 +194,25 @@
                                     value="{{ old('twitter_link', $dashboardContent->twitter_link) }}">
                             </div>
 
+                            <!-- Campo para el link de youtube -->
+                            <div class="form-group col-md-4">
+                                <label for="youtube_link">
+                                    <i class="fab fa-youtube" style="color:#FF0000; margin-right: 8px;"></i>
+                                    <strong>YOUTUBE LINK</strong>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="youtube_link" 
+                                    name="youtube_link" 
+                                    value="{{ old('youtube_link', $dashboardContent->youtube_link) }}">
+                            </div>
+
                             <!-- Campo para el link de whatsapp -->
                             <div class="form-group col-md-4">
                                 <label for="whatsapp_link">
-                                    <i class="fab fa-whatsapp" style="color: #0089D4; margin-right: 8px;"></i>
-                                    <strong>ENLACE DE WHATSAPP</strong>
+                                    <i class="fab fa-whatsapp" style="color:#4AC958; margin-right: 8px;"></i>
+                                    <strong>WHATSAPP LINK</strong>
                                 </label>
                                 <input 
                                     type="text" 
@@ -194,39 +222,11 @@
                                     value="{{ old('whatsapp_link', $dashboardContent->whatsapp_link) }}">
                             </div>
 
-                            <!-- Campo para el link de telegram -->
-                            <div class="form-group col-md-4">
-                                <label for="telegram_link">
-                                    <i class="fab fa-telegram" style="color: #0088cc; margin-right: 8px;"></i>
-                                    <strong>ENLACE DE TELEGRAM</strong>
-                                </label>
-                                <input 
-                                    type="text" 
-                                    class="form-control" 
-                                    id="telegram_link" 
-                                    name="telegram_link" 
-                                    value="{{ old('telegram_link', $dashboardContent->telegram_link) }}">
-                            </div>
-
-                            <!-- Campo para el link de pinterest -->
-                            <div class="form-group col-md-4">
-                                <label for="pinterest_link">
-                                    <i class="fab fa-pinterest" style="color: #e60023; margin-right: 8px;"></i>
-                                    <strong>ENLACE DE PINTEREST</strong>
-                                </label>
-                                <input 
-                                    type="text" 
-                                    class="form-control" 
-                                    id="pinterest_link" 
-                                    name="pinterest_link" 
-                                    value="{{ old('pinterest_link', $dashboardContent->pinterest_link) }}">
-                            </div>
-
                             <!-- Campo para el link de instagram -->
                             <div class="form-group col-md-4">
                                 <label for="instagram_link">
                                     <i class="fab fa-instagram" style="color: #C13584; margin-right: 8px;"></i>
-                                    <strong>ENLACE DE INSTAGRAM</strong>
+                                    <strong>INSTAGRAM LINK</strong>
                                 </label>
                                 <input 
                                     type="text" 
@@ -241,11 +241,11 @@
                             <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-success">
                                     <i class="fas fa-save" style="margin-right: 8px;"></i>
-                                    {{ __('Actualizar') }}
+                                    Actualizar
                                 </button>
                                 <a href="{{ route('dashboard-content.index') }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
-                                    {{ __('Volver') }}
+                                    Volver
                                 </a>
                             </div>
                         </div>

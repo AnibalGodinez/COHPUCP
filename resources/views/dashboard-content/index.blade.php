@@ -40,10 +40,8 @@
                                             <td class="text-center" style="width: 120px;">
                                                 @if($dashboardContent->images)
                                                     <img src="{{ asset('storage/' . $dashboardContent->images) }}" alt="{{ $dashboardContent->title }}" width="100">
-                                                @else
-                                                    Sin imagen
                                                 @endif
-                                            </td>
+                                            </td>                                            
                                             <td style="width: 120px;">{{ $dashboardContent->videos }}</td>
                                             <td style="width: 120px;">{{ $dashboardContent->links }}</td>
                                             <td style="width: 120px;">{{ $dashboardContent->facebook_link }}</td>
