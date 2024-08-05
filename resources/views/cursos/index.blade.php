@@ -1,73 +1,90 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h3 class="title">Lista de Cursos</h3>
-                <div>
-                    <a href="{{ route('cursos.create') }}" class="btn btn-info btn-sm">
-                        <i class="fas fa-plus-circle"></i> Agregar un nuevo curso
-                    </a>
-                </div>
-            </div>                           
-
-            <div class="card-body">
-
-                {{-- Formulario de búsqueda --}}
-                <form action="{{ url('cursos') }}" method="GET" class="mb-4">
-                    <div class="input-group">
-                        <input type="text" name="search" class="form-control" placeholder="Buscar cursos" value="{{ request()->query('search') }}">
-                        <div class="input-group-append">
-                            <button class="btn btn-info btn-round btn-simple">
-                                <i class="tim-icons icon-zoom-split"></i> Buscar
-                            </button>
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card m-7">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">LISTA DE CURSOS</h3>
+                        <div class="mb-3">
+                            <a href="{{ route('cursos.create') }}" class="btn btn-info btn-round btn-simple">
+                                <i class="fas fa-plus-circle"></i> Agregar nuevo curso
+                            </a>
                         </div>
-                    </div>
-                </form>
 
-                @if ($cursos->isEmpty())
-                    <div class="alert alert-default text-center" role="alert">
-                        No hay ningún resultado de su búsqueda.
-                    </div>
-                @else
-                    <div class="row">
-                        @foreach ($cursos as $curso)
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4 class="card-title">{{ $curso->nombre }}</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="card-text">{{ $curso->descripcion }}</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-info btn-sm">Editar</a>
-                                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmarEliminacion({{ $curso->id }})">Eliminar</button>
-                                        <form id="delete-form-{{ $curso->id }}" action="{{ route('cursos.destroy', $curso->id) }}" method="POST" style="display:none;">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
-                                    </div>
+                        {{-- Mensajes de éxito --}}
+                        @if (session('success'))
+                            <div class="alert alert-success text-center">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        {{-- Formulario de búsqueda --}}
+                        <form action="{{ url('cursos') }}" method="GET" class="mb-4">
+                            <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Buscar cursos" value="{{ request()->query('search') }}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-info btn-round btn-simple">
+                                        <i class="tim-icons icon-zoom-split"></i> Buscar
+                                    </button>
                                 </div>
                             </div>
-                        @endforeach
+                        </form>
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Nombre</th>
+                                    <th class="text-center">Descripción</th>
+                                    <th class="text-center">Precio</th>
+                                    <th class="text-center">Enlace</th>
+                                    <th class="text-center">Calificación</th>
+                                    <th class="text-center">Idioma</th>
+                                    <th class="text-center">Imagen</th>
+                                    <th class="text-center">Acciones</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach ($cursos as $curso)
+                                    <tr>
+                                        <td class="text-center">{{ $curso->nombre }}</td>
+                                        <td class="text-center">{{ $curso->descripcion }}</td>
+                                        <td class="text-center">{{ $curso->precio }}</td>
+                                        <td class="text-center"><a href="{{ $curso->enlace }}" target="_blank">{{ $curso->enlace }}</a></td>
+                                        <td class="text-center">{{ $curso->calificacion }}</td>
+                                        <td class="text-center">{{ $curso->idioma }}</td>
+                                        <td class="text-center">
+                                            @if ($curso->imagen)
+                                                <img src="{{ asset('storage/cursos_images/' . $curso->imagen) }}" alt="Imagen del curso" style="width: 100px; height: auto;">
+                                            @else
+                                                Sin imagen
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="{{ route('cursos.edit', $curso) }}" class="btn btn-info">Editar</a>
+                                            <form action="{{ route('cursos.destroy', $curso) }}" method="POST" style="display:inline-block;" id="delete-form-{{ $curso->id }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger" onclick="return confirmDelete({{ $curso->id }})">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+                            </tbody>  
+                        </table>          
+                        {{ $cursos->links('paginacion.simple-bootstrap-4') }}
                     </div>
-                @endif
-                {{ $cursos->links('paginacion.simple-bootstrap-4') }}
+                </div>
             </div>
         </div>
     </div>
-</div>
+@endsection
 
-<!-- Script para confirmar eliminación -->
 <script>
-    function confirmarEliminacion(cursoId) {
-        if (confirm('¿Estás seguro de eliminar este curso?')) {
-            document.getElementById('delete-form-' + cursoId).submit();
-        }
+    function confirmDelete(id) {
+        return confirm('¿Estás seguro de que deseas eliminar este curso?');
     }
 </script>
-
-@endsection

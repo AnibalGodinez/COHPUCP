@@ -100,6 +100,7 @@ use App\Http\Controllers\FooterContentController;
 	// RUTAS DE CURSOS
 	Route::group(['middleware' =>['auth']], function () {
 		Route::resource('cursos', CursoController::class);
+		Route::get('/ver/cursos', [CursoController::class, 'viewCursos'])->name('cursos.view');
 	});
 
 	// RUTAS DE CONTENIDO DE LA PÁGINA DE INICIO

@@ -143,7 +143,7 @@
                         Desarrollo Profesional
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('cursos.index')}}">Cursos</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.view') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('cursos.view')}}">Cursos</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('capacitaciones.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
                         <a class="dropdown-item text-uppercase" href="#">Certificaciones</a>
                         <a class="dropdown-item text-uppercase" href="#">Talleres</a>
@@ -396,6 +396,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item text-uppercase {{request()->routeIs('security_questions.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('security_questions.index')}}">Preguntas de seguridad</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('pais.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('pais.index') }}">Países</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('cursos.index') }}">Cursos</a> 
                         <a class="dropdown-item text-uppercase {{request()->routeIs('dashboard-content.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('dashboard-content.index') }}">Inicio</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('welcome-content.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('welcome-content.index') }}">Home</a> 
                         <a class="dropdown-item text-uppercase {{request()->routeIs('footer-content.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('footer-content.index') }}">Pie de página</a> 

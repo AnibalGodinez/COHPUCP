@@ -4,7 +4,6 @@
     <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-md-12">
-
                 <div class="card m-7">
 
                     <div class="card-body">
@@ -42,6 +41,7 @@
                                         <td class="text-center">{{ $pais->id }}</td>
                                         <td class="text-center">{{ $pais->nombre }}</td>
                                         <td class="text-center">{{ $pais->codigo }}</td>
+                                        
                                         <td class="text-center">
 
                                             <a href="{{ route('pais.edit', $pais) }}" class="btn btn-info">Editar</a>
