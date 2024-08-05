@@ -26,6 +26,8 @@
                         @method('PUT')
 
                         <div class="form-row">
+
+                            <!-- Campo para seleccionar un nuevo diseño-->
                             <div class="form-group col-md-4">
                                 <label for="layout">
                                     <i class="fas fa-palette" style="margin-right: 8px;"></i>
@@ -43,6 +45,7 @@
                                 </select>
                             </div> 
                         
+                            <!-- Campo para agregar un nuevo título -->
                             <div class="form-group col-md-4">
                                 <label for="title">
                                     <i class="fa-font fa-quote-left" style="margin-right: 8px;"></i>
@@ -57,6 +60,7 @@
                                     placeholder="Ingrese el título">
                             </div>
                         
+                            <!-- Campo para agregar un nuevo subtítulo -->
                             <div class="form-group col-md-4">
                                 <label for="subtitle">
                                     <i class="fa-text-height" style="margin-right: 8px;"></i>
@@ -70,6 +74,7 @@
                                     value="{{ old('subtitle', $dashboardContent->subtitle) }}">
                             </div>
 
+                            <!-- Campo para agregar una nueva descripción -->
                             <div class="form-group col-md-12">
                                 <label for="description">
                                     <i class="fas fa-align-left" style="margin-right: 8px;"></i>
@@ -83,11 +88,11 @@
                                     placeholder="Ingrese la descripción">{{ old('description', $dashboardContent->description) }}</textarea>
                             </div>
 
-                            <!-- Campo para el link de agregar un archivo pdf -->
-                            <div class="form-group col-md-4 text-center">
+                             <!-- Campo para agregar un nuevo archivo pdf -->
+                             <div class="form-group col-md-4 text-center">
                                 <label for="pdf" class="btn btn-default btn-simple">
                                     <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
-                                    <strong>CLICK PARA AGREGAR UN ARCHIVO PDF</strong>
+                                    <strong>CLICK PARA CAMBIAR EL ARCHIVO PDF</strong>
                                 </label>
                                 <input 
                                     type="file" 
@@ -95,20 +100,24 @@
                                     id="pdf"
                                     class="form-control d-none"
                                     onchange="previewPDF()">
-                                    @if ($dashboardContent->pdf)
-                                        <a href="{{ asset('storage/' . $dashboardContent->pdf) }}" target="_blank">Ver PDF actual</a>
-                                    @endif
-                                    <!-- Previsualización del PDF -->
+                                @if ($dashboardContent->pdf)
+                                    <embed id="pdfPreview" src="{{ asset('storage/' . $dashboardContent->pdf) }}" type="application/pdf" width="100%" height="400px">
                                     <div class="form-group">
-                                        <iframe id="pdfPreview" src="#" style="display: none; height: 500px; width:600px;" frameborder="0"></iframe>
+                                        <input 
+                                            type="checkbox" 
+                                            name="remove_pdf" 
+                                            id="remove_pdf" 
+                                            value="1">
+                                        <label for="remove_pdf">Eliminar archivo PDF</label>
                                     </div>
+                                @endif
                             </div>
 
-                            <!-- Campo para el link de agregar una imagen -->
+                            <!-- Campo para agregar una nueva imagen -->
                             <div class="form-group col-md-4 text-center">
                                 <label for="images" class="btn btn-default btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>CLICK PARA AGREGAR UNA IMAGEN</strong>
+                                    <strong>CLICK PARA CAMBIAR LA IMAGEN</strong>
                                 </label>
                                 <input 
                                     type="file" 
@@ -116,20 +125,24 @@
                                     id="images"
                                     class="form-control d-none"
                                     onchange="previewImage()">
-                                    @if ($dashboardContent->image_path)
-                                        <img id="imagePreview" src="{{ asset('storage/' . $dashboardContent->image_path) }}" alt="Vista previa de la imagen" style="height: 500px; width: 600px;">
-                                    @endif
-                                    <!-- Imagen de previsualización de la imagen -->
+                                @if ($dashboardContent->images)
+                                    <img id="imagePreview" src="{{ asset('storage/' . $dashboardContent->images) }}" alt="Previsualización de la imagen" width="100%" height="auto">
                                     <div class="form-group">
-                                        <img id="imagePreview" src="#" alt="Vista previa de la imagen" style="display: none; height: 500px; width: 600px;">
+                                        <input 
+                                            type="checkbox" 
+                                            name="remove_images" 
+                                            id="remove_images" 
+                                            value="1">
+                                        <label for="remove_images">Eliminar imagen actual</label>
                                     </div>
+                                @endif
                             </div>
 
-                            <!-- Campo para el link de agregar un video -->
+                            <!-- Campo para agregar una nuevo vídeo -->
                             <div class="form-group col-md-4 text-center">
                                 <label for="videos" class="btn btn-default btn-simple">
                                     <i class="fas fa-file-video" style="margin-right: 8px;"></i>
-                                    <strong>CLICK PARA AGREGAR UN VIDEO</strong>
+                                    <strong>CLICK PARA CAMBIAR EL VIDEO</strong>
                                 </label>
                                 <input 
                                     type="file" 
@@ -137,22 +150,22 @@
                                     id="videos"
                                     class="form-control d-none"
                                     onchange="previewVideo()">
-                                    @if ($dashboardContent->video_path)
-                                        <video id="videoPreview" style="height: 450px; width: 600px;" controls>
-                                            <source id="videoSource" src="{{ asset('storage/' . $dashboardContent->video_path) }}" type="video/mp4">
-                                            Tu navegador no soporta el elemento de video.
-                                        </video>
-                                    @endif
-                                    <!-- Previsualización del video -->
+                                @if ($dashboardContent->videos)
+                                    <video id="videoPreview" width="100%" height="auto" controls>
+                                        <source id="videoSource" src="{{ asset('storage/' . $dashboardContent->videos) }}" type="video/mp4">
+                                    </video>
                                     <div class="form-group">
-                                        <video id="videoPreview" style="display: none; height: 450px; width: 600px;" controls>
-                                            <source id="videoSource" src="#" type="video/mp4">
-                                            Tu navegador no soporta el elemento de video.
-                                        </video>
+                                        <input 
+                                            type="checkbox" 
+                                            name="remove_videos" 
+                                            id="remove_videos" 
+                                            value="1">
+                                        <label for="remove_videos">Eliminar video actual</label>
                                     </div>
+                                @endif
                             </div>
 
-                            <!-- Campo para el link -->
+                            <!-- Campo para agregar un nuevo link -->
                             <div class="form-group col-md-4">
                                 <label for="links">
                                     <i class="fas fa-link" style="margin-right: 8px;"></i>
@@ -166,7 +179,7 @@
                                     value="{{ old('links', $dashboardContent->links) }}">
                             </div>
 
-                            <!-- Campo para facebook -->
+                            <!-- Campo para agregar un nuevo link de facebook -->
                             <div class="form-group col-md-4">
                                 <label for="facebook_link">
                                     <i class="fab fa-facebook" style="margin-right: 8px; color:#0865FE"></i>
@@ -180,7 +193,7 @@
                                     value="{{ old('facebook_link', $dashboardContent->facebook_link) }}">
                             </div>
 
-                            <!-- Campo para el link de twitter -->
+                            <!-- Campo para agregar un nuevo link de twitter -->
                             <div class="form-group col-md-4">
                                 <label for="twitter_link">
                                     <i class="fab fa-x" style="color:#000000; margin-right: 8px;"></i>
@@ -194,7 +207,7 @@
                                     value="{{ old('twitter_link', $dashboardContent->twitter_link) }}">
                             </div>
 
-                            <!-- Campo para el link de youtube -->
+                            <!-- Campo para agregar un nuevo link de youtube -->
                             <div class="form-group col-md-4">
                                 <label for="youtube_link">
                                     <i class="fab fa-youtube" style="color:#FF0000; margin-right: 8px;"></i>
@@ -208,7 +221,7 @@
                                     value="{{ old('youtube_link', $dashboardContent->youtube_link) }}">
                             </div>
 
-                            <!-- Campo para el link de whatsapp -->
+                            <!-- Campo para agregar un nuevo link de whatsapp -->
                             <div class="form-group col-md-4">
                                 <label for="whatsapp_link">
                                     <i class="fab fa-whatsapp" style="color:#4AC958; margin-right: 8px;"></i>
@@ -222,7 +235,7 @@
                                     value="{{ old('whatsapp_link', $dashboardContent->whatsapp_link) }}">
                             </div>
 
-                            <!-- Campo para el link de instagram -->
+                            <!-- Campo para agregar un nuevo link de instagram -->
                             <div class="form-group col-md-4">
                                 <label for="instagram_link">
                                     <i class="fab fa-instagram" style="color: #C13584; margin-right: 8px;"></i>
@@ -249,58 +262,80 @@
                                 </a>
                             </div>
                         </div>
-                        
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
 
-@section('scripts')
 <script>
     function toggleFields() {
-        const layout = document.getElementById('layout').value;
-        if (layout === 'Imagen') {
-            document.getElementById('images').classList.remove('d-none');
+        var layout = document.getElementById('layout').value;
+        var pdfField = document.getElementById('pdf');
+        var imageField = document.getElementById('images');
+        var videoField = document.getElementById('videos');
+
+        if (layout === 'Archivos') {
+            pdfField.style.display = 'block';
+            imageField.style.display = 'block';
+            videoField.style.display = 'block';
         } else {
-            document.getElementById('images').classList.add('d-none');
+            pdfField.style.display = 'none';
+            imageField.style.display = 'none';
+            videoField.style.display = 'none';
         }
     }
 
     function previewPDF() {
-        const file = document.getElementById('pdf').files[0];
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const pdfPreview = document.getElementById('pdfPreview');
-            pdfPreview.src = e.target.result;
-            pdfPreview.style.display = 'block';
-        };
-        reader.readAsDataURL(file);
+        const pdfInput = document.getElementById('pdf');
+        const pdfPreview = document.getElementById('pdfPreview');
+
+        const file = pdfInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                pdfPreview.src = e.target.result;
+                pdfPreview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
     }
 
     function previewImage() {
-        const file = document.getElementById('images').files[0];
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const imagePreview = document.getElementById('imagePreview');
-            imagePreview.src = e.target.result;
-            imagePreview.style.display = 'block';
-        };
-        reader.readAsDataURL(file);
+        const imageInput = document.getElementById('images');
+        const imagePreview = document.getElementById('imagePreview');
+
+        const file = imageInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
     }
 
     function previewVideo() {
-        const file = document.getElementById('videos').files[0];
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const videoPreview = document.getElementById('videoPreview');
-            const videoSource = document.getElementById('videoSource');
-            videoSource.src = e.target.result;
-            videoPreview.style.display = 'block';
-        };
-        reader.readAsDataURL(file);
+        const videoInput = document.getElementById('videos');
+        const videoPreview = document.getElementById('videoPreview');
+        const videoSource = document.getElementById('videoSource');
+
+        const file = videoInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                videoSource.src = e.target.result;
+                videoPreview.style.display = 'block';
+                videoPreview.load();
+            };
+            reader.readAsDataURL(file);
+        }
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        toggleFields(); // Llame a esta función para establecer la visibilidad inicial según el valor de diseño actual
+    });
 </script>
 @endsection

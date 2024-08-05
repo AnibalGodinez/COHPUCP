@@ -99,15 +99,39 @@ class DashboardContentController extends Controller
             'youtube_link' => 'nullable|url',
             'whatsapp_link' => 'nullable|url',
             'instagram_link' => 'nullable|url',
+
+            'remove_pdf' => 'nullable|boolean',
+            'remove_images' => 'nullable|boolean',
+            'remove_videos' => 'nullable|boolean',
         ]);
 
         try {
+            // Manejar el PDF si se ha subido uno nuevo
+            if ($request->hasFile('pdf')) {
+                if ($dashboardContent->pdf) {
+                    Storage::disk('public')->delete($dashboardContent->pdf);
+                }
+                $validatedData['pdf'] = $request->file('pdf')->store('dashboard_pdfs', 'public');
+            } elseif ($request->input('remove_pdf')) {
+                // Eliminar el PDF si el checkbox está marcado
+                if ($dashboardContent->pdf) {
+                    Storage::disk('public')->delete($dashboardContent->pdf);
+                    $validatedData['pdf'] = null; // Eliminar el archivo actual del registro
+                }
+            }
+
             // Manejar la imagen si se ha subido una nueva
             if ($request->hasFile('images')) {
                 if ($dashboardContent->images) {
                     Storage::disk('public')->delete($dashboardContent->images);
                 }
                 $validatedData['images'] = $request->file('images')->store('dashboard_images', 'public');
+            } elseif ($request->input('remove_images')) {
+                // Eliminar la imagen si el checkbox está marcado
+                if ($dashboardContent->images) {
+                    Storage::disk('public')->delete($dashboardContent->images);
+                    $validatedData['images'] = null; // Eliminar el archivo actual del registro
+                }
             }
 
             // Manejar el video si se ha subido uno nuevo
@@ -116,6 +140,12 @@ class DashboardContentController extends Controller
                     Storage::disk('public')->delete($dashboardContent->videos);
                 }
                 $validatedData['videos'] = $request->file('videos')->store('dashboard_videos', 'public');
+            } elseif ($request->input('remove_videos')) {
+                // Eliminar el video si el checkbox está marcado
+                if ($dashboardContent->videos) {
+                    Storage::disk('public')->delete($dashboardContent->videos);
+                    $validatedData['videos'] = null; // Eliminar el archivo actual del registro
+                }
             }
 
             $dashboardContent->update($validatedData);
@@ -128,6 +158,7 @@ class DashboardContentController extends Controller
             return redirect()->back()->with('error', 'No se pudo actualizar el contenido.')->withInput();
         }
     }
+
 
     // Eliminar un contenido del dashboard
     public function destroy(DashboardContent $dashboardContent)
