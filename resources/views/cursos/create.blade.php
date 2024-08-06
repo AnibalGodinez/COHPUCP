@@ -22,8 +22,8 @@
                 <select name="layout" id="layout" class="form-control">
                     <option value="">Seleccionar diseño</option>
                     <option value="Imagen de fondo" {{ old('layout') == 'Imagen de fondo' ? 'selected' : '' }}>Imagen de fondo</option>
-                    <option value="Imagen con texto" {{ old('layout') == 'Imagen con texto' ? 'selected' : '' }}>Imagen con texto</option>
-                    <option value="Texto con enlaces" {{ old('layout') == 'Texto con enlaces' ? 'selected' : '' }}>Texto con enlaces</option>
+                    <option value="Imagen a la derecha" {{ old('layout') == 'Imagen a la derecha' ? 'selected' : '' }}>Imagen a la derecha</option>
+                    <option value="Tarjetas de cursos" {{ old('layout') == 'Tarjetas de cursos' ? 'selected' : '' }}>Tarjetas de cursos</option>
                 </select>
                 @error('layout')
                     <div class="alert alert-danger">{{ $message }}</div>
