@@ -12,6 +12,32 @@
                         @csrf
                         @method('put')
 
+                        <div class="form-group">
+                            <label for="layout"><strong>DISEÑO:</strong></label>
+                            <select 
+                                name="layout" 
+                                id="layout"
+                                class="form-control"
+                                onchange="toggleFields()">
+                                <option disabled value="">Seleccione el diseño</option>
+                                <option value="Imagen de fondo" {{ old('layout', $curso->layout) == 'Imagen de fondo' ? 'selected' : '' }}>Imagen de fondo</option>
+                                <option value="Imagen a la derecha" {{ old('layout', $curso->layout) == 'Imagen a la derecha' ? 'selected' : '' }}>Imagen a la derecha</option>
+                                <option value="Tarjetas de cursos" {{ old('layout', $curso->layout) == 'Tarjetas de cursos' ? 'selected' : '' }}>Tarjetas de cursos</option>
+                            </select>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Título</label>
+                                    <input type="text" name="titulo" class="form-control" placeholder="titulo" value="{{ $curso->titulo }}">
+                                    @error('titulo')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -52,8 +78,20 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Enlace</label>
-                                    <input type="text" name="enlace" class="form-control" placeholder="Enlace" value="{{ $curso->enlace }}">
+                                    <input type="text" name="enlace" class="form-control" placeholder="Ingrese el enlace" value="{{ $curso->enlace }}">
                                     @error('enlace')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Icono</label>
+                                    <input type="text" name="icono" class="form-control" placeholder="ingrese el enlace del icono" value="{{ $curso->icono }}">
+                                    @error('icono')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -72,16 +110,36 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Idioma</label>
-                                    <input type="text" name="idioma" class="form-control" placeholder="Idioma" value="{{ $curso->idioma }}">
-                                    @error('idioma')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
+                        <!-- Campo para el Idioma -->
+                        <div class="form-group col-md-3 p-4">
+                            <label for="idioma">
+                                <i class="fas fa-globe" style="margin-right: 8px;"></i>
+                                <strong>PAÍS *</strong>
+                            </label>
+                            <select id="idioma" name="idioma_id" class="form-control">
+                                <option value="">Seleccione el idioma</option>
+                                @foreach($idiomas as $idioma)
+                                    <option value="{{ $idioma->id }}"  {{ $user->idioma == $idioma->id ? 'selected' : '' }}>
+                                        {{ $idioma->nombre }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- Campo para el Categoría -->
+                        <div class="form-group col-md-3 p-4">
+                            <label for="categoria">
+                                <i class="fas fa-globe" style="margin-right: 8px;"></i>
+                                <strong>PAÍS *</strong>
+                            </label>
+                            <select id="categoria" name="categoria_id" class="form-control">
+                                <option value="">Seleccione la categoria</option>
+                                @foreach($categorias as $categoria)
+                                    <option value="{{ $categoria->id }}"  {{ $user->categoria == $categoria->id ? 'selected' : '' }}>
+                                        {{ $categoria->nombre }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="row">

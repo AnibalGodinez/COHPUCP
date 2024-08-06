@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SecurityQuestionController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\WelcomeContentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardContentController;
 use App\Http\Controllers\FooterContentController;
+use App\Http\Controllers\IdiomaController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -116,4 +118,14 @@ use App\Http\Controllers\FooterContentController;
 	// RUTAS DE CONTENIDO DEL PIE DE PÁGINA
 	Route::group(['middleware' => ['auth']], function () {
 	Route::resource('footer-content', FooterContentController::class);
+	});
+
+	// RUTAS DE LOS IDIOMAS DE LOS CURSOS
+	Route::group(['middleware' => ['auth']], function () {
+	Route::resource('idiomas', IdiomaController::class);
+	});
+
+	// RUTAS DE LOS CATEGORÍAS DE LOS CURSOS
+	Route::group(['middleware' => ['auth']], function () {
+	Route::resource('categorias', CategoriaController::class);
 	});

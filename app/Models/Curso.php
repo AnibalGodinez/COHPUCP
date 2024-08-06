@@ -11,18 +11,34 @@ class Curso extends Model
 
     // Define los campos que se pueden asignar masivamente
     protected $fillable = [
+        'layout',
+        'titulo',
         'nombre',
         'descripcion',
         'precio',
         'enlace',
+        'icono',
         'calificacion',
-        'idioma',
+        'idioma_id', // Corregido para usar el campo de clave foránea
+        'categoria_id', // Corregido para usar el campo de clave foránea
         'imagen',
-        'user_id',
     ];
 
+    // Relación con el modelo User
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    // Relación con el modelo Idioma
+    public function idioma()
+    {
+        return $this->belongsTo(Idioma::class);
+    }
+
+    // Relación con el modelo Categoria
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
     }
 }

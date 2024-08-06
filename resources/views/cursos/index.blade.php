@@ -35,12 +35,16 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th class="text-center">Diseño</th>
+                                    <th class="text-center">Título</th>
                                     <th class="text-center">Nombre</th>
                                     <th class="text-center">Descripción</th>
                                     <th class="text-center">Precio</th>
                                     <th class="text-center">Enlace</th>
+                                    <th class="text-center">icono</th>
                                     <th class="text-center">Calificación</th>
                                     <th class="text-center">Idioma</th>
+                                    <th class="text-center">Categoría</th>
                                     <th class="text-center">Imagen</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
@@ -49,12 +53,22 @@
                             <tbody>
                                 @foreach ($cursos as $curso)
                                     <tr>
+                                        <td class="text-center">{{ $curso->layout }}</td>
+                                        <td class="text-center">{{ $curso->titulo }}</td>
                                         <td class="text-center">{{ $curso->nombre }}</td>
                                         <td class="text-center">{{ $curso->descripcion }}</td>
                                         <td class="text-center">{{ $curso->precio }}</td>
                                         <td class="text-center"><a href="{{ $curso->enlace }}" target="_blank">{{ $curso->enlace }}</a></td>
+                                        <td class="text-center"><a href="{{ $curso->icono }}" target="_blank">{{ $curso->icono }}</a></td>
                                         <td class="text-center">{{ $curso->calificacion }}</td>
-                                        <td class="text-center">{{ $curso->idioma }}</td>
+                                        
+                                        <td class="text-center">
+                                            {{ $curso->idioma ? $curso->idioma->nombre : 'No asignado' }}
+                                        </td>
+                                        <td class="text-center">
+                                            {{ $curso->categoria ? $curso->categoria->nombre : 'No asignado' }}
+                                        </td>
+
                                         <td class="text-center">
                                             @if ($curso->imagen)
                                                 <img src="{{ asset('storage/cursos_images/' . $curso->imagen) }}" alt="Imagen del curso" style="width: 100px; height: auto;">
