@@ -5,7 +5,7 @@
 @endphp
 
 @section('content')
-    <div class="container-fluid" style="margin-top: 30px;">
+    <div class="container-fluid" style="margin-top: 80px;">
         <div class="row">
             @foreach($dashboardContents as $dashboardContent)
                 <div class="col-12 mb-4">

@@ -122,7 +122,7 @@
                         <div class="form-group">
                             <label for="imagen" class="btn btn-warning btn-simple">
                                 <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                <strong>CLICK PARA AGREGAR UNA IMAGEN</strong>
+                                <strong>CLICK PARA CAMBIAR LA IMAGEN</strong>
                             </label>
                             <input 
                                 type="file" 

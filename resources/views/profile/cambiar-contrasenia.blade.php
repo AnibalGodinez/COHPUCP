@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid" style="margin-top: 20px; padding: 6px;">
+    <div class="container-fluid" style="margin-top: 69px; padding: 6px;">
         <div class="row no-gutters">
             <div class="col-md-12">
                 <div class="card mb-3" style="border: 3px solid #ebeff3; border-radius: 15px; width: 100%">

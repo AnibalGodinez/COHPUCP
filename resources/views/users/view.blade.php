@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid mt-5">
-    <div class="row">
+    <div class="row" style="margin-top: 87px">
         <div class="col-md-12">
             <div class="card mt-7">
                 <div class="card-body">
@@ -41,7 +41,7 @@
                                     <th class="text-center">Teléfono celular</th>
                                     <th class="text-center">Correo electrónico</th>
                                     <th class="text-center">Estado</th>
-                                    <th class="text-center">Rol</th>
+                                    <th class="text-center">Tipo de Rol</th>
                                 </tr>
                             </thead>
                             <tbody>

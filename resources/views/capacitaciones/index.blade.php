@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row">
+<div class="row" style="margin-top: 88px">
     <div class="col-lg-12 col-md-12">
         <div class="card card-tasks">
             <div class="card-header d-flex justify-content-between align-items-center">

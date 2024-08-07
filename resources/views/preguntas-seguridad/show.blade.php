@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="container" style="margin-top: -100px;">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-top: 88px">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header text-center">

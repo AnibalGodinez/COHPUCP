@@ -2,13 +2,16 @@
 
 @section('content')
     <div class="container">
-        <div class="card">
-            <div class="card-header d-flex flex-row align-items-center justify-content-between">
-                <ol class="breadcrumb m-0 p-0">
-                    <li class="breadcrumb-item"><a href="{{ url('/capacitaciones') }}" style="color: black; font-size: 18px;">Capacitaciones</a></li>
-                    <li class="breadcrumb-item">@lang('Crear nueva')</li>
+        <div class="card" style="margin-top: 88px">
+
+            <div class="card-header d-flex flex-row align-items-center justify-content-center">
+                <ol class="m-0 p-0">
+                        <a href="{{ url('/capacitaciones') }}" style="font-size: 18px; color:black;">Capacitaciones</a>
+
                 </ol>
-            </div>            
+            </div>
+            
+                      
 
             <div class="card-body">
                 <form action="{{ route('capacitaciones.store') }}" method="POST">
