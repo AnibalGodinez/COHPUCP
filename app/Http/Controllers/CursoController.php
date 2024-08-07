@@ -24,7 +24,7 @@ class CursoController extends Controller
                    ->orWhere('descripcion', 'LIKE', "%{$search}%");
         }
 
-        $cursos = $cursos->paginate(3);
+        $cursos = $cursos->paginate(5);
 
         return view('cursos.index', compact('cursos', 'search'));
     }
@@ -51,7 +51,8 @@ class CursoController extends Controller
             'calificacion' => 'nullable|numeric|min:0|max:10',
             'idioma_id' => 'nullable|exists:idiomas,id',
             'categoria_id' => 'nullable|exists:categorias,id',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico|max:2048',
+
         ]);
 
         $curso = new Curso;
@@ -99,7 +100,8 @@ class CursoController extends Controller
             'calificacion' => 'nullable|numeric|min:0|max:10',
             'idioma_id' => 'nullable|exists:idiomas,id',
             'categoria_id' => 'nullable|exists:categorias,id',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico|max:2048',
+
         ]);
 
         $curso->layout = $request->layout; // Actualizar el layout

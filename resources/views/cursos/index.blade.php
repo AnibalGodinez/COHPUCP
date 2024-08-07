@@ -76,14 +76,24 @@
                                                 Sin imagen
                                             @endif
                                         </td>
+
+                                        {{-- BOTONES PARA LAS ACCIONES --}}
                                         <td class="text-center">
-                                            <a href="{{ route('cursos.edit', $curso) }}" class="btn btn-info">Editar</a>
+                                            <!-- Botón para editar el curso -->
+                                            <a href="{{ route('cursos.edit', $curso) }}" class="btn btn-success btn-sm btn-icon">
+                                                <i class="tim-icons icon-settings"></i>
+                                            </a>
+
+                                            <!-- Formulario para eliminar el curso con confirmación -->
                                             <form action="{{ route('cursos.destroy', $curso) }}" method="POST" style="display:inline-block;" id="delete-form-{{ $curso->id }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirmDelete({{ $curso->id }})">Eliminar</button>
+                                                <button type="submit" class="btn btn-danger btn-sm btn-icon" onclick="return confirmDelete({{ $curso->id }})">
+                                                    <i class="tim-icons icon-simple-remove"></i>
+                                                </button>
                                             </form>
                                         </td>
+
                                     </tr>
                                 @endforeach
 
