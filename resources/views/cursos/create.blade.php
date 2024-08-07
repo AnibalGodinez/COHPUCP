@@ -89,7 +89,7 @@
                             <div class="col-md-3">
                                 <label for="enlace">
                                     <i class="fas fa-link" style="margin-right: 8px;"></i>
-                                    <strong>ENLACES DEL CURSO:</strong>
+                                    <strong>ENLACE DEL CURSO:</strong>
                                 </label>
                                 <input type="text" name="enlace" id="enlace" class="form-control" value="{{ old('enlace') }}" placeholder="Ingrese el enlace del curso">
                                 @error('enlace')
@@ -102,14 +102,17 @@
                                     <i class="fas fa-icons" style="margin-right: 8px;"></i>
                                     <strong>ENLACE DE ICONO:</strong>
                                 </label>
-                                <input type="text" name="icono" id="icono" class="form-control" value="{{ old('icono') }}" placeholder="Ingrese el enlace que redirija el icono">
+                                <input type="text" name="icono" id="icono" class="form-control" value="{{ old('icono') }}" placeholder="Ingrese un enlace">
                                 @error('icono')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             
                             <div class="col-md-2">
-                                <label for="idioma_id">Idioma</label>
+                                <label for="icono">
+                                    <i class="fas fa-globe" style="margin-right: 8px;"></i>
+                                    <strong>IDIOMA</strong>
+                                </label>
                                 <select name="idioma_id" id="idioma_id" class="form-control">
                                     <option value="" disabled selected>Seleccionar idioma</option>
                                     @foreach($idiomas as $idioma)
@@ -124,7 +127,10 @@
                             </div>
                         
                             <div class="col-md-2">
-                                <label for="categoria_id">Categoría</label>
+                                <label for="icono">
+                                    <i class="fas fa-tags" style="margin-right: 8px;"></i>
+                                    <strong>CATEGORÍA</strong>
+                                </label>
                                 <select name="categoria_id" id="categoria_id" class="form-control">
                                     <option value="" disabled selected>Seleccionar categoría</option>
                                     @foreach($categorias as $categoria)

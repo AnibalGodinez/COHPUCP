@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Curso;
-use App\Models\Idioma; // Agregar el modelo Idioma
-use App\Models\Categoria; // Agregar el modelo Categoria
+use App\Models\Idioma;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class CursoController extends Controller
 {
-    
     public function index(Request $request)
     {
         $search = $request->query('search');
@@ -31,12 +29,11 @@ class CursoController extends Controller
 
     public function create()
     {
-        $idiomas = Idioma::all(); // Obtiene todos los idiomas
-        $categorias = Categoria::all(); // Obtiene todas las categorías
+        $idiomas = Idioma::all();
+        $categorias = Categoria::all();
 
         return view('cursos.create', compact('idiomas', 'categorias'));
     }
-
 
     public function store(Request $request)
     {
@@ -52,11 +49,10 @@ class CursoController extends Controller
             'idioma_id' => 'nullable|exists:idiomas,id',
             'categoria_id' => 'nullable|exists:categorias,id',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico|max:2048',
-
         ]);
 
         $curso = new Curso;
-        $curso->layout = $request->layout; // Asegúrate de que el layout se está guardando
+        $curso->layout = $request->layout;
         $curso->titulo = $request->titulo;
         $curso->nombre = $request->nombre;
         $curso->descripcion = $request->descripcion;
@@ -64,13 +60,13 @@ class CursoController extends Controller
         $curso->enlace = $request->enlace;
         $curso->icono = $request->icono;
         $curso->calificacion = $request->calificacion;
-        $curso->idioma_id = $request->idioma_id; // Guardar el id del idioma
-        $curso->categoria_id = $request->categoria_id; // Guardar el id de la categoría
-        $curso->user_id = auth()->id(); // Asocia el curso al usuario autenticado
+        $curso->idioma_id = $request->idioma_id;
+        $curso->categoria_id = $request->categoria_id;
+        $curso->user_id = auth()->id();
 
         if ($request->hasFile('imagen')) {
             $path = $request->file('imagen')->store('cursos_images', 'public');
-            $curso->imagen = basename($path); // Solo el nombre del archivo
+            $curso->imagen = basename($path);
         }
 
         $curso->save();
@@ -81,8 +77,8 @@ class CursoController extends Controller
     public function edit($id)
     {
         $curso = Curso::findOrFail($id);
-        $idiomas = Idioma::all(); // Obtener todos los idiomas
-        $categorias = Categoria::all(); // Obtener todas las categorías
+        $idiomas = Idioma::all();
+        $categorias = Categoria::all();
 
         return view('cursos.edit', compact('curso', 'idiomas', 'categorias'));
     }
@@ -101,10 +97,9 @@ class CursoController extends Controller
             'idioma_id' => 'nullable|exists:idiomas,id',
             'categoria_id' => 'nullable|exists:categorias,id',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico|max:2048',
-
         ]);
 
-        $curso->layout = $request->layout; // Actualizar el layout
+        $curso->layout = $request->layout;
         $curso->titulo = $request->titulo;
         $curso->nombre = $request->nombre;
         $curso->descripcion = $request->descripcion;
@@ -112,8 +107,8 @@ class CursoController extends Controller
         $curso->enlace = $request->enlace;
         $curso->icono = $request->icono;
         $curso->calificacion = $request->calificacion;
-        $curso->idioma_id = $request->idioma_id; // Actualizar el id del idioma
-        $curso->categoria_id = $request->categoria_id; // Actualizar el id de la categoría
+        $curso->idioma_id = $request->idioma_id;
+        $curso->categoria_id = $request->categoria_id;
 
         if ($request->hasFile('imagen')) {
             // Elimina la imagen antigua si existe
@@ -123,7 +118,15 @@ class CursoController extends Controller
 
             // Guarda la nueva imagen y actualiza el nombre
             $path = $request->file('imagen')->store('cursos_images', 'public');
-            $curso->imagen = basename($path); // Solo el nombre del archivo
+            $curso->imagen = basename($path);
+        }
+
+        // Elimina la imagen si se selecciona la opción
+        if ($request->has('remove_image') && $curso->imagen) {
+            if (Storage::exists("public/cursos_images/{$curso->imagen}")) {
+                Storage::delete("public/cursos_images/{$curso->imagen}");
+            }
+            $curso->imagen = null;
         }
 
         $curso->save();
@@ -145,7 +148,7 @@ class CursoController extends Controller
 
     public function viewCursos()
     {
-        $cursos = Curso::all(); // Obtener todos los cursos
+        $cursos = Curso::all();
         return view('cursos.view', compact('cursos'));
     }
 }
