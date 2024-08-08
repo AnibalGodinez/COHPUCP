@@ -1,18 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid" style="margin-top: 69px; padding: 6px;">
-        <div class="row no-gutters">
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center" style="margin-top: 80px;">
             <div class="col-md-12">
-                <div class="card mb-3" style="border: 3px solid #ebeff3; border-radius: 15px; width: 100%">
-                    <div class="card shadow-lg">
-                        <h1 class="card-header bg-info text-white text-center">
-                            Perfil
-                        </h1><br>
+                <div class="card shadow-lg">
+                    <div class="card-header bg-info text-white text-center">
+                        <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>MI PERFIL</strong></h3>
+                    </div>
 
                         <div class="row">
-                            <div class="col-md-3 p-4">
-                                <div class="card mb-3" style="border: 1px solid #0e7ddf; border-radius: 30px;">
+                            <div class="col-md-3 d-flex justify-content-start" style="margin-top: 15px;">
+                                <div class="card mb-3" style="border: 1px solid #0e7ddf; border-radius: 30px; margin-left: 15px;">
                                     <div class="card-body text-center">
                                         @if(Auth::user()->profile_image)
                                             <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="Profile Image" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
@@ -44,7 +43,7 @@
                                             <div class="form-group col-md-4 mb-4">
                                                 <label for="name">
                                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                                    <strong>PRIMER NOMBRE *</strong>
+                                                    <strong>PRIMER NOMBRE</strong>
                                                 </label>
                                                 <p class="form-control-static tex-center">
                                                     @if(Auth::user()->name)
@@ -74,7 +73,7 @@
                                             <div class="form-group col-md-4 mb-4">
                                                 <label for="apellido">
                                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                                    <strong>PRIMER APELLIDO *</strong>
+                                                    <strong>PRIMER APELLIDO</strong>
                                                 </label>
                                                 <p class="form-control-static">
                                                     @if(Auth::user()->apellido)
@@ -104,7 +103,7 @@
                                             <div class="form-group col-md-4 mb-4">
                                                 <label for="numero_identidad">
                                                     <i class="fas fa-id-card" style="margin-right: 8px;"></i>
-                                                    <strong>DNI *</strong>
+                                                    <strong>DNI</strong>
                                                 </label>
                                                 <p class="form-control-static">
                                                     @if(Auth::user()->numero_identidad)
@@ -149,7 +148,7 @@
                                             <div class="form-group col-md-4 mb-4">
                                                 <label for="sexo">
                                                     <i class="fas fa-venus-mars" style="margin-right: 8px;"></i>
-                                                    <strong>SEXO *</strong>
+                                                    <strong>SEXO</strong>
                                                 </label>
                                                 <p class="form-control-static">
                                                     @if(Auth::user()->sexo)
@@ -164,7 +163,7 @@
                                             <div class="form-group col-md-4 mb-4">
                                                 <label for="fecha_nacimiento">
                                                     <i class="fas fa-birthday-cake" style="margin-right: 8px;"></i>
-                                                    <strong>FECHA DE NACIMIENTO *</strong>
+                                                    <strong>FECHA DE NACIMIENTO</strong>
                                                 </label>
                                                 <p class="form-control-static">
                                                     @if(Auth::user()->fecha_nacimiento)
@@ -179,7 +178,7 @@
                                             <div class="form-group col-md-4 mb-4">
                                                 <label>
                                                     <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
-                                                    <strong>EDAD *</strong>
+                                                    <strong>EDAD</strong>
                                                 </label>
                                                 <p>{{ $age ?? 'No disponible' }}</p>
                                             </div>
@@ -189,7 +188,7 @@
                                             <div class="form-group col-md-4 mb-4">
                                                  <label for="pais">
                                                     <i class="fas fa-globe" style="margin-right: 8px;"></i>
-                                                    <strong>PAÍS *</strong>
+                                                    <strong>PAÍS</strong>
                                                 </label>
                                                 <p class="form-control-static">
                                                     @if($user->pais)
@@ -223,7 +222,7 @@
                                             <div class="form-group col-md-4 mb-4">
                                                 <label for="telefono_celular">
                                                     <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
-                                                    <strong>CELULAR *</strong>
+                                                    <strong>CELULAR</strong>
                                                 </label>
                                                 <p class="form-control-static">
                                                     @if(Auth::user()->telefono_celular)
@@ -242,7 +241,7 @@
                                             <div class="form-group col-md-4 mb-4">
                                                 <label for="email">
                                                     <i class="fas fa-envelope" style="margin-right: 8px;"></i>
-                                                    <strong>CORREO ELECTÓNICO *</strong>
+                                                    <strong>CORREO ELECTÓNICO</strong>
                                                 </label>
                                                 <p class="form-control-static">
                                                     @if(Auth::user()->email)

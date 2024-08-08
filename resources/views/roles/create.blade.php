@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container mt-5">
-    <div class="row justify-content-center" style="margin-top: 88px">
-        <div class="col-md-8">
+    <div class="row" style="margin-top: 90px">
+        <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-warning text-white text-center">
                     <h3 class="card-title"><strong>CREAR ROL</strong></h3>
@@ -24,7 +24,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="name"><strong>Nombre del rol *</strong></label>
+                            <label for="name"><strong>NOMBRE DEL ROL *</strong></label>
                             <input 
                             type="text" 
                             id="name" 
@@ -37,20 +37,28 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="description"><strong>Descripción del rol</strong></label>
+                            <label for="description"><strong>DESCRIPCIÓN DEL ROL</strong></label>
                             <textarea 
                             id="description" 
                             name="description" 
                             class="form-control" 
-                            rows="4" 
+                            rows="12" 
                             placeholder="Ingrese una descripción del rol">{{ old('description') }}</textarea>
                         </div>
                         
-
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-success px-4">Guardar</button>
-                            <a href="{{ url('roles') }}" class="btn btn-danger px-4">Cancelar</a>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-save" style="margin-right: 8px;"></i>
+                                    Guardar
+                                </button>
+                                <a href="{{ route('roles.index') }}" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                                    Volver
+                                </a>
+                            </div>
                         </div>
+
                     </form>
                 </div>
             </div>

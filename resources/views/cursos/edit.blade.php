@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid mt-5">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="margin-top: 80px;">
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-default text-white text-center">

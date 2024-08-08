@@ -24,7 +24,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="nombre"><strong>Nombre del idioma *</strong></label>
+                            <label for="nombre"><strong>NOMBRE DEL IDIOMA *</strong></label>
                             <input 
                             type="text" 
                             id="nombre" 

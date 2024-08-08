@@ -13,9 +13,10 @@
 
             <div class="text-center">
                 @if ($securityQuestions->isNotEmpty())
-                    <a href="{{ route('security_questions.show', ['security_question' => $securityQuestions->first()->id]) }}" class="btn btn-info mb-3">
-                        Recuperación por preguntas de seguridad
-                    </a><br>
+                <a href="{{ route('preguntas-seguridad.view') }}" class="btn btn-info mb-3">
+                    Recuperación por preguntas de seguridad
+                </a>
+                
                 @else
                     <p class="text-danger">No hay preguntas de seguridad disponibles.</p><br>
                 @endif

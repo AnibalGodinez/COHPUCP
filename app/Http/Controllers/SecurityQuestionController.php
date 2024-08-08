@@ -37,14 +37,6 @@ class SecurityQuestionController extends Controller
     }
 
 //------------------------------------------------------------------------------------------
-    public function show($id)
-    {
-        $question = SecurityQuestion::findOrFail($id);
-        $questions = SecurityQuestion::all();
-        return view('preguntas-seguridad.show', compact('question', 'questions'));
-    }
-
-//------------------------------------------------------------------------------------------
     public function edit($id)
     {
         $question = SecurityQuestion::findOrFail($id);
@@ -83,5 +75,11 @@ class SecurityQuestionController extends Controller
     {
         $securityQuestions = SecurityQuestion::all();
         return view('preguntas-seguridad.view-options', compact('securityQuestions'));
+    }
+
+    public function view(Request $request)
+    {
+        $questions = SecurityQuestion::all();
+        return view('preguntas-seguridad.view', compact('questions'));
     }
 }

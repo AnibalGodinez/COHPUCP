@@ -2,20 +2,16 @@
 
 @section('content')
 <div class="container mt-5">
-    <div class="row">
+    <div class="row" style="margin-top: 90px">
         <div class="col-md-12">
+            <div class="card shadow-lg">
+                <div class="card-header bg-warning text-white text-center">
+                    <h3>ASIGNAR PERMISOS : Rol {{ $role->name }}</h3>
+                </div>
 
             @if (session('status'))
                 <div class="alert alert-success text-center">{{ session('status') }}</div>
             @endif
-
-            <div class="card">
-                <div class="card-header">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h3>Rol : {{ $role->name }}</h3>
-                        <a href="{{ url('roles') }}" class="btn btn-secondary btn-sm">Regresar</a>
-                    </div>
-                </div>
 
                 <div class="card-body">
 
@@ -28,8 +24,10 @@
                                 <span class="tex-danger">{{ $message }}</span>
                             @enderror
 
-                            <strong>Lista de permisos</strong>
-
+                            <div class="text-center">
+                                <strong>LISTA DE PERMISOS</strong>
+                            </div>
+                            
                             <div style="margin-bottom: 20px;"></div> 
                             <div class="row">
 
@@ -55,9 +53,18 @@
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-success btn-sm">Asignar</button>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-success">
+                                    Asignar
+                                </button>
+                                <a href="{{ route('roles.index') }}" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                                    Volver
+                                </a>
+                            </div>
                         </div>
+
                     </form>
                 </div>
             </div>

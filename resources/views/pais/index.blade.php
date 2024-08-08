@@ -13,9 +13,6 @@
                             <a href="{{ route('pais.create') }}" class="btn btn-info btn-round btn-simple">
                                 <i class="fas fa-plus-circle"></i> Crear país
                             </a>
-                            <a href="{{ route('pais.view') }}" class="btn btn-info btn-round btn-simple position-absolute" style="top: 0; right: 0;">
-                                <i class="fas fa-eye"></i> Ver países
-                            </a>
                         </div>
 
                         {{-- Mensajes de éxito --}}
@@ -28,9 +25,8 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th class="text-center">ID</th>
-                                    <th class="text-center">Nombre</th>
-                                    <th class="text-center">Código</th>
+                                    <th class="text-center">Nombre del país</th>
+                                    <th class="text-center">Código telefónico</th>
                                     <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
@@ -38,18 +34,19 @@
                             <tbody>
                                 @foreach ($paises as $pais)
                                     <tr>
-                                        <td class="text-center">{{ $pais->id }}</td>
                                         <td class="text-center">{{ $pais->nombre }}</td>
-                                        <td class="text-center">{{ $pais->codigo }}</td>
-                                        
+                                        <td class="text-center">{{ $pais->codigo }}</td>                            
                                         <td class="text-center">
-
-                                            <a href="{{ route('pais.edit', $pais) }}" class="btn btn-info">Editar</a>
-                                            <form action="{{ route('pais.destroy', $pais) }}" method="POST" style="display:inline-block;" id="delete-form-{{ $pais->id }}">
+                                            <a href="{{ url('pais/'.$pais->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
+                                                <i class="tim-icons icon-settings"></i>
+                                            </a>
+                                            <form action="{{ route('pais.destroy', $pais->id) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirmDelete({{ $pais->id }})">Eliminar</button>
-                                            </form>
+                                                <button type="submit" class="btn btn-danger btn-sm btn-icon" onclick="return confirm('¿Estás seguro de que deseas eliminar este país? Esta acción no se puede deshacer.')">
+                                                    <i class="tim-icons icon-simple-remove"></i>
+                                                </button>
+                                            </form>                                          
                                         </td>
                                     </tr>
                                 @endforeach
@@ -60,10 +57,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function confirmDelete(paisId) {
-            return confirm('¿Estás seguro que deseas eliminar este país? Esta acción no se puede deshacer.');
-        }
-    </script>
 @endsection

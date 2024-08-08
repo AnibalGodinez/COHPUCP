@@ -28,7 +28,6 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th class="text-center">ID</th>
                                     <th class="text-center">Nombre completo</th>
                                     <th class="text-center">DNI</th>
                                     <th class="text-center">Nº colegiación</th>
@@ -41,14 +40,13 @@
                                     <th class="text-center">Teléfono celular</th>
                                     <th class="text-center">Correo electrónico</th>
                                     <th class="text-center">Estado</th>
-                                    <th class="text-center">Tipo de Rol</th>
-                                    <th class="text-center">Acción</th>
+                                    <th class="text-center">Rol asignado</th>
+                                    <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
                                 <tr>
-                                    <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }} {{ $user->name2 }} {{ $user->apellido }} {{ $user->apellido2 }}</td>
                                     <td>{{ $user->numero_identidad }}</td>
                                     <td>{{ $user->numero_colegiacion }}</td>

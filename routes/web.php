@@ -52,21 +52,22 @@ use App\Http\Controllers\IdiomaController;
 	// RUTAS DE RECUPERACIÓN DE CONTRASEÑA MEDIANTE PREGUNTAS DE SEGURIDAD
 	Route::resource('security_questions', SecurityQuestionController::class);
 	Route::get('security_questions/{question}/delete', [SecurityQuestionController::class, 'destroy'])->name('security_questions.delete');
-	Route::get('opcion-recuperacionContrasenia', [SecurityQuestionController::class, 'viewOpcionRecuperacion'])->name('opcion.recuperacion');
+	Route::get('opciones/recuperacion-contraseña', [SecurityQuestionController::class, 'viewOpcionRecuperacion'])->name('opcion.recuperacion');
+	Route::get('preguntas-seguridad', [SecurityQuestionController::class, 'view'])->name('preguntas-seguridad.view');
 
 	// RUTAS DE USUARIOS
 	Route::group(['middleware' =>['auth']], function () {
 	Route::resource('usuarios', UserController::class);
 	Route::get('usuarios/{userId}/delete', [UserController::class, 'destroy']);
-	Route::get('ver-usuarios', 			   [UserController::class, 'verUsuarios'])->name('usuarios.ver');
+	Route::get('ver/usuarios', 			   [UserController::class, 'verUsuarios'])->name('usuarios.ver');
 	});
 
 	// RUTAS DE PERFIL DE USUARIO
 	Route::group(['middleware' =>['auth']], function () {
-		Route::get('/profile/ver', [ProfileController::class, 'show'])->name('profile.show');
-		Route::get('/profile/editar', [ProfileController::class, 'edit'])->name('profile.edit');
+		Route::get('ver/perfil', [ProfileController::class, 'show'])->name('profile.show');
+		Route::get('editar/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
 		Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-		Route::get('/profile/cambiar-contrasenia', [ProfileController::class, 'showChangePasswordForm'])->name('profile.changePassword');
+		Route::get('cambiar-contraseña/perfil', [ProfileController::class, 'showChangePasswordForm'])->name('profile.changePassword');
 		Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
 		Route::put('profile/password',  ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 		});
@@ -75,7 +76,7 @@ use App\Http\Controllers\IdiomaController;
 	Route::group(['middleware' =>['auth']], function () {
 		Route::resource('permission', PermissionController::class);
 		Route::get('permission/{permissionId}/delete', [PermissionController::class, 'destroy']);
-		Route::get('ver-permisos', [PermissionController::class, 'verPermisos'])->name('permissions.ver');
+		Route::get('ver/permisos', [PermissionController::class, 'verPermisos'])->name('permissions.ver');
 	});
 
 	// RUTAS DE PERMISOS
@@ -84,7 +85,7 @@ use App\Http\Controllers\IdiomaController;
 		Route::get('roles/{roleId}/delete', 		  [RoleController::class, 'destroy']);
 		Route::get('roles/{roleId}/agregar-permisos', [RoleController::class, 'AddPermissionRole']);
 		Route::put('roles/{roleId}/agregar-permisos', [RoleController::class, 'givePermissionRole']);
-		Route::get('ver-roles', 					  [RoleController::class, 'verRoles'])->name('roles.ver');
+		Route::get('ver/roles', 					  [RoleController::class, 'verRoles'])->name('roles.ver');
 	});
 
 	// RUTAS DE CAPACITACIONES
@@ -95,8 +96,7 @@ use App\Http\Controllers\IdiomaController;
 	// RUTAS DE CODIGOS TELÉFONICOS DE LOS PAISES
 	Route::group(['middleware' =>['auth']], function () {
 	Route::resource('pais', PaisController::class);
-	Route::get('/paises', [PaisController::class, 'view'])->name('pais.view');
-
+	Route::get('ver/paises', [PaisController::class, 'view'])->name('pais.view');
 	});
 
 	// RUTAS DE CURSOS

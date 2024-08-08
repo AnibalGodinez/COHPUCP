@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-8" style="margin-top: 88px">
+<div class="container-fluid mt-8" style="margin-top: 88px">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <h3 class="text-center">CREAR USUARIO</h3>
+                    
                     <form action="{{url('usuarios')}}" method="POST">
                         @csrf
                     
@@ -15,7 +16,7 @@
                             <div class="form-group col-md-3">
                                 <label for="name">
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                    <strong>Primer nombre *</strong>
+                                    <strong>PRIMER NOMBRE *</strong>
                                 </label>
                                 <input 
                                     type="text" 
@@ -32,7 +33,7 @@
                             <div class="form-group col-md-3">
                                 <label for="name2">
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                    Segundo nombre
+                                    SEGUNDO NOMBRE
                                 </label>
                                 <input 
                                 type="text" 
@@ -48,7 +49,7 @@
                             <div class="form-group col-md-3">
                                 <label for="apellido">
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                    <strong>Primer apellido *</strong>
+                                    <strong>PRIMER APELLIDO *</strong>
                                 </label>
                                 <input 
                                 type="text" 
@@ -66,7 +67,7 @@
                             <div class="form-group col-md-3">
                                 <label for="apellido2">
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                    Segundo apellido
+                                    SEGUNDO APELLIDO
                                 </label>
                                 <input 
                                 type="text" 
@@ -113,7 +114,7 @@
                             <div class="form-group col-md-3">
                                 <label for="numero_colegiacion">
                                     <i class="fas fa-address-card" style="margin-right: 8px;"></i>
-                                    Nº colegiación
+                                    Nº COLEGIACIÓN
                                 </label>                                                             
                                 <input 
                                 type="text" 
@@ -176,7 +177,7 @@
                             <div class="form-group col-md-3">
                                 <label for="sexo">
                                     <i class="fas fa-venus-mars" style="margin-right: 8px;"></i>
-                                    <strong>Sexo *</strong>
+                                    <strong>SEXO *</strong>
                                 </label>
                                 <select name="sexo" class="form-control @error('sexo') is-invalid @enderror" id="sexo" required>
                                     <option disabled selected>Seleccione el sexo</option>
@@ -189,7 +190,7 @@
                             <div class="form-group col-md-3">
                                 <label for="fecha_nacimiento">
                                     <i class="fas fa-birthday-cake" style="margin-right: 8px;"></i>
-                                    <strong>Fecha de nacimiento *</strong>
+                                    <strong>FECHA DE NACIMIENTO *</strong>
                                 </label>
                                 <input 
                                     type="date" 
@@ -217,7 +218,7 @@
                             <div class="form-group col-md-3">
                                 <label for="edad">
                                     <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
-                                    Edad
+                                    EDAD
                                 </label> 
                                 <div class="input-group">
                                     <input 
@@ -247,7 +248,7 @@
                             <div class="col-md-6">
                                 <label for="pais">
                                     <i class="fas fa-globe" style="margin-right: 8px;"></i>
-                                    <strong>País *</strong>
+                                    <strong>PAÍS *</strong>
                                 </label>
                                 <select id="pais" name="pais_id" class="form-control">
                                     <option value="">Seleccione un país</option>
@@ -291,7 +292,7 @@
                             <div class="form-group col-md-3">
                                 <label for="telefono">
                                     <i class="fas fa-phone" style="margin-right: 8px;"></i>
-                                    Teléfono fijo
+                                    TELÉFONO FIJO
                                 </label>                                                             
                                 <div class="input-group{{ $errors->has('telefono') ? ' has-danger' : '' }}">
                                     <div class="input-group">
@@ -318,7 +319,7 @@
                             <div class="form-group col-md-3">
                                 <label for="telefono_celular">
                                     <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
-                                    <strong>Celular *</strong>
+                                    <strong>CELULAR *</strong>
                                 </label>                                
                                 <div class="input-group{{ $errors->has('telefono_celular') ? ' has-danger' : '' }}">
                                     <div class="input-group">
@@ -346,7 +347,7 @@
                             <div class="form-group col-md-3">
                                 <label for="email">
                                     <i class="fas fa-envelope" style="margin-right: 8px;"></i>
-                                    <strong>Correo electrónico *</strong>
+                                    <strong>CORREO ELECTRÓNICO *</strong>
                                 </label>
                                 <input 
                                 type="email" 
@@ -362,7 +363,7 @@
                             <div class="form-group col-md-3">
                                 <label for="email_confirmation">
                                     <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
-                                    <strong>Confirmar correo electrónico *</strong>
+                                    <strong>CONFIRMAR CORREO ELECTRÓNICO *</strong>
                                 </label>
                                 <input 
                                 type="email" 
@@ -383,7 +384,7 @@
                             <div class="form-group col-md-3">
                                 <label>
                                     <i class="fas fa-user-tag" style="margin-right: 8px;"></i>
-                                    <strong>Rol *</strong>
+                                    <strong>ROL *</strong>
                                 </label>
                                 <select name="roles[]" class="form-control @error('roles') is-invalid @enderror" required>
                                     <option disabled selected>Seleccione un rol</option>
@@ -402,7 +403,7 @@
                             <div class="form-group col-md-3">
                                 <label for="password">
                                     <i class="fas fa-lock" style="margin-right: 8px;"></i>
-                                    <strong>Contraseña *</strong>
+                                    <strong>CONTRASEÑA *</strong>
                                 </label>
                                 <input 
                                     type="password" 
@@ -420,10 +421,10 @@
                             </div>
 
                             <!-- Campo para la confirmación de la contraseña  -->
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                 <label for="password_confirmation">
                                     <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
-                                    <strong>Confirmar Contraseña *</strong>
+                                    <strong>CONFIRMAR NUEVA CONTRASEÑA *</strong>
                                 </label>
                                 <input 
                                     type="password" 
@@ -442,10 +443,19 @@
                         
                         </div>
 
-                        <div class="mb-3 text-center">
-                            <button type="submit" class="btn btn-success px-4">Guardar</button>
-                            <a href="{{url('usuarios')}}" class="btn btn-danger px-4">Cancelar</a>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-save" style="margin-right: 8px;"></i>
+                                    Guardar
+                                </button>
+                                <a href="{{ route('usuarios.ver') }}" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                                    Volver
+                                </a>
+                            </div>
                         </div>
+
                     </form>
                 </div>
             </div>

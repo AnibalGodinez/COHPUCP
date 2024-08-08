@@ -35,21 +35,29 @@
                                 <tr>
                                     <td class="text-center">{{ $question->id }}</td>
                                     <td>{{ $question->question }}</td>
+
                                     <td class="text-center">
-                                        <a href="{{ route('security_questions.edit', $question->id) }}" class="btn btn-info btn-sm">Editar</a>
-                                        <form action="{{ route('security_questions.destroy', $question->id) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar esta pregunta?')">Eliminar</button>
-                                        </form>
+                                        <a href="{{ url('security_questions/'.$question->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
+                                            <i class="tim-icons icon-settings"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('security_questions/'.$question->id.'/delete') }}')">
+                                            <i class="tim-icons icon-simple-remove"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
+
+    <script>
+        function confirmarEliminacion(url) {
+            if (confirm('¿Estás seguro de que deseas eliminar esta pregunta?')) {
+                window.location.href = url;
+            }
+        }
+    </script>
 @endsection

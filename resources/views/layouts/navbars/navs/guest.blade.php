@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg py-3" style="background-color: #0b45a1; position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; border-bottom: 1px solid #424141;">
+<nav class="navbar navbar-expand-lg py-3" style="background-color: #0A152F; position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; border-bottom: 1px solid #424141;">
     <div class="container-fluid">
         <div class="navbar-wrapper">
             <a class="navbar-brand" href="{{ url('/') }}">

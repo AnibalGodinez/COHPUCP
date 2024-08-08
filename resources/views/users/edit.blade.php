@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5">
-    <div class="row justify-content-center" style="margin-top: 88px">
+<div class="container-fluid mt-8" style="margin-top: 88px">
+    <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="text-center mb-4">EDITAR INFORMACIÓN DEL USUARIO</h3>
+                    <h3 class="text-center">EDITAR INFORMACIÓN</h3>
+
                     <form action="{{ route('usuarios.update', $user->id) }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -16,7 +17,7 @@
                             <div class="form-group col-md-3">
                                 <label for="name">
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                    <strong>Primer nombre *</strong>
+                                    <strong>PRIMER NOMBRE *</strong>
                                 </label>
                                 <input 
                                 type="text" 
@@ -33,7 +34,7 @@
                             <div class="form-group col-md-3">
                                 <label for="name2">
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                    Segundo nombre
+                                    SEGUNDO NOMBRE
                                 </label>
                                 <input 
                                 type="text" 
@@ -49,7 +50,7 @@
                             <div class="form-group col-md-3">
                                 <label for="apellido">
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                    <strong>Primer apellido *</strong>
+                                    <strong>PRIMER APELLIDO *</strong>
                                 </label>
                                 <input 
                                 type="text" 
@@ -67,7 +68,7 @@
                             <div class="form-group col-md-3">
                                 <label for="apellido2">
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                    Segundo apellido
+                                    SEGUNDO APELLIDO
                                 </label>
                                 <input 
                                 type="text" 
@@ -119,7 +120,7 @@
                             <div class="form-group col-md-3">
                                 <label for="numero_colegiacion">
                                     <i class="fas fa-address-card" style="margin-right: 8px;"></i>
-                                    Nº colegiación
+                                    Nº COLEGIACIÓN
                                 </label>
                                 <input 
                                     type="text" 
@@ -186,7 +187,7 @@
                             <div class="form-group col-md-3">
                                 <label for="sexo">
                                     <i class="fas fa-venus-mars" style="margin-right: 8px;"></i>
-                                    <strong>Sexo *</strong>
+                                    <strong>SEXO *</strong>
                                 </label>
                                 <select name="sexo" class="form-control" required>
                                     <option value="" disabled selected>Selecciona una opción</option>
@@ -199,7 +200,7 @@
                             <div class="form-group col-md-3">
                                 <label for="fecha_nacimiento">
                                     <i class="fas fa-birthday-cake" style="margin-right: 8px;"></i>
-                                    <strong>Fecha de nacimiento *</strong>
+                                    <strong>FECHA DE NACIMIENTO *</strong>
                                 </label>
                                 <input 
                                     type="date" 
@@ -227,7 +228,7 @@
                             <div class="form-group col-md-3">
                                 <label for="edad">
                                     <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
-                                    Edad
+                                    EDAD
                                 </label>
                                     <input 
                                         type="text" 
@@ -267,7 +268,7 @@
                             <div class="col-md-3">
                                 <label for="pais">
                                     <i class="fas fa-globe" style="margin-right: 8px;"></i>
-                                    <strong>País *</strong>
+                                    <strong>PAÍS *</strong>
                                 </label>
                                 <select id="pais" name="pais_id" class="form-control">
                                     <option value="">Seleccione un país</option>
@@ -283,7 +284,7 @@
                             <div class="form-group col-md-3">
                                 <label for="telefono">
                                     <i class="fas fa-phone" style="margin-right: 8px;"></i>
-                                    Teléfono fijo
+                                    TELÉFONO FIJO
                                 </label>                                                             
                                 <div class="input-group{{ $errors->has('telefono') ? ' has-danger' : '' }}">
                                     <div class="input-group">
@@ -310,7 +311,7 @@
                             <div class="form-group col-md-3">
                                 <label for="telefono_celular">
                                     <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
-                                    <strong>Celular *</strong>
+                                    <strong>CELULAR *</strong>
                                 </label>                                
                                 <div class="input-group{{ $errors->has('telefono_celular') ? ' has-danger' : '' }}">
                                     <div class="input-group">
@@ -359,7 +360,7 @@
 
                             <!-- Campo para el correo electrónico -->
                             <div class="form-group col-md-3">
-                                <label for="email"><strong>Correo electrónico *</strong></label>
+                                <label for="email"><strong>CORREO ELECTRÓNICO *</strong></label>
                                 <input 
                                 type="email" 
                                 name="email" 
@@ -370,7 +371,7 @@
 
                             <!-- Campo para el Rol -->
                             <div class="form-group col-md-3">
-                                <label><strong>Rol *</strong></label>
+                                <label><strong>ROL *</strong></label>
                                 <select name="roles[]" class="form-control" multiple required>
                                     @foreach ($roles as $role => $roleName)
                                         <option value="{{ $role }}" {{ in_array($role, $user->roles->pluck('name')->toArray()) ? 'selected' : '' }}>{{ $roleName }}</option>
@@ -382,7 +383,7 @@
                             <div class="form-group col-md-3">
                                 <label for="estado">
                                     <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
-                                    Estado
+                                    ESTADO
                                 </label>
                                 <select name="estado" class="form-control" required>
                                     <option value="activo" {{ old('estado', $user->estado) == 'activo' ? 'selected' : '' }}>Activo</option>
@@ -392,10 +393,19 @@
 
                         </div>
 
-                        <div class="mb-3 text-center">
-                            <button type="submit" class="btn btn-success px-4">Actualizar</button>
-                            <a href="{{ url('usuarios') }}" class="btn btn-danger px-4">Cancelar</a>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-save" style="margin-right: 8px;"></i>
+                                    Guardar cambios
+                                </button>
+                                <a href="{{ route('usuarios.ver') }}" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                                    Volver
+                                </a>
+                            </div>
                         </div>
+
                     </form>
                 </div>
             </div>

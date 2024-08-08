@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid mt-5">
-        <div class="row" style="margin-top: 88px">
+        <div class="row" style="margin-top: 90px">
             <div class="col-md-12">
 
                 <div class="card">
@@ -29,8 +29,7 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">Id</th>
-                                        <th class="text-center">Nombre</th>
+                                        <th>Nombre</th>
                                         <th class="text-center">Descripción</th>
                                         <th class="text-center">Acción</th>
                                     </tr>
@@ -38,7 +37,6 @@
                                 <tbody>
                                     @foreach ($permissions as $permission)
                                     <tr>
-                                        <td>{{ $permission->id }}</td>
                                         <td>{{ $permission->name }}</td>
                                         <td>{{ $permission->description }}</td>
                                         <td class="text-center">

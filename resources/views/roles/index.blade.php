@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid mt-5">
-    <div class="row" style="margin-top: 88px">
+    <div class="row" style="margin-top: 90px">
         <div class="col-md-12">
 
             <div class="card">
@@ -31,16 +31,14 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Id</th>
                                     <th class="text-center">Nombre del rol</th>
                                     <th class="text-center">Descripción</th>
-                                    <th class="text-center">Acción</th>
+                                    <th class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($roles as $role)
                                 <tr>
-                                    <td>{{ $role->id }}</td>
                                     <td>{{ $role->name }}</td>
                                     <td>{{ $role->description }}</td>
                                     <td class="text-center">
