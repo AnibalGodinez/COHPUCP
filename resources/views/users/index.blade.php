@@ -14,8 +14,8 @@
 
                     {{-- Formulario de búsqueda --}}
                     <form action="{{ url('usuarios') }}" method="GET" class="form-inline mt-3">
-                        <input type="text" name="search" class="form-control" placeholder="Buscar usuarios" value="{{ request()->query('search') }}">
-                        <button class="btn btn-info btn-round btn-simple">
+                        <input type="text" id="searchField" name="search" class="form-control" placeholder="Buscar usuarios" value="{{ request()->query('search') }}">
+                        <button class="btn btn-info btn-round btn-simple" type="submit">
                             <i class="tim-icons icon-zoom-split"></i> Buscar
                         </button>
                     </form><br>
@@ -88,7 +88,7 @@
                                             @endforeach
                                         @endif
                                     </td>
-                                        {{-- BOTONES PARA LAS ACCIONES --}}
+                                    {{-- BOTONES PARA LAS ACCIONES --}}
                                     <td class="text-center">
                                         <a href="{{ url('usuarios/'.$user->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                             <i class="tim-icons icon-settings"></i>
@@ -98,7 +98,6 @@
                                             <i class="tim-icons icon-simple-remove"></i>
                                         </a>
                                     </td>
-
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -116,5 +115,12 @@
             window.location.href = url;
         }
     }
+
+    // Limpiar el campo de búsqueda si no hay resultados
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.querySelector('.alert-default')) {
+            document.getElementById('searchField').value = '';
+        }
+    });
 </script>
 @endsection
