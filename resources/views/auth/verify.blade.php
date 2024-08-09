@@ -10,13 +10,13 @@
                     </div>
 
                     <div class="card-body">
-                        <p class="text-warning mb-4 text-center" style="font-size: 1.2em;"><strong><strong>¡GRACIAS POR REGISTRARTE!</strong></strong></p><br>
+                        <p class="mb-4 text-center" style="font-size: 1.2em; color:rgb(197, 30, 30)"><strong><strong>¡GRACIAS POR REGISTRARTE!</strong></strong></p><br>
 
-                        <p class="text-dark mb-4" style="font-size: 1.1em;">
+                        <p class="mb-4" style="font-size: 1.1em;">
                             Para acceder a la <strong>Plataforma Tecnológica del COHPUCP</strong>, es necesario verificar su dirección de correo electrónico. <br><br>
                             
                             Por favor, ingrese a su <strong><strong>cuenta de correo registrada y complete el proceso de verificación</strong></strong>. Una vez realizado, podrá ingresar a la plataforma. Si no ha recibido el correo de verificación, puede solicitar uno nuevo haciendo clic en el botón de abajo.
-                        </p><br>
+                        </p>
                         
                         <div class="d-flex justify-content-center mt-4">
                             @if (Route::has('verification.send'))
