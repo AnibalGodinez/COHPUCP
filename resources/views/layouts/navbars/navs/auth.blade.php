@@ -423,11 +423,9 @@
 
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <div class="photo">
-                            <img src="{{ asset('white') }}/img/anime3.png" alt="Profile photo">
-                        </div>
-                        <p class="d-lg-none"> Botón de usuario </p>
+                        <i class="tim-icons icon-single-02"></i>
                     </a>
+
                     <ul class="dropdown-menu dropdown-navbar">
                         <li class="dropdown-item text-uppercase">
                             <a href="{{ route('profile.show') }}" class="nav-link" style="color: black;">Perfil</a>

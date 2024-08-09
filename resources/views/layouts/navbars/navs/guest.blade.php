@@ -30,38 +30,3 @@
     </div>
 </nav>
 
-<div style="margin-top: 80px;"> <!-- Ajusta el valor según el alto de tu barra de navegación -->
-</div>
-
-<style>
-    .custom-hover:hover {
-        background-color: #0056b3; 
-        border-radius: 6px;
-    }
-    .custom-hover.active {
-        border: 0.05px solid #1d1c1c; /* Borde negro */
-        border-radius: 6px; /* Borde redondeado */
-    }
-</style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.forEach(link => link.classList.remove('active'));
-                this.classList.add('active');
-                localStorage.setItem('activeNavLink', this.href);
-            });
-        });
-
-        const activeNavLink = localStorage.getItem('activeNavLink');
-        if (activeNavLink) {
-            const link = document.querySelector(`.nav-link[href="${activeNavLink}"]`);
-            if (link) {
-                link.classList.add('active');
-            }
-        }
-    });
-</script>

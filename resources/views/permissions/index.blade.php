@@ -5,14 +5,19 @@
         <div class="row" style="margin-top: 90px">
             <div class="col-md-12">
 
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title text-center">GESTIÓN DE PERMISOS</h3>
+                <div class="card shadow-lg">
+                    <div class="card-header text-white text-center">
+                        <h3 class="card-title"><strong>GESTIONAR PERMISOS</strong></h3>
+                    </div>
 
-                        @if (session('status'))
-                            <div class="alert alert-success text-center">{{ session('status') }}</div>
-                        @endif
+                    {{-- Mensajes de éxito --}}
+                    @if (session('status'))
+                        <div class="alert alert-success text-center">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
+                    <div class="card-body">
                         {{-- Formulario de búsqueda --}}
                         <form action="{{ url('permission') }}" method="GET" class="form-inline mt-3">
                             <input type="text" name="search" class="form-control mr-2 col-2" placeholder="Buscar permisos" value="{{ request()->query('search') }}">
@@ -29,7 +34,7 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Nombre</th>
+                                        <th class="text-center">Nombre del permiso</th>
                                         <th class="text-center">Descripción</th>
                                         <th class="text-center">Acción</th>
                                     </tr>
@@ -53,7 +58,6 @@
                             </table>
                             {{ $permissions->links('paginacion.simple-bootstrap-4') }}
                         @endif
-
                     </div>
                 </div>
             </div>

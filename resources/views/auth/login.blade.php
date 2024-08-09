@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="col-lg-3 col-md-6 ml-auto mr-auto" style="margin-top: -120px;">
+<div class="col-lg-3 col-md-6 ml-auto mr-auto" style="margin-top: 20px;">
 
     <form method="POST" action="{{ route('login') }}">
         @csrf

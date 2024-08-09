@@ -5,45 +5,50 @@
         <div class="row" style="margin-top: 90px">
             <div class="col-md-12">
 
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title text-center">LISTA DE PERMISOS</h3>
+                <div class="card shadow-lg">
+                    <div class="card-header text-white text-center">
+                        <h3 class="card-title"><strong>LISTA DE PERMISOS</strong></h3>
+                    </div>
+
+                        {{-- Mensajes de éxito --}}
                         @if (session('status'))
-                        <div class="alert alert-success text-center">{{ session('status') }}</div>
-                        @endif        
+                            <div class="alert alert-success text-center">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+
+                    <div class="card-body">     
                         {{-- Formulario de búsqueda --}}
                         <form method="GET" action="{{ route('permissions.ver') }}" class="form-inline mt-3">
                             <input type="text" name="search" class="form-control mr-2 col-2" placeholder="Buscar permisos" value="{{ request()->query('search') }}">
                             <button class="btn btn-info btn-round btn-simple">
                                 <i class="tim-icons icon-zoom-split"></i> Buscar
                             </button>
-                        </form>
-                    </div>
+                        </form><br>
                     
-                    <div class="card-body">
-                        @if( $permissions ->isEmpty())
-                            <div class="alert alert-default text-center" permission="alert">
-                                No hay ningún resultado de su búsqueda.
-                            </div>
-                        @else
-                                <table class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombre</th>
-                                            <th class="text-center">Descripción</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($permissions  as $permission)
+                            @if( $permissions ->isEmpty())
+                                <div class="alert alert-default text-center" permission="alert">
+                                    No hay ningún resultado de su búsqueda.
+                                </div>
+                            @else
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
                                             <tr>
-                                                <td>{{ $permission->name }}</td>
-                                                <td>{{ $permission->description }}</td>
+                                                <th class="text-center">Nombre</th>
+                                                <th class="text-center">Descripción</th>
                                             </tr>
-                                        @endforeach
-                                        </tbody>
-                                </table>
-                                {{ $permissions->links('paginacion.simple-bootstrap-4') }}
-                        @endif
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($permissions  as $permission)
+                                                <tr>
+                                                    <td class="text-center">{{ $permission->name }}</td>
+                                                    <td>{{ $permission->description }}</td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                    </table>
+                                    {{ $permissions->links('paginacion.simple-bootstrap-4') }}
+                            @endif
                     </div>
                 </div>
             </div>
