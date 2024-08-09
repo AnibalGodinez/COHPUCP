@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container-fluid mt-5">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="margin-top: 90px">
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-default text-white text-center">
-                    <h3 class="card-title" style="color: beige"><strong>AÑADIR NUEVO CONTENIDO A LA PÁGINA PRINCIPAL</strong></h3>
+                    <h3 class="card-title" style="color: rgb(247, 247, 247)"><strong>CREAR NUEVO CONTENIDO DEL DASHBOARD</strong></h3>
                 </div>
 
                 <!-- Mostrar mensajes de error para los campos -->
@@ -28,7 +28,7 @@
                             <div class="form-group col-md-4">
                                 <label for="layout">
                                     <i class="fas fa-palette" style="margin-right: 8px;"></i>
-                                    <strong>DISEÑO:</strong>
+                                    <strong>DISEÑO</strong>
                                 </label>
                                 <select 
                                     name="layout" 
@@ -48,7 +48,7 @@
                             <div class="form-group col-md-4" id="titleField">
                                 <label for="title">
                                     <i class="fa-font fa-quote-left" style="margin-right: 8px;"></i>
-                                    <strong>TÍTULO:</strong>
+                                    <strong>TÍTULO</strong>
                                 </label>
                                 <input  
                                     type="text" 
@@ -62,13 +62,14 @@
                             <div class="form-group col-md-4" id="subtitleField">
                                 <label for="subtitle">
                                     <i class="fa-text-height" style="margin-right: 8px;"></i>
-                                    <strong>SUBTÍTULO:</strong>
+                                    <strong>SUBTÍTULO</strong>
                                 </label>
                                 <input 
                                     type="text" 
                                     name="subtitle" 
                                     id="subtitle" 
                                     class="form-control" 
+                                    placeholder="Ingrese el subtítulo"
                                     value="{{ old('subtitle') }}">
                             </div>
 
@@ -78,7 +79,7 @@
                             <div class="form-group col-md-12" id="descriptionField">
                                 <label for="description">
                                     <i class="fas fa-align-left" style="margin-right: 8px;"></i>
-                                    <strong>DESCRIPCIÓN:</strong>
+                                    <strong>DESCRIPCIÓN</strong>
                                 </label>
                                 <textarea 
                                     name="description" 
@@ -93,7 +94,7 @@
 
                             <!-- Campo para el link de agregar un archivo pdf -->
                             <div class="form-group col-md-4" id="pdfField">
-                                <label for="pdf" class="btn btn-default btn-simple">
+                                <label for="pdf" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
                                     <strong>CLICK PARA AGREGAR UN ARCHIVO PDF</strong>
                                 </label>
@@ -131,7 +132,7 @@
 
                             <!-- Campo para el link de agregar un video -->
                             <div class="form-group col-md-4" id="videoField">
-                                <label for="videos" class="btn btn-default btn-simple">
+                                <label for="videos" class="btn btn-warning btn-simple">
                                     <i class="fas fa-file-video" style="margin-right: 8px;"></i>
                                     <strong>CLICK PARA AGREGAR UN VIDEO</strong>
                                 </label>
@@ -155,39 +156,42 @@
                             <div class="form-group col-md-4" id="linksField">
                                 <label for="links">
                                     <i class="fas fa-link" style="margin-right: 8px;"></i>
-                                    <strong>LINKS:</strong>
+                                    <strong>LINK</strong>
                                 </label>
                                 <input 
                                     type="text" 
                                     class="form-control" 
                                     id="links" 
-                                    name="links" 
+                                    name="links"
+                                    placeholder="Ingrese el enlace" 
                                     value="{{ old('links') }}">
                             </div>
                             @foreach (['facebook_link', 'twitter_link', 'youtube_link', 'whatsapp_link', 'instagram_link'] as $link)
-                                <div class="form-group col-md-4" id="{{ $link }}Field">
-                                    <label for="{{ $link }}">
-                                        @if($link == 'facebook_link')
-                                            <i class="fab fa-facebook" style="margin-right: 8px; color:#0865FE"></i>
-                                        @elseif($link == 'twitter_link')
-                                            <i class="fab fa-x" style="margin-right: 8px; color:#000000"></i>
-                                        @elseif($link == 'youtube_link')
-                                            <i class="fab fa-youtube" style="margin-right: 8px; color:#FF0000"></i>
-                                        @elseif($link == 'whatsapp_link')
-                                            <i class="fab fa-whatsapp" style="margin-right: 8px; color:#4AC958"></i>
-                                        @elseif($link == 'instagram_link')
-                                            <i class="fab fa-instagram" style="margin-right: 8px; color:#FE0967"></i>
-                                        @endif
-                                        <strong>{{ strtoupper(str_replace('_', ' ', $link)) }}</strong>
-                                    </label>
-                                    <input 
-                                        type="text" 
-                                        class="form-control" 
-                                        id="{{ $link }}" 
-                                        name="{{ $link }}" 
-                                        value="{{ old($link) }}">
-                                </div>
-                            @endforeach
+                            <div class="form-group col-md-4" id="{{ $link }}Field">
+                                <label for="{{ $link }}">
+                                    @if($link == 'facebook_link')
+                                        <i class="fab fa-facebook" style="margin-right: 8px; color:#0865FE"></i>
+                                    @elseif($link == 'twitter_link')
+                                        <i class="fab fa-x" style="margin-right: 8px; color:#000000"></i>
+                                    @elseif($link == 'youtube_link')
+                                        <i class="fab fa-youtube" style="margin-right: 8px; color:#FF0000"></i>
+                                    @elseif($link == 'whatsapp_link')
+                                        <i class="fab fa-whatsapp" style="margin-right: 8px; color:#4AC958"></i>
+                                    @elseif($link == 'instagram_link')
+                                        <i class="fab fa-instagram" style="margin-right: 8px; color:#FE0967"></i>
+                                    @endif
+                                    <strong>{{ strtoupper(str_replace('_', ' ', $link)) }}</strong>
+                                </label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="{{ $link }}" 
+                                    name="{{ $link }}" 
+                                    value="{{ old($link) }}" 
+                                    placeholder="Ingresa el {{ str_replace('_link', '', $link) }} link">
+                            </div>
+                        @endforeach
+                        
                         </div>
 
                         <div class="form-group row mb-0">
@@ -202,6 +206,7 @@
                                 </a>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>

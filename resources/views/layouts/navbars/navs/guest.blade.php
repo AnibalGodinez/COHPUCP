@@ -9,19 +9,19 @@
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link font-weight-bold {{ Request::is('/') ? 'text-dark active' : '' }} custom-hover">
+                    <a href="{{ url('/') }}" class="nav-link font-weight-bold {{ Request::is('/') ? 'text-warning active' : '' }} custom-hover">
                         <i class="fas fa-home"></i> Página principal
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('register') }}" class="nav-link font-weight-bold {{ request()->routeIs('register') ? 'text-dark active' : '' }} custom-hover">
+                    <a href="{{ route('register') }}" class="nav-link font-weight-bold {{ request()->routeIs('register') ? 'text-warning active' : '' }} custom-hover">
                         <i class="tim-icons icon-laptop"></i> Registrarse
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('login') }}" class="nav-link font-weight-bold {{ request()->routeIs('login') ? 'text-dark active' : '' }} custom-hover">
+                    <a href="{{ route('login') }}" class="nav-link font-weight-bold {{ request()->routeIs('login') ? 'text-warning active' : '' }} custom-hover">
                         <i class="tim-icons icon-single-02"></i> Iniciar sesión
                     </a>
                 </li>

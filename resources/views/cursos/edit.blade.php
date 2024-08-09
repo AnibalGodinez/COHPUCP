@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container-fluid mt-5">
-    <div class="row justify-content-center" style="margin-top: 80px;">
+    <div class="row justify-content-center" style="margin-top: 90px;">
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-default text-white text-center">
-                    <h3 class="card-title" style="color: beige"><strong>EDITAR CURSO</strong></h3>
+                    <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>EDITAR CURSO</strong></h3>
                 </div>
 
                 @if ($errors->any())
@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label for="layout">
                                 <i class="fas fa-palette" style="margin-right: 8px;"></i>
-                                <strong>DISEÑO:</strong>
+                                <strong>DISEÑO</strong>
                             </label>
                             <select name="layout" id="layout" class="form-control">
                                 <option value="" disabled selected>Seleccionar diseño</option>
@@ -41,33 +41,33 @@
                             <div class="col-md-6">
                                 <label for="title">
                                     <i class="fa-font fa-quote-left" style="margin-right: 8px;"></i>
-                                    <strong>TÍTULO:</strong>
+                                    <strong>TÍTULO DE LOS CURSOS</strong>
                                 </label>
-                                <input type="text" name="titulo" id="titulo" class="form-control" value="{{ old('titulo', $curso->titulo) }}" placeholder="Ingrese un título para los cursos">
+                                <input type="text" name="titulo" id="titulo" class="form-control" value="{{ old('titulo', $curso->titulo) }}" placeholder="Ingrese el título para los cursos">
                             </div>
 
                             <div class="col-md-6">
                                 <label for="subtitle">
                                     <i class="fas fa-chalkboard-teacher" style="margin-right: 8px;"></i>
-                                    <strong>NOMBRE DEL CURSO:</strong>
+                                    <strong>NOMBRE DEL CURSO</strong>
                                 </label>
-                                <input type="text" name="nombre" id="nombre" class="form-control" value="{{ old('nombre', $curso->nombre) }}" placeholder="Ingrese el nombre">
+                                <input type="text" name="nombre" id="nombre" class="form-control" value="{{ old('nombre', $curso->nombre) }}" placeholder="Ingrese el nombre del curso">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="description">
                                 <i class="fas fa-align-left" style="margin-right: 8px;"></i>
-                                <strong>DESCRIPCIÓN DEL CURSO:</strong>
+                                <strong>DESCRIPCIÓN DEL CURSO</strong>
                             </label>
-                            <textarea name="descripcion" id="descripcion" class="form-control"  placeholder="Ingrese una descripción del curso" rows="4">{{ old('descripcion', $curso->descripcion) }}</textarea>
+                            <textarea name="descripcion" id="descripcion" class="form-control"  placeholder="Ingrese la descripción del curso" rows="4">{{ old('descripcion', $curso->descripcion) }}</textarea>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-2">
                                 <label for="precio">
                                     <i class="fas fa-dollar-sign" style="margin-right: 8px;"></i>
-                                    <strong>PRECIO DEL CURSO:</strong>
+                                    <strong>PRECIO DEL CURSO</strong>
                                 </label>
                                 <input type="number" name="precio" id="precio" class="form-control" value="{{ old('precio', $curso->precio) }}" placeholder="Ingrese el precio del curso">
                             </div>
@@ -75,7 +75,7 @@
                             <div class="col-md-3">
                                 <label for="enlace">
                                     <i class="fas fa-link" style="margin-right: 8px;"></i>
-                                    <strong>ENLACE DEL CURSO:</strong>
+                                    <strong>ENLACE DEL CURSO</strong>
                                 </label>
                                 <input type="url" name="enlace" id="enlace" class="form-control" value="{{ old('enlace', $curso->enlace) }}" placeholder="Ingrese el enlace del curso">
                             </div>
@@ -83,15 +83,15 @@
                             <div class="col-md-3">
                                 <label for="icono">
                                     <i class="fas fa-icons" style="margin-right: 8px;"></i>
-                                    <strong>ENLACE DE ÍCONO:</strong>
+                                    <strong>ENLACE DE ÍCONO</strong>
                                 </label>
-                                <input type="url" name="icono" id="icono" class="form-control" value="{{ old('icono', $curso->icono) }}" placeholder="Ingrese un enlace">
+                                <input type="url" name="icono" id="icono" class="form-control" value="{{ old('icono', $curso->icono) }}" placeholder="Ingrese el enlace del ícono">
                             </div>
 
                             <div class="col-md-2">
                                 <label for="icono">
                                     <i class="fas fa-globe" style="margin-right: 8px;"></i>
-                                    <strong>IDIOMA</strong>
+                                    <strong>IDIOMA DEL CURSO</strong>
                                 </label>
                                 <select name="idioma_id" id="idioma_id" class="form-control">
                                     <option value="" disabled selected>Seleccionar idioma</option>
@@ -106,7 +106,7 @@
                             <div class="col-md-2">
                                 <label for="icono">
                                     <i class="fas fa-tags" style="margin-right: 8px;"></i>
-                                    <strong>CATEGORÍA</strong>
+                                    <strong>CATEGORÍA DEL CURSO</strong>
                                 </label>
                                 <select name="categoria_id" id="categoria_id" class="form-control">
                                     <option value="" disabled selected>Seleccionar categoría</option>

@@ -1,13 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid mt-5">
-        <div class="row" style="margin-top: 88px">
+    <div class="container-fluid mt-8">
+        <div class="row" style="margin-top: 90px">
             <div class="col-md-12">
                 <div class="card m-7">
-
                     <div class="card-body">
-                        <h3 class="card-title text-center">GESTIÓN DE IDIOMAS</h3>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3 class="card-title text-center" style="margin-left: 800px;">LISTA DE IDIOMAS</h3>
+                            <a href="{{ route('idiomas.create') }}" class="btn btn-info btn-round btn-simple">
+                                <i class="fas fa-plus-circle"></i> Agregar nuevo idioma
+                            </a>
+                        </div><br>
                     
                      {{-- Mensajes de éxito --}}
                      @if (session('success'))
@@ -15,17 +19,10 @@
                             {{ session('success') }}
                         </div>
                     @endif
-                    
-                    <div class="mb-3">
-                        <a href="{{ route('idiomas.create') }}" class="btn btn-info btn-round btn-simple">
-                            <i class="fas fa-plus-circle"></i> Crear idioma
-                        </a>
-                    </div>
 
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th class="text-center">ID</th>
                                 <th class="text-center">Nombre del idioma</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
@@ -34,7 +31,6 @@
                         <tbody>
                             @foreach ($idiomas as $idioma)
                                 <tr>
-                                    <td class="text-center">{{ $idioma->id }}</td>
                                     <td class="text-center">{{ $idioma->nombre }}</td>
 
                                     <td class="text-center">

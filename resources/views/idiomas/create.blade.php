@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container mt-5">
-    <div class="row justify-content-center" style="margin-top: 88px">
+    <div class="row justify-content-center" style="margin-top: 90px">
         <div class="col-md-8">
             <div class="card shadow-lg">
                 <div class="card-header bg-warning text-white text-center">
-                    <h3 class="card-title"><strong>CREAR IDIOMA</strong></h3>
+                    <h3 class="card-title"><strong>AGREGAR NUEVO IDIOMA</strong></h3>
                 </div>
 
                     @if($errors->any())

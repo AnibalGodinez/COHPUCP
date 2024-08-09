@@ -27,7 +27,7 @@
                         
                         <div class="form-group">
                             <label for="description"><strong>DESCRIPCIÓN DEL ROL</strong></label>
-                            <textarea id="description" name="description" rows="12" class="form-control w-70 @error('description') is-invalid @enderror">{{ old('description', $role->description) }}</textarea>
+                            <textarea id="description" name="description" style="min-height: 150px" class="form-control w-70 @error('description') is-invalid @enderror">{{ old('description', $role->description) }}</textarea>
                             
                             @error('description')
                                 <span class="invalid-feedback" role="alert">

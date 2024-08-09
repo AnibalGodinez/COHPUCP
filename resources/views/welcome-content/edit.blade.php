@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container-fluid mt-5">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="margin-top: 90px">
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-default text-white text-center">
-                    <h3 class="card-title" style="color: beige"><strong>EDITAR CONTENIDO DE LA PÁGINA PRINCIPAL</strong></h3>
+                    <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>EDITAR CONTENIDO DE LA PÁGINA PRINCIPAL</strong></h3>
                 </div>
 
                 <!-- Mostrar mensajes de error para el campo de imagen -->
@@ -26,7 +26,7 @@
                         @method('PUT')
 
                         <div class="form-group">
-                            <label for="layout"><strong>DISEÑO:</strong></label>
+                            <label for="layout"><strong>DISEÑO</strong></label>
                             <select 
                                 name="layout" 
                                 id="layout"
@@ -43,7 +43,7 @@
                         </div>
                         
                         <div class="form-group" id="titleField">
-                            <label for="title"><strong>TÍTULO:</strong></label>
+                            <label for="title"><strong>TÍTULO</strong></label>
                             <input  
                                 type="text" 
                                 name="title" 
@@ -54,17 +54,17 @@
                         </div><br>
 
                         <div class="form-group" id="descriptionField">
-                            <label for="description"><strong>DESCRIPCIÓN:</strong></label>
+                            <label for="description"><strong>DESCRIPCIÓN</strong></label>
                             <textarea 
                                 name="description" 
                                 id="description"
                                 class="form-control" 
-                                style="min-height: 400px;" 
+                                style="min-height: 150px;" 
                                 placeholder="Ingrese la descripción">{{ old('description', $welcomeContent->description) }}</textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="image_path" class="btn btn-default btn-simple"><strong>CLICK PARA AGREGAR O CAMBIAR IMAGEN</strong></label>
+                            <label for="image_path" class="btn btn-warning btn-simple"><strong>CLICK PARA CAMBIAR IMAGEN</strong></label>
                             <input 
                                 type="file" 
                                 name="image_path" 
@@ -90,11 +90,11 @@
                             <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-success">
                                     <i class="fas fa-save" style="margin-right: 8px;"></i>
-                                    {{ __('Actualizar') }}
+                                    Guardar cambios
                                 </button>
                                 <a href="{{ route('welcome-content.index') }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
-                                    {{ __('Volver') }}
+                                    Volver
                                 </a>
                             </div>
                         </div>

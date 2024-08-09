@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container-fluid mt-5">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="margin-top: 90px">
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-default text-white text-center">
-                    <h3 class="card-title" style="color: beige"><strong>EDITAR CONTENIDO DE LA PÁGINA PRINCIPAL</strong></h3>
+                    <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>EDITAR CONTENIDO DEL DASHBOARD</strong></h3>
                 </div>
 
                 <!-- Mostrar mensajes de error para el campo de imagen -->
@@ -31,7 +31,7 @@
                             <div class="form-group col-md-4">
                                 <label for="layout">
                                     <i class="fas fa-palette" style="margin-right: 8px;"></i>
-                                    <strong>DISEÑO:</strong>
+                                    <strong>DISEÑO</strong>
                                 </label>
                                 <select 
                                     name="layout" 
@@ -49,7 +49,7 @@
                             <div class="form-group col-md-4">
                                 <label for="title">
                                     <i class="fa-font fa-quote-left" style="margin-right: 8px;"></i>
-                                    <strong>TÍTULO:</strong>
+                                    <strong>TÍTULO</strong>
                                 </label>
                                 <input  
                                     type="text" 
@@ -64,21 +64,22 @@
                             <div class="form-group col-md-4">
                                 <label for="subtitle">
                                     <i class="fa-text-height" style="margin-right: 8px;"></i>
-                                    <strong>SUBTÍTULO:</strong>
+                                    <strong>SUBTÍTULO</strong>
                                 </label>
                                 <input 
                                     type="text" 
                                     name="subtitle" 
                                     id="subtitle" 
                                     class="form-control" 
-                                    value="{{ old('subtitle', $dashboardContent->subtitle) }}">
+                                    value="{{ old('subtitle', $dashboardContent->subtitle) }}"
+                                    placeholder="Ingrese el subtítulo">
                             </div>
 
                             <!-- Campo para agregar una nueva descripción -->
                             <div class="form-group col-md-12">
                                 <label for="description">
                                     <i class="fas fa-align-left" style="margin-right: 8px;"></i>
-                                    <strong>DESCRIPCIÓN:</strong>
+                                    <strong>DESCRIPCIÓN</strong>
                                 </label>
                                 <textarea 
                                     name="description" 
@@ -169,14 +170,15 @@
                             <div class="form-group col-md-4">
                                 <label for="links">
                                     <i class="fas fa-link" style="margin-right: 8px;"></i>
-                                    <strong>LINKS</strong>
+                                    <strong>LINK</strong>
                                 </label>
                                 <input 
                                     type="text" 
                                     class="form-control" 
                                     id="links" 
                                     name="links" 
-                                    value="{{ old('links', $dashboardContent->links) }}">
+                                    value="{{ old('links', $dashboardContent->links) }}"
+                                    placeholder="Ingrese el enlace">
                             </div>
 
                             <!-- Campo para agregar un nuevo link de facebook -->
@@ -190,7 +192,8 @@
                                     class="form-control" 
                                     id="facebook_link" 
                                     name="facebook_link" 
-                                    value="{{ old('facebook_link', $dashboardContent->facebook_link) }}">
+                                    value="{{ old('facebook_link', $dashboardContent->facebook_link) }}"
+                                    placeholder="Ingrese el facebook link">
                             </div>
 
                             <!-- Campo para agregar un nuevo link de twitter -->
@@ -204,7 +207,8 @@
                                     class="form-control" 
                                     id="twitter_link" 
                                     name="twitter_link" 
-                                    value="{{ old('twitter_link', $dashboardContent->twitter_link) }}">
+                                    value="{{ old('twitter_link', $dashboardContent->twitter_link) }}"
+                                    placeholder="Ingrese el twitter link">
                             </div>
 
                             <!-- Campo para agregar un nuevo link de youtube -->
@@ -218,7 +222,8 @@
                                     class="form-control" 
                                     id="youtube_link" 
                                     name="youtube_link" 
-                                    value="{{ old('youtube_link', $dashboardContent->youtube_link) }}">
+                                    value="{{ old('youtube_link', $dashboardContent->youtube_link) }}"
+                                    placeholder="Ingrese el youtube link">
                             </div>
 
                             <!-- Campo para agregar un nuevo link de whatsapp -->
@@ -232,7 +237,8 @@
                                     class="form-control" 
                                     id="whatsapp_link" 
                                     name="whatsapp_link" 
-                                    value="{{ old('whatsapp_link', $dashboardContent->whatsapp_link) }}">
+                                    value="{{ old('whatsapp_link', $dashboardContent->whatsapp_link) }}"
+                                    placeholder="Ingrese el whatsapp link">
                             </div>
 
                             <!-- Campo para agregar un nuevo link de instagram -->
@@ -246,7 +252,8 @@
                                     class="form-control" 
                                     id="instagram_link" 
                                     name="instagram_link" 
-                                    value="{{ old('instagram_link', $dashboardContent->instagram_link) }}">
+                                    value="{{ old('instagram_link', $dashboardContent->instagram_link) }}"
+                                    placeholder="Ingrese el instagram link">
                             </div>
                         </div>
 

@@ -6,14 +6,14 @@
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header text-white text-center">
-                    <h3 class="card-title"><strong>CREAR UNA PREGUNTA DE SEGURIDAD</strong></h3>
+                    <h3 class="card-title"><strong>CREAR NUEVA PREGUNTA DE SEGURIDAD</strong></h3>
                 </div><br>
 
                 <div class="card-body">
                     <form action="{{ route('security_questions.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="question"><strong>PREGUNTA DE SEGURIDAD</strong></label>
+                            <label for="question"><strong>PREGUNTA DE SEGURIDAD *</strong></label>
                             <input type="text" name="question" id="question" class="form-control" required>
                         </div><br>
 

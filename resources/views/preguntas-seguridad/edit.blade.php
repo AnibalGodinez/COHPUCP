@@ -15,7 +15,7 @@
                         @method('PUT')
 
                         <div class="form-group">
-                            <label for="question"><strong>PREGUNTA DE SEGURIDAD</strong></label>
+                            <label for="question"><strong>PREGUNTA DE SEGURIDAD *</strong></label>
                             <input type="text" class="form-control" id="question" name="question" value="{{ $question->question }}" required>
                         </div><br>
 

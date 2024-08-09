@@ -9,11 +9,12 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="{{ route('home')}}" class="nav-link text-uppercase font-weight-bold {{request()->routeIs('home') ? 'text-dark' : ''}}" >Inicio</a>
+                    <a href="{{ route('home')}}" class="nav-link text-uppercase font-weight-bold {{request()->routeIs('home') ? 'text-warning' : ''}}" >Inicio</a>
                 </li>
 
-                <li class="nav-item dropdown" style="margin-bottom: 10px;">
-                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
+                    {{  request()->routeIs('profile.*') ? 'text-warning' : ''}}" 
                         href="#" 
                         id="navbarDropdown" 
                         role="button" 
@@ -23,16 +24,16 @@
                         Perfil
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase" href="{{ route('profile.show') }}">Ver mi perfil</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('profile.edit') }}">Editar perfil</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('profile.changePassword') }}">Cambiar contraseña</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('profile.show') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('profile.show') }}">Ver mi perfil</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('profile.edit') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('profile.edit') }}">Editar perfil</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('profile.changePassword') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('profile.changePassword') }}">Cambiar contraseña</a>
                     </div>
                 </li>
                 
                 @can('ver boton personas')
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
-                        {{  request()->routeIs('usuarios.*') ? 'text-dark' : ''}}" 
+                        {{  request()->routeIs('usuarios.*') ? 'text-warning' : ''}}" 
                             href="#" 
                             id="navbarDropdown" 
                             role="button" 
@@ -42,9 +43,9 @@
                             Personas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item text-uppercase {{request()->routeIs('usuarios.ver') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('usuarios.ver')}}">Ver usuarios</a>
-                            <a class="dropdown-item text-uppercase {{request()->routeIs('usuarios.create') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('usuarios.create')}}">Crear usuarios</a>
-                            <a class="dropdown-item text-uppercase {{request()->routeIs('usuarios.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('usuarios.index')}}">Gestionar usuarios</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('usuarios.ver') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('usuarios.ver')}}">Ver usuarios</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('usuarios.create') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('usuarios.create')}}">Crear usuarios</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('usuarios.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('usuarios.index')}}">Gestionar usuarios</a>
                         </div>
                     </li>
                 @endcan
@@ -54,7 +55,7 @@
                         <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
                         {{  request()->routeIs('roles.*') || 
                             request()->routeIs('permissions.ver') || 
-                            request()->routeIs('permission.*')? 'text-dark' : '' }}"
+                            request()->routeIs('permission.*')? 'text-warning' : '' }}"
                             href="#" 
                             id="navbarDropdownRoles" 
                             role="button" 
@@ -64,21 +65,21 @@
                             Roles y permisos
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownRoles">
-                            <a class="dropdown-item text-uppercase {{request()->routeIs('roles.*') ? 'text-dark font-weight-bold' : ''}}" id="rolesLink" href="#">Roles</a>
-                            <a class="dropdown-item text-uppercase {{request()->routeIs('permissions.*') || request()->routeIs('permission.*')? 'text-dark font-weight-bold' : ''}}" id="permisosLink" href="#">Permisos</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('roles.*') ? 'text-warning font-weight-bold' : ''}}" id="rolesLink" href="#">Roles</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('permissions.*') || request()->routeIs('permission.*')? 'text-warning font-weight-bold' : ''}}" id="permisosLink" href="#">Permisos</a>
                         </div>
 
                         <!-- Submenú para Roles -->
                         <div class="dropdown-menu" id="subMenuRoles" style="position: absolute; top: 0; left: 100%; display: none;">
-                            <a class="dropdown-item text-uppercase {{request()->routeIs('roles.ver') ? 'text-dark font-weight-bold' : ''}}" href="{{route('roles.ver')}}">Ver roles</a>
-                            <a class="dropdown-item text-uppercase {{request()->routeIs('roles.create') ? 'text-dark font-weight-bold' : ''}}" href="{{route('roles.create')}}">Crear rol</a>
-                            <a class="dropdown-item text-uppercase {{request()->routeIs('roles.index') ? 'text-dark font-weight-bold' : ''}}" href="{{route('roles.index')}}">Gestionar roles</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('roles.ver') ? 'text-warning font-weight-bold' : ''}}" href="{{route('roles.ver')}}">Ver roles</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('roles.create') ? 'text-warning font-weight-bold' : ''}}" href="{{route('roles.create')}}">Crear rol</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('roles.index') ? 'text-warning font-weight-bold' : ''}}" href="{{route('roles.index')}}">Gestionar roles</a>
                         </div>
                         <!-- Submenú para Permisos -->
                         <div class="dropdown-menu" id="subMenuPermisos" style="position: absolute; top: 0; left: 100%; display: none;">
-                            <a class="dropdown-item text-uppercase {{request()->routeIs('permissions.ver') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('permissions.ver')}}">Ver permisos</a>
-                            <a class="dropdown-item text-uppercase {{request()->routeIs('permission.create') ? 'text-dark font-weight-bold' : ''}}" href="{{route('permission.create')}}">Crear permiso</a>
-                            <a class="dropdown-item text-uppercase {{request()->routeIs('permission.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('permission.index')}}">Gestionar permisos</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('permissions.ver') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('permissions.ver')}}">Ver permisos</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('permission.create') ? 'text-warning font-weight-bold' : ''}}" href="{{route('permission.create')}}">Crear permiso</a>
+                            <a class="dropdown-item text-uppercase {{request()->routeIs('permission.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('permission.index')}}">Gestionar permisos</a>
                         </div>
                     </li>
                 @endcan
@@ -134,7 +135,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
                     {{  request()->routeIs('cursos.index') || 
-                        request()->routeIs('capacitaciones.index') ? 'text-dark' : '' }}" 
+                        request()->routeIs('capacitaciones.index') ? 'text-warning' : '' }}" 
                         href="#" 
                         id="navbarDropdown" 
                         role="button" 
@@ -143,8 +144,8 @@
                         Desarrollo Profesional
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.view') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('cursos.view')}}">Cursos</a>
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('capacitaciones.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.view') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('cursos.view')}}">Cursos</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('capacitaciones.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
                         <a class="dropdown-item text-uppercase" href="#">Certificaciones</a>
                         <a class="dropdown-item text-uppercase" href="#">Talleres</a>
                         <a class="dropdown-item text-uppercase" href="#">Diplomados</a>
@@ -384,7 +385,7 @@
                     <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
                     {{  request()->routeIs('security_questions.index') || 
                         request()->routeIs('pais.index') ||
-                        request()->routeIs('welcome-content.index')? 'text-dark' : '' }}" 
+                        request()->routeIs('welcome-content.index')? 'text-warning' : '' }}" 
                         href="#" 
                         id="navbarDropdown" 
                         role="button" 
@@ -394,14 +395,14 @@
                         Mantenimientos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('security_questions.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('security_questions.index')}}">Preguntas de seguridad</a>
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('pais.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('pais.index') }}">Países</a>
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('idiomas.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('idiomas.index') }}">Idiomas</a>
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('cursos.index') }}">Cursos</a>
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('categorias.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('categorias.index') }}">Categorías</a> 
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('dashboard-content.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('dashboard-content.index') }}">Inicio</a>
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('welcome-content.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('welcome-content.index') }}">Home</a> 
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('footer-content.index') ? 'text-dark font-weight-bold' : ''}}" href="{{ route('footer-content.index') }}">Pie de página</a> 
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('security_questions.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('security_questions.index')}}">Preguntas de seguridad</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('pais.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('pais.index') }}">Países</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('idiomas.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('idiomas.index') }}">Idiomas</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('cursos.index') }}">Cursos</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('categorias.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('categorias.index') }}">Categorías</a> 
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('dashboard-content.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('dashboard-content.index') }}">Dasboard</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('welcome-content.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('welcome-content.index') }}">Home</a> 
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('footer-content.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('footer-content.index') }}">Pie de página</a> 
                     </div>
                 </li>                
                 @endcan

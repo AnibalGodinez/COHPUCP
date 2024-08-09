@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-dark text-white text-center">
-                    <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>CREAR PAÍS</strong></h3>
+                    <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>AGREGAR NUEVO PAÍS</strong></h3>
                 </div>
 
                     <div class="card-body">

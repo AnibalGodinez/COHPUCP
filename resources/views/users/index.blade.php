@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid mt-5">
-    <div class="row" style="margin-top: 88px">
+    <div class="row" style="margin-top: 90px">
         <div class="col-md-12">
             <div class="card mt-7">
                 <div class="card-body">
@@ -14,7 +14,7 @@
 
                     {{-- Formulario de búsqueda --}}
                     <form action="{{ url('usuarios') }}" method="GET" class="form-inline mt-3">
-                        <input type="text" id="searchField" name="search" class="form-control" placeholder="Buscar usuarios" value="{{ request()->query('search') }}">
+                        <input type="text" id="searchField" name="search" class="form-control mr-2 col-2" placeholder="Buscar usuarios" value="{{ request()->query('search') }}">
                         <button class="btn btn-info btn-round btn-simple" type="submit">
                             <i class="tim-icons icon-zoom-split"></i> Buscar
                         </button>

@@ -1,14 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid mt-5">
-        <div class="row" style="margin-top: 88px">
+    <div class="container-fluid mt-8">
+        <div class="row" style="margin-top: 90px">
             <div class="col-md-12">
                 <div class="card m-7">
-
                     <div class="card-body">
-                        <h3 class="card-title text-center">GESTIÓN DE LAS CATEGORÍAS</h3>
-                    
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3 class="card-title text-center" style="margin-left: 800px;">LISTA DE CATEGORÍAS</h3>
+                            <a href="{{ route('categorias.create') }}" class="btn btn-info btn-round btn-simple">
+                                <i class="fas fa-plus-circle"></i> Crear nueva categoría
+                            </a>
+                        </div><br>
+
                      {{-- Mensajes de éxito --}}
                      @if (session('success'))
                         <div class="alert alert-success text-center">
@@ -16,16 +20,9 @@
                         </div>
                     @endif
                     
-                    <div class="mb-3">
-                        <a href="{{ route('categorias.create') }}" class="btn btn-info btn-round btn-simple">
-                            <i class="fas fa-plus-circle"></i> Crear categoría
-                        </a>
-                    </div>
-
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th class="text-center">ID</th>
                                 <th class="text-center">Nombre de la categoría</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
@@ -34,7 +31,6 @@
                         <tbody>
                             @foreach ($categorias as $categoria)
                                 <tr>
-                                    <td class="text-center">{{ $categoria->id }}</td>
                                     <td class="text-center">{{ $categoria->nombre }}</td>
 
                                     <td class="text-center">

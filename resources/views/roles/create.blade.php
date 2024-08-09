@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-warning text-white text-center">
-                    <h3 class="card-title"><strong>CREAR ROL</strong></h3>
+                    <h3 class="card-title"><strong>CREAR NUEVO ROL</strong></h3>
                 </div>
 
                 @if($errors->any())
@@ -42,7 +42,7 @@
                             id="description" 
                             name="description" 
                             class="form-control" 
-                            rows="12" 
+                            style="min-height: 150px" 
                             placeholder="Ingrese una descripción del rol">{{ old('description') }}</textarea>
                         </div>
                         

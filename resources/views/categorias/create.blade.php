@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-5">
-    <div class="row justify-content-center" style="margin-top: 88px">
+    <div class="row justify-content-center" style="margin-top: 90px">
         <div class="col-md-8">
             <div class="card shadow-lg">
                 <div class="card-header bg-warning text-white text-center">
@@ -24,7 +24,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="nombre"><strong>Nombre de la categoría *</strong></label>
+                            <label for="nombre"><strong>NOMBRE DE LA CATEGORÍA *</strong></label>
                             <input 
                             type="text" 
                             id="nombre" 

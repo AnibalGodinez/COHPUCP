@@ -31,7 +31,7 @@
                             <textarea 
                                 id="description" 
                                 name="description" 
-                                rows="12"
+                                style="min-height: 150px" 
                                 class="form-control w-70 @error('description') is-invalid @enderror"
                                 placeholder="Ingrese la descripción del permiso">{{ old('description', $permission->description) }}</textarea>
                         </div>

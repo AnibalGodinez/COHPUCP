@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-warning text-white text-center">
-                    <h3 class="card-title"><strong>CREAR PERMISO</strong></h3>
+                    <h3 class="card-title"><strong>CREAR NUEVO PERMISO</strong></h3>
                 </div>
 
                 <div class="card-body">
@@ -47,7 +47,7 @@
                             id="description" 
                             name="description" 
                             class="form-control" 
-                            rows="12" 
+                            style="min-height: 150px" 
                             placeholder="Ingrese la descripción del permiso">{{ old('description') }}</textarea>
                         </div>
 

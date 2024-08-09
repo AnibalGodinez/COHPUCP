@@ -1,19 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid mt-5">
-        <div class="row" style="margin-top: 88px">
+    <div class="container-fluid mt-8">
+        <div class="row" style="margin-top: 90px">
             <div class="col-md-12">
                 <div class="card m-7">
-
                     <div class="card-body">
-                        <h3 class="card-title text-center">GESTIÓN DE PAÍSES</h3>
-
-                        <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3 class="card-title text-center" style="margin-left: 500px;">LISTA DE PAÍSES</h3>
                             <a href="{{ route('pais.create') }}" class="btn btn-info btn-round btn-simple">
-                                <i class="fas fa-plus-circle"></i> Crear país
+                                <i class="fas fa-plus-circle"></i> Agregar nuevo país
                             </a>
-                        </div>
+                        </div><br>
 
                         {{-- Mensajes de éxito --}}
                         @if (session('success'))
