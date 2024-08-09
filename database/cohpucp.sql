@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 07-08-2024 a las 22:48:29
+-- Tiempo de generación: 09-08-2024 a las 22:54:42
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `categorias_nombre_unique` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `categorias`
@@ -70,8 +70,7 @@ INSERT INTO `categorias` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 (7, 'Contabilidad Forense', '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
 (8, 'Auditoría', '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
 (9, 'Sistemas Contables', '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
-(10, 'Ética y Responsabilidad Social', '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
-(11, 'INGLÉS', '2024-08-08 04:12:38', '2024-08-08 04:13:26');
+(10, 'Ética y Responsabilidad Social', '2024-08-07 02:59:58', '2024-08-07 02:59:58');
 
 -- --------------------------------------------------------
 
@@ -100,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `cursos` (
   KEY `cursos_user_id_foreign` (`user_id`),
   KEY `cursos_idioma_id_foreign` (`idioma_id`),
   KEY `cursos_categoria_id_foreign` (`categoria_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `cursos`
@@ -110,9 +109,7 @@ INSERT INTO `cursos` (`id`, `layout`, `titulo`, `nombre`, `descripcion`, `precio
 (35, 'Imagen de fondo', '¡Para este 2025 desarrolla tus habilidades 100% Online!', NULL, 'Potencia tu conocimiento con cursos interactivos y actualizados, accede desde cualquier lugar y a tu ritmo. ¡Inscríbete ahora y comienza a construir tu futuro!', NULL, NULL, NULL, NULL, 1, NULL, NULL, 'Td9BCAhTcl9xoBniLyqq75VRDXptVy8LMEFH0wUi.jpg', '2024-08-07 23:33:06', '2024-08-08 04:32:23'),
 (36, 'Imagen a la derecha', 'Calidad académica con El Colegio Hondureño de Profesionales Universitarios en Contaduría Pública', NULL, 'Encuentra miles de cursos gratis sobre diferentes temáticas diseñados por expertos en pedagogía, a partir de contenidos académicos con licencia abierta provenientes de YouTube e instituciones prestigiosas como Harvard University o MIT.', NULL, NULL, NULL, NULL, 1, NULL, NULL, 'k6X9KbW0om9QrS2InrRFZ7Mm8Vk7c6gW4eOd3vJ2.png', '2024-08-07 23:33:46', '2024-08-08 02:18:50'),
 (38, 'Imagen de fondo', 'AQUÍ ENCONTRARÁS TODOS LOS CURSOS QUE EL COLEGIO TE BRINDA', NULL, 'Potencia tu conocimiento con cursos interactivos y actualizados, accede desde cualquier lugar y a tu ritmo. ¡Inscríbete ahora y comienza a construir tu futuro!', NULL, NULL, NULL, NULL, 1, NULL, NULL, 'b53Omp855E3BTbviSswp5qrky6oxwwm2wGWHZtTu.jpg', '2024-08-08 02:42:19', '2024-08-08 02:42:19'),
-(39, 'Tarjetas de cursos', NULL, 'JAVA', 'DGDFG RF HGFDHGDFHF', '50.45', 'https://www.coursera.org/professional-certificates/google-data-analytics', NULL, NULL, 1, 1, 8, 'nF7PpyxYnEpqws472lX9IxQpEdVF5ABejcdPzrMc.png', '2024-08-08 03:34:26', '2024-08-08 03:34:26'),
-(40, 'Tarjetas de cursos', NULL, 'FINANZAS', 'DSGDSHBFD FGHJNGFJNGFJNGF', '120.65', 'https://www.coursera.org/professional-certificates/google-data-analytics', NULL, NULL, 1, NULL, NULL, 'CeuFe53qkw83xOxYMWhYJdb81vJO6QCTW13G7bme.png', '2024-08-08 03:35:55', '2024-08-08 03:35:55'),
-(41, 'Tarjetas de cursos', NULL, 'EXCEL AVANZADO', 'ZFDSGVDSHGBVDFS', '21.50', 'https://edutin.com/curso-de-java', NULL, NULL, 1, 2, 3, 'TpUyt8I8snFUq4Haj0MCZ1eSDgp3Z1nm9LdmGqVr.jpg', '2024-08-08 03:37:09', '2024-08-08 03:37:09');
+(40, 'Tarjetas de cursos', NULL, 'FINANZAS', 'DSGDSHBFD FGHJNGFJNGFJNGF', '120.65', 'https://www.coursera.org/professional-certificates/google-data-analytics', NULL, NULL, 1, NULL, NULL, 'CeuFe53qkw83xOxYMWhYJdb81vJO6QCTW13G7bme.png', '2024-08-08 03:35:55', '2024-08-08 03:35:55');
 
 -- --------------------------------------------------------
 
@@ -141,16 +138,14 @@ CREATE TABLE IF NOT EXISTS `dashboard_contents` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `dashboard_contents_user_id_foreign` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `dashboard_contents`
 --
 
 INSERT INTO `dashboard_contents` (`id`, `layout`, `title`, `subtitle`, `description`, `pdf`, `images`, `videos`, `links`, `facebook_link`, `twitter_link`, `youtube_link`, `whatsapp_link`, `instagram_link`, `user_id`, `created_at`, `updated_at`) VALUES
-(2, 'Por defecto', 'COHPUCP', '¿QUIÉNES SOMOS?', 'DSGFDSGREYRGDSDGDS', NULL, NULL, NULL, NULL, 'https://www.facebook.com/people/Cohpucp-Sps/100063917986775/', NULL, NULL, NULL, NULL, 1, '2024-08-08 03:20:43', '2024-08-08 03:21:00'),
-(5, 'Archivos', 'RQEWRAS', 'SAFCASFCAS', 'FASFCDSAXF', 'dashboard_pdfs/gC4WvzqrbaaCCgVJHYEWWjGii8iikFI0GpbHmVt5.pdf', 'dashboard_images/4t55uYAh3Ve3SuMjqf3qWLiYPSxl385Asldpp4WA.png', 'dashboard_videos/nl6ulPneU6lTGqhFONVa9H7mJfc73SbcQesUgCfV.3gp', NULL, NULL, NULL, NULL, NULL, NULL, 1, '2024-08-08 03:24:34', '2024-08-08 03:29:42'),
-(6, 'Por defecto', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'https://www.youtube.com/channel/UCXh_r9GGeC3ezJqohIkPEAg', NULL, NULL, 1, '2024-08-08 03:32:08', '2024-08-08 03:32:08');
+(7, 'Archivos', NULL, NULL, NULL, NULL, NULL, 'dashboard_videos/vlEVOZWuCSaDgaEBKTIj9vkVTy3oc2u6WNZc318d.mp4', NULL, NULL, NULL, NULL, NULL, NULL, 1, '2024-08-10 02:26:49', '2024-08-10 02:26:49');
 
 -- --------------------------------------------------------
 
@@ -212,14 +207,14 @@ CREATE TABLE IF NOT EXISTS `idiomas` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idiomas_nombre_unique` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `idiomas`
 --
 
 INSERT INTO `idiomas` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
-(1, 'Español', '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
+(1, 'Español', '2024-08-07 02:59:58', '2024-08-09 03:30:36'),
 (2, 'Inglés', '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
 (3, 'Fránces', '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
 (4, 'Alemán', '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
@@ -298,7 +293,12 @@ CREATE TABLE IF NOT EXISTS `model_has_roles` (
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(1, 'App\\Models\\User', 1);
+(1, 'App\\Models\\User', 1),
+(3, 'App\\Models\\User', 2),
+(2, 'App\\Models\\User', 3),
+(3, 'App\\Models\\User', 4),
+(3, 'App\\Models\\User', 5),
+(3, 'App\\Models\\User', 6);
 
 -- --------------------------------------------------------
 
@@ -314,14 +314,14 @@ CREATE TABLE IF NOT EXISTS `pais` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=233 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=241 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `pais`
 --
 
 INSERT INTO `pais` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES
-(1, 'Afganistán', '+93', '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
+(1, 'Afganistán ok', '+93', '2024-08-07 02:59:58', '2024-08-10 02:07:44'),
 (2, 'Albania', '+355', '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
 (3, 'Alemania', '+49', '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
 (4, 'Andorra', '+376', '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
@@ -568,6 +568,13 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('anibalgodinez64@gmail.com', '$2y$10$wdZ8KYf5x3JmbWTEyj17qOAX.CVSnK5vVVqGSGh5pD9GejSPp3cqC', '2024-08-10 04:37:03');
+
 -- --------------------------------------------------------
 
 --
@@ -615,7 +622,7 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `description`, `created_a
 (22, 'ver boton de invitado', 'web', NULL, '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
 (23, 'ver boton de agremiado', 'web', NULL, '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
 (24, 'ver boton mantenimientos', 'web', NULL, '2024-08-07 02:59:58', '2024-08-07 02:59:58'),
-(25, 'ver boton notificaciones', 'web', NULL, '2024-08-07 02:59:58', '2024-08-07 02:59:58');
+(25, 'ver boton notificaciones', 'web', NULL, '2024-08-07 02:59:58', '2024-08-08 23:15:44');
 
 -- --------------------------------------------------------
 
@@ -655,7 +662,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `roles`
@@ -724,7 +731,15 @@ CREATE TABLE IF NOT EXISTS `security_questions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `security_questions`
+--
+
+INSERT INTO `security_questions` (`id`, `question`, `created_at`, `updated_at`) VALUES
+(6, '¿Cuál es tu deporte favorito?', '2024-08-09 00:33:50', '2024-08-09 00:33:50'),
+(10, '¿Cuál es el nombre de tu primer mascota?', '2024-08-09 23:04:02', '2024-08-09 23:04:02');
 
 -- --------------------------------------------------------
 
@@ -764,14 +779,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_numero_colegiacion_unique` (`numero_colegiacion`),
   UNIQUE KEY `users_rtn_unique` (`rtn`),
   KEY `users_pais_id_foreign` (`pais_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `name2`, `apellido`, `apellido2`, `numero_identidad`, `numero_colegiacion`, `rtn`, `sexo`, `fecha_nacimiento`, `pais_id`, `telefono`, `telefono_celular`, `email`, `estado`, `email_verified_at`, `password`, `profile_image`, `facebook_link`, `twitter_link`, `bio`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Administrador', 'Anibal', 'Cohpucp', 'Godinez', '0801-1984-15578', '2010-01-2220', '0801-1984-155781', 'masculino', '1984-06-25', NULL, '2255-1123', '3356-0773', 'anibalgodinez64@gmail.com', 'activo', NULL, '$2y$10$gsDbcBxv3s668tOU/iKSzOF59Qh4jXphgRxvzBAjhQyadf0zHplrm', 'profile_images/l9TwWu791ANVt6BG11wVKxud2IJo3FPqMrcN0T8L.png', NULL, NULL, NULL, NULL, '2024-08-07 02:59:58', '2024-08-08 03:10:09');
+(1, 'Johan', 'Anibal', 'Cohpucp', 'Godinez', '0801-1984-15578', '2010-01-2220', '0801-1984-155781', 'masculino', '1984-06-25', 11, '2255-1123', '3356-0773', 'anibalgodinez64@gmail.com', 'activo', NULL, '$2y$10$gsDbcBxv3s668tOU/iKSzOF59Qh4jXphgRxvzBAjhQyadf0zHplrm', 'profile_images/l9TwWu791ANVt6BG11wVKxud2IJo3FPqMrcN0T8L.png', NULL, NULL, 'En vista de mi pasión por la tecnología y como ingeniero comprometido con la honestidad, la calidad y la prestación de un excelente servicio en el área del desarrollo, me gustaría formar parte de una empresa en la cual puedo crecer profesionalmente.', NULL, '2024-08-07 02:59:58', '2024-08-09 04:21:48');
 
 -- --------------------------------------------------------
 
@@ -811,13 +826,6 @@ CREATE TABLE IF NOT EXISTS `welcome_contents` (
   PRIMARY KEY (`id`),
   KEY `welcome_contents_user_id_foreign` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-
---
--- Volcado de datos para la tabla `welcome_contents`
---
-
-INSERT INTO `welcome_contents` (`id`, `layout`, `title`, `description`, `image_path`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Imagen de fondo oscuro', 'xasfdssaxf', 'dsaxxxaadx', 'welcome_images/cIj3TQUbi0c0wZhdQ5I4Kn6qJ3PmUjdZSvpO100C.jpg', 1, '2024-08-07 22:29:51', '2024-08-08 04:25:18');
 
 --
 -- Restricciones para tablas volcadas

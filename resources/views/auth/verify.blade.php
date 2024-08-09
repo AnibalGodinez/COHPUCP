@@ -17,15 +17,19 @@
                             
                             Por favor, ingrese a su <strong><strong>cuenta de correo registrada y complete el proceso de verificación</strong></strong>. Una vez realizado, podrá ingresar a la plataforma. Si no ha recibido el correo de verificación, puede solicitar uno nuevo haciendo clic en el botón de abajo.
                         </p>
-                        
+
                         <div class="d-flex justify-content-center mt-4">
                             @if (Route::has('verification.send'))
                                 <form method="POST" action="{{ route('verification.send') }}">
                                     @csrf
-                                    <button type="submit" class="btn btn-info">Solicitar otro link</button>
+                                    <button type="submit" class="btn btn-info">
+                                        <i class="fas fa-link" style="margin-right: 8px;"></i>
+                                        Solicitar otro enlace
+                                    </button>
                                 </form>
                             @endif
                         </div>
+                        
                     </div>
                 </div>
             </div>
