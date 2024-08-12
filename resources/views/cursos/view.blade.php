@@ -11,13 +11,14 @@
                 <img src="{{ asset('storage/cursos_images/' . $curso->imagen) }}" alt="{{ $curso->titulo }}" class="img-fluid w-100 h-100" style="object-fit: cover;">
             @endif
             <div class="card-img-overlay d-flex flex-column justify-content-center align-items-start bg-overlay">
+                
                 <div class="text-box">
-                    <h1 class="card-title text-white">{{ $curso->titulo }}</h1>
-                    <p class="card-text text-white">{{ Str::limit($curso->descripcion, 500) }}</p>
+                    <h1 class="card-title text-white" style="margin-left: 150px;"> {{ $curso->titulo }} </h1>
+                    <p class="card-text text-white" style="margin-left: 150px; font-size: 1.30em;">{!! nl2br(e(Str::limit($curso->descripcion, 500))) !!}</p><br>
                     @if ($curso->enlace || $curso->icono)
                         <div>
                             @if ($curso->enlace)
-                                <a href="{{ $curso->enlace }}" class="btn btn-danger" target="_blank">Ver Curso</a>
+                                <a href="{{ $curso->enlace }}" class="btn btn-danger" target="_blank" style="margin-left: 150px;">Inscíbete a los cursos</a>
                             @endif
                             @if ($curso->icono)
                                 <a href="{{ $curso->icono }}" class="btn btn-danger" target="_blank">Icono</a>
@@ -25,10 +26,12 @@
                         </div>
                     @endif
                 </div>
+
             </div>
         </div>
     </div>
 @endif
+
 
 @if ($curso->layout === 'Imagen a la derecha')
     <div class="container-fluid mb-4">
@@ -36,8 +39,8 @@
             <div class="row no-gutters">
                 <div class="col-md-8 d-flex justify-content-center align-items-center">
                     <div class="card-body text-box">
-                        <h1 class="card-title"><strong>{{ $curso->titulo }}</strong></h1>
-                        <p class="card-text">{{ $curso->descripcion }}</p>
+                        <h1 class="card-title" style="margin-left: 150px;"><strong>{{ $curso->titulo }}</strong></h1>
+                        <p class="card-text" style="margin-left: 150px; font-size: 1.20em;">{!! nl2br(e($curso->descripcion)) !!}</p>
                         <div>
                             @if ($curso->enlace)
                                 <a href="{{ $curso->enlace }}" class="btn btn-info" target="_blank">Ver Curso</a>
@@ -57,6 +60,7 @@
         </div>
     </div>
 @endif
+
 
 @if ($curso->layout === 'Tarjetas de cursos')
     <div class="container mb-8">

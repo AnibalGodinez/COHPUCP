@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class IdiomaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:indice idiomas', ['only' => ['index']]);
+        $this->middleware('permission:actualizar idioma', ['only' => ['update', 'edit']]);
+        $this->middleware('permission:crear idioma', ['only' => ['create', 'store']]);
+        $this->middleware('permission:borrar idioma', ['only' => ['destroy']]);
+    }
+
     // Mostrar una lista de los idiomas
     public function index()
     {

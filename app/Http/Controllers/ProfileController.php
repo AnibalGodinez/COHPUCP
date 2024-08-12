@@ -12,6 +12,14 @@ use App\Models\Pais;
 class ProfileController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('permission:ver perfil', ['only' => ['show']]);
+        $this->middleware('permission:actualizar perfil', ['only' => ['update', 'edit']]);
+        $this->middleware('permission:cambiar contraseña', ['only' => ['showChangePasswordForm', 'password']]);
+ 
+    }
+
         public function show()
     {
         $user = Auth::user()->load('pais');

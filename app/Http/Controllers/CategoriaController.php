@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:indice categorias', ['only' => ['index']]);
+        $this->middleware('permission:actualizar categorias', ['only' => ['update', 'edit']]);
+        $this->middleware('permission:crear categorias', ['only' => ['create', 'store']]);
+        $this->middleware('permission:borrar categorias', ['only' => ['destroy']]);
+    }
+
     // Mostrar una lista de las categorías
     public function index()
     {

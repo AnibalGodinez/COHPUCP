@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class PaisController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:ver paises', ['only' => ['view']]);
+        $this->middleware('permission:indice paises', ['only' => ['index']]);
+        $this->middleware('permission:actualizar pais', ['only' => ['update', 'edit']]);
+        $this->middleware('permission:crear pais', ['only' => ['create', 'store']]);
+        $this->middleware('permission:borrar pais', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $paises = Pais::all();

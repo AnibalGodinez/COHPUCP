@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\Storage;
 
 class WelcomeContentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:indice contenido inicio', ['only' => ['index']]);
+        $this->middleware('permission:actualizar contenido inicio', ['only' => ['update', 'edit']]);
+        $this->middleware('permission:crear contenido inicio', ['only' => ['create', 'store']]);
+        $this->middleware('permission:borrar contenido inicio', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $contents = WelcomeContent::all();

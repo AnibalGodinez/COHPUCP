@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Storage;
 
 class CursoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:ver cursos', ['only' => ['viewCursos']]);
+        $this->middleware('permission:indice cursos', ['only' => ['index']]);
+        $this->middleware('permission:actualizar cursos', ['only' => ['update', 'edit']]);
+        $this->middleware('permission:crear cursos', ['only' => ['create', 'store']]);
+        $this->middleware('permission:borrar cursos', ['only' => ['destroy']]);
+    }
+
     public function index(Request $request)
     {
         $search = $request->query('search');

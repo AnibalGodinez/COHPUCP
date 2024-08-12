@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Log;
 
 class DashboardContentController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:indice contenido dasboard', ['only' => ['index']]);
+        $this->middleware('permission:actualizar contenido dasboard', ['only' => ['update', 'edit']]);
+        $this->middleware('permission:crear contenido dasboard', ['only' => ['create', 'store']]);
+        $this->middleware('permission:borrar contenido dasboard', ['only' => ['destroy']]);
+    }
+
     // Mostrar una lista de todos los contenidos del dashboard
     public function index()
     {

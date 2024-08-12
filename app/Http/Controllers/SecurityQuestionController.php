@@ -7,6 +7,17 @@ use App\Models\SecurityQuestion;
 
 class SecurityQuestionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:indice preguntas de seguridad', ['only' => ['index']]);
+        $this->middleware('permission:actualizar preguntas de seguridad', ['only' => ['update', 'edit']]);
+        $this->middleware('permission:crear preguntas de seguridad', ['only' => ['create', 'store']]);
+        $this->middleware('permission:borrar preguntas de seguridad', ['only' => ['destroy']]);
+        $this->middleware('permission:ver opciones de recuperacion contaseña', ['only' => ['viewOpcionRecuperacion']]);
+        $this->middleware('permission:ver preguntas de seguridad', ['only' => ['view']]);
+    }
+
     public function index()
     {
         $questions = SecurityQuestion::all();
