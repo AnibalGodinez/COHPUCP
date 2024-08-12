@@ -16,6 +16,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardContentController;
 use App\Http\Controllers\FooterContentController;
 use App\Http\Controllers\IdiomaController;
+use App\Http\Controllers\InscripcionController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -95,8 +96,8 @@ use App\Http\Controllers\IdiomaController;
 
 	// RUTAS DE CODIGOS TELÉFONICOS DE LOS PAISES
 	Route::group(['middleware' =>['auth']], function () {
-	Route::resource('pais', PaisController::class);
-	Route::get('ver/paises', [PaisController::class, 'view'])->name('pais.view');
+		Route::resource('pais', PaisController::class);
+		Route::get('ver/paises', [PaisController::class, 'view'])->name('pais.view');
 	});
 
 	// RUTAS DE CURSOS
@@ -117,15 +118,21 @@ use App\Http\Controllers\IdiomaController;
 
 	// RUTAS DE CONTENIDO DEL PIE DE PÁGINA
 	Route::group(['middleware' => ['auth']], function () {
-	Route::resource('footer-content', FooterContentController::class);
+		Route::resource('footer-content', FooterContentController::class);
 	});
 
 	// RUTAS DE LOS IDIOMAS DE LOS CURSOS
 	Route::group(['middleware' => ['auth']], function () {
-	Route::resource('idiomas', IdiomaController::class);
+		Route::resource('idiomas', IdiomaController::class);
 	});
 
 	// RUTAS DE LOS CATEGORÍAS DE LOS CURSOS
 	Route::group(['middleware' => ['auth']], function () {
-	Route::resource('categorias', CategoriaController::class);
+		Route::resource('categorias', CategoriaController::class);
 	});
+
+	// RUTAS DE INSCRIPCIONES
+	Route::group(['middleware' => ['auth']], function () {
+		Route::resource('inscripciones', InscripcionController::class);
+	});
+
