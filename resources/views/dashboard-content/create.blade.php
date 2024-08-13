@@ -117,7 +117,7 @@
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     <strong>CLICK PARA AGREGAR UNA IMAGEN</strong>
                                 </label>
-                                <input 
+                                <input
                                     type="file" 
                                     name="images" 
                                     id="images"

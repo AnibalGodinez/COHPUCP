@@ -10,8 +10,6 @@ class Inscripcion extends Model
     use HasFactory;
 
     protected $fillable = [
-        'fecha_solicitud',
-
         // I. Datos Personales 
         'primer_nombre', 
         'segundo_nombre', 

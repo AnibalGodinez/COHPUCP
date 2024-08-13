@@ -91,7 +91,7 @@
                                     <i class="fas fa-map-marker-alt" style="margin-right: 8px; color:rgb(226, 18, 18)"></i>
                                     <strong>LUGAR DE NACIMIENTO</strong>
                                 </label>
-                                <input type="text" name="lugar_nacimiento" id="lugar_nacimiento" class="form-control" required>
+                                <input type="text" name="lugar_nacimiento" id="lugar_nacimiento" class="form-control">
                             </div>
 
                             <div class="col-md-3">
@@ -99,7 +99,7 @@
                                     <i class="fas fa-home" style="margin-right: 8px;"></i>
                                     <strong>DIRECCIÓN DE RESIDENCIA</strong>
                                 </label>
-                                <input type="text" name="direccion_residencia" id="direccion_residencia" class="form-control" required>
+                                <input type="text" name="direccion_residencia" id="direccion_residencia" class="form-control">
                             </div>
 
                             <div class="col-md-3">
@@ -155,7 +155,7 @@
                                     <i class="fas fa-building" style="margin-right: 8px;"></i>
                                     <strong>NOMBRE DE LA EMPRESA DONDE LABORA</strong>
                                 </label>
-                                <input type="text" name="nombre_empresa_trabajo_actual" id="nombre_empresa_trabajo_actual" class="form-control" required>
+                                <input type="text" name="nombre_empresa_trabajo_actual" id="nombre_empresa_trabajo_actual" class="form-control">
                             </div>
 
                             <div class="col-md-3">
@@ -163,7 +163,7 @@
                                     <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
                                     <strong>CARGO</strong>
                                 </label>
-                                <input type="text" name="cargo" id="cargo" class="form-control" required>
+                                <input type="text" name="cargo" id="cargo" class="form-control">
                             </div>
 
                             <div class="col-md-3">
@@ -171,7 +171,7 @@
                                     <i class="fas fa-location-arrow" style="margin-right: 8px;"></i>
                                     <strong>DIRECCIÓN DE LA EMPRESA</strong>
                                 </label>
-                                <input type="text" name="direccion_empresa" id="direccion_empresa" class="form-control" required>
+                                <input type="text" name="direccion_empresa" id="direccion_empresa" class="form-control">
                             </div>
 
                             <div class="col-md-3">
@@ -179,7 +179,7 @@
                                     <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                                     <strong>CORREO DE LA EMPRESA</strong>
                                 </label>
-                                <input type="email" name="correo_empresa" id="correo_empresa" class="form-control" required>
+                                <input type="email" name="correo_empresa" id="correo_empresa" class="form-control">
                             </div>
 
                             <div class="col-md-3">
@@ -187,7 +187,7 @@
                                     <i class="fas fa-phone" style="margin-right: 8px;"></i>
                                     <strong>TELÉFONO DE LA EMPRESA</strong>
                                 </label>
-                                <input type="text" name="telefono_empresa" id="telefono_empresa" class="form-control" required>
+                                <input type="text" name="telefono_empresa" id="telefono_empresa" class="form-control">
                             </div>
 
                             <div class="col-md-3">
@@ -301,7 +301,7 @@
                                     <i class="fas fa-building" style="margin-right: 8px;"></i>
                                     <strong>NOMBRE DE LA EMPRESA 1</strong>
                                 </label>
-                                <input type="text" name="nombre_empresa1" id="nombre_empresa1" class="form-control" required>
+                                <input type="text" name="nombre_empresa1" id="nombre_empresa1" class="form-control">
                             </div>
 
                             <div class="col-md-4">
@@ -309,7 +309,7 @@
                                     <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
                                     <strong>CARGO DE LA EMPRESA 1</strong>
                                 </label>
-                                <input type="text" name="cargo_empresa1" id="cargo_empresa1" class="form-control" required>
+                                <input type="text" name="cargo_empresa1" id="cargo_empresa1" class="form-control">
                             </div>
 
                             <div class="col-md-4">
@@ -317,7 +317,7 @@
                                     <i class="fas fa-hourglass-half" style="margin-right: 8px;"></i>
                                     <strong>DURACIÓN DE LA EMPRESA 1</strong>
                                 </label>
-                                <input type="text" name="duración_empresa1" id="duración_empresa1" class="form-control" required>
+                                <input type="text" name="duración_empresa1" id="duración_empresa1" class="form-control">
                             </div>
 
                             <div class="col-md-4">
@@ -325,7 +325,7 @@
                                     <i class="fas fa-building" style="margin-right: 8px;"></i>
                                     <strong>NOMBRE DE LA EMPRESA 2</strong>
                                 </label>
-                                <input type="text" name="nombre_empresa2" id="nombre_empresa2" class="form-control" required>
+                                <input type="text" name="nombre_empresa2" id="nombre_empresa2" class="form-control">
                             </div>
 
                             <div class="col-md-4">
@@ -333,7 +333,7 @@
                                     <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
                                     <strong>CARGO DE LA EMPRESA 2</strong>
                                 </label>
-                                <input type="text" name="cargo_empresa2" id="cargo_empresa2" class="form-control" required>
+                                <input type="text" name="cargo_empresa2" id="cargo_empresa2" class="form-control">
                             </div>
 
                             <div class="col-md-4">
@@ -341,7 +341,7 @@
                                     <i class="fas fa-hourglass-half" style="margin-right: 8px;"></i>
                                     <strong>DURACIÓN DE LA EMPRESA 2</strong>
                                 </label>
-                                <input type="text" name="duración_empresa2" id="duración_empresa2" class="form-control" required>
+                                <input type="text" name="duración_empresa2" id="duración_empresa2" class="form-control">
                             </div>
                         </div>
 
@@ -377,7 +377,7 @@
                         </div>
                         
                         <div class="form-group row">
-                            <!-- Extras -->
+                            <!-- VII. Otros -->
                             <div class="col-12 text-center mb-0">
                                 <h4 style="text-decoration: underline;">VII. OTROS</h4>
                             </div>
@@ -416,66 +416,129 @@
                         </div>                        
 
                         <div class="form-group row">
-
-                            <!-- Documentos -->
+                            <!-- VII. Documentos -->
                             <div class="col-12 text-center mb-0">
                                 <h4 style="text-decoration: underline;">VIII. DOCUMENTOS</h4>
                             </div>
-
-                            <div class="col-md-3">
+                        
+                            <div class="col-md-3" id="imageTituloField">
                                 <label for="imagen_titulo_original" class="btn btn-dark btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     <strong>AGREGAR IMAGEN TÍTULO ORIGINAL</strong>
                                 </label>
-                                <input type="file" name="imagen_titulo_original" id="imagen_titulo_original" class="form-control-file" accept="image/*">
+                                <input 
+                                type="file" 
+                                name="imagen_titulo_original[]" 
+                                id="imagen_titulo_original" 
+                                class="form-control d-none" 
+                                multiple
+                                required>
+                                <div id="imagen_titulo_original_preview" class="mt-2"></div>
                             </div>
-
+                        
                             <div class="col-md-3">
                                 <label for="imagen_dni" class="btn btn-warning btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     <strong>AGREGAR IMAGEN DNI</strong>
                                 </label>
-                                <input type="file" name="imagen_dni" id="imagen_dni" class="form-control-file" accept="image/*">
+                                <input 
+                                type="file" 
+                                name="imagen_dni[]" 
+                                id="imagen_dni" 
+                                class="form-control-file" 
+                                multiple
+                                required>
+                                <div id="imagen_dni_preview" class="mt-2"></div>
                             </div>
-
+                        
                             <div class="col-md-3">
                                 <label for="imagen_tamano_carnet" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     <strong>AGREGAR IMAGEN TAMAÑO CARNET</strong>
                                 </label>
-                                <input type="file" name="imagen_tamano_carnet" id="imagen_tamano_carnet" class="form-control-file" accept="image/*">
+                                <input 
+                                type="file" 
+                                name="imagen_tamano_carnet[]" 
+                                id="imagen_tamano_carnet" 
+                                class="form-control-file" 
+                                multiple
+                                required>
+                                <div id="imagen_tamano_carnet_preview" class="mt-2"></div>
                             </div>
-
+                        
                             <div class="col-md-3">
                                 <label for="pdf_curriculum_vitae" class="btn btn-default btn-simple">
                                     <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
                                     <strong>AGREGAR CURRICULUM VITAE</strong>
                                 </label>
-                                <input type="file" name="pdf_curriculum_vitae" id="pdf_curriculum_vitae" class="form-control-file" accept="application/pdf">
+                                <input 
+                                type="file" 
+                                name="pdf_curriculum_vitae" 
+                                id="pdf_curriculum_vitae" 
+                                class="form-control-file"
+                                required>
+                                <div id="pdf_curriculum_vitae_preview" class="mt-2"></div>
                             </div>
-
+                        
                             <div class="col-md-3">
-                                <label for="imagen_dni_beneficiario1" class="btn btn-danger btn-simple">
+                                <label for="imagen_dni_beneficiario1" class="btn btn-default btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     <strong>AGREGAR IMAGEN DNI DE BENEFICIARIO 1</strong>
                                 </label>
-                                <input type="file" name="imagen_dni_beneficiario1" id="imagen_dni_beneficiario1" class="form-control-file" accept="image/*">
+                                <input 
+                                type="file" 
+                                name="imagen_dni_beneficiario1[]" 
+                                id="imagen_dni_beneficiario1" 
+                                class="form-control-file" 
+                                accept="image/*" 
+                                multiple
+                                required>
+                                <div id="imagen_dni_beneficiario1_preview" class="mt-2"></div>
                             </div>
-
+                        
                             <div class="col-md-3">
                                 <label for="imagen_dni_beneficiario2" class="btn btn-default btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     <strong>AGREGAR IMAGEN DNI DE BENEFICIARIO 2</strong>
                                 </label>
-                                <input type="file" name="imagen_dni_beneficiario2" id="imagen_dni_beneficiario2" class="form-control-file" accept="image/*">
+                                <input 
+                                type="file" 
+                                name="imagen_dni_beneficiario2[]" 
+                                id="imagen_dni_beneficiario2" 
+                                class="form-control-file" 
+                                multiple
+                                required>
+                                <div id="imagen_dni_beneficiario2_preview" class="mt-2"></div>
                             </div>
-
+                        
                             <div class="col-md-3">
-                                <label for="imagen_rtn" class="btn btn-success btn-simple">
+                                <label for="imagen_dni_beneficiario3" class="btn btn-default btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    <strong>AGREGAR IMAGEN DNI DE BENEFICIARIO 3</strong>
+                                </label>
+                                <input 
+                                type="file" 
+                                name="imagen_dni_beneficiario3[]" 
+                                id="imagen_dni_beneficiario3" 
+                                class="form-control-file" 
+                                multiple
+                                required>
+                                <div id="imagen_dni_beneficiario3_preview" class="mt-2"></div>
+                            </div>
+                        
+                            <div class="col-md-3">
+                                <label for="imagen_rtn" class="btn btn-default btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     <strong>AGREGAR IMAGEN RTN</strong>
                                 </label>
-                                <input type="file" name="imagen_rtn" id="imagen_rtn" class="form-control-file" accept="image/*">
+                                <input 
+                                type="file" 
+                                name="imagen_rtn[]" 
+                                id="imagen_rtn" 
+                                class="form-control-file" 
+                                multiple
+                                required>
+                                <div id="imagen_rtn_preview" class="mt-2"></div>
                             </div>
                         </div><br>
 
@@ -493,4 +556,83 @@
         </div>
     </div>
 </div>
+
+<script>
+    function previewFiles(inputId, previewContainerId) {
+        const input = document.getElementById(inputId);
+        const previewContainer = document.getElementById(previewContainerId);
+        
+        previewContainer.innerHTML = ''; // Limpiar cualquier contenido previo
+
+        if (input.files) {
+            Array.from(input.files).forEach(file => {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    let element;
+
+                    if (file.type.startsWith('image/')) {
+                        element = document.createElement('img');
+                        element.src = e.target.result;
+                        element.style.height = '100px';
+                        element.style.margin = '5px';
+                    } else if (file.type === 'application/pdf') {
+                        element = document.createElement('iframe');
+                        element.src = e.target.result;
+                        element.style.height = '100px';
+                        element.style.width = '100px';
+                        element.style.margin = '5px';
+                    } else if (file.type.startsWith('video/')) {
+                        element = document.createElement('video');
+                        element.src = e.target.result;
+                        element.style.height = '100px';
+                        element.style.width = '100px';
+                        element.controls = true;
+                        element.style.margin = '5px';
+                    }
+
+                    if (element) {
+                        previewContainer.appendChild(element);
+                    }
+                };
+
+                reader.readAsDataURL(file);
+            });
+        }
+    }
+
+    document.getElementById('imagen_titulo_original').addEventListener('change', function() {
+        previewFiles('imagen_titulo_original', 'imagen_titulo_original_preview');
+    });
+
+    document.getElementById('imagen_dni').addEventListener('change', function() {
+        previewFiles('imagen_dni', 'imagen_dni_preview');
+    });
+
+    document.getElementById('imagen_tamano_carnet').addEventListener('change', function() {
+        previewFiles('imagen_tamano_carnet', 'imagen_tamano_carnet_preview');
+    });
+
+    document.getElementById('pdf_curriculum_vitae').addEventListener('change', function() {
+        previewFiles('pdf_curriculum_vitae', 'pdf_curriculum_vitae_preview');
+    });
+
+    document.getElementById('imagen_dni_beneficiario1').addEventListener('change', function() {
+        previewFiles('imagen_dni_beneficiario1', 'imagen_dni_beneficiario1_preview');
+    });
+
+    document.getElementById('imagen_dni_beneficiario2').addEventListener('change', function() {
+        previewFiles('imagen_dni_beneficiario2', 'imagen_dni_beneficiario2_preview');
+    });
+
+    document.getElementById('imagen_dni_beneficiario3').addEventListener('change', function() {
+        previewFiles('imagen_dni_beneficiario3', 'imagen_dni_beneficiario3_preview');
+    });
+
+    document.getElementById('imagen_rtn').addEventListener('change', function() {
+        previewFiles('imagen_rtn', 'imagen_rtn_preview');
+    });
+</script>
+
+
 @endsection

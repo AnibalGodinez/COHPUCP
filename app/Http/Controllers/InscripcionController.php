@@ -4,24 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Inscripcion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Mail\InscripcionStatusMail;
 use Illuminate\Support\Facades\Mail;
 
 class InscripcionController extends Controller
 {
-
     public function create()
     {
-        // Retornar la vista del formulario de inscripción
         return view('inscripciones.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'fecha_solicitud' => 'required|date',
-
             // I. Datos Personales
             'primer_nombre' => 'required|string|max:255',
             'segundo_nombre' => 'nullable|string|max:255',
@@ -80,14 +75,14 @@ class InscripcionController extends Controller
             'otros' => 'nullable|string',
 
             // VIII. Documentos
-            'imagen_titulo_original' => 'nullable|image',
-            'imagen_dni' => 'nullable|image',
-            'imagen_tamano_carnet' => 'nullable|image',
-            'pdf_curriculum_vitae' => 'nullable|mimes:pdf',
-            'imagen_dni_beneficiario1' => 'nullable|image',
-            'imagen_dni_beneficiario2' => 'nullable|image',
-            'imagen_dni_beneficiario3' => 'nullable|image',
-            'imagen_rtn' => 'nullable|image',
+            'imagen_titulo_original' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'imagen_dni' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'imagen_tamano_carnet' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'pdf_curriculum_vitae' => 'required|mimes:pdf',
+            'imagen_dni_beneficiario1' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'imagen_dni_beneficiario2' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'imagen_dni_beneficiario3' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'imagen_rtn' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
         ]);
 
         // Guardar archivos y datos
@@ -119,7 +114,7 @@ class InscripcionController extends Controller
         }
 
         if ($request->hasFile('imagen_dni_beneficiario3')) {
-            $inscripcion->imagen_dni_beneficiario2 = $request->file('imagen_dni_beneficiario3')->store('documentos');
+            $inscripcion->imagen_dni_beneficiario3 = $request->file('imagen_dni_beneficiario3')->store('documentos');
         }
 
         if ($request->hasFile('imagen_rtn')) {
