@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Inscripcion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 use App\Mail\InscripcionStatusMail;
 use Illuminate\Support\Facades\Mail;
 
@@ -16,7 +18,7 @@ class InscripcionController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             // I. Datos Personales
             'primer_nombre' => 'required|string|max:255',
             'segundo_nombre' => 'nullable|string|max:255',
@@ -30,7 +32,7 @@ class InscripcionController extends Controller
             'correo_electronico' => 'required|email|max:255',
             'celular' => 'required|string|max:255',
 
-            // II. Datos Profesionales 
+            // II. Datos Profesionales
             'fecha_graduacion' => 'required|date',
             'universidad' => 'required|string|max:255',
             'nombre_empresa_trabajo_actual' => 'nullable|string|max:255',
@@ -75,58 +77,46 @@ class InscripcionController extends Controller
             'otros' => 'nullable|string',
 
             // VIII. Documentos
-            'imagen_titulo_original' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
-            'imagen_dni' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
-            'imagen_tamano_carnet' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
-            'pdf_curriculum_vitae' => 'required|mimes:pdf',
-            'imagen_dni_beneficiario1' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
-            'imagen_dni_beneficiario2' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
-            'imagen_dni_beneficiario3' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
-            'imagen_rtn' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'imagen_titulo_original' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'imagen_dni' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'imagen_tamano_carnet' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'pdf_curriculum_vitae' => 'nullable|mimes:pdf',
+            'imagen_dni_beneficiario1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'imagen_dni_beneficiario2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'imagen_dni_beneficiario3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'imagen_rtn' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
         ]);
 
-        // Guardar archivos y datos
-        $inscripcion = new Inscripcion();
-        $inscripcion->fill($request->all());
+        try {
+            // Guardar archivos
+            $filePaths = [];
 
-        if ($request->hasFile('imagen_titulo_original')) {
-            $inscripcion->imagen_titulo_original = $request->file('imagen_titulo_original')->store('documentos');
+            foreach (['imagen_titulo_original', 'imagen_dni', 'imagen_tamano_carnet', 'pdf_curriculum_vitae', 'imagen_dni_beneficiario1', 'imagen_dni_beneficiario2', 'imagen_dni_beneficiario3', 'imagen_rtn'] as $file) {
+                if ($request->hasFile($file)) {
+                    $filePaths[$file] = $request->file($file)->store('documentos', 'public');
+                }
+            }
+
+            // Crear inscripcion
+            $inscripcion = new Inscripcion();
+            $inscripcion->fill($validatedData);
+
+            foreach ($filePaths as $key => $path) {
+                $inscripcion->$key = $path;
+            }
+
+            $inscripcion->save();
+
+            // Enviar correo de confirmación
+            Mail::to($inscripcion->correo_electronico)
+                ->send(new InscripcionStatusMail($inscripcion, 'pendiente'));
+
+            return redirect()->back()->with('status', 'Solicitud de inscripción enviada.');
+        } catch (\Exception $e) {
+            // Log the error message
+            Log::error('Error al guardar inscripción: ' . $e->getMessage());
+
+            return redirect()->back()->with('error', 'No se pudo enviar la inscripción.')->withInput();
         }
-
-        if ($request->hasFile('imagen_dni')) {
-            $inscripcion->imagen_dni = $request->file('imagen_dni')->store('documentos');
-        }
-
-        if ($request->hasFile('imagen_tamano_carnet')) {
-            $inscripcion->imagen_tamano_carnet = $request->file('imagen_tamano_carnet')->store('documentos');
-        }
-
-        if ($request->hasFile('pdf_curriculum_vitae')) {
-            $inscripcion->pdf_curriculum_vitae = $request->file('pdf_curriculum_vitae')->store('documentos');
-        }
-
-        if ($request->hasFile('imagen_dni_beneficiario1')) {
-            $inscripcion->imagen_dni_beneficiario1 = $request->file('imagen_dni_beneficiario1')->store('documentos');
-        }
-
-        if ($request->hasFile('imagen_dni_beneficiario2')) {
-            $inscripcion->imagen_dni_beneficiario2 = $request->file('imagen_dni_beneficiario2')->store('documentos');
-        }
-
-        if ($request->hasFile('imagen_dni_beneficiario3')) {
-            $inscripcion->imagen_dni_beneficiario3 = $request->file('imagen_dni_beneficiario3')->store('documentos');
-        }
-
-        if ($request->hasFile('imagen_rtn')) {
-            $inscripcion->imagen_rtn = $request->file('imagen_rtn')->store('documentos');
-        }
-
-        $inscripcion->save();
-
-        // Enviar correo de confirmación
-        Mail::to($inscripcion->correo_electronico)
-            ->send(new InscripcionStatusMail($inscripcion, 'pendiente'));
-
-        return redirect()->back()->with('status', 'Solicitud de inscripción enviada.');
     }
 }

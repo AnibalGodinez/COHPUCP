@@ -69,14 +69,14 @@ class CreateInscripcionesTable extends Migration
             $table->text('otros')->nullable();
 
             // VIII. Documentos
-            $table->string('imagen_titulo_original');
-            $table->string('imagen_dni');
-            $table->string('imagen_tamano_carnet');
-            $table->string('pdf_curriculum_vitae');
-            $table->string('imagen_dni_beneficiario1');
-            $table->string('imagen_dni_beneficiario2');
-            $table->string('imagen_dni_beneficiario3');
-            $table->string('imagen_rtn');
+            $table->string('imagen_titulo_original')->nullable();
+            $table->string('imagen_dni')->nullable();
+            $table->string('imagen_tamano_carnet')->nullable();
+            $table->string('pdf_curriculum_vitae')->nullable();
+            $table->string('imagen_dni_beneficiario1')->nullable();
+            $table->string('imagen_dni_beneficiario2')->nullable();
+            $table->string('imagen_dni_beneficiario3')->nullable();
+            $table->string('imagen_rtn')->nullable();
 
             // IX. Estado de la inscripción
             $table->enum('estado', ['enviado', 'en proceso', 'aceptado', 'rechazado'])->default('enviado');

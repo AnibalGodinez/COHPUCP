@@ -43,7 +43,7 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER NOMBRE </strong> / campo obligatorio <strong>*</strong>
                                 </label>
-                                <input type="text" name="primer_nombre" id="primer_nombre" class="form-control" required>
+                                <input type="text" name="primer_nombre" id="primer_nombre" class="form-control" value="{{ old('primer_nombre') }}" required>
                             </div>
 
                             <div class="col-md-3">
@@ -51,7 +51,7 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>SEGUNDO NOMBRE</strong>
                                 </label>
-                                <input type="text" name="segundo_nombre" id="segundo_nombre" class="form-control">
+                                <input type="text" name="segundo_nombre" id="segundo_nombre" class="form-control" value="{{ old('segundo_nombre') }}">
                             </div>
 
                             <div class="col-md-3">
@@ -59,7 +59,7 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER APELLIDO</strong> / campo obligatorio <strong>*</strong>
                                 </label>
-                                <input type="text" name="primer_apellido" id="primer_apellido" class="form-control" required>
+                                <input type="text" name="primer_apellido" id="primer_apellido" class="form-control" value="{{ old('primer_apellido') }}" required>
                             </div>
 
                             <div class="col-md-3">
@@ -67,7 +67,7 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>SEGUNDO APELLIDO</strong>
                                 </label>
-                                <input type="text" name="segundo_apellido" id="segundo_apellido" class="form-control">
+                                <input type="text" name="segundo_apellido" id="segundo_apellido" class="form-control" value="{{ old('segundo_apellido') }}">
                             </div>
 
                             <div class="col-md-3">
@@ -75,7 +75,7 @@
                                     <i class="fas fa-id-card" style="margin-right: 8px;"></i>
                                     <strong>DNI</strong> / campo obligatorio <strong>*</strong>
                                 </label>
-                                <input type="text" name="dni" id="dni" class="form-control" required>
+                                <input type="text" name="dni" id="dni" class="form-control" value="{{ old('dni') }}" required>
                             </div>
 
                             <div class="col-md-3">
@@ -83,7 +83,7 @@
                                     <i class="fas fa-calendar" style="margin-right: 8px;"></i>
                                     <strong>FECHA DE NACIMIENTO</strong> / campo obligatorio <strong>*</strong>
                                 </label>
-                                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" required>
+                                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" value="{{ old('fecha_nacimiento') }}" required>
                             </div>
 
                             <div class="col-md-3">
@@ -91,7 +91,7 @@
                                     <i class="fas fa-map-marker-alt" style="margin-right: 8px; color:rgb(226, 18, 18)"></i>
                                     <strong>LUGAR DE NACIMIENTO</strong>
                                 </label>
-                                <input type="text" name="lugar_nacimiento" id="lugar_nacimiento" class="form-control">
+                                <input type="text" name="lugar_nacimiento" id="lugar_nacimiento" class="form-control" value="{{ old('lugar_nacimiento') }}">
                             </div>
 
                             <div class="col-md-3">
@@ -99,7 +99,7 @@
                                     <i class="fas fa-home" style="margin-right: 8px;"></i>
                                     <strong>DIRECCIÓN DE RESIDENCIA</strong>
                                 </label>
-                                <input type="text" name="direccion_residencia" id="direccion_residencia" class="form-control">
+                                <input type="text" name="direccion_residencia" id="direccion_residencia" class="form-control" value="{{ old('direccion_residencia') }}">
                             </div>
 
                             <div class="col-md-3">
@@ -107,7 +107,7 @@
                                     <i class="fas fa-phone" style="margin-right: 8px;"></i>
                                     <strong>TELÉFONO FIJO</strong>
                                 </label>
-                                <input type="text" name="telefono_fijo" id="telefono_fijo" class="form-control">
+                                <input type="text" name="telefono_fijo" id="telefono_fijo" class="form-control" value="{{ old('telefono_fijo') }}">
                             </div>
 
                             <div class="col-md-3">
@@ -115,7 +115,7 @@
                                     <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                                     <strong>CORREO ELECTRÓNICO</strong> / campo obligatorio <strong>*</strong>
                                 </label>
-                                <input type="email" name="correo_electronico" id="correo_electronico" class="form-control" required>
+                                <input type="email" name="correo_electronico" id="correo_electronico" class="form-control" value="{{ old('correo_electronico') }}" required>
                             </div>
 
                             <div class="col-md-3">
@@ -123,7 +123,7 @@
                                     <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
                                     <strong>CELULAR</strong> / campo obligatorio <strong>*</strong>
                                 </label>
-                                <input type="text" name="celular" id="celular" class="form-control" required>
+                                <input type="text" name="celular" id="celular" class="form-control" value="{{ old('celular') }}" required>
                             </div>
 
                         </div>
@@ -139,7 +139,7 @@
                                     <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
                                     <strong>FECHA DE GRADUACIÓN</strong> / campo obligatorio <strong>*</strong>
                                 </label>
-                                <input type="date" name="fecha_graduacion" id="fecha_graduacion" class="form-control" required>
+                                <input type="date" name="fecha_graduacion" id="fecha_graduacion" class="form-control" value="{{ old('fecha_graduacion') }}"  required>
                             </div>
 
                             <div class="col-md-3">
@@ -147,7 +147,7 @@
                                     <i class="fas fa-school" style="margin-right: 8px;"></i>
                                     <strong>UNIVERSIDAD</strong> / campo obligatorio <strong>*</strong>
                                 </label>
-                                <input type="text" name="universidad" id="universidad" class="form-control" required>
+                                <input type="text" name="universidad" id="universidad" class="form-control" value="{{ old('universidad') }}"  required>
                             </div>
 
                             <div class="col-md-3">
@@ -155,7 +155,7 @@
                                     <i class="fas fa-building" style="margin-right: 8px;"></i>
                                     <strong>NOMBRE DE LA EMPRESA DONDE LABORA</strong>
                                 </label>
-                                <input type="text" name="nombre_empresa_trabajo_actual" id="nombre_empresa_trabajo_actual" class="form-control">
+                                <input type="text" name="nombre_empresa_trabajo_actual" id="nombre_empresa_trabajo_actual" class="form-control" value="{{ old('nombre_empresa_trabajo_actual') }}">
                             </div>
 
                             <div class="col-md-3">
@@ -163,7 +163,7 @@
                                     <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
                                     <strong>CARGO</strong>
                                 </label>
-                                <input type="text" name="cargo" id="cargo" class="form-control">
+                                <input type="text" name="cargo" id="cargo" class="form-control"  value="{{ old('cargo') }}">
                             </div>
 
                             <div class="col-md-3">
@@ -171,7 +171,7 @@
                                     <i class="fas fa-location-arrow" style="margin-right: 8px;"></i>
                                     <strong>DIRECCIÓN DE LA EMPRESA</strong>
                                 </label>
-                                <input type="text" name="direccion_empresa" id="direccion_empresa" class="form-control">
+                                <input type="text" name="direccion_empresa" id="direccion_empresa" class="form-control" value="{{ old('direccion_empresa') }}">
                             </div>
 
                             <div class="col-md-3">
@@ -179,7 +179,7 @@
                                     <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                                     <strong>CORREO DE LA EMPRESA</strong>
                                 </label>
-                                <input type="email" name="correo_empresa" id="correo_empresa" class="form-control">
+                                <input type="email" name="correo_empresa" id="correo_empresa" class="form-control" value="{{ old('correo_empresa') }}">
                             </div>
 
                             <div class="col-md-3">
@@ -187,7 +187,7 @@
                                     <i class="fas fa-phone" style="margin-right: 8px;"></i>
                                     <strong>TELÉFONO DE LA EMPRESA</strong>
                                 </label>
-                                <input type="text" name="telefono_empresa" id="telefono_empresa" class="form-control">
+                                <input type="text" name="telefono_empresa" id="telefono_empresa" class="form-control" value="{{ old('telefono_empresa') }}">
                             </div>
 
                             <div class="col-md-3">
@@ -195,7 +195,7 @@
                                     <i class="fas fa-phone" style="margin-right: 8px;"></i>
                                     <strong>EXTENSIÓN TELEFÓNICA</strong>
                                 </label>
-                                <input type="text" name="extension_telefono_empresa" id="extension_telefono_empresa" class="form-control">
+                                <input type="text" name="extension_telefono_empresa" id="extension_telefono_empresa" class="form-control" value="{{ old('extension_telefono_empresa') }}">
                             </div>
 
                         </div>
@@ -211,7 +211,7 @@
                                     <i class="fas fa-stethoscope" style="margin-right: 8px;"></i>
                                     <strong>ESPECIALIDAD 1</strong>
                                 </label>
-                                <input type="text" name="especialidad_1" id="especialidad_1" class="form-control">
+                                <input type="text" name="especialidad_1" id="especialidad_1" class="form-control" value="{{ old('especialidad_1') }}">
                             </div>
 
                             <div class="col-md-4">
@@ -219,7 +219,7 @@
                                     <i class="fas fa-building" style="margin-right: 8px;"></i>
                                     <strong>LUGAR</strong>
                                 </label>
-                                <input type="text" name="lugar_especialidad_1" id="lugar_especialidad_1" class="form-control">
+                                <input type="text" name="lugar_especialidad_1" id="lugar_especialidad_1" class="form-control" value="{{ old('especialidad_1') }}">
                             </div>
 
                             <div class="col-md-4">
@@ -227,7 +227,7 @@
                                     <i class="fas fa-calendar" style="margin-right: 8px;"></i>
                                     <strong>FECHA</strong>
                                 </label>
-                                <input type="date" name="fecha_especialidad_1" id="fecha_especialidad_1" class="form-control">
+                                <input type="date" name="fecha_especialidad_1" id="fecha_especialidad_1" class="form-control" value="{{ old('fecha_especialidad_1') }}">
                             </div>
 
                             <div class="col-md-4">
@@ -235,7 +235,7 @@
                                     <i class="fas fa-stethoscope" style="margin-right: 8px;"></i>
                                     <strong>ESPECIALIDAD 2</strong>
                                 </label>
-                                <input type="text" name="especialidad_2" id="especialidad_2" class="form-control">
+                                <input type="text" name="especialidad_2" id="especialidad_2" class="form-control" value="{{ old('especialidad_2') }}">
                             </div>
 
                             <div class="col-md-4">
@@ -243,7 +243,7 @@
                                     <i class="fas fa-building" style="margin-right: 8px;"></i>
                                     <strong>LUGAR</strong>
                                 </label>
-                                <input type="text" name="lugar_especialidad_2" id="lugar_especialidad_2" class="form-control">
+                                <input type="text" name="lugar_especialidad_2" id="lugar_especialidad_2" class="form-control" value="{{ old('lugar_especialidad_2') }}">
                             </div>
 
                             <div class="col-md-4">
@@ -251,7 +251,7 @@
                                     <i class="fas fa-calendar" style="margin-right: 8px;"></i>
                                     <strong>FECHA</strong>
                                 </label>
-                                <input type="date" name="fecha_especialidad_2" id="fecha_especialidad_2" class="form-control">
+                                <input type="date" name="fecha_especialidad_2" id="fecha_especialidad_2" class="form-control" value="{{ old('fecha_especialidad_2') }}">
                             </div>
                         </div>
 
@@ -267,7 +267,7 @@
                                     <i class="fas fa-book" style="margin-right: 8px;"></i>
                                     <strong>NOMBRE DEL CURSO DE ESPECIALIZACIÓN</strong>
                                 </label>
-                                <input type="text" name="nombre_curso_especializacion" id="nombre_curso_especializacion" class="form-control">
+                                <input type="text" name="nombre_curso_especializacion" id="nombre_curso_especializacion" class="form-control" value="{{ old('nombre_curso_especializacion') }}">
                             </div>
 
                             <div class="col-md-4">
@@ -275,7 +275,7 @@
                                     <i class="fas fa-building" style="margin-right: 8px;"></i>
                                     <strong>LUGAR</strong>
                                 </label>
-                                <input type="text" name="lugar_curso" id="lugar_curso" class="form-control">
+                                <input type="text" name="lugar_curso" id="lugar_curso" class="form-control" value="{{ old('lugar_curso') }}">
                             </div>
 
                             <div class="col-md-4">
@@ -283,7 +283,7 @@
                                     <i class="fas fa-calendar" style="margin-right: 8px;"></i>
                                     <strong>FECHA</strong>
                                 </label>
-                                <input type="date" name="fecha_curso" id="fecha_curso" class="form-control">
+                                <input type="date" name="fecha_curso" id="fecha_curso" class="form-control" value="{{ old('fecha_curso') }}">
                             </div>
 
                         </div>
@@ -301,7 +301,7 @@
                                     <i class="fas fa-building" style="margin-right: 8px;"></i>
                                     <strong>NOMBRE DE LA EMPRESA 1</strong>
                                 </label>
-                                <input type="text" name="nombre_empresa1" id="nombre_empresa1" class="form-control">
+                                <input type="text" name="nombre_empresa1" id="nombre_empresa1" class="form-control" value="{{ old('nombre_empresa1') }}">
                             </div>
 
                             <div class="col-md-4">
@@ -309,7 +309,7 @@
                                     <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
                                     <strong>CARGO DE LA EMPRESA 1</strong>
                                 </label>
-                                <input type="text" name="cargo_empresa1" id="cargo_empresa1" class="form-control">
+                                <input type="text" name="cargo_empresa1" id="cargo_empresa1" class="form-control" value="{{ old('cargo_empresa1') }}">
                             </div>
 
                             <div class="col-md-4">
@@ -317,7 +317,7 @@
                                     <i class="fas fa-hourglass-half" style="margin-right: 8px;"></i>
                                     <strong>DURACIÓN DE LA EMPRESA 1</strong>
                                 </label>
-                                <input type="text" name="duración_empresa1" id="duración_empresa1" class="form-control">
+                                <input type="text" name="duración_empresa1" id="duración_empresa1" class="form-control" value="{{ old('duración_empresa1') }}">
                             </div>
 
                             <div class="col-md-4">
@@ -325,7 +325,7 @@
                                     <i class="fas fa-building" style="margin-right: 8px;"></i>
                                     <strong>NOMBRE DE LA EMPRESA 2</strong>
                                 </label>
-                                <input type="text" name="nombre_empresa2" id="nombre_empresa2" class="form-control">
+                                <input type="text" name="nombre_empresa2" id="nombre_empresa2" class="form-control" value="{{ old('nombre_empresa2') }}">
                             </div>
 
                             <div class="col-md-4">
@@ -333,7 +333,7 @@
                                     <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
                                     <strong>CARGO DE LA EMPRESA 2</strong>
                                 </label>
-                                <input type="text" name="cargo_empresa2" id="cargo_empresa2" class="form-control">
+                                <input type="text" name="cargo_empresa2" id="cargo_empresa2" class="form-control" value="{{ old('cargo_empresa2') }}">
                             </div>
 
                             <div class="col-md-4">
@@ -341,7 +341,7 @@
                                     <i class="fas fa-hourglass-half" style="margin-right: 8px;"></i>
                                     <strong>DURACIÓN DE LA EMPRESA 2</strong>
                                 </label>
-                                <input type="text" name="duración_empresa2" id="duración_empresa2" class="form-control">
+                                <input type="text" name="duración_empresa2" id="duración_empresa2" class="form-control" value="{{ old('duración_empresa2') }}">
                             </div>
                         </div>
 
@@ -356,7 +356,7 @@
                                     <i class="fas fa-clipboard-list" style="margin-right: 8px;"></i>
                                     <strong>COMISIONES</strong>
                                 </label>
-                                <textarea name="comisiones" id="comisiones" class="form-control" rows="4"></textarea>
+                                <textarea name="comisiones" id="comisiones" class="form-control" value="{{ old('comisiones') }}" rows="4"></textarea>
                             </div>
                         
                             <div class="col-md-4">
@@ -364,7 +364,7 @@
                                     <i class="fas fa-user-tie" style="margin-right: 8px;"></i>
                                     <strong>REPRESENTACIONES</strong>
                                 </label>
-                                <textarea name="representaciones" id="representaciones" class="form-control" rows="4"></textarea>
+                                <textarea name="representaciones" id="representaciones" class="form-control" value="{{ old('representaciones') }}" rows="4"></textarea>
                             </div>
                         
                             <div class="col-md-4">
@@ -372,7 +372,7 @@
                                     <i class="fas fa-handshake" style="margin-right: 8px;"></i>
                                     <strong>DELEGACIONES</strong>
                                 </label>
-                                <textarea name="delegaciones" id="delegaciones" class="form-control" rows="4"></textarea>
+                                <textarea name="delegaciones" id="delegaciones" class="form-control" value="{{ old('delegaciones') }}" rows="4"></textarea>
                             </div>
                         </div>
                         
@@ -387,7 +387,7 @@
                                     <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
                                     <strong>PUBLICACIÓN DE DOCUMENTOS</strong>
                                 </label>
-                                <textarea name="publicacion_documentos" id="publicacion_documentos" class="form-control" rows="4"></textarea>
+                                <textarea name="publicacion_documentos" id="publicacion_documentos" class="form-control" value="{{ old('publicacion_documentos') }}" rows="4"></textarea>
                             </div>
                         
                             <div class="col-md-3">
@@ -395,7 +395,7 @@
                                     <i class="fas fa-newspaper" style="margin-right: 8px;"></i>
                                     <strong>PUBLICACIONES</strong>
                                 </label>
-                                <textarea name="publicaciones" id="publicaciones" class="form-control" rows="4"></textarea>
+                                <textarea name="publicaciones" id="publicaciones" class="form-control" value="{{ old('publicaciones') }}" rows="4"></textarea>
                             </div>
                         
                             <div class="col-md-3">
@@ -403,7 +403,7 @@
                                     <i class="fas fa-book" style="margin-right: 8px;"></i>
                                     <strong>PUBLICACIÓN DE UN LIBRO</strong>
                                 </label>
-                                <textarea name="publicacion_libro" id="publicacion_libro" class="form-control" rows="4"></textarea>
+                                <textarea name="publicacion_libro" id="publicacion_libro" class="form-control" value="{{ old('publicacion_libro') }}" rows="4"></textarea>
                             </div>
                         
                             <div class="col-md-3">
@@ -411,7 +411,7 @@
                                     <i class="fas fa-ellipsis-h" style="margin-right: 8px;"></i>
                                     <strong>OTRO</strong>
                                 </label>
-                                <textarea name="otros" id="otros" class="form-control" rows="4"></textarea>
+                                <textarea name="otros" id="otros" class="form-control" value="{{ old('otros') }}" rows="4"></textarea>
                             </div>
                         </div>                        
 
@@ -432,7 +432,7 @@
                                 id="imagen_titulo_original" 
                                 class="form-control d-none" 
                                 multiple
-                                required>
+                                value="{{ old('imagen_titulo_original') }}">
                                 <div id="imagen_titulo_original_preview" class="mt-2"></div>
                             </div>
                         
@@ -447,7 +447,8 @@
                                 id="imagen_dni" 
                                 class="form-control-file" 
                                 multiple
-                                required>
+                                value="{{ old('imagen_dni') }}"
+                                >
                                 <div id="imagen_dni_preview" class="mt-2"></div>
                             </div>
                         
@@ -462,7 +463,8 @@
                                 id="imagen_tamano_carnet" 
                                 class="form-control-file" 
                                 multiple
-                                required>
+                                value="{{ old('imagen_tamano_carnet') }}"
+                                >
                                 <div id="imagen_tamano_carnet_preview" class="mt-2"></div>
                             </div>
                         
@@ -476,7 +478,8 @@
                                 name="pdf_curriculum_vitae" 
                                 id="pdf_curriculum_vitae" 
                                 class="form-control-file"
-                                required>
+                                value="{{ old('pdf_curriculum_vitae') }}"
+                                >
                                 <div id="pdf_curriculum_vitae_preview" class="mt-2"></div>
                             </div>
                         
@@ -490,9 +493,9 @@
                                 name="imagen_dni_beneficiario1[]" 
                                 id="imagen_dni_beneficiario1" 
                                 class="form-control-file" 
-                                accept="image/*" 
+                                value="{{ old('imagen_dni_beneficiario1') }}" 
                                 multiple
-                                required>
+                                >
                                 <div id="imagen_dni_beneficiario1_preview" class="mt-2"></div>
                             </div>
                         
@@ -505,9 +508,10 @@
                                 type="file" 
                                 name="imagen_dni_beneficiario2[]" 
                                 id="imagen_dni_beneficiario2" 
-                                class="form-control-file" 
+                                class="form-control-file"
+                                value="{{ old('imagen_dni_beneficiario2') }}"  
                                 multiple
-                                required>
+                                >
                                 <div id="imagen_dni_beneficiario2_preview" class="mt-2"></div>
                             </div>
                         
@@ -520,9 +524,10 @@
                                 type="file" 
                                 name="imagen_dni_beneficiario3[]" 
                                 id="imagen_dni_beneficiario3" 
-                                class="form-control-file" 
+                                class="form-control-file"
+                                value="{{ old('imagen_dni_beneficiario3') }}"
                                 multiple
-                                required>
+                                >
                                 <div id="imagen_dni_beneficiario3_preview" class="mt-2"></div>
                             </div>
                         
@@ -535,9 +540,10 @@
                                 type="file" 
                                 name="imagen_rtn[]" 
                                 id="imagen_rtn" 
-                                class="form-control-file" 
+                                class="form-control-file"
+                                value="{{ old('imagen_rtn') }}"  
                                 multiple
-                                required>
+                                >
                                 <div id="imagen_rtn_preview" class="mt-2"></div>
                             </div>
                         </div><br>
