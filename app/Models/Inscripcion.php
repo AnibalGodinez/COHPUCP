@@ -17,9 +17,9 @@ class Inscripcion extends Model
         'segundo_nombre', 
         'primer_apellido',
         'segundo_apellido', 
-        'dni', 
-        'lugar_nacimiento', 
+        'dni',
         'fecha_nacimiento', 
+        'lugar_nacimiento', 
         'direccion_residencia',
         'telefono_fijo', 
         'correo_electronico', 
@@ -44,12 +44,12 @@ class Inscripcion extends Model
         'lugar_especialidad_2', 
         'fecha_especialidad_2',
 
-        // Cursos de especialización
+        // IV. Cursos de especialización
         'nombre_curso_especializacion', 
         'lugar_curso', 
         'fecha_curso',
         
-        // IV. Experiencia Profesional
+        // V. Experiencia Profesional
         'nombre_empresa1',
         'cargo_empresa1',
         'duración_empresa1',
@@ -58,24 +58,25 @@ class Inscripcion extends Model
         'cargo_empresa2',
         'duración_empresa2',
 
-        // V. Misiones Desempeñadas
+        // VI. Misiones Desempeñadas
         'comisiones',
         'representaciones',
         'delegaciones',
 
-        // Extras
+        // VII. Extras
         'publicacion_documentos',
         'publicaciones',
         'publicacion_libro',
         'otros',
 
-        // Archivos y documentos
+        // VIII. Documentos
         'imagen_titulo_original', 
         'imagen_dni', 
         'imagen_tamano_carnet',
         'pdf_curriculum_vitae', 
         'imagen_dni_beneficiario1', 
-        'imagen_dni_beneficiario2', 
+        'imagen_dni_beneficiario2',
+        'imagen_dni_beneficiario3',
         'imagen_rtn',
         'estado',
         'user_id',

@@ -28,9 +28,9 @@ class InscripcionController extends Controller
             'primer_apellido' => 'required|string|max:255',
             'segundo_apellido' => 'nullable|string|max:255',
             'dni' => 'required|string|max:255',
-            'lugar_nacimiento' => 'required|string|max:255',
             'fecha_nacimiento' => 'required|date',
-            'direccion_residencia' => 'required|string|max:255',
+            'lugar_nacimiento' => 'nullable|string|max:255',
+            'direccion_residencia' => 'nullable|string|max:255',
             'telefono_fijo' => 'nullable|string|max:255',
             'correo_electronico' => 'required|email|max:255',
             'celular' => 'required|string|max:255',
@@ -38,11 +38,11 @@ class InscripcionController extends Controller
             // II. Datos Profesionales 
             'fecha_graduacion' => 'required|date',
             'universidad' => 'required|string|max:255',
-            'nombre_empresa_trabajo_actual' => 'required|string|max:255',
-            'cargo' => 'required|string|max:255',
-            'direccion_empresa' => 'required|string|max:255',
-            'correo_empresa' => 'required|email|max:255',
-            'telefono_empresa' => 'required|string|max:255',
+            'nombre_empresa_trabajo_actual' => 'nullable|string|max:255',
+            'cargo' => 'nullable|string|max:255',
+            'direccion_empresa' => 'nullable|string|max:255',
+            'correo_empresa' => 'nullable|email|max:255',
+            'telefono_empresa' => 'nullable|string|max:255',
             'extension_telefono_empresa' => 'nullable|string|max:255',
 
             // III. Información Adicional
@@ -54,12 +54,12 @@ class InscripcionController extends Controller
             'lugar_especialidad_2' => 'nullable|string|max:255',
             'fecha_especialidad_2' => 'nullable|date',
 
-            // Cursos de especialización
+            // IV. Cursos de especialización
             'nombre_curso_especializacion' => 'nullable|string|max:255',
             'lugar_curso' => 'nullable|string|max:255',
             'fecha_curso' => 'nullable|date',
 
-            // IV. Experiencia Profesional
+            // V. Experiencia Profesional
             'nombre_empresa1' => 'nullable|string|max:255',
             'cargo_empresa1' => 'nullable|string|max:255',
             'duración_empresa1' => 'nullable|string|max:255',
@@ -68,24 +68,25 @@ class InscripcionController extends Controller
             'cargo_empresa2' => 'nullable|string|max:255',
             'duración_empresa2' => 'nullable|string|max:255',
 
-            // V. Misiones Desempeñadas
+            // VI. Misiones Desempeñadas
             'comisiones' => 'nullable|string',
             'representaciones' => 'nullable|string',
             'delegaciones' => 'nullable|string',
 
-            // Extras
+            // VII. Extras
             'publicacion_documentos' => 'nullable|string',
             'publicaciones' => 'nullable|string',
             'publicacion_libro' => 'nullable|string',
             'otros' => 'nullable|string',
 
-            // VI. Archivos y documentos
+            // VIII. Documentos
             'imagen_titulo_original' => 'nullable|image',
             'imagen_dni' => 'nullable|image',
             'imagen_tamano_carnet' => 'nullable|image',
             'pdf_curriculum_vitae' => 'nullable|mimes:pdf',
             'imagen_dni_beneficiario1' => 'nullable|image',
             'imagen_dni_beneficiario2' => 'nullable|image',
+            'imagen_dni_beneficiario3' => 'nullable|image',
             'imagen_rtn' => 'nullable|image',
         ]);
 
@@ -115,6 +116,10 @@ class InscripcionController extends Controller
 
         if ($request->hasFile('imagen_dni_beneficiario2')) {
             $inscripcion->imagen_dni_beneficiario2 = $request->file('imagen_dni_beneficiario2')->store('documentos');
+        }
+
+        if ($request->hasFile('imagen_dni_beneficiario3')) {
+            $inscripcion->imagen_dni_beneficiario2 = $request->file('imagen_dni_beneficiario3')->store('documentos');
         }
 
         if ($request->hasFile('imagen_rtn')) {
