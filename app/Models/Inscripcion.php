@@ -22,6 +22,11 @@ class Inscripcion extends Model
         'cv',
     ];
 
+    // Castear imagen_titulo como array
+    protected $casts = [
+        'imagen_titulo' => 'array',
+    ];
+
     // Relación con el modelo User
     public function user()
     {

@@ -17,7 +17,7 @@ class CreateInscripcionesTable extends Migration
             $table->string('correo')->unique();
             $table->string('universidad');
             $table->date('fecha_inscripcion');
-            $table->string('imagen_titulo')->nullable();    
+            $table->json('imagen_titulo')->nullable();    
             $table->string('cv'); // Campo para almacenar el currículum vitae (archivo PDF)
             $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente');
             $table->timestamps();
