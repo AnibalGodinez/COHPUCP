@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Inscripcion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Log;
-use App\Mail\InscripcionStatusMail;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class InscripcionController extends Controller
 {
@@ -18,105 +16,42 @@ class InscripcionController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            // I. Datos Personales
-            'primer_nombre' => 'required|string|max:255',
-            'segundo_nombre' => 'nullable|string|max:255',
-            'primer_apellido' => 'required|string|max:255',
-            'segundo_apellido' => 'nullable|string|max:255',
-            'dni' => 'required|string|max:255',
-            'fecha_nacimiento' => 'required|date',
-            'lugar_nacimiento' => 'nullable|string|max:255',
-            'direccion_residencia' => 'nullable|string|max:255',
-            'telefono_fijo' => 'nullable|string|max:255',
-            'correo_electronico' => 'required|email|max:255',
-            'celular' => 'required|string|max:255',
-
-            // II. Datos Profesionales
-            'fecha_graduacion' => 'required|date',
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'dni' => 'required|string|max:20|unique:inscripciones,dni',
+            'correo' => 'required|email|max:255|unique:inscripciones,correo',
             'universidad' => 'required|string|max:255',
-            'nombre_empresa_trabajo_actual' => 'nullable|string|max:255',
-            'cargo' => 'nullable|string|max:255',
-            'direccion_empresa' => 'nullable|string|max:255',
-            'correo_empresa' => 'nullable|email|max:255',
-            'telefono_empresa' => 'nullable|string|max:255',
-            'extension_telefono_empresa' => 'nullable|string|max:255',
-
-            // III. Información Adicional
-            'especialidad_1' => 'nullable|string|max:255',
-            'lugar_especialidad_1' => 'nullable|string|max:255',
-            'fecha_especialidad_1' => 'nullable|date',
-
-            'especialidad_2' => 'nullable|string|max:255',
-            'lugar_especialidad_2' => 'nullable|string|max:255',
-            'fecha_especialidad_2' => 'nullable|date',
-
-            // IV. Cursos de especialización
-            'nombre_curso_especializacion' => 'nullable|string|max:255',
-            'lugar_curso' => 'nullable|string|max:255',
-            'fecha_curso' => 'nullable|date',
-
-            // V. Experiencia Profesional
-            'nombre_empresa1' => 'nullable|string|max:255',
-            'cargo_empresa1' => 'nullable|string|max:255',
-            'duración_empresa1' => 'nullable|string|max:255',
-
-            'nombre_empresa2' => 'nullable|string|max:255',
-            'cargo_empresa2' => 'nullable|string|max:255',
-            'duración_empresa2' => 'nullable|string|max:255',
-
-            // VI. Misiones Desempeñadas
-            'comisiones' => 'nullable|string',
-            'representaciones' => 'nullable|string',
-            'delegaciones' => 'nullable|string',
-
-            // VII. Extras
-            'publicacion_documentos' => 'nullable|string',
-            'publicaciones' => 'nullable|string',
-            'publicacion_libro' => 'nullable|string',
-            'otros' => 'nullable|string',
-
-            // VIII. Documentos
-            'imagen_titulo_original' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
-            'imagen_dni' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
-            'imagen_tamano_carnet' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
-            'pdf_curriculum_vitae' => 'nullable|mimes:pdf',
-            'imagen_dni_beneficiario1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
-            'imagen_dni_beneficiario2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
-            'imagen_dni_beneficiario3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
-            'imagen_rtn' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff|max:20480', // 20 MB 
+            'imagen_titulo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'cv' => 'required|mimes:pdf|max:2048',
         ]);
 
-        try {
-            // Guardar archivos
-            $filePaths = [];
-
-            foreach (['imagen_titulo_original', 'imagen_dni', 'imagen_tamano_carnet', 'pdf_curriculum_vitae', 'imagen_dni_beneficiario1', 'imagen_dni_beneficiario2', 'imagen_dni_beneficiario3', 'imagen_rtn'] as $file) {
-                if ($request->hasFile($file)) {
-                    $filePaths[$file] = $request->file($file)->store('documentos', 'public');
-                }
-            }
-
-            // Crear inscripcion
-            $inscripcion = new Inscripcion();
-            $inscripcion->fill($validatedData);
-
-            foreach ($filePaths as $key => $path) {
-                $inscripcion->$key = $path;
-            }
-
-            $inscripcion->save();
-
-            // Enviar correo de confirmación
-            Mail::to($inscripcion->correo_electronico)
-                ->send(new InscripcionStatusMail($inscripcion, 'pendiente'));
-
-            return redirect()->back()->with('status', 'Solicitud de inscripción enviada.');
-        } catch (\Exception $e) {
-            // Log the error message
-            Log::error('Error al guardar inscripción: ' . $e->getMessage());
-
-            return redirect()->back()->with('error', 'No se pudo enviar la inscripción.')->withInput();
+        // Manejo de la imagen del título
+        $rutaArchivoTitulo = null;
+        if ($request->hasFile('imagen_titulo')) {
+            $imagenTitulo = $request->file('imagen_titulo');
+            $nombreArchivoTitulo = time() . '_' . $imagenTitulo->getClientOriginalName();
+            $rutaArchivoTitulo = $imagenTitulo->storeAs('imgsTitulos_inscripcion', $nombreArchivoTitulo, 'public');
         }
+
+        // Manejo del currículum vitae
+        $rutaArchivoCV = null;
+        if ($request->hasFile('cv')) {
+            $cv = $request->file('cv');
+            $nombreArchivoCV = time() . '_' . $cv->getClientOriginalName();
+            $rutaArchivoCV = $cv->storeAs('cvs_inscripcion', $nombreArchivoCV, 'public');
+        }
+
+        Inscripcion::create([
+            'user_id' => Auth::id(),
+            'nombre' => $request->nombre,
+            'dni' => $request->dni,
+            'correo' => $request->correo,
+            'universidad' => $request->universidad,
+            'imagen_titulo' => $rutaArchivoTitulo,
+            'fecha_inscripcion' => Carbon::now()->toDateString(),
+            'cv' => $rutaArchivoCV,
+        ]);
+
+        return redirect()->route('inscripciones.create')->with('success', 'Inscripción enviada correctamente.');
     }
 }

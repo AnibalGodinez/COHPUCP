@@ -45,53 +45,6 @@
                             <!-- Salto de línea -->
                             <div class="w-100"></div>
 
-                            <div class="form-group col-md-4" id="titleField">
-                                <label for="title">
-                                    <i class="fa-font fa-quote-left" style="margin-right: 8px;"></i>
-                                    <strong>TÍTULO</strong>
-                                </label>
-                                <input  
-                                    type="text" 
-                                    name="title" 
-                                    id="title"
-                                    class="form-control" 
-                                    value="{{ old('title') }}"
-                                    placeholder="Ingrese el título">
-                            </div>
-                        
-                            <div class="form-group col-md-4" id="subtitleField">
-                                <label for="subtitle">
-                                    <i class="fa-text-height" style="margin-right: 8px;"></i>
-                                    <strong>SUBTÍTULO</strong>
-                                </label>
-                                <input 
-                                    type="text" 
-                                    name="subtitle" 
-                                    id="subtitle" 
-                                    class="form-control" 
-                                    placeholder="Ingrese el subtítulo"
-                                    value="{{ old('subtitle') }}">
-                            </div>
-
-                            <!-- Salto de línea -->
-                            <div class="w-100"></div>
-
-                            <div class="form-group col-md-12" id="descriptionField">
-                                <label for="description">
-                                    <i class="fas fa-align-left" style="margin-right: 8px;"></i>
-                                    <strong>DESCRIPCIÓN</strong>
-                                </label>
-                                <textarea 
-                                    name="description" 
-                                    id="description"
-                                    class="form-control" 
-                                    style="min-height: 150px" 
-                                    placeholder="Ingrese la descripción">{{ old('description') }}</textarea>
-                            </div>
-
-                            <!-- Salto de línea -->
-                            <div class="w-100"></div>
-
                             <!-- Campo para el link de agregar un archivo pdf -->
                             <div class="form-group col-md-4" id="pdfField">
                                 <label for="pdf" class="btn btn-info btn-simple">
