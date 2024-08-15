@@ -14,11 +14,16 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="user_identifier">ID de Usuario o Número de Identidad</label>
-                            <input type="text" class="form-control" id="user_identifier" name="user_identifier" required>
+                            <label for="user_identifier">
+                                <strong>ID o DNI</strong> / INGRESE SU ID DE USUARIO O DNI PARA INSCRIBIRSE AL COLEGIO *
+                            </label>
+                            <div class="form-inline mt-3">
+                                <input type="text" name="user_identifier" class="form-control mr-2 col-3" id="user_identifier" placeholder="Ingrese ID o DNI" required>
+                                <button type="button" class="btn btn-info btn-round btn-simple" onclick="fetchUserData()">
+                                    <i class="tim-icons icon-zoom-split"></i> Cargar datos para inscribirse
+                                </button>
+                            </div>
                         </div>
-
-                        <button type="button" class="btn btn-primary" onclick="fetchUserData()">Cargar Datos</button>
 
                         <div id="userData" style="display: none;">
                             <div class="form-group">
@@ -46,7 +51,6 @@
                                 @enderror
                             </div>
 
-
                             <div class="form-group row">
                                 <!-- VII. Documentos -->
                                 <div class="col-12 text-center mb-0">
@@ -70,7 +74,6 @@
                                     </div>
                                 </div>
     
-    
                                 <!-- Campo para subir la imagen del Curriculum Vitae -->
                                 <div class="col-md-3">
                                     <label for="cv" class="btn btn-default btn-simple">
@@ -88,7 +91,6 @@
                                         <iframe id="pdfPreview" src="#" type="application/pdf" style="display: none; max-width: 100%; height: auto;" frameborder="0"></iframe>
                                     </div>
                                 </div>
-    
                             </div>
 
                             <button type="submit" class="btn btn-primary">Enviar Inscripción</button>
