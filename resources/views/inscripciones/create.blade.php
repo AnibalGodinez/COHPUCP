@@ -25,9 +25,9 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="nombre">Nombre Completo</label>
-                            <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" aria-label="Nombre completo" value="{{ old('nombre') }}" required>
-                            @error('nombre')
+                            <label for="name">Primer Nombre</label>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" aria-label="Nombre" value="{{ old('name') }}" required>
+                            @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -35,9 +35,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="dni">DNI</label>
-                            <input type="text" class="form-control @error('dni') is-invalid @enderror" id="dni" name="dni" aria-label="Documento Nacional de Identidad" value="{{ old('dni') }}" required>
-                            @error('dni')
+                            <label for="numero_identidad">DNI</label>
+                            <input type="text" class="form-control @error('numero_identidad') is-invalid @enderror" id="numero_identidad" name="numero_identidad" aria-label="Documento Nacional de Identidad" value="{{ old('numero_identidad') }}" required>
+                            @error('numero_identidad')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -45,9 +45,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="correo">Correo Electrónico</label>
-                            <input type="email" class="form-control @error('correo') is-invalid @enderror" id="correo" name="correo" aria-label="Correo electrónico" value="{{ old('correo') }}" required>
-                            @error('correo')
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" aria-label="Correo electrónico" value="{{ old('email') }}" required>
+                            @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -64,34 +64,49 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label for="imagen_titulo">Imágenes del Título Universitario (Frontal y Reverso)</label>
-                            <input type="file" class="form-control @error('imagen_titulo') is-invalid @enderror" id="imagen_titulo" name="imagen_titulo[]" aria-label="Imágenes del título universitario" multiple onchange="previewFiles()">
-                            @error('imagen_titulo')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
 
-                            <!-- Previsualización de las imágenes del título -->
-                            <div class="form-group mt-3" id="imagePreviewContainer">
-                                <!-- Las imágenes se mostrarán aquí -->
+                        <div class="form-group row">
+                            <!-- VII. Documentos -->
+                            <div class="col-12 text-center mb-0">
+                                <h4 style="text-decoration: underline;">VIII. DOCUMENTOS</h4>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="cv">Currículum Vitae (PDF)</label>
-                            <input type="file" class="form-control @error('cv') is-invalid @enderror" id="cv" name="cv" aria-label="Currículum vitae" accept="application/pdf" onchange="previewFile('cv', 'pdfPreview', false)" required>
-                            @error('cv')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-
-                            <!-- Previsualización del PDF -->
-                            <div class="form-group mt-3">
-                                <iframe id="pdfPreview" src="#" type="application/pdf" style="display: none; max-width: 100%; height: auto;" frameborder="0"></iframe>
+                            <!-- Campo para subir las imágenes del Título Universitario -->
+                            <div class="col-md-3">
+                                <label for="imagen_titulo" class="btn btn-default btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    <strong>Subir título universitario *</strong>
+                                </label>
+                                frontal y reverso
+                                <input type="file" class="form-control @error('imagen_titulo') is-invalid @enderror" id="imagen_titulo" name="imagen_titulo[]" aria-label="Imágenes del título universitario" multiple onchange="previewFiles()">
+                                @error('imagen_titulo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <div class="form-group mt-3" id="imagePreviewContainer">
+                                </div>
                             </div>
+
+
+                            <!-- Campo para subir la imagen del Curriculum Vitae -->
+                            <div class="col-md-3">
+                                <label for="cv" class="btn btn-default btn-simple">
+                                    <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
+                                    <strong>Currículum Vitae *</strong>
+                                </label>
+                                PDF (Mínimo 3 páginas)
+                                <input type="file" class="form-control @error('cv') is-invalid @enderror" id="cv" name="cv" aria-label="Currículum vitae" accept="application/pdf" onchange="previewFile('cv', 'pdfPreview', false)" required>
+                                @error('cv')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <div class="form-group mt-3">
+                                    <iframe id="pdfPreview" src="#" type="application/pdf" style="display: none; max-width: 100%; height: auto;" frameborder="0"></iframe>
+                                </div>
+                            </div>
+
                         </div>
 
                         <button type="submit" class="btn btn-primary">Enviar Inscripción</button>

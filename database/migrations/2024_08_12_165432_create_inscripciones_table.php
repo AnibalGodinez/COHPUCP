@@ -12,9 +12,10 @@ class CreateInscripcionesTable extends Migration
         Schema::create('inscripciones', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id'); // Relación con la tabla de usuarios
-            $table->string('nombre');
-            $table->string('dni')->unique();
-            $table->string('correo')->unique();
+            
+            $table->string('name');
+            $table->string('numero_identidad')->unique();
+            $table->string('email')->unique();
             $table->string('universidad');
             $table->date('fecha_inscripcion');
             $table->json('imagen_titulo')->nullable();    

@@ -39,6 +39,22 @@
                                 <div class="card mb-3" style="border-radius: 15px;">
                                     <div class="card-body">
                                         <div class="form-row">
+
+                                            <!-- Campo del ID del usuario -->
+                                            <div class="form-group col-md-4 mb-4">
+                                                <label for="id">
+                                                    <i class="fas fa-id-badge" style="margin-right: 8px;"></i>
+                                                    <strong>ID</strong>
+                                                </label>
+                                                <p class="form-control-static tex-center">
+                                                    @if(Auth::user()->id)
+                                                        {{ Auth::user()->id }}
+                                                    @else
+                                                        No disponible
+                                                    @endif
+                                                </p>
+                                            </div>
+
                                             <!-- Campo para el primer nombre -->
                                             <div class="form-group col-md-4 mb-4">
                                                 <label for="name">

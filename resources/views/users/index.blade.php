@@ -28,6 +28,7 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th class="text-center">ID</th>
                                     <th class="text-center">Nombre completo</th>
                                     <th class="text-center">DNI</th>
                                     <th class="text-center">Nº colegiación</th>
@@ -47,6 +48,7 @@
                             <tbody>
                                 @foreach ($users as $user)
                                 <tr>
+                                    <td class="text-center">{{ $user->id }}</td>
                                     <td>{{ $user->name }} {{ $user->name2 }} {{ $user->apellido }} {{ $user->apellido2 }}</td>
                                     <td>{{ $user->numero_identidad }}</td>
                                     <td>{{ $user->numero_colegiacion }}</td>

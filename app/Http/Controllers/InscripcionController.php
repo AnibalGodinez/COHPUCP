@@ -17,9 +17,9 @@ class InscripcionController extends Controller
     public function store(Request $request)
 {
     $request->validate([
-        'nombre' => 'required|string|max:255',
-        'dni' => 'required|string|max:20|unique:inscripciones,dni',
-        'correo' => 'required|email|max:255|unique:inscripciones,correo',
+        'name' => 'required|string|max:255',
+        'numero_identidad' => 'required|string|max:20|unique:inscripciones,numero_identidad',
+        'email' => 'required|email|max:255|unique:inscripciones,email',
         'universidad' => 'required|string|max:255',
         'imagen_titulo' => 'nullable|array',
         'imagen_titulo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -46,9 +46,9 @@ class InscripcionController extends Controller
 
     Inscripcion::create([
         'user_id' => Auth::id(), // Asegurarse de que Auth::id() retorne un valor válido
-        'nombre' => $request->nombre,
-        'dni' => $request->dni,
-        'correo' => $request->correo,
+        'name' => $request->name,
+        'numero_identidad' => $request->numero_identidad,
+        'email' => $request->email,
         'universidad' => $request->universidad,
         'imagen_titulo' => json_encode($rutasArchivosTitulos),
         'fecha_inscripcion' => Carbon::now()->toDateString(),
