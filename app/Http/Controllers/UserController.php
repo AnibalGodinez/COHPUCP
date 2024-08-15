@@ -219,9 +219,9 @@ class UserController extends Controller
         return view('users.view', ['users' => $users]);
     }
 
-    public function getUserData($id)
+    public function getUserData($identifier)
     {
-        $user = User::find($id);
+        $user = User::where('id', $identifier)->orWhere('numero_identidad', $identifier)->first();
 
         if ($user) {
             return response()->json(['success' => true, 'user' => $user]);

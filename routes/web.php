@@ -78,8 +78,7 @@ use App\Http\Controllers\InscripcionController;
 		Route::resource('permission', PermissionController::class);
 		Route::get('permission/{permissionId}/delete', [PermissionController::class, 'destroy']);
 		Route::get('ver/permisos', [PermissionController::class, 'verPermisos'])->name('permissions.ver');
-		Route::get('/get-user-data/{id}', [UserController::class, 'getUserData']);
-
+		Route::get('/get-user-data/{identifier}', [UserController::class, 'getUserData']);
 	});
 
 	// RUTAS DE PERMISOS

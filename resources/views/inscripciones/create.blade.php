@@ -14,8 +14,8 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="user_id">ID de Usuario</label>
-                            <input type="text" class="form-control" id="user_id" name="user_id" required>
+                            <label for="user_identifier">ID de Usuario o Número de Identidad</label>
+                            <input type="text" class="form-control" id="user_identifier" name="user_identifier" required>
                         </div>
 
                         <button type="button" class="btn btn-primary" onclick="fetchUserData()">Cargar Datos</button>
@@ -46,7 +46,7 @@
                                 @enderror
                             </div>
 
-                            
+
                             <div class="form-group row">
                                 <!-- VII. Documentos -->
                                 <div class="col-12 text-center mb-0">
@@ -90,7 +90,7 @@
                                 </div>
     
                             </div>
-    
+
                             <button type="submit" class="btn btn-primary">Enviar Inscripción</button>
                         </div>
                     </form>
@@ -102,9 +102,9 @@
 
 <script>
     function fetchUserData() {
-        const userId = document.getElementById('user_id').value;
+        const identifier = document.getElementById('user_identifier').value;
 
-        fetch(`/get-user-data/${userId}`)
+        fetch(`/get-user-data/${identifier}`)
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
