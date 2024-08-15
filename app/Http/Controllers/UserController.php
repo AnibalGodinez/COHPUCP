@@ -218,4 +218,15 @@ class UserController extends Controller
         $users = $this->searchUsers($search);
         return view('users.view', ['users' => $users]);
     }
+
+    public function getUserData($id)
+    {
+        $user = User::find($id);
+
+        if ($user) {
+            return response()->json(['success' => true, 'user' => $user]);
+        } else {
+            return response()->json(['success' => false]);
+        }
+    }
 }
