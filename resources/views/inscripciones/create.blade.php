@@ -15,10 +15,10 @@
 
                         <div class="form-group">
                             <label for="user_identifier">
-                                <strong>ID o DNI</strong> / INGRESE SU ID DE USUARIO O DNI PARA INSCRIBIRSE AL COLEGIO *
+                                <strong>ID o DNI *</strong>
                             </label>
                             <div class="form-inline mt-3">
-                                <input type="text" name="user_identifier" class="form-control mr-2 col-3" id="user_identifier" placeholder="Ingrese ID o DNI" required>
+                                <input type="text" name="user_identifier" class="form-control mr-2 col-3" id="user_identifier" placeholder="INGRESE SU ID USUARIO O DNI PARA INSCRIBIRSE AL COLEGIO" required>
                                 <button type="button" class="btn btn-info btn-round btn-simple" onclick="fetchUserData()">
                                     <i class="tim-icons icon-zoom-split"></i> Cargar datos para inscribirse
                                 </button>
