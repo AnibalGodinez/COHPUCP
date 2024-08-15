@@ -12,7 +12,7 @@ class InscripcionController extends Controller
 {
     public function create()
     {
-        $universidades = Universidad::all(); // Obtén todas las universidades
+        $universidades = Universidad::all(); // Se obtiene todas las universidades
         return view('inscripciones.create', compact('universidades'));
     }
 
@@ -20,6 +20,9 @@ class InscripcionController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'name2' => 'nullable|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'apellido2' => 'nullable|string|max:255',
             'numero_identidad' => 'required|string|max:20|unique:inscripciones,numero_identidad',
             'email' => 'required|email|max:255|unique:inscripciones,email',
             'universidad' => 'required|string|max:255',
@@ -49,6 +52,9 @@ class InscripcionController extends Controller
         Inscripcion::create([
             'user_id' => Auth::id(), // Asegurarse de que Auth::id() retorne un valor válido
             'name' => $request->name,
+            'name2' => $request->name2,
+            'apellido' => $request->apellido,
+            'apellido2' => $request->apellido2,
             'numero_identidad' => $request->numero_identidad,
             'email' => $request->email,
             'universidad' => $request->universidad,

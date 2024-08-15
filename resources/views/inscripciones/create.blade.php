@@ -26,9 +26,29 @@
                         </div>
 
                         <div id="userData" style="display: none;">
-                            <div class="form-group">
-                                <label for="name">Primer Nombre</label>
-                                <input type="text" class="form-control" id="name" name="name" readonly>
+
+                            <div class="form-group row">
+
+                                <div class="col-md-3">
+                                    <label for="name">Primer nombre</label>
+                                    <input type="text" class="form-control" id="name" name="name" readonly>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="name2">Segundo Nombre</label>
+                                    <input type="text" class="form-control" id="name2" name="name2" readonly>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="apellido">Primer apellido</label>
+                                    <input type="text" class="form-control" id="apellido" name="apellido" readonly>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="apellido2">Segundo apellido</label>
+                                    <input type="text" class="form-control" id="apellido2" name="apellido2" readonly>
+                                </div>
+
                             </div>
 
                             <div class="form-group">
@@ -116,6 +136,9 @@
             .then(data => {
                 if (data.success) {
                     document.getElementById('name').value = data.user.name;
+                    document.getElementById('name2').value = data.user.name2;
+                    document.getElementById('apellido').value = data.user.apellido;
+                    document.getElementById('apellido2').value = data.user.apellido2;
                     document.getElementById('numero_identidad').value = data.user.numero_identidad;
                     document.getElementById('email').value = data.user.email;
                     document.getElementById('userData').style.display = 'block';

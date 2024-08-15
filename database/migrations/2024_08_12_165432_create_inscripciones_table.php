@@ -14,6 +14,9 @@ class CreateInscripcionesTable extends Migration
             $table->unsignedBigInteger('user_id'); // Relación con la tabla de usuarios
             
             $table->string('name');
+            $table->string('name2')->nullable();
+            $table->string('apellido');
+            $table->string('apellido2')->nullable();
             $table->string('numero_identidad')->unique();
             $table->string('email')->unique();
             $table->string('universidad');
