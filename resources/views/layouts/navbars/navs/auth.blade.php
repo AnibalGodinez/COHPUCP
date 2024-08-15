@@ -398,6 +398,7 @@
                         <a class="dropdown-item text-uppercase {{request()->routeIs('security_questions.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('security_questions.index')}}">Preguntas de seguridad</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('pais.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('pais.index') }}">Países</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('idiomas.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('idiomas.index') }}">Idiomas</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('universidades.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('universidades.index') }}">Universidades</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('cursos.index') }}">Cursos</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('categorias.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('categorias.index') }}">Categorías</a> 
                         <a class="dropdown-item text-uppercase {{request()->routeIs('dashboard-content.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('dashboard-content.index') }}">Dasboard</a>

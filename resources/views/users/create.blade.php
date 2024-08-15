@@ -260,6 +260,7 @@
                                     @endforeach
                                 </select>
                             </div>
+                            
                             <script>
                                 document.addEventListener('DOMContentLoaded', function () {
                                     const paisSelect = document.getElementById('pais');

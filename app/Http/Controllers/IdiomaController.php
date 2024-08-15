@@ -58,7 +58,7 @@ class IdiomaController extends Controller
 
         $idioma->update($request->all());
 
-        return redirect()->route('idiomas.index')
+        return redirect()->route('idiomas.update')
                          ->with('success', 'Idioma actualizado exitosamente.');
     }
 

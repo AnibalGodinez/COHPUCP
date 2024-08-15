@@ -17,6 +17,7 @@ use App\Http\Controllers\DashboardContentController;
 use App\Http\Controllers\FooterContentController;
 use App\Http\Controllers\IdiomaController;
 use App\Http\Controllers\InscripcionController;
+use App\Http\Controllers\UniversidadController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -136,4 +137,11 @@ use App\Http\Controllers\InscripcionController;
 	Route::group(['middleware' => ['auth']], function () {
 		Route::resource('inscripciones', InscripcionController::class);
 	});
+
+	// RUTAS DE UNIVERSIDADES
+	Route::group(['middleware' => ['auth']], function () {
+		Route::resource('universidades', UniversidadController::class);
+	});
+
+
 

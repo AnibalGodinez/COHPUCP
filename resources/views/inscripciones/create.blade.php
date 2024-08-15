@@ -43,7 +43,12 @@
 
                             <div class="form-group">
                                 <label for="universidad">Universidad</label>
-                                <input type="text" class="form-control @error('universidad') is-invalid @enderror" id="universidad" name="universidad" aria-label="Universidad" value="{{ old('universidad') }}" required>
+                                <select class="form-control @error('universidad') is-invalid @enderror" id="universidad" name="universidad" required>
+                                    <option value="">Seleccione una universidad</option>
+                                    @foreach($universidades as $universidad)
+                                        <option value="{{ $universidad->nombre_universidad }}">{{ $universidad->nombre_universidad }}</option>
+                                    @endforeach
+                                </select>
                                 @error('universidad')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -91,4 +91,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(WelcomeContent::class);
     }
+
+    // Relación muchos a muchos con universidades
+    public function universidades()
+    {
+        return $this->belongsToMany(Universidad::class, 'universidad_user');
+    }
 }
