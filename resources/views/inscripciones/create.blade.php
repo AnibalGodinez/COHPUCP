@@ -429,7 +429,7 @@
                                         <strong>Subir título universitario</strong>
                                     </label>
                                     (frontal y reverso)
-                                    <input type="file" id="imagen_titulo" name="imagen_titulo[]" multiple>
+                                    <input type="file" id="imagen_titulo" name="imagen_titulo[]" accept="image/*" multiple>
                                     <div id="previewImagenTitulo"></div>
                                 </div>
                             
@@ -440,7 +440,7 @@
                                         <strong>Subir DNI</strong>
                                     </label>
                                     (frontal y reverso)
-                                    <input type="file" id="imagen_dni" name="imagen_dni[]" multiple>
+                                    <input type="file" id="imagen_dni" name="imagen_dni[]" accept="image/*" multiple>
                                     <div id="previewImagenDni"></div>
                                 </div>
                             
@@ -450,7 +450,7 @@
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                         <strong>Subir foto tamaño carnet</strong>
                                     </label>
-                                    <input type="file" id="imagen_tamano_carnet" name="imagen_tamano_carnet[]" multiple>
+                                    <input type="file" id="imagen_tamano_carnet" name="imagen_tamano_carnet[]" accept="image/*" multiple>
                                     <div id="previewImagenTamanoCarnet"></div>
                                 </div>
                             
@@ -468,7 +468,7 @@
                                         </span>
                                     @enderror
                                     <div class="form-group mt-3">
-                                        <iframe id="pdfPreview" src="#" type="application/pdf" style="display: none; max-width: 100%; height: auto;" frameborder="0"></iframe>
+                                        <iframe id="pdfPreview" src="#" type="application/pdf" style="display: none; width: 90%; height: 300px;" frameborder="0"></iframe>
                                     </div>
                                 </div>
                             
@@ -479,7 +479,7 @@
                                         <strong>Subir DNI del beneficiario 1</strong>
                                     </label>
                                     (frontal y reverso)
-                                    <input type="file" id="imagen_dni_beneficiario1" name="imagen_dni_beneficiario1[]" multiple>
+                                    <input type="file" id="imagen_dni_beneficiario1" name="imagen_dni_beneficiario1[]" accept="image/*" multiple>
                                     <div id="previewImagenDniBeneficiario1"></div>
                                 </div>
                             
@@ -490,7 +490,7 @@
                                         <strong>Subir DNI del beneficiario 2</strong>
                                     </label>
                                     (frontal y reverso)
-                                    <input type="file" id="imagen_dni_beneficiario2" name="imagen_dni_beneficiario2[]" multiple>
+                                    <input type="file" id="imagen_dni_beneficiario2" name="imagen_dni_beneficiario2[]" accept="image/*" multiple>
                                     <div id="previewImagenDniBeneficiario2"></div>
                                 </div> 
                             
@@ -501,7 +501,7 @@
                                         <strong>Subir DNI del beneficiario 3</strong>
                                     </label>
                                     (frontal y reverso)
-                                    <input type="file" id="imagen_dni_beneficiario3" name="imagen_dni_beneficiario3[]" multiple>
+                                    <input type="file" id="imagen_dni_beneficiario3" name="imagen_dni_beneficiario3[]" accept="image/*" multiple>
                                     <div id="previewImagenDniBeneficiario3"></div>
                                 </div>
                             
@@ -511,7 +511,7 @@
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                         <strong>Subir RTN</strong> 
                                     </label>
-                                    <input type="file" id="imagen_rtn" name="imagen_rtn[]" multiple>
+                                    <input type="file" id="imagen_rtn" name="imagen_rtn[]" accept="image/*" multiple>
                                     <div id="previewImagenRtn"></div>
                                 </div>
 
