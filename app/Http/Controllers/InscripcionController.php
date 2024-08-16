@@ -78,7 +78,26 @@ class InscripcionController extends Controller
             // VIII. Documentos
             'imagen_titulo' => 'nullable|array',
             'imagen_titulo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+            'imagen_dni' => 'nullable|array',
+            'imagen_dni.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+            'imagen_tamano_carnet' => 'nullable|array',
+            'imagen_tamano_carnet.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
             'cv' => 'required|mimes:pdf|max:2048',
+
+            'imagen_dni_beneficiario1' => 'nullable|array',
+            'imagen_dni_beneficiario1.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+            'imagen_dni_beneficiario2' => 'nullable|array',
+            'imagen_dni_beneficiario2.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+            'imagen_dni_beneficiario3' => 'nullable|array',
+            'imagen_dni_beneficiario3.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+            'imagen_rtn' => 'nullable|array',
+            'imagen_rtn.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // Manejo de las imágenes del título
@@ -86,8 +105,28 @@ class InscripcionController extends Controller
         if ($request->hasFile('imagen_titulo')) {
             foreach ($request->file('imagen_titulo') as $imagenTitulo) {
                 $nombreArchivoTitulo = time() . '_' . $imagenTitulo->getClientOriginalName();
-                $rutaArchivoTitulo = $imagenTitulo->storeAs('imgsTitulos_inscripcion', $nombreArchivoTitulo, 'public');
+                $rutaArchivoTitulo = $imagenTitulo->storeAs('imgs_titulo_inscripcion', $nombreArchivoTitulo, 'public');
                 $rutasArchivosTitulos[] = $rutaArchivoTitulo;
+            }
+        }
+
+        // Manejo de las imágenes del dni
+        $rutasArchivosDNI = [];
+        if ($request->hasFile('imagen_dni')) {
+            foreach ($request->file('imagen_dni') as $imagenDNI) {
+                $nombreArchivoDNI = time() . '_' . $imagenDNI->getClientOriginalName();
+                $rutaArchivoDNI = $imagenDNI->storeAs('imgs_dni_inscripcion', $nombreArchivoDNI, 'public');
+                $rutasArchivosDNI[] = $rutaArchivoDNI;
+            }
+        }
+
+        // Manejo de las imágenes de tamaño carnet
+        $rutasArchivosTamanoCarnet = [];
+        if ($request->hasFile('imagen_tamano_carnet')) {
+            foreach ($request->file('imagen_tamano_carnet') as $imagenTamanoCarnet) {
+                $nombreArchivoTamanoCarne = time() . '_' . $imagenTamanoCarnet->getClientOriginalName();
+                $rutaArchivoTamanoCarne = $imagenTamanoCarnet->storeAs('imgs_tamano_carnet_inscripcion', $nombreArchivoTamanoCarne, 'public');
+                $rutasArchivosTamanoCarnet[] = $rutaArchivoTamanoCarne;
             }
         }
 
@@ -97,6 +136,46 @@ class InscripcionController extends Controller
             $cv = $request->file('cv');
             $nombreArchivoCV = time() . '_' . $cv->getClientOriginalName();
             $rutaArchivoCV = $cv->storeAs('cvs_inscripcion', $nombreArchivoCV, 'public');
+        }
+
+        // Manejo de las imágenes del DNI del beneficario 1
+        $rutasArchivosDNIbeneficiario1 = [];
+        if ($request->hasFile('imagen_dni_beneficiario1')) {
+            foreach ($request->file('imagen_dni_beneficiario1') as $imagenDNIbeneficario1) {
+                $nombreArchivoDNIbeneficario1 = time() . '_' . $imagenDNIbeneficario1->getClientOriginalName();
+                $rutaArchivoDNIbeneficario1 = $imagenDNIbeneficario1->storeAs('imgs_dni_beneficiario1_inscripcion', $nombreArchivoDNIbeneficario1, 'public');
+                $rutasArchivosDNIbeneficiario1[] = $rutaArchivoDNIbeneficario1;
+            }
+        }
+
+        // Manejo de las imágenes del DNI del beneficario 2
+        $rutasArchivosDNIbeneficiario2 = [];
+        if ($request->hasFile('imagen_dni_beneficiario2')) {
+            foreach ($request->file('imagen_dni_beneficiario2') as $imagenDNIbeneficario2) {
+                $nombreArchivoDNIbeneficario2 = time() . '_' . $imagenDNIbeneficario2->getClientOriginalName();
+                $rutaArchivoDNIbeneficario2 = $imagenDNIbeneficario2->storeAs('imgs_dni_beneficiario2_inscripcion', $nombreArchivoDNIbeneficario2, 'public');
+                $rutasArchivosDNIbeneficiario2[] = $rutaArchivoDNIbeneficario2;
+            }
+        }
+
+        // Manejo de las imágenes del DNI del beneficario 3
+        $rutasArchivosDNIbeneficiario3 = [];
+        if ($request->hasFile('imagen_dni_beneficiario3')) {
+            foreach ($request->file('imagen_dni_beneficiario3') as $imagenDNIbeneficario3) {
+                $nombreArchivoDNIbeneficario3 = time() . '_' . $imagenDNIbeneficario3->getClientOriginalName();
+                $rutaArchivoDNIbeneficario3 = $imagenDNIbeneficario3->storeAs('imgs_dni_beneficiario3_inscripcion', $nombreArchivoDNIbeneficario3, 'public');
+                $rutasArchivosDNIbeneficiario3[] = $rutaArchivoDNIbeneficario3;
+            }
+        }
+
+        // Manejo de las imágenes del rtn
+        $rutasArchivosRTN = [];
+        if ($request->hasFile('imagen_rtn')) {
+            foreach ($request->file('imagen_rtn') as $imagenRTN) {
+                $nombreArchivoRTN = time() . '_' . $imagenRTN->getClientOriginalName();
+                $rutaArchivoRTN = $imagenRTN->storeAs('imgs_rtn_inscripcion', $nombreArchivoRTN, 'public');
+                $rutasArchivosRTN[] = $rutaArchivoRTN;
+            }
         }
 
         Inscripcion::create([
@@ -159,13 +238,18 @@ class InscripcionController extends Controller
             'publicaciones' => $request->publicaciones,
             'publicacion_libro' => $request->publicacion_libro,
 
-            // VIII. Datos Profesionales
+            // VIII. Documentos
             'imagen_titulo' => json_encode($rutasArchivosTitulos),
+            'imagen_dni' => json_encode($rutasArchivosDNI),
+            'imagen_tamano_carnet' => json_encode($rutasArchivosTamanoCarnet),
             'cv' => $rutaArchivoCV,
+            'imagen_dni_beneficiario1' => json_encode($rutasArchivosDNIbeneficiario1),
+            'imagen_dni_beneficiario2' => json_encode($rutasArchivosDNIbeneficiario2),
+            'imagen_dni_beneficiario3' => json_encode($rutasArchivosDNIbeneficiario3),
+            'imagen_rtn' => json_encode($rutasArchivosRTN ),
         ]);
 
         return redirect()->route('inscripciones.create')->with('success', 'Inscripción enviada correctamente.');
     }
-
 
 }

@@ -73,13 +73,26 @@ class Inscripcion extends Model
 
         // VIII. Documentos
         'imagen_titulo',
+        'imagen_dni',
+        'imagen_tamano_carnet',
         'cv',
+        'imagen_dni_beneficiario1',
+        'imagen_dni_beneficiario2',
+        'imagen_dni_beneficiario3',
+        'imagen_rtn'
     ];
 
-    // Castear imagen_titulo como array
+    // Castear todas las imágenes como un array
     protected $casts = [
         'imagen_titulo' => 'array',
+        'imagen_dni' => 'array',
+        'imagen_tamano_carnet' => 'array',
+        'imagen_dni_beneficiario1' => 'array',
+        'imagen_dni_beneficiario2' => 'array',
+        'imagen_dni_beneficiario3' => 'array',
+        'imagen_rtn' => 'array',
     ];
+
 
     // Relación con el modelo User
     public function user()

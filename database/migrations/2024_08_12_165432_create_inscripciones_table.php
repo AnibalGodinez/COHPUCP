@@ -72,12 +72,25 @@ class CreateInscripcionesTable extends Migration
             $table->text('publicacion_libro')->nullable();
 
             // VIII. Documentos
-            $table->json('imagen_titulo')->nullable();    
-            $table->string('cv'); // Campo para almacenar el currículum vitae (archivo PDF)
+            $table->json('imagen_titulo')->nullable();           
+            $table->json('imagen_dni')->nullable();
+            $table->json('imagen_tamano_carnet')->nullable();
+            $table->string('cv');
+            $table->json('imagen_dni_beneficiario1')->nullable();
+            $table->json('imagen_dni_beneficiario2')->nullable();
+            $table->json('imagen_dni_beneficiario3')->nullable();
+            $table->json('imagen_rtn')->nullable();
+
+            // IX. Estado de la inscripción
             $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // Relación con la tabla `users`
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 
