@@ -42,6 +42,39 @@ class InscripcionController extends Controller
             'telefono_empresa' => 'nullable|string|max:255',
             'extension_telefono_empresa' => 'nullable|string|max:255',
 
+            // III. Información Adicional
+            'especialidad_1' => 'nullable|string|max:255',
+            'lugar_especialidad_1' => 'nullable|string|max:255',
+            'fecha_especialidad_1' => 'nullable|date',
+
+            'especialidad_2' => 'nullable|string|max:255',
+            'lugar_especialidad_2' => 'nullable|string|max:255',
+            'fecha_especialidad_2' => 'nullable|date',
+
+            // IV. Cursos de especialización
+            'nombre_curso_especializacion' => 'nullable|string|max:255',
+            'lugar_curso' => 'nullable|string|max:255',
+            'fecha_curso' => 'nullable|date',
+
+            // V. Experiencia Profesional
+            'nombre_empresa1' => 'nullable|string|max:255',
+            'cargo_empresa1' => 'nullable|string|max:255',
+            'duración_empresa1' => 'nullable|string|max:255',
+
+            'nombre_empresa2' => 'nullable|string|max:255',
+            'cargo_empresa2' => 'nullable|string|max:255',
+            'duración_empresa2' => 'nullable|string|max:255',
+
+            // VI. Misiones Desempeñadas
+            'comisiones' => 'nullable|string',
+            'representaciones' => 'nullable|string',
+            'delegaciones' => 'nullable|string',
+
+            // VII. Extras
+            'publicacion_documentos' => 'nullable|string',
+            'publicaciones' => 'nullable|string',
+            'publicacion_libro' => 'nullable|string',
+
             // VIII. Documentos
             'imagen_titulo' => 'nullable|array',
             'imagen_titulo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -92,6 +125,39 @@ class InscripcionController extends Controller
             'correo_empresa' => $request->correo_empresa,
             'telefono_empresa' => $request->telefono_empresa,
             'extension_telefono_empresa' => $request->extension_telefono_empresa,
+
+            // III. Información Adicional
+            'especialidad_1' => $request->especialidad_1,
+            'lugar_especialidad_1' => $request->lugar_especialidad_1,
+            'fecha_especialidad_1' => $request->fecha_especialidad_1,
+
+            'especialidad_2' => $request->especialidad_2,
+            'lugar_especialidad_2' => $request->lugar_especialidad_2,
+            'fecha_especialidad_2' => $request->fecha_especialidad_2,
+
+            // IV. Cursos de especialización
+            'nombre_curso_especializacion' => $request->nombre_curso_especializacion,
+            'lugar_curso' => $request->lugar_curso,
+            'fecha_curso' => $request->fecha_curso,
+
+            // V. Experiencia Profesional
+            'nombre_empresa1' => $request->nombre_empresa1,
+            'cargo_empresa1' => $request->cargo_empresa1,
+            'duración_empresa1' => $request->duración_empresa1,
+
+            'nombre_empresa2' => $request->nombre_empresa2,
+            'cargo_empresa2' => $request->cargo_empresa2,
+            'duración_empresa2' => $request->duración_empresa2,
+
+            // VI. Misiones Desempeñadas
+            'comisiones' => $request->comisiones,
+            'representaciones' => $request->representaciones,
+            'delegaciones' => $request->delegaciones,
+
+            // VII. Extras
+            'publicacion_documentos' => $request->publicacion_documentos,
+            'publicaciones' => $request->publicaciones,
+            'publicacion_libro' => $request->publicacion_libro,
 
             // VIII. Datos Profesionales
             'imagen_titulo' => json_encode($rutasArchivosTitulos),

@@ -38,6 +38,39 @@ class Inscripcion extends Model
         'telefono_empresa',
         'extension_telefono_empresa',
 
+        // III. Información Adicional
+        'especialidad_1',
+        'lugar_especialidad_1',
+        'fecha_especialidad_1',
+
+        'especialidad_2',
+        'lugar_especialidad_2',
+        'fecha_especialidad_2',
+
+        // IV. Cursos de especialización
+        'nombre_curso_especializacion',
+        'lugar_curso',
+        'fecha_curso',
+       
+        // V. Experiencia Profesional
+        'nombre_empresa1',
+        'cargo_empresa1',
+        'duración_empresa1',
+
+        'nombre_empresa2',
+        'cargo_empresa2',
+        'duración_empresa2',
+
+        // VI. Misiones Desempeñadas
+        'comisiones',
+        'representaciones',
+        'delegaciones',
+
+        // VII. Otros
+        'publicacion_documentos',
+        'publicaciones',
+        'publicacion_libro',
+
         // VIII. Documentos
         'imagen_titulo',
         'cv',

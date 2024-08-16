@@ -189,6 +189,224 @@
 
                             </div>
 
+
+                            <div class="form-group row">
+                                <!-- III. Información Adicional -->                      
+                                <div class="col-12 text-center mb-0">
+                                    <h4 style="text-decoration: underline;">III. INFORMACIÓN ADICIONAL</h4>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="especialidad_1">
+                                        <i class="fas fa-stethoscope" style="margin-right: 8px;"></i>
+                                        <strong>ESPECIALIDAD 1</strong>
+                                    </label>
+                                    <input type="text" name="especialidad_1" id="especialidad_1" class="form-control" value="{{ old('especialidad_1') }}">
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <label for="lugar_especialidad_1">
+                                        <i class="fas fa-building" style="margin-right: 8px;"></i>
+                                        <strong>LUGAR DONDE REALIZÓ ESPECIALIZACIÓN</strong>
+                                    </label>
+                                    <input type="text" name="lugar_especialidad_1" id="lugar_especialidad_1" class="form-control" value="{{ old('especialidad_1') }}">
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <label for="fecha_especialidad_1">
+                                        <i class="fas fa-calendar" style="margin-right: 8px;"></i>
+                                        <strong>FECHA</strong>
+                                    </label>
+                                    <input type="date" name="fecha_especialidad_1" id="fecha_especialidad_1" class="form-control" value="{{ old('fecha_especialidad_1') }}">
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <label for="especialidad_2">
+                                        <i class="fas fa-stethoscope" style="margin-right: 8px;"></i>
+                                        <strong>ESPECIALIDAD 2</strong>
+                                    </label>
+                                    <input type="text" name="especialidad_2" id="especialidad_2" class="form-control" value="{{ old('especialidad_2') }}">
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <label for="lugar_especialidad_2">
+                                        <i class="fas fa-building" style="margin-right: 8px;"></i>
+                                        <strong>LUGAR DONDE REALIZÓ ESPECIALIZACIÓN</strong>
+                                    </label>
+                                    <input type="text" name="lugar_especialidad_2" id="lugar_especialidad_2" class="form-control" value="{{ old('lugar_especialidad_2') }}">
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <label for="fecha_especialidad_2">
+                                        <i class="fas fa-calendar" style="margin-right: 8px;"></i>
+                                        <strong>FECHA</strong>
+                                    </label>
+                                    <input type="date" name="fecha_especialidad_2" id="fecha_especialidad_2" class="form-control" value="{{ old('fecha_especialidad_2') }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <!-- IV. Cursos de especialización -->                    
+                                <div class="col-12 text-center mb-0">
+                                    <h4 style="text-decoration: underline;">IV. CURSO DE ESPECIALIZACIÓN</h4>
+                                </div>
+                               
+                                <div class="col-md-4">
+                                    <label for="nombre_curso_especializacion">
+                                        <i class="fas fa-book" style="margin-right: 8px;"></i>
+                                        <strong>NOMBRE DEL CURSO DE ESPECIALIZACIÓN</strong>
+                                    </label>
+                                    <input type="text" name="nombre_curso_especializacion" id="nombre_curso_especializacion" class="form-control" value="{{ old('nombre_curso_especializacion') }}">
+                                </div>
+    
+    
+                                <div class="col-md-4">
+                                    <label for="lugar_curso">
+                                        <i class="fas fa-building" style="margin-right: 8px;"></i>
+                                        <strong>LUGAR DEL CURSO</strong>
+                                    </label>
+                                    <input type="text" name="lugar_curso" id="lugar_curso" class="form-control" value="{{ old('lugar_curso') }}">
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <label for="fecha_curso">
+                                        <i class="fas fa-calendar" style="margin-right: 8px;"></i>
+                                        <strong>FECHA DEL CURSO</strong>
+                                    </label>
+                                    <input type="date" name="fecha_curso" id="fecha_curso" class="form-control" value="{{ old('fecha_curso') }}">
+                                </div>
+    
+                            </div>
+
+
+                            <div class="form-group row">
+                                <!-- V. Experiencia Profesional -->
+                                <div class="col-12 text-center mb-0">
+                                    <h4 style="text-decoration: underline;">V. EXPERIENCIA PROFESIONAL</h4>
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <label for="nombre_empresa1">
+                                        <i class="fas fa-building" style="margin-right: 8px;"></i>
+                                        <strong>NOMBRE DE LA EMPRESA 1</strong>
+                                    </label>
+                                    <input type="text" name="nombre_empresa1" id="nombre_empresa1" class="form-control" value="{{ old('nombre_empresa1') }}">
+                                </div>
+    
+    
+                                <div class="col-md-4">
+                                    <label for="cargo_empresa1">
+                                        <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
+                                        <strong>CARGO DE LA EMPRESA 1</strong>
+                                    </label>
+                                    <input type="text" name="cargo_empresa1" id="cargo_empresa1" class="form-control" value="{{ old('cargo_empresa1') }}">
+                                </div>
+    
+    
+                                <div class="col-md-4">
+                                    <label for="duración_empresa1">
+                                        <i class="fas fa-hourglass-half" style="margin-right: 8px;"></i>
+                                        <strong>DURACIÓN DE LA EMPRESA 1</strong>
+                                    </label>
+                                    <input type="text" name="duración_empresa1" id="duración_empresa1" class="form-control" value="{{ old('duración_empresa1') }}">
+                                </div>
+    
+    
+                                <div class="col-md-4">
+                                    <label for="nombre_empresa2">
+                                        <i class="fas fa-building" style="margin-right: 8px;"></i>
+                                        <strong>NOMBRE DE LA EMPRESA 2</strong>
+                                    </label>
+                                    <input type="text" name="nombre_empresa2" id="nombre_empresa2" class="form-control" value="{{ old('nombre_empresa2') }}">
+                                </div>
+    
+    
+                                <div class="col-md-4">
+                                    <label for="cargo_empresa2">
+                                        <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
+                                        <strong>CARGO DE LA EMPRESA 2</strong>
+                                    </label>
+                                    <input type="text" name="cargo_empresa2" id="cargo_empresa2" class="form-control" value="{{ old('cargo_empresa2') }}">
+                                </div>
+    
+    
+                                <div class="col-md-4">
+                                    <label for="duración_empresa2">
+                                        <i class="fas fa-hourglass-half" style="margin-right: 8px;"></i>
+                                        <strong>DURACIÓN DE LA EMPRESA 2</strong>
+                                    </label>
+                                    <input type="text" name="duración_empresa2" id="duración_empresa2" class="form-control" value="{{ old('duración_empresa2') }}">
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group row">
+                                <!-- VI. Misiones Desempeñadas -->
+                                <div class="col-12 text-center mb-0">
+                                    <h4 style="text-decoration: underline;">VI. MISIONES DESEMPEÑADAS</h4>
+                                </div>
+                           
+                                <div class="col-md-4">
+                                    <label for="comisiones">
+                                        <i class="fas fa-clipboard-list" style="margin-right: 8px;"></i>
+                                        <strong>COMISIONES</strong>
+                                    </label>
+                                    <textarea name="comisiones" id="comisiones" class="form-control" value="{{ old('comisiones') }}" rows="4"></textarea>
+                                </div>
+                           
+                                <div class="col-md-4">
+                                    <label for="representaciones">
+                                        <i class="fas fa-user-tie" style="margin-right: 8px;"></i>
+                                        <strong>REPRESENTACIONES</strong>
+                                    </label>
+                                    <textarea name="representaciones" id="representaciones" class="form-control" value="{{ old('representaciones') }}" rows="4"></textarea>
+                                </div>
+                           
+                                <div class="col-md-4">
+                                    <label for="delegaciones">
+                                        <i class="fas fa-handshake" style="margin-right: 8px;"></i>
+                                        <strong>DELEGACIONES</strong>
+                                    </label>
+                                    <textarea name="delegaciones" id="delegaciones" class="form-control" value="{{ old('delegaciones') }}" rows="4"></textarea>
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group row">
+                                <!-- VII. Otros -->
+                                <div class="col-12 text-center mb-0">
+                                    <h4 style="text-decoration: underline;">VII. OTROS</h4>
+                                </div>
+                           
+                                <div class="col-md-4">
+                                    <label for="publicacion_documentos">
+                                        <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
+                                        <strong>PUBLICACIÓN DE DOCUMENTOS</strong>
+                                    </label>
+                                    <textarea name="publicacion_documentos" id="publicacion_documentos" class="form-control" value="{{ old('publicacion_documentos') }}" rows="4"></textarea>
+                                </div>
+                           
+                                <div class="col-md-4">
+                                    <label for="publicaciones">
+                                        <i class="fas fa-newspaper" style="margin-right: 8px;"></i>
+                                        <strong>PUBLICACIONES</strong>
+                                    </label>
+                                    <textarea name="publicaciones" id="publicaciones" class="form-control" value="{{ old('publicaciones') }}" rows="4"></textarea>
+                                </div>
+                           
+                                <div class="col-md-4">
+                                    <label for="publicacion_libro">
+                                        <i class="fas fa-book" style="margin-right: 8px;"></i>
+                                        <strong>PUBLICACIÓN DE UN LIBRO</strong>
+                                    </label>
+                                    <textarea name="publicacion_libro" id="publicacion_libro" class="form-control" value="{{ old('publicacion_libro') }}" rows="4"></textarea>
+                                </div>
+
+                            </div>   
+    
+
                             <div class="form-group row">
                                 <!-- VII. Documentos -->
                                 <div class="col-12 text-center mb-0">
