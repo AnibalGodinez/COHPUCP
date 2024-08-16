@@ -415,66 +415,47 @@
 
                             </div>   
     
-
                             <div class="form-group row">
+
                                 <!-- VII. Documentos -->
                                 <div class="col-12 text-center mb-0">
                                     <h4 style="text-decoration: underline;">VIII. DOCUMENTOS</h4>
                                 </div>
-    
+                            
                                 <!-- Campo para subir las imágenes del Título Universitario -->
-                                <div class="col-md-3">
+                                <div class="col-md-6 mb-3">
                                     <label for="imagen_titulo" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                         <strong>Subir título universitario</strong>
                                     </label>
                                     (frontal y reverso)
-                                    <input type="file" class="form-control @error('imagen_titulo') is-invalid @enderror" id="imagen_titulo" name="imagen_titulo[]" aria-label="Imágenes del título universitario" multiple onchange="previewFilesTitulo()">
-                                    @error('imagen_titulo')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    <div class="form-group mt-3" id="imageTituloPreviewContainer">
-                                    </div>
+                                    <input type="file" id="imagen_titulo" name="imagen_titulo[]" multiple>
+                                    <div id="previewImagenTitulo"></div>
                                 </div>
-
+                            
                                 <!-- Campo para subir las imágenes del DNI -->
-                                <div class="col-md-3">
+                                <div class="col-md-6 mb-3">
                                     <label for="imagen_dni" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                         <strong>Subir DNI</strong>
                                     </label>
                                     (frontal y reverso)
-                                    <input type="file" class="form-control @error('imagen_dni') is-invalid @enderror" id="imagen_dni" name="imagen_dni[]" aria-label="Imágenes del DNI" multiple onchange="previewFilesDNI()">
-                                    @error('imagen_dni')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    <div class="form-group mt-3" id="imageDNIPreviewContainer">
-                                    </div>
+                                    <input type="file" id="imagen_dni" name="imagen_dni[]" multiple>
+                                    <div id="previewImagenDni"></div>
                                 </div>
-
+                            
                                 <!-- Campo para subir las imágenes del Tamaño carnet -->
-                                <div class="col-md-3">
+                                <div class="col-md-6 mb-3">
                                     <label for="imagen_tamano_carnet" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                         <strong>Subir foto tamaño carnet</strong>
                                     </label>
-                                    (Foto con vestimenta formal)
-                                    <input type="file" class="form-control @error('imagen_tamano_carnet') is-invalid @enderror" id="imagen_tamano_carnet" name="imagen_tamano_carnet[]" aria-label="Imágenes tamaño canet" multiple onchange="previewFilesTamanoCarnet()">
-                                    @error('imagen_tamano_carnet')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    <div class="form-group mt-3" id="imageTamanoCarnetPreviewContainer">
-                                    </div>
+                                    <input type="file" id="imagen_tamano_carnet" name="imagen_tamano_carnet[]" multiple>
+                                    <div id="previewImagenTamanoCarnet"></div>
                                 </div>
-    
+                            
                                 <!-- Campo para subir la imagen del Curriculum Vitae -->
-                                <div class="col-md-3">
+                                <div class="col-md-6 mb-2">
                                     <label for="cv" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
                                         <strong>Currículum Vitae</strong>
@@ -490,59 +471,51 @@
                                         <iframe id="pdfPreview" src="#" type="application/pdf" style="display: none; max-width: 100%; height: auto;" frameborder="0"></iframe>
                                     </div>
                                 </div>
-
+                            
                                 <!-- Campo para subir las imágenes del DNI beneficiario 1 -->
-                                <div class="col-md-3">
+                                <div class="col-md-6 mb-3">
                                     <label for="imagen_dni_beneficiario1" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                         <strong>Subir DNI del beneficiario 1</strong>
                                     </label>
                                     (frontal y reverso)
-                                    <input type="file" class="form-control @error('imagen_dni_beneficiario1') is-invalid @enderror" id="imagen_dni_beneficiario1" name="imagen_dni_beneficiario1[]" aria-label="Imágenes DNI del beneficiario 1" multiple onchange="previewFilesBeneficiario1()">
-                                    @error('imagen_dni_beneficiario1')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    <div class="form-group mt-3" id="imageBeneficiario1PreviewContainer">
-                                    </div>
+                                    <input type="file" id="imagen_dni_beneficiario1" name="imagen_dni_beneficiario1[]" multiple>
+                                    <div id="previewImagenDniBeneficiario1"></div>
                                 </div>
-
+                            
                                 <!-- Campo para subir las imágenes del DNI beneficiario 2 -->
-                                <div class="col-md-3">
+                                <div class="col-md-6 mb-3">
                                     <label for="imagen_dni_beneficiario2" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                         <strong>Subir DNI del beneficiario 2</strong>
                                     </label>
                                     (frontal y reverso)
-                                    <input type="file" class="form-control @error('imagen_dni_beneficiario2') is-invalid @enderror" id="imagen_dni_beneficiario2" name="imagen_dni_beneficiario2[]" aria-label="Imágenes DNI del beneficiario 2" multiple onchange="previewFilesBeneficiario2()">
-                                    @error('imagen_dni_beneficiario2')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    <div class="form-group mt-3" id="imageBeneficiario2PreviewContainer">
-                                    </div>
-                                </div>
-
+                                    <input type="file" id="imagen_dni_beneficiario2" name="imagen_dni_beneficiario2[]" multiple>
+                                    <div id="previewImagenDniBeneficiario2"></div>
+                                </div> 
+                            
                                 <!-- Campo para subir las imágenes del DNI beneficiario 3 -->
-                                <div class="col-md-3">
+                                <div class="col-md-6 mb-3">
                                     <label for="imagen_dni_beneficiario3" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                         <strong>Subir DNI del beneficiario 3</strong>
                                     </label>
                                     (frontal y reverso)
-                                    <input type="file" class="form-control @error('imagen_dni_beneficiario3') is-invalid @enderror" id="imagen_dni_beneficiario3" name="imagen_dni_beneficiario3[]" aria-label="Imágenes DNI del beneficiario 3" multiple onchange="previewFilesBeneficiario3()">
-                                    @error('imagen_dni_beneficiario3')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    <div class="form-group mt-3" id="imageBeneficiario3PreviewContainer">
-                                    </div>
+                                    <input type="file" id="imagen_dni_beneficiario3" name="imagen_dni_beneficiario3[]" multiple>
+                                    <div id="previewImagenDniBeneficiario3"></div>
+                                </div>
+                            
+                                <!-- Campo para subir imagen del RTN -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="imagen_rtn" class="btn btn-default btn-simple">
+                                        <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                        <strong>Subir RTN</strong> 
+                                    </label>
+                                    <input type="file" id="imagen_rtn" name="imagen_rtn[]" multiple>
+                                    <div id="previewImagenRtn"></div>
                                 </div>
 
-                            </div>
+                            </div>                            
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-12 text-center">
@@ -586,74 +559,53 @@
             .catch(error => console.error('Error:', error));
     }
 
-    // Función para previsualizar las imágenes del título
-    function previewFilesTitulo() {
-        const files = document.getElementById('imagen_titulo').files;
-        const imageTituloPreviewContainer = document.getElementById('imageTituloPreviewContainer');
-        
-        imageTituloPreviewContainer.innerHTML = ''; // Limpiar cualquier previsualización existente
-        
-        if (files.length > 0) {
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.maxWidth = '100%';
-                    img.style.height = 'auto';
-                    img.classList.add('mt-2');
-                    imageTituloPreviewContainer.appendChild(img);
+    function previewImages(input, previewContainerId) {
+        var previewContainer = document.getElementById(previewContainerId);
+        previewContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevas imágenes
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+            for (let i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    var imgElement = document.createElement('img');
+                    imgElement.src = event.target.result;
+                    imgElement.style.maxWidth = '500px';
+                    imgElement.style.margin = '5px';
+                    previewContainer.appendChild(imgElement);
                 }
-                reader.readAsDataURL(file);
-            });
+                reader.readAsDataURL(input.files[i]);
+            }
         }
     }
 
-    // Función para previsualizar las imágenes DNI
-    function previewFilesDNI() {
-        const files = document.getElementById('imagen_dni').files;
-        const imageDNIPreviewContainer = document.getElementById('imageDNIPreviewContainer');
-        
-        imageDNIPreviewContainer.innerHTML = ''; // Limpiar cualquier previsualización existente
-        
-        if (files.length > 0) {
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.maxWidth = '100%';
-                    img.style.height = 'auto';
-                    img.classList.add('mt-2');
-                    imageDNIPreviewContainer.appendChild(img);
-                }
-                reader.readAsDataURL(file);
-            });
-        }
-    }
+    document.getElementById('imagen_titulo').addEventListener('change', function() {
+        previewImages(this, 'previewImagenTitulo');
+    });
 
-    // Función para previsualizar las imágenes tamaño carnet
-    function previewFilesTamanoCarnet() {
-        const files = document.getElementById('imagen_tamano_carnet').files;
-        const imageTamanoCarnetPreviewContainer = document.getElementById('imageTamanoCarnetPreviewContainer');
-        
-        imageTamanoCarnetPreviewContainer.innerHTML = ''; // Limpiar cualquier previsualización existente
-        
-        if (files.length > 0) {
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.maxWidth = '100%';
-                    img.style.height = 'auto';
-                    img.classList.add('mt-2');
-                    imageTamanoCarnetPreviewContainer.appendChild(img);
-                }
-                reader.readAsDataURL(file);
-            });
-        }
-    }
+    document.getElementById('imagen_dni').addEventListener('change', function() {
+        previewImages(this, 'previewImagenDni');
+    });
+
+    document.getElementById('imagen_tamano_carnet').addEventListener('change', function() {
+        previewImages(this, 'previewImagenTamanoCarnet');
+    });
+
+    document.getElementById('imagen_dni_beneficiario1').addEventListener('change', function() {
+        previewImages(this, 'previewImagenDniBeneficiario1');
+    });
+
+    document.getElementById('imagen_dni_beneficiario2').addEventListener('change', function() {
+        previewImages(this, 'previewImagenDniBeneficiario2');
+    });
+
+    document.getElementById('imagen_dni_beneficiario3').addEventListener('change', function() {
+        previewImages(this, 'previewImagenDniBeneficiario3');
+    });
+
+    document.getElementById('imagen_rtn').addEventListener('change', function() {
+        previewImages(this, 'previewImagenRtn');
+    });
 
     // Función para previsualizar el curriculum vitae
     function previewFile(inputId, previewId, isImage = true) {
@@ -673,106 +625,8 @@
         }
     }
 
-    // Función para previsualizar las imágenes del DNI del beneficiario 1
-    function previewFilesBeneficiario1() {
-        const files = document.getElementById('imagen_dni_beneficiario1').files;
-        const imageBeneficiario1PreviewContainer = document.getElementById('imageBeneficiario1PreviewContainer');
-        
-        imageBeneficiario1PreviewContainer.innerHTML = ''; // Limpiar cualquier previsualización existente
-        
-        if (files.length > 0) {
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.maxWidth = '100%';
-                    img.style.height = 'auto';
-                    img.classList.add('mt-2');
-                    imageBeneficiario1PreviewContainer.appendChild(img);
-                }
-                reader.readAsDataURL(file);
-            });
-        }
-    }
-
-    // Función para previsualizar las imágenes del DNI del beneficiario 2
-    function previewFilesBeneficiario2() {
-        const files = document.getElementById('imagen_dni_beneficiario2').files;
-        const imageBeneficiario2PreviewContainer = document.getElementById('imageBeneficiario2PreviewContainer');
-        
-        imageBeneficiario2PreviewContainer.innerHTML = ''; // Limpiar cualquier previsualización existente
-        
-        if (files.length > 0) {
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.maxWidth = '100%';
-                    img.style.height = 'auto';
-                    img.classList.add('mt-2');
-                    imageBeneficiario2PreviewContainer.appendChild(img);
-                }
-                reader.readAsDataURL(file);
-            });
-        }
-    }
-
-    // Función para previsualizar las imágenes del DNI del beneficiario 3
-    function previewFilesBeneficiario3() {
-        const files = document.getElementById('imagen_dni_beneficiario3').files;
-        const imageBeneficiario3PreviewContainer = document.getElementById('imageBeneficiario3PreviewContainer');
-        
-        imageBeneficiario3PreviewContainer.innerHTML = ''; // Limpiar cualquier previsualización existente
-        
-        if (files.length > 0) {
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.maxWidth = '100%';
-                    img.style.height = 'auto';
-                    img.classList.add('mt-2');
-                    imageBeneficiario3PreviewContainer.appendChild(img);
-                }
-                reader.readAsDataURL(file);
-            });
-        }
-    }
-
-    // Función para previsualizar las imágenes del RTN
-    function previewFilesRTN() {
-        const files = document.getElementById('imagen_rtn').files;
-        const imageRtnPreviewContainer = document.getElementById('imageRtnPreviewContainer');
-        
-        imageRtnPreviewContainer.innerHTML = ''; // Limpiar cualquier previsualización existente
-        
-        if (files.length > 0) {
-            Array.from(files).forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.maxWidth = '100%';
-                    img.style.height = 'auto';
-                    img.classList.add('mt-2');
-                    imageRtnPreviewContainer.appendChild(img);
-                }
-                reader.readAsDataURL(file);
-            });
-        }
-    }
-
-    document.getElementById('imagen_titulo').addEventListener('change', previewFilesTitulo);
-    document.getElementById('imagen_dni').addEventListener('change', previewFilesDNI);
-    document.getElementById('imagen_tamano_carnet').addEventListener('change', previewFilesTamanoCarnet);
     document.getElementById('cv').addEventListener('change', () => previewFile('cv', 'pdfPreview', false));
-    document.getElementById('imagen_dni_beneficiario1').addEventListener('change', previewFilesBeneficiario1);
-    document.getElementById('imagen_dni_beneficiario2').addEventListener('change', previewFilesBeneficiario2);
-    document.getElementById('imagen_dni_beneficiario3').addEventListener('change', previewFilesBeneficiario3);
-    document.getElementById('imagen_rtn').addEventListener('change', previewFilesRTN);
+
 </script>
 
 @endsection
