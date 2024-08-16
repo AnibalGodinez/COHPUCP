@@ -13,14 +13,22 @@ class Inscripcion extends Model
 
     protected $fillable = [
         'user_id',
+        'fecha_inscripcion',
+
+        // I. Datos Personales
         'name',
         'name2',
         'apellido',
         'apellido2',
         'numero_identidad',
+        'fecha_nacimiento',
+        'lugar_nacimiento',
+        'direccion_residencia',
+        'telefono',
+        'telefono_celular',
         'email',
+
         'universidad',
-        'fecha_inscripcion',
         'imagen_titulo',
         'cv',
     ];

@@ -19,12 +19,20 @@ class InscripcionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            // I. Datos Personales
             'name' => 'required|string|max:255',
             'name2' => 'nullable|string|max:255',
             'apellido' => 'required|string|max:255',
             'apellido2' => 'nullable|string|max:255',
             'numero_identidad' => 'required|string|max:20|unique:inscripciones,numero_identidad',
+            'fecha_nacimiento' => 'required|date',
+            'lugar_nacimiento' => 'nullable|string|max:255',
+            'direccion_residencia' => 'nullable|string|max:255',
+            'telefono' => 'nullable|string|max:40',
+            'telefono_celular' => 'required|string|max:40',
             'email' => 'required|email|max:255|unique:inscripciones,email',
+
+
             'universidad' => 'required|string|max:255',
             'imagen_titulo' => 'nullable|array',
             'imagen_titulo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -51,15 +59,24 @@ class InscripcionController extends Controller
 
         Inscripcion::create([
             'user_id' => Auth::id(), // Asegurarse de que Auth::id() retorne un valor válido
+            'fecha_inscripcion' => Carbon::now()->toDateString(),
+
+            // I. Datos Personales
             'name' => $request->name,
             'name2' => $request->name2,
             'apellido' => $request->apellido,
             'apellido2' => $request->apellido2,
             'numero_identidad' => $request->numero_identidad,
+            'fecha_nacimiento' => $request->fecha_nacimiento,
+            'lugar_nacimiento' => $request->lugar_nacimiento,
+            'direccion_residencia' => $request->direccion_residencia,
+            'telefono' => $request->telefono,
+            'telefono_celular' => $request->telefono_celular,
             'email' => $request->email,
+
+
             'universidad' => $request->universidad,
             'imagen_titulo' => json_encode($rutasArchivosTitulos),
-            'fecha_inscripcion' => Carbon::now()->toDateString(),
             'cv' => $rutaArchivoCV,
         ]);
 

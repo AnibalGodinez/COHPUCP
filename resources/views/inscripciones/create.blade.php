@@ -28,37 +28,82 @@
                         <div id="userData" style="display: none;">
 
                             <div class="form-group row">
+                                <!-- I. Datos Personales -->
+                                <div class="col-12 text-center mb-0">
+                                    <h4 style="text-decoration: underline;">I. DATOS PERSONALES</h4>
+                                </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <label for="name">Primer nombre</label>
                                     <input type="text" class="form-control" id="name" name="name" readonly>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <label for="name2">Segundo Nombre</label>
                                     <input type="text" class="form-control" id="name2" name="name2" readonly>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <label for="apellido">Primer apellido</label>
                                     <input type="text" class="form-control" id="apellido" name="apellido" readonly>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <label for="apellido2">Segundo apellido</label>
                                     <input type="text" class="form-control" id="apellido2" name="apellido2" readonly>
                                 </div>
 
-                            </div>
+                                <div class="col-md-2">
+                                    <label for="numero_identidad">DNI</label>
+                                    <input type="text" class="form-control" id="numero_identidad" name="numero_identidad" readonly>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="numero_identidad">DNI</label>
-                                <input type="text" class="form-control" id="numero_identidad" name="numero_identidad" readonly>
-                            </div>
+                                <div class="col-md-2">
+                                    <label for="fecha_nacimiento">
+                                        <i class="fas fa-birthday-cake" style="margin-right: 8px;"></i>
+                                        <strong>FECHA DE NACIMIENTO *</strong>
+                                    </label>
+                                    <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" readonly>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="email">Correo Electrónico</label>
-                                <input type="email" class="form-control" id="email" name="email" readonly>
+                                <div class="col-md-3">
+                                    <label for="lugar_nacimiento">
+                                        <i class="fas fa-map-marker-alt" style="margin-right: 8px; color:rgb(226, 18, 18)"></i>
+                                        <strong>LUGAR DE NACIMIENTO</strong>
+                                    </label>
+                                    <input type="text" class="form-control" id="lugar_nacimiento" name="lugar_nacimiento" value="{{ old('lugar_nacimiento') }}">
+                                </div>
+
+                                <div class="col-md-9">
+                                    <label for="direccion_residencia">
+                                        <i class="fas fa-home" style="margin-right: 8px;"></i>
+                                        <strong>DIRECCIÓN DE RESIDENCIA</strong>
+                                    </label>
+                                    <input type="text" class="form-control" id="direccion_residencia" name="direccion_residencia" value="{{ old('direccion_residencia') }}">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="telefono">
+                                        <i class="fas fa-phone" style="margin-right: 8px;"></i>
+                                        <strong>TELÉFONO FIJO</strong>
+                                    </label>
+                                    <input type="text" class="form-control" id="telefono" name="telefono" readonly>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="telefono_celular">
+                                        <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
+                                        <strong>CELULAR</strong>
+                                    </label>
+                                    <input type="text" class="form-control" id="telefono_celular" name="telefono_celular" readonly>
+                                </div>
+    
+    
+                                <div class="col-md-4">
+                                    <label for="email">Correo Electrónico</label>
+                                    <input type="email" class="form-control" id="email" name="email" readonly>
+                                </div>
+
                             </div>
 
                             <div class="form-group">
@@ -140,6 +185,9 @@
                     document.getElementById('apellido').value = data.user.apellido;
                     document.getElementById('apellido2').value = data.user.apellido2;
                     document.getElementById('numero_identidad').value = data.user.numero_identidad;
+                    document.getElementById('fecha_nacimiento').value = data.user.fecha_nacimiento;
+                    document.getElementById('telefono').value = data.user.telefono;
+                    document.getElementById('telefono_celular').value = data.user.telefono_celular;
                     document.getElementById('email').value = data.user.email;
                     document.getElementById('userData').style.display = 'block';
                 } else {
