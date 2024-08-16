@@ -28,33 +28,42 @@
                         <div id="userData" style="display: none;">
 
                             <div class="form-group row">
+
+                                <div class="card-header" style="margin-left: 25px;">
+                                    <h4>Yo como licenciado(a) en Contaduría Pública por este medio solicito al Colegio Hondureño de
+                                        Profesionales Universitarios en Contaduría Pública (COHPUCP) ser inscrito como miembro(a) de este Colegio y me
+                                        comprometo al estricto cumplimiento de lo establecido en la Ley Orgánica, contenida en el Decreto 19-93
+                                        publicado en el Diario Oficial la Gaceta número 27043 de fecha 16 de mayo de 1993, para tal efecto proporcionaré la
+                                        siguiente información.</h4>
+                                </div>
+
                                 <!-- I. Datos Personales -->
                                 <div class="col-12 text-center mb-0">
                                     <h4 style="text-decoration: underline;">I. DATOS PERSONALES</h4>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label for="name">Primer nombre</label>
+                                    <label for="name"><strong>PRIMER NOMBRE *</strong></label>
                                     <input type="text" class="form-control" id="name" name="name" readonly>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label for="name2">Segundo Nombre</label>
+                                    <label for="name2"><strong>SEGUNDO NOMBRE</strong></label>
                                     <input type="text" class="form-control" id="name2" name="name2" readonly>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label for="apellido">Primer apellido</label>
+                                    <label for="apellido"><strong>PRIMER APELLIDO *</strong></label>
                                     <input type="text" class="form-control" id="apellido" name="apellido" readonly>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label for="apellido2">Segundo apellido</label>
+                                    <label for="apellido2"><strong>SEGUNDO APELLIDO</strong></label>
                                     <input type="text" class="form-control" id="apellido2" name="apellido2" readonly>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label for="numero_identidad">DNI</label>
+                                    <label for="numero_identidad"><strong>DNI *</strong></label>
                                     <input type="text" class="form-control" id="numero_identidad" name="numero_identidad" readonly>
                                 </div>
 
@@ -93,14 +102,14 @@
                                 <div class="col-md-4">
                                     <label for="telefono_celular">
                                         <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
-                                        <strong>CELULAR</strong>
+                                        <strong>CELULAR *</strong>
                                     </label>
                                     <input type="text" class="form-control" id="telefono_celular" name="telefono_celular" readonly>
                                 </div>
     
     
                                 <div class="col-md-4">
-                                    <label for="email">Correo Electrónico</label>
+                                    <label for="email"><strong>CORREO ELECTRÓNICO *</strong></label>
                                     <input type="email" class="form-control" id="email" name="email" readonly>
                                 </div>
 
@@ -121,9 +130,9 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label for="universidad">Universidad</label>
+                                    <label for="universidad"><strong>UNIVERSIDAD *</strong></label>
                                     <select class="form-control @error('universidad') is-invalid @enderror" id="universidad" name="universidad" required>
-                                        <option value="">Seleccione una universidad</option>
+                                        <option disabled selected>Seleccione una universidad</option>
                                         @foreach($universidades as $universidad)
                                             <option value="{{ $universidad->nombre_universidad }}">{{ $universidad->nombre_universidad }}</option>
                                         @endforeach
@@ -417,9 +426,9 @@
                                 <div class="col-md-3">
                                     <label for="imagen_titulo" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                        <strong>Subir título universitario *</strong>
+                                        <strong>Subir título universitario</strong>
                                     </label>
-                                    frontal y reverso
+                                    (frontal y reverso)
                                     <input type="file" class="form-control @error('imagen_titulo') is-invalid @enderror" id="imagen_titulo" name="imagen_titulo[]" aria-label="Imágenes del título universitario" multiple onchange="previewFilesTitulo()">
                                     @error('imagen_titulo')
                                         <span class="invalid-feedback" role="alert">
@@ -434,9 +443,9 @@
                                 <div class="col-md-3">
                                     <label for="imagen_dni" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                        <strong>Subir DNI *</strong>
+                                        <strong>Subir DNI</strong>
                                     </label>
-                                    frontal y reverso
+                                    (frontal y reverso)
                                     <input type="file" class="form-control @error('imagen_dni') is-invalid @enderror" id="imagen_dni" name="imagen_dni[]" aria-label="Imágenes del DNI" multiple onchange="previewFilesDNI()">
                                     @error('imagen_dni')
                                         <span class="invalid-feedback" role="alert">
@@ -451,9 +460,9 @@
                                 <div class="col-md-3">
                                     <label for="imagen_tamano_carnet" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                        <strong>Subir imágenes tamaño carnet *</strong>
+                                        <strong>Subir foto tamaño carnet</strong>
                                     </label>
-                                    frontal y reverso
+                                    (Foto con vestimenta formal)
                                     <input type="file" class="form-control @error('imagen_tamano_carnet') is-invalid @enderror" id="imagen_tamano_carnet" name="imagen_tamano_carnet[]" aria-label="Imágenes tamaño canet" multiple onchange="previewFilesTamanoCarnet()">
                                     @error('imagen_tamano_carnet')
                                         <span class="invalid-feedback" role="alert">
@@ -468,7 +477,7 @@
                                 <div class="col-md-3">
                                     <label for="cv" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
-                                        <strong>Currículum Vitae *</strong>
+                                        <strong>Currículum Vitae</strong>
                                     </label>
                                     PDF (Mínimo 3 páginas)
                                     <input type="file" class="form-control @error('cv') is-invalid @enderror" id="cv" name="cv" aria-label="Currículum vitae" accept="application/pdf" onchange="previewFile('cv', 'pdfPreview', false)" required>
@@ -486,9 +495,9 @@
                                 <div class="col-md-3">
                                     <label for="imagen_dni_beneficiario1" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                        <strong>Subir imágenes DNI del beneficiario 1 *</strong>
+                                        <strong>Subir DNI del beneficiario 1</strong>
                                     </label>
-                                    frontal y reverso
+                                    (frontal y reverso)
                                     <input type="file" class="form-control @error('imagen_dni_beneficiario1') is-invalid @enderror" id="imagen_dni_beneficiario1" name="imagen_dni_beneficiario1[]" aria-label="Imágenes DNI del beneficiario 1" multiple onchange="previewFilesBeneficiario1()">
                                     @error('imagen_dni_beneficiario1')
                                         <span class="invalid-feedback" role="alert">
@@ -503,9 +512,9 @@
                                 <div class="col-md-3">
                                     <label for="imagen_dni_beneficiario2" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                        <strong>Subir imágenes DNI del beneficiario 2 *</strong>
+                                        <strong>Subir DNI del beneficiario 2</strong>
                                     </label>
-                                    frontal y reverso
+                                    (frontal y reverso)
                                     <input type="file" class="form-control @error('imagen_dni_beneficiario2') is-invalid @enderror" id="imagen_dni_beneficiario2" name="imagen_dni_beneficiario2[]" aria-label="Imágenes DNI del beneficiario 2" multiple onchange="previewFilesBeneficiario2()">
                                     @error('imagen_dni_beneficiario2')
                                         <span class="invalid-feedback" role="alert">
@@ -520,9 +529,9 @@
                                 <div class="col-md-3">
                                     <label for="imagen_dni_beneficiario3" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                        <strong>Subir imágenes DNI del beneficiario 3 *</strong>
+                                        <strong>Subir DNI del beneficiario 3</strong>
                                     </label>
-                                    frontal y reverso
+                                    (frontal y reverso)
                                     <input type="file" class="form-control @error('imagen_dni_beneficiario3') is-invalid @enderror" id="imagen_dni_beneficiario3" name="imagen_dni_beneficiario3[]" aria-label="Imágenes DNI del beneficiario 3" multiple onchange="previewFilesBeneficiario3()">
                                     @error('imagen_dni_beneficiario3')
                                         <span class="invalid-feedback" role="alert">
@@ -530,23 +539,6 @@
                                         </span>
                                     @enderror
                                     <div class="form-group mt-3" id="imageBeneficiario3PreviewContainer">
-                                    </div>
-                                </div>
-
-                                <!-- Campo para subir las imágenes del DNI beneficiario 2 -->
-                                <div class="col-md-3">
-                                    <label for="imagen_rtn" class="btn btn-default btn-simple">
-                                        <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                        <strong>Subir imágenes DNI del beneficiario 2 *</strong>
-                                    </label>
-                                    frontal y reverso
-                                    <input type="file" class="form-control @error('imagen_rtn') is-invalid @enderror" id="imagen_rtn" name="imagen_rtn[]" aria-label="Imágenes del RTN" multiple onchange="previewFilesRTN()">
-                                    @error('imagen_rtn')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    <div class="form-group mt-3" id="imageRtnPreviewContainer">
                                     </div>
                                 </div>
 
