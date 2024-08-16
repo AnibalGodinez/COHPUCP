@@ -28,9 +28,20 @@ class CreateInscripcionesTable extends Migration
             $table->string('telefono_celular');
             $table->string('email')->unique();
 
-
-            
+            // I. Datos Personales
+            $table->date('fecha_graduacion');
             $table->string('universidad');
+            $table->string('nombre_empresa_trabajo_actual')->nullable();
+            $table->string('cargo')->nullable();
+            $table->string('direccion_empresa')->nullable();
+            $table->string('correo_empresa')->nullable();
+            $table->string('telefono_empresa')->nullable();
+            $table->string('extension_telefono_empresa')->nullable();
+
+            // III. Información Adicional
+            
+
+            // VIII. Documentos
             $table->json('imagen_titulo')->nullable();    
             $table->string('cv'); // Campo para almacenar el currículum vitae (archivo PDF)
             $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente');

@@ -28,7 +28,17 @@ class Inscripcion extends Model
         'telefono_celular',
         'email',
 
+        // II. Datos Profesionales
+        'fecha_graduacion',
         'universidad',
+        'nombre_empresa_trabajo_actual',
+        'cargo',
+        'direccion_empresa',
+        'correo_empresa',
+        'telefono_empresa',
+        'extension_telefono_empresa',
+
+        // VIII. Documentos
         'imagen_titulo',
         'cv',
     ];

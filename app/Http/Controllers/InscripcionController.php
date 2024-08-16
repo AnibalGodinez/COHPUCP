@@ -32,8 +32,17 @@ class InscripcionController extends Controller
             'telefono_celular' => 'required|string|max:40',
             'email' => 'required|email|max:255|unique:inscripciones,email',
 
-
+            // II. Datos Profesionales
+            'fecha_graduacion' => 'required|date',
             'universidad' => 'required|string|max:255',
+            'nombre_empresa_trabajo_actual' => 'nullable|string|max:255',
+            'cargo' => 'nullable|string|max:255',
+            'direccion_empresa' => 'nullable|string|max:255',
+            'correo_empresa' => 'nullable|email|max:255',
+            'telefono_empresa' => 'nullable|string|max:255',
+            'extension_telefono_empresa' => 'nullable|string|max:255',
+
+            // VIII. Documentos
             'imagen_titulo' => 'nullable|array',
             'imagen_titulo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'cv' => 'required|mimes:pdf|max:2048',
@@ -74,8 +83,17 @@ class InscripcionController extends Controller
             'telefono_celular' => $request->telefono_celular,
             'email' => $request->email,
 
-
+            // II. Datos Profesionales
+            'fecha_graduacion' => $request->fecha_graduacion,
             'universidad' => $request->universidad,
+            'nombre_empresa_trabajo_actual' => $request->nombre_empresa_trabajo_actual,
+            'cargo' => $request->cargo,
+            'direccion_empresa' => $request->direccion_empresa,
+            'correo_empresa' => $request->correo_empresa,
+            'telefono_empresa' => $request->telefono_empresa,
+            'extension_telefono_empresa' => $request->extension_telefono_empresa,
+
+            // VIII. Datos Profesionales
             'imagen_titulo' => json_encode($rutasArchivosTitulos),
             'cv' => $rutaArchivoCV,
         ]);

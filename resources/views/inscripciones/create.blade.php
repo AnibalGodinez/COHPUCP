@@ -106,19 +106,87 @@
 
                             </div>
 
-                            <div class="form-group">
-                                <label for="universidad">Universidad</label>
-                                <select class="form-control @error('universidad') is-invalid @enderror" id="universidad" name="universidad" required>
-                                    <option value="">Seleccione una universidad</option>
-                                    @foreach($universidades as $universidad)
-                                        <option value="{{ $universidad->nombre_universidad }}">{{ $universidad->nombre_universidad }}</option>
-                                    @endforeach
-                                </select>
-                                @error('universidad')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="form-group row">
+                                <!-- II. Datos Profesionales -->
+                                <div class="col-12 text-center mb-0">
+                                    <h4 style="text-decoration: underline;">II. DATOS PROFESIONALES</h4>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label for="fecha_graduacion">
+                                        <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
+                                        <strong>FECHA DE GRADUACIÓN *</strong>
+                                    </label>
+                                    <input type="date" name="fecha_graduacion" id="fecha_graduacion" class="form-control" value="{{ old('fecha_graduacion') }}"  required>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="universidad">Universidad</label>
+                                    <select class="form-control @error('universidad') is-invalid @enderror" id="universidad" name="universidad" required>
+                                        <option value="">Seleccione una universidad</option>
+                                        @foreach($universidades as $universidad)
+                                            <option value="{{ $universidad->nombre_universidad }}">{{ $universidad->nombre_universidad }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('universidad')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="nombre_empresa_trabajo_actual">
+                                        <i class="fas fa-building" style="margin-right: 8px;"></i>
+                                        <strong>NOMBRE DE LA EMPRESA DONDE LABORA</strong>
+                                    </label>
+                                    <input type="text" name="nombre_empresa_trabajo_actual" id="nombre_empresa_trabajo_actual" class="form-control" value="{{ old('nombre_empresa_trabajo_actual') }}">
+                                </div>
+    
+    
+                                <div class="col-md-3">
+                                    <label for="cargo">
+                                        <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
+                                        <strong>CARGO</strong>
+                                    </label>
+                                    <input type="text" name="cargo" id="cargo" class="form-control"  value="{{ old('cargo') }}">
+                                </div>
+    
+                                <div class="col-md-6">
+                                    <label for="direccion_empresa">
+                                        <i class="fas fa-location-arrow" style="margin-right: 8px;"></i>
+                                        <strong>DIRECCIÓN DE LA EMPRESA</strong>
+                                    </label>
+                                    <input type="text" name="direccion_empresa" id="direccion_empresa" class="form-control" value="{{ old('direccion_empresa') }}">
+                                </div>
+    
+    
+                                <div class="col-md-2">
+                                    <label for="correo_empresa">
+                                        <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                                        <strong>CORREO DE LA EMPRESA</strong>
+                                    </label>
+                                    <input type="email" name="correo_empresa" id="correo_empresa" class="form-control" value="{{ old('correo_empresa') }}">
+                                </div>
+    
+    
+                                <div class="col-md-2">
+                                    <label for="telefono_empresa">
+                                        <i class="fas fa-phone" style="margin-right: 8px;"></i>
+                                        <strong>TELÉFONO DE LA EMPRESA</strong>
+                                    </label>
+                                    <input type="text" name="telefono_empresa" id="telefono_empresa" class="form-control" value="{{ old('telefono_empresa') }}">
+                                </div>
+    
+    
+                                <div class="col-md-2">
+                                    <label for="extension_telefono_empresa">
+                                        <i class="fas fa-phone" style="margin-right: 8px;"></i>
+                                        <strong>EXTENSIÓN TELEFÓNICA</strong>
+                                    </label>
+                                    <input type="text" name="extension_telefono_empresa" id="extension_telefono_empresa" class="form-control" value="{{ old('extension_telefono_empresa') }}">
+                                </div>
+
                             </div>
 
                             <div class="form-group row">
