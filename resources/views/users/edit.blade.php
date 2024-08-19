@@ -150,6 +150,29 @@
                             });
                             </script>
 
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const numeroColegiacionInput = document.getElementById('numero_colegiacion');
+                                    const rolesSelect = document.getElementById('roles');
+                                    const agremiadoOption = Array.from(rolesSelect.options).find(option => option.text === 'Agremiado');
+
+                                    function toggleAgremiadoOption() {
+                                        if (numeroColegiacionInput.value.trim() === '') {
+                                            agremiadoOption.disabled = true;
+                                            agremiadoOption.selected = false;
+                                        } else {
+                                            agremiadoOption.disabled = false;
+                                        }
+                                    }
+
+                                    // Ejecutar la función cuando se cargue la página por primera vez
+                                    toggleAgremiadoOption();
+
+                                    // Ejecutar la función cuando se cambie el valor del número de colegiación
+                                    numeroColegiacionInput.addEventListener('input', toggleAgremiadoOption);
+                                });
+                            </script>
+
                            <!-- Campo para el RTN -->
                             <div class="form-group col-md-3">
                                 <label for="rtn">
@@ -372,9 +395,11 @@
                             <!-- Campo para el Rol -->
                             <div class="form-group col-md-3">
                                 <label><strong>ROL *</strong></label>
-                                <select name="roles[]" class="form-control" multiple required>
+                                <select id="roles" name="roles[]" class="form-control" multiple required>
                                     @foreach ($roles as $role => $roleName)
-                                        <option value="{{ $role }}" {{ in_array($role, $user->roles->pluck('name')->toArray()) ? 'selected' : '' }}>{{ $roleName }}</option>
+                                        <option value="{{ $role }}" {{ in_array($role, $user->roles->pluck('name')->toArray()) ? 'selected' : '' }}>
+                                            {{ $roleName }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
