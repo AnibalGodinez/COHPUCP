@@ -10,6 +10,21 @@ use Illuminate\Support\Facades\Auth;
 
 class InscripcionController extends Controller
 {
+
+    // Método para mostrar la lista de inscripciones
+    public function index()
+    {
+        $inscripciones = Inscripcion::all();
+        return view('inscripciones.index', compact('inscripciones'));
+    }
+
+    // Método para mostrar detalles de una inscripción específica
+    public function show($id)
+    {
+        $inscripcion = Inscripcion::findOrFail($id);
+        return view('inscripciones.show', compact('inscripcion'));
+    }
+    
     public function create()
     {
         $universidades = Universidad::all(); // Se obtiene todas las universidades

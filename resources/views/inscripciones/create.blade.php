@@ -43,27 +43,42 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label for="name"><strong>PRIMER NOMBRE *</strong></label>
+                                    <label for="name">
+                                        <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                        <strong>PRIMER NOMBRE *</strong>
+                                    </label>
                                     <input type="text" class="form-control" id="name" name="name" readonly>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label for="name2"><strong>SEGUNDO NOMBRE</strong></label>
+                                    <label for="name2">
+                                        <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                        <strong>SEGUNDO NOMBRE</strong>
+                                    </label>
                                     <input type="text" class="form-control" id="name2" name="name2" readonly>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label for="apellido"><strong>PRIMER APELLIDO *</strong></label>
+                                    <label for="apellido">
+                                        <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                        <strong>PRIMER APELLIDO *</strong>
+                                    </label>
                                     <input type="text" class="form-control" id="apellido" name="apellido" readonly>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label for="apellido2"><strong>SEGUNDO APELLIDO</strong></label>
+                                    <label for="apellido2">
+                                        <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                        <strong>SEGUNDO APELLIDO</strong>
+                                    </label>
                                     <input type="text" class="form-control" id="apellido2" name="apellido2" readonly>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label for="numero_identidad"><strong>DNI *</strong></label>
+                                    <label for="numero_identidad">
+                                        <i class="fas fa-id-card" style="margin-right: 8px;"></i>
+                                        <strong>DNI *</strong>
+                                    </label>
                                     <input type="text" class="form-control" id="numero_identidad" name="numero_identidad" readonly>
                                 </div>
 
@@ -361,7 +376,7 @@
                                         <i class="fas fa-clipboard-list" style="margin-right: 8px;"></i>
                                         <strong>COMISIONES</strong>
                                     </label>
-                                    <textarea name="comisiones" id="comisiones" class="form-control" value="{{ old('comisiones') }}" style="min-height: 100px"></textarea>
+                                    <textarea name="comisiones" id="comisiones" class="form-control" style="min-height: 100px">{{ old('comisiones') }}</textarea>
                                 </div>
                            
                                 <div class="col-md-4">
@@ -369,7 +384,7 @@
                                         <i class="fas fa-user-tie" style="margin-right: 8px;"></i>
                                         <strong>REPRESENTACIONES</strong>
                                     </label>
-                                    <textarea name="representaciones" id="representaciones" class="form-control" value="{{ old('representaciones') }}" style="min-height: 100px"></textarea>
+                                    <textarea name="representaciones" id="representaciones" class="form-control" style="min-height: 100px">{{ old('representaciones') }}</textarea>
                                 </div>
                            
                                 <div class="col-md-4">
@@ -377,7 +392,7 @@
                                         <i class="fas fa-handshake" style="margin-right: 8px;"></i>
                                         <strong>DELEGACIONES</strong>
                                     </label>
-                                    <textarea name="delegaciones" id="delegaciones" class="form-control" value="{{ old('delegaciones') }}" style="min-height: 100px"></textarea>
+                                    <textarea name="delegaciones" id="delegaciones" class="form-control" style="min-height: 100px">{{ old('delegaciones') }}</textarea>
                                 </div>
 
                             </div>
@@ -394,7 +409,7 @@
                                         <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
                                         <strong>PUBLICACIÓN DE DOCUMENTOS</strong>
                                     </label>
-                                    <textarea name="publicacion_documentos" id="publicacion_documentos" class="form-control" value="{{ old('publicacion_documentos') }}" style="min-height: 100px"></textarea>
+                                    <textarea name="publicacion_documentos" id="publicacion_documentos" class="form-control" style="min-height: 100px">{{ old('publicacion_documentos') }}</textarea>
                                 </div>
                            
                                 <div class="col-md-4">
@@ -402,7 +417,7 @@
                                         <i class="fas fa-newspaper" style="margin-right: 8px;"></i>
                                         <strong>PUBLICACIONES</strong>
                                     </label>
-                                    <textarea name="publicaciones" id="publicaciones" class="form-control" value="{{ old('publicaciones') }}" style="min-height: 100px"></textarea>
+                                    <textarea name="publicaciones" id="publicaciones" class="form-control" style="min-height: 100px">{{ old('publicaciones') }}</textarea>
                                 </div>
                            
                                 <div class="col-md-4">
@@ -410,7 +425,7 @@
                                         <i class="fas fa-book" style="margin-right: 8px;"></i>
                                         <strong>PUBLICACIÓN DE UN LIBRO</strong>
                                     </label>
-                                    <textarea name="publicacion_libro" id="publicacion_libro" class="form-control" value="{{ old('publicacion_libro') }}" style="min-height: 100px"></textarea>
+                                    <textarea name="publicacion_libro" id="publicacion_libro" class="form-control" style="min-height: 100px">{{ old('publicacion_libro') }}</textarea>
                                 </div>
 
                             </div>   

@@ -409,18 +409,22 @@
                 @endcan
 
                 @can('ver boton notificaciones')
-                    <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                            <i class="tim-icons icon-bell-55"></i>
-                            <p class="d-lg-none text-uppercase"> Notificationes </p>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                            <li class="dropdown-item text-uppercase">
-                                <a href="#" class="nav-link" style="color: black;">Mike Jonh responded to your email</a>
-                            </li>
-                        </ul>
-                    </li>
-                @endcan
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="tim-icons icon-bell-55"></i>
+                        <p class="d-lg-none text-uppercase">Notificaciones</p>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
+                        <li class="dropdown-item text-uppercase">
+                            <a href="{{ route('inscripciones.index') }}" class="nav-link" style="color: black;">
+                                Ver Inscripciones
+                            </a>
+                        </li>
+                        <!-- Aquí puedes agregar más elementos de notificación si es necesario -->
+                    </ul>
+                </li>
+            @endcan
+
 
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
