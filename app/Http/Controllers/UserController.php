@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:ver usuarios', ['only' => ['verUsuarios']]);
+        $this->middleware('permission:ver usuarios', ['only' => ['verUsuarios', 'show']]);
         $this->middleware('permission:indice usuarios', ['only' => ['index']]);
         $this->middleware('permission:actualizar usuario', ['only' => ['update', 'edit']]);
         $this->middleware('permission:crear usuario', ['only' => ['create', 'store']]);
@@ -43,11 +43,10 @@ class UserController extends Controller
                   });
         })
         ->orderBy('id', 'desc')
-        ->with('roles')
+        ->with('roles', 'pais') // Incluye la relación 'roles' y 'pais'
         ->paginate(4);
     }
     
-
     public function index(Request $request)
     {
         $search = $request->query('search');
@@ -168,19 +167,36 @@ class UserController extends Controller
             'apellido2' => 'nullable|string|max:255',
             'numero_identidad' => 'required|string|max:15|unique:users,numero_identidad,'.$userId,
             'numero_colegiacion' => 'nullable|string|max:12|unique:users,numero_colegiacion,'.$userId,
-            'rtn' => 'nullable|string|max:16|unique:users,rtn,'.$userId,
+            'rtn' => 'nullable|string|max:20|unique:users,rtn,'.$userId,
             'sexo' => 'required|in:masculino,femenino',
             'fecha_nacimiento' => 'required|date',
-            'telefono' => 'nullable|string|max:20|regex:/^[\d-]*$/',
-            'telefono_celular' => 'required|string|max:20|regex:/^[\d-]*$/',
-            'email' => 'required|string|email|max:255|unique:users,email,'.$userId,
-            'pais_id' => 'nullable|exists:pais,id',
-            'roles' => 'required|array',
-            'estado' => 'required|in:activo,inactivo',
+            'telefono' => 'nullable|string|max:40|regex:/^[\d-]*$/',
+            'telefono_celular' => 'required|string|max:40|regex:/^[\d-]*$/',
+            'email' => 'required|email|max:255|unique:users,email,'.$userId,
+            'email_confirmation' => 'required|email|same:email',
+            'pais_id' => 'nullable|exists:pais,id', // Validación para el campo país
+            'profile_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'facebook_link' => 'nullable|url',
+            'twitter_link' => 'nullable|url',
+            'bio' => 'nullable|string|max:1000',
         ], [
-            'pais_id.exists' => 'El país seleccionado es inválido',
-            'telefono.regex' => 'El número de teléfono fijo debe contener solo números y guiones',
-            'telefono_celular.regex' => 'El número de teléfono celular debe contener solo números y guiones',
+            // Mensajes personalizados de validación
+            'name.required' => 'El campo nombre es obligatorio',
+            'apellido.required' => 'El campo apellido es obligatorio',
+            'numero_identidad.required' => 'El campo número de identidad es obligatorio',
+            'numero_identidad.unique' => 'El número de identidad ya está en uso',
+            'sexo.required' => 'El campo sexo es obligatorio',
+            'fecha_nacimiento.required' => 'El campo fecha de nacimiento es obligatorio',
+            'telefono_celular.required' => 'El campo teléfono celular es obligatorio',
+            'email.required' => 'El campo email es obligatorio',
+            'email.unique' => 'El email ya está en uso',
+            'email_confirmation' => 'La confirmación del correo electrónico no coincide',
+            'profile_image.image' => 'El archivo debe ser una imagen.',
+            'profile_image.mimes' => 'La imagen debe ser de tipo: jpg, jpeg, png.',
+            'profile_image.max' => 'La imagen no debe exceder los 2MB.',
+            'facebook_link.url' => 'El enlace de Facebook debe ser una URL válida.',
+            'twitter_link.url' => 'El enlace de Twitter debe ser una URL válida.',
+            'bio.max' => 'La biografía no debe exceder los 1000 caracteres.',
         ]);
 
         $user = User::findOrFail($userId);
@@ -197,19 +213,30 @@ class UserController extends Controller
             'telefono' => $request->telefono,
             'telefono_celular' => $request->telefono_celular,
             'email' => $request->email,
-            'pais_id' => $request->pais_id,
-            'estado' => $request->estado,
+            'pais_id' => $request->pais_id, // Actualiza el país
         ]);
 
-        $user->syncRoles($request->roles);
+        if ($request->has('roles')) {
+            $user->syncRoles($request->roles);
+        }
 
-        return redirect('/usuarios')->with('status', 'El usuario se ha actualizado exitosamente');
+        return redirect('/usuarios')->with('status', 'El usuario se ha actualizado exitosamente con su respectivo rol');
     }
 
-    public function destroy($userId)
+    public function destroy($id)
     {
-        User::findOrFail($userId)->delete();
-        return redirect('/usuarios')->with('status', 'El usuario ha sido eliminado exitosamente');
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect('/usuarios')->with('status', 'El usuario se ha eliminado exitosamente');
+    }
+
+    public function show($id)
+    {
+        $user = User::with('roles', 'pais')->findOrFail($id); // Asegúrate de cargar las relaciones
+        return view('users.show', compact('user'));
+
+        
     }
 
     public function verUsuarios(Request $request)
@@ -230,3 +257,4 @@ class UserController extends Controller
         }
     }
 }
+

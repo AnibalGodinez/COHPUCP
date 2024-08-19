@@ -61,6 +61,7 @@ use App\Http\Controllers\UniversidadController;
 	Route::group(['middleware' =>['auth']], function () {
 	Route::resource('usuarios', UserController::class);
 	Route::get('usuarios/{userId}/delete', [UserController::class, 'destroy']);
+	Route::get('usuarios/{id}', [UserController::class, 'show'])->name('users.show');
 	Route::get('ver/usuarios', 			   [UserController::class, 'verUsuarios'])->name('usuarios.ver');
 	});
 
