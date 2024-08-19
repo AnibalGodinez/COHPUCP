@@ -233,10 +233,11 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user = User::with('roles', 'pais')->findOrFail($id); // Asegúrate de cargar las relaciones
-        return view('users.show', compact('user'));
+        // Carga el usuario con sus relaciones
+        $user = User::with('roles', 'pais')->findOrFail($id);
 
-        
+        // Retorna la vista con la información del usuario
+        return view('users.show', compact('user'));
     }
 
     public function verUsuarios(Request $request)

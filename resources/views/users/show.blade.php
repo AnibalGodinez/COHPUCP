@@ -16,7 +16,7 @@
                             <i class="fas fa-id-badge fa-lg text-warning me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>ID:</strong>
-                                <p class="mb-0">{{ Auth::user()->id ?? 'No disponible' }}</p>
+                                <p class="mb-0">{{ $user->id ?? 'No disponible' }}</p>
                             </div>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                             <i class="fas fa-user fa-lg text-dark me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>PRIMER NOMBRE:</strong>
-                                <p class="mb-0">{{ Auth::user()->name ?? 'No disponible' }}</p>
+                                <p class="mb-0">{{ $user->name ?? 'No disponible' }}</p>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                             <i class="fas fa-user fa-lg text-dark me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>SEGUNDO NOMBRE:</strong>
-                                <p class="mb-0">{{ Auth::user()->name2 ?? 'No disponible' }}</p>
+                                <p class="mb-0">{{ $user->name2 ?? 'No disponible' }}</p>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             <i class="fas fa-user fa-lg text-dark me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>PRIMER APELLIDO:</strong>
-                                <p class="mb-0">{{ Auth::user()->apellido ?? 'No disponible' }}</p>
+                                <p class="mb-0">{{ $user->apellido ?? 'No disponible' }}</p>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                             <i class="fas fa-user fa-lg text-dark me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>SEGUNDO APELLIDO:</strong>
-                                <p class="mb-0">{{ Auth::user()->apellido2 ?? 'No disponible' }}</p>
+                                <p class="mb-0">{{ $user->apellido2 ?? 'No disponible' }}</p>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                             <i class="fas fa-id-card fa-lg text-dark me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>DNI:</strong>
-                                <p class="mb-0">{{ Auth::user()->numero_identidad ?? 'No disponible' }}</p>
+                                <p class="mb-0">{{ $user->numero_identidad ?? 'No disponible' }}</p>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                             <i class="fas fa-address-card fa-lg text-dark me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>Nº DE COLEGIACIÓN:</strong>
-                                <p class="mb-0">{{ Auth::user()->numero_colegiacion ?? 'No disponible' }}</p>
+                                <p class="mb-0">{{ $user->numero_colegiacion ?? 'No disponible' }}</p>
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                             <i class="fas fa-file-alt fa-lg text-dark me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>RTN:</strong>
-                                <p class="mb-0">{{ Auth::user()->rtn ?? 'No disponible' }}</p>
+                                <p class="mb-0">{{ $user->rtn ?? 'No disponible' }}</p>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                             <i class="fas fa-venus-mars fa-lg text-dark me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>SEXO:</strong>
-                                <p class="mb-0">{{ Auth::user()->sexo ?? 'No disponible' }}</p>
+                                <p class="mb-0">{{ $user->sexo ?? 'No disponible' }}</p>
                             </div>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                             <i class="fas fa-birthday-cake fa-lg text-dark me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>FECHA DE NACIMIENTO:</strong>
-                                <p class="mb-0">{{ Auth::user()->fecha_nacimiento ?? 'No disponible' }}</p>
+                                <p class="mb-0">{{ $user->fecha_nacimiento ?? 'No disponible' }}</p>
                             </div>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                             <i class="fas fa-calendar-alt fa-lg text-dark me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>EDAD:</strong>
-                                <p class="mb-0">{{ \Carbon\Carbon::parse(Auth::user()->fecha_nacimiento)->age ?? 'No disponible' }} años</p>
+                                <p class="mb-0">{{ \Carbon\Carbon::parse($user->fecha_nacimiento)->age ?? 'No disponible' }} años</p>
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                             <i class="fas fa-globe fa-lg text-dark me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>PAÍS:</strong>
-                                <p class="mb-0">{{ Auth::user()->pais->nombre ?? 'No disponible' }}</p>
+                                <p class="mb-0">{{ $user->pais->nombre ?? 'No disponible' }}</p>
                             </div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                             <div style="margin-left: 20px;">
                                 <strong>TELÉFONO FIJO:</strong>
                                 <p class="mb-0">
-                                    {{ Auth::user()->telefono ? (Auth::user()->pais ? Auth::user()->pais->codigo . ' ' . Auth::user()->telefono : Auth::user()->telefono) : 'No disponible' }}
+                                    {{ $user->telefono ? ($user->pais ? $user->pais->codigo . ' ' . $user->telefono : $user->telefono) : 'No disponible' }}
                                 </p>
                             </div>
                         </div>
@@ -170,7 +170,7 @@
                             <div style="margin-left: 20px;">
                                 <strong>CELULAR:</strong>
                                 <p class="mb-0">
-                                    {{ Auth::user()->telefono_celular ? (Auth::user()->pais ? Auth::user()->pais->codigo . ' ' . Auth::user()->telefono_celular : Auth::user()->telefono_celular) : 'No disponible' }}
+                                    {{ $user->telefono_celular ? ($user->pais ? $user->pais->codigo . ' ' . $user->telefono_celular : $user->telefono_celular) : 'No disponible' }}
                                 </p>
                             </div>
                         </div>
@@ -182,7 +182,7 @@
                             <i class="fas fa-envelope fa-lg text-dark me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>CORREO ELECTRÓNICO:</strong>
-                                <p class="mb-0">{{ Auth::user()->email ?? 'No disponible' }}</p>
+                                <p class="mb-0">{{ $user->email ?? 'No disponible' }}</p>
                             </div>
                         </div>
                     </div>
@@ -193,6 +193,19 @@
                         <a href="{{ route('usuarios.index') }}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i> Regresar a la lista de usuarios
                         </a>
+                        <!-- Botón para previsualizar el PDF -->
+                        <a href="{{ route('user.pdf.preview', ['id' => $user->id]) }}" class="btn btn-secondary">
+                            <i class="fas fa-eye" style="margin-right: 8px;"></i>
+                            Previsualizar PDF
+                        </a>
+
+                        <!-- Botón para descargar el PDF -->
+                        <a href="{{ route('user.pdf.download', ['id' => $user->id]) }}" class="btn btn-primary">
+                            <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
+                            Descargar PDF
+                        </a>
+
+                                              
                     </div>
                 </div><br>
 

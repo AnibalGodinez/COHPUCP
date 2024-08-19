@@ -18,6 +18,7 @@ use App\Http\Controllers\FooterContentController;
 use App\Http\Controllers\IdiomaController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\UniversidadController;
+use App\Http\Controllers\PDFController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -61,8 +62,16 @@ use App\Http\Controllers\UniversidadController;
 	Route::group(['middleware' =>['auth']], function () {
 	Route::resource('usuarios', UserController::class);
 	Route::get('usuarios/{userId}/delete', [UserController::class, 'destroy']);
-	Route::get('usuarios/{id}', [UserController::class, 'show'])->name('users.show');
-	Route::get('ver/usuarios', 			   [UserController::class, 'verUsuarios'])->name('usuarios.ver');
+	Route::get('/usuarios/{id}', [UserController::class, 'show'])->name('users.show');
+	Route::get('ver/usuarios', 	[UserController::class, 'verUsuarios'])->name('usuarios.ver');
+	Route::get('/user/pdf', [PDFController::class, 'download'])->name('user.pdf');
+
+	// Ruta para previsualizar el PDF
+	Route::get('/user/pdf/preview/{id}', [PDFController::class, 'preview'])->name('user.pdf.preview');
+
+	// Ruta para descargar el PDF
+	Route::get('/user/pdf/download/{id}', [PDFController::class, 'download'])->name('user.pdf.download');
+
 	});
 
 	// RUTAS DE PERFIL DE USUARIO
