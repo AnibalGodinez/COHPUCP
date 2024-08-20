@@ -432,7 +432,7 @@
     
                             <div class="form-group row">
 
-                                <!-- VII. Documentos -->
+                                <!-- VIII. Documentos -->
                                 <div class="col-12 text-center mb-0">
                                     <h4 style="text-decoration: underline;">VIII. DOCUMENTOS</h4>
                                 </div>
