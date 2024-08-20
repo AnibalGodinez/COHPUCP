@@ -79,7 +79,11 @@ class Inscripcion extends Model
         'imagen_dni_beneficiario1',
         'imagen_dni_beneficiario2',
         'imagen_dni_beneficiario3',
-        'imagen_rtn'
+        'imagen_rtn',
+
+        // IX. Estado de la inscripción
+        'estado',
+        'descripcion_estado_solicitud',
     ];
 
     // Castear todas las imágenes como un array

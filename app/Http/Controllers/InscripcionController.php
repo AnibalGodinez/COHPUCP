@@ -91,28 +91,31 @@ class InscripcionController extends Controller
             'publicacion_libro' => 'nullable|string',
 
             // VIII. Documentos
-            'imagen_titulo' => 'nullable|array',
+            'imagen_titulo' => 'required|array',
             'imagen_titulo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-            'imagen_dni' => 'nullable|array',
+            'imagen_dni' => 'required|array',
             'imagen_dni.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-            'imagen_tamano_carnet' => 'nullable|array',
+            'imagen_tamano_carnet' => 'required|array',
             'imagen_tamano_carnet.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
             'cv' => 'required|mimes:pdf|max:2048',
 
-            'imagen_dni_beneficiario1' => 'nullable|array',
+            'imagen_dni_beneficiario1' => 'required|array',
             'imagen_dni_beneficiario1.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-            'imagen_dni_beneficiario2' => 'nullable|array',
+            'imagen_dni_beneficiario2' => 'required|array',
             'imagen_dni_beneficiario2.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-            'imagen_dni_beneficiario3' => 'nullable|array',
+            'imagen_dni_beneficiario3' => 'required|array',
             'imagen_dni_beneficiario3.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-            'imagen_rtn' => 'nullable|array',
+            'imagen_rtn' => 'required|array',
             'imagen_rtn.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+            // IX. Estado de la inscripción
+            'descripcion_estado_solicitud' => 'nullable|string',
         ]);
 
         // Manejo de las imágenes del título

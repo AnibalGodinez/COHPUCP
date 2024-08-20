@@ -72,17 +72,18 @@ class CreateInscripcionesTable extends Migration
             $table->text('publicacion_libro')->nullable();
 
             // VIII. Documentos
-            $table->json('imagen_titulo')->nullable();           
-            $table->json('imagen_dni')->nullable();
-            $table->json('imagen_tamano_carnet')->nullable();
+            $table->json('imagen_titulo');           
+            $table->json('imagen_dni');
+            $table->json('imagen_tamano_carnet');
             $table->string('cv');
-            $table->json('imagen_dni_beneficiario1')->nullable();
-            $table->json('imagen_dni_beneficiario2')->nullable();
-            $table->json('imagen_dni_beneficiario3')->nullable();
-            $table->json('imagen_rtn')->nullable();
+            $table->json('imagen_dni_beneficiario1');
+            $table->json('imagen_dni_beneficiario2');
+            $table->json('imagen_dni_beneficiario3');
+            $table->json('imagen_rtn');
 
             // IX. Estado de la inscripción
             $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente');
+            $table->text('descripcion_estado_solicitud')->nullable();
             $table->timestamps();
 
             // Relación con la tabla `users`

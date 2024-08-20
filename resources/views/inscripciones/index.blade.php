@@ -27,7 +27,7 @@
 
                         @if($inscripciones->isEmpty())
                             <div class="alert alert-default text-center" role="alert">
-                                No hay ningún resultado de su búsqueda.
+                                No hay solicitudes
                             </div>
                         @else
                             <div class="table-responsive">
@@ -39,6 +39,7 @@
                                             <th class="text-center">Correo electrónico</th>
                                             <th class="text-center">Nº Celular</th>
                                             <th class="text-center">Estado</th>
+                                            <th class="text-center">Descripción del estado de la solicitud</th>
                                             <th class="text-center">Ver inscripción</th>
                                         </tr>
                                     </thead>
@@ -56,6 +57,7 @@
                                                 <td class="text-center">{{ $inscripcion->email }}</td>
                                                 <td class="text-center">{{ $inscripcion->telefono_celular }}</td>
                                                 <td class="text-center">{{ $inscripcion->estado }}</td>
+                                                <td class="text-center">{{ $inscripcion->descripcion_estado_solicitud }}</td>
                                                 <td class="text-center">
                                                     <!-- Botón para ver los detalles de la inscripción -->
                                                     <a href="{{ route('inscripciones.show', $inscripcion->id) }}" class="btn btn-danger btn-sm">
