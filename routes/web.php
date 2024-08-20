@@ -19,6 +19,7 @@ use App\Http\Controllers\IdiomaController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\UniversidadController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\PDFInscripcionController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -64,12 +65,10 @@ use App\Http\Controllers\PDFController;
 	Route::get('usuarios/{userId}/delete', [UserController::class, 'destroy']);
 	Route::get('/usuarios/{id}', [UserController::class, 'show'])->name('users.show');
 	Route::get('ver/usuarios', 	[UserController::class, 'verUsuarios'])->name('usuarios.ver');
-
 	// Ruta para previsualizar el PDF
 	Route::get('/previsualizacion/pdf/usuario/{id}', [PDFController::class, 'preview'])->name('user.pdf.preview');
 	// Ruta para descargar el PDF
 	Route::get('/descargar/pdf/usuario/{id}', [PDFController::class, 'download'])->name('user.pdf.download');
-
 	});
 
 	// RUTAS DE PERFIL DE USUARIO
@@ -144,6 +143,11 @@ use App\Http\Controllers\PDFController;
 	// RUTAS DE INSCRIPCIONES
 	Route::group(['middleware' => ['auth']], function () {
 		Route::resource('inscripciones', InscripcionController::class);
+
+		// Ruta para previsualizar el PDF de la solicitud
+		Route::get('/previsualizacion/pdf/inscripcion/{id}', [PDFInscripcionController::class, 'preview'])->name('inscripcion.pdf.preview');
+		// Ruta para descargar el PDF de la solicitud
+		Route::get('/descargar/pdf/inscripcion/{id}', [PDFInscripcionController::class, 'download'])->name('inscripcion.pdf.download');
 	});
 
 	// RUTAS DE UNIVERSIDADES

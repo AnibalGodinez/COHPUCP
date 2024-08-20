@@ -551,12 +551,27 @@
 
                 <div class="form-group row mb-0">
                     <div class="col-md-12 text-center">
+
                         <a href="{{ route('inscripciones.index') }}" class="btn btn-info">
                             <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
                             Volver a la lista de solicitudes
                         </a>
+
+                        <!-- Botón para previsualizar el PDF -->
+                        <a href="{{ route('inscripcion.pdf.preview', ['id' => $inscripcion->id]) }}" class="btn btn-secondary">
+                            <i class="fas fa-eye" style="margin-right: 8px;"></i>
+                            Previsualizar PDF
+                        </a>
+                
+                        <!-- Botón para descargar el PDF -->
+                        <a href="{{ route('inscripcion.pdf.download', ['id' => $inscripcion->id]) }}" class="btn btn-primary">
+                            <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
+                            Descargar PDF
+                        </a>
+
                     </div>
                 </div><br>
+              
             </div>
         </div>
     </div>
