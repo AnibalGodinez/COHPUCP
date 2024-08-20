@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Auth;
 use App\Models\User;
 
 class PDFController extends Controller
@@ -34,6 +33,9 @@ class PDFController extends Controller
 
         $pdf = Pdf::loadView('pdf.user-details', compact('user')); // Carga la vista que generarás
 
-        return $pdf->download('detalles_usuario.pdf'); // Descarga el PDF
+        // Genera el nombre del archivo usando el nombre y apellido del usuario
+        $fileName = 'Información usuario ' . $user->name . ' ' . $user->apellido . '.pdf';
+
+        return $pdf->download($fileName); // Descarga el PDF con el nombre personalizado
     }
 }

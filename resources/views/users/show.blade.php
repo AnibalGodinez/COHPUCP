@@ -203,9 +203,7 @@
                         <a href="{{ route('user.pdf.download', ['id' => $user->id]) }}" class="btn btn-primary">
                             <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
                             Descargar PDF
-                        </a>
-
-                                              
+                        </a>                       
                     </div>
                 </div><br>
 
