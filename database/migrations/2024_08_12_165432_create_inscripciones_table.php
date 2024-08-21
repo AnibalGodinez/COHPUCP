@@ -11,6 +11,7 @@ class CreateInscripcionesTable extends Migration
     {
         Schema::create('inscripciones', function (Blueprint $table) {
             $table->id();
+            $table->string('num_colegiacion')->nullable();
             $table->date('fecha_inscripcion');
 
             $table->unsignedBigInteger('user_id'); // Relación con la tabla de usuarios
@@ -77,8 +78,8 @@ class CreateInscripcionesTable extends Migration
             $table->json('imagen_tamano_carnet');
             $table->string('cv');
             $table->json('imagen_dni_beneficiario1');
-            $table->json('imagen_dni_beneficiario2');
-            $table->json('imagen_dni_beneficiario3');
+            $table->json('imagen_dni_beneficiario2')->nullable();
+            $table->json('imagen_dni_beneficiario3')->nullable();
             $table->json('imagen_rtn');
 
             // IX. Estado de la inscripción

@@ -35,6 +35,7 @@ class InscripcionController extends Controller
     {
         $request->validate([
             // I. Datos Personales
+            'num_colegiacion' => 'nullable|string|max:255',
             'name' => 'required|string|max:255',
             'name2' => 'nullable|string|max:255',
             'apellido' => 'required|string|max:255',
@@ -198,6 +199,7 @@ class InscripcionController extends Controller
 
         Inscripcion::create([
             'user_id' => Auth::id(), // Asegurarse de que Auth::id() retorne un valor válido
+            'num_colegiacion' => $request->num_colegiacion,
             'fecha_inscripcion' => Carbon::now()->toDateString(),
 
             // I. Datos Personales
