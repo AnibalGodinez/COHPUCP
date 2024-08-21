@@ -44,7 +44,7 @@ class UserController extends Controller
         })
         ->orderBy('id', 'desc')
         ->with('roles', 'pais') // Incluye la relación 'roles' y 'pais'
-        ->paginate(4);
+        ->paginate(7);
     }
 
     public function index(Request $request)
@@ -52,7 +52,7 @@ class UserController extends Controller
         $search = $request->query('search');
         $users = $search 
             ? $this->searchUsers($search)->with('pais') 
-            : User::orderBy('id', 'desc')->with('roles', 'pais')->paginate(4);
+            : User::orderBy('id', 'desc')->with('roles', 'pais')->paginate(7);
 
         return view('users.index', ['users' => $users]);
     }

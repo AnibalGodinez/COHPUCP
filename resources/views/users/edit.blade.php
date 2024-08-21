@@ -424,7 +424,7 @@
                                     <i class="fas fa-save" style="margin-right: 8px;"></i>
                                     Guardar cambios
                                 </button>
-                                <a href="{{ route('usuarios.ver') }}" class="btn btn-secondary">
+                                <a href="{{ route('usuarios.index') }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
                                     Volver
                                 </a>
