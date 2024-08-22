@@ -21,10 +21,16 @@
                         </div>
                     @endif
 
+                    <!-- Mensaje de éxito -->
                     @if(session('status'))
-                        <div class="alert alert-success mx-4 mt-3">
+                    <div class="text-center">
+                        <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
                             {{ session('status') }}
+                            <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
                         </div>
+                    </div>
                     @endif
 
                     <form action="{{ url('permission') }}" method="POST">

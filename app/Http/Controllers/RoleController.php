@@ -64,7 +64,7 @@ class RoleController extends Controller
 
         $this->addToRouteGroup($role); // Llamar función para agregar al grupo de rutas
 
-        return redirect('roles')->with('status', 'El rol se ha creado exitosamente.');
+        return redirect('roles')->with('status', '¡El rol se ha creado con éxito!.');
     } catch (\Exception $e) {
         return redirect()->back()->withInput()->withErrors(['error' => 'Error inesperado: ' . $e->getMessage()]);
     }
@@ -103,7 +103,7 @@ class RoleController extends Controller
             'description' => $request->description // Actualización del campo description
         ]);
 
-        return redirect('roles')->with('status', 'El rol se ha actualizado exitosamente');
+        return redirect('roles')->with('status', '¡El rol se ha actualizado con éxito!');
     }
 
 //-----------------------------------------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ class RoleController extends Controller
     {
         $roles = Role::find($roleId);
         $roles->delete();
-        return redirect('roles')->with('status', 'El rol se ha eliminado');
+        return redirect('roles')->with('status', '¡El rol se ha eliminado con éxito!');
     }
     
 //-----------------------------------------------------------------------------------------------------------------

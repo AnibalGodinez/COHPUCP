@@ -272,7 +272,7 @@
                                             });
                                     </script>
 
-                                    <!-- Campo para la EDAD -->
+                                    <!-- Campo para la edad -->
                                     <div class="col-md-3">
                                         <label for="edad">
                                             <i class="fas fa-calendar-day" style="margin-right: 8px;"></i>
@@ -425,7 +425,7 @@
                                             value="{{ old('facebook_link', $user->facebook_link) }}">
                                     </div>
 
-                                    <!-- Campo para el link de facebook -->
+                                    <!-- Campo para el link de instagram -->
                                     <div class="col-md-3">
                                         <label for="instagram_link">
                                             <i class="fab fa-instagram" style="margin-right: 8px; color: #C927D0"></i>
@@ -435,11 +435,12 @@
                                             type="text" 
                                             class="form-control" 
                                             id="instagram_link" 
-                                            name="instagram_link" 
+                                            name="instagram_link"
+                                            placeholder="Agrega el enlace de tu red social de INSTAGRAM"  
                                             value="{{ old('instagram_link', $user->instagram_link) }}">
                                     </div>
 
-                                    <!-- Campo para el link de facebook -->
+                                    <!-- Campo para el link de linkedin -->
                                     <div class="col-md-3">
                                         <label for="linkedin_link">
                                             <i class="fab fa-linkedin" style="margin-right: 8px; color: #0077B7"></i>
@@ -450,20 +451,22 @@
                                             class="form-control" 
                                             id="linkedin_link" 
                                             name="linkedin_link" 
+                                            placeholder="Agrega el enlace de tu red social de LINKENDIN" 
                                             value="{{ old('linkedin_link', $user->linkedin_link) }}">
                                     </div>
 
                                     <!-- Campo para el link de twitter -->
                                     <div class="col-md-3">
                                         <label for="twitter_link">
-                                            <i class="fab fa-twitter" style="margin-right: 8px; color: #00A2F3"></i>
-                                            <strong>ENLACE DE TWITTER</strong>
+                                            <i class="fab fa-x" style="margin-right: 8px; color: #000000"></i>
+                                            <strong>ENLACE DE LA RED SOCIAL X</strong>
                                         </label>
                                         <input 
                                             type="text" 
                                             class="form-control" 
                                             id="twitter_link" 
                                             name="twitter_link"
+                                            placeholder="Agrega el enlace de tu red social X" 
                                             value="{{ old('twitter_link', $user->twitter_link) }}">
                                     </div>
 

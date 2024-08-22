@@ -57,7 +57,7 @@ class PermissionController extends Controller
                 'description' => $request->description // Añadido para guardar la descripción
             ]);
 
-            return redirect('permission/create')->with('status', 'El permiso se ha creado exitosamente');
+            return redirect('permission/create')->with('status', '¡El permiso se ha creado con éxito!');
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->withErrors(['error' => 'Error inesperado: ' . $e->getMessage()]);
         }
@@ -82,7 +82,7 @@ class PermissionController extends Controller
             'description' => $request->description // Añadido para actualizar la descripción
         ]);
 
-        return redirect('permission')->with('status', 'El permiso se ha actualizado exitosamente');
+        return redirect('permission')->with('status', '¡El permiso se ha actualizado con éxito!');
     }
 
 //-----------------------------------------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ class PermissionController extends Controller
     {
         $permission = Permission::find($permissionId);
         $permission -> delete();
-        return redirect('permission')->with('status', 'El permiso se ha eliminado');
+        return redirect('permission')->with('status', '¡El permiso se ha eliminado con éxito!');
     }
 
 //-----------------------------------------------------------------------------------------------------------------

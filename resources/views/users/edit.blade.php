@@ -222,7 +222,6 @@
                                 </select>
                             </div>
 
-
                             <!-- Campo para la Fecha de Nacimiento -->
                             <div class="form-group col-md-3">
                                 <label for="fecha_nacimiento">
@@ -392,7 +391,7 @@
                                 type="email" 
                                 name="email" 
                                 class="form-control"
-                                placeholder="Correo electrónico"
+                                placeholder="Ingrese su correo electrónico"
                                     value="{{ old('email', $user->email) }}">
                             </div>
 

@@ -128,7 +128,7 @@ class UserController extends Controller
 
         $user->syncRoles($request->roles);
 
-        return redirect('/usuarios')->with('status', 'El usuario se ha creado exitosamente con su respectivo rol');
+        return redirect('/usuarios')->with('status', '¡El usuario se ha creado con éxito!');
     }
 
 
@@ -144,65 +144,64 @@ class UserController extends Controller
 
 
     public function update(Request $request, $userId)
-{
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'name2' => 'nullable|string|max:255',
-        'apellido' => 'required|string|max:255',
-        'apellido2' => 'nullable|string|max:255',
-        'numero_identidad' => 'required|string|max:15|unique:users,numero_identidad,'.$userId,
-        'numero_colegiacion' => 'nullable|string|max:12|unique:users,numero_colegiacion,'.$userId,
-        'rtn' => 'nullable|string|max:16|unique:users,rtn,'.$userId,
-        'sexo' => 'required|in:masculino,femenino',
-        'fecha_nacimiento' => 'required|date',
-        'telefono' => 'nullable|string|max:20|regex:/^[\d-]*$/',
-        'telefono_celular' => 'required|string|max:20|regex:/^[\d-]*$/',
-        'email' => 'required|string|email|max:255|unique:users,email,'.$userId,
-        'pais_id' => 'nullable|exists:pais,id',
-        'roles' => 'required|array',
-        'estado' => 'required|in:activo,inactivo',
-    ], [
-        'pais_id.exists' => 'El país seleccionado es inválido',
-        'telefono.regex' => 'El número de teléfono fijo debe contener solo números y guiones',
-        'telefono_celular.regex' => 'El número de celular debe contener solo números y guiones',
-    ]);
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'name2' => 'nullable|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'apellido2' => 'nullable|string|max:255',
+            'numero_identidad' => 'required|string|max:15|unique:users,numero_identidad,' . $userId,
+            'numero_colegiacion' => 'nullable|string|max:12|unique:users,numero_colegiacion,' . $userId,
+            'rtn' => 'nullable|string|max:16|unique:users,rtn,' . $userId,
+            'sexo' => 'required|exists:sexos,id', // Cambiado a 'sexo'
+            'fecha_nacimiento' => 'required|date',
+            'telefono' => 'nullable|string|max:20|regex:/^[\d-]*$/',
+            'telefono_celular' => 'required|string|max:20|regex:/^[\d-]*$/',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $userId,
+            'pais_id' => 'nullable|exists:pais,id',
+            'roles' => 'required|array',
+            'estado' => 'required|in:activo,inactivo',
+        ], [
+            'sexo.exists' => 'El sexo seleccionado es inválido', // Cambiado a 'sexo'
+            'pais_id.exists' => 'El país seleccionado es inválido',
+            'telefono.regex' => 'El número de teléfono fijo debe contener solo números y guiones',
+            'telefono_celular.regex' => 'El número de celular debe contener solo números y guiones',
+        ]);
 
-    $user = User::findOrFail($userId);
-    // Lógica para actualizar el estado del usuario
-    $user->estado = $request->estado;
-    $user->save();
+        $user = User::findOrFail($userId);
 
-    $user->update([
-        'name' => $request->name,
-        'name2' => $request->name2,
-        'apellido' => $request->apellido,
-        'apellido2' => $request->apellido2,
-        'numero_identidad' => $request->numero_identidad,
-        'numero_colegiacion' => $request->numero_colegiacion,
-        'rtn' => $request->rtn,
-        'sexo' => $request->sexo,
-        'fecha_nacimiento' => $request->fecha_nacimiento,
-        'telefono' => $request->telefono,
-        'telefono_celular' => $request->telefono_celular,
-        'email' => $request->email,
-        'pais_id' => $request->pais_id, // Actualiza el país
-        'estado' => $request->estado,
-    ]);
+        $user->update([
+            'name' => $request->name,
+            'name2' => $request->name2,
+            'apellido' => $request->apellido,
+            'apellido2' => $request->apellido2,
+            'numero_identidad' => $request->numero_identidad,
+            'numero_colegiacion' => $request->numero_colegiacion,
+            'rtn' => $request->rtn,
+            'sexo_id' => $request->sexo, // Cambiado a 'sexo'
+            'fecha_nacimiento' => $request->fecha_nacimiento,
+            'telefono' => $request->telefono,
+            'telefono_celular' => $request->telefono_celular,
+            'email' => $request->email,
+            'pais_id' => $request->pais_id,
+            'estado' => $request->estado,
+        ]);
 
-    if ($request->has('roles')) {
-        $user->syncRoles($request->roles);
+        if ($request->has('roles')) {
+            $user->syncRoles($request->roles);
+        }
+
+        return redirect('/usuarios')->with('status', '¡El usuario se ha actualizado con éxito!');
     }
 
-    return redirect('/usuarios')->with('status', 'El usuario se ha actualizado exitosamente con su respectivo rol');
-}
 
-public function destroy($id)
-{
-    $user = User::findOrFail($id);
-    $user->delete();
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
 
-    return redirect('/usuarios')->with('status', 'El usuario se ha eliminado exitosamente');
-}
+        return redirect('/usuarios')->with('status', '¡El usuario se ha eliminado con éxito!');
+    }
 
     public function show($id)
     {
