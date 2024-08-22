@@ -75,7 +75,6 @@ class UserController extends Controller
             'numero_identidad' => 'required|string|unique:users,numero_identidad',
             'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
             'rtn' => 'nullable|string|max:20|unique:users,rtn',
-            'sexo' => 'required|in:masculino,femenino',
             'fecha_nacimiento' => 'required|date',
             'telefono' => 'nullable|string|max:40|regex:/^[\d-]*$/',
             'telefono_celular' => 'required|string|max:40|regex:/^[\d-]*$/',
@@ -89,10 +88,6 @@ class UserController extends Controller
                 'max:20',
                 'confirmed',
                 'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/',
-            'profile_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'facebook_link' => 'nullable|url',
-            'twitter_link' => 'nullable|url',
-            'bio' => 'nullable|string|max:1000',
             ],
         ], [
             // Mensajes personalizados de validación
@@ -100,7 +95,6 @@ class UserController extends Controller
             'apellido.required' => 'El campo apellido es obligatorio',
             'numero_identidad.required' => 'El campo número de identidad es obligatorio',
             'numero_identidad.unique' => 'El número de identidad ya está en uso',
-            'sexo.required' => 'El campo sexo es obligatorio',
             'fecha_nacimiento.required' => 'El campo fecha de nacimiento es obligatorio',
             'telefono_celular.required' => 'El campo teléfono celular es obligatorio',
             'email.required' => 'El campo email es obligatorio',
@@ -112,12 +106,6 @@ class UserController extends Controller
             'password.regex' => 'La contraseña debe contener al menos un símbolo o carácter especial, como por Ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
             'telefono.regex' => 'El número de teléfono fijo sólo debe contener números y guiones',
             'telefono_celular.regex' => 'El número de celular sólo debe contener números y guiones',
-            'profile_image.image' => 'El archivo debe ser una imagen.',
-            'profile_image.mimes' => 'La imagen debe ser de tipo: jpg, jpeg, png.',
-            'profile_image.max' => 'La imagen no debe exceder los 2MB.',
-            'facebook_link.url' => 'El enlace de Facebook debe ser una URL válida.',
-            'twitter_link.url' => 'El enlace de Twitter debe ser una URL válida.',
-            'bio.max' => 'La biografía no debe exceder los 1000 caracteres.',
         ]);
 
         $user = User::create([
@@ -128,12 +116,12 @@ class UserController extends Controller
             'numero_identidad' => $request->numero_identidad,
             'numero_colegiacion' => $request->numero_colegiacion,
             'rtn' => $request->rtn,
-            'sexo' => $request->sexo,
+            'sexo_id' => $request->sexo_id,
             'fecha_nacimiento' => $request->fecha_nacimiento,
             'telefono' => $request->telefono,
             'telefono_celular' => $request->telefono_celular,
             'email' => $request->email,
-            'pais_id' => $request->pais_id, // Guardar el país
+            'pais_id' => $request->pais_id,
             'password' => Hash::make($request->password),
         ]);
 

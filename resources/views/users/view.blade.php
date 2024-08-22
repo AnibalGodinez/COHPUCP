@@ -42,6 +42,7 @@
                                     <th class="text-center">Correo electrónico</th>
                                     <th class="text-center">Estado</th>
                                     <th class="text-center">Rol asignado</th>
+                                    <th class="text-center">Ver información</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -87,6 +88,13 @@
                                             @endforeach
                                         @endif
                                     </td>
+
+                                    <td class="text-center">
+                                        <a href="{{ url('usuarios/'.$user->id) }}" class="btn btn-success btn-sm btn-icon">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </td> 
+
                                 </tr>
                                 @endforeach
                             </tbody>

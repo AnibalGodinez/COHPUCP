@@ -33,6 +33,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'pais_id',
         'profile_image',
         'facebook_link',
+        'instagram_link',
+        'linkedin_link',
         'twitter_link',
         'bio'
     ];

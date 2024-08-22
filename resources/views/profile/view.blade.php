@@ -7,7 +7,19 @@
                 <div class="card shadow-lg">
                     <div class="card-header bg-info text-white text-center">
                         <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>MI PERFIL</strong></h3>
+                    </div><br>
+
+                    <!-- Mensaje de éxito -->
+                    @if(session('success'))
+                    <div class="text-center">
+                        <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
+                            {{ session('success') }}
+                            <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
                     </div>
+                    @endif
 
                         <div class="row">
                             <div class="col-md-3 d-flex justify-content-start" style="margin-top: 15px;">
@@ -27,8 +39,15 @@
                                             <a href="{{ Auth::user()->facebook_link }}" target="_blank" class="mx-2" aria-label="Facebook" style="color: #0865FE">
                                                 <i class="fab fa-facebook fa-2x"></i>
                                             </a>
+                                            <a href="{{ Auth::user()->instagram_link }}" target="_blank" class="mx-2" aria-label="Facebook" style="color: #C927D0">
+                                                <i class="fab fa-instagram fa-2x"></i>
+                                            </a>
+                                            <a href="{{ Auth::user()->linkedin_link }}" target="_blank" class="mx-2" aria-label="Facebook" style="color: #0077B7">
+                                                <i class="fab fa-linkedin fa-2x"></i>
+                                            </a>
                                             <a href="{{ Auth::user()->twitter_link }}" target="_blank" class="mx-2" aria-label="Twitter" style="color: #00A2F3">
                                                 <i class="fab fa-twitter fa-2x"></i>
+
                                             </a>
                                         </div>
                                     </div>

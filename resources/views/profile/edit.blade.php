@@ -9,11 +9,6 @@
                         <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>EDITAR PERFIL</strong></h3>
                     </div>
 
-                        @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
 
                         <div class="card-body">
                             <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
@@ -418,21 +413,50 @@
                                     <!-- Campo para el link de facebook -->
                                     <div class="col-md-3">
                                         <label for="facebook_link">
-                                            <i class="fab fa-facebook" style="margin-right: 8px;"></i>
+                                            <i class="fab fa-facebook" style="margin-right: 8px; color: #0865FE;"></i>
                                             <strong>ENLACE DE FACEBOOK</strong>
                                         </label>
                                         <input 
                                             type="text" 
                                             class="form-control" 
                                             id="facebook_link" 
-                                            name="facebook_link" 
+                                            name="facebook_link"
+                                            placeholder="Agrega el enlace de tu red social de FACEBOOK" 
                                             value="{{ old('facebook_link', $user->facebook_link) }}">
+                                    </div>
+
+                                    <!-- Campo para el link de facebook -->
+                                    <div class="col-md-3">
+                                        <label for="instagram_link">
+                                            <i class="fab fa-instagram" style="margin-right: 8px; color: #C927D0"></i>
+                                            <strong>ENLACE DE INSTAGRAM</strong>
+                                        </label>
+                                        <input 
+                                            type="text" 
+                                            class="form-control" 
+                                            id="instagram_link" 
+                                            name="instagram_link" 
+                                            value="{{ old('instagram_link', $user->instagram_link) }}">
+                                    </div>
+
+                                    <!-- Campo para el link de facebook -->
+                                    <div class="col-md-3">
+                                        <label for="linkedin_link">
+                                            <i class="fab fa-linkedin" style="margin-right: 8px; color: #0077B7"></i>
+                                            <strong>ENLACE DE LINKENDIN</strong>
+                                        </label>
+                                        <input 
+                                            type="text" 
+                                            class="form-control" 
+                                            id="linkedin_link" 
+                                            name="linkedin_link" 
+                                            value="{{ old('linkedin_link', $user->linkedin_link) }}">
                                     </div>
 
                                     <!-- Campo para el link de twitter -->
                                     <div class="col-md-3">
                                         <label for="twitter_link">
-                                            <i class="fab fa-twitter" style="margin-right: 8px;"></i>
+                                            <i class="fab fa-twitter" style="margin-right: 8px; color: #00A2F3"></i>
                                             <strong>ENLACE DE TWITTER</strong>
                                         </label>
                                         <input 

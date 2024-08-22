@@ -56,6 +56,8 @@ class ProfileController extends Controller
             'pais_id' => 'nullable|exists:pais,id',
             'profile_image' => 'nullable|image|mimes:jpg,jpeg,png, webp|max:2048',
             'facebook_link' => 'nullable|url',
+            'instagram_link' => 'nullable|url',
+            'linkedin_link' => 'nullable|url',
             'twitter_link' => 'nullable|url',
             'bio' => 'nullable|string|max:1000',
         ], [
@@ -100,6 +102,8 @@ class ProfileController extends Controller
             'telefono_celular' => 'required|string|max:15',
             'email' => 'required|email',
             'facebook_link' => 'nullable|url',
+            'instagram_link' => 'nullable|url',
+            'linkedin_link' => 'nullable|url',
             'twitter_link' => 'nullable|url',
             'bio' => 'nullable|string',
         ]);
@@ -119,6 +123,8 @@ class ProfileController extends Controller
             'telefono_celular',
             'email',
             'facebook_link',
+            'instagram_link',
+            'linkedin_link',
             'twitter_link',
             'bio',
             'pais_id',
@@ -142,7 +148,7 @@ class ProfileController extends Controller
     {
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 
-        return back()->withPasswordStatus(__('La contraseña se ha actualizado exitosamente'));
+        return back()->withPasswordStatus(__('¡Tu contraseña se ha cambiado con éxito!'));
     }
 
 }
