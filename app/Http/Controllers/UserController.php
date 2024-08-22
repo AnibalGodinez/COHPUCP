@@ -7,6 +7,7 @@ use App\Models\Sexo;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -221,13 +222,21 @@ class UserController extends Controller
 
     public function getUserData($identifier)
     {
-        $user = User::where('id', $identifier)->orWhere('numero_identidad', $identifier)->first();
+        $user = Auth::user(); // Obtener el usuario logueado
 
-        if ($user) {
-            return response()->json(['success' => true, 'user' => $user]);
+        // Verificar si el identificador corresponde al ID o DNI del usuario logueado
+        if ($identifier == $user->id || $identifier == $user->numero_identidad) {
+            return response()->json([
+                'success' => true,
+                'user' => $user
+            ]);
         } else {
-            return response()->json(['success' => false]);
+            return response()->json([
+                'success' => false,
+                'message' => 'Usuario no encontrado'
+            ]);
         }
     }
+
 }
 

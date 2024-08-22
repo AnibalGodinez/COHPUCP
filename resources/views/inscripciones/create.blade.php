@@ -569,10 +569,12 @@
                     document.getElementById('userData').style.display = 'block';
                 } else {
                     alert('Usuario no encontrado');
+                    document.getElementById('userData').style.display = 'none';
                 }
             })
             .catch(error => console.error('Error:', error));
     }
+
 
     function previewImages(input, previewContainerId) {
         var previewContainer = document.getElementById(previewContainerId);

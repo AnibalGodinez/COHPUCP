@@ -70,6 +70,8 @@ use App\Http\Controllers\SexoController;
 	Route::get('/previsualizacion/pdf/usuario/{id}', [PDFController::class, 'preview'])->name('user.pdf.preview');
 	// Ruta para descargar el PDF
 	Route::get('/descargar/pdf/usuario/{id}', [PDFController::class, 'download'])->name('user.pdf.download');
+	// Ruta para buscar mediante el id o dni al usuario para que realice la solicitu de inscripcion
+	Route::get('/get-user-data/{identifier}', [UserController::class, 'getUserData']);
 	});
 
 	// RUTAS DE PERFIL DE USUARIO
@@ -87,7 +89,7 @@ use App\Http\Controllers\SexoController;
 		Route::resource('permission', PermissionController::class);
 		Route::get('permission/{permissionId}/delete', [PermissionController::class, 'destroy']);
 		Route::get('ver/permisos', [PermissionController::class, 'verPermisos'])->name('permissions.ver');
-		Route::get('/get-user-data/{identifier}', [UserController::class, 'getUserData']);
+		
 	});
 
 	// RUTAS DE PERMISOS
