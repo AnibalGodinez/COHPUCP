@@ -75,12 +75,13 @@ class UserController extends Controller
             'numero_identidad' => 'required|string|unique:users,numero_identidad',
             'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
             'rtn' => 'nullable|string|max:20|unique:users,rtn',
+            'sexo_id' => 'required|integer',
             'fecha_nacimiento' => 'required|date',
             'telefono' => 'nullable|string|max:40|regex:/^[\d-]*$/',
             'telefono_celular' => 'required|string|max:40|regex:/^[\d-]*$/',
             'email' => 'required|email|max:255|unique:users,email',
             'email_confirmation' => 'required|email|same:email',
-            'pais_id' => 'nullable|exists:pais,id', // Validación para el campo país
+            'pais_id' => 'nullable|exists:pais,id',
             'password' => [
                 'required',
                 'string',

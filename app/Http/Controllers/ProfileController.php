@@ -136,7 +136,7 @@ class ProfileController extends Controller
             $user->save();
         }
 
-        return redirect()->route('profile.show')->with('success', 'Perfil actualizado correctamente');
+        return redirect()->route('profile.show')->with('success', '¡Perfil actualizado con éxito!');
     }
 
     public function showChangePasswordForm()

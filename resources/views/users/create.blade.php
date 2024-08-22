@@ -179,14 +179,14 @@
                                     <i class="fas fa-venus-mars" style="margin-right: 8px;"></i>
                                     <strong>SEXO *</strong>
                                 </label>
-                                <select name="sexo" class="form-control @error('sexo') is-invalid @enderror" id="sexo" required>
+                                <select name="sexo_id" class="form-control @error('sexo_id') is-invalid @enderror" id="sexo" required>
                                     <option disabled selected>Seleccione el sexo</option>
                                     @foreach ($sexos as $sexo)
-                                        <option value="{{ $sexo->id }}" {{ old('sexo') == $sexo->id ? 'selected' : '' }}>{{ $sexo->nombre }}</option>
+                                        <option value="{{ $sexo->id }}" {{ old('sexo_id') == $sexo->id ? 'selected' : '' }}>{{ $sexo->nombre }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-
+                            </div>                            
+                       
                             <!-- Campo para la Fecha de Nacimiento -->
                             <div class="form-group col-md-3">
                                 <label for="fecha_nacimiento">
