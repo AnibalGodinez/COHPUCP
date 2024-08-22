@@ -181,8 +181,9 @@
                                 </label>
                                 <select name="sexo" class="form-control @error('sexo') is-invalid @enderror" id="sexo" required>
                                     <option disabled selected>Seleccione el sexo</option>
-                                    <option value="masculino" {{ old('sexo') == 'masculino' ? 'selected' : '' }}>Masculino</option>
-                                    <option value="femenino" {{ old('sexo') == 'femenino' ? 'selected' : '' }}>Femenino</option>
+                                    @foreach ($sexos as $sexo)
+                                        <option value="{{ $sexo->id }}" {{ old('sexo') == $sexo->id ? 'selected' : '' }}>{{ $sexo->nombre }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 

@@ -19,8 +19,8 @@ class CreateCapacitacionesTable extends Migration
 
             // Define la restricción de clave externa
             $table->foreign('user_id')->references('id')->on('users')
-            ->onDelete('cascade') // Elimina capacitaciones si se elimina el usuario
-            ->onUpdate('cascade'); // Actualiza user_id en capacitaciones si se actualiza el id del usuario
+            ->onDelete('cascade') // Eliminar en cascada
+            ->onUpdate('cascade'); // Actualizar en cascada
         });
     }
 

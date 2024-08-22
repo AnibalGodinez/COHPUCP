@@ -23,11 +23,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'numero_identidad',
         'numero_colegiacion',
         'rtn',
-        'sexo',
+        'sexo_id', 
         'fecha_nacimiento',
         'telefono',
         'telefono_celular',
         'email',
+        'estado',
         'password',
         'pais_id',
         'profile_image',
@@ -72,11 +73,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->password;
     }
 
-    public function pais()
-    {
-        return $this->belongsTo(Pais::class, 'pais_id'); 
-    }
-
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new MyResetPassword($token));
@@ -97,4 +93,17 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Universidad::class, 'universidad_user');
     }
+
+    // Relación muchos a muchos con universidades
+    public function pais()
+    {
+        return $this->belongsTo(Pais::class, 'pais_id'); 
+    }
+
+    // Relación con el modelo Sexo
+    public function sexo()
+    {
+        return $this->belongsTo(Sexo::class);
+    }
+
 }

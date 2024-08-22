@@ -212,12 +212,16 @@
                                     <i class="fas fa-venus-mars" style="margin-right: 8px;"></i>
                                     <strong>SEXO *</strong>
                                 </label>
-                                <select name="sexo" class="form-control" required>
-                                    <option value="" disabled selected>Selecciona una opción</option>
-                                    <option value="masculino" {{ old('sexo', $user->sexo) == 'masculino' ? 'selected' : '' }}>Masculino</option>
-                                    <option value="femenino" {{ old('sexo', $user->sexo) == 'femenino' ? 'selected' : '' }}>Femenino</option>
+                                <select name="sexo" id="sexo" class="form-control" required>
+                                    <option value="" disabled>Selecciona una opción</option>
+                                    @foreach($sexos as $sexo)
+                                        <option value="{{ $sexo->id }}" {{ old('sexo', $user->sexo_id) == $sexo->id ? 'selected' : '' }}>
+                                            {{ $sexo->nombre }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
+
 
                             <!-- Campo para la Fecha de Nacimiento -->
                             <div class="form-group col-md-3">

@@ -20,6 +20,7 @@ use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\UniversidadController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\PDFInscripcionController;
+use App\Http\Controllers\SexoController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -154,6 +155,12 @@ use App\Http\Controllers\PDFInscripcionController;
 	Route::group(['middleware' => ['auth']], function () {
 		Route::resource('universidades', UniversidadController::class);
 	});
+
+	// RUTAS DE UNIVERSIDADES
+	Route::group(['middleware' => ['auth']], function () {
+		Route::resource('sexos', SexoController::class);
+	});
+
 
 
 

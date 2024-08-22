@@ -108,7 +108,7 @@
                             <i class="fas fa-venus-mars fa-lg text-dark me-3"></i>
                             <div style="margin-left: 20px;">
                                 <strong>SEXO:</strong>
-                                <p class="mb-0">{{ $user->sexo ?? 'No disponible' }}</p>
+                                <p class="mb-0">{{ $user->sexo ? $user->sexo->nombre : 'No disponible' }}</p>
                             </div>
                         </div>
                     </div>

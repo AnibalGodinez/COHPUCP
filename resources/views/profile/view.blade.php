@@ -168,7 +168,7 @@
                                                 </label>
                                                 <p class="form-control-static">
                                                     @if(Auth::user()->sexo)
-                                                        {{ Auth::user()->sexo }}
+                                                        {{ Auth::user()->sexo->nombre }}
                                                     @else
                                                         No disponible
                                                     @endif

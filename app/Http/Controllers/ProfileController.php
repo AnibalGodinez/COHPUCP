@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pais;
+use App\Models\Sexo;
 
 class ProfileController extends Controller
 {
@@ -30,9 +31,10 @@ class ProfileController extends Controller
     public function edit()
     {
         $user = Auth::user();
-        $paises = Pais::all(); 
-
-        return view('profile.edit', compact('user', 'paises'));
+        $paises = Pais::all();
+        $sexos = Sexo::all(); // Asegúrate de que estás recuperando todos los sexos
+    
+        return view('profile.edit', compact('user', 'paises', 'sexos'));
     }
 
     protected function validateProfile(Request $request)
@@ -45,7 +47,7 @@ class ProfileController extends Controller
             'numero_identidad' => 'required|string|unique:users,numero_identidad',
             'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
             'rtn' => 'nullable|string|max:20|unique:users,rtn',
-            'sexo' => 'required|in:masculino,femenino',
+            'sexo_id' => 'nullable|exists:sexos,id',
             'fecha_nacimiento' => 'required|date',
             'telefono' => 'nullable|string|max:40|regex:/^[\d-]*$/',
             'telefono_celular' => 'required|string|max:40|regex:/^[\d-]*$/',
@@ -61,7 +63,6 @@ class ProfileController extends Controller
             'apellido.required' => 'El campo apellido es obligatorio',
             'numero_identidad.required' => 'El campo número de identidad es obligatorio',
             'numero_identidad.unique' => 'El número de identidad ya está en uso',
-            'sexo.required' => 'El campo sexo es obligatorio',
             'fecha_nacimiento.required' => 'El campo fecha de nacimiento es obligatorio',
             'telefono_celular.required' => 'El campo teléfono celular es obligatorio',
             'email.required' => 'El campo email es obligatorio',
@@ -93,7 +94,7 @@ class ProfileController extends Controller
             'numero_identidad' => 'required|string|max:15',
             'numero_colegiacion' => 'nullable|string|max:12',
             'rtn' => 'nullable|string|max:16',
-            'sexo' => 'required|string',
+            'sexo_id' => 'nullable|exists:sexos,id',
             'fecha_nacimiento' => 'required|date',
             'telefono' => 'nullable|string|max:15',
             'telefono_celular' => 'required|string|max:15',
@@ -112,7 +113,7 @@ class ProfileController extends Controller
             'numero_identidad',
             'numero_colegiacion',
             'rtn',
-            'sexo',
+            'sexo_id',
             'fecha_nacimiento',
             'telefono',
             'telefono_celular',

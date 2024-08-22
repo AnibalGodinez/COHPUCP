@@ -9,6 +9,7 @@ use Spatie\Permission\Traits\HasPermission;
 class Permission extends Model
 {
     use HasFactory;
+    
     protected $fillable = [
         'name',
         'description'

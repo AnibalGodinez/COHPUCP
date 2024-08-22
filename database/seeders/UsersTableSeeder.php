@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Sexo;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
@@ -12,16 +13,20 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
+        // Obtener los IDs de los sexos
+        $sexoMasculino = Sexo::where('nombre', 'Masculino')->first()->id;
+        $sexoFemenino = Sexo::where('nombre', 'Femenino')->first()->id;
+
         // Crear el usuario
         $user = User::create([
-            'name' => 'Administrador',
-            'name2' => 'Anibal',
-            'apellido' => 'Cohpucp',
-            'apellido2' => 'Godinez',
+            'name' => 'Anibal',
+            'name2' => 'Johan',
+            'apellido' => 'Godinez',
+            'apellido2' => 'Cortez',
             'numero_identidad' => '0801-1984-15578',
             'numero_colegiacion' => '2010-01-2220',
             'rtn' => '0801-1984-155781',
-            'sexo' => 'masculino',
+            'sexo_id' => 1,
             'fecha_nacimiento' => '1984-06-25',
             'telefono' => '2255-1123',
             'telefono_celular' => '3356-0773',
@@ -108,71 +113,23 @@ class UsersTableSeeder extends Seeder
         // Asignar el rol Administrador al usuario
         $user->assignRole($role);
 
-        // Crear usuarios de prueba
+        // Crear otro usuario de prueba
         $users = [
             [
-                'name' => 'Juan',
-                'name2' => 'Carlos',
-                'apellido' => 'Perez',
-                'apellido2' => 'Martinez',
+                'name' => 'Johan',
+                'name2' => 'Anibal',
+                'apellido' => 'Cortez',
+                'apellido2' => 'Godinez',
                 'numero_identidad' => '0901-1985-12345',
                 'numero_colegiacion' => '2020-02-3344',
                 'rtn' => '0901-1985-123451',
-                'sexo' => 'masculino',
+                'sexo_id' => 1,
                 'fecha_nacimiento' => '1985-07-10',
                 'telefono' => '2456-7890',
                 'telefono_celular' => '3456-7890',
-                'email' => 'juancarlos@example.com',
+                'email' => 'johan_godinez@yahoo.com',
                 'estado' => 'activo',
-                'password' => Hash::make('Test%1234'),
-            ],
-            [
-                'name' => 'Maria',
-                'name2' => 'Fernanda',
-                'apellido' => 'Lopez',
-                'apellido2' => 'Hernandez',
-                'numero_identidad' => '0102-1990-67890',
-                'numero_colegiacion' => '2021-03-4455',
-                'rtn' => '0102-1990-678901',
-                'sexo' => 'femenino',
-                'fecha_nacimiento' => '1990-12-15',
-                'telefono' => '2567-8901',
-                'telefono_celular' => '4567-8901',
-                'email' => 'mariafernanda@example.com',
-                'estado' => 'activo',
-                'password' => Hash::make('Test%5678'),
-            ],
-            [
-                'name' => 'Pedro',
-                'name2' => 'Antonio',
-                'apellido' => 'García',
-                'apellido2' => 'Morales',
-                'numero_identidad' => '0203-1995-54321',
-                'numero_colegiacion' => '2022-04-5566',
-                'rtn' => '0203-1995-543210',
-                'sexo' => 'masculino',
-                'fecha_nacimiento' => '1995-03-20',
-                'telefono' => '2678-9012',
-                'telefono_celular' => '5678-9012',
-                'email' => 'pedroantonio@example.com',
-                'estado' => 'activo',
-                'password' => Hash::make('Test%6789'),
-            ],
-            [
-                'name' => 'Ana',
-                'name2' => 'Maria',
-                'apellido' => 'Santos',
-                'apellido2' => 'Castro',
-                'numero_identidad' => '0304-1992-87654',
-                'numero_colegiacion' => '2023-05-6677',
-                'rtn' => '0304-1992-876543',
-                'sexo' => 'femenino',
-                'fecha_nacimiento' => '1992-11-05',
-                'telefono' => '2789-0123',
-                'telefono_celular' => '6789-0123',
-                'email' => 'anamaria@example.com',
-                'estado' => 'activo',
-                'password' => Hash::make('Test%7890'),
+                'password' => Hash::make('Prueba%292'),
             ],
         ];
 

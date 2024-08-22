@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Pais;
+use App\Models\Sexo;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Models\Pais;
-use Illuminate\Support\Carbon;
 
 class RegisterController extends Controller
 {
@@ -103,7 +104,8 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $paises = Pais::all(); // Obtén todos los países
-        return view('auth.register', compact('paises'));
+        $paises = Pais::all();
+        $sexos = Sexo::all(); 
+        return view('auth.register', compact('paises', 'sexos'));
     }
 }

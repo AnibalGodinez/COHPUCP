@@ -9,7 +9,6 @@ class Curso extends Model
 {
     use HasFactory;
 
-    // Define los campos que se pueden asignar masivamente
     protected $fillable = [
         'layout',
         'titulo',

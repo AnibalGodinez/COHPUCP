@@ -17,10 +17,19 @@ class CreateUsersTable extends Migration
             $table->string('numero_identidad')->unique();
             $table->string('numero_colegiacion')->nullable()->unique();
             $table->string('rtn')->nullable()->unique();
-            $table->enum('sexo', ['masculino', 'femenino']);
+
+            $table->unsignedBigInteger('sexo_id')->nullable();
+            $table->foreign('sexo_id')->references('id')->on('sexos')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
             $table->date('fecha_nacimiento');
-            $table->unsignedBigInteger('pais_id')->nullable(); // Definir la columna antes de usarla en una clave foránea
-            $table->foreign('pais_id')->references('id')->on('pais')->onDelete('cascade')->onUpdate('cascade'); // Agregar la relación
+
+            $table->unsignedBigInteger('pais_id')->nullable();
+            $table->foreign('pais_id')->references('id')->on('pais')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
             $table->string('telefono')->nullable();
             $table->string('telefono_celular');
             $table->string('email')->unique();

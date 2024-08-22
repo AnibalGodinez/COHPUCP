@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Pais;
+use App\Models\Sexo;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -23,19 +24,18 @@ class UserController extends Controller
     {
         return User::where(function($query) use ($search) {
             $query->where('id', 'LIKE', "%{$search}%")
-                  ->orWhere('name', 'LIKE', "%{$search}%")
-                  ->orWhere('name2', 'LIKE', "%{$search}%")
-                  ->orWhere('apellido', 'LIKE', "%{$search}%")
-                  ->orWhere('apellido2', 'LIKE', "%{$search}%")
-                  ->orWhere('numero_identidad', 'LIKE', "%{$search}%")
-                  ->orWhere('numero_colegiacion', 'LIKE', "%{$search}%")
-                  ->orWhere('rtn', 'LIKE', "%{$search}%")
-                  ->orWhere('sexo', 'LIKE', "%{$search}%")
-                  ->orWhere('fecha_nacimiento', 'LIKE', "%{$search}%")
-                  ->orWhere('telefono', 'LIKE', "%{$search}%")
-                  ->orWhere('telefono_celular', 'LIKE', "%{$search}%")
-                  ->orWhere('email', 'LIKE', "%{$search}%")
-                  ->orWhereHas('pais', function ($query) use ($search) {
+                ->orWhere('name', 'LIKE', "%{$search}%")
+                ->orWhere('name2', 'LIKE', "%{$search}%")
+                ->orWhere('apellido', 'LIKE', "%{$search}%")
+                ->orWhere('apellido2', 'LIKE', "%{$search}%")
+                ->orWhere('numero_identidad', 'LIKE', "%{$search}%")
+                ->orWhere('numero_colegiacion', 'LIKE', "%{$search}%")
+                ->orWhere('rtn', 'LIKE', "%{$search}%")
+                ->orWhere('fecha_nacimiento', 'LIKE', "%{$search}%")
+                ->orWhere('telefono', 'LIKE', "%{$search}%")
+                ->orWhere('telefono_celular', 'LIKE', "%{$search}%")
+                ->orWhere('email', 'LIKE', "%{$search}%")
+                ->orWhereHas('pais', function ($query) use ($search) {
                     $query->where('nombre', 'LIKE', "%{$search}%");
                 })
                 ->orWhereHas('roles', function ($query) use ($search) {
@@ -60,11 +60,9 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
-        $paises = Pais::all(); // Asegúrate de que aquí obtienes una colección de objetos Pais
-        return view('users.create', [
-            'roles' => $roles,
-            'paises' => $paises
-        ]);
+        $sexos = Sexo::all();
+        $paises = Pais::all();
+        return view('users.create', ['roles' => $roles,'paises' => $paises,'sexos' => $sexos]);
     }
 
     public function store(Request $request)
@@ -147,11 +145,12 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = User::with('pais')->findOrFail($id); // Asegúrate de cargar la relación 'pais'
-        $paises = Pais::all(); // Obtén todos los países de la base de datos
+        $user = User::with('pais')->findOrFail($id); 
+        $paises = Pais::all();
+        $sexos = Sexo::all(); 
         $roles = Role::pluck('name', 'name')->all();
 
-        return view('users.edit', compact('user', 'roles', 'paises'));
+        return view('users.edit', compact('user', 'roles', 'paises', 'sexos'));
     }
 
 
@@ -219,7 +218,7 @@ public function destroy($id)
     public function show($id)
     {
         // Carga el usuario con sus relaciones
-        $user = User::with('roles', 'pais')->findOrFail($id);
+        $user = User::with('roles', 'pais', 'sexo')->findOrFail($id);
 
         // Retorna la vista con la información del usuario
         return view('users.show', compact('user'));

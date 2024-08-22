@@ -6,26 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUniversidadUserTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('universidad_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('universidad_id')->constrained('universidades')->onDelete('cascade'); // Corregido aquí
+            $table->foreignId('universidad_id')->constrained('universidades')
+            ->onDelete('cascade') // Eliminar en cascada
+            ->onUpdate('cascade'); // Actualizar en cascada
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('universidad_user');

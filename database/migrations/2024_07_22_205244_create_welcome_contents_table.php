@@ -19,8 +19,8 @@ class CreateWelcomeContentsTable extends Migration
             $table->foreign('user_id')
                   ->references('id')
                   ->on('users')
-                  ->onDelete('cascade')   // Configurar eliminación en cascada
-                  ->onUpdate('cascade');  // Configurar actualización en cascada
+                  ->onDelete('cascade') // Eliminar en cascada
+                  ->onUpdate('cascade'); // Actualizar en cascada
             $table->timestamps();
         });
     }

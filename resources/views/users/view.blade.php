@@ -52,16 +52,14 @@
                                     <td>{{ $user->numero_identidad }}</td>
                                     <td>{{ $user->numero_colegiacion }}</td>
                                     <td>{{ $user->rtn }}</td>
-                                    <td>{{ $user->sexo }}</td>
+                                    <td>{{ $user->sexo ? $user->sexo->nombre : '' }}</td>
                                     <td>{{ $user->fecha_nacimiento }}</td>
                                     <td>
                                         @if (!empty($user->fecha_nacimiento))
                                             {{ \Carbon\Carbon::parse($user->fecha_nacimiento)->age }} años
                                         @endif
                                     </td>
-                                    <td class="text-center">
-                                        {{ $user->pais ? $user->pais->nombre : 'No asignado' }}
-                                    </td>
+                                    <td class="text-center">{{ $user->pais ? $user->pais->nombre : '' }}</td>
                                     <td>
                                         @if ($user->telefono)
                                             @if ($user->pais)

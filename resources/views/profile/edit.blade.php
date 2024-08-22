@@ -230,12 +230,21 @@
                                             <i class="fas fa-venus-mars" style="margin-right: 8px;"></i>
                                             <strong>SEXO *</strong>
                                         </label>
-                                        <select name="sexo" class="form-control" required>
+                                        <select name="sexo_id" class="form-control" required>
                                             <option value="" disabled selected>Seleccione el sexo</option>
-                                            <option value="masculino" {{ old('sexo', $user->sexo) == 'masculino' ? 'selected' : '' }}>Masculino</option>
-                                            <option value="femenino" {{ old('sexo', $user->sexo) == 'femenino' ? 'selected' : '' }}>Femenino</option>
+                                            @foreach($sexos as $sexo)
+                                                <option value="{{ $sexo->id }}" {{ old('sexo_id', $user->sexo_id) == $sexo->id ? 'selected' : '' }}>
+                                                    {{ $sexo->nombre }}
+                                                </option>
+                                            @endforeach
                                         </select>
+                                        @error('sexo_id')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
+
                                 </div>
 
                                 <div class="form-group row">

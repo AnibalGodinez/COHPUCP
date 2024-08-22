@@ -178,26 +178,20 @@
                             });
                         </script>
 
-                        <!-- Campo para sexo -->
+                        <!-- Campo para el Sexo -->
                         <div class="form-group col-md-6">
                             <label for="sexo">
                                 <i class="fas fa-venus-mars" style="margin-right: 8px;"></i>
-                                <strong>Sexo *</strong>
+                                <strong>SEXO *</strong>
                             </label>
-                                <select 
-                                    name="sexo" 
-                                    class="form-control{{ $errors->has('sexo') ? ' is-invalid' : '' }}" 
-                                    value="{{ old('sexo') }}"
-                                    required>
-                                    <option disabled selected>Seleccione el sexo</option>
-                                    <option value="masculino" {{ old('sexo') == 'masculino' ? 'selected' : '' }}>Masculino</option>
-                                    <option value="femenino" {{ old('sexo') == 'femenino' ? 'selected' : '' }}>Femenino</option>
-                                </select>
-                                @error('sexo')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <select name="sexo" id="sexo" class="form-control" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                @foreach($sexos as $sexo)
+                                    <option value="{{ $sexo['id'] }}" {{ old('sexo') == $sexo['id'] ? 'selected' : '' }}>
+                                        {{ $sexo['nombre'] }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <!-- Campo para fecha de nacimiento -->
