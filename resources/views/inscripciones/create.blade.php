@@ -376,7 +376,7 @@
                                         <i class="fas fa-clipboard-list" style="margin-right: 8px;"></i>
                                         <strong>COMISIONES</strong>
                                     </label>
-                                    <textarea name="comisiones" id="comisiones" class="form-control" style="min-height: 100px">{{ old('comisiones') }}</textarea>
+                                    <textarea name="comisiones" id="comisiones" class="form-control" style="min-height: 150px; border: 1px solid #898b91;">{{ old('comisiones') }}</textarea>
                                 </div>
                            
                                 <div class="col-md-4">
@@ -384,7 +384,7 @@
                                         <i class="fas fa-user-tie" style="margin-right: 8px;"></i>
                                         <strong>REPRESENTACIONES</strong>
                                     </label>
-                                    <textarea name="representaciones" id="representaciones" class="form-control" style="min-height: 100px">{{ old('representaciones') }}</textarea>
+                                    <textarea name="representaciones" id="representaciones" class="form-control" style="min-height: 150px; border: 1px solid #898b91;">{{ old('representaciones') }}</textarea>
                                 </div>
                            
                                 <div class="col-md-4">
@@ -392,7 +392,7 @@
                                         <i class="fas fa-handshake" style="margin-right: 8px;"></i>
                                         <strong>DELEGACIONES</strong>
                                     </label>
-                                    <textarea name="delegaciones" id="delegaciones" class="form-control" style="min-height: 100px">{{ old('delegaciones') }}</textarea>
+                                    <textarea name="delegaciones" id="delegaciones" class="form-control" style="min-height: 150px; border: 1px solid #898b91;">{{ old('delegaciones') }}</textarea>
                                 </div>
 
                             </div>
@@ -409,15 +409,16 @@
                                         <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
                                         <strong>PUBLICACIÓN DE DOCUMENTOS</strong>
                                     </label>
-                                    <textarea name="publicacion_documentos" id="publicacion_documentos" class="form-control" style="min-height: 100px">{{ old('publicacion_documentos') }}</textarea>
+                                    <textarea name="publicacion_documentos" id="publicacion_documentos" class="form-control" style="min-height: 150px; border: 1px solid #898b91;">{{ old('publicacion_documentos') }}</textarea>
                                 </div>
+                                
                            
                                 <div class="col-md-4">
                                     <label for="publicaciones">
                                         <i class="fas fa-newspaper" style="margin-right: 8px;"></i>
                                         <strong>PUBLICACIONES</strong>
                                     </label>
-                                    <textarea name="publicaciones" id="publicaciones" class="form-control" style="min-height: 100px">{{ old('publicaciones') }}</textarea>
+                                    <textarea name="publicaciones" id="publicaciones" class="form-control" style="min-height: 150px; border: 1px solid #898b91;">{{ old('publicaciones') }}</textarea>
                                 </div>
                            
                                 <div class="col-md-4">
@@ -425,7 +426,7 @@
                                         <i class="fas fa-book" style="margin-right: 8px;"></i>
                                         <strong>PUBLICACIÓN DE UN LIBRO</strong>
                                     </label>
-                                    <textarea name="publicacion_libro" id="publicacion_libro" class="form-control" style="min-height: 100px">{{ old('publicacion_libro') }}</textarea>
+                                    <textarea name="publicacion_libro" id="publicacion_libro" class="form-control" style="min-height: 150px; border: 1px solid #898b91;">{{ old('publicacion_libro') }}</textarea>
                                 </div>
 
                             </div>   

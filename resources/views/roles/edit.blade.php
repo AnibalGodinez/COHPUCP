@@ -22,19 +22,25 @@
                             name="name" 
                             value="{{ $role->name }}" 
                             class="form-control w-50"
+                            placeholder="Ingrese el nombre del rol"
                             required>
                         </div>
                         
                         <div class="form-group">
                             <label for="description"><strong>DESCRIPCIÓN DEL ROL</strong></label>
-                            <textarea id="description" name="description" style="min-height: 150px" class="form-control w-70 @error('description') is-invalid @enderror">{{ old('description', $role->description) }}</textarea>
+                            <textarea 
+                                id="description" 
+                                name="description" 
+                                style="min-height: 150px; border: 1px solid #838588;"  
+                                class="form-control w-70 @error('description') is-invalid @enderror"
+                                placeholder="Ingrese una descripción del rol">{{ old('description', $role->description) }}</textarea>
                             
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
+                        </div>                        
 
                         <div class="form-group row mb-0">
                             <div class="col-md-12 text-center">

@@ -496,6 +496,7 @@
                                         id="bio" 
                                         class="form-control"  
                                         placeholder="Ingrese una pequeña reseña" 
+                                        style="min-height: 150px; border: 1px solid #838588;" 
                                         rows="12">{{ old('bio', $user->bio) }}</textarea>
                                     </div>
 

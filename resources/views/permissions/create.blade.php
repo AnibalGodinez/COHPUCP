@@ -54,7 +54,7 @@
                             id="description" 
                             name="description" 
                             class="form-control" 
-                            style="min-height: 150px" 
+                            style="min-height: 150px; border: 1px solid #838588;" 
                             placeholder="Ingrese la descripción del permiso">{{ old('description') }}</textarea>
                         </div>
 

@@ -26,15 +26,22 @@
                             required>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="description"><strong>DESCRIPCIÓN DEL PERMISO</strong></label>
+                        <div class="form-group">
+                            <label for="description"><strong>DESCRIPCIÓN DEL ROL</strong></label>
                             <textarea 
                                 id="description" 
                                 name="description" 
-                                style="min-height: 150px" 
+                                style="min-height: 150px; border: 1px solid #838588;"  
                                 class="form-control w-70 @error('description') is-invalid @enderror"
-                                placeholder="Ingrese la descripción del permiso">{{ old('description', $permission->description) }}</textarea>
-                        </div>
+                                placeholder="Ingrese una descripción del permiso">{{ old('description', $permission->description) }}</textarea>
+                            
+                            @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div> 
+                        
                         
 
                         <div class="form-group row mb-0">
