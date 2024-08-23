@@ -157,11 +157,6 @@ use App\Http\Controllers\Auth\VerificationController;
 	// RUTAS DE INSCRIPCIONES DE FIRMAS
 	Route::group(['middleware' => ['auth']], function () {
 		Route::resource('inscripcion_firmas', InscripcionFirmaController::class);
-
-		// Ruta para previsualizar el PDF de la solicitud
-		Route::get('/previsualizacion/pdf/inscripcion/{id}', [InscripcionFirmaController::class, 'preview'])->name('inscripcion.pdf.preview');
-		// Ruta para descargar el PDF de la solicitud
-		Route::get('/descargar/pdf/inscripcion/{id}', [InscripcionFirmaController::class, 'download'])->name('inscripcion.pdf.download');
 	});
 
 	// RUTAS DE UNIVERSIDADES
