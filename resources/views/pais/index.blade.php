@@ -20,14 +20,15 @@
                             </div>
                         @endif
                                 
-                        <table class="table table-bordered table-striped">
-                            <thead>
+                        <table class="table table-bordered table-striped" style=" border-spacing: 8cm;">
+                            <thead style="background-color: #3288af;">
                                 <tr>
-                                    <th class="text-center">Nombre del país</th>
-                                    <th class="text-center">Código telefónico</th>
-                                    <th class="text-center">Acciones</th>
+                                    <th class="text-center" style="color: white;">Nombre del país</th>
+                                    <th class="text-center" style="color: white;">Código telefónico</th>
+                                    <th class="text-center" style="color: white;">Acciones</th>
                                 </tr>
                             </thead>
+                            
 
                             <tbody>
                                 @foreach ($paises as $pais)

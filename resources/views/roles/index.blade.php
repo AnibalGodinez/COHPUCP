@@ -21,8 +21,7 @@
                         </div>
                     </div>
                     @endif
-
-                    
+                  
                     <div class="card-body">
                         {{-- Formulario de búsqueda --}}
                         <form action="{{ url('roles') }}" method="GET" class="form-inline mt-3">

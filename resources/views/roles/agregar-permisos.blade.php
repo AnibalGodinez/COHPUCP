@@ -7,7 +7,7 @@
             <div class="card shadow-lg">
                 <div class="card-header bg-warning text-white text-center">
                     <h3>ASIGNAR PERMISOS : Rol {{ $role->name }}</h3>
-                </div>
+                </div><br>
 
                 <!-- Mensaje de éxito -->
                 @if(session('status'))
@@ -32,7 +32,7 @@
                                 <span class="tex-danger">{{ $message }}</span>
                             @enderror
 
-                            <div class="text-center">
+                            <div class="text-center" style="text-decoration: underline;">
                                 <strong>LISTA DE PERMISOS</strong>
                             </div>
                             

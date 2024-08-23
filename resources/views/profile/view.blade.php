@@ -9,17 +9,17 @@
                         <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>MI PERFIL</strong></h3>
                     </div><br>
 
-                    <!-- Mensaje de éxito -->
-                    @if(session('success'))
-                    <div class="text-center">
-                        <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
-                            {{ session('success') }}
-                            <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
+                        <!-- Mensaje de éxito -->
+                        @if(session('success'))
+                        <div class="text-center">
+                            <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
+                                {{ session('success') }}
+                                <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    @endif
+                        @endif
 
                         <div class="row">
                             <div class="col-md-3 d-flex justify-content-start" style="margin-top: 15px;">
@@ -32,6 +32,7 @@
                                         @endif
                                         <div class="d-flex justify-content-center mb-3">
                                             <h4 class="card-title mb-0 mr-2" style="text-transform: uppercase;"><strong><strong>{{ Auth::user()->name }}</strong></strong></h4>
+                                            <h4 class="card-title mb-0 mr-2" style="text-transform: uppercase;"><strong><strong>{{ Auth::user()->name2 }}</strong></strong></h4>
                                             <h4 class="card-title mb-0" style="text-transform: uppercase;"><strong><strong>{{ Auth::user()->apellido }}</strong></strong></h4>
                                         </div><br>
                                         <p class="card-text">{!! nl2br(e(Auth::user()->bio)) !!}</p><br>

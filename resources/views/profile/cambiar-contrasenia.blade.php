@@ -49,7 +49,7 @@
                                         <a href="{{ Auth::user()->twitter_link }}" target="_blank" class="mx-2" aria-label="Twitter" style="color: #00A2F3">
                                             <i class="fab fa-twitter fa-2x"></i>
                                         </a>
-                                    </div>
+                                    </div><br><br><br>
                                 </div>
                             </div>
                         </div>
