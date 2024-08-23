@@ -29,14 +29,6 @@
 
                             <div class="form-group row">
 
-                                <div class="card-header" style="margin-left: 25px;">
-                                    <h4>Yo como licenciado(a) en Contaduría Pública por este medio solicito al Colegio Hondureño de
-                                        Profesionales Universitarios en Contaduría Pública (COHPUCP) ser inscrito como miembro(a) de este Colegio y me
-                                        comprometo al estricto cumplimiento de lo establecido en la Ley Orgánica, contenida en el Decreto 19-93
-                                        publicado en el Diario Oficial la Gaceta número 27043 de fecha 16 de mayo de 1993, para tal efecto proporcionaré la
-                                        siguiente información.</h4>
-                                </div>
-
                                 <!-- I. Datos Personales -->
                                 <div class="col-12 text-center mb-0">
                                     <h4 style="text-decoration: underline;">I. DATOS PERSONALES</h4>
@@ -568,46 +560,46 @@
                                 </div>
                            
                                 <!-- PUBLICACIÓN DE DOCUMENTOS -->
-                                <div class="col-md-4">
-                                    <label for="publicacion_documentos">
-                                        <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
-                                        <strong>PUBLICACIÓN DE DOCUMENTOS</strong>
-                                    </label>
-                                    <textarea name="publicacion_documentos" id="publicacion_documentos" class="form-control @error('publicacion_documentos') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;">{{ old('publicacion_documentos') }}</textarea>
-                                    @error('publicacion_documentos')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                            <div class="col-md-4">
+                                <label for="publicacion_documentos">
+                                    <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
+                                    <strong>PUBLICACIÓN DE DOCUMENTOS</strong>
+                                </label>
+                                <textarea name="publicacion_documentos" id="publicacion_documentos" class="form-control @error('publicacion_documentos') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;">{{ old('publicacion_documentos') }}</textarea>
+                                @error('publicacion_documentos')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                                <!-- PUBLICACIONES -->
-                                <div class="col-md-4">
-                                    <label for="publicaciones">
-                                        <i class="fas fa-newspaper" style="margin-right: 8px;"></i>
-                                        <strong>PUBLICACIONES</strong>
-                                    </label>
-                                    <textarea name="publicaciones" id="publicaciones" class="form-control @error('publicaciones') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;">{{ old('publicaciones') }}</textarea>
-                                    @error('publicaciones')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                            <!-- PUBLICACIONES -->
+                            <div class="col-md-4">
+                                <label for="publicaciones">
+                                    <i class="fas fa-newspaper" style="margin-right: 8px;"></i>
+                                    <strong>PUBLICACIONES</strong>
+                                </label>
+                                <textarea name="publicaciones" id="publicaciones" class="form-control @error('publicaciones') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;">{{ old('publicaciones') }}</textarea>
+                                @error('publicaciones')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                                <!-- PUBLICACIÓN DE UN LIBRO -->
-                                <div class="col-md-4">
-                                    <label for="publicacion_libro">
-                                        <i class="fas fa-book" style="margin-right: 8px;"></i>
-                                        <strong>PUBLICACIÓN DE UN LIBRO</strong>
-                                    </label>
-                                    <textarea name="publicacion_libro" id="publicacion_libro" class="form-control @error('publicacion_libro') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;">{{ old('publicacion_libro') }}</textarea>
-                                    @error('publicacion_libro')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                            <!-- PUBLICACIÓN DE UN LIBRO -->
+                            <div class="col-md-4">
+                                <label for="publicacion_libro">
+                                    <i class="fas fa-book" style="margin-right: 8px;"></i>
+                                    <strong>PUBLICACIÓN DE UN LIBRO</strong>
+                                </label>
+                                <textarea name="publicacion_libro" id="publicacion_libro" class="form-control @error('publicacion_libro') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;">{{ old('publicacion_libro') }}</textarea>
+                                @error('publicacion_libro')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
                             </div>   
     

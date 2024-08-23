@@ -187,7 +187,7 @@
                 
                     <!-- Submenú para Inscribirse al cohpucp -->
                     <div class="dropdown-menu" id="subMenuInscribirseCohpucp" style="position: absolute; top: 100%; left: 100%; margin-left: 209px; display: none; z-index: 1000;">
-                        <a class="dropdown-item text-uppercase" href="#">Inscripción de firma de Auditoría</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('inscripcion_firmas.create') }}">Inscripción de firma de Auditoría</a>
                         <a class="dropdown-item text-uppercase" href="{{ route('inscripciones.create') }}">Inscripción de agremiado</a>
                     </div>
                 
@@ -419,6 +419,11 @@
                         <li class="dropdown-item text-uppercase">
                             <a href="{{ route('inscripciones.index') }}" class="nav-link" style="color: black;">
                                 Ver Inscripciones
+                            </a>
+                        </li>
+                        <li class="dropdown-item text-uppercase">
+                            <a href="{{ route('inscripcion_firmas.index') }}" class="nav-link" style="color: black;">
+                                Ver Inscripciones Firmas
                             </a>
                         </li>
                         <!-- Aquí puedes agregar más elementos de notificación si es necesario -->

@@ -1,26 +1,27 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\PaisController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SexoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CursoController;
-use App\Http\Controllers\CapacitacioneController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\PaisController;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\SecurityQuestionController;
-use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\WelcomeContentController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DashboardContentController;
-use App\Http\Controllers\FooterContentController;
 use App\Http\Controllers\IdiomaController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\UniversidadController;
-use App\Http\Controllers\PDFController;
+use App\Http\Controllers\CapacitacioneController;
+use App\Http\Controllers\FooterContentController;
 use App\Http\Controllers\PDFInscripcionController;
-use App\Http\Controllers\SexoController;
+use App\Http\Controllers\WelcomeContentController;
+use App\Http\Controllers\DashboardContentController;
+use App\Http\Controllers\InscripcionFirmaController;
+use App\Http\Controllers\SecurityQuestionController;
+use App\Http\Controllers\Auth\VerificationController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -151,6 +152,16 @@ use App\Http\Controllers\SexoController;
 		Route::get('/previsualizacion/pdf/inscripcion/{id}', [PDFInscripcionController::class, 'preview'])->name('inscripcion.pdf.preview');
 		// Ruta para descargar el PDF de la solicitud
 		Route::get('/descargar/pdf/inscripcion/{id}', [PDFInscripcionController::class, 'download'])->name('inscripcion.pdf.download');
+	});
+
+	// RUTAS DE INSCRIPCIONES DE FIRMAS
+	Route::group(['middleware' => ['auth']], function () {
+		Route::resource('inscripcion_firmas', InscripcionFirmaController::class);
+
+		// Ruta para previsualizar el PDF de la solicitud
+		Route::get('/previsualizacion/pdf/inscripcion/{id}', [InscripcionFirmaController::class, 'preview'])->name('inscripcion.pdf.preview');
+		// Ruta para descargar el PDF de la solicitud
+		Route::get('/descargar/pdf/inscripcion/{id}', [InscripcionFirmaController::class, 'download'])->name('inscripcion.pdf.download');
 	});
 
 	// RUTAS DE UNIVERSIDADES
