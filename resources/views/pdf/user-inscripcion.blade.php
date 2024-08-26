@@ -54,10 +54,12 @@
     <div class="container">
         <!-- Encabezado -->
         <div class="header-container">
-            <div>
-                <h3>COLEGIO HONDUREÑO DE PROFESIONALES UNIVERSITARIOS EN CONTADURÍA PÚBLICA (COHPUCP)</h3>
-            </div>
-            <div class="photo-frame">
+            <div style="margin-left: 55px">
+                <h3>COLEGIO HONDUREÑO DE PROFESIONALES <br> UNIVERSITARIOS EN CONTADURÍA PÚBLICA <br> 
+                    <span style="margin-left: 170px; display: inline-block;">(COHPUCP)</span>
+                </h3>
+            </div>            
+            <div class="photo-frame" style="margin-left: 560px; margin-top:-200px">
                 @if($inscripcion->imagen_tamano_carnet)
                     @php
                         $imagenCarnet = json_decode($inscripcion->imagen_tamano_carnet);
@@ -151,7 +153,7 @@
             <p><strong>Comisiones:</strong> {{ $inscripcion->comisiones }}</p>
             <p><strong>Representaciones:</strong> {{ $inscripcion->representaciones }}</p>
             <p><strong>Delegaciones:</strong> {{ $inscripcion->delegaciones }}</p>
-        </div><br>
+        </div><br><br>
 
         <!-- Otros -->
         <div class="section">
