@@ -113,7 +113,7 @@ class UsersTableSeeder extends Seeder
         // Asignar el rol Administrador al usuario
         $user->assignRole($role);
 
-        // Crear otro usuario de prueba
+        // Crear usuarios de prueba
         $users = [
             [
                 'name' => 'Johan',
@@ -130,6 +130,36 @@ class UsersTableSeeder extends Seeder
                 'email' => 'johan_godinez@yahoo.com',
                 'estado' => 'activo',
                 'password' => Hash::make('Prueba%292'),
+            ],
+            [
+                'name' => 'Carlos',
+                'name2' => 'Alberto',
+                'apellido' => 'Pavón',
+                'apellido2' => 'Plummer',
+                'numero_identidad' => '0901-1978-32114',
+                'rtn' => '0901-1978-321145',
+                'sexo_id' => 1,
+                'fecha_nacimiento' => '1978-02-07',
+                'telefono' => '2456-1122',
+                'telefono_celular' => '9955-7890',
+                'email' => 'carlospavon@gmail.com',
+                'estado' => 'activo',
+                'password' => Hash::make('Prueba%293'),
+            ],
+            [
+                'name' => 'Marisa',
+                'name2' => 'Elizabeth',
+                'apellido' => 'Pineda',
+                'apellido2' => 'Pavón',
+                'numero_identidad' => '0801-1998-55148',
+                'rtn' => '0801-1998-551489',
+                'sexo_id' => 2,
+                'fecha_nacimiento' => '1998-04-02',
+                'telefono' => '2277-7840',
+                'telefono_celular' => '9931-7530',
+                'email' => 'marisapineda@gmail.com',
+                'estado' => 'activo',
+                'password' => Hash::make('Prueba%294'),
             ],
         ];
 

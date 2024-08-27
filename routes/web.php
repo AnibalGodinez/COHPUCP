@@ -22,6 +22,7 @@ use App\Http\Controllers\DashboardContentController;
 use App\Http\Controllers\InscripcionFirmaController;
 use App\Http\Controllers\SecurityQuestionController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\NumeroColegiacionController;
 
 	// RUTA DE BIENVENIDA
 	Route::get('/', function () {
@@ -167,6 +168,11 @@ use App\Http\Controllers\Auth\VerificationController;
 	// RUTAS DE UNIVERSIDADES
 	Route::group(['middleware' => ['auth']], function () {
 		Route::resource('sexos', SexoController::class);
+	});
+
+	// RUTAS DE UNIVERSIDADES
+	Route::group(['middleware' => ['auth']], function () {
+		Route::resource('numero_colegiacion', NumeroColegiacionController::class);
 	});
 
 

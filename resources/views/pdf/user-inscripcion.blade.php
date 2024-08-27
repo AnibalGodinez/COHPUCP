@@ -75,7 +75,11 @@
             </div>
         </div>
         
-        <p>Yo <strong>{{ $inscripcion->name }} {{ $inscripcion->name2 }} {{ $inscripcion->apellido }} {{ $inscripcion->apellido2 }}</strong>, licenciado(a) en Contaduría Pública por este medio solicito al Colegio Hondureño de Profesionales Universitarios en Contaduría Pública (COHPUCP) ser inscrito como miembro de este Colegio y me comprometo al estricto cumplimiento de lo establecido en la Ley Orgánica, contenida en el Decreto 19-93 publicado en el Diario Oficial la Gaceta número 27043 de fecha 16 de mayo de 1993, para tal efecto proporcionaré la siguiente información.</p><br>
+        <p>El abajo firmante licenciado(a) en Contaduría Pública por este medio solicita al Colegio Hondureño de
+            Profesionales Universitarios en Contaduría Pública (COHPUCP) ser inscrito como miembro de este Colegio y se
+            compromete al estricto cumplimiento de lo establecido en la Ley Orgánica, contenida en el Decreto 19-93
+            publicado en el Diario Oficial la Gaceta número 27043 de fecha 16 de mayo de 1993, para tal efecto proporciona la
+            siguiente información.</p><br>
 
         <!-- Datos Personales -->
         <div class="section">

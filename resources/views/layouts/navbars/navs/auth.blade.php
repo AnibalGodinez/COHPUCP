@@ -401,6 +401,7 @@
                         <a class="dropdown-item text-uppercase {{request()->routeIs('idiomas.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('idiomas.index') }}">Idiomas</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('universidades.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('universidades.index') }}">Universidades</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('cursos.index') }}">Cursos</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('numero_colegiacion.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('numero_colegiacion.index') }}">Asignar Nº colegiación</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('categorias.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('categorias.index') }}">Categorías</a> 
                         <a class="dropdown-item text-uppercase {{request()->routeIs('dashboard-content.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('dashboard-content.index') }}">Dasboard</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('welcome-content.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('welcome-content.index') }}">Home</a> 

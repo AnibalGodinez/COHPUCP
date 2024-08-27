@@ -34,6 +34,7 @@
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
+                                            <th class="text-center">ID</th>
                                             <th class="text-center">Nombre completo</th>
                                             <th class="text-center">DNI</th>
                                             <th class="text-center">Correo electrónico</th>
@@ -47,6 +48,7 @@
                                     <tbody>
                                         @foreach ($inscripciones as $inscripcion)
                                             <tr>
+                                                <td class="text-center">{{ $inscripcion->id }}</td>
                                                 <td class="text-center">
                                                     {{ $inscripcion->name }} 
                                                     @if($inscripcion->name2) {{ $inscripcion->name2 }} @endif
