@@ -554,13 +554,13 @@
 
                         <a href="{{ route('inscripciones.index') }}" class="btn btn-info">
                             <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
-                            Volver a la lista de solicitudes
+                            Volver
                         </a>
 
                         <!-- Botón para previsualizar el PDF -->
                         <a href="{{ route('inscripcion.pdf.preview', ['id' => $inscripcion->id]) }}" class="btn btn-secondary">
                             <i class="fas fa-eye" style="margin-right: 8px;"></i>
-                            Previsualizar PDF
+                            Ver PDF
                         </a>
                 
                         <!-- Botón para descargar el PDF -->

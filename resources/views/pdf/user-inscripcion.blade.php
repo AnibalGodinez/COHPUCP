@@ -80,7 +80,7 @@
         <!-- Datos Personales -->
         <div class="section">
             <div class="section text-center">
-                <h4>I. DATOS PERSONALES</h4>
+                <h4 style="text-decoration: underline;">I. DATOS PERSONALES</h4>
             </div>
             <p><strong>Nombre completo:</strong> {{ $inscripcion->name }} {{ $inscripcion->name2 }} {{ $inscripcion->apellido }} {{ $inscripcion->apellido2 }}</p>
             <p><strong>Numero de identidad:</strong> {{ $inscripcion->numero_identidad }}</p>
@@ -90,17 +90,17 @@
             <p><strong>Teléfono fijo:</strong> {{ $inscripcion->telefono }}</p>
             <p><strong>Celular:</strong> {{ $inscripcion->telefono_celular }}</p>
             <p><strong>Correo electrónico:</strong> {{ $inscripcion->email }}</p>
-        </div><br>
+        </div>
 
         <!-- Datos Profesionales -->
         <div class="section">
             <div class="section text-center">
-                <h3>II. DATOS PROFESIONALES</h3>
+                <h4 style="text-decoration: underline;">II. DATOS PROFESIONALES</h4>
             </div>
             <p><strong>Universidad donde se graduó:</strong> {{ $inscripcion->universidad }}</p>
             <p><strong>Fecha de graduación:</strong> {{ \Carbon\Carbon::parse($inscripcion->fecha_graduacion)->format('d') }} de {{ \Carbon\Carbon::parse($inscripcion->fecha_graduacion)->translatedFormat('F') }} del {{ \Carbon\Carbon::parse($inscripcion->fecha_graduacion)->format('Y') }}</p>
-            <p><strong>Nombre de la empresa donde labora actualmente:</strong> {{ $inscripcion->nombre_empresa_trabajo_actual }}</p>
-            <p><strong>Cargo:</strong> {{ $inscripcion->cargo }}</p>
+            <p><strong>Empresa donde labora actualmente:</strong> {{ $inscripcion->nombre_empresa_trabajo_actual }}</p>
+            <p><strong>Cargo que desempeña:</strong> {{ $inscripcion->cargo }}</p>
             <p><strong>Dirección de la empresa:</strong> {{ $inscripcion->direccion_empresa }}</p>
             <p><strong>Correo de la empresa:</strong> {{ $inscripcion->correo_empresa }}</p>
             <p><strong>Teléfono de la empresa:</strong> {{ $inscripcion->telefono_empresa }}</p>
@@ -110,55 +110,55 @@
         <!-- Información Adicional -->
         <div class="section">
             <div class="section text-center">
-                <h4>III. INFORMACIÓN ADICIONAL</h4>
+                <h4 style="text-decoration: underline;">III. INFORMACIÓN ADICIONAL</h4>
             </div>
             <p><strong>Especialidad 1:</strong> {{ $inscripcion->especialidad_1 }}</p>
             <p><strong>Lugar de la especialidad:</strong> {{ $inscripcion->lugar_especialidad_1 }}</p>
-            <p><strong>Fecha de la especialidad:</strong> {{ \Carbon\Carbon::parse($inscripcion->fecha_especialidad_1)->format('d') }} de {{ \Carbon\Carbon::parse($inscripcion->fecha_especialidad_1)->translatedFormat('F') }} del {{ \Carbon\Carbon::parse($inscripcion->fecha_especialidad_1)->format('Y') }}</p><br>
+            <p><strong>Fecha de la especialidad:</strong> {{ \Carbon\Carbon::parse($inscripcion->fecha_especialidad_1)->format('d') }} de {{ \Carbon\Carbon::parse($inscripcion->fecha_especialidad_1)->translatedFormat('F') }} del {{ \Carbon\Carbon::parse($inscripcion->fecha_especialidad_1)->format('Y') }}</p>
             
             <p><strong>Especialidad 2:</strong> {{ $inscripcion->especialidad_2 }}</p>
             <p><strong>Lugar de la especialidad:</strong> {{ $inscripcion->lugar_especialidad_2 }}</p>
             <p><strong>Fecha de la especialidad:</strong> {{ \Carbon\Carbon::parse($inscripcion->fecha_especialidad_2)->format('d') }} de {{ \Carbon\Carbon::parse($inscripcion->fecha_especialidad_2)->translatedFormat('F') }} del {{ \Carbon\Carbon::parse($inscripcion->fecha_especialidad_2)->format('Y') }}</p>
-        </div><br>
+        </div>
 
         <!-- Cursos de Especialización -->
         <div class="section">
             <div class="section text-center">
-                <h4>IV. CURSOS DE ESPECIALIZACIÓN</h4>
+                <h4 style="text-decoration: underline;">IV. CURSO DE ESPECIALIZACIÓN</h4>
             </div>
             <p><strong>Nombre del curso de especialización:</strong> {{ $inscripcion->nombre_curso_especializacion }}</p>
             <p><strong>Lugar del curso:</strong> {{ $inscripcion->lugar_curso }}</p>
             <p><strong>Fecha del curso:</strong> {{ \Carbon\Carbon::parse($inscripcion->fecha_curso)->format('d') }} de {{ \Carbon\Carbon::parse($inscripcion->fecha_curso)->translatedFormat('F') }} del {{ \Carbon\Carbon::parse($inscripcion->fecha_curso)->format('Y') }}</p>
-        </div><br>
+        </div>
 
         <!-- Experiencia Profesional -->
         <div class="section">
             <div class="section text-center">
-                <h4>V. EXPERIENCIA PROFESIONAL</h4>
+                <h4 style="text-decoration: underline;">V. EXPERIENCIA PROFESIONAL</h4>
             </div>
             <p><strong>Nombre de la empresa 1:</strong> {{ $inscripcion->nombre_empresa1 }}</p>
             <p><strong>Cargo:</strong> {{ $inscripcion->cargo_empresa1 }}</p>
-            <p><strong>Duración:</strong> {{ $inscripcion->duración_empresa1 }}</p><br>
+            <p><strong>Duración:</strong> {{ $inscripcion->duración_empresa1 }}</p>
 
             <p><strong>Nombre de la empresa 2:</strong> {{ $inscripcion->nombre_empresa2 }}</p>
             <p><strong>Cargo:</strong> {{ $inscripcion->cargo_empresa2 }}</p>
             <p><strong>Duración:</strong> {{ $inscripcion->duración_empresa2 }}</p>
-        </div><br>
+        </div>
 
         <!-- Misiones Desempeñadas -->
         <div class="section">
             <div class="section text-center">
-                <h4>VI. MISIONES DESEMPEÑADAS</h4>
+                <h4 style="text-decoration: underline;">VI. MISIONES DESEMPEÑADAS</h4>
             </div>
             <p><strong>Comisiones:</strong> {{ $inscripcion->comisiones }}</p>
             <p><strong>Representaciones:</strong> {{ $inscripcion->representaciones }}</p>
             <p><strong>Delegaciones:</strong> {{ $inscripcion->delegaciones }}</p>
-        </div><br><br>
+        </div>
 
         <!-- Otros -->
         <div class="section">
             <div class="section text-center">
-                <h4>VII. OTROS</h4>
+                <h4 style="text-decoration: underline;">VII. OTROS</h4>
             </div>
             <p><strong>Publicación de documentos:</strong> {{ $inscripcion->publicacion_documentos }}</p>
             <p><strong>Publicaciones:</strong> {{ $inscripcion->publicaciones }}</p>
@@ -168,7 +168,7 @@
         <!-- Imágenes del título universitario -->
         <div class="page-break">
             <div class="section text-center">
-                <h4>FOTOS DEL TÍTULO UNIVERSITARIO</h4>
+                <h4 style="text-decoration: underline;">TÍTULO UNIVERSITARIO</h4>
                 @if($inscripcion->imagen_titulo)
                 @php
                     $imagenes = json_decode($inscripcion->imagen_titulo);
@@ -200,7 +200,7 @@
         <!-- Imágenes del dni -->
         <div class="page-break">
             <div class="section text-center">
-                <h4>FOTOS DEL DNI</h4><br><br>
+                <h4 style="text-decoration: underline;">DNI DEL SOLICITANTE</h4><br><br>
                 @if($inscripcion->imagen_dni)
                     @php
                         $imagenes = json_decode($inscripcion->imagen_dni);
@@ -232,7 +232,7 @@
         <!-- Imágenes tamaño carnet -->
         <div class="page-break">
             <div class="section text-center">
-                <h4>FOTOS TAMAÑO CARNET</h4><br><br>
+                <h4 style="text-decoration: underline;">FOTOS TAMAÑO CARNET</h4><br><br>
                 @if($inscripcion->imagen_tamano_carnet)
                     @php
                         $imagenes = json_decode($inscripcion->imagen_tamano_carnet);
@@ -264,7 +264,7 @@
         <!-- Imágenes beneficiario 1 -->
         <div class="page-break">
             <div class="section text-center">
-                <h4>FOTOS DEL DNI DEL BENEFICIARIO 1</h4><br><br>
+                <h4 style="text-decoration: underline;">DNI DEL BENEFICIARIO 1</h4><br><br>
                 @if($inscripcion->imagen_dni_beneficiario1)
                     @php
                         $imagenes = json_decode($inscripcion->imagen_dni_beneficiario1);
@@ -296,7 +296,7 @@
         <!-- Imágenes beneficiario 2 -->
         <div class="page-break">
             <div class="section text-center">
-                <h4>FOTOS DEL DNI DEL BENEFICIARIO 2</h4><br><br>
+                <h4 style="text-decoration: underline;">DNI DEL BENEFICIARIO 2</h4><br><br>
                 @if($inscripcion->imagen_dni_beneficiario2)
                     @php
                         $imagenes = json_decode($inscripcion->imagen_dni_beneficiario2);
@@ -328,7 +328,7 @@
         <!-- Imágenes beneficiario 3 -->
         <div class="page-break">
             <div class="section text-center">
-                <h4>FOTOS DEL DNI DEL BENEFICIARIO 3</h4><br><br>
+                <h4 style="text-decoration: underline;">DNI DEL BENEFICIARIO 3</h4><br><br>
                 @if($inscripcion->imagen_dni_beneficiario3)
                     @php
                         $imagenes = json_decode($inscripcion->imagen_dni_beneficiario3);
@@ -360,7 +360,7 @@
         <!-- Imágenes del rtn -->
         <div class="page-break">
             <div class="section text-center">
-                <h4>FOTO DEL RTN</h4><br><br>
+                <h4 style="text-decoration: underline;">FOTO DEL RTN</h4><br><br>
                 @if($inscripcion->imagen_rtn)
                     @php
                         $imagenes = json_decode($inscripcion->imagen_rtn);
@@ -373,12 +373,17 @@
                 @else
                     <p>No Disponible</p>
                 @endif
+            </div>
+        </div>
 
-                <h4>CURRICULUM VITAE</h4><br><br>
+        <!-- Curriculun Vitae -->
+        <div class="page-break">
+            <div class="section text-center">
+                <h4 style="text-decoration: underline;">CURRICULUM VITAE</h4><br><br>
                 @if($inscripcion->cv)
                     <iframe src="{{ asset('storage/' . $inscripcion->cv) }}" 
                         style="width: 100%; height: 100%; border: none;" frameborder="0">
-                        Para ver el Curriculum Vitae, haz clic en el enlace y luego podrás descargarlo: <a href="{{ asset('storage/' . $inscripcion->cv) }}"><br><br>Ver curriculun vitae</a>
+                        Para ver el Curriculum Vitae, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcion->cv) }}"><br><br>Ver curriculun vitae</a>
                     </iframe>
                 @else
                     <p>No Disponible</p>
@@ -386,15 +391,13 @@
             </div>
         </div>
 
-
         <!-- Autorización -->
         <div class="page-break"><br><br>
             <div class="section text-center">
-                <h4 style="text-decoration: underline;">AUTORIZACIÓN</h4>
+                <h3 style="text-decoration: underline;">AUTORIZACIÓN</h3>
             </div>
 
             <div>
-
                 <p>
                     El <strong>Colegio Hondureño de Profesionales Universitarios en Contaduría Pública</strong> me otorga el
                     beneficio del Seguro de Vida Colectivo; en caso de retrasarme más de tres (03) meses en el pago de
@@ -409,19 +412,22 @@
                     2) El COHPUCP no es responsable por las denegaciones de primer ingreso o reingreso a la Póliza de
                     Seguro de Vida Colectivo.
                 </p>
-
-            </div><br>
+            </div><br><br>
 
             <div class="section text-center">
-                <!-- Firma -->
-                <p><strong></strong> ________________________________________</p>
+                <!-- Firma solicitante -->
+                <p><strong></strong> ________________________________________ </p>
                 <p><strong></strong> Firma del solicitante</p><br>
+            </div>
+
+            <div class="section text-center">
+                <!-- Firma secretario -->
+                <p><strong></strong> ________________________________________ </p>
+                <p><strong></strong> Firma del secretario(a)</p><br><br>
                 <p><strong></strong> {{ \Carbon\Carbon::now()->format('d') }} de {{ \Carbon\Carbon::now()->translatedFormat('F') }} del {{ \Carbon\Carbon::now()->format('Y') }}</p>
             </div>
         </div>
 
-
     </div>
-
 </body>
 </html>
