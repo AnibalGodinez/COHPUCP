@@ -11,7 +11,6 @@ class CreateInscripcionesTable extends Migration
     {
         Schema::create('inscripciones', function (Blueprint $table) {
             $table->id();
-            $table->string('num_colegiacion')->nullable();
             $table->date('fecha_inscripcion');
 
             $table->unsignedBigInteger('user_id'); // Relación con la tabla de usuarios

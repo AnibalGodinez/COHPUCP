@@ -13,7 +13,6 @@ class Inscripcion extends Model
 
     protected $fillable = [
         'user_id',
-        'num_colegiacion',
         'fecha_inscripcion',
 
         // I. Datos Personales

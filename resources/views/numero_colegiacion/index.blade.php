@@ -1,14 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid mt-8">
-        <div class="row" style="margin-top: 90px">
-            <div class="col-md-12">
-                <div class="card m-7">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <h3>LISTA DE USUARIOS SIN Nº DE COLEGIACIÓN</h3>
-                        </div>
+<div class="container-fluid mt-5">
+    <div class="row" style="margin-top: 90px">
+        <div class="col-md-12">
+            <div class="card mt-7">
+                <div class="card-body">
+                    <h3 class="text-center">LISTA DE USUARIOS SIN NÚMERO DE COLEGIACIÓN</h3>
+
+                            <!-- Formulario de búsqueda -->
+                            <form action="{{ route('numero_colegiacion.index') }}" method="GET" class="form-inline">
+                                <input type="text" name="search" class="form-control" placeholder="Buscar..." value="{{ request('search') }}">
+                                <button class="btn btn-info btn-round btn-simple">
+                                    <i class="tim-icons icon-zoom-split"></i> Buscar
+                                </button>
+                            </form>
+
 
                         <!-- Mensaje de éxito -->
                         @if(session('status'))
@@ -23,25 +30,35 @@
                         @endif
 
                         <table class="table table-bordered table-striped">
-                            <thead>
+                            <thead style="background-color: #3288af;">
                                 <tr>
-                                    <th class="text-center">ID</th>
-                                    <th class="text-center">Usuario</th>
-                                    <th class="text-center">Email</th>
-                                    <th class="text-center">Asignar</th>
+                                    <th class="text-center" style="color: white;">ID</th>
+                                    <th class="text-center" style="color: white;">Usuario</th>
+                                    <th class="text-center" style="color: white;">DNI</th>
+                                    <th class="text-center" style="color: white;">Celular</th>
+                                    <th class="text-center" style="color: white;">Email</th>
+                                    <th class="text-center" style="color: white;">Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($usuariosSinColegiacion as $usuario)
+                                @forelse ($usuariosSinColegiacion as $usuario)
                                     <tr>
                                         <td class="text-center">{{ $usuario->id }}</td>
                                         <td class="text-center">{{ $usuario->name }} {{ $usuario->name2 }} {{ $usuario->apellido }} {{ $usuario->apellido2 }}</td>
+                                        <td class="text-center">{{ $usuario->numero_identidad }}</td>
+                                        <td class="text-center">{{ $usuario->telefono_celular }}</td>
                                         <td class="text-center">{{ $usuario->email }}</td>
                                         <td class="text-center">
-                                            <a href="{{ route('numero_colegiacion.create', ['user_id' => $usuario->id]) }}" class="btn btn-info">Asignar Número de Colegiación</a>
-                                        </td>
+                                            <a href="{{ route('numero_colegiacion.create', ['user_id' => $usuario->id]) }}" class="btn btn-default">
+                                                <i class="fas fa-arrow-right" style="margin-right: 8px;"></i> Ir asignar
+                                            </a>
+                                        </td>                                        
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="6" class="text-center">No se encontraron usuarios</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
