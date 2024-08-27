@@ -10,48 +10,35 @@ class NumeroColegiacionController extends Controller
 {
     public function index()
     {
-        $numeros = NumeroColegiacion::with('user')->get();
-        return view('numero_colegiacion.index', compact('numeros'));
+        // Obtener solo los usuarios que no tienen número de colegiación asignado
+        $usuariosSinColegiacion = User::whereNull('numero_colegiacion')->get();
+
+        return view('numero_colegiacion.index', compact('usuariosSinColegiacion'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        $users = User::doesntHave('numeroColegiacion')->get();
-        return view('numero_colegiacion.create', compact('users'));
+        $user = User::findOrFail($request->user_id);
+
+        return view('numero_colegiacion.create', compact('user'));
     }
+
 
     public function store(Request $request)
     {
+        // Validar el campo número de colegiación
         $request->validate([
-            'numero_colegiacion' => 'required|unique:numero_colegiacion,numero_colegiacion',
-            'user_id' => 'required|exists:users,id|unique:numero_colegiacion,user_id',
+            'numero_colegiacion' => 'required|string|max:12|unique:users,numero_colegiacion',
+            'user_id' => 'required|exists:users,id',
         ]);
 
-        NumeroColegiacion::create($request->all());
+        // Encontrar al usuario y actualizar el número de colegiación
+        $user = User::findOrFail($request->user_id);
+        $user->numero_colegiacion = $request->numero_colegiacion;
+        $user->save();
 
-        return redirect()->route('numero_colegiacion.index')->with('success', 'Número de colegiación creado con éxito.');
+        // Redireccionar a la vista index con un mensaje de éxito
+        return redirect()->route('numero_colegiacion.index')->with('status', '¡El número de colegiación ha sido asignado con éxito al usuario!');
     }
 
-    public function edit(NumeroColegiacion $numeroColegiacion)
-    {
-        return view('numero_colegiacion.edit', compact('numeroColegiacion'));
-    }
-
-    public function update(Request $request, NumeroColegiacion $numeroColegiacion)
-    {
-        $request->validate([
-            'numero_colegiacion' => 'required|unique:numero_colegiacion,numero_colegiacion,' . $numeroColegiacion->id,
-        ]);
-
-        $numeroColegiacion->update($request->all());
-
-        return redirect()->route('numero_colegiacion.index')->with('success', 'Número de colegiación actualizado con éxito.');
-    }
-
-    public function destroy(NumeroColegiacion $numeroColegiacion)
-    {
-        $numeroColegiacion->delete();
-
-        return redirect()->route('numero_colegiacion.index')->with('success', 'Número de colegiación eliminado con éxito.');
-    }
 }

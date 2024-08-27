@@ -8,7 +8,8 @@
                 <div class="card-header text-white text-center">
                     <h3 class="card-title">
                         <strong>SOLICITUD DE INSCRIPCIÓN AL COLEGIO DE 
-                            <span class="text-info">{{ $inscripcion->name }} {{ $inscripcion->apellido }}</span>
+                            <span class="text-info">
+                                {{ $inscripcion->name }} {{ $inscripcion->apellido }}</span>
                         </strong>
                     </h3>
                 </div>
@@ -16,15 +17,6 @@
 
                 <div class="card-body">
                     <div class="row">
-
-                        <div class="card-header" style="margin-left: 25px;">
-                            <h4>Yo {{ $inscripcion->name }} {{ $inscripcion->name2 }}  {{ $inscripcion->apellido }} {{ $inscripcion->apellido2 }}, licenciado(a) en Contaduría Pública por este medio solicito al Colegio Hondureño de
-                                Profesionales Universitarios en Contaduría Pública (COHPUCP) ser inscrito como miembro(a) de este Colegio y me
-                                comprometo al estricto cumplimiento de lo establecido en la Ley Orgánica, contenida en el Decreto 19-93
-                                publicado en el Diario Oficial la Gaceta número 27043 de fecha 16 de mayo de 1993, para tal efecto proporcionaré la
-                                siguiente información.</h4>
-                        </div>
-
                         {{-- I. Datos Personales --}}
                         <div class="col-md-4 mb-4">
                             <div class="card shadow-lg" >
