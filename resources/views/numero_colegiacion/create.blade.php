@@ -75,7 +75,7 @@
                             </div>
                         </div>
 
-                        <!-- Script para formatear el campo número de colegiación -->
+                        <!-- Script del campo número de colegiación -->
                         <script>
                             document.getElementById('numero_colegiacion').addEventListener('input', function (e) {
                                 var input = e.target.value.replace(/\D/g, '');

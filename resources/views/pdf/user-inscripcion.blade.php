@@ -48,6 +48,12 @@
             height: auto;
             object-fit: contain;
         }
+        .number-colegiacion {
+            border: 1px solid #000;
+            padding: 5px;
+            display: inline-block;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -67,19 +73,34 @@
                     @if(!empty($imagenCarnet))
                         <img src="{{ public_path('storage/' . $imagenCarnet[0]) }}" alt="Foto Carnet">
                     @else
-                        <p>No Disponible</p>
+                        <p>No disponible</p>
                     @endif
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
             </div>
         </div>
-        
-        <p>El abajo firmante licenciado(a) en Contaduría Pública por este medio solicita al Colegio Hondureño de
-            Profesionales Universitarios en Contaduría Pública (COHPUCP) ser inscrito como miembro de este Colegio y se
-            compromete al estricto cumplimiento de lo establecido en la Ley Orgánica, contenida en el Decreto 19-93
-            publicado en el Diario Oficial la Gaceta número 27043 de fecha 16 de mayo de 1993, para tal efecto proporciona la
-            siguiente información.</p><br>
+
+        <!-- Campo Número de Colegiación -->
+        <div class="section">
+            <p><strong>NÚMERO DE AFILIACIÓN:</strong></p>
+            <div class="number-colegiacion" style="margin-left: 210px; margin-top:-45px; font-size: 1.3rem;">
+                @if($numero_colegiacion)
+                    @php
+                        // Formatear el número de colegiación
+                        $formattedNumber = preg_replace('/(\d{4})(\d{2})(\d{4})/', '$1-$2-$3', $numero_colegiacion);
+                    @endphp
+                    {{ $formattedNumber }}
+                @else
+                    <p style="margin: 0;">No disponible</p>
+                @endif
+            </div>
+            <p style="margin: 0;">El abajo firmante licenciado(a) en Contaduría Pública por este medio solicita al Colegio Hondureño de
+                Profesionales Universitarios en Contaduría Pública (COHPUCP) ser inscrito como miembro de este Colegio y se
+                compromete al estricto cumplimiento de lo establecido en la Ley Orgánica, contenida en el Decreto 19-93
+                publicado en el Diario Oficial la Gaceta número 27043 de fecha 16 de mayo de 1993, para tal efecto proporciona la
+                siguiente información.</p>
+        </div>
 
         <!-- Datos Personales -->
         <div class="section">
@@ -109,7 +130,7 @@
             <p><strong>Correo de la empresa:</strong> {{ $inscripcion->correo_empresa }}</p>
             <p><strong>Teléfono de la empresa:</strong> {{ $inscripcion->telefono_empresa }}</p>
             <p><strong>Extensión teléfonica de la empresa:</strong> {{ $inscripcion->extension_telefono_empresa }}</p>
-        </div><br>
+        </div>
 
         <!-- Información Adicional -->
         <div class="section">
@@ -180,10 +201,10 @@
                 @if(!empty($imagenes))
                     <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del Título Universitario Frontal" class="img-fluid" style="width: 100%; height: 94%; object-fit: contain;">
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
             @else
-                <p>No Disponible</p>
+                <p>No disponible</p>
             @endif
 
             @if($inscripcion->imagen_titulo)
@@ -193,10 +214,10 @@
                 @if(count($imagenes) > 1)
                     <img src="{{ public_path('storage/' . $imagenes[1]) }}" alt="Foto del Título Universitario Reverso" class="img-fluid" style="width: 100%; height: 100%; object-fit: contain;">
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
             @else
-                <p>No Disponible</p>
+                <p>No disponible</p>
             @endif
             </div>
         </div>
@@ -212,10 +233,10 @@
                     @if(!empty($imagenes))
                         <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del DNI Frontal" class="img-fluid" style="width: 80%; height: auto; object-fit: contain; margin-bottom: 80px;">
                     @else
-                        <p>No Disponible</p>
+                        <p>No disponible</p>
                     @endif
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
 
                 @if($inscripcion->imagen_dni)
@@ -225,10 +246,10 @@
                     @if(count($imagenes) > 1)
                         <img src="{{ public_path('storage/' . $imagenes[1]) }}" alt="Foto del DNI Reverso" class="img-fluid" style="width: 80%; height: auto; object-fit: contain;">
                     @else
-                        <p>No Disponible</p>
+                        <p>No disponible</p>
                     @endif
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
             </div>
         </div>
@@ -244,10 +265,10 @@
                     @if(!empty($imagenes))
                         <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto tamaño carnet 1" class="img-fluid" style="width: 50%; height: auto; object-fit: contain; margin-bottom: 60px;">
                     @else
-                        <p>No Disponible</p>
+                        <p>No disponible</p>
                     @endif
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
 
                 @if($inscripcion->imagen_tamano_carnet)
@@ -257,10 +278,10 @@
                     @if(count($imagenes) > 1)
                         <img src="{{ public_path('storage/' . $imagenes[1]) }}" alt="Foto tamaño carnet 2" class="img-fluid" style="width: 50%; height: auto; object-fit: contain;">
                     @else
-                        <p>No Disponible</p>
+                        <p>No disponible</p>
                     @endif
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
             </div>
         </div>
@@ -276,10 +297,10 @@
                     @if(!empty($imagenes))
                         <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del DNI del beneficiario 1 Frontal" class="img-fluid" style="width: 80%; height: auto; object-fit: contain; margin-bottom: 80px;">
                     @else
-                        <p>No Disponible</p>
+                        <p>No disponible</p>
                     @endif
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
 
                 @if($inscripcion->imagen_dni_beneficiario1)
@@ -289,10 +310,10 @@
                     @if(count($imagenes) > 1)
                         <img src="{{ public_path('storage/' . $imagenes[1]) }}" alt="Foto del DNI del beneficiario 1 Reverso" class="img-fluid" style="width: 80%; height: auto; object-fit: contain;">
                     @else
-                        <p>No Disponible</p>
+                        <p>No disponible</p>
                     @endif
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
             </div>
         </div>
@@ -308,10 +329,10 @@
                     @if(!empty($imagenes))
                         <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del DNI del beneficiario 2 Frontal" class="img-fluid" style="width: 80%; height: auto; object-fit: contain; margin-bottom: 80px;">
                     @else
-                        <p>No Disponible</p>
+                        <p>No disponible</p>
                     @endif
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
 
                 @if($inscripcion->imagen_dni_beneficiario2)
@@ -321,10 +342,10 @@
                     @if(count($imagenes) > 1)
                         <img src="{{ public_path('storage/' . $imagenes[1]) }}" alt="Foto del DNI del beneficiario 2 Reverso" class="img-fluid" style="width: 80%; height: auto; object-fit: contain;">
                     @else
-                        <p>No Disponible</p>
+                        <p>No disponible</p>
                     @endif
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
             </div>
         </div>
@@ -340,10 +361,10 @@
                     @if(!empty($imagenes))
                         <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del DNI del beneficiario 3 Frontal" class="img-fluid" style="width: 80%; height: auto; object-fit: contain; margin-bottom: 80px;">
                     @else
-                        <p>No Disponible</p>
+                        <p>No disponible</p>
                     @endif
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
 
                 @if($inscripcion->imagen_dni_beneficiario3)
@@ -353,10 +374,10 @@
                     @if(count($imagenes) > 1)
                         <img src="{{ public_path('storage/' . $imagenes[1]) }}" alt="Foto del DNI del beneficiario 3 Reverso" class="img-fluid" style="width: 80%; height: auto; object-fit: contain;">
                     @else
-                        <p>No Disponible</p>
+                        <p>No disponible</p>
                     @endif
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
             </div>
         </div>
@@ -372,10 +393,10 @@
                     @if(!empty($imagenes))
                         <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del RTN Frontal" class="img-fluid" style="width: 100%; height: auto; object-fit: contain; margin-bottom: 80px;">
                     @else
-                        <p>No Disponible</p>
+                        <p>No disponible</p>
                     @endif
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
             </div>
         </div>
@@ -390,13 +411,13 @@
                         Para ver el Curriculum Vitae, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcion->cv) }}"><br><br>Ver curriculun vitae</a>
                     </iframe>
                 @else
-                    <p>No Disponible</p>
+                    <p>No disponible</p>
                 @endif
             </div>
         </div>
 
         <!-- Autorización -->
-        <div class="page-break"><br><br>
+        <div class="page-break"><br>
             <div class="section text-center">
                 <h3 style="text-decoration: underline;">AUTORIZACIÓN</h3>
             </div>
