@@ -166,7 +166,7 @@
                     </a>
                 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownGestiones">
-                        <a class="dropdown-item text-uppercase" id="inscribirseCohpucpLink" href="#">Inscribirse al cohpucp</a>
+                        <a class="dropdown-item text-uppercase" id="inscribirseCohpucpLink" href="#">Inscripciones en cohpucp</a>
                         <a class="dropdown-item text-uppercase" id="solicitudesLink" href="#">Solicitudes</a>
                         <a class="dropdown-item text-uppercase" id="comprarLink" href="#">Comprar</a>
                         <a class="dropdown-item text-uppercase" id="comprarLink" href="#">Actualización de poliza de seguro de vida</a>
@@ -177,6 +177,7 @@
                         <a class="dropdown-item text-uppercase" id="solicitudConstanciasLink" href="#">Solicitud de constancias</a>
                         <a class="dropdown-item text-uppercase" href="#">Solicitud de estado de cuenta</a>
                         <a class="dropdown-item text-uppercase" href="#">Solicitud de plan de pago</a>
+                        <a class="dropdown-item text-uppercase" href="#">Ver solicitudes</a>
                     </div>
                 
                     <!-- Submenú para Solicitud de constancias -->
@@ -188,13 +189,16 @@
                     <!-- Submenú para Inscribirse al cohpucp -->
                     <div class="dropdown-menu" id="subMenuInscribirseCohpucp" style="position: absolute; top: 100%; left: 100%; margin-left: 209px; display: none; z-index: 1000;">
                         <a class="dropdown-item text-uppercase" href="{{ route('inscripcion_firmas.create') }}">Inscripción de firma de Auditoría</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('inscripciones.index') }}">Ver isncripciones de firma</a>
                         <a class="dropdown-item text-uppercase" href="{{ route('inscripciones.create') }}">Inscripción de agremiado</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('inscripciones.index') }}">Ver inscripciones de los agremiados</a>
                     </div>
                 
                     <!-- Submenú para Comprar -->
                     <div class="dropdown-menu" id="subMenuComprar" style="position: absolute; top: 100%; left: 100%; margin-left: 120px; display: none; z-index: 1000;">
                         <a class="dropdown-item text-uppercase" id="sellosLink" href="#">Sellos</a>
                         <a class="dropdown-item text-uppercase" id="timbresLink" href="#">Timbres</a>
+                        <a class="dropdown-item text-uppercase" href="#">Ver compras</a>
                     </div>
                 
                     <!-- Submenú para Sellos -->
@@ -396,7 +400,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item text-uppercase {{request()->routeIs('security_questions.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('security_questions.index')}}">Preguntas de seguridad</a>
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('sexos.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('sexos.index') }}">Sexos</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('sexos.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('sexos.index') }}">Género sexual</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('pais.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('pais.index') }}">Países</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('idiomas.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('idiomas.index') }}">Idiomas</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('universidades.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('universidades.index') }}">Universidades</a>
@@ -418,14 +422,14 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
                         <li class="dropdown-item text-uppercase">
-                            <a href="{{ route('inscripciones.index') }}" class="nav-link" style="color: black;">
+                            {{-- <a href="{{ route('inscripciones.index') }}" class="nav-link" style="color: black;">
                                 Ver Inscripciones
-                            </a>
+                            </a> --}}
                         </li>
                         <li class="dropdown-item text-uppercase">
-                            <a href="{{ route('inscripcion_firmas.index') }}" class="nav-link" style="color: black;">
+                            {{-- <a href="{{ route('inscripcion_firmas.index') }}" class="nav-link" style="color: black;">
                                 Ver Inscripciones Firmas
-                            </a>
+                            </a> --}}
                         </li>
                         <!-- Aquí puedes agregar más elementos de notificación si es necesario -->
                     </ul>
