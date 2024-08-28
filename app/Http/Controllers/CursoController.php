@@ -58,7 +58,7 @@ class CursoController extends Controller
             'calificacion' => 'nullable|numeric|min:0|max:10',
             'idioma_id' => 'nullable|exists:idiomas,id',
             'categoria_id' => 'nullable|exists:categorias,id',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:2048',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
         ]);
 
         $curso = new Curso;
@@ -106,7 +106,7 @@ class CursoController extends Controller
             'calificacion' => 'nullable|numeric|min:0|max:10',
             'idioma_id' => 'nullable|exists:idiomas,id',
             'categoria_id' => 'nullable|exists:categorias,id',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:2048',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
         ]);
 
         $curso->layout = $request->layout;

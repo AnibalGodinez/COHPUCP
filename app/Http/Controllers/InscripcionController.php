@@ -92,30 +92,55 @@ class InscripcionController extends Controller
 
             // VIII. Documentos
             'imagen_titulo' => 'required|array',
-            'imagen_titulo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imagen_titulo.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
             'imagen_dni' => 'required|array',
-            'imagen_dni.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imagen_dni.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
             'imagen_tamano_carnet' => 'required|array',
-            'imagen_tamano_carnet.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imagen_tamano_carnet.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
-            'cv' => 'required|mimes:pdf|max:2048',
+            'cv' => 'required|mimes:pdf',
 
             'imagen_dni_beneficiario1' => 'required|array',
-            'imagen_dni_beneficiario1.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imagen_dni_beneficiario1.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
             'imagen_dni_beneficiario2' => 'required|array',
-            'imagen_dni_beneficiario2.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imagen_dni_beneficiario2.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
             'imagen_dni_beneficiario3' => 'required|array',
-            'imagen_dni_beneficiario3.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imagen_dni_beneficiario3.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
             'imagen_rtn' => 'required|array',
-            'imagen_rtn.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'imagen_rtn.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
             // IX. Estado de la inscripción
             'descripcion_estado_solicitud' => 'nullable|string',
+        ], [
+            'imagen_titulo.*.image' => 'El archivo del título universitario debe ser una imagen.',
+            'imagen_titulo.*.mimes' => 'El título universitario debe estar en formato jpeg, png, jpg o gif.',
+            'imagen_titulo.*.max' => 'El título universitario no debe exceder 10MB.',
+            'imagen_dni.*.image' => 'El archivo del DNI debe ser una imagen.',
+            'imagen_dni.*.mimes' => 'El DNI debe estar en formato jpeg, png, jpg o gif.',
+            'imagen_dni.*.max' => 'El DNI no debe exceder 10MB.',
+            'imagen_tamano_carnet.*.image' => 'El archivo de la foto tamaño carnet debe ser una imagen.',
+            'imagen_tamano_carnet.*.mimes' => 'La foto tamaño carnet debe estar en formato jpeg, png, jpg o gif.',
+            'imagen_tamano_carnet.*.max' => 'La foto tamaño carnet no debe exceder 10MB.',
+            'imagen_tamano_carnet.*.dimensions' => 'La foto tamaño carnet debe tener un tamaño máximo de 35 mm x 45 mm.',
+            'imagen_dni_beneficiario1.*.image' => 'El archivo del DNI del beneficiario 1 debe ser una imagen.',
+            'imagen_dni_beneficiario1.*.mimes' => 'El DNI del beneficiario 1 debe estar en formato jpeg, png, jpg o gif.',
+            'imagen_dni_beneficiario1.*.max' => 'El DNI del beneficiario 1 no debe exceder 10MB.',
+            'imagen_dni_beneficiario2.*.image' => 'El archivo del DNI del beneficiario 2 debe ser una imagen.',
+            'imagen_dni_beneficiario2.*.mimes' => 'El DNI del beneficiario 2 debe estar en formato jpeg, png, jpg o gif.',
+            'imagen_dni_beneficiario2.*.max' => 'El DNI del beneficiario 2 no debe exceder 10MB.',
+            'imagen_dni_beneficiario3.*.image' => 'El archivo del DNI del beneficiario 3 debe ser una imagen.',
+            'imagen_dni_beneficiario3.*.mimes' => 'El DNI del beneficiario 3 debe estar en formato jpeg, png, jpg o gif.',
+            'imagen_dni_beneficiario3.*.max' => 'El DNI del beneficiario 3 no debe exceder 10MB.',
+            'imagen_rtn.*.image' => 'El archivo del RTN debe ser una imagen.',
+            'imagen_rtn.*.mimes' => 'El RTN debe estar en formato jpeg, png, jpg o gif.',
+            'imagen_rtn.*.max' => 'El RTN no debe exceder 10MB.',
+            'cv.required' => 'El Currículum Vitae es obligatorio.',
+            'cv.mimes' => 'El Currículum Vitae debe estar en formato PDF.',
         ]);
 
         // Manejo de las imágenes del título
@@ -267,7 +292,7 @@ class InscripcionController extends Controller
             'imagen_rtn' => json_encode($rutasArchivosRTN ),
         ]);
 
-        return redirect()->route('inscripciones.create')->with('status', '¡La inscripción ha sido enviada correctamente!');
+        return redirect()->route('inscripciones.create')->with('status', '¡La inscripción ha sido enviada con éxito!');
     }
 
 }

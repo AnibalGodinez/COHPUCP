@@ -631,6 +631,11 @@
                                     (frontal y reverso)
                                     <input type="file" id="imagen_titulo" name="imagen_titulo[]" accept="image/*" multiple>
                                     <div id="previewImagenTitulo"></div>
+                                    @error('imagen_titulo.*')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             
                                 <!-- Campo para subir las imágenes del DNI -->
@@ -642,6 +647,11 @@
                                     (frontal y reverso)
                                     <input type="file" id="imagen_dni" name="imagen_dni[]" accept="image/*" multiple>
                                     <div id="previewImagenDni"></div>
+                                    @error('imagen_dni.*')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             
                                 <!-- Campo para subir las imágenes del Tamaño carnet -->
@@ -652,6 +662,11 @@
                                     </label>
                                     <input type="file" id="imagen_tamano_carnet" name="imagen_tamano_carnet[]" accept="image/*" multiple>
                                     <div id="previewImagenTamanoCarnet"></div>
+                                    @error('imagen_tamano_carnet.*')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>                     
                             
                                 <!-- Campo para subir las imágenes del DNI beneficiario 1 -->
@@ -663,6 +678,11 @@
                                     (frontal y reverso)
                                     <input type="file" id="imagen_dni_beneficiario1" name="imagen_dni_beneficiario1[]" accept="image/*" multiple>
                                     <div id="previewImagenDniBeneficiario1"></div>
+                                    @error('imagen_dni_beneficiario1.*')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             
                                 <!-- Campo para subir las imágenes del DNI beneficiario 2 -->
@@ -674,6 +694,11 @@
                                     (frontal y reverso)
                                     <input type="file" id="imagen_dni_beneficiario2" name="imagen_dni_beneficiario2[]" accept="image/*" multiple>
                                     <div id="previewImagenDniBeneficiario2"></div>
+                                    @error('imagen_dni_beneficiario2.*')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div> 
                             
                                 <!-- Campo para subir las imágenes del DNI beneficiario 3 -->
@@ -685,6 +710,11 @@
                                     (frontal y reverso)
                                     <input type="file" id="imagen_dni_beneficiario3" name="imagen_dni_beneficiario3[]" accept="image/*" multiple>
                                     <div id="previewImagenDniBeneficiario3"></div>
+                                    @error('imagen_dni_beneficiario3.*')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             
                                 <!-- Campo para subir imagen del RTN -->
@@ -695,6 +725,11 @@
                                     </label>
                                     <input type="file" id="imagen_rtn" name="imagen_rtn[]" accept="image/*" multiple>
                                     <div id="previewImagenRtn"></div>
+                                    @error('imagen_rtn.*')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <!-- Campo para subir la imagen del Curriculum Vitae -->
