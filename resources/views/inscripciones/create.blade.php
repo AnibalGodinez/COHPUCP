@@ -7,7 +7,19 @@
             <div class="card shadow-lg">
                 <div class="card-header bg-default text-white text-center">
                     <h3 class="card-title" style="color: rgb(247, 247, 247)"><strong>INSCRIBIRSE AL COLEGIO</strong></h3>
+                </div><br>
+
+                <!-- Mensaje de éxito -->
+                @if(session('status'))
+                <div class="text-center mb-3">
+                    <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
+                        {{ session('status') }}
+                        <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
                 </div>
+                @endif
 
                 <div class="card-body">
                     <form id="inscripcionForm" action="{{ route('inscripciones.store') }}" method="POST" enctype="multipart/form-data">
@@ -184,7 +196,7 @@
                                 <div class="col-md-3">
                                     <label for="nombre_empresa_trabajo_actual">
                                         <i class="fas fa-building" style="margin-right: 8px;"></i>
-                                        <strong>NOMBRE DE LA EMPRESA DONDE LABORA</strong>
+                                        <strong>EMPRESA DONDE LABORA ACTUALMENTE</strong>
                                     </label>
                                     <input type="text" name="nombre_empresa_trabajo_actual" id="nombre_empresa_trabajo_actual" class="form-control" value="{{ old('nombre_empresa_trabajo_actual') }}">
                                     @if ($errors->has('nombre_empresa_trabajo_actual'))
@@ -640,25 +652,7 @@
                                     </label>
                                     <input type="file" id="imagen_tamano_carnet" name="imagen_tamano_carnet[]" accept="image/*" multiple>
                                     <div id="previewImagenTamanoCarnet"></div>
-                                </div>
-                            
-                                <!-- Campo para subir la imagen del Curriculum Vitae -->
-                                <div class="col-md-6 mb-2">
-                                    <label for="cv" class="btn btn-default btn-simple">
-                                        <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
-                                        <strong>Currículum Vitae</strong>
-                                    </label>
-                                    PDF (Mínimo 3 páginas)
-                                    <input type="file" class="form-control @error('cv') is-invalid @enderror" id="cv" name="cv" aria-label="Currículum vitae" accept="application/pdf" onchange="previewFile('cv', 'pdfPreview', false)" required>
-                                    @error('cv')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                    <div class="form-group mt-3">
-                                        <iframe id="pdfPreview" src="#" type="application/pdf" style="display: none; width: 90%; height: 300px;" frameborder="0"></iframe>
-                                    </div>
-                                </div>
+                                </div>                     
                             
                                 <!-- Campo para subir las imágenes del DNI beneficiario 1 -->
                                 <div class="col-md-6 mb-3">
@@ -701,6 +695,24 @@
                                     </label>
                                     <input type="file" id="imagen_rtn" name="imagen_rtn[]" accept="image/*" multiple>
                                     <div id="previewImagenRtn"></div>
+                                </div>
+
+                                <!-- Campo para subir la imagen del Curriculum Vitae -->
+                                <div class="col-md-6 mb-2">
+                                    <label for="cv" class="btn btn-default btn-simple">
+                                        <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
+                                        <strong>Currículum Vitae</strong>
+                                    </label>
+                                    PDF (Mínimo 3 páginas)
+                                    <input type="file" class="form-control @error('cv') is-invalid @enderror" id="cv" name="cv" aria-label="Currículum vitae" accept="application/pdf" onchange="previewFile('cv', 'pdfPreview', false)" required>
+                                    @error('cv')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    <div class="form-group mt-3">
+                                        <iframe id="pdfPreview" src="#" type="application/pdf" style="display: none; width: 90%; height: 900px;" frameborder="0"></iframe>
+                                    </div>
                                 </div>
 
                             </div>                            

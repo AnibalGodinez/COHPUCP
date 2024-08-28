@@ -7,9 +7,7 @@
             <div class="card shadow-lg">
                 <div class="card-header text-white text-center">
                     <h3 class="card-title">
-                        <strong>SOLICITUD DE INSCRIPCIÓN AL COLEGIO DE 
-                            <span class="text-info">
-                                {{ $inscripcion->name }} {{ $inscripcion->apellido }}</span>
+                        <strong>SOLICITUD DE INSCRIPCIÓN
                         </strong>
                     </h3>
                 </div>
@@ -182,11 +180,11 @@
                         </div>
 
                         <!-- VIII. Documentos -->
-                        <!-- IMAGEN DEL TÍTULO UNIVERSITARIO (FRONTAL) -->
+                        <!-- TÍTULO UNIVERSITARIO (FRONTAL) -->
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>IMAGEN DEL TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
                                 </div>
                                 <div class="card-body d-flex justify-content-center align-items-center p-0">
                                     @if($inscripcion->imagen_titulo)
@@ -206,11 +204,11 @@
                             </div>
                         </div>
 
-                        <!-- IMAGEN DEL TÍTULO UNIVERSITARIO (REVERSO) -->
+                        <!-- TÍTULO UNIVERSITARIO (REVERSO) -->
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>IMAGEN DEL TÍTULO UNIVERSITARIO (REVERSO)</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (REVERSO)</strong></h4>
                                 </div>
                                 <div class="card-body d-flex justify-content-center align-items-center p-0">
                                     @if($inscripcion->imagen_titulo)
@@ -229,45 +227,35 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- IMAGEN DEL DNI FRONTAL -->
+                        
+                        <!-- DNI DEL SOLICITANTE -->
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>IMAGEN DEL DNI (FRONTAL)</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>DNI DEL SOLICITANTE</strong></h4>
                                 </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center p-0">
                                     @if($inscripcion->imagen_dni)
                                         @php
                                             $imagenes = json_decode($inscripcion->imagen_dni);
                                         @endphp
                                         @if(count($imagenes) > 0)
                                             <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Imagen DNI Frontal" 
-                                                style="width: 80%; height: 80%; object-fit: contain;">
+                                                style="width: 70%; height: auto; object-fit: contain; display: block; margin-bottom: 20px;">
                                         @else
                                             <p>No Disponible</p>
                                         @endif
                                     @else
                                         <p>No Disponible</p>
                                     @endif
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- IMAGEN DEL DNI REVERSO -->
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>IMAGEN DEL DNI (REVERSO)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
                                     @if($inscripcion->imagen_dni)
                                         @php
                                             $imagenes = json_decode($inscripcion->imagen_dni);
                                         @endphp
                                         @if(count($imagenes) > 1)
                                             <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Imagen DNI Reverso" 
-                                                style="width: 80%; height: 80%; object-fit: contain;">
+                                                style="width: 70%; height: auto; object-fit: contain; display: block; margin-bottom: 10px;">
                                         @else
                                             <p>No Disponible</p>
                                         @endif
@@ -278,11 +266,11 @@
                             </div>
                         </div>
 
-                        <!-- FOTO 1 | TAMAÑO CARNET -->
+                        <!-- FOTO TAMAÑO CARNET -->
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>FOTO 1 | TAMAÑO CARNET</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>FOTO TAMAÑO CARNET</strong></h4>
                                 </div>
                                 <div class="card-body d-flex justify-content-center align-items-center p-0">
                                     @if($inscripcion->imagen_tamano_carnet)
@@ -290,7 +278,7 @@
                                             $imagenes = json_decode($inscripcion->imagen_tamano_carnet);
                                         @endphp
                                         @if(count($imagenes) > 0)
-                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Foto 1 tamaño carnet" 
+                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Foto tamaño carnet" 
                                                 style="width: 50%; height: 50%; object-fit: contain;">
                                         @else
                                             <p>No Disponible</p>
@@ -302,68 +290,34 @@
                             </div>
                         </div>
 
-                        <!-- FOTO 2 | TAMAÑO CARNET -->
+                        <!-- DNI DEL BENEFICIARIO 1-->
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>FOTO 2 | TAMAÑO CARNET</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>DNI DEL BENEFICIARIO 1</strong></h4>
                                 </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcion->imagen_tamano_carnet)
-                                        @php
-                                            $imagenes = json_decode($inscripcion->imagen_tamano_carnet);
-                                        @endphp
-                                        @if(count($imagenes) > 1)
-                                            <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Foto 2 tamaño carnet" 
-                                                style="width: 50%; height: 50%; object-fit: contain;">
-                                        @else
-                                            <p>No Disponible</p>
-                                        @endif
-                                    @else
-                                        <p>No Disponible</p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- IMAGEN DEL DNI BENEFICIARIO 1 (FRONTAL) -->
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>IMAGEN DEL DNI BENEFICIARIO 1 (FRONTAL)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center p-0">
                                     @if($inscripcion->imagen_dni_beneficiario1)
                                         @php
                                             $imagenes = json_decode($inscripcion->imagen_dni_beneficiario1);
                                         @endphp
                                         @if(count($imagenes) > 0)
                                             <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="DNI Beneficiario 1 Frontal" 
-                                                style="width: 80%; height: 80%; object-fit: contain;">
+                                                style="width: 70%; height: auto; object-fit: contain; display: block; margin-bottom: 20px;">
                                         @else
                                             <p>No Disponible</p>
                                         @endif
                                     @else
                                         <p>No Disponible</p>
                                     @endif
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- IMAGEN DEL DNI BENEFICIARIO 1 (REVERSO) -->
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>IMAGEN DEL DNI | BENEFICIARIO 1 (REVERSO)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
                                     @if($inscripcion->imagen_dni_beneficiario1)
                                         @php
                                             $imagenes = json_decode($inscripcion->imagen_dni_beneficiario1);
                                         @endphp
                                         @if(count($imagenes) > 1)
                                             <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="DNI Beneficiario 1 Reverso" 
-                                                style="width: 80%; height: 80%; object-fit: contain;">
+                                                style="width: 70%; height: auto; object-fit: contain; display: block; margin-bottom: 10px;">
                                         @else
                                             <p>No Disponible</p>
                                         @endif
@@ -374,45 +328,34 @@
                             </div>
                         </div>
 
-                        <!-- IMAGEN DEL DNI BENEFICIARIO 2 (FRONTAL) -->
+                        <!-- DNI DEL BENEFICIARIO 2 -->
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>IMAGEN DEL DNI | BENEFICIARIO 2 (FRONTAL)</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>DNI DEL BENEFICIARIO 2</strong></h4>
                                 </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center p-0">
                                     @if($inscripcion->imagen_dni_beneficiario2)
                                         @php
                                             $imagenes = json_decode($inscripcion->imagen_dni_beneficiario2);
                                         @endphp
                                         @if(count($imagenes) > 0)
                                             <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="DNI Beneficiario 2 Frontal" 
-                                                style="width: 80%; height: 80%; object-fit: contain;">
+                                                style="width: 70%; height: auto; object-fit: contain; display: block; margin-bottom: 20px;">
                                         @else
                                             <p>No Disponible</p>
                                         @endif
                                     @else
                                         <p>No Disponible</p>
                                     @endif
-                                </div>
-                            </div>
-                        </div>
 
-
-                        <!-- IMAGEN DEL DNI BENEFICIARIO 2 (REVERSO) -->
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>IMAGEN DEL DNI | BENEFICIARIO 2 (REVERSO)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
                                     @if($inscripcion->imagen_dni_beneficiario2)
                                         @php
                                             $imagenes = json_decode($inscripcion->imagen_dni_beneficiario2);
                                         @endphp
                                         @if(count($imagenes) > 1)
                                             <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="DNI Beneficiario 2 Reverso" 
-                                                style="width: 80%; height: 80%; object-fit: contain;">
+                                                style="width: 70%; height: auto; object-fit: contain; display: block; margin-bottom: 10px;">
                                         @else
                                             <p>No Disponible</p>
                                         @endif
@@ -423,44 +366,34 @@
                             </div>
                         </div>
 
-                        <!-- IMAGEN DEL DNI BENEFICIARIO 3 (FRONTAL) -->
+                        <!-- DNI DEL BENEFICIARIO 3 -->
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>IMAGEN DEL DNI | BENEFICIARIO 3 (FRONTAL)</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>DNI DEL BENEFICIARIO 3</strong></h4>
                                 </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                <div class="card-body d-flex flex-column justify-content-center align-items-center p-0">
                                     @if($inscripcion->imagen_dni_beneficiario3)
                                         @php
                                             $imagenes = json_decode($inscripcion->imagen_dni_beneficiario3);
                                         @endphp
                                         @if(count($imagenes) > 0)
                                             <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="DNI Beneficiario 3 Frontal" 
-                                                style="width: 80%; height: 80%; object-fit: contain;">
+                                                style="width: 70%; height: auto; object-fit: contain; display: block; margin-bottom: 20px;">
                                         @else
                                             <p>No Disponible</p>
                                         @endif
                                     @else
                                         <p>No Disponible</p>
                                     @endif
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- IMAGEN DEL DNI BENEFICIARIO 3 (REVERSO) -->
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>IMAGEN DEL DNI | BENEFICIARIO 3 (REVERSO)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
                                     @if($inscripcion->imagen_dni_beneficiario3)
                                         @php
                                             $imagenes = json_decode($inscripcion->imagen_dni_beneficiario3);
                                         @endphp
                                         @if(count($imagenes) > 1)
                                             <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="DNI Beneficiario 3 Reverso" 
-                                                style="width: 80%; height: 80%; object-fit: contain;">
+                                                style="width: 70%; height: auto; object-fit: contain; display: block; margin-bottom: 10px;">
                                         @else
                                             <p>No Disponible</p>
                                         @endif
@@ -470,12 +403,12 @@
                                 </div>
                             </div>
                         </div>
-
+                    
                         <!-- IMAGEN DEL RTN (FRONTAL) -->
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>IMAGEN DEL RTN (FRONTAL)</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong> FOTO DEL RTN</strong></h4>
                                 </div>
                                 <div class="card-body d-flex justify-content-center align-items-center p-0">
                                     @if($inscripcion->imagen_rtn)
@@ -485,30 +418,6 @@
                                         @if(count($imagenes) > 0)
                                             <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="RTN Frontal" 
                                                 style="width: 90%; height: 90%; object-fit: contain;">
-                                        @else
-                                            <p>No Disponible</p>
-                                        @endif
-                                    @else
-                                        <p>No Disponible</p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- IMAGEN DEL RTN (REVERSO) -->
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>IMAGEN DEL RTN (REVERSO)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcion->imagen_rtn)
-                                        @php
-                                            $imagenes = json_decode($inscripcion->imagen_rtn);
-                                        @endphp
-                                        @if(count($imagenes) > 1)
-                                            <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="RTN Reverso" 
-                                                style="width: 50%; height: 50%; object-fit: contain;">
                                         @else
                                             <p>No Disponible</p>
                                         @endif
@@ -538,6 +447,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -556,7 +466,7 @@
                         </a>
                 
                         <!-- Botón para descargar el PDF -->
-                        <a href="{{ route('inscripcion.pdf.download', ['id' => $inscripcion->id]) }}" class="btn btn-primary">
+                        <a href="{{ route('inscripcion.pdf.download', ['id' => $inscripcion->id]) }}" class="btn btn-success">
                             <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
                             Descargar PDF
                         </a>
