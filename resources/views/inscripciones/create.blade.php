@@ -97,13 +97,36 @@
                                         <i class="fas fa-birthday-cake" style="margin-right: 8px;"></i>
                                         <strong>FECHA DE NACIMIENTO *</strong>
                                     </label>
-                                    <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" readonly>
+                                    <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" onchange="validateAge()" required>
+                                    <span id="age-error" style="color: rgb(235, 13, 13); display: none;">Debes ser mayor de 18 años</span>
                                 </div>
+
+                                <script>
+                                function validateAge() {
+                                    const birthDate = new Date(document.getElementById('fecha_nacimiento').value);
+                                    const today = new Date();
+                                    const age = today.getFullYear() - birthDate.getFullYear();
+                                    const monthDifference = today.getMonth() - birthDate.getMonth();
+                                    const dayDifference = today.getDate() - birthDate.getDate();
+
+                                    if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
+                                        age--;
+                                    }
+
+                                    if (age < 18) {
+                                        document.getElementById('age-error').style.display = 'block';
+                                        document.getElementById('fecha_nacimiento').value = '';
+                                    } else {
+                                        document.getElementById('age-error').style.display = 'none';
+                                    }
+                                }
+                                </script>
+
 
                                 <!-- LUGAR DE NACIMIENTO -->
                                 <div class="col-md-3">
                                     <label for="lugar_nacimiento">
-                                        <i class="fas fa-map-marker-alt" style="margin-right: 8px; color:rgb(226, 18, 18)"></i>
+                                        <i class="fas fa-map-marker-alt" style="margin-right: 8px; color:rgb(235, 13, 13)"></i>
                                         <strong>LUGAR DE NACIMIENTO</strong>
                                     </label>
                                     <input type="text" class="form-control" id="lugar_nacimiento" name="lugar_nacimiento" value="{{ old('lugar_nacimiento') }}">
@@ -168,13 +191,30 @@
                                         <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
                                         <strong>FECHA DE GRADUACIÓN *</strong>
                                     </label>
-                                    <input type="date" name="fecha_graduacion" id="fecha_graduacion" class="form-control" value="{{ old('fecha_graduacion') }}" required>
+                                    <input type="date" name="fecha_graduacion" id="fecha_graduacion" class="form-control" value="{{ old('fecha_graduacion') }}" onchange="validateGraduationDate()" required>
+                                    <span id="graduation-date-error" style="color: rgb(235, 13, 13); display: none;">La fecha de graduación no puede ser posterior a la fecha actual</span>
                                     @if ($errors->has('fecha_graduacion'))
                                         <div class="alert alert-danger">
                                             {{ $errors->first('fecha_graduacion') }}
                                         </div>
                                     @endif
                                 </div>
+
+                                <script>
+                                function validateGraduationDate() {
+                                    const graduationDate = new Date(document.getElementById('fecha_graduacion').value);
+                                    const today = new Date();
+                                    today.setHours(0, 0, 0, 0); // Asegurarse de que solo se comparen las fechas sin la hora
+
+                                    if (graduationDate > today) {
+                                        document.getElementById('graduation-date-error').style.display = 'block';
+                                        document.getElementById('fecha_graduacion').value = '';
+                                    } else {
+                                        document.getElementById('graduation-date-error').style.display = 'none';
+                                    }
+                                }
+                                </script>
+
 
                                 <!-- UNIVERSIDAD -->
                                 <div class="col-md-4">
@@ -318,13 +358,29 @@
                                         <i class="fas fa-calendar" style="margin-right: 8px;"></i>
                                         <strong>FECHA</strong>
                                     </label>
-                                    <input type="date" name="fecha_especialidad_1" id="fecha_especialidad_1" class="form-control @error('fecha_especialidad_1') is-invalid @enderror" value="{{ old('fecha_especialidad_1') }}">
+                                    <input type="date" name="fecha_especialidad_1" id="fecha_especialidad_1" class="form-control @error('fecha_especialidad_1') is-invalid @enderror" value="{{ old('fecha_especialidad_1') }}" onchange="validateSpecialtyDate()" required>
+                                    <span id="specialty-date-error" style="color: rgb(235, 13, 13); display: none;">La fecha del especialidad 1 no puede ser posterior a la fecha actual</span>
                                     @error('fecha_especialidad_1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
+
+                                <script>
+                                function validateSpecialtyDate() {
+                                    const specialtyDate = new Date(document.getElementById('fecha_especialidad_1').value);
+                                    const today = new Date();
+                                    today.setHours(0, 0, 0, 0); // Asegurarse de que solo se comparen las fechas sin la hora
+
+                                    if (specialtyDate > today) {
+                                        document.getElementById('specialty-date-error').style.display = 'block';
+                                        document.getElementById('fecha_especialidad_1').value = '';
+                                    } else {
+                                        document.getElementById('specialty-date-error').style.display = 'none';
+                                    }
+                                }
+                                </script>
 
                                 <!-- ESPECIALIDAD 2 -->
                                 <div class="col-md-4">
@@ -360,15 +416,32 @@
                                         <i class="fas fa-calendar" style="margin-right: 8px;"></i>
                                         <strong>FECHA</strong>
                                     </label>
-                                    <input type="date" name="fecha_especialidad_2" id="fecha_especialidad_2" class="form-control @error('fecha_especialidad_2') is-invalid @enderror" value="{{ old('fecha_especialidad_2') }}">
+                                    <input type="date" name="fecha_especialidad_2" id="fecha_especialidad_2" class="form-control @error('fecha_especialidad_2') is-invalid @enderror" value="{{ old('fecha_especialidad_2') }}" onchange="validateSpecialtyDate2()" required>
+                                    <span id="specialty-date-error-2" style="color: rgb(235, 13, 13); display: none;">La fecha de la especialidad 2 no puede ser posterior a la fecha actual</span>
                                     @error('fecha_especialidad_2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
+
+                                <script>
+                                function validateSpecialtyDate2() {
+                                    const specialtyDate2 = new Date(document.getElementById('fecha_especialidad_2').value);
+                                    const today = new Date();
+                                    today.setHours(0, 0, 0, 0); // Asegurarse de que solo se comparen las fechas sin la hora
+
+                                    if (specialtyDate2 > today) {
+                                        document.getElementById('specialty-date-error-2').style.display = 'block';
+                                        document.getElementById('fecha_especialidad_2').value = '';
+                                    } else {
+                                        document.getElementById('specialty-date-error-2').style.display = 'none';
+                                    }
+                                }
+                                </script>
                                 
                             </div>
+
 
                             <div class="form-group row">
                                 <!-- IV. Cursos de especialización -->                    
@@ -410,14 +483,30 @@
                                         <i class="fas fa-calendar" style="margin-right: 8px;"></i>
                                         <strong>FECHA DEL CURSO</strong>
                                     </label>
-                                    <input type="date" name="fecha_curso" id="fecha_curso" class="form-control @error('fecha_curso') is-invalid @enderror" value="{{ old('fecha_curso') }}">
+                                    <input type="date" name="fecha_curso" id="fecha_curso" class="form-control @error('fecha_curso') is-invalid @enderror" value="{{ old('fecha_curso') }}" onchange="validateCourseDate()" required>
+                                    <span id="course-date-error" style="color: rgb(235, 13, 13); display: none;">La fecha del curso no puede ser posterior a la fecha actual</span>
                                     @error('fecha_curso')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-    
+
+                                <script>
+                                function validateCourseDate() {
+                                    const courseDate = new Date(document.getElementById('fecha_curso').value);
+                                    const today = new Date();
+                                    today.setHours(0, 0, 0, 0); // Asegurarse de que solo se comparen las fechas sin la hora
+
+                                    if (courseDate > today) {
+                                        document.getElementById('course-date-error').style.display = 'block';
+                                        document.getElementById('fecha_curso').value = '';
+                                    } else {
+                                        document.getElementById('course-date-error').style.display = 'none';
+                                    }
+                                }
+                                </script>
+                                
                             </div>
 
 

@@ -121,7 +121,6 @@ class UsersTableSeeder extends Seeder
                 'apellido' => 'Cortez',
                 'apellido2' => 'Godinez',
                 'numero_identidad' => '0901-1985-12345',
-                'numero_colegiacion' => '2020-02-3344',
                 'rtn' => '0901-1985-123451',
                 'sexo_id' => 1,
                 'fecha_nacimiento' => '1985-07-10',
