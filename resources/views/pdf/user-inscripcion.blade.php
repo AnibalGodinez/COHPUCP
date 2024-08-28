@@ -54,6 +54,13 @@
             display: inline-block;
             margin: 10px 0;
         }
+        .full-cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
     </style>
 </head>
 <body>
@@ -71,14 +78,14 @@
                         $imagenCarnet = json_decode($inscripcion->imagen_tamano_carnet);
                     @endphp
                     @if(!empty($imagenCarnet))
-                        <img src="{{ public_path('storage/' . $imagenCarnet[0]) }}" alt="Foto Carnet">
+                        <img src="{{ public_path('storage/' . $imagenCarnet[0]) }}" alt="Foto Carnet" class="full-cover-img">
                     @else
                         <p>No disponible</p>
                     @endif
                 @else
                     <p>No disponible</p>
                 @endif
-            </div>
+            </div>                       
         </div>
 
         <!-- Campo Número de Colegiación -->
