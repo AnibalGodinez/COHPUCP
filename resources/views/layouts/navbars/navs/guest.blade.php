@@ -9,10 +9,12 @@
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link font-weight-bold {{ Request::is('/') ? 'text-warning active' : '' }} custom-hover">
+                    <a href="{{ auth()->check() && !auth()->user()->hasVerifiedEmail() ? route('verification.notice') : url('/') }}" 
+                       class="nav-link font-weight-bold {{ Request::is('/') ? 'text-warning active' : '' }} custom-hover">
                         <i class="fas fa-home"></i> Página principal
                     </a>
                 </li>
+                
 
                 <li class="nav-item">
                     <a href="{{ route('register') }}" class="nav-link font-weight-bold {{ request()->routeIs('register') ? 'text-warning active' : '' }} custom-hover">

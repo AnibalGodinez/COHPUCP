@@ -24,157 +24,106 @@ use App\Http\Controllers\SecurityQuestionController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\NumeroColegiacionController;
 
-	// RUTA DE BIENVENIDA
-	Route::get('/', function () {
-		return view('welcome');
-	});
+// RUTA DE BIENVENIDA
+Route::get('/', function () {
+    return view('welcome');
+});
 
-	// RUTA DE AUTENTICACIÓN
-	Auth::routes();
+// RUTAS DE AUTENTICACIÓN CON VERIFICACIÓN DE CORREO ELECTRÓNICO
+Auth::routes(['verify' => true]);
 
-	// RUTA DE AUTENTICACIÓN CON VERIFICACION DE CORREO ELECTRÓNICO
-	Auth::routes(['verify' => true]);
-		
-	// RUTA PARA MOSTRAR LA VISTA DE VERIFICACIÓN DE CORREO ELECTRÓNICO
-	Route::get('/email/verify', [VerificationController::class, 'show'])
+// RUTAS DE VERIFICACIÓN DE CORREO ELECTRÓNICO
+Route::get('/email/verify', [VerificationController::class, 'show'])
     ->middleware('auth')
     ->name('verification.notice');
-	
 
-	// RUTA PARA MANEJAR LA VERIFICACIÓN DEL CORREO ELECTRÓNICO
-	Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
     ->middleware(['auth', 'signed'])
     ->name('verification.verify');
 
-
-	// RUTA PARA REENVIAR EL CORREO ELECTRÓNICO
-	Route::post('/email/verification-notification', [VerificationController::class, 'resend'])
+Route::post('/email/verification-notification', [VerificationController::class, 'resend'])
     ->middleware(['auth', 'throttle:6,1'])
     ->name('verification.send');
 
+// RUTA DE INICIO (DASHBOARD)
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-	// RUTA DE INICIO (DASHBOARD)
-	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+    // RUTAS DE USUARIOS
+    Route::resource('usuarios', UserController::class);
+    Route::get('usuarios/{userId}/delete', [UserController::class, 'destroy']);
+    Route::get('/usuarios/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::get('ver/usuarios', [UserController::class, 'verUsuarios'])->name('usuarios.ver');
+    Route::get('/previsualizacion/pdf/usuario/{id}', [PDFController::class, 'preview'])->name('user.pdf.preview');
+    Route::get('/descargar/pdf/usuario/{id}', [PDFController::class, 'download'])->name('user.pdf.download');
+    Route::get('/get-user-data/{identifier}', [UserController::class, 'getUserData']);
 
-	// RUTAS DE RECUPERACIÓN DE CONTRASEÑA MEDIANTE PREGUNTAS DE SEGURIDAD
-	Route::resource('security_questions', SecurityQuestionController::class);
-	Route::get('security_questions/{question}/delete', [SecurityQuestionController::class, 'destroy'])->name('security_questions.delete');
-	Route::get('opciones/recuperacion-contraseña', [SecurityQuestionController::class, 'viewOpcionRecuperacion'])->name('opcion.recuperacion');
-	Route::get('preguntas-seguridad', [SecurityQuestionController::class, 'view'])->name('preguntas-seguridad.view');
+    // RUTAS DE PERFIL DE USUARIO
+    Route::get('ver/perfil', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('editar/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('cambiar-contraseña/perfil', [ProfileController::class, 'showChangePasswordForm'])->name('profile.changePassword');
+    Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
+    Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 
-	// RUTAS DE USUARIOS
-	Route::group(['middleware' =>['auth']], function () {
-	Route::resource('usuarios', UserController::class);
-	Route::get('usuarios/{userId}/delete', [UserController::class, 'destroy']);
-	Route::get('/usuarios/{id}', [UserController::class, 'show'])->name('users.show');
-	Route::get('ver/usuarios', 	[UserController::class, 'verUsuarios'])->name('usuarios.ver');
-	// Ruta para previsualizar el PDF
-	Route::get('/previsualizacion/pdf/usuario/{id}', [PDFController::class, 'preview'])->name('user.pdf.preview');
-	// Ruta para descargar el PDF
-	Route::get('/descargar/pdf/usuario/{id}', [PDFController::class, 'download'])->name('user.pdf.download');
-	// Ruta para buscar mediante el id o dni al usuario para que realice la solicitu de inscripcion
-	Route::get('/get-user-data/{identifier}', [UserController::class, 'getUserData']);
-	});
+    // RUTAS DE ROLES
+    Route::resource('permission', PermissionController::class);
+    Route::get('permission/{permissionId}/delete', [PermissionController::class, 'destroy']);
+    Route::get('ver/permisos', [PermissionController::class, 'verPermisos'])->name('permissions.ver');
 
-	// RUTAS DE PERFIL DE USUARIO
-	Route::group(['middleware' =>['auth']], function () {
-		Route::get('ver/perfil', [ProfileController::class, 'show'])->name('profile.show');
-		Route::get('editar/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
-		Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-		Route::get('cambiar-contraseña/perfil', [ProfileController::class, 'showChangePasswordForm'])->name('profile.changePassword');
-		Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
-		Route::put('profile/password',  ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-		});
+    // RUTAS DE PERMISOS
+    Route::resource('roles', RoleController::class);
+    Route::get('roles/{roleId}/delete', [RoleController::class, 'destroy']);
+    Route::get('roles/{roleId}/agregar-permisos', [RoleController::class, 'AddPermissionRole']);
+    Route::put('roles/{roleId}/agregar-permisos', [RoleController::class, 'givePermissionRole']);
+    Route::get('ver/roles', [RoleController::class, 'verRoles'])->name('roles.ver');
 
-	// RUTAS DE ROLES
-	Route::group(['middleware' =>['auth']], function () {
-		Route::resource('permission', PermissionController::class);
-		Route::get('permission/{permissionId}/delete', [PermissionController::class, 'destroy']);
-		Route::get('ver/permisos', [PermissionController::class, 'verPermisos'])->name('permissions.ver');
-		
-	});
+    // RUTAS DE CAPACITACIONES
+    Route::resource('capacitaciones', CapacitacioneController::class);
 
-	// RUTAS DE PERMISOS
-	Route::group(['middleware' =>['auth']], function () {
-		Route::resource('roles', RoleController::class);
-		Route::get('roles/{roleId}/delete', 		  [RoleController::class, 'destroy']);
-		Route::get('roles/{roleId}/agregar-permisos', [RoleController::class, 'AddPermissionRole']);
-		Route::put('roles/{roleId}/agregar-permisos', [RoleController::class, 'givePermissionRole']);
-		Route::get('ver/roles', 					  [RoleController::class, 'verRoles'])->name('roles.ver');
-	});
+    // RUTAS DE CÓDIGOS TELEFÓNICOS DE LOS PAÍSES
+    Route::resource('pais', PaisController::class);
+    Route::get('ver/paises', [PaisController::class, 'view'])->name('pais.view');
 
-	// RUTAS DE CAPACITACIONES
-	Route::group(['middleware' =>['auth']], function () {
-		Route::resource('capacitaciones', CapacitacioneController::class);
-	});
+    // RUTAS DE CURSOS
+    Route::resource('cursos', CursoController::class);
+    Route::get('/ver/cursos', [CursoController::class, 'viewCursos'])->name('cursos.view');
 
-	// RUTAS DE CODIGOS TELÉFONICOS DE LOS PAISES
-	Route::group(['middleware' =>['auth']], function () {
-		Route::resource('pais', PaisController::class);
-		Route::get('ver/paises', [PaisController::class, 'view'])->name('pais.view');
-	});
+    // RUTAS DE CONTENIDO DE LA PÁGINA DE INICIO
+    Route::resource('welcome-content', WelcomeContentController::class);
 
-	// RUTAS DE CURSOS
-	Route::group(['middleware' =>['auth']], function () {
-		Route::resource('cursos', CursoController::class);
-		Route::get('/ver/cursos', [CursoController::class, 'viewCursos'])->name('cursos.view');
-	});
+    // RUTAS DE CONTENIDO DEL DASHBOARD
+    Route::resource('dashboard-content', DashboardContentController::class);
 
-	// RUTAS DE CONTENIDO DE LA PÁGINA DE INICIO
-	Route::group(['middleware' => ['auth']], function () {
-		Route::resource('welcome-content', WelcomeContentController::class);
-	});
+    // RUTAS DE CONTENIDO DEL PIE DE PÁGINA
+    Route::resource('footer-content', FooterContentController::class);
 
-	// RUTAS DE CONTENIDO DEL DASHBOARD
-	Route::group(['middleware' => ['auth']], function () {
-		Route::resource('dashboard-content', DashboardContentController::class);
-	});
+    // RUTAS DE LOS IDIOMAS DE LOS CURSOS
+    Route::resource('idiomas', IdiomaController::class);
 
-	// RUTAS DE CONTENIDO DEL PIE DE PÁGINA
-	Route::group(['middleware' => ['auth']], function () {
-		Route::resource('footer-content', FooterContentController::class);
-	});
+    // RUTAS DE LAS CATEGORÍAS DE LOS CURSOS
+    Route::resource('categorias', CategoriaController::class);
 
-	// RUTAS DE LOS IDIOMAS DE LOS CURSOS
-	Route::group(['middleware' => ['auth']], function () {
-		Route::resource('idiomas', IdiomaController::class);
-	});
+    // RUTAS DE INSCRIPCIONES
+    Route::resource('inscripciones', InscripcionController::class);
+    Route::get('/previsualizacion/pdf/inscripcion/{id}', [PDFInscripcionController::class, 'preview'])->name('inscripcion.pdf.preview');
+    Route::get('/descargar/pdf/inscripcion/{id}', [PDFInscripcionController::class, 'download'])->name('inscripcion.pdf.download');
 
-	// RUTAS DE LOS CATEGORÍAS DE LOS CURSOS
-	Route::group(['middleware' => ['auth']], function () {
-		Route::resource('categorias', CategoriaController::class);
-	});
+    // RUTAS DE INSCRIPCIONES DE FIRMAS
+    Route::resource('inscripcion_firmas', InscripcionFirmaController::class);
 
-	// RUTAS DE INSCRIPCIONES
-	Route::group(['middleware' => ['auth']], function () {
-		Route::resource('inscripciones', InscripcionController::class);
+    // RUTAS DE UNIVERSIDADES
+    Route::resource('universidades', UniversidadController::class);
 
-		// Ruta para previsualizar el PDF de la solicitud
-		Route::get('/previsualizacion/pdf/inscripcion/{id}', [PDFInscripcionController::class, 'preview'])->name('inscripcion.pdf.preview');
-		// Ruta para descargar el PDF de la solicitud
-		Route::get('/descargar/pdf/inscripcion/{id}', [PDFInscripcionController::class, 'download'])->name('inscripcion.pdf.download');
-	});
+    // RUTAS DE SEXOS
+    Route::resource('sexos', SexoController::class);
 
-	// RUTAS DE INSCRIPCIONES DE FIRMAS
-	Route::group(['middleware' => ['auth']], function () {
-		Route::resource('inscripcion_firmas', InscripcionFirmaController::class);
-	});
+    // RUTAS DE NÚMERO DE COLEGIACIÓN
+    Route::resource('numero_colegiacion', NumeroColegiacionController::class);
+});
 
-	// RUTAS DE UNIVERSIDADES
-	Route::group(['middleware' => ['auth']], function () {
-		Route::resource('universidades', UniversidadController::class);
-	});
-
-	// RUTAS DE UNIVERSIDADES
-	Route::group(['middleware' => ['auth']], function () {
-		Route::resource('sexos', SexoController::class);
-	});
-
-	// RUTAS DE UNIVERSIDADES
-	Route::group(['middleware' => ['auth']], function () {
-		Route::resource('numero_colegiacion', NumeroColegiacionController::class);
-	});
-
-
-
-
+// RUTAS DE RECUPERACIÓN DE CONTRASEÑA MEDIANTE PREGUNTAS DE SEGURIDAD
+Route::resource('security_questions', SecurityQuestionController::class);
+Route::get('security_questions/{question}/delete', [SecurityQuestionController::class, 'destroy'])->name('security_questions.delete');
+Route::get('opciones/recuperacion-contraseña', [SecurityQuestionController::class, 'viewOpcionRecuperacion'])->name('opcion.recuperacion');
+Route::get('preguntas-seguridad', [SecurityQuestionController::class, 'view'])->name('preguntas-seguridad.view');
