@@ -24,18 +24,6 @@
                                 </div>
                             </div>
                         @endif
-
-                        <!-- Mensaje de error -->
-                        @if(session('error'))
-                            <div class="text-center">
-                                <div class="alert alert-danger alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
-                                    {{ session('error') }}
-                                    <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                            </div>
-                        @endif
                                 
                         <!-- Formulario de búsqueda -->
                         <form action="{{ url('pais') }}" method="GET" class="form-inline mt-3">
@@ -55,6 +43,7 @@
                             <table class="table table-bordered table-striped" style="border-spacing: 8cm;">
                                 <thead style="background-color: #3288af;">
                                     <tr>
+                                        <th class="text-center" style="color: white;">ID</th>
                                         <th class="text-center" style="color: white;">Nombre del país</th>
                                         <th class="text-center" style="color: white;">Código telefónico</th>
                                         <th class="text-center" style="color: white;">Acciones</th>
@@ -64,6 +53,7 @@
                                 <tbody>
                                     @foreach ($paises as $pais)
                                         <tr>
+                                            <td class="text-center">{{ $pais->id }}</td>
                                             <td class="text-center">{{ $pais->nombre }}</td>
                                             <td class="text-center">{{ $pais->codigo }}</td>                            
                                             <td class="text-center">

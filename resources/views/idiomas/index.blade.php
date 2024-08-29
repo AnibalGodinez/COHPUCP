@@ -28,6 +28,7 @@
                         <table class="table table-bordered table-striped">
                             <thead style="background-color: #3288af;">
                                 <tr>
+                                    <th class="text-center" style="color: white;">ID</th>
                                     <th class="text-center" style="color: white;">Nombre del idioma</th>
                                     <th class="text-center" style="color: white;">Acciones</th>
                                 </tr>
@@ -36,6 +37,7 @@
                             <tbody>
                                 @foreach ($idiomas as $idioma)
                                     <tr>
+                                        <td class="text-center">{{ $idioma->id }}</td>
                                         <td class="text-center">{{ $idioma->nombre }}</td>
 
                                         <td class="text-center">
