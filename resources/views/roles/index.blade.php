@@ -37,11 +37,11 @@
                             </div>
                         @else
                         <table class="table table-bordered table-striped">
-                            <thead>
+                            <thead style="background-color: #3288af;">
                                 <tr>
-                                    <th class="text-center">Nombre del rol</th>
-                                    <th class="text-center">Descripción</th>
-                                    <th class="text-center">Acciones</th>
+                                    <th class="text-center" style="color: white;">Nombre del rol</th>
+                                    <th class="text-center" style="color: white;">Descripción</th>
+                                    <th class="text-center" style="color: white;">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>

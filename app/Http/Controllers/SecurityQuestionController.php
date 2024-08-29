@@ -36,7 +36,7 @@ class SecurityQuestionController extends Controller
         $request->validate([
             'question' => 'required|string|max:255|unique:security_questions,question',
         ], [
-            'question.unique' => 'Esta pregunta ya existe.',
+            'question.unique' => 'Esta pregunta de seguridad ya existe',
         ]);
 
         SecurityQuestion::create([
@@ -44,7 +44,7 @@ class SecurityQuestionController extends Controller
         ]);
 
         return redirect()->route('security_questions.index')
-            ->with('success', 'Pregunta de seguridad se ha creado exitosamente');
+            ->with('status', '¡Pregunta de seguridad creada con éxito!');
     }
 
 //------------------------------------------------------------------------------------------
@@ -58,9 +58,9 @@ class SecurityQuestionController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'question' => 'required|string|max:255|unique:security_questions,question,'.$id,
+            'question' => 'required|string|max:255|unique:security_questions,question,' . $id,
         ], [
-            'question.unique' => 'Esta pregunta ya existe',
+            'question.unique' => 'Esta pregunta de seguridad ya existe',
         ]);
 
         $question = SecurityQuestion::findOrFail($id);
@@ -68,8 +68,8 @@ class SecurityQuestionController extends Controller
             'question' => $request->question,
         ]);
 
-        return redirect()->route('security_questions.index')->with('success', 'La pregunta de seguridad se ha actualizado exitosamente');
-    }
+        return redirect()->route('security_questions.index')->with('status', '¡Pregunta de seguridad actualizada con éxito!');
+}
 
 //------------------------------------------------------------------------------------------
     public function destroy($id)
@@ -77,7 +77,7 @@ class SecurityQuestionController extends Controller
         $question = SecurityQuestion::findOrFail($id);
         $question->delete();
 
-        return redirect()->route('security_questions.index')->with('success', 'Pregunta de seguridad se ha eliminado exitosamente');
+        return redirect()->route('security_questions.index')->with('status', '¡Pregunta de seguridad eliminada con éxito!');
     }
 
 //------------------------------------------------------------------------------------------

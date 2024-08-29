@@ -16,7 +16,13 @@
 
                         <div class="form-group">
                             <label for="question"><strong>PREGUNTA DE SEGURIDAD *</strong></label>
-                            <input type="text" class="form-control" id="question" name="question" value="{{ $question->question }}" required>
+                            <input type="text" class="form-control @error('question') is-invalid @enderror" id="question" name="question" value="{{ old('question', $question->question) }}" required>
+
+                            @error('question')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div><br>
 
                         <div class="form-group row mb-0">

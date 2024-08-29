@@ -18,24 +18,22 @@ class SexoController extends Controller
         return view('sexos.create');
     }
 
-    
-
     public function store(Request $request)
     {
         $request->validate([
             'nombre' => 'required|unique:sexos|max:255',
+        ], [
+            'nombre.unique' => 'Este género sexual ya existe.',
+            'nombre.required' => 'El nombre del género sexual es obligatorio.',
+            'nombre.max' => 'El nombre del género sexual no puede tener más de 255 caracteres.',
         ]);
 
         Sexo::create($request->all());
 
         return redirect()->route('sexos.index')
-                        ->with('success', 'Sexo creado exitosamente.');
+                        ->with('status', '¡Género sexual creado con éxito!');
     }
 
-    public function show(Sexo $sexo)
-    {
-        //
-    }
 
     public function edit(Sexo $sexo)
     {
@@ -45,13 +43,17 @@ class SexoController extends Controller
     public function update(Request $request, Sexo $sexo)
     {
         $request->validate([
-            'nombre' => 'required|unique:sexos,nombre,'.$sexo->id.'|max:255',
+            'nombre' => 'required|unique:sexos,nombre,' . $sexo->id . '|max:255',
+        ], [
+            'nombre.unique' => 'Este género sexual ya existe.',
+            'nombre.required' => 'El nombre del género sexual es obligatorio.',
+            'nombre.max' => 'El nombre del género sexual no puede tener más de 255 caracteres.',
         ]);
 
         $sexo->update($request->all());
 
         return redirect()->route('sexos.index')
-                        ->with('success', 'Sexo actualizado exitosamente.');
+                        ->with('status', '¡Género sexual actualizado con éxito!');
     }
 
     public function destroy(Sexo $sexo)
@@ -59,6 +61,6 @@ class SexoController extends Controller
         $sexo->delete();
 
         return redirect()->route('sexos.index')
-                        ->with('success', 'Sexo eliminado exitosamente.');
+                        ->with('status', '¡Género sexual eliminado con éxito!');
     }
 }

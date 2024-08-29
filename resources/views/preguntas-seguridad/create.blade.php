@@ -14,7 +14,13 @@
                         @csrf
                         <div class="form-group">
                             <label for="question"><strong>PREGUNTA DE SEGURIDAD *</strong></label>
-                            <input type="text" name="question" id="question" class="form-control" required>
+                            <input type="text" name="question" id="question" class="form-control @error('question') is-invalid @enderror" value="{{ old('question') }}" required>
+                            
+                            @error('question')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div><br>
 
                         <div class="form-group row mb-0">
@@ -38,4 +44,3 @@
     </div>
 </div>
 @endsection
-

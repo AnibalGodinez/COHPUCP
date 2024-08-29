@@ -34,23 +34,23 @@
                         </div>
                     @else
                         <table class="table table-bordered table-striped">
-                            <thead>
+                            <thead style="background-color: #3288af;">
                                 <tr>
-                                    <th class="text-center">ID</th>
-                                    <th class="text-center">Nombre completo</th>
-                                    <th class="text-center">DNI</th>
-                                    <th class="text-center">Nº colegiación</th>
-                                    <th class="text-center">RTN</th>
-                                    <th class="text-center">Sexo</th>
-                                    <th class="text-center">Fecha de nacimiento</th>
-                                    <th class="text-center">Edad</th>
-                                    <th class="text-center">País</th>
-                                    <th class="text-center">Teléfono</th>
-                                    <th class="text-center">Teléfono celular</th>
-                                    <th class="text-center">Correo electrónico</th>
-                                    <th class="text-center">Estado</th>
-                                    <th class="text-center">Rol asignado</th>
-                                    <th class="text-center">Ver información</th>
+                                    <th class="text-center" style="color: white;">ID</th>
+                                    <th class="text-center" style="color: white;">Nombre completo</th>
+                                    <th class="text-center" style="color: white;">DNI</th>
+                                    <th class="text-center" style="color: white;">Nº colegiación</th>
+                                    <th class="text-center" style="color: white;">RTN</th>
+                                    <th class="text-center" style="color: white;">Sexo</th>
+                                    <th class="text-center" style="color: white;">Fecha de nacimiento</th>
+                                    <th class="text-center" style="color: white;">Edad</th>
+                                    <th class="text-center" style="color: white;">País</th>
+                                    <th class="text-center" style="color: white;">Teléfono</th>
+                                    <th class="text-center" style="color: white;">Teléfono celular</th>
+                                    <th class="text-center" style="color: white;">Correo electrónico</th>
+                                    <th class="text-center" style="color: white;">Estado</th>
+                                    <th class="text-center" style="color: white;">Rol asignado</th>
+                                    <th class="text-center" style="color: white;">Ver información</th>
                                 </tr>
                             </thead>
                             <tbody>

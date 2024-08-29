@@ -37,18 +37,18 @@
                             </div>
                         @else
                             <table class="table table-bordered table-striped">
-                                <thead>
+                                <thead style="background-color: #3288af;">
                                     <tr>
-                                        <th class="text-center">Nombre del permiso</th>
-                                        <th class="text-center">Descripción</th>
-                                        <th class="text-center">Acción</th>
+                                        <th class="text-center" style="color: white;">Nombre del permiso</th>
+                                        <th class="text-center" style="color: white;">Descripción del permiso</th>
+                                        <th class="text-center" style="color: white;">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($permissions as $permission)
                                     <tr>
-                                        <td>{{ $permission->name }}</td>
-                                        <td>{{ $permission->description }}</td>
+                                        <td class="text-center">{{ $permission->name }}</td>
+                                        <td class="text-center">{{ $permission->description }}</td>
                                         <td class="text-center">
                                             <a href="{{ url('permission/'.$permission->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                                 <i class="tim-icons icon-settings"></i>
