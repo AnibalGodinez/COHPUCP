@@ -34,12 +34,14 @@ class IdiomaController extends Controller
     {
         $request->validate([
             'nombre' => 'required|unique:idiomas|max:255',
+        ], [
+            'nombre.unique' => 'El nombre del idioma ya existe. Por favor, elija otro nombre.',
         ]);
 
         Idioma::create($request->all());
 
         return redirect()->route('idiomas.index')
-                         ->with('success', 'Idioma creado exitosamente.');
+                        ->with('status', '¡Idioma creado con éxito!');
     }
 
 
@@ -54,12 +56,14 @@ class IdiomaController extends Controller
     {
         $request->validate([
             'nombre' => 'required|unique:idiomas,nombre,' . $idioma->id . '|max:255',
+        ], [
+            'nombre.unique' => 'El nombre del idioma ya existe. Por favor, elija otro nombre.',
         ]);
 
         $idioma->update($request->all());
 
-        return redirect()->route('idiomas.update')
-                         ->with('success', 'Idioma actualizado exitosamente.');
+        return redirect()->route('idiomas.index')
+                        ->with('status', '¡Idioma actualizado con éxito!');
     }
 
     // Eliminar un idioma específico de la base de datos
@@ -68,6 +72,6 @@ class IdiomaController extends Controller
         $idioma->delete();
 
         return redirect()->route('idiomas.index')
-                         ->with('success', 'Idioma eliminado exitosamente.');
+                         ->with('status', '¡Idioma eliminado con éxito!');
     }
 }

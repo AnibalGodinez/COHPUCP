@@ -9,17 +9,6 @@
                     <h3 class="card-title"><strong>EDITAR IDIOMA</strong></h3>
                 </div>
 
-                {{-- Mensajes de error --}}
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
                 <div class="card-body">
                     <form action="{{ route('idiomas.update', $idioma->id) }}" method="POST">
                         @csrf
@@ -27,18 +16,31 @@
 
                         <div class="form-group">
                             <label for="nombre"><strong>NOMBRE DEL IDIOMA *</strong></label>
-                            <input type="text" name="nombre" id="nombre" class="form-control" value="{{ old('nombre', $idioma->nombre) }}">
+                            <input 
+                                type="text" 
+                                name="nombre" 
+                                id="nombre" 
+                                class="form-control @error('nombre') is-invalid @enderror" 
+                                value="{{ old('nombre', $idioma->nombre) }}"
+                            >
+                            @error('nombre')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
+                        <div class="mb-3">
                             <button type="submit" class="btn btn-success">
                                 <i class="fas fa-save" style="margin-right: 8px;"></i>
                                 Guardar cambios
                             </button>
 
-                        <a href="{{ route('idiomas.index') }}" class="btn btn-secondary">
-                            <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
-                            Volver
-                        </a>
+                            <a href="{{ route('idiomas.index') }}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                                Volver
+                            </a>
+                        </div>
 
                     </form>
                 </div>

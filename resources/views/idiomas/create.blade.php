@@ -9,31 +9,27 @@
                     <h3 class="card-title"><strong>AGREGAR NUEVO IDIOMA</strong></h3>
                 </div>
 
-                    @if($errors->any())
-                        <div class="alert alert-danger mx-4 mt-3">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    <div class="card-body">
-                        <form action="{{ route('idiomas.store') }}" method="POST">
+                <div class="card-body">
+                    <form action="{{ route('idiomas.store') }}" method="POST">
                         @csrf
 
                         <div class="form-group">
                             <label for="nombre"><strong>NOMBRE DEL IDIOMA *</strong></label>
                             <input 
-                            type="text" 
-                            id="nombre" 
-                            name="nombre" 
-                            class="form-control" 
-                            style="max-width: 300px;" 
-                            value="{{ old('nombre') }}" 
-                            placeholder="Ingrese el nombre del idioma"
-                            required>
+                                type="text" 
+                                id="nombre" 
+                                name="nombre" 
+                                class="form-control @error('nombre') is-invalid @enderror" 
+                                style="max-width: 300px;" 
+                                value="{{ old('nombre') }}" 
+                                placeholder="Ingrese el nombre del idioma"
+                                required
+                            >
+                            @error('nombre')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
