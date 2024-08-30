@@ -32,10 +32,12 @@ class UniversidadController extends Controller
         return redirect()->route('universidades.index')->with('status', '¡Universidad creada con éxito!');
     }
 
-    public function edit(Universidad $universidad)
+    public function edit($id)
     {
+        $universidad = Universidad::findOrFail($id);
         return view('universidades.edit', compact('universidad'));
     }
+
 
     public function update(Request $request, Universidad $universidad)
     {
