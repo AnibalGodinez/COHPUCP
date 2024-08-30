@@ -43,15 +43,15 @@
                                             <a href="{{ url('universidades/'.$universidad->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                                 <i class="tim-icons icon-settings"></i>
                                             </a>
-                                            <form action="{{ url('universidades/'.$universidad->id) }}" method="POST" style="display: inline;">
+                                            <form action="{{ route('universidades.destroy', $universidad->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm btn-icon" onclick="return confirm('¿Estás seguro de que deseas eliminar esta universidad?');">
                                                     <i class="tim-icons icon-simple-remove"></i>
                                                 </button>
                                             </form>
+                                                                                        
                                         </td>                                        
-
                                     </tr>
                                 @endforeach
                             </tbody>

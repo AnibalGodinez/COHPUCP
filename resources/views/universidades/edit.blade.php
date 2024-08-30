@@ -13,18 +13,18 @@
                     <form action="{{ route('universidades.update', $universidad->id) }}" method="POST">
                         @csrf
                         @method('PUT')
-
+                    
                         <div class="mb-3">
-                            <label for="nombre_universidad" class="form-label"><strong>NOMBRE DE LA UNIVERIDAD</strong></label>
+                            <label for="nombre_universidad" class="form-label"><strong>NOMBRE DE LA UNIVERSIDAD</strong></label>
                             <input type="text" name="nombre_universidad" class="form-control @error('nombre_universidad') is-invalid @enderror" id="nombre_universidad" value="{{ old('nombre_universidad', $universidad->nombre_universidad) }}" required>
-                            
+                    
                             @error('nombre_universidad')
                                 <span class="invalid-feedback d-block" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                        
+                    
                         <div class="form-group row mb-0">
                             <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-success">
@@ -37,8 +37,9 @@
                                 </a>
                             </div>
                         </div>
-
                     </form>
+                    
+                    
                 </div>
             </div>
         </div>
