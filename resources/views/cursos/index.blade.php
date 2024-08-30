@@ -13,11 +13,16 @@
                             </a>
                         </div>
 
-                        {{-- Mensajes de éxito --}}
-                        @if (session('success'))
-                            <div class="alert alert-success text-center">
-                                {{ session('success') }}
+                        <!-- Mensaje de éxito -->
+                        @if(session('status'))
+                        <div class="text-center">
+                            <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
+                                {{ session('status') }}
+                                <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
                             </div>
+                        </div>
                         @endif
 
                         {{-- Formulario de búsqueda --}}
@@ -37,20 +42,20 @@
 
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped">
-                                    <thead>
+                                    <thead style="background-color: #3288af;">
                                         <tr>
-                                            <th class="text-center">Diseño</th>
-                                            <th class="text-center">Título de los cursos</th>
-                                            <th class="text-center">Nombre del curso</th>
-                                            <th class="text-center">Descripción</th>
-                                            <th class="text-center">Precio</th>
-                                            <th class="text-center">Enlace</th>
-                                            <th class="text-center">icono</th>
-                                            <th class="text-center">Calificación</th>
-                                            <th class="text-center">Idioma</th>
-                                            <th class="text-center">Categoría</th>
-                                            <th class="text-center">Imagen</th>
-                                            <th class="text-center">Acciones</th>
+                                            <th class="text-center" style="color: white;">Diseño</th>
+                                            <th class="text-center" style="color: white;">Título de los cursos</th>
+                                            <th class="text-center" style="color: white;">Nombre del curso</th>
+                                            <th class="text-center" style="color: white;">Descripción</th>
+                                            <th class="text-center" style="color: white;">Precio</th>
+                                            <th class="text-center" style="color: white;">Enlace</th>
+                                            <th class="text-center" style="color: white;">icono</th>
+                                            <th class="text-center" style="color: white;">Calificación</th>
+                                            <th class="text-center" style="color: white;">Idioma</th>
+                                            <th class="text-center" style="color: white;">Categoría</th>
+                                            <th class="text-center" style="color: white;">Imagen</th>
+                                            <th class="text-center" style="color: white;">Acciones</th>
                                         </tr>
                                     </thead>
 

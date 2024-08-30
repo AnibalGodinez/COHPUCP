@@ -40,6 +40,7 @@
                                 No se encontraron países que coincidan con tu búsqueda.
                             </div>
                         @else
+                        
                             <table class="table table-bordered table-striped" style="border-spacing: 8cm;">
                                 <thead style="background-color: #3288af;">
                                     <tr>

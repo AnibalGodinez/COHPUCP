@@ -21,40 +21,9 @@ class UserController extends Controller
         $this->middleware('permission:borrar usuario', ['only' => ['destroy']]);
     }
 
-    private function searchUsers($search)
+    public function index()
     {
-        return User::where(function($query) use ($search) {
-            $query->where('id', 'LIKE', "%{$search}%")
-                ->orWhere('name', 'LIKE', "%{$search}%")
-                ->orWhere('name2', 'LIKE', "%{$search}%")
-                ->orWhere('apellido', 'LIKE', "%{$search}%")
-                ->orWhere('apellido2', 'LIKE', "%{$search}%")
-                ->orWhere('numero_identidad', 'LIKE', "%{$search}%")
-                ->orWhere('numero_colegiacion', 'LIKE', "%{$search}%")
-                ->orWhere('rtn', 'LIKE', "%{$search}%")
-                ->orWhere('fecha_nacimiento', 'LIKE', "%{$search}%")
-                ->orWhere('telefono', 'LIKE', "%{$search}%")
-                ->orWhere('telefono_celular', 'LIKE', "%{$search}%")
-                ->orWhere('email', 'LIKE', "%{$search}%")
-                ->orWhereHas('pais', function ($query) use ($search) {
-                    $query->where('nombre', 'LIKE', "%{$search}%");
-                })
-                ->orWhereHas('roles', function ($query) use ($search) {
-                    $query->where('name', 'LIKE', "%{$search}%");
-                });
-        })
-        ->orderBy('id', 'desc')
-        ->with('roles', 'pais') // Incluye la relación 'roles' y 'pais'
-        ->paginate(7);
-    }
-
-    public function index(Request $request)
-    {
-        $search = $request->query('search');
-        $users = $search 
-            ? $this->searchUsers($search)->with('pais') 
-            : User::orderBy('id', 'desc')->with('roles', 'pais')->paginate(7);
-
+        $users = User::paginate(10); // Cambia el número según tu necesidad
         return view('users.index', ['users' => $users]);
     }
 
@@ -63,7 +32,7 @@ class UserController extends Controller
         $roles = Role::pluck('name', 'name')->all();
         $sexos = Sexo::all();
         $paises = Pais::all();
-        return view('users.create', ['roles' => $roles,'paises' => $paises,'sexos' => $sexos]);
+        return view('users.create', ['roles' => $roles, 'paises' => $paises, 'sexos' => $sexos]);
     }
 
     public function store(Request $request)
@@ -101,7 +70,7 @@ class UserController extends Controller
             'telefono_celular.required' => 'El campo teléfono celular es obligatorio',
             'email.required' => 'El campo email es obligatorio',
             'email.unique' => 'El email ya está en uso',
-            'email_confirmation' => 'La confirmación del correo eletrónico no coincide',
+            'email_confirmation' => 'La confirmación del correo electrónico no coincide',
             'password.required' => 'El campo contraseña es obligatorio',
             'password.min' => 'La contraseña debe tener al menos 8 caracteres',
             'password.confirmed' => 'La confirmación de la contraseña no coincide',
@@ -132,7 +101,6 @@ class UserController extends Controller
         return redirect('/usuarios')->with('status', '¡El usuario se ha creado con éxito!');
     }
 
-
     public function edit($id)
     {
         $user = User::with('pais')->findOrFail($id); 
@@ -142,7 +110,6 @@ class UserController extends Controller
 
         return view('users.edit', compact('user', 'roles', 'paises', 'sexos'));
     }
-
 
     public function update(Request $request, $userId)
     {
@@ -195,7 +162,6 @@ class UserController extends Controller
         return redirect('/usuarios')->with('status', '¡El usuario se ha actualizado con éxito!');
     }
 
-
     public function destroy($id)
     {
         $user = User::findOrFail($id);
@@ -213,11 +179,10 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
-    public function verUsuarios(Request $request)
+    public function verUsuarios()
     {
-        $search = $request->query('search');
-        $users = $this->searchUsers($search);
-        return view('users.view', ['users' => $users]);
+            $users = User::paginate(10);
+            return view('users.view', ['users' => $users]);
     }
 
     public function getUserData($identifier)
@@ -239,4 +204,3 @@ class UserController extends Controller
     }
 
 }
-

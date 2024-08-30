@@ -25,7 +25,7 @@
                     <div class="card-body">
                         {{-- Formulario de búsqueda --}}
                         <form action="{{ url('roles') }}" method="GET" class="form-inline mt-3">
-                            <input type="text" name="search" class="form-control mr-2 col-2" placeholder="Buscar roles" value="{{ request()->query('search') }}">
+                            <input type="text" name="search" class="form-control mr-2 col-2" placeholder="Buscar rol..." value="{{ request()->query('search') }}">
                             <button class="btn btn-info btn-round btn-simple">
                                 <i class="tim-icons icon-zoom-split"></i> Buscar
                             </button>

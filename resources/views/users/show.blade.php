@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card shadow-lg" style="border-radius: 15px;">
                 <div class="card-header bg-info text-white text-center">
-                    <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>DETALLES DEL USUARIO</strong></h3>
+                    <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>INFORMACIÓN DEL USUARIO</strong></h3>
                 </div><br>
 
                 <!-- Campo para el ID del usuario -->
@@ -191,12 +191,13 @@
                 <div class="form-group row mb-0 px-3">
                     <div class="col-md-12 text-center">
                         <a href="{{ route('usuarios.index') }}" class="btn btn-secondary">
-                            <i class="fas fa-arrow-left"></i> Regresar a la lista de usuarios
+                            <i class="fas fa-arrow-left"></i>
+                            Volver
                         </a>
                         <!-- Botón para previsualizar el PDF -->
                         <a href="{{ route('user.pdf.preview', ['id' => $user->id]) }}" class="btn btn-secondary">
                             <i class="fas fa-eye" style="margin-right: 8px;"></i>
-                            Previsualizar PDF
+                            Ver PDF
                         </a>
 
                         <!-- Botón para descargar el PDF -->

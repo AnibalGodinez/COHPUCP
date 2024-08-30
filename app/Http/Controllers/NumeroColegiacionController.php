@@ -50,6 +50,6 @@ class NumeroColegiacionController extends Controller
         $user->save();
 
         // Redireccionar a la vista index con un mensaje de éxito
-        return redirect()->route('numero_colegiacion.index')->with('status', '¡El número de colegiación ha sido asignado con éxito al usuario!');
+        return redirect()->route('numero_colegiacion.index')->with('status', '¡Número de colegiación asignado con éxito al usuario!');
     }
 }

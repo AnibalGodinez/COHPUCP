@@ -28,8 +28,11 @@ class CursoController extends Controller
 
         if ($search) {
             $cursos->where('id', 'LIKE', "%{$search}%")
+                   ->orWhere('layout', 'LIKE', "%{$search}%")
+                   ->orWhere('titulo', 'LIKE', "%{$search}%")
                    ->orWhere('nombre', 'LIKE', "%{$search}%")
-                   ->orWhere('descripcion', 'LIKE', "%{$search}%");
+                   ->orWhere('descripcion', 'LIKE', "%{$search}%")
+                   ->orWhere('precio', 'LIKE', "%{$search}%");
         }
 
         $cursos = $cursos->paginate(5);
@@ -81,7 +84,7 @@ class CursoController extends Controller
 
         $curso->save();
 
-        return redirect()->route('cursos.index')->with('success', 'Curso creado con éxito');
+        return redirect()->route('cursos.index')->with('status', '¡Curso creado con éxito!');
     }
 
     public function edit($id)
@@ -141,7 +144,7 @@ class CursoController extends Controller
 
         $curso->save();
 
-        return redirect()->route('cursos.index')->with('success', 'Curso actualizado con éxito');
+        return redirect()->route('cursos.index')->with('status', '¡Curso actualizado con éxito!');
     }
 
     public function destroy(Curso $curso)
@@ -153,7 +156,7 @@ class CursoController extends Controller
 
         $curso->delete();
 
-        return redirect()->route('cursos.index')->with('success', 'Curso eliminado con éxito');
+        return redirect()->route('cursos.index')->with('status', '¡Curso eliminado con éxito!');
     }
 
     public function viewCursos()

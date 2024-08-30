@@ -10,7 +10,7 @@
 
                             <!-- Formulario de búsqueda -->
                             <form action="{{ route('numero_colegiacion.index') }}" method="GET" class="form-inline">
-                                <input type="text" name="search" class="form-control" placeholder="Buscar..." value="{{ request('search') }}">
+                                <input type="text" name="search" class="form-control" placeholder="Buscar usuario..." value="{{ request('search') }}">
                                 <button class="btn btn-info btn-round btn-simple">
                                     <i class="tim-icons icon-zoom-split"></i> Buscar
                                 </button>
