@@ -47,7 +47,7 @@ class WelcomeContentController extends Controller
             'user_id' => auth()->id(), // Asignar el ID del usuario autenticado
         ]);
 
-        return redirect()->route('welcome-content.index')->with('success', 'El contenido se ha añadido exitosamente.');
+        return redirect()->route('welcome-content.index')->with('success', '¡Contenido creado con éxito!');
     }
 
     public function edit(WelcomeContent $welcomeContent)
@@ -96,7 +96,7 @@ class WelcomeContentController extends Controller
             'layout' => $request->input('layout'), // Actualizar el diseño
         ]));
 
-        return redirect()->route('welcome-content.index')->with('success', 'El contenido se ha actualizado exitosamente.');
+        return redirect()->route('welcome-content.index')->with('success', '¡Contenido actualizado con éxito!');
     }
 
     public function destroy(WelcomeContent $welcomeContent)
@@ -106,7 +106,7 @@ class WelcomeContentController extends Controller
             Storage::disk('public')->delete($welcomeContent->image_path);
         }
         $welcomeContent->delete();
-        return redirect()->route('welcome-content.index')->with('success', 'El contenido se ha eliminado exitosamente.');
+        return redirect()->route('welcome-content.index')->with('success', '¡Contenido eliminado con éxito!');
     }
 }
 

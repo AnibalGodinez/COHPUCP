@@ -74,7 +74,7 @@ class DashboardContentController extends Controller
                 ['user_id' => auth()->id()]
             ));
 
-            return redirect()->route('dashboard-content.index')->with('success', 'Contenido del dashboard creado exitosamente.');
+            return redirect()->route('dashboard-content.index')->with('success', '¡Contenido del dashboard creado éxito!');
         } catch (\Exception $e) {
             // Log the error message
             Log::error('Error al subir archivo: ' . $e->getMessage());
@@ -159,7 +159,7 @@ class DashboardContentController extends Controller
 
             $dashboardContent->update($validatedData);
 
-            return redirect()->route('dashboard-content.index')->with('success', 'Contenido del dashboard actualizado exitosamente.');
+            return redirect()->route('dashboard-content.index')->with('success', '¡Contenido del dashboard actualizado con éxito!');
         } catch (\Exception $e) {
             // Log the error message
             Log::error('Error al actualizar contenido: ' . $e->getMessage());
@@ -183,7 +183,7 @@ class DashboardContentController extends Controller
 
             $dashboardContent->delete();
 
-            return redirect()->route('dashboard-content.index')->with('success', 'Contenido del dashboard eliminado exitosamente.');
+            return redirect()->route('dashboard-content.index')->with('success', '¡Contenido del dashboard eliminado con éxito!');
         } catch (\Exception $e) {
             // Log the error message
             Log::error('Error al eliminar contenido: ' . $e->getMessage());

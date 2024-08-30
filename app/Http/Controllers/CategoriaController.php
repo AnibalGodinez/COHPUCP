@@ -38,8 +38,7 @@ class CategoriaController extends Controller
 
         Categoria::create($request->all());
 
-        return redirect()->route('categorias.index')
-                         ->with('success', 'Categoría creada exitosamente.');
+        return redirect()->route('categorias.index')->with('success', '¡Categoría creada con éxito!');
     }
 
 
@@ -59,8 +58,7 @@ class CategoriaController extends Controller
 
         $categoria->update($request->all());
 
-        return redirect()->route('categorias.index')
-                        ->with('success', 'Categoría actualizada exitosamente.');
+        return redirect()->route('categorias.index')->with('success', '¡Categoría actualizada con éxito!');
     }
 
 
@@ -69,8 +67,7 @@ class CategoriaController extends Controller
     {
         $categoria->delete();
 
-        return redirect()->route('categorias.index')
-                        ->with('success', 'Categoría eliminada exitosamente.');
+        return redirect()->route('categorias.index')->with('success', '¡Categoría eliminada con éxito!');
     }
 
 }

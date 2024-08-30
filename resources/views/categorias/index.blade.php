@@ -7,17 +7,22 @@
                 <div class="card m-7">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h3 class="card-title text-center" style="margin-left: 800px;">LISTA DE CATEGORÍAS</h3>
+                            <h3 class="card-title text-center" style="margin-left: 805px;">LISTA DE CATEGORÍAS</h3>
                             <a href="{{ route('categorias.create') }}" class="btn btn-info btn-round btn-simple">
                                 <i class="fas fa-plus-circle"></i> Crear nueva categoría
                             </a>
                         </div><br>
 
-                     {{-- Mensajes de éxito --}}
-                     @if (session('success'))
-                        <div class="alert alert-success text-center">
+                    <!-- Mensaje de éxito -->
+                    @if(session('success'))
+                    <div class="text-center">
+                        <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
                             {{ session('success') }}
+                            <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
                         </div>
+                    </div>
                     @endif
                     
                     <table class="table table-bordered table-striped">
