@@ -59,6 +59,34 @@
             height: 100%;
             object-fit: cover;
         }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('white/img/logo-empresa.png');
+            background-repeat: no-repeat;
+            background-size: 80%;
+            background-position: center center;
+            opacity: 0.9; /* Ajusta este valor para cambiar la transparencia */
+            z-index: -1; /* Asegura que el contenido de la página esté por encima de la imagen */
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -175px; /* Ajusta este valor para mover la imagen hacia abajo */
+            left: -230px;
+            width: 170%;
+            height: 400px; /* Ajusta la altura del pie de página según necesites */
+            background-image: url('white/img/color-1.jpg');
+            background-repeat: no-repeat;
+            background-size: 70%; /* Ajusta el tamaño de la imagen */
+            background-position: center bottom;
+            opacity: 0.9; /* Ajusta la opacidad para un efecto de marca de agua */
+            z-index: -1; /* Asegura que el contenido esté sobre la imagen */
+        }
 
 
     </style>
@@ -67,12 +95,12 @@
     <div class="container">
         <!-- Encabezado -->
         <div class="header-container">
-            <div style="margin-left: 55px">
+            <div style="margin-left: 110px; margin-top:-10px"><br>
                 <h3>COLEGIO HONDUREÑO DE PROFESIONALES <br> UNIVERSITARIOS EN CONTADURÍA PÚBLICA <br> 
                     <span style="margin-left: 170px; display: inline-block;">(COHPUCP)</span>
                 </h3>
             </div>            
-            <div class="photo-frame" style="margin-left: 560px; margin-top:-200px">
+            <div class="photo-frame" style="margin-left: 575px; margin-top:-250px">
                 @if($inscripcion->imagen_tamano_carnet)
                     @php
                         $imagenCarnet = json_decode($inscripcion->imagen_tamano_carnet);
@@ -87,6 +115,7 @@
                 @endif
             </div>                       
         </div>
+        <img src="white/img/logo-empresa.png" alt="Logo" style="margin-left: -10px; margin-top:-180px; width: 90px; height: auto;">
 
         <!-- Campo Número de Colegiación -->
         <div class="section">
@@ -444,18 +473,22 @@
                     2) El COHPUCP no es responsable por las denegaciones de primer ingreso o reingreso a la Póliza de
                     Seguro de Vida Colectivo.
                 </p>
-            </div><br><br>
+            </div><br><br><br>
 
-            <div class="section text-center">
+            <div class="section text-center" style="margin-left: -350px;">
                 <!-- Firma solicitante -->
-                <p><strong></strong> ________________________________________ </p>
-                <p><strong></strong> Firma del solicitante</p><br>
+                <p><strong></strong> _________________________________ </p>
+                <p><strong></strong> Firma del solicitante</p>
+            </div>
+
+            <div class="section text-center" style="margin-left: 350px; margin-top:-250px">
+                <!-- Firma secretario -->
+                <p><strong></strong> _________________________________ </p>
+                <p><strong></strong> Firma del secretario(a)</p><br><br>
             </div>
 
             <div class="section text-center">
-                <!-- Firma secretario -->
-                <p><strong></strong> ________________________________________ </p>
-                <p><strong></strong> Firma del secretario(a)</p><br><br>
+                <!-- Fecha -->
                 <p><strong></strong> {{ \Carbon\Carbon::now()->format('d') }} de {{ \Carbon\Carbon::now()->translatedFormat('F') }} del {{ \Carbon\Carbon::now()->format('Y') }}</p>
             </div>
         </div>

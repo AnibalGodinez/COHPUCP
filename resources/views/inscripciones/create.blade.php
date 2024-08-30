@@ -97,7 +97,7 @@
                                         <i class="fas fa-birthday-cake" style="margin-right: 8px;"></i>
                                         <strong>FECHA DE NACIMIENTO *</strong>
                                     </label>
-                                    <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" onchange="validateAge()" required>
+                                    <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" onchange="validateAge()" required readonly>
                                     <span id="age-error" style="color: rgb(235, 13, 13); display: none;">Debes ser mayor de 18 años</span>
                                 </div>
 
