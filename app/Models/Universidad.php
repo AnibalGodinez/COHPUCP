@@ -11,12 +11,11 @@ class Universidad extends Model
 
     protected $table = 'universidades';
 
-    protected $fillable = [
-        'nombre_universidad',
-    ];
+    protected $fillable = ['nombre_universidad'];
 
+    // Relación con el modelo User
     public function users()
     {
-        return $this->belongsToMany(User::class, 'universidad_user');
+        return $this->belongsToMany(User::class);
     }
 }

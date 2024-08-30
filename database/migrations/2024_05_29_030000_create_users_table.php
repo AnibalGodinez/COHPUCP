@@ -30,6 +30,11 @@ class CreateUsersTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
+            $table->unsignedBigInteger('universidad_id')->nullable();
+            $table->foreign('universidad_id')->references('id')->on('universidades')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
             $table->string('telefono')->nullable();
             $table->string('telefono_celular');
             $table->string('email')->unique();

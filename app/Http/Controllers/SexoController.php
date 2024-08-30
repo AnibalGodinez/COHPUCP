@@ -30,8 +30,7 @@ class SexoController extends Controller
 
         Sexo::create($request->all());
 
-        return redirect()->route('sexos.index')
-                        ->with('status', '¡Género sexual creado con éxito!');
+        return redirect()->route('sexos.index')->with('status', '¡Género sexual creado con éxito!');
     }
 
 
@@ -52,15 +51,13 @@ class SexoController extends Controller
 
         $sexo->update($request->all());
 
-        return redirect()->route('sexos.index')
-                        ->with('status', '¡Género sexual actualizado con éxito!');
+        return redirect()->route('sexos.index')->with('status', '¡Género sexual actualizado con éxito!');
     }
 
     public function destroy(Sexo $sexo)
     {
         $sexo->delete();
 
-        return redirect()->route('sexos.index')
-                        ->with('status', '¡Género sexual eliminado con éxito!');
+        return redirect()->route('sexos.index')->with('status', '¡Género sexual eliminado con éxito!');
     }
 }

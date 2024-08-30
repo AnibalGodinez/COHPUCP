@@ -11,7 +11,7 @@ class CreateUniversidadesTable extends Migration
     {
         Schema::create('universidades', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_universidad');
+            $table->string('nombre_universidad')->unique();
             $table->timestamps();
         });
     }

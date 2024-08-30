@@ -91,9 +91,9 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     // Relación muchos a muchos con universidades
-    public function universidades()
+    public function universidad()
     {
-        return $this->belongsToMany(Universidad::class, 'universidad_user');
+        return $this->belongsToMany(Universidad::class, 'universidad_id');
     }
 
     // Relación muchos a muchos con universidades
