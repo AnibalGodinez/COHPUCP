@@ -34,8 +34,8 @@
                         </form>
 
                         @if($cursos->isEmpty())
-                            <div class="alert alert-default text-center" role="alert">
-                                No hay ningún resultado de su búsqueda.
+                            <div class="alert alert-info text-center" role="alert">
+                                No hay ningún curso
                             </div>
                         @else
 

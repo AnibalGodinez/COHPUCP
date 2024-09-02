@@ -70,7 +70,7 @@
             background-repeat: no-repeat;
             background-size: 80%;
             background-position: center center;
-            opacity: 0.9; /* Ajusta este valor para cambiar la transparencia */
+            opacity: 0.1; /* Ajusta este valor para cambiar la transparencia */
             z-index: -1; /* Asegura que el contenido de la página esté por encima de la imagen */
         }
         body::after {

@@ -28,13 +28,14 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped mt-4">
-                                    <thead>
+                                    <thead style="background-color: #3288af;">
                                         <tr>
                                             @foreach (['Diseño', 'Título', 'Subtítulo', 'Descripción', 'Archivo pdf', 'Imagen', 'Vídeo', 'Links', 'Facebook', 'Twitter', 'Youtube', 'Whatsapp', 'Instagram', 'Acciones'] as $header)
-                                                <th class="text-center" style="width: 120px;">{{ $header }}</th>
+                                                <th class="text-center" style="width: 120px; color: white;">{{ $header }}</th>
                                             @endforeach
                                         </tr>
                                     </thead>
+                                    
                                     <tbody>
                                         @foreach ($dashboardContents as $dashboardContent)
                                             <tr>

@@ -27,13 +27,13 @@
 
                         <div class="card-body">
                             <table class="table table-bordered table-striped mt-4">
-                                <thead>
+                                <thead style="background-color: #3288af;">
                                     <tr>
-                                        <th class="text-center">Diseño</th>
-                                        <th class="text-center">Título</th>
-                                        <th class="text-center">Descripción</th>
-                                        <th class="text-center">Imagen</th>
-                                        <th class="text-center">Acciones</th>
+                                        <th class="text-center" style="color: white;">Diseño</th>
+                                        <th class="text-center" style="color: white;">Título</th>
+                                        <th class="text-center" style="color: white;">Descripción</th>
+                                        <th class="text-center" style="color: white;">Imagen</th>
+                                        <th class="text-center" style="color: white;">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
