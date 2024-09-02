@@ -1,5 +1,7 @@
 <?php
 
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
@@ -24,30 +26,30 @@ use App\Http\Controllers\SecurityQuestionController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\NumeroColegiacionController;
 
-// RUTA DE BIENVENIDA
-Route::get('/', function () {
-    return view('welcome');
-});
+    // RUTA DE BIENVENIDA
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
-// RUTAS DE AUTENTICACIÓN CON VERIFICACIÓN DE CORREO ELECTRÓNICO
-Auth::routes(['verify' => true]);
+    // RUTAS DE AUTENTICACIÓN CON VERIFICACIÓN DE CORREO ELECTRÓNICO
+    Auth::routes(['verify' => true]);
 
-// RUTAS DE VERIFICACIÓN DE CORREO ELECTRÓNICO
-Route::get('/email/verify', [VerificationController::class, 'show'])
-    ->middleware('auth')
-    ->name('verification.notice');
+    // RUTAS DE VERIFICACIÓN DE CORREO ELECTRÓNICO
+    Route::get('/email/verify', [VerificationController::class, 'show'])
+        ->middleware('auth')
+        ->name('verification.notice');
 
-Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
-    ->middleware(['auth', 'signed'])
-    ->name('verification.verify');
+    Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
+        ->middleware(['auth', 'signed'])
+        ->name('verification.verify');
 
-Route::post('/email/verification-notification', [VerificationController::class, 'resend'])
-    ->middleware(['auth', 'throttle:6,1'])
-    ->name('verification.send');
+    Route::post('/email/verification-notification', [VerificationController::class, 'resend'])
+        ->middleware(['auth', 'throttle:6,1'])
+        ->name('verification.send');
 
-// RUTA DE INICIO (DASHBOARD)
-Route::group(['middleware' => ['auth', 'verified']], function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // RUTA DE INICIO (DASHBOARD)
+    Route::group(['middleware' => ['auth', 'verified']], function () {
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     // RUTAS DE USUARIOS
     Route::resource('usuarios', UserController::class);
@@ -57,6 +59,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/previsualizacion/pdf/usuario/{id}', [PDFController::class, 'preview'])->name('user.pdf.preview');
     Route::get('/descargar/pdf/usuario/{id}', [PDFController::class, 'download'])->name('user.pdf.download');
     Route::get('/get-user-data/{identifier}', [UserController::class, 'getUserData']);
+    // RUTAS PARA DESCARGAR EXCEL DE LOS USUARIOS
+    Route::get('usuarios/export/excel', function () {
+        return Excel::download(new UsersExport, 'usuarios.xlsx');
+    })->name('usuarios.export.excel');
 
     // RUTAS DE PERFIL DE USUARIO
     Route::get('ver/perfil', [ProfileController::class, 'show'])->name('profile.show');
