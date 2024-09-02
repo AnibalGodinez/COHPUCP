@@ -17,8 +17,8 @@ class UsersTableSeeder extends Seeder
         $sexoMasculino = Sexo::where('nombre', 'Masculino')->first()->id;
         $sexoFemenino = Sexo::where('nombre', 'Femenino')->first()->id;
 
-        // Crear el usuario
-        $user = User::create([
+        // Crear el usuario administrador
+        $adminUser = User::create([
             'name' => 'Anibal',
             'name2' => 'Johan',
             'apellido' => 'Godinez',
@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
             'numero_identidad' => '0801-1984-15578',
             'numero_colegiacion' => '2010-01-2220',
             'rtn' => '0801-1984-155781',
-            'sexo_id' => 1,
+            'sexo_id' => $sexoMasculino,
             'fecha_nacimiento' => '1984-06-25',
             'telefono' => '2255-1123',
             'telefono_celular' => '3356-0773',
@@ -36,10 +36,18 @@ class UsersTableSeeder extends Seeder
         ]);
 
         // Crear el rol Administrador con descripción
-        $role = Role::create([
+        $adminRole = Role::create([
             'name' => 'Administrador',
             'guard_name' => 'web',
             'description' => 'El rol Administrador en la plataforma del Colegio Hondureño de Profesionales Universitarios en Contaduría Pública (COHPUCP), tiene el acceso completo a todas las funciones y datos del sistema. Los administradores pueden gestionar usuarios, configurar el sitio y realizar cualquier acción necesaria para mantener optimizada la plataforma.',
+        ]);
+
+        // Crear el rol Invitado si aún no existe
+        $invitedRole = Role::firstOrCreate([
+            'name' => 'Invitado',
+            'guard_name' => 'web'
+        ], [
+            'description' => 'El rol Invitado en la plataforma del Colegio Hondureño de Profesionales Universitarios en Contaduría Pública (COHPUCP), generalmente tienen el nivel de acceso más básico y limitado. Los invitados suelen tener acceso solo a funciones y contenido públicos del sitio.',
         ]);
 
         // Crear los permisos
@@ -104,14 +112,14 @@ class UsersTableSeeder extends Seeder
         ];
 
         foreach ($permissions as $permission) {
-            Permission::create(['name' => $permission]);
+            Permission::firstOrCreate(['name' => $permission]);
         }
 
         // Asignar todos los permisos al rol Administrador
-        $role->syncPermissions(Permission::all());
+        $adminRole->syncPermissions(Permission::all());
 
-        // Asignar el rol Administrador al usuario
-        $user->assignRole($role);
+        // Asignar el rol Administrador al usuario administrador
+        $adminUser->assignRole($adminRole);
 
         // Crear usuarios de prueba
         $users = [
@@ -122,7 +130,7 @@ class UsersTableSeeder extends Seeder
                 'apellido2' => 'Godinez',
                 'numero_identidad' => '0901-1985-12345',
                 'rtn' => '0901-1985-123451',
-                'sexo_id' => 1,
+                'sexo_id' => $sexoMasculino,
                 'fecha_nacimiento' => '1985-07-10',
                 'telefono' => '2456-7890',
                 'telefono_celular' => '3456-7890',
@@ -137,7 +145,7 @@ class UsersTableSeeder extends Seeder
                 'apellido2' => 'Plummer',
                 'numero_identidad' => '0901-1978-32114',
                 'rtn' => '0901-1978-321145',
-                'sexo_id' => 1,
+                'sexo_id' => $sexoMasculino,
                 'fecha_nacimiento' => '1978-02-07',
                 'telefono' => '2456-1122',
                 'telefono_celular' => '9955-7890',
@@ -152,7 +160,7 @@ class UsersTableSeeder extends Seeder
                 'apellido2' => 'Pavón',
                 'numero_identidad' => '0801-1998-55148',
                 'rtn' => '0801-1998-551489',
-                'sexo_id' => 2,
+                'sexo_id' => $sexoFemenino,
                 'fecha_nacimiento' => '1998-04-02',
                 'telefono' => '2277-7840',
                 'telefono_celular' => '9931-7530',
@@ -163,7 +171,9 @@ class UsersTableSeeder extends Seeder
         ];
 
         foreach ($users as $userData) {
-            User::create($userData);
+            $user = User::create($userData);
+            // Asignar el rol Invitado a los usuarios de prueba
+            $user->assignRole($invitedRole);
         }
     }
 }
