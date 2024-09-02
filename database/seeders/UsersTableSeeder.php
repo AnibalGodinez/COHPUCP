@@ -121,7 +121,7 @@ class UsersTableSeeder extends Seeder
         // Asignar el rol Administrador al usuario administrador
         $adminUser->assignRole($adminRole);
 
-        // Crear usuarios de prueba
+        // Crear usuarios de prueba con rol Invitado
         $users = [
             [
                 'name' => 'Johan',
