@@ -22,7 +22,7 @@
                 @endif
 
                 <div class="card-body">
-                    <form id="inscripcionForm" action="{{ route('inscripciones.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('inscripciones.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
@@ -734,13 +734,22 @@
                                         <strong>Subir DNI</strong>
                                     </label>
                                     (frontal y reverso)
-                                    <input type="file" id="imagen_dni" name="imagen_dni[]" accept="image/*" multiple>
+
+                                    <input 
+                                    type="file" 
+                                    id="imagen_dni" 
+                                    name="imagen_dni[]" 
+                                    accept="image/*" 
+                                    multiple>
+                                    
                                     <div id="previewImagenDni"></div>
+
                                     @error('imagen_dni.*')
                                         <span class="invalid-feedback d-block" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
                                 </div>
                             
                                 <!-- Campo para subir las imágenes del Tamaño carnet -->
@@ -845,11 +854,10 @@
                                 <div class="col-md-12 text-center">
                                     <button type="submit" class="btn btn-success">
                                         <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
-                                        Inviar inscripción
+                                        Inviar solicitud de inscripción
                                     </button>
                                 </div>
                             </div>
-
                         </div>
                     </form>
                 </div>

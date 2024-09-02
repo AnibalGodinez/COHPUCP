@@ -10,15 +10,16 @@ class CreateInscripcionFirmasTable extends Migration
     {
         Schema::create('inscripcion_firmas', function (Blueprint $table) {
             $table->id();
-            $table->string('num_membresia')->nullable();
+            $table->date('fecha_inscripcion');  
             
+            $table->unsignedBigInteger('user_id'); // Relación con la tabla de usuarios
             
             // I. Datos de la sociedad
             $table->string('nombre_sociedad');
-            $table->text('num_inscripcion_registro_publico_comercio')->nullable();
+            $table->string('num_inscripcion_registro_publico_comercio')->nullable();
             $table->date('fecha_constitucion');
-            $table->string('registro_tributario_nacional');
-            $table->string('num_inscripcion_camara_comercio');
+            $table->string('registro_tributario_nacional')->nullable();
+            $table->string('num_inscripcion_camara_comercio')->nullable();
             $table->text('direccion');
             $table->string('telefono')->nullable();
             $table->string('celular');
@@ -48,17 +49,11 @@ class CreateInscripcionFirmasTable extends Migration
 
             $table->json('imagen_firma_social')->nullable();
             $table->json('imagen_firma_representante_legal')->nullable();
-            
-            $table->date('lugar_inscripcion');
-            $table->date('fecha_inscripcion');
 
-            // IX. Estado de la inscripción
+            // III. Estado de la inscripción
             $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente');
             $table->text('descripcion_estado_solicitud')->nullable();
             $table->timestamps();
-
-            // Relación con la tabla de usuarios
-            $table->unsignedBigInteger('user_id');
 
             // Relación con la tabla `users`
             $table->foreign('user_id')

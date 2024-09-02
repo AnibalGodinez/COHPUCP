@@ -31,6 +31,7 @@ class InscripcionController extends Controller
         return view('inscripciones.create', compact('universidades'));
     }
 
+    // Almacenar una nueva inscripción de agremiado
     public function store(Request $request)
     {
         $request->validate([
@@ -292,7 +293,7 @@ class InscripcionController extends Controller
             'imagen_rtn' => json_encode($rutasArchivosRTN ),
         ]);
 
-        return redirect()->route('inscripciones.create')->with('status', '¡La inscripción ha sido enviada con éxito!');
+        return redirect()->route('inscripciones.create')->with('status', '¡Solicitud de inscripción al colegio ha sido enviada con éxito!');
     }
 
 }
