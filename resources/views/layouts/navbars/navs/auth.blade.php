@@ -189,9 +189,9 @@
                     <!-- Submenú para Inscribirse al cohpucp -->
                     <div class="dropdown-menu" id="subMenuInscribirseCohpucp" style="position: absolute; top: 100%; left: 100%; margin-left: 209px; display: none; z-index: 1000;">
                         <a class="dropdown-item text-uppercase" href="{{ route('inscripcion_firmas.create') }}">Inscripción de firma de Auditoría</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('inscripcion_firmas.index') }}">Ver isncripciones de firma</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('inscripcion_firmas.index') }}">Ver inscripciones de firma</a>
                         <a class="dropdown-item text-uppercase" href="{{ route('inscripciones.create') }}">Inscripción de agremiado</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('inscripciones.index') }}">Ver inscripciones de los agremiados</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('inscripciones.index') }}">Ver inscripciones de agremiados</a>
                     </div>
                 
                     <!-- Submenú para Comprar -->

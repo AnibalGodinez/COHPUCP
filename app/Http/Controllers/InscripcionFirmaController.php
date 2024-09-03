@@ -148,8 +148,7 @@ class InscripcionFirmaController extends Controller
             'descripcion_estado_solicitud' => $request->descripcion_estado_solicitud,
         ]);
 
-        return redirect()->route('inscripcion_firmas.index')
-            ->with('success', 'Inscripción de firma creada exitosamente.');
+        return redirect()->route('inscripcion_firmas.create')->with('success', '¡Solicitud de inscripción de firma enviada con éxito!');
     }
 
     // Mostrar el formulario para editar una inscripción de firma

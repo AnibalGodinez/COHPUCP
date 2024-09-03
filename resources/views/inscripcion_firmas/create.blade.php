@@ -1,237 +1,374 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1>Registrar Inscripción de Firma</h1>
+<div class="container-fluid mt-5">
+    <div class="row justify-content-center" style="margin-top: 90px">
+        <div class="col-md-12">
+            <div class="card shadow-lg">
+                <div class="card-header bg-warning text-white text-center">
+                    <h3 class="card-title" style="color: rgb(247, 247, 247)"><strong>REGISTRAR SOLICITUD DE INSCRIPCIÓN DE FIRMA AL COLEGIO</strong></h3>
+                </div><br>
 
-    <!-- Mostrar mensajes de error y éxito -->
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    <form action="{{ route('inscripcion_firmas.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-
-        <!-- Datos de la Sociedad -->
-        <div class="card mb-3">
-            <div class="card-header">Datos de la Sociedad</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="nombre_sociedad">Nombre de la Sociedad:</label>
-                    <input type="text" class="form-control" id="nombre_sociedad" name="nombre_sociedad" value="{{ old('nombre_sociedad') }}" required>
+                <!-- Mensaje de éxito -->
+                @if(session('success'))
+                <div class="text-center mb-3">
+                    <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
+                        {{ session('success') }}
+                        <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
                 </div>
+                @endif
 
-                <div class="form-group">
-                    <label for="num_inscripcion_registro_publico_comercio">Número de Inscripción en Registro Público de Comercio:</label>
-                    <input type="text" class="form-control" id="num_inscripcion_registro_publico_comercio" name="num_inscripcion_registro_publico_comercio" value="{{ old('num_inscripcion_registro_publico_comercio') }}">
-                </div>
+                <div class="card-body">
+                    <form action="{{ route('inscripcion_firmas.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                      
+                        <div class="form-group row">
+                            <!-- I. DATOS DE LA SOCIEDAD -->
+                            <div class="col-12 text-center mb-0">
+                                <h4 style="text-decoration: underline;"><strong>I. DATOS DE LA SOCIEDAD</strong></h4>
+                            </div>
+                        
+                            <!-- CAMPO DEL NOMBRE DE LA SOCIEDAD -->
+                            <div class="col-md-3">
+                                <label for="nombre_sociedad">
+                                    <i class="fas fa-building" style="margin-right: 8px;"></i>
+                                    <strong>NOMBRE DE LA SOCIEDAD</strong>
+                                </label>
+                                <input type="text" class="form-control" id="nombre_sociedad" name="nombre_sociedad" value="{{ old('nombre_sociedad') }}" required>
+                            </div>
+                        
+                            <!-- CAMPO DEL NÚMERO DE INSCRIPCIÓN EN REGISTRO PÚBLICO DE COMERCIO -->
+                            <div class="col-md-3">
+                                <label for="num_inscripcion_registro_publico_comercio">
+                                    <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
+                                    <strong>Nº INSCRIPCIÓN EN EL REGISTRO PÚBLICO DE COMERCIO</strong>
+                                </label>
+                                <input type="text" class="form-control" id="num_inscripcion_registro_publico_comercio" name="num_inscripcion_registro_publico_comercio" value="{{ old('num_inscripcion_registro_publico_comercio') }}">
+                            </div>
+                        
+                            <!-- CAMPO DE FECHA DE CONSTITUCIÓN -->
+                            <div class="col-md-2">
+                                <label for="fecha_constitucion">
+                                    <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
+                                    <strong>FECHA DE CONSTITUCIÓN DE LA FIRMA</strong>
+                                </label>
+                                <input type="date" class="form-control" id="fecha_constitucion" name="fecha_constitucion" value="{{ old('fecha_constitucion') }}" required>
+                            </div>
+                        
+                            <!-- CAMPO DE REGISTRO TRIBUTARIO NACIONAL -->
+                            <div class="col-md-2">
+                                <label for="registro_tributario_nacional">
+                                    <i class="fas fa-id-card" style="margin-right: 8px;"></i>
+                                    <strong>Nº REGISTRO TRIBUTARIO NACIONAL</strong>
+                                </label>
+                                <input type="text" class="form-control" id="registro_tributario_nacional" name="registro_tributario_nacional" value="{{ old('registro_tributario_nacional') }}">
+                            </div>
+                        
+                            <!-- CAMPO DEL NÚMERO DE INSCRIPCIÓN EN CÁMARA DE COMERCIO -->
+                            <div class="col-md-2">
+                                <label for="num_inscripcion_camara_comercio">
+                                    <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
+                                    <strong>Nº INSCRIPCIÓN CÁMARA DE COMERCIO</strong>
+                                </label>
+                                <input type="text" class="form-control" id="num_inscripcion_camara_comercio" name="num_inscripcion_camara_comercio" value="{{ old('num_inscripcion_camara_comercio') }}">
+                            </div>
+                        
+                            <!-- CAMPO DE DIRECCIÓN -->
+                            <div class="col-md-6">
+                                <label for="direccion">
+                                    <i class="fas fa-map-marker-alt" style="margin-right: 8px; color:rgb(235, 13, 13)"></i>
+                                    <strong>DIRECCIÓN DE LA FIRMA</strong>
+                                </label>
+                                <input type="text" class="form-control" id="direccion" name="direccion" value="{{ old('direccion') }}" required>
+                            </div>
+                        
+                            <!-- CAMPO DE TELÉFONO -->
+                            <div class="col-md-2">
+                                <label for="telefono">
+                                    <i class="fas fa-phone" style="margin-right: 8px;"></i>
+                                    <strong>TELÉFONO</strong>
+                                </label>
+                                <input type="text" class="form-control" id="telefono" name="telefono" value="{{ old('telefono') }}">
+                            </div>
+                        
+                            <!-- CAMPO DE CELULAR -->
+                            <div class="col-md-2">
+                                <label for="celular">
+                                    <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
+                                    <strong>CELULAR</strong>
+                                </label>
+                                <input type="text" class="form-control" id="celular" name="celular" value="{{ old('celular') }}" required>
+                            </div>
+                        
+                            <!-- CAMPO DE CORREO ELECTRÓNICO -->
+                            <div class="col-md-2">
+                                <label for="email">
+                                    <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                                    <strong>CORREO ELECTRÓNICO</strong>
+                                </label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
+                            </div>
+                        </div>
+                        
+                        <!-- I. DATOS DE LA SOCIEDAD -->
+                        <div class="col-12 text-center mb-0">
+                            <h4 style="text-decoration: underline;"><strong>II. DATOS DE LA SOCIEDAD</strong></h4>
+                        </div>
 
-                <div class="form-group">
-                    <label for="fecha_constitucion">Fecha de Constitución:</label>
-                    <input type="date" class="form-control" id="fecha_constitucion" name="fecha_constitucion" value="{{ old('fecha_constitucion') }}" required>
-                </div>
+                        <!-- DATOS DEL SOCIO 1 -->
+                        <div class="form-group row">
+                            <div class="col-12 mb-3">
+                                <h6 style="text-decoration: underline;"><strong>DATOS DEL SOCIO 1:</strong></h6>
+                            </div>
 
-                <div class="form-group">
-                    <label for="registro_tributario_nacional">Registro Tributario Nacional:</label>
-                    <input type="text" class="form-control" id="registro_tributario_nacional" name="registro_tributario_nacional" value="{{ old('registro_tributario_nacional') }}">
-                </div>
+                            <!-- PRIMER NOMBRE -->
+                            <div class="col-md-2">
+                                <label for="primer_nombre_socio1">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>PRIMER NOMBRE</strong>
+                                </label>
+                                <input type="text" class="form-control" id="primer_nombre_socio1" name="primer_nombre_socio1" value="{{ old('primer_nombre_socio1') }}" required>
+                            </div>
 
-                <div class="form-group">
-                    <label for="num_inscripcion_camara_comercio">Número de Inscripción en Cámara de Comercio:</label>
-                    <input type="text" class="form-control" id="num_inscripcion_camara_comercio" name="num_inscripcion_camara_comercio" value="{{ old('num_inscripcion_camara_comercio') }}">
-                </div>
+                            <!-- SEGUNDO NOMBRE -->
+                            <div class="col-md-2">
+                                <label for="segundo_nombre_socio1">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>SEGUNDO NOMBRE</strong>
+                                </label>
+                                <input type="text" class="form-control" id="segundo_nombre_socio1" name="segundo_nombre_socio1" value="{{ old('segundo_nombre_socio1') }}">
+                            </div>
 
-                <div class="form-group">
-                    <label for="direccion">Dirección:</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion" value="{{ old('direccion') }}" required>
-                </div>
+                            <!-- PRIMER APELLIDO -->
+                            <div class="col-md-2">
+                                <label for="primer_apellido_socio1">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>PRIMER APELLIDO</strong>
+                                </label>
+                                <input type="text" class="form-control" id="primer_apellido_socio1" name="primer_apellido_socio1" value="{{ old('primer_apellido_socio1') }}" required>
+                            </div>
 
-                <div class="form-group">
-                    <label for="telefono">Teléfono:</label>
-                    <input type="text" class="form-control" id="telefono" name="telefono" value="{{ old('telefono') }}">
-                </div>
+                            <!-- SEGUNDO APELLIDO -->
+                            <div class="col-md-2">
+                                <label for="segundo_apellido_socio1">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>SEGUNDO APELLIDO</strong>
+                                </label>
+                                <input type="text" class="form-control" id="segundo_apellido_socio1" name="segundo_apellido_socio1" value="{{ old('segundo_apellido_socio1') }}">
+                            </div>
 
-                <div class="form-group">
-                    <label for="celular">Celular:</label>
-                    <input type="text" class="form-control" id="celular" name="celular" value="{{ old('celular') }}" required>
-                </div>
+                            <!-- NÚMERO DE COLEGIACIÓN -->
+                            <div class="col-md-4">
+                                <label for="num_colegiacion_socio1">
+                                    <i class="fas fa-id-card" style="margin-right: 8px;"></i>
+                                    <strong>NÚMERO DE COLEGIACIÓN</strong>
+                                </label>
+                                <input type="text" class="form-control" id="num_colegiacion_socio1" name="num_colegiacion_socio1" value="{{ old('num_colegiacion_socio1') }}">
+                            </div>
 
-                <div class="form-group">
-                    <label for="email">Correo Electrónico:</label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
+                            <!-- IMAGEN DE FIRMA DEL SOCIO 1 -->
+                            <div class="col-md-12 text-center">
+                                <label for="imagen_firma_socio1" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir firma digital socio 1
+                                </label>
+                                <input type="file" class="form-control-file" id="imagen_firma_socio1" name="imagen_firma_socio1" onchange="previewImage(event, 'preview_socio1')">
+                                <img id="preview_socio1" src="#" alt="Vista previa de la firma del Socio 1" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
+                            </div>
+
+                        </div>
+
+                        <!-- DATOS DEL SOCIO 2 -->
+                        <div class="form-group row">
+                            <div class="col-12 mb-3">
+                                <h6 style="text-decoration: underline;"><strong>DATOS DEL SOCIO 2:</strong></h6>
+                            </div>
+
+                            <!-- PRIMER NOMBRE -->
+                            <div class="col-md-2">
+                                <label for="primer_nombre_socio2">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>PRIMER NOMBRE</strong>
+                                </label>
+                                <input type="text" class="form-control" id="primer_nombre_socio2" name="primer_nombre_socio2" value="{{ old('primer_nombre_socio2') }}" required>
+                            </div>
+
+                            <!-- SEGUNDO NOMBRE -->
+                            <div class="col-md-2">
+                                <label for="segundo_nombre_socio2">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>SEGUNDO NOMBRE</strong>
+                                </label>
+                                <input type="text" class="form-control" id="segundo_nombre_socio2" name="segundo_nombre_socio2" value="{{ old('segundo_nombre_socio2') }}">
+                            </div>
+
+                            <!-- PRIMER APELLIDO -->
+                            <div class="col-md-2">
+                                <label for="primer_apellido_socio2">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>PRIMER APELLIDO</strong>
+                                </label>
+                                <input type="text" class="form-control" id="primer_apellido_socio2" name="primer_apellido_socio2" value="{{ old('primer_apellido_socio2') }}" required>
+                            </div>
+
+                            <!-- SEGUNDO APELLIDO -->
+                            <div class="col-md-2">
+                                <label for="segundo_apellido_socio2">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>SEGUNDO APELLIDO</strong>
+                                </label>
+                                <input type="text" class="form-control" id="segundo_apellido_socio2" name="segundo_apellido_socio2" value="{{ old('segundo_apellido_socio2') }}">
+                            </div>
+
+                            <!-- NÚMERO DE COLEGIACIÓN -->
+                            <div class="col-md-4">
+                                <label for="num_colegiacion_socio2">
+                                    <i class="fas fa-id-card" style="margin-right: 8px;"></i>
+                                    <strong>NÚMERO DE COLEGIACIÓN</strong>
+                                </label>
+                                <input type="text" class="form-control" id="num_colegiacion_socio2" name="num_colegiacion_socio2" value="{{ old('num_colegiacion_socio2') }}">
+                            </div>
+
+                            <!-- IMAGEN DE FIRMA DEL SOCIO 2 -->
+                            <div class="col-md-12 text-center">
+                                <label for="imagen_firma_socio2" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir firma digital socio 2
+                                </label>
+                                <input type="file" class="form-control-file d-none" id="imagen_firma_socio2" name="imagen_firma_socio2" onchange="previewImage(event, 'preview_socio2')">
+                                <img id="preview_socio2" src="#" alt="Vista previa de la firma del Socio 2" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
+                            </div>
+                        </div>
+
+                        <!-- SOCIO 3 -->
+                        <div class="form-group row">
+                            <div class="col-12 mb-3">
+                                <h6 style="text-decoration: underline;"><strong>DATOS DEL SOCIO 3:</strong></h6>
+                            </div>
+
+                            <!-- PRIMER NOMBRE -->
+                            <div class="col-md-2">
+                                <label for="primer_nombre_socio3">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>PRIMER NOMBRE</strong>
+                                </label>
+                                <input type="text" class="form-control" id="primer_nombre_socio3" name="primer_nombre_socio3" value="{{ old('primer_nombre_socio3') }}" required>
+                            </div>
+
+                            <!-- SEGUNDO NOMBRE -->
+                            <div class="col-md-2">
+                                <label for="segundo_nombre_socio3">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>SEGUNDO NOMBRE</strong>
+                                </label>
+                                <input type="text" class="form-control" id="segundo_nombre_socio3" name="segundo_nombre_socio3" value="{{ old('segundo_nombre_socio3') }}">
+                            </div>
+
+                            <!-- PRIMER APELLIDO -->
+                            <div class="col-md-2">
+                                <label for="primer_apellido_socio3">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>PRIMER APELLIDO</strong>
+                                </label>
+                                <input type="text" class="form-control" id="primer_apellido_socio3" name="primer_apellido_socio3" value="{{ old('primer_apellido_socio3') }}" required>
+                            </div>
+
+                            <!-- SEGUNDO APELLIDO -->
+                            <div class="col-md-2">
+                                <label for="segundo_apellido_socio3">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>SEGUNDO APELLIDO</strong>
+                                </label>
+                                <input type="text" class="form-control" id="segundo_apellido_socio3" name="segundo_apellido_socio3" value="{{ old('segundo_apellido_socio3') }}">
+                            </div>
+
+                            <!-- NÚMERO DE COLEGIACIÓN -->
+                            <div class="col-md-4">
+                                <label for="num_colegiacion_socio3">
+                                    <i class="fas fa-id-card" style="margin-right: 8px;"></i>
+                                    <strong>NÚMERO DE COLEGIACIÓN</strong>
+                                </label>
+                                <input type="text" class="form-control" id="num_colegiacion_socio3" name="num_colegiacion_socio3" value="{{ old('num_colegiacion_socio3') }}">
+                            </div>
+
+                            <!-- IMAGEN DE FIRMA DEL SOCIO 3 -->
+                            <div class="col-md-12 text-center mb-4">
+                                <label for="imagen_firma_socio3" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir firma digital socio 3
+                                </label>
+                                <input type="file" class="form-control-file d-none" id="imagen_firma_socio3" name="imagen_firma_socio3" onchange="previewImage(event, 'preview_socio3')">
+                                <img id="preview_socio3" src="#" alt="Vista previa de la firma del Socio 3" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
+                            </div>
+                            
+                        </div>
+
+                        <div class="form-group row">
+                            <!-- III. FIRMAS DIGITALES -->
+                            <div class="col-12 text-center mb-0">
+                                <h4 style="text-decoration: underline;"><strong>III. FIRMAS DIGITALES</strong></h4>
+                            </div>
+
+                            <div class="col-md-12 text-center mb-4">
+                                <label for="imagen_firma_social" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir firma Social
+                                </label>
+                                <input type="file" class="form-control-file" id="imagen_firma_social" name="imagen_firma_social" onchange="previewImage(event, 'preview_social')">
+                                <img id="preview_social" src="#" alt="Vista previa de la firma social" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                                <label for="imagen_firma_representante_legal" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir firma digital del Representante Legal
+                                </label>
+                                <input type="file" class="form-control-file d-none" id="imagen_firma_representante_legal" name="imagen_firma_representante_legal" onchange="previewImage(event, 'preview_representante')">
+                                <div class="mt-2">
+                                    <img id="preview_representante" src="#" alt="Vista previa de la firma del representante legal" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
+                                </div>
+                            </div>                           
+
+                        </div>
+
+                            <!-- Estado y Descripción -->
+                            <div class="card mb-3">
+                                <div class="card-header">Estado y Descripción</div>
+                                <div class="card-body">
+                                    <div class="col-md-2">
+                                        <label for="estado">Estado:</label>
+                                        <select class="form-control" id="estado" name="estado" required>
+                                            <option value="pendiente" {{ old('estado') == 'pendiente' ? 'selected' : '' }}>Pendiente</option>
+                                            <option value="aprobado" {{ old('estado') == 'aprobado' ? 'selected' : '' }}>Aprobado</option>
+                                            <option value="rechazado" {{ old('estado') == 'rechazado' ? 'selected' : '' }}>Rechazado</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <label for="descripcion_estado_solicitud">Descripción del Estado de Solicitud:</label>
+                                        <textarea class="form-control" id="descripcion_estado_solicitud" name="descripcion_estado_solicitud">{{ old('descripcion_estado_solicitud') }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
+                                    Inviar solicitud de inscripción
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-
-        <!-- Datos del Primer Socio -->
-        <div class="card mb-3">
-            <div class="card-header">Datos del Primer Socio</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="primer_nombre_socio1">Primer Nombre:</label>
-                    <input type="text" class="form-control" id="primer_nombre_socio1" name="primer_nombre_socio1" value="{{ old('primer_nombre_socio1') }}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="segundo_nombre_socio1">Segundo Nombre:</label>
-                    <input type="text" class="form-control" id="segundo_nombre_socio1" name="segundo_nombre_socio1" value="{{ old('segundo_nombre_socio1') }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="primer_apellido_socio1">Primer Apellido:</label>
-                    <input type="text" class="form-control" id="primer_apellido_socio1" name="primer_apellido_socio1" value="{{ old('primer_apellido_socio1') }}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="segundo_apellido_socio1">Segundo Apellido:</label>
-                    <input type="text" class="form-control" id="segundo_apellido_socio1" name="segundo_apellido_socio1" value="{{ old('segundo_apellido_socio1') }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="num_colegiacion_socio1">Número de Colegiación:</label>
-                    <input type="text" class="form-control" id="num_colegiacion_socio1" name="num_colegiacion_socio1" value="{{ old('num_colegiacion_socio1') }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="imagen_firma_socio1">Imagen de Firma del Socio 1:</label>
-                    <input type="file" class="form-control-file" id="imagen_firma_socio1" name="imagen_firma_socio1" onchange="previewImage(event, 'preview_socio1')">
-                    <br>
-                    <img id="preview_socio1" src="#" alt="Vista previa de la firma del Socio 1" style="display: none; max-width: 100px; max-height: 100px;">
-                </div>
-            </div>
-        </div>
-
-        <!-- Datos del Segundo Socio -->
-        <div class="card mb-3">
-            <div class="card-header">Datos del Segundo Socio</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="primer_nombre_socio2">Primer Nombre:</label>
-                    <input type="text" class="form-control" id="primer_nombre_socio2" name="primer_nombre_socio2" value="{{ old('primer_nombre_socio2') }}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="segundo_nombre_socio2">Segundo Nombre:</label>
-                    <input type="text" class="form-control" id="segundo_nombre_socio2" name="segundo_nombre_socio2" value="{{ old('segundo_nombre_socio2') }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="primer_apellido_socio2">Primer Apellido:</label>
-                    <input type="text" class="form-control" id="primer_apellido_socio2" name="primer_apellido_socio2" value="{{ old('primer_apellido_socio2') }}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="segundo_apellido_socio2">Segundo Apellido:</label>
-                    <input type="text" class="form-control" id="segundo_apellido_socio2" name="segundo_apellido_socio2" value="{{ old('segundo_apellido_socio2') }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="num_colegiacion_socio2">Número de Colegiación:</label>
-                    <input type="text" class="form-control" id="num_colegiacion_socio2" name="num_colegiacion_socio2" value="{{ old('num_colegiacion_socio2') }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="imagen_firma_socio2">Imagen de Firma del Socio 2:</label>
-                    <input type="file" class="form-control-file" id="imagen_firma_socio2" name="imagen_firma_socio2" onchange="previewImage(event, 'preview_socio2')">
-                    <br>
-                    <img id="preview_socio2" src="#" alt="Vista previa de la firma del Socio 2" style="display: none; max-width: 100px; max-height: 100px;">
-                </div>
-            </div>
-        </div>
-
-        <!-- Datos del Tercer Socio -->
-        <div class="card mb-3">
-            <div class="card-header">Datos del Tercer Socio</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="primer_nombre_socio3">Primer Nombre:</label>
-                    <input type="text" class="form-control" id="primer_nombre_socio3" name="primer_nombre_socio3" value="{{ old('primer_nombre_socio3') }}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="segundo_nombre_socio3">Segundo Nombre:</label>
-                    <input type="text" class="form-control" id="segundo_nombre_socio3" name="segundo_nombre_socio3" value="{{ old('segundo_nombre_socio3') }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="primer_apellido_socio3">Primer Apellido:</label>
-                    <input type="text" class="form-control" id="primer_apellido_socio3" name="primer_apellido_socio3" value="{{ old('primer_apellido_socio3') }}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="segundo_apellido_socio3">Segundo Apellido:</label>
-                    <input type="text" class="form-control" id="segundo_apellido_socio3" name="segundo_apellido_socio3" value="{{ old('segundo_apellido_socio3') }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="num_colegiacion_socio3">Número de Colegiación:</label>
-                    <input type="text" class="form-control" id="num_colegiacion_socio3" name="num_colegiacion_socio3" value="{{ old('num_colegiacion_socio3') }}">
-                </div>
-
-                <div class="form-group">
-                    <label for="imagen_firma_socio3">Imagen de Firma del Socio 3:</label>
-                    <input type="file" class="form-control-file" id="imagen_firma_socio3" name="imagen_firma_socio3" onchange="previewImage(event, 'preview_socio3')">
-                    <br>
-                    <img id="preview_socio3" src="#" alt="Vista previa de la firma del Socio 3" style="display: none; max-width: 100px; max-height: 100px;">
-                </div>
-            </div>
-        </div>
-
-        <!-- Firmas -->
-        <div class="card mb-3">
-            <div class="card-header">Firmas</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="imagen_firma_social">Imagen de Firma Social:</label>
-                    <input type="file" class="form-control-file" id="imagen_firma_social" name="imagen_firma_social" onchange="previewImage(event, 'preview_social')">
-                    <br>
-                    <img id="preview_social" src="#" alt="Vista previa de la firma social" style="display: none; max-width: 100px; max-height: 100px;">
-                </div>
-
-                <div class="form-group">
-                    <label for="imagen_firma_representante_legal">Imagen de Firma del Representante Legal:</label>
-                    <input type="file" class="form-control-file" id="imagen_firma_representante_legal" name="imagen_firma_representante_legal" onchange="previewImage(event, 'preview_representante')">
-                    <br>
-                    <img id="preview_representante" src="#" alt="Vista previa de la firma del representante legal" style="display: none; max-width: 100px; max-height: 100px;">
-                </div>
-            </div>
-        </div>
-
-        <!-- Estado y Descripción -->
-        <div class="card mb-3">
-            <div class="card-header">Estado y Descripción</div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="estado">Estado:</label>
-                    <select class="form-control" id="estado" name="estado" required>
-                        <option value="pendiente" {{ old('estado') == 'pendiente' ? 'selected' : '' }}>Pendiente</option>
-                        <option value="aprobado" {{ old('estado') == 'aprobado' ? 'selected' : '' }}>Aprobado</option>
-                        <option value="rechazado" {{ old('estado') == 'rechazado' ? 'selected' : '' }}>Rechazado</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="descripcion_estado_solicitud">Descripción del Estado de Solicitud:</label>
-                    <textarea class="form-control" id="descripcion_estado_solicitud" name="descripcion_estado_solicitud">{{ old('descripcion_estado_solicitud') }}</textarea>
-                </div>
-            </div>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
+    </div>
 </div>
+
 <script>
     function previewImage(event, previewId) {
         var reader = new FileReader();
@@ -239,8 +376,12 @@
             var output = document.getElementById(previewId);
             output.src = reader.result;
             output.style.display = 'block';
+            output.style.maxWidth = '700px';  // Ajusta el ancho máximo
+            output.style.maxHeight = '700px'; // Ajusta la altura máxima
         };
         reader.readAsDataURL(event.target.files[0]);
     }
 </script>
+
+
 @endsection
