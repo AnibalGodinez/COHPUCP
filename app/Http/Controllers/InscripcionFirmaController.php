@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\InscripcionFirma;
-use Illuminate\Support\Facades\Storage;
 
 class InscripcionFirmaController extends Controller
 {
@@ -149,56 +148,6 @@ class InscripcionFirmaController extends Controller
         ]);
 
         return redirect()->route('inscripcion_firmas.create')->with('success', '¡Solicitud de inscripción de firma enviada con éxito!');
-    }
-
-    // Mostrar el formulario para editar una inscripción de firma
-    public function edit($id)
-    {
-        $inscripcionFirma = InscripcionFirma::findOrFail($id);
-        return view('inscripcion_firmas.edit', compact('inscripcionFirma'));
-    }
-
-    // Actualizar una inscripción de firma existente
-    public function update(Request $request, $id)
-    {
-        $inscripcionFirma = InscripcionFirma::findOrFail($id);
-
-        $request->validate([
-            // Validaciones...
-        ]);
-
-        $data = $request->all();
-
-        // Manejar las imágenes
-        if ($request->hasFile('imagen_firma_socio1')) {
-            $data['imagen_firma_socio1'] = $this->storeImage($request->file('imagen_firma_socio1'), 'img_firma_socio1_inscripcion_firma');
-            Storage::disk('public')->delete($inscripcionFirma->imagen_firma_socio1);
-        }
-
-        if ($request->hasFile('imagen_firma_socio2')) {
-            $data['imagen_firma_socio2'] = $this->storeImage($request->file('imagen_firma_socio2'), 'img_firma_socio2_inscripcion_firma');
-            Storage::disk('public')->delete($inscripcionFirma->imagen_firma_socio2);
-        }
-
-        if ($request->hasFile('imagen_firma_socio3')) {
-            $data['imagen_firma_socio3'] = $this->storeImage($request->file('imagen_firma_socio3'), 'img_firma_socio3_inscripcion_firma');
-            Storage::disk('public')->delete($inscripcionFirma->imagen_firma_socio3);
-        }
-
-        if ($request->hasFile('imagen_firma_social')) {
-            $data['imagen_firma_social'] = $this->storeImage($request->file('imagen_firma_social'), 'img_firma_social_inscripcion_firma');
-            Storage::disk('public')->delete($inscripcionFirma->imagen_firma_social);
-        }
-
-        if ($request->hasFile('imagen_firma_representante_legal')) {
-            $data['imagen_firma_representante_legal'] = $this->storeImage($request->file('imagen_firma_representante_legal'), 'img_firma_representante_legal_inscripcion_firma');
-            Storage::disk('public')->delete($inscripcionFirma->imagen_firma_representante_legal);
-        }
-
-        $inscripcionFirma->update($data);
-
-        return redirect()->route('inscripcion_firmas.index')
-            ->with('success', 'Inscripción de firma actualizada exitosamente.');
     }
 
     // Método auxiliar para almacenar imágenes

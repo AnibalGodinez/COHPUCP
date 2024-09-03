@@ -115,13 +115,13 @@
                         
                         <!-- I. DATOS DE LA SOCIEDAD -->
                         <div class="col-12 text-center mb-0">
-                            <h4 style="text-decoration: underline;"><strong>II. DATOS DE LA SOCIEDAD</strong></h4>
+                            <h4 style="text-decoration: underline;"><strong>II. DATOS DE LOS SOCIOS</strong></h4>
                         </div>
 
                         <!-- DATOS DEL SOCIO 1 -->
                         <div class="form-group row">
                             <div class="col-12 mb-3">
-                                <h6 style="text-decoration: underline;"><strong>DATOS DEL SOCIO 1:</strong></h6>
+                                <h6 style="text-decoration: underline;"><strong>DATOS DEL SOCIO(A) 1:</strong></h6>
                             </div>
 
                             <!-- PRIMER NOMBRE -->
@@ -184,7 +184,7 @@
                         <!-- DATOS DEL SOCIO 2 -->
                         <div class="form-group row">
                             <div class="col-12 mb-3">
-                                <h6 style="text-decoration: underline;"><strong>DATOS DEL SOCIO 2:</strong></h6>
+                                <h6 style="text-decoration: underline;"><strong>DATOS DEL SOCIO(A) 2:</strong></h6>
                             </div>
 
                             <!-- PRIMER NOMBRE -->
@@ -246,7 +246,7 @@
                         <!-- SOCIO 3 -->
                         <div class="form-group row">
                             <div class="col-12 mb-3">
-                                <h6 style="text-decoration: underline;"><strong>DATOS DEL SOCIO 3:</strong></h6>
+                                <h6 style="text-decoration: underline;"><strong>DATOS DEL SOCIO(A) 3:</strong></h6>
                             </div>
 
                             <!-- PRIMER NOMBRE -->
@@ -330,10 +330,8 @@
                                 <div class="mt-2">
                                     <img id="preview_representante" src="#" alt="Vista previa de la firma del representante legal" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                                 </div>
-                            </div>                           
-
-                        </div>
-
+                            </div> 
+                            
                             <!-- Estado y Descripción -->
                             <div class="card mb-3">
                                 <div class="card-header">Estado y Descripción</div>
@@ -353,7 +351,9 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-success">

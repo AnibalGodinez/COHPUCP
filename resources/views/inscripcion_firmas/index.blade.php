@@ -108,14 +108,11 @@
                                             <td>{{ ucfirst($inscripcionFirma->estado) }}</td>
                                             <td>{{ $inscripcionFirma->descripcion_estado_solicitud }}</td>
 
-                                            <td>
-                                                <a href="{{ route('inscripcion_firmas.show', $inscripcionFirma->id) }}" class="btn btn-info btn-sm">Ver</a>
-                                                <a href="{{ route('inscripcion_firmas.edit', $inscripcionFirma->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                                                <form action="{{ route('inscripcion_firmas.destroy', $inscripcionFirma->id) }}" method="POST" style="display:inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                                </form>
+                                            <td class="text-center">
+                                                <!-- Botón para ver los detalles de la inscripción -->
+                                                <a href="{{ route('inscripcion_firmas.show', $inscripcionFirma->id) }}" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
