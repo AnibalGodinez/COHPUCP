@@ -12,9 +12,10 @@ class InscripcionFirmaController extends Controller
     // Mostrar la lista de inscripciones de firmas
     public function index()
     {
-        $inscripcionFirmas = InscripcionFirma::all();
+        $inscripcionFirmas = InscripcionFirma::with('user')->get(); // Asegúrate de cargar la relación del usuario
         return view('inscripcion_firmas.index', compact('inscripcionFirmas'));
     }
+
 
     // Mostrar detalles de una inscripción de firma específica
     public function show($id)

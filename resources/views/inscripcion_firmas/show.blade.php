@@ -41,6 +41,11 @@
                             <p>{{ $inscripcionFirma->num_inscripcion_camara_comercio }}</p>
                         </div>
 
+                        <div class="col-md-2">
+                            <label><strong>MUNICIPIO DONDE REALIZA LA SOLICITUD</strong></label>
+                            <p>{{ $inscripcionFirma->municipio_realiza_solicitud }}</p>
+                        </div>
+
                         <div class="col-md-6">
                             <label><strong>DIRECCIÓN DE LA FIRMA</strong></label>
                             <p>{{ $inscripcionFirma->direccion }}</p>

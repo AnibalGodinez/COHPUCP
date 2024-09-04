@@ -15,11 +15,13 @@
                                 <thead style="background-color: #3288af;">
                                     <tr>
                                         <th class="text-center" style="color: white;">ID</th>
+                                        <th class="text-center" style="color: white;">Nombre del Solictante</th>
                                         <th class="text-center" style="color: white;">Nombre Sociedad</th>
                                         <th class="text-center" style="color: white;">Nº Inscripción Registro Público Comercio</th>
                                         <th class="text-center" style="color: white;">Fecha Constitución de la firma</th>
                                         <th class="text-center" style="color: white;">Nº Registro Tributario Nacional</th>
                                         <th class="text-center" style="color: white;">Nº Inscripción Cámara Comercio</th>
+                                        <th class="text-center" style="color: white;">Municipio donde realiza solicitud</th>
                                         <th class="text-center" style="color: white;">Dirección de la firma</th>
                                         <th class="text-center" style="color: white;">Teléfono</th>
                                         <th class="text-center" style="color: white;">Celular</th>
@@ -49,11 +51,13 @@
                                     @foreach ($inscripcionFirmas as $inscripcionFirma)
                                         <tr>
                                             <td>{{ $inscripcionFirma->id }}</td>
+                                            <td>{{ $inscripcionFirma->user->name }} {{ $inscripcionFirma->user->name2 }} {{ $inscripcionFirma->user->apellido }} {{ $inscripcionFirma->user->apellido2 }}</td>
                                             <td>{{ $inscripcionFirma->nombre_sociedad }}</td>
                                             <td>{{ $inscripcionFirma->num_inscripcion_registro_publico_comercio }}</td>
                                             <td>{{ $inscripcionFirma->fecha_constitucion ? $inscripcionFirma->fecha_constitucion->format('d-m-Y') : 'Fecha no disponible' }}</td>
                                             <td>{{ $inscripcionFirma->registro_tributario_nacional }}</td>
                                             <td>{{ $inscripcionFirma->num_inscripcion_camara_comercio }}</td>
+                                            <td>{{ $inscripcionFirma->municipio_realiza_solicitud }}</td>
                                             <td>{{ $inscripcionFirma->direccion }}</td>
                                             <td>{{ $inscripcionFirma->telefono }}</td>
                                             <td>{{ $inscripcionFirma->celular }}</td>
@@ -105,7 +109,7 @@
                                                 @endif
                                             </td>
 
-                                            <td>{{ ucfirst($inscripcionFirma->estado) }}</td>
+                                            <td>{{ ($inscripcionFirma->estado) }}</td>
                                             <td>{{ $inscripcionFirma->descripcion_estado_solicitud }}</td>
 
                                             <td class="text-center">
