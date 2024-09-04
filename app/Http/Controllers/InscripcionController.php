@@ -293,7 +293,7 @@ class InscripcionController extends Controller
             'imagen_rtn' => json_encode($rutasArchivosRTN ),
         ]);
 
-        return redirect()->route('inscripciones.create')->with('status', '¡Solicitud de inscripción al colegio enviada con éxito!');
+        return redirect()->route('inscripciones.create')->with('status', '¡Solicitud de inscripción enviada con éxito!');
     }
 
 }

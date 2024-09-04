@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\InscripcionFirma;
+use Illuminate\Support\Facades\Auth;
 
 class InscripcionFirmaController extends Controller
 {
@@ -96,6 +97,10 @@ class InscripcionFirmaController extends Controller
 
         // Crear la inscripción de firma
         InscripcionFirma::create([
+            'user_id' => Auth::id(), 
+            'fecha_inscripcion' => Carbon::now()->toDateString(),
+            
+            // I. Datos de la sociedad
             'nombre_sociedad' => $request->nombre_sociedad,
             'num_inscripcion_registro_publico_comercio' => $request->num_inscripcion_registro_publico_comercio,
             'fecha_constitucion' => Carbon::parse($request->fecha_constitucion),
@@ -107,7 +112,7 @@ class InscripcionFirmaController extends Controller
             'celular' => $request->celular,
             'email' => $request->email,
 
-            // Datos del primer socio
+            // II. Datos de los socios
             'primer_nombre_socio1' => $request->primer_nombre_socio1,
             'segundo_nombre_socio1' => $request->segundo_nombre_socio1,
             'primer_apellido_socio1' => $request->primer_apellido_socio1,
@@ -117,7 +122,6 @@ class InscripcionFirmaController extends Controller
                 ? $this->storeImage($request->file('imagen_firma_socio1'), 'img_firma_socio1_inscripcion_firma') 
                 : null,
 
-            // Datos del segundo socio
             'primer_nombre_socio2' => $request->primer_nombre_socio2,
             'segundo_nombre_socio2' => $request->segundo_nombre_socio2,
             'primer_apellido_socio2' => $request->primer_apellido_socio2,
@@ -127,7 +131,6 @@ class InscripcionFirmaController extends Controller
                 ? $this->storeImage($request->file('imagen_firma_socio2'), 'img_firma_socio2_inscripcion_firma') 
                 : null,
 
-            // Datos del tercer socio
             'primer_nombre_socio3' => $request->primer_nombre_socio3,
             'segundo_nombre_socio3' => $request->segundo_nombre_socio3,
             'primer_apellido_socio3' => $request->primer_apellido_socio3,
@@ -137,16 +140,13 @@ class InscripcionFirmaController extends Controller
                 ? $this->storeImage($request->file('imagen_firma_socio3'), 'img_firma_socio3_inscripcion_firma') 
                 : null,
 
-            // Firmas
+            // III. Firmas digitales
             'imagen_firma_social' => $request->hasFile('imagen_firma_social') 
                 ? $this->storeImage($request->file('imagen_firma_social'), 'img_firma_social_inscripcion_firma') 
                 : null,
             'imagen_firma_representante_legal' => $request->hasFile('imagen_firma_representante_legal') 
                 ? $this->storeImage($request->file('imagen_firma_representante_legal'), 'img_firma_representante_legal_inscripcion_firma') 
                 : null,
-
-            'estado' => $request->estado,
-            'descripcion_estado_solicitud' => $request->descripcion_estado_solicitud,
         ]);
 
         return redirect()->route('inscripcion_firmas.create')->with('success', '¡Solicitud de inscripción de firma enviada con éxito!');

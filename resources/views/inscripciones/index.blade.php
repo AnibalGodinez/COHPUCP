@@ -35,7 +35,7 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center">ID</th>
-                                            <th class="text-center">Nombre completo</th>
+                                            <th class="text-center">Nombre del solicitante</th>
                                             <th class="text-center">DNI</th>
                                             <th class="text-center">Correo electrónico</th>
                                             <th class="text-center">Nº Celular</th>

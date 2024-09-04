@@ -8,7 +8,19 @@
                 <div class="card shadow-lg">
                     <div class="card-header bg-default text-white text-center">
                         <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>VERIFICACIÓN DEL CORREO ELECTRÓNICO</strong></h3>
+                    </div><br>
+
+                    <!-- Mensaje de éxito -->
+                    @if(session('success'))
+                    <div class="text-center">
+                        <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
+                            {{ session('success') }}
+                            <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
                     </div>
+                    @endif
 
                     <div class="card-body">
                         <p class="mb-4 text-center" style="font-size: 1.2em; color:rgb(197, 30, 30)"><strong><strong>¡GRACIAS POR REGISTRARTE!</strong></strong></p><br>

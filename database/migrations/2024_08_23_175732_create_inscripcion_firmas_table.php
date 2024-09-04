@@ -10,6 +10,11 @@ class CreateInscripcionFirmasTable extends Migration
     {
         Schema::create('inscripcion_firmas', function (Blueprint $table) {
             $table->id();
+            $table->date('fecha_inscripcion');
+
+            $table->unsignedBigInteger('user_id'); // Relación con la tabla de usuarios
+
+            // I. Datos de la sociedad
             $table->string('nombre_sociedad');
             $table->string('num_inscripcion_registro_publico_comercio')->nullable();
             $table->date('fecha_constitucion');
@@ -21,6 +26,7 @@ class CreateInscripcionFirmasTable extends Migration
             $table->string('celular');
             $table->string('email')->unique();
 
+            // II. Datos de los socios
             $table->string('primer_nombre_socio1');
             $table->string('segundo_nombre_socio1')->nullable();
             $table->string('primer_apellido_socio1');
@@ -42,13 +48,22 @@ class CreateInscripcionFirmasTable extends Migration
             $table->string('num_colegiacion_socio3')->nullable();
             $table->string('imagen_firma_socio3')->nullable();
 
+            // III. Firmas digitales
             $table->string('imagen_firma_social')->nullable();
             $table->string('imagen_firma_representante_legal')->nullable();
 
+            // IV. Estado de la inscripción de la firma
             $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente');
             $table->text('descripcion_estado_solicitud')->nullable();
-
             $table->timestamps();
+
+            // Relación con la tabla `users`
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
         });
     }
 

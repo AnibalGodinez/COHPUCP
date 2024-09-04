@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-warning text-white text-center">
-                    <h3 class="card-title" style="color: rgb(247, 247, 247)"><strong>REGISTRAR SOLICITUD DE INSCRIPCIÓN DE FIRMA AL COLEGIO</strong></h3>
+                    <h3 class="card-title" style="color: rgb(247, 247, 247)"><strong>SOLICITUD DE INSCRIPCIÓN DE FIRMA AL COLEGIO</strong></h3>
                 </div><br>
 
                 <!-- Mensaje de éxito -->
@@ -382,26 +382,6 @@
                                     <img id="preview_representante" src="#" alt="Vista previa de la firma del representante legal" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                                 </div>
                             </div> 
-                            
-                            <!-- Estado y Descripción -->
-                            <div class="card mb-3">
-                                <div class="card-header">Estado y Descripción</div>
-                                <div class="card-body">
-                                    <div class="col-md-2">
-                                        <label for="estado">Estado:</label>
-                                        <select class="form-control" id="estado" name="estado" required>
-                                            <option value="pendiente" {{ old('estado') == 'pendiente' ? 'selected' : '' }}>Pendiente</option>
-                                            <option value="aprobado" {{ old('estado') == 'aprobado' ? 'selected' : '' }}>Aprobado</option>
-                                            <option value="rechazado" {{ old('estado') == 'rechazado' ? 'selected' : '' }}>Rechazado</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-2">
-                                        <label for="descripcion_estado_solicitud">Descripción del Estado de Solicitud:</label>
-                                        <textarea class="form-control" id="descripcion_estado_solicitud" name="descripcion_estado_solicitud">{{ old('descripcion_estado_solicitud') }}</textarea>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
 

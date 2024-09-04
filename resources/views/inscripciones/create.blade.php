@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-default text-white text-center">
-                    <h3 class="card-title" style="color: rgb(247, 247, 247)"><strong>REGISTRAR SOLICITUD DE INSCRIPCIÓN AL COLEGIO</strong></h3>
+                    <h3 class="card-title" style="color: rgb(247, 247, 247)"><strong>SOLICITUD DE INSCRIPCIÓN AL COLEGIO</strong></h3>
                 </div><br>
 
                 <!-- Mensaje de éxito -->
