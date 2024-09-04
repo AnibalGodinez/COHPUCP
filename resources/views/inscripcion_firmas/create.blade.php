@@ -75,14 +75,23 @@
                                 </label>
                                 <input type="text" class="form-control" id="num_inscripcion_camara_comercio" name="num_inscripcion_camara_comercio" value="{{ old('num_inscripcion_camara_comercio') }}">
                             </div>
+
+                            <!-- CAMPO DEL MUNICIPIO DONDE REALIZA LA SOLICITUD -->
+                            <div class="col-md-2">
+                                <label for="municipio_realiza_solicitud">
+                                    <i class="fas fa-city" style="margin-right: 8px; color:rgb(20, 17, 204)"></i>
+                                    <strong>MUNICIPIO DONDE REALIZA LA SOLICITUD</strong>
+                                </label>
+                                <input type="text" class="form-control" id="municipio_realiza_solicitud" name="municipio_realiza_solicitud" value="{{ old('municipio_realiza_solicitud') }}">
+                            </div>
                         
                             <!-- CAMPO DE DIRECCIÓN -->
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="direccion">
                                     <i class="fas fa-map-marker-alt" style="margin-right: 8px; color:rgb(235, 13, 13)"></i>
                                     <strong>DIRECCIÓN DE LA FIRMA</strong>
                                 </label>
-                                <input type="text" class="form-control" id="direccion" name="direccion" value="{{ old('direccion') }}" required>
+                                <input type="text" class="form-control" id="direccion" name="direccion" value="{{ old('direccion') }}">
                             </div>
                         
                             <!-- CAMPO DE TELÉFONO -->
@@ -168,6 +177,20 @@
                                 </label>
                                 <input type="text" class="form-control" id="num_colegiacion_socio1" name="num_colegiacion_socio1" value="{{ old('num_colegiacion_socio1') }}">
                             </div>
+                            <script>
+                                document.getElementById('num_colegiacion_socio1').addEventListener('input', function (e) {
+                                    var input = e.target.value.replace(/\D/g, '');
+                                    var formatted = '';
+                                    if (input.length <= 4) {
+                                        formatted = input;
+                                    } else if (input.length <= 6) {
+                                        formatted = input.slice(0, 4) + '-' + input.slice(4);
+                                    } else {
+                                        formatted = input.slice(0, 4) + '-' + input.slice(4, 6) + '-' + input.slice(6, 10);
+                                    }
+                                    e.target.value = formatted;
+                                });
+                            </script>
 
                             <!-- IMAGEN DE FIRMA DEL SOCIO 1 -->
                             <div class="col-md-12 text-center">
@@ -231,6 +254,20 @@
                                 </label>
                                 <input type="text" class="form-control" id="num_colegiacion_socio2" name="num_colegiacion_socio2" value="{{ old('num_colegiacion_socio2') }}">
                             </div>
+                            <script>
+                                document.getElementById('num_colegiacion_socio2').addEventListener('input', function (e) {
+                                    var input = e.target.value.replace(/\D/g, '');
+                                    var formatted = '';
+                                    if (input.length <= 4) {
+                                        formatted = input;
+                                    } else if (input.length <= 6) {
+                                        formatted = input.slice(0, 4) + '-' + input.slice(4);
+                                    } else {
+                                        formatted = input.slice(0, 4) + '-' + input.slice(4, 6) + '-' + input.slice(6, 10);
+                                    }
+                                    e.target.value = formatted;
+                                });
+                            </script>
 
                             <!-- IMAGEN DE FIRMA DEL SOCIO 2 -->
                             <div class="col-md-12 text-center">
@@ -293,6 +330,20 @@
                                 </label>
                                 <input type="text" class="form-control" id="num_colegiacion_socio3" name="num_colegiacion_socio3" value="{{ old('num_colegiacion_socio3') }}">
                             </div>
+                            <script>
+                                document.getElementById('num_colegiacion_socio3').addEventListener('input', function (e) {
+                                    var input = e.target.value.replace(/\D/g, '');
+                                    var formatted = '';
+                                    if (input.length <= 4) {
+                                        formatted = input;
+                                    } else if (input.length <= 6) {
+                                        formatted = input.slice(0, 4) + '-' + input.slice(4);
+                                    } else {
+                                        formatted = input.slice(0, 4) + '-' + input.slice(4, 6) + '-' + input.slice(6, 10);
+                                    }
+                                    e.target.value = formatted;
+                                });
+                            </script>
 
                             <!-- IMAGEN DE FIRMA DEL SOCIO 3 -->
                             <div class="col-md-12 text-center mb-4">

@@ -15,7 +15,8 @@ class CreateInscripcionFirmasTable extends Migration
             $table->date('fecha_constitucion');
             $table->string('registro_tributario_nacional')->nullable();
             $table->string('num_inscripcion_camara_comercio')->nullable();
-            $table->string('direccion');
+            $table->string('municipio_realiza_solicitud')->nullable();
+            $table->string('direccion')->nullable();
             $table->string('telefono')->nullable();
             $table->string('celular');
             $table->string('email')->unique();

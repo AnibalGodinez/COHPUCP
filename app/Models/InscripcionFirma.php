@@ -15,6 +15,7 @@ class InscripcionFirma extends Model
         'fecha_constitucion',
         'registro_tributario_nacional',
         'num_inscripcion_camara_comercio',
+        'municipio_realiza_solicitud',
         'direccion',
         'telefono',
         'celular',
