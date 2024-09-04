@@ -4,7 +4,7 @@ use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PDFController;
+use App\Http\Controllers\PDFUsuariosController;
 use App\Http\Controllers\PaisController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SexoController;
@@ -56,8 +56,8 @@ use App\Http\Controllers\NumeroColegiacionController;
     Route::get('usuarios/{userId}/delete', [UserController::class, 'destroy']);
     Route::get('/usuarios/{id}', [UserController::class, 'show'])->name('users.show');
     Route::get('ver/usuarios', [UserController::class, 'verUsuarios'])->name('usuarios.ver');
-    Route::get('/previsualizacion/pdf/usuario/{id}', [PDFController::class, 'preview'])->name('user.pdf.preview');
-    Route::get('/descargar/pdf/usuario/{id}', [PDFController::class, 'download'])->name('user.pdf.download');
+    Route::get('/previsualizacion/pdf/usuario/{id}', [PDFUsuariosController::class, 'preview'])->name('user.pdf.preview');
+    Route::get('/descargar/pdf/usuario/{id}', [PDFUsuariosController::class, 'download'])->name('user.pdf.download');
     Route::get('/get-user-data/{identifier}', [UserController::class, 'getUserData']);
     // RUTAS PARA DESCARGAR EXCEL DE LOS USUARIOS
     Route::get('usuarios/export/excel', function () {

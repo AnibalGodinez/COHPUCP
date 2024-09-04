@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\User;
 
-class PDFController extends Controller
+class PDFUsuariosController extends Controller
 {
     // Método para mostrar el PDF de un usuario basado en su ID
     public function show($id)
