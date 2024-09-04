@@ -17,7 +17,7 @@
         .photo-frame {
             width: 3.5cm;
             height: 4.5cm;
-            border: 1px solid #000;
+            border: 1px solid #000000bd;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -60,7 +60,7 @@
             object-fit: cover;
         }
         body::before {
-            content: "";
+            content: '';
             position: fixed;
             top: 0;
             left: 0;

@@ -190,7 +190,7 @@
 
                 <div class="form-group row mb-0 px-3">
                     <div class="col-md-12 text-center">
-                        <a href="{{ route('usuarios.index') }}" class="btn btn-secondary">
+                        <a href="{{ route('usuarios.index') }}" class="btn btn-info">
                             <i class="fas fa-arrow-left"></i>
                             Volver
                         </a>
@@ -201,7 +201,7 @@
                         </a>
 
                         <!-- Botón para descargar el PDF -->
-                        <a href="{{ route('user.pdf.download', ['id' => $user->id]) }}" class="btn btn-primary">
+                        <a href="{{ route('user.pdf.download', ['id' => $user->id]) }}" class="btn btn-success">
                             <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
                             Descargar PDF
                         </a>                       

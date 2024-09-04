@@ -383,7 +383,7 @@
                                 </div>
                             </div> 
 
-                        </div>
+                        </div><br>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-12 text-center">
@@ -392,7 +392,7 @@
                                     Inviar solicitud de inscripción
                                 </button>
                             </div>
-                        </div>
+                        </div><br>
                     </form>
                 </div>
             </div>
