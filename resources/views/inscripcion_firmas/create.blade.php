@@ -37,7 +37,12 @@
                                     <i class="fas fa-building" style="margin-right: 8px;"></i>
                                     <strong>NOMBRE DE LA SOCIEDAD</strong>
                                 </label>
-                                <input type="text" class="form-control" id="nombre_sociedad" name="nombre_sociedad" value="{{ old('nombre_sociedad') }}" required>
+                                <input type="text" class="form-control @error('nombre_sociedad') is-invalid @enderror" id="nombre_sociedad" name="nombre_sociedad" value="{{ old('nombre_sociedad') }}" placeholder="Ingrese el nombre de la sociedad" required>
+                                @error('nombre_sociedad')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         
                             <!-- CAMPO DEL NÚMERO DE INSCRIPCIÓN EN REGISTRO PÚBLICO DE COMERCIO -->
@@ -46,7 +51,12 @@
                                     <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
                                     <strong>Nº INSCRIPCIÓN EN EL REGISTRO PÚBLICO DE COMERCIO</strong>
                                 </label>
-                                <input type="text" class="form-control" id="num_inscripcion_registro_publico_comercio" name="num_inscripcion_registro_publico_comercio" value="{{ old('num_inscripcion_registro_publico_comercio') }}">
+                                <input type="text" class="form-control @error('num_inscripcion_registro_publico_comercio') is-invalid @enderror" id="num_inscripcion_registro_publico_comercio" name="num_inscripcion_registro_publico_comercio" value="{{ old('num_inscripcion_registro_publico_comercio') }}" placeholder="Ingrese el número de inscripción">
+                                @error('num_inscripcion_registro_publico_comercio')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         
                             <!-- CAMPO DE FECHA DE CONSTITUCIÓN -->
@@ -55,7 +65,12 @@
                                     <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
                                     <strong>FECHA DE CONSTITUCIÓN DE LA FIRMA</strong>
                                 </label>
-                                <input type="date" class="form-control" id="fecha_constitucion" name="fecha_constitucion" value="{{ old('fecha_constitucion') }}" required>
+                                <input type="date" class="form-control @error('fecha_constitucion') is-invalid @enderror" id="fecha_constitucion" name="fecha_constitucion" value="{{ old('fecha_constitucion') }}" placeholder="Seleccione la fecha" required>
+                                @error('fecha_constitucion')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         
                             <!-- CAMPO DE REGISTRO TRIBUTARIO NACIONAL -->
@@ -64,7 +79,12 @@
                                     <i class="fas fa-id-card" style="margin-right: 8px;"></i>
                                     <strong>Nº REGISTRO TRIBUTARIO NACIONAL</strong>
                                 </label>
-                                <input type="text" class="form-control" id="registro_tributario_nacional" name="registro_tributario_nacional" value="{{ old('registro_tributario_nacional') }}">
+                                <input type="text" class="form-control @error('registro_tributario_nacional') is-invalid @enderror" id="registro_tributario_nacional" name="registro_tributario_nacional" value="{{ old('registro_tributario_nacional') }}" placeholder="Ingrese el registro tributario">
+                                @error('registro_tributario_nacional')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         
                             <!-- CAMPO DEL NÚMERO DE INSCRIPCIÓN EN CÁMARA DE COMERCIO -->
@@ -73,16 +93,26 @@
                                     <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
                                     <strong>Nº INSCRIPCIÓN CÁMARA DE COMERCIO</strong>
                                 </label>
-                                <input type="text" class="form-control" id="num_inscripcion_camara_comercio" name="num_inscripcion_camara_comercio" value="{{ old('num_inscripcion_camara_comercio') }}">
+                                <input type="text" class="form-control @error('num_inscripcion_camara_comercio') is-invalid @enderror" id="num_inscripcion_camara_comercio" name="num_inscripcion_camara_comercio" value="{{ old('num_inscripcion_camara_comercio') }}" placeholder="Ingrese el número de inscripción">
+                                @error('num_inscripcion_camara_comercio')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
-
+                        
                             <!-- CAMPO DEL MUNICIPIO DONDE REALIZA LA SOLICITUD -->
                             <div class="col-md-2">
                                 <label for="municipio_realiza_solicitud">
                                     <i class="fas fa-city" style="margin-right: 8px; color:rgb(20, 17, 204)"></i>
                                     <strong>MUNICIPIO DONDE REALIZA LA SOLICITUD</strong>
                                 </label>
-                                <input type="text" class="form-control" id="municipio_realiza_solicitud" name="municipio_realiza_solicitud" value="{{ old('municipio_realiza_solicitud') }}">
+                                <input type="text" class="form-control @error('municipio_realiza_solicitud') is-invalid @enderror" id="municipio_realiza_solicitud" name="municipio_realiza_solicitud" value="{{ old('municipio_realiza_solicitud') }}" placeholder="Ingrese el municipio">
+                                @error('municipio_realiza_solicitud')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         
                             <!-- CAMPO DE DIRECCIÓN -->
@@ -91,7 +121,12 @@
                                     <i class="fas fa-map-marker-alt" style="margin-right: 8px; color:rgb(235, 13, 13)"></i>
                                     <strong>DIRECCIÓN DE LA FIRMA</strong>
                                 </label>
-                                <input type="text" class="form-control" id="direccion" name="direccion" value="{{ old('direccion') }}">
+                                <input type="text" class="form-control @error('direccion') is-invalid @enderror" id="direccion" name="direccion" value="{{ old('direccion') }}" placeholder="Ingrese la dirección">
+                                @error('direccion')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         
                             <!-- CAMPO DE TELÉFONO -->
@@ -100,7 +135,12 @@
                                     <i class="fas fa-phone" style="margin-right: 8px;"></i>
                                     <strong>TELÉFONO</strong>
                                 </label>
-                                <input type="text" class="form-control" id="telefono" name="telefono" value="{{ old('telefono') }}">
+                                <input type="text" class="form-control @error('telefono') is-invalid @enderror" id="telefono" name="telefono" value="{{ old('telefono') }}" placeholder="Ingrese el número de teléfono">
+                                @error('telefono')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         
                             <!-- CAMPO DE CELULAR -->
@@ -109,7 +149,12 @@
                                     <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
                                     <strong>CELULAR</strong>
                                 </label>
-                                <input type="text" class="form-control" id="celular" name="celular" value="{{ old('celular') }}" required>
+                                <input type="text" class="form-control @error('celular') is-invalid @enderror" id="celular" name="celular" value="{{ old('celular') }}" placeholder="Ingrese el número de celular" required>
+                                @error('celular')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         
                             <!-- CAMPO DE CORREO ELECTRÓNICO -->
@@ -118,11 +163,16 @@
                                     <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                                     <strong>CORREO ELECTRÓNICO</strong>
                                 </label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" placeholder="Ingrese el correo electrónico" required>
+                                @error('email')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
-                        
-                        <!-- I. DATOS DE LOS SOCIOS -->
+                                             
+                        <!-- II. DATOS DE LOS SOCIOS -->
                         <div class="col-12 text-center mb-0">
                             <h4 style="text-decoration: underline;"><strong>II. DATOS DE LOS SOCIOS</strong></h4>
                         </div>
@@ -139,7 +189,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER NOMBRE</strong>
                                 </label>
-                                <input type="text" class="form-control" id="primer_nombre_socio1" name="primer_nombre_socio1" value="{{ old('primer_nombre_socio1') }}" required>
+                                <input type="text" class="form-control @error('primer_nombre_socio1') is-invalid @enderror" id="primer_nombre_socio1" name="primer_nombre_socio1" value="{{ old('primer_nombre_socio1') }}" placeholder="Ingrese el primer nombre" required>
+                                @error('primer_nombre_socio1')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- SEGUNDO NOMBRE -->
@@ -148,7 +203,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>SEGUNDO NOMBRE</strong>
                                 </label>
-                                <input type="text" class="form-control" id="segundo_nombre_socio1" name="segundo_nombre_socio1" value="{{ old('segundo_nombre_socio1') }}">
+                                <input type="text" class="form-control @error('segundo_nombre_socio1') is-invalid @enderror" id="segundo_nombre_socio1" name="segundo_nombre_socio1" value="{{ old('segundo_nombre_socio1') }}" placeholder="Ingrese el segundo nombre">
+                                @error('segundo_nombre_socio1')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- PRIMER APELLIDO -->
@@ -157,7 +217,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER APELLIDO</strong>
                                 </label>
-                                <input type="text" class="form-control" id="primer_apellido_socio1" name="primer_apellido_socio1" value="{{ old('primer_apellido_socio1') }}" required>
+                                <input type="text" class="form-control @error('primer_apellido_socio1') is-invalid @enderror" id="primer_apellido_socio1" name="primer_apellido_socio1" value="{{ old('primer_apellido_socio1') }}" placeholder="Ingrese el primer apellido" required>
+                                @error('primer_apellido_socio1')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- SEGUNDO APELLIDO -->
@@ -166,7 +231,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>SEGUNDO APELLIDO</strong>
                                 </label>
-                                <input type="text" class="form-control" id="segundo_apellido_socio1" name="segundo_apellido_socio1" value="{{ old('segundo_apellido_socio1') }}">
+                                <input type="text" class="form-control @error('segundo_apellido_socio1') is-invalid @enderror" id="segundo_apellido_socio1" name="segundo_apellido_socio1" value="{{ old('segundo_apellido_socio1') }}" placeholder="Ingrese el segundo apellido">
+                                @error('segundo_apellido_socio1')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- NÚMERO DE COLEGIACIÓN -->
@@ -175,7 +245,12 @@
                                     <i class="fas fa-id-card" style="margin-right: 8px;"></i>
                                     <strong>NÚMERO DE COLEGIACIÓN</strong>
                                 </label>
-                                <input type="text" class="form-control" id="num_colegiacion_socio1" name="num_colegiacion_socio1" value="{{ old('num_colegiacion_socio1') }}">
+                                <input type="text" class="form-control @error('num_colegiacion_socio1') is-invalid @enderror" id="num_colegiacion_socio1" name="num_colegiacion_socio1" value="{{ old('num_colegiacion_socio1') }}" placeholder="Ingrese el número de colegiación">
+                                @error('num_colegiacion_socio1')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <script>
                                 document.getElementById('num_colegiacion_socio1').addEventListener('input', function (e) {
@@ -201,7 +276,6 @@
                                 <input type="file" class="form-control-file" id="imagen_firma_socio1" name="imagen_firma_socio1" onchange="previewImage(event, 'preview_socio1')">
                                 <img id="preview_socio1" src="#" alt="Vista previa de la firma del Socio 1" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
-
                         </div>
 
                         <!-- DATOS DEL SOCIO 2 -->
@@ -216,7 +290,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER NOMBRE</strong>
                                 </label>
-                                <input type="text" class="form-control" id="primer_nombre_socio2" name="primer_nombre_socio2" value="{{ old('primer_nombre_socio2') }}" required>
+                                <input type="text" class="form-control @error('primer_nombre_socio2') is-invalid @enderror" id="primer_nombre_socio2" name="primer_nombre_socio2" value="{{ old('primer_nombre_socio2') }}" placeholder="Ingrese el primer nombre" required>
+                                @error('primer_nombre_socio2')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- SEGUNDO NOMBRE -->
@@ -225,7 +304,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>SEGUNDO NOMBRE</strong>
                                 </label>
-                                <input type="text" class="form-control" id="segundo_nombre_socio2" name="segundo_nombre_socio2" value="{{ old('segundo_nombre_socio2') }}">
+                                <input type="text" class="form-control @error('segundo_nombre_socio2') is-invalid @enderror" id="segundo_nombre_socio2" name="segundo_nombre_socio2" value="{{ old('segundo_nombre_socio2') }}" placeholder="Ingrese el segundo nombre">
+                                @error('segundo_nombre_socio2')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- PRIMER APELLIDO -->
@@ -234,7 +318,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER APELLIDO</strong>
                                 </label>
-                                <input type="text" class="form-control" id="primer_apellido_socio2" name="primer_apellido_socio2" value="{{ old('primer_apellido_socio2') }}" required>
+                                <input type="text" class="form-control @error('primer_apellido_socio2') is-invalid @enderror" id="primer_apellido_socio2" name="primer_apellido_socio2" value="{{ old('primer_apellido_socio2') }}" placeholder="Ingrese el primer apellido" required>
+                                @error('primer_apellido_socio2')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- SEGUNDO APELLIDO -->
@@ -243,7 +332,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>SEGUNDO APELLIDO</strong>
                                 </label>
-                                <input type="text" class="form-control" id="segundo_apellido_socio2" name="segundo_apellido_socio2" value="{{ old('segundo_apellido_socio2') }}">
+                                <input type="text" class="form-control @error('segundo_apellido_socio2') is-invalid @enderror" id="segundo_apellido_socio2" name="segundo_apellido_socio2" value="{{ old('segundo_apellido_socio2') }}" placeholder="Ingrese el segundo apellido">
+                                @error('segundo_apellido_socio2')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- NÚMERO DE COLEGIACIÓN -->
@@ -252,7 +346,12 @@
                                     <i class="fas fa-id-card" style="margin-right: 8px;"></i>
                                     <strong>NÚMERO DE COLEGIACIÓN</strong>
                                 </label>
-                                <input type="text" class="form-control" id="num_colegiacion_socio2" name="num_colegiacion_socio2" value="{{ old('num_colegiacion_socio2') }}">
+                                <input type="text" class="form-control @error('num_colegiacion_socio2') is-invalid @enderror" id="num_colegiacion_socio2" name="num_colegiacion_socio2" value="{{ old('num_colegiacion_socio2') }}" placeholder="Ingrese el número de colegiación">
+                                @error('num_colegiacion_socio2')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <script>
                                 document.getElementById('num_colegiacion_socio2').addEventListener('input', function (e) {
@@ -275,7 +374,7 @@
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma digital socio 2
                                 </label>
-                                <input type="file" class="form-control-file d-none" id="imagen_firma_socio2" name="imagen_firma_socio2" onchange="previewImage(event, 'preview_socio2')">
+                                <input type="file" class="form-control-file" id="imagen_firma_socio2" name="imagen_firma_socio2" onchange="previewImage(event, 'preview_socio2')">
                                 <img id="preview_socio2" src="#" alt="Vista previa de la firma del Socio 2" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
                         </div>
@@ -292,7 +391,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER NOMBRE</strong>
                                 </label>
-                                <input type="text" class="form-control" id="primer_nombre_socio3" name="primer_nombre_socio3" value="{{ old('primer_nombre_socio3') }}" required>
+                                <input type="text" class="form-control @error('primer_nombre_socio3') is-invalid @enderror" id="primer_nombre_socio3" name="primer_nombre_socio3" value="{{ old('primer_nombre_socio3') }}" placeholder="Ingrese el primer nombre" required>
+                                @error('primer_nombre_socio3')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- SEGUNDO NOMBRE -->
@@ -301,7 +405,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>SEGUNDO NOMBRE</strong>
                                 </label>
-                                <input type="text" class="form-control" id="segundo_nombre_socio3" name="segundo_nombre_socio3" value="{{ old('segundo_nombre_socio3') }}">
+                                <input type="text" class="form-control @error('segundo_nombre_socio3') is-invalid @enderror" id="segundo_nombre_socio3" name="segundo_nombre_socio3" value="{{ old('segundo_nombre_socio3') }}" placeholder="Ingrese el segundo nombre">
+                                @error('segundo_nombre_socio3')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- PRIMER APELLIDO -->
@@ -310,7 +419,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER APELLIDO</strong>
                                 </label>
-                                <input type="text" class="form-control" id="primer_apellido_socio3" name="primer_apellido_socio3" value="{{ old('primer_apellido_socio3') }}" required>
+                                <input type="text" class="form-control @error('primer_apellido_socio3') is-invalid @enderror" id="primer_apellido_socio3" name="primer_apellido_socio3" value="{{ old('primer_apellido_socio3') }}" placeholder="Ingrese el primer apellido" required>
+                                @error('primer_apellido_socio3')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- SEGUNDO APELLIDO -->
@@ -319,7 +433,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>SEGUNDO APELLIDO</strong>
                                 </label>
-                                <input type="text" class="form-control" id="segundo_apellido_socio3" name="segundo_apellido_socio3" value="{{ old('segundo_apellido_socio3') }}">
+                                <input type="text" class="form-control @error('segundo_apellido_socio3') is-invalid @enderror" id="segundo_apellido_socio3" name="segundo_apellido_socio3" value="{{ old('segundo_apellido_socio3') }}" placeholder="Ingrese el segundo apellido">
+                                @error('segundo_apellido_socio3')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- NÚMERO DE COLEGIACIÓN -->
@@ -328,7 +447,12 @@
                                     <i class="fas fa-id-card" style="margin-right: 8px;"></i>
                                     <strong>NÚMERO DE COLEGIACIÓN</strong>
                                 </label>
-                                <input type="text" class="form-control" id="num_colegiacion_socio3" name="num_colegiacion_socio3" value="{{ old('num_colegiacion_socio3') }}">
+                                <input type="text" class="form-control @error('num_colegiacion_socio3') is-invalid @enderror" id="num_colegiacion_socio3" name="num_colegiacion_socio3" value="{{ old('num_colegiacion_socio3') }}" placeholder="Ingrese el número de colegiación">
+                                @error('num_colegiacion_socio3')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <script>
                                 document.getElementById('num_colegiacion_socio3').addEventListener('input', function (e) {
@@ -354,7 +478,6 @@
                                 <input type="file" class="form-control-file d-none" id="imagen_firma_socio3" name="imagen_firma_socio3" onchange="previewImage(event, 'preview_socio3')">
                                 <img id="preview_socio3" src="#" alt="Vista previa de la firma del Socio 3" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
-                            
                         </div>
 
                         <!-- SOCIO 4 -->
@@ -369,7 +492,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER NOMBRE</strong>
                                 </label>
-                                <input type="text" class="form-control" id="primer_nombre_socio4" name="primer_nombre_socio4" value="{{ old('primer_nombre_socio4') }}" required>
+                                <input type="text" class="form-control @error('primer_nombre_socio4') is-invalid @enderror" id="primer_nombre_socio4" name="primer_nombre_socio4" value="{{ old('primer_nombre_socio4') }}" placeholder="Ingrese el primer nombre" required>
+                                @error('primer_nombre_socio4')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- SEGUNDO NOMBRE -->
@@ -378,7 +506,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>SEGUNDO NOMBRE</strong>
                                 </label>
-                                <input type="text" class="form-control" id="segundo_nombre_socio4" name="segundo_nombre_socio4" value="{{ old('segundo_nombre_socio4') }}">
+                                <input type="text" class="form-control @error('segundo_nombre_socio4') is-invalid @enderror" id="segundo_nombre_socio4" name="segundo_nombre_socio4" value="{{ old('segundo_nombre_socio4') }}" placeholder="Ingrese el segundo nombre">
+                                @error('segundo_nombre_socio4')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- PRIMER APELLIDO -->
@@ -387,7 +520,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER APELLIDO</strong>
                                 </label>
-                                <input type="text" class="form-control" id="primer_apellido_socio4" name="primer_apellido_socio" value="{{ old('primer_apellido_socio4') }}" required>
+                                <input type="text" class="form-control @error('primer_apellido_socio4') is-invalid @enderror" id="primer_apellido_socio4" name="primer_apellido_socio4" value="{{ old('primer_apellido_socio4') }}" placeholder="Ingrese el primer apellido" required>
+                                @error('primer_apellido_socio4')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- SEGUNDO APELLIDO -->
@@ -396,7 +534,12 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>SEGUNDO APELLIDO</strong>
                                 </label>
-                                <input type="text" class="form-control" id="segundo_apellido_socio4" name="segundo_apellido_socio4" value="{{ old('segundo_apellido_socio4') }}">
+                                <input type="text" class="form-control @error('segundo_apellido_socio4') is-invalid @enderror" id="segundo_apellido_socio4" name="segundo_apellido_socio4" value="{{ old('segundo_apellido_socio4') }}" placeholder="Ingrese el segundo apellido">
+                                @error('segundo_apellido_socio4')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- NÚMERO DE COLEGIACIÓN -->
@@ -405,7 +548,12 @@
                                     <i class="fas fa-id-card" style="margin-right: 8px;"></i>
                                     <strong>NÚMERO DE COLEGIACIÓN</strong>
                                 </label>
-                                <input type="text" class="form-control" id="num_colegiacion_socio4" name="num_colegiacion_socio4" value="{{ old('num_colegiacion_socio4') }}">
+                                <input type="text" class="form-control @error('num_colegiacion_socio4') is-invalid @enderror" id="num_colegiacion_socio4" name="num_colegiacion_socio4" value="{{ old('num_colegiacion_socio4') }}" placeholder="Ingrese el número de colegiación">
+                                @error('num_colegiacion_socio4')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <script>
                                 document.getElementById('num_colegiacion_socio4').addEventListener('input', function (e) {
@@ -431,7 +579,6 @@
                                 <input type="file" class="form-control-file d-none" id="imagen_firma_socio4" name="imagen_firma_socio4" onchange="previewImage(event, 'preview_socio4')">
                                 <img id="preview_socio4" src="#" alt="Vista previa de la firma del Socio 4" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
-                            
                         </div>
 
                         <div class="form-group row">

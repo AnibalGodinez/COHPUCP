@@ -136,9 +136,7 @@
             <div class="section text-center">
                 <h4 style="text-decoration: underline;">DATOS DEL SOCIOS</h4>
             </div>
-
-                <h5>INFORMACIÓN DEL SOCIO 1:</h5>
-
+                <h5 style="text-decoration: underline;">Socio 1:</h5>
             <p><strong>Nombre completo:</strong> {{ $inscripcionFirma->primer_nombre_socio1 }} {{ $inscripcionFirma->segundo_nombre_socio1 }} {{ $inscripcionFirma->primer_apellido_socio1 }} {{ $inscripcionFirma->segundo_apellido_socio1 }}</p>
             <p><strong>Número Colegiación:</strong> {{ $inscripcionFirma->num_colegiacion_socio1 }}</p>
             <div class="section text-center">
@@ -148,9 +146,9 @@
             </div>
         </div>
 
-        <!--SOCIO 1 -->
+        <!--SOCIO 2 -->
         <div class="section">
-            <h5>INFORMACIÓN DEL SOCIO 2:</h5>
+            <h5 style="text-decoration: underline;">Socio 2:</h5>
             <p><strong>Nombre completo:</strong> {{ $inscripcionFirma->primer_nombre_socio2 }} {{ $inscripcionFirma->segundo_nombre_socio2 }} {{ $inscripcionFirma->primer_apellido_socio2 }} {{ $inscripcionFirma->segundo_apellido_socio2 }}</p>
             <p><strong>Número Colegiación:</strong> {{ $inscripcionFirma->num_colegiacion_socio2 }}</p>
             <div class="section text-center">
@@ -160,11 +158,23 @@
             </div>
         </div>
 
-        <!--SOCIO 1 -->
+        <!--SOCIO 3 -->
         <div class="section">
-            <h5>INFORMACIÓN DEL SOCIO 3:</h5>
+            <h5 style="text-decoration: underline;">Socio 3:</h5>
             <p><strong>Nombre completo:</strong> {{ $inscripcionFirma->primer_nombre_socio3 }} {{ $inscripcionFirma->segundo_nombre_socio3 }} {{ $inscripcionFirma->primer_apellido_socio3 }} {{ $inscripcionFirma->segundo_apellido_socio3 }}</p>
             <p><strong>Número Colegiación:</strong> {{ $inscripcionFirma->num_colegiacion_socio3 }}</p>
+            <div class="section text-center">
+                <!-- Firma solicitante -->
+                <p><strong></strong> _________________________________ </p>
+                <p><strong></strong> Firma</p>
+            </div>
+        </div>
+
+        <!--SOCIO 4 -->
+        <div class="section">
+            <h5 style="text-decoration: underline;">Socio 4:</h5>
+            <p><strong>Nombre completo:</strong> {{ $inscripcionFirma->primer_nombre_socio4 }} {{ $inscripcionFirma->segundo_nombre_socio4 }} {{ $inscripcionFirma->primer_apellido_socio4 }} {{ $inscripcionFirma->segundo_apellido_socio4 }}</p>
+            <p><strong>Número Colegiación:</strong> {{ $inscripcionFirma->num_colegiacion_socio4 }}</p>
             <div class="section text-center">
                 <!-- Firma solicitante -->
                 <p><strong></strong> _________________________________ </p>

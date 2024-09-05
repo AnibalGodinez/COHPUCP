@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\InscripcionFirma;
@@ -82,6 +83,7 @@ class InscripcionFirmaController extends Controller
             'estado' => 'nullable|in:pendiente,aprobado,rechazado',
             'descripcion_estado_solicitud' => 'nullable|string',
         ], [
+            // Mensajes de error personalizados
             'imagen_firma_socio1.image' => 'El archivo de la firma digital del socio 1 debe ser una imagen.',
             'imagen_firma_socio1.mimes' => 'El archivo de la firma digital del socio 1 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
             'imagen_firma_socio1.max' => 'El archivo de la firma digital del socio 1 no debe exceder 10MB.',
@@ -161,16 +163,16 @@ class InscripcionFirmaController extends Controller
                 ? $this->storeImage($request->file('imagen_firma_socio4'), 'img_firma_socio4_inscripcion_firma') 
                 : null,
 
-            // III. Firmas digitales
             'imagen_firma_social' => $request->hasFile('imagen_firma_social') 
                 ? $this->storeImage($request->file('imagen_firma_social'), 'img_firma_social_inscripcion_firma') 
                 : null,
             'imagen_firma_representante_legal' => $request->hasFile('imagen_firma_representante_legal') 
-                ? $this->storeImage($request->file('imagen_firma_representante_legal'), 'img_firma_representante_legal_inscripcion_firma') 
+                ? $this->storeImage($request->file('imagen_firma_representante_legal'), 'img_firma_representante_inscripcion_firma') 
                 : null,
+
         ]);
 
-        return redirect()->route('inscripcion_firmas.create')->with('success', '¡Solicitud de inscripción de firma enviada con éxito!');
+        return redirect()->back()->with('success', 'La inscripción de la firma ha sido registrada con éxito.');
     }
 
     // Método auxiliar para almacenar imágenes

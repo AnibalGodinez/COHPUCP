@@ -39,6 +39,10 @@
                                         <th class="text-center" style="color: white;">Número Colegiación Socio 3</th>
                                         <th class="text-center" style="color: white;">Imagen Firma Socio 3</th>
 
+                                        <th class="text-center" style="color: white;">Nombre completo Socio 4</th>
+                                        <th class="text-center" style="color: white;">Número Colegiación Socio 4</th>
+                                        <th class="text-center" style="color: white;">Imagen Firma Socio 4</th>
+
                                         <th class="text-center" style="color: white;">Imagen Firma Social</th>
                                         <th class="text-center" style="color: white;">Imagen Firma Representante Legal</th>
 
