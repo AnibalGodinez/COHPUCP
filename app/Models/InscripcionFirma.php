@@ -49,6 +49,13 @@ class InscripcionFirma extends Model
         'num_colegiacion_socio3',
         'imagen_firma_socio3',
 
+        'primer_nombre_socio4',
+        'segundo_nombre_socio4',
+        'primer_apellido_socio4',
+        'segundo_apellido_socio4',
+        'num_colegiacion_socio4',
+        'imagen_firma_socio4',
+
         // III. Firmas digitales
         'imagen_firma_social',
         'imagen_firma_representante_legal',

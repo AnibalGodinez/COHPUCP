@@ -25,7 +25,7 @@
                                         <th class="text-center" style="color: white;">Dirección de la firma</th>
                                         <th class="text-center" style="color: white;">Teléfono</th>
                                         <th class="text-center" style="color: white;">Celular</th>
-                                        <th class="text-center" style="color: white;">Email</th>
+                                        <th class="text-center" style="color: white;">Correo electrónico</th>
 
                                         <th class="text-center" style="color: white;">Nombre completo Socio 1</th>
                                         <th class="text-center" style="color: white;">Número Colegiación Socio 1</th>
@@ -88,6 +88,16 @@
                                             <td>
                                                 @if ($inscripcionFirma->imagen_firma_socio3)
                                                     <img src="{{ asset('storage/' . $inscripcionFirma->imagen_firma_socio3) }}" alt="Firma Socio 3" style="width: 100px;">
+                                                @else
+                                                    No disponible
+                                                @endif
+                                            </td>
+
+                                            <td>{{ $inscripcionFirma->primer_nombre_socio4 }} {{ $inscripcionFirma->segundo_nombre_socio4 }} {{ $inscripcionFirma->primer_apellido_socio4 }} {{ $inscripcionFirma->segundo_apellido_socio4 }}</td>
+                                            <td>{{ $inscripcionFirma->num_colegiacion_socio4 }}</td>
+                                            <td>
+                                                @if ($inscripcionFirma->imagen_firma_socio4)
+                                                    <img src="{{ asset('storage/' . $inscripcionFirma->imagen_firma_socio4) }}" alt="Firma Socio 3" style="width: 100px;">
                                                 @else
                                                     No disponible
                                                 @endif

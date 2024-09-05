@@ -48,6 +48,13 @@ class CreateInscripcionFirmasTable extends Migration
             $table->string('num_colegiacion_socio3')->nullable();
             $table->string('imagen_firma_socio3')->nullable();
 
+            $table->string('primer_nombre_socio4');
+            $table->string('segundo_nombre_socio4')->nullable();
+            $table->string('primer_apellido_socio4');
+            $table->string('segundo_apellido_socio4')->nullable();
+            $table->string('num_colegiacion_socio4')->nullable();
+            $table->string('imagen_firma_socio4')->nullable();
+
             // III. Firmas digitales
             $table->string('imagen_firma_social')->nullable();
             $table->string('imagen_firma_representante_legal')->nullable();

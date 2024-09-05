@@ -1,10 +1,9 @@
 <?php
 
 use App\Exports\UsersExport;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PDFUsuariosController;
 use App\Http\Controllers\PaisController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SexoController;
@@ -15,6 +14,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\InscripcionController;
+use App\Http\Controllers\PDFUsuariosController;
 use App\Http\Controllers\UniversidadController;
 use App\Http\Controllers\CapacitacioneController;
 use App\Http\Controllers\FooterContentController;
@@ -25,6 +25,7 @@ use App\Http\Controllers\InscripcionFirmaController;
 use App\Http\Controllers\SecurityQuestionController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\NumeroColegiacionController;
+use App\Http\Controllers\PDFInscripcionFirmaController;
 
     // RUTA DE BIENVENIDA
     Route::get('/', function () {
@@ -56,10 +57,12 @@ use App\Http\Controllers\NumeroColegiacionController;
     Route::get('usuarios/{userId}/delete', [UserController::class, 'destroy']);
     Route::get('/usuarios/{id}', [UserController::class, 'show'])->name('users.show');
     Route::get('ver/usuarios', [UserController::class, 'verUsuarios'])->name('usuarios.ver');
+    // RUTA PARA VER Y DESCARGAR EL PDF DE UN USUARIO EN ESPECÍFICO
     Route::get('/previsualizacion/pdf/usuario/{id}', [PDFUsuariosController::class, 'preview'])->name('user.pdf.preview');
     Route::get('/descargar/pdf/usuario/{id}', [PDFUsuariosController::class, 'download'])->name('user.pdf.download');
+    // RUTA PARA BUSCAR LOS DATOS DEL USUARIO AUTENTICADO EN LA SOLICITUD DE INSCRIPCIÓN
     Route::get('/get-user-data/{identifier}', [UserController::class, 'getUserData']);
-    // RUTAS PARA DESCARGAR EXCEL DE LOS USUARIOS
+    // RUTA PARA DESCARGAR EXCEL DE LOS USUARIOS
     Route::get('usuarios/export/excel', function () {
         return Excel::download(new UsersExport, 'usuarios.xlsx');
     })->name('usuarios.export.excel');
@@ -117,6 +120,8 @@ use App\Http\Controllers\NumeroColegiacionController;
 
     // RUTAS DE INSCRIPCIONES DE FIRMAS
     Route::resource('inscripcion_firmas', InscripcionFirmaController::class);
+    Route::get('/previsualizacion/pdf/inscripcionFirma/{id}', [PDFInscripcionFirmaController::class, 'preview'])->name('inscripcion_firmas.pdf.preview');
+    Route::get('/descargar/pdf/inscripcionFirma/{id}', [PDFInscripcionFirmaController::class, 'download'])->name('inscripcion_firmas.pdf.download');
 
     // RUTAS DE UNIVERSIDADES
     Route::resource('universidades', UniversidadController::class);

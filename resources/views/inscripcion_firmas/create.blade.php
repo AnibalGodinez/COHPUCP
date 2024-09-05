@@ -122,7 +122,7 @@
                             </div>
                         </div>
                         
-                        <!-- I. DATOS DE LA SOCIEDAD -->
+                        <!-- I. DATOS DE LOS SOCIOS -->
                         <div class="col-12 text-center mb-0">
                             <h4 style="text-decoration: underline;"><strong>II. DATOS DE LOS SOCIOS</strong></h4>
                         </div>
@@ -353,6 +353,83 @@
                                 </label>
                                 <input type="file" class="form-control-file d-none" id="imagen_firma_socio3" name="imagen_firma_socio3" onchange="previewImage(event, 'preview_socio3')">
                                 <img id="preview_socio3" src="#" alt="Vista previa de la firma del Socio 3" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
+                            </div>
+                            
+                        </div>
+
+                        <!-- SOCIO 4 -->
+                        <div class="form-group row">
+                            <div class="col-12 mb-3">
+                                <h6 style="text-decoration: underline;"><strong>DATOS DEL SOCIO(A) 4:</strong></h6>
+                            </div>
+
+                            <!-- PRIMER NOMBRE -->
+                            <div class="col-md-2">
+                                <label for="primer_nombre_socio4">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>PRIMER NOMBRE</strong>
+                                </label>
+                                <input type="text" class="form-control" id="primer_nombre_socio4" name="primer_nombre_socio4" value="{{ old('primer_nombre_socio4') }}" required>
+                            </div>
+
+                            <!-- SEGUNDO NOMBRE -->
+                            <div class="col-md-2">
+                                <label for="segundo_nombre_socio4">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>SEGUNDO NOMBRE</strong>
+                                </label>
+                                <input type="text" class="form-control" id="segundo_nombre_socio4" name="segundo_nombre_socio4" value="{{ old('segundo_nombre_socio4') }}">
+                            </div>
+
+                            <!-- PRIMER APELLIDO -->
+                            <div class="col-md-2">
+                                <label for="primer_apellido_socio4">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>PRIMER APELLIDO</strong>
+                                </label>
+                                <input type="text" class="form-control" id="primer_apellido_socio4" name="primer_apellido_socio" value="{{ old('primer_apellido_socio4') }}" required>
+                            </div>
+
+                            <!-- SEGUNDO APELLIDO -->
+                            <div class="col-md-2">
+                                <label for="segundo_apellido_socio4">
+                                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                                    <strong>SEGUNDO APELLIDO</strong>
+                                </label>
+                                <input type="text" class="form-control" id="segundo_apellido_socio4" name="segundo_apellido_socio4" value="{{ old('segundo_apellido_socio4') }}">
+                            </div>
+
+                            <!-- NÚMERO DE COLEGIACIÓN -->
+                            <div class="col-md-4">
+                                <label for="num_colegiacion_socio4">
+                                    <i class="fas fa-id-card" style="margin-right: 8px;"></i>
+                                    <strong>NÚMERO DE COLEGIACIÓN</strong>
+                                </label>
+                                <input type="text" class="form-control" id="num_colegiacion_socio4" name="num_colegiacion_socio4" value="{{ old('num_colegiacion_socio4') }}">
+                            </div>
+                            <script>
+                                document.getElementById('num_colegiacion_socio4').addEventListener('input', function (e) {
+                                    var input = e.target.value.replace(/\D/g, '');
+                                    var formatted = '';
+                                    if (input.length <= 4) {
+                                        formatted = input;
+                                    } else if (input.length <= 6) {
+                                        formatted = input.slice(0, 4) + '-' + input.slice(4);
+                                    } else {
+                                        formatted = input.slice(0, 4) + '-' + input.slice(4, 6) + '-' + input.slice(6, 10);
+                                    }
+                                    e.target.value = formatted;
+                                });
+                            </script>
+
+                            <!-- IMAGEN DE FIRMA DEL SOCIO 4 -->
+                            <div class="col-md-12 text-center mb-4">
+                                <label for="imagen_firma_socio4" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir firma digital socio 4
+                                </label>
+                                <input type="file" class="form-control-file d-none" id="imagen_firma_socio4" name="imagen_firma_socio4" onchange="previewImage(event, 'preview_socio4')">
+                                <img id="preview_socio4" src="#" alt="Vista previa de la firma del Socio 4" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
                             
                         </div>

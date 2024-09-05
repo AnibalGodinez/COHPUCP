@@ -10,8 +10,8 @@ class PDFInscripcionController extends Controller
     // Método para previsualizar el PDF de una solicitud de inscripción basado en su ID
     public function preview($id)
     {
-        $inscripcion = Inscripcion::findOrFail($id); // Obtén la inscripción basada en el ID
-        $numero_colegiacion = $inscripcion->user->numero_colegiacion ?? 'No Disponible'; // Obtén el número de colegiación, si existe
+        $inscripcionFirma = Inscripcion::findOrFail($id); // Obtén la inscripción basada en el ID
+        $numero_colegiacion = $inscripcionFirma->user->numero_colegiacion ?? 'No Disponible'; // Obtén el número de colegiación, si existe
 
         $pdf = Pdf::loadView('pdf.user-inscripcion', compact('inscripcion', 'numero_colegiacion')); // Carga la vista que generarás
 
@@ -21,13 +21,13 @@ class PDFInscripcionController extends Controller
     // Método para descargar el PDF de una solicitud de inscripción basado en su ID
     public function download($id)
     {
-        $inscripcion = Inscripcion::findOrFail($id); // Obtén la inscripción basada en el ID
-        $numero_colegiacion = $inscripcion->user->numero_colegiacion ?? 'No Disponible'; // Obtén el número de colegiación, si existe
+        $inscripcionFirma = Inscripcion::findOrFail($id); // Obtén la inscripción basada en el ID
+        $numero_colegiacion = $inscripcionFirma->user->numero_colegiacion ?? 'No Disponible'; // Obtén el número de colegiación, si existe
 
         $pdf = Pdf::loadView('pdf.user-inscripcion', compact('inscripcion', 'numero_colegiacion')); // Carga la vista que generarás
 
         // Genera el nombre del archivo usando el nombre y apellido del usuario
-        $fileName = 'Solicitud de Inscripción - ' . $inscripcion->name . ' ' . $inscripcion->apellido . '.pdf';
+        $fileName = 'Solicitud de Inscripción - ' . $inscripcionFirma->name . ' ' . $inscripcionFirma->apellido . '.pdf';
 
         return $pdf->download($fileName); // Descarga el PDF con el nombre personalizado
     }

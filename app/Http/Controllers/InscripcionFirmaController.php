@@ -68,6 +68,13 @@ class InscripcionFirmaController extends Controller
             'num_colegiacion_socio3' => 'nullable|string|max:255',
             'imagen_firma_socio3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
+            'primer_nombre_socio4' => 'required|string|max:255',
+            'segundo_nombre_socio4' => 'nullable|string|max:255',
+            'primer_apellido_socio4' => 'required|string|max:255',
+            'segundo_apellido_socio4' => 'nullable|string|max:255',
+            'num_colegiacion_socio4' => 'nullable|string|max:255',
+            'imagen_firma_socio4' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
+
             'imagen_firma_social' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
             'imagen_firma_representante_legal' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
@@ -86,6 +93,10 @@ class InscripcionFirmaController extends Controller
             'imagen_firma_socio3.image' => 'El archivo de la firma digital del socio 3 debe ser una imagen.',
             'imagen_firma_socio3.mimes' => 'El archivo de la firma digital del socio 3 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
             'imagen_firma_socio3.max' => 'El archivo de la firma digital del socio 3 no debe exceder 10MB.',
+
+            'imagen_firma_socio4.image' => 'El archivo de la firma digital del socio 4 debe ser una imagen.',
+            'imagen_firma_socio4.mimes' => 'El archivo de la firma digital del socio 4 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
+            'imagen_firma_socio4.max' => 'El archivo de la firma digital del socio 4 no debe exceder 10MB.',
 
             'imagen_firma_social.image' => 'El archivo de la firma digital social debe ser una imagen.',
             'imagen_firma_social.mimes' => 'El archivo de la firma digital social debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
@@ -139,6 +150,15 @@ class InscripcionFirmaController extends Controller
             'num_colegiacion_socio3' => $request->num_colegiacion_socio3,
             'imagen_firma_socio3' => $request->hasFile('imagen_firma_socio3') 
                 ? $this->storeImage($request->file('imagen_firma_socio3'), 'img_firma_socio3_inscripcion_firma') 
+                : null,
+
+            'primer_nombre_socio4' => $request->primer_nombre_socio4,
+            'segundo_nombre_socio4' => $request->segundo_nombre_socio4,
+            'primer_apellido_socio4' => $request->primer_apellido_socio4,
+            'segundo_apellido_socio4' => $request->segundo_apellido_socio4,
+            'num_colegiacion_socio4' => $request->num_colegiacion_socio4,
+            'imagen_firma_socio4' => $request->hasFile('imagen_firma_socio4') 
+                ? $this->storeImage($request->file('imagen_firma_socio4'), 'img_firma_socio4_inscripcion_firma') 
                 : null,
 
             // III. Firmas digitales
