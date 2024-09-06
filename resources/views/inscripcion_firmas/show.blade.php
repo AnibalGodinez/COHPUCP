@@ -26,24 +26,92 @@
                                 </div>
                                 {{-- columna 1 --}}
                                 <div class="col-md-3 d-flex flex-column">
-                                    <p class="mb-3"><strong><strong>NOMBRE DE LA SOCIEDAD</strong></strong><br> {{ $inscripcionFirma->nombre_sociedad ?: 'No disponible' }} </p>
-                                    <p class="mb-3"><strong><strong>Nº REGISTRO TRIBUTARIO NACIONAL</strong></strong><br> {{ $inscripcionFirma->registro_tributario_nacional ?: 'No disponible' }}</p>
-                                    <p class="mb-3"><strong><strong>TELÉFONO</strong></strong><br> {{ $inscripcionFirma->telefono ?: 'No disponible' }}</p>                                                       
+                                    <p class="mb-3">
+                                        <strong><strong>NOMBRE DE LA SOCIEDAD</strong></strong><br>
+                                        @if(!$inscripcionFirma->nombre_sociedad)
+                                            <span style="text-decoration: line-through;">No disponible</span>
+                                        @else
+                                            {{ $inscripcionFirma->nombre_sociedad }}
+                                        @endif
+                                    </p>
+                                    <p class="mb-3">
+                                        <strong><strong>Nº REGISTRO TRIBUTARIO NACIONAL</strong></strong><br>
+                                        @if(!$inscripcionFirma->registro_tributario_nacional)
+                                            <span style="text-decoration: line-through;">No disponible</span>
+                                        @else
+                                            {{ $inscripcionFirma->registro_tributario_nacional }}
+                                        @endif
+                                    </p>
+                                    <p class="mb-3">
+                                        <strong><strong>TELÉFONO</strong></strong><br>
+                                        @if(!$inscripcionFirma->telefono)
+                                            <span style="text-decoration: line-through;">No disponible</span>
+                                        @else
+                                            {{ $inscripcionFirma->telefono }}
+                                        @endif
+                                    </p>                                                       
                                 </div>
+
                                 {{-- columna 2 --}}
                                 <div class="col-md-3 d-flex flex-column">
-                                    <p class="mb-3" style="text-decoration: line-through;"><strong><strong>Nº INSCRIPCIÓN EN EL REGISTRO PÚBLICO DE COMERCIO</strong></strong><br> {{ $inscripcionFirma->num_inscripcion_registro_publico_comercio ?: 'No disponible' }}</p>
-                                    <p class="mb-3" ><strong><strong>Nº INSCRIPCIÓN CÁMARA DE COMERCIO</strong></strong><br> {{ $inscripcionFirma->num_inscripcion_camara_comercio ?: 'No disponible' }}</p>
-                                    <p class="mb-3"><strong><strong>CELULAR</strong></strong><br> {{ $inscripcionFirma->celular ?: 'No disponible' }}</p>
+                                    <p class="mb-3">
+                                        <strong><strong>Nº INSCRIPCIÓN EN EL REGISTRO PÚBLICO DE COMERCIO</strong></strong><br>
+                                        @if(!$inscripcionFirma->num_inscripcion_registro_publico_comercio)
+                                            <span style="text-decoration: line-through;">No disponible</span>
+                                        @else
+                                            {{ $inscripcionFirma->num_inscripcion_registro_publico_comercio }}
+                                        @endif
+                                    </p>
+                                    <p class="mb-3">
+                                        <strong><strong>Nº INSCRIPCIÓN CÁMARA DE COMERCIO</strong></strong><br>
+                                        @if(!$inscripcionFirma->num_inscripcion_camara_comercio)
+                                            <span style="text-decoration: line-through;">No disponible</span>
+                                        @else
+                                            {{ $inscripcionFirma->num_inscripcion_camara_comercio }}
+                                        @endif
+                                    </p>
+                                    <p class="mb-3">
+                                        <strong><strong>CELULAR</strong></strong><br>
+                                        @if(!$inscripcionFirma->celular)
+                                            <span style="text-decoration: line-through;">No disponible</span>
+                                        @else
+                                            {{ $inscripcionFirma->celular }}
+                                        @endif
+                                    </p>                                    
+                                    
                                 </div>
+                                
                                 {{-- columna 3 --}}
                                 <div class="col-md-3 d-flex flex-column">
-                                    <p class="mb-3"><strong><strong>FECHA DE CONSTITUCIÓN DE LA FIRMA</strong></strong><br> {{ \Carbon\Carbon::parse($inscripcionFirma->fecha_constitucion)->format('d') }} de {{ \Carbon\Carbon::parse($inscripcionFirma->fecha_constitucion)->translatedFormat('F') }} del {{ \Carbon\Carbon::parse($inscripcionFirma->fecha_constitucion)->format('Y') ?: 'No disponible' }}</p>
-                                    <p class="mb-3"><strong><strong>DIRECCIÓN DE LA FIRMA</strong></strong><br> {{ $inscripcionFirma->direccion ?: 'No disponible' }}</p>
-                                    <p class="mb-3"><strong><strong>CORREO ELECTRÓNICO</strong></strong><br> {{ $inscripcionFirma->email ?: 'No disponible' }}</p>
-                                </div>
-                            </div>
+                                    <p class="mb-3">
+                                        <strong><strong>FECHA DE CONSTITUCIÓN DE LA FIRMA</strong></strong><br>
+                                        @if($inscripcionFirma->fecha_constitucion)
+                                            {{ \Carbon\Carbon::parse($inscripcionFirma->fecha_constitucion)->format('d') }} de {{ \Carbon\Carbon::parse($inscripcionFirma->fecha_constitucion)->translatedFormat('F') }} del {{ \Carbon\Carbon::parse($inscripcionFirma->fecha_constitucion)->format('Y') }}
+                                        @else
+                                            <span style="text-decoration: line-through;">No disponible</span>
+                                        @endif
+                                    </p>
 
+                                    <p class="mb-3">
+                                        <strong><strong>DIRECCIÓN DE LA FIRMA</strong></strong><br>
+                                        @if(!$inscripcionFirma->direccion)
+                                            <span style="text-decoration: line-through;">No disponible</span>
+                                        @else
+                                            {{ $inscripcionFirma->direccion }}
+                                        @endif
+                                    </p>
+
+                                    <p class="mb-3">
+                                        <strong><strong>CORREO ELECTRÓNICO</strong></strong><br>
+                                        @if(!$inscripcionFirma->email)
+                                            <span style="text-decoration: line-through;">No disponible</span>
+                                        @else
+                                            {{ $inscripcionFirma->email }}
+                                        @endif
+                                    </p>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
 
@@ -64,13 +132,27 @@
                                     </div>
                                     {{-- columna 1 --}}
                                     <div class="col-md-5">
-                                        <p class="mb-4"><strong><strong>NOMBRE COMPLETO</strong></strong><br> {{ $inscripcionFirma->primer_nombre_socio1 }} {{ $inscripcionFirma->segundo_nombre_socio1 }} {{ $inscripcionFirma->primer_apellido_socio1 }} {{ $inscripcionFirma->segundo_apellido_socio1 }}</p>
+                                        <p class="mb-4">
+                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
+                                            @if($inscripcionFirma->primer_nombre_socio1 || $inscripcionFirma->segundo_nombre_socio1 || $inscripcionFirma->primer_apellido_socio1 || $inscripcionFirma->segundo_apellido_socio1)
+                                                {{ $inscripcionFirma->primer_nombre_socio1 }} {{ $inscripcionFirma->segundo_nombre_socio1 }} {{ $inscripcionFirma->primer_apellido_socio1 }} {{ $inscripcionFirma->segundo_apellido_socio1 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
                                     </div>
                                     {{-- columna 2 --}}
                                     <div class="col-md-6">
-                                        <p><strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br> {{ $inscripcionFirma->num_colegiacion_socio1 }}</p>
+                                        <p>
+                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
+                                            @if($inscripcionFirma->num_colegiacion_socio1)
+                                                {{ $inscripcionFirma->num_colegiacion_socio1 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
                                     </div>
-                                    {{-- columna 1 --}}
+                                    {{-- columna de la firma digital --}}
                                     <div class="col-md-12 text-center">
                                         <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
                                         @if($inscripcionFirma->imagen_firma_socio1)
@@ -96,13 +178,27 @@
                                     </div>
                                     {{-- columna 1 --}}
                                     <div class="col-md-5">
-                                        <p class="mb-4"><strong><strong>NOMBRE COMPLETO</strong></strong><br> {{ $inscripcionFirma->primer_nombre_socio2 }} {{ $inscripcionFirma->segundo_nombre_socio2 }} {{ $inscripcionFirma->primer_apellido_socio2 }} {{ $inscripcionFirma->segundo_apellido_socio2 }}</p>
+                                        <p class="mb-4">
+                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
+                                            @if($inscripcionFirma->primer_nombre_socio2 || $inscripcionFirma->segundo_nombre_socio2 || $inscripcionFirma->primer_apellido_socio2 || $inscripcionFirma->segundo_apellido_socio2)
+                                                {{ $inscripcionFirma->primer_nombre_socio2 }} {{ $inscripcionFirma->segundo_nombre_socio2 }} {{ $inscripcionFirma->primer_apellido_socio2 }} {{ $inscripcionFirma->segundo_apellido_socio2 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
                                     </div>
                                     {{-- columna 2 --}}
                                     <div class="col-md-6">
-                                        <p><strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br> {{ $inscripcionFirma->num_colegiacion_socio2 }}</p>
+                                        <p>
+                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
+                                            @if($inscripcionFirma->num_colegiacion_socio2)
+                                                {{ $inscripcionFirma->num_colegiacion_socio2 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
                                     </div>
-                                    {{-- columna 1 --}}
+                                    {{-- columna de la firma digital --}}
                                     <div class="col-md-12 text-center">
                                         <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
                                         @if($inscripcionFirma->imagen_firma_socio2)
@@ -114,6 +210,7 @@
                                 </div>
                             </div>                    
                         </div>
+
 
                         {{-- Socio 3 --}}
                         <div class="col-md-6 mb-4">
@@ -128,15 +225,29 @@
                                     </div>
                                     {{-- columna 1 --}}
                                     <div class="col-md-5">
-                                        <p class="mb-4"><strong><strong>NOMBRE COMPLETO</strong></strong><br> {{ $inscripcionFirma->primer_nombre_socio3 }} {{ $inscripcionFirma->segundo_nombre_socio3 }} {{ $inscripcionFirma->primer_apellido_socio3 }} {{ $inscripcionFirma->segundo_apellido_socio3 }}</p>
+                                        <p class="mb-4">
+                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
+                                            @if($inscripcionFirma->primer_nombre_socio3 || $inscripcionFirma->segundo_nombre_socio3 || $inscripcionFirma->primer_apellido_socio3 || $inscripcionFirma->segundo_apellido_socio3)
+                                                {{ $inscripcionFirma->primer_nombre_socio3 }} {{ $inscripcionFirma->segundo_nombre_socio3 }} {{ $inscripcionFirma->primer_apellido_socio3 }} {{ $inscripcionFirma->segundo_apellido_socio3 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
                                     </div>
                                     {{-- columna 2 --}}
                                     <div class="col-md-6">
-                                        <p><strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br> {{ $inscripcionFirma->num_colegiacion_socio3 }}</p>
+                                        <p>
+                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
+                                            @if($inscripcionFirma->num_colegiacion_socio3)
+                                                {{ $inscripcionFirma->num_colegiacion_socio3 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
                                     </div>
-                                    {{-- columna 1 --}}
+                                    {{-- columna de la firma digital --}}
                                     <div class="col-md-12 text-center">
-                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
+                                        <p style="text-decoration: underline;"><strong>FIRMA DIGITAL</strong></p>
                                         @if($inscripcionFirma->imagen_firma_socio3)
                                             <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio3) }}" alt="Firma Digital Socio 3" class="img-fluid rounded" style="max-width: 500px; max-height: 300px;">
                                         @else
@@ -146,6 +257,7 @@
                                 </div>
                             </div>                    
                         </div>
+
 
                         {{-- Socio 4 --}}
                         <div class="col-md-6 mb-4">
@@ -160,11 +272,25 @@
                                     </div>
                                     {{-- columna 1 --}}
                                     <div class="col-md-5">
-                                        <p class="mb-4"><strong><strong>NOMBRE COMPLETO</strong></strong><br> {{ $inscripcionFirma->primer_nombre_socio4 }} {{ $inscripcionFirma->segundo_nombre_socio4 }} {{ $inscripcionFirma->primer_apellido_socio4 }} {{ $inscripcionFirma->segundo_apellido_socio4 }}</p>
+                                        <p class="mb-4">
+                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
+                                            @if($inscripcionFirma->primer_nombre_socio4 || $inscripcionFirma->segundo_nombre_socio4 || $inscripcionFirma->primer_apellido_socio4 || $inscripcionFirma->segundo_apellido_socio4)
+                                                {{ $inscripcionFirma->primer_nombre_socio4 }} {{ $inscripcionFirma->segundo_nombre_socio4 }} {{ $inscripcionFirma->primer_apellido_socio4 }} {{ $inscripcionFirma->segundo_apellido_socio4 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
                                     </div>
                                     {{-- columna 2 --}}
                                     <div class="col-md-6">
-                                        <p><strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br> {{ $inscripcionFirma->num_colegiacion_socio4 }}</p>
+                                        <p>
+                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
+                                            @if($inscripcionFirma->num_colegiacion_socio4)
+                                                {{ $inscripcionFirma->num_colegiacion_socio4 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
                                     </div>
                                     {{-- columna 1 --}}
                                     <div class="col-md-12 text-center">
@@ -181,13 +307,11 @@
 
                     </div>
 
-                       
-                    
                     <!-- FIRMA DIGITAL DE LA FIRMA SOCIAL -->
                     <div class="row">
                         <div class="col-md-6 mb-4 text-center">
                             <div class="card shadow-lg">
-                                <div class="card-header bg-primary text-white text-center">
+                                <div class="card-header bg-warning text-white text-center">
                                     <h4 class="card-title">
                                         <strong>FIRMA DIGITAL DE LA FIRMA SOCIAL</strong>
                                     </h4>
@@ -196,7 +320,7 @@
                                     @if($inscripcionFirma->imagen_firma_social)
                                         <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_social) }}" alt="Firma Digital de la firma social" class="img-fluid rounded" style="max-width: 200px; max-height: 200px;">
                                     @else
-                                        <p>No se ha subido firma digital.</p>
+                                        <p><span style="text-decoration: line-through;">No disponible</span></p>
                                     @endif
                                 </div>
                             </div>
@@ -204,7 +328,7 @@
 
                         <div class="col-md-6 mb-4 text-center">
                             <div class="card shadow-lg">
-                                <div class="card-header bg-primary text-white text-center">
+                                <div class="card-header bg-warning text-white text-center">
                                     <h4 class="card-title">
                                         <strong>FIRMA DIGITAL DEL REPRESENTANTE LEGAL</strong>
                                     </h4>
@@ -213,12 +337,11 @@
                                     @if($inscripcionFirma->imagen_firma_representante_legal)
                                         <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_representante_legal) }}" alt="Firma Digital del representante legal" class="img-fluid rounded" style="max-width: 200px; max-height: 200px;">
                                     @else
-                                        <p>No se ha subido firma digital.</p>
+                                        <p><span style="text-decoration: line-through;">No disponible</span></p>
                                     @endif
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="form-group row mb-0">
