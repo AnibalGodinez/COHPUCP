@@ -76,10 +76,16 @@ class InscripcionFirmaController extends Controller
             'num_colegiacion_socio4' => 'nullable|string|max:255',
             'imagen_firma_socio4' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
+            // III. Documentos
+            'imagen_escritura_constitucion' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
+            'imagen_registro_mercantil' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
+            'imagen_rtn_firma_auditora' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
+
+            // IV. Firmas digitales
             'imagen_firma_social' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
             'imagen_firma_representante_legal' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
-
-            // III. Estado de la inscripción
+            
+            // V. Estado de la inscripción de la firma
             'estado' => 'nullable|in:pendiente,aprobado,rechazado',
             'descripcion_estado_solicitud' => 'nullable|string',
         ], [
@@ -99,6 +105,18 @@ class InscripcionFirmaController extends Controller
             'imagen_firma_socio4.image' => 'El archivo de la firma digital del socio 4 debe ser una imagen.',
             'imagen_firma_socio4.mimes' => 'El archivo de la firma digital del socio 4 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
             'imagen_firma_socio4.max' => 'El archivo de la firma digital del socio 4 no debe exceder 10MB.',
+
+            'imagen_escritura_constitucion.image' => 'El archivo de la firma digital del socio 4 debe ser una imagen.',
+            'imagen_escritura_constitucion.mimes' => 'El archivo de la firma digital del socio 4 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
+            'imagen_escritura_constitucion.max' => 'El archivo de la firma digital del socio 4 no debe exceder 10MB.',            
+
+            'imagen_registro_mercantil.image' => 'El archivo de la firma digital del socio 4 debe ser una imagen.',
+            'imagen_registro_mercantil.mimes' => 'El archivo de la firma digital del socio 4 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
+            'imagen_registro_mercantil.max' => 'El archivo de la firma digital del socio 4 no debe exceder 10MB.',
+
+            'imagen_rtn_firma_auditora.image' => 'El archivo de la firma digital del socio 4 debe ser una imagen.',
+            'imagen_rtn_firma_auditora.mimes' => 'El archivo de la firma digital del socio 4 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
+            'imagen_rtn_firma_auditora.max' => 'El archivo de la firma digital del socio 4 no debe exceder 10MB.',
 
             'imagen_firma_social.image' => 'El archivo de la firma digital social debe ser una imagen.',
             'imagen_firma_social.mimes' => 'El archivo de la firma digital social debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
@@ -163,6 +181,18 @@ class InscripcionFirmaController extends Controller
                 ? $this->storeImage($request->file('imagen_firma_socio4'), 'img_firma_socio4_inscripcion_firma') 
                 : null,
 
+            // III. Documentos
+            'imagen_escritura_constitucion' => $request->hasFile('imagen_escritura_constitucion') 
+                ? $this->storeImage($request->file('imagen_escritura_constitucion'), 'img_firma_escritura_constitucion') 
+                : null,
+            'imagen_registro_mercantil' => $request->hasFile('imagen_registro_mercantil') 
+                ? $this->storeImage($request->file('imagen_registro_mercantil'), 'img_firma_registro_mercantil') 
+                : null,
+            'imagen_rtn_firma_auditora' => $request->hasFile('imagen_rtn_firma_auditora') 
+                ? $this->storeImage($request->file('imagen_rtn_firma_auditora'), 'img_firma_rtn') 
+                : null,     
+
+            // IV. Firmas digitales
             'imagen_firma_social' => $request->hasFile('imagen_firma_social') 
                 ? $this->storeImage($request->file('imagen_firma_social'), 'img_firma_social_inscripcion_firma') 
                 : null,

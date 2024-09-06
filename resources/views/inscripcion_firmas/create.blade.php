@@ -582,7 +582,46 @@
                         </div>
 
                         <div class="form-group row">
-                            <!-- III. FIRMAS DIGITALES -->
+                            <!-- IV. DOCUMENTOS -->
+                            <div class="col-12 text-center mb-0">
+                                <h4 style="text-decoration: underline;"><strong>III. DOCUMENTOS</strong></h4>
+                            </div>
+
+                            <div class="col-md-12 text-center mb-4">
+                                <label for="imagen_escritura_constitucion" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir escritura de constitución
+                                </label>
+                                <input type="file" class="form-control-file" id="imagen_escritura_constitucion" name="imagen_escritura_constitucion" onchange="previewImage(event, 'preview_escritura')">
+                                <img id="preview_escritura" src="#" alt="Vista previa de la escritura de constitucion" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                                <label for="imagen_registro_mercantil" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir registro mercantil
+                                </label>
+                                <input type="file" class="form-control-file d-none" id="imagen_registro_mercantil" name="imagen_registro_mercantil" onchange="previewImage(event, 'preview_registro')">
+                                <div class="mt-2">
+                                    <img id="preview_registro" src="#" alt="Vista previa del registro mercantil" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
+                                </div>
+                            </div> 
+
+                            <div class="col-md-12 text-center">
+                                <label for="imagen_rtn_firma_auditora" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir rtn de la firma
+                                </label>
+                                <input type="file" class="form-control-file d-none" id="imagen_rtn_firma_auditora" name="imagen_rtn_firma_auditora" onchange="previewImage(event, 'preview_rtn')">
+                                <div class="mt-2">
+                                    <img id="preview_rtn" src="#" alt="Vista previa del registro mercantil" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
+                                </div>
+                            </div>
+
+                        </div><br>
+
+                        <div class="form-group row">
+                            <!-- IV. FIRMAS DIGITALES -->
                             <div class="col-12 text-center mb-0">
                                 <h4 style="text-decoration: underline;"><strong>III. FIRMAS DIGITALES</strong></h4>
                             </div>

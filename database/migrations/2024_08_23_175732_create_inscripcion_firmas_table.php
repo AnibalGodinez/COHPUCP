@@ -55,11 +55,16 @@ class CreateInscripcionFirmasTable extends Migration
             $table->string('num_colegiacion_socio4')->nullable();
             $table->string('imagen_firma_socio4')->nullable();
 
-            // III. Firmas digitales
+            // III. Documentos
+            $table->string('imagen_escritura_constitucion')->nullable();
+            $table->string('imagen_registro_mercantil')->nullable();
+            $table->string('imagen_rtn_firma_auditora')->nullable();
+
+            // IV. Firmas digitales
             $table->string('imagen_firma_social')->nullable();
             $table->string('imagen_firma_representante_legal')->nullable();
 
-            // IV. Estado de la inscripción de la firma
+            // V. Estado de la inscripción de la firma
             $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente');
             $table->text('descripcion_estado_solicitud')->nullable();
             $table->timestamps();

@@ -56,11 +56,16 @@ class InscripcionFirma extends Model
         'num_colegiacion_socio4',
         'imagen_firma_socio4',
 
-        // III. Firmas digitales
+        // III. Documentos
+        'imagen_escritura_constitucion',
+        'imagen_registro_mercantil',
+        'imagen_rtn_firma_auditora',
+
+        // IV. Firmas digitales
         'imagen_firma_social',
         'imagen_firma_representante_legal',
 
-        // IX. Estado de la inscripción de la firma
+        // V. Estado de la inscripción de la firma
         'estado',
         'descripcion_estado_solicitud',
     ];
