@@ -43,6 +43,10 @@
                                         <th class="text-center" style="color: white;">Número Colegiación Socio 4</th>
                                         <th class="text-center" style="color: white;">Imagen Firma Socio 4</th>
 
+                                        <th class="text-center" style="color: white;">Escritura de constitución</th>
+                                        <th class="text-center" style="color: white;">Registro mercantil</th>
+                                        <th class="text-center" style="color: white;">RTN de la firma</th>
+
                                         <th class="text-center" style="color: white;">Imagen Firma Social</th>
                                         <th class="text-center" style="color: white;">Imagen Firma Representante Legal</th>
 
@@ -102,6 +106,30 @@
                                             <td>
                                                 @if ($inscripcionFirma->imagen_firma_socio4)
                                                     <img src="{{ asset('storage/' . $inscripcionFirma->imagen_firma_socio4) }}" alt="Firma Socio 3" style="width: 100px;">
+                                                @else
+                                                    No disponible
+                                                @endif
+                                            </td>
+
+                                            <td>
+                                                @if ($inscripcionFirma->imagen_escritura_constitucion)
+                                                    <img src="{{ asset('storage/' . $inscripcionFirma->imagen_escritura_constitucion) }}" alt="Escritura de constitución de la firma" style="width: 100px;">
+                                                @else
+                                                    No disponible
+                                                @endif
+                                            </td>
+
+                                            <td>
+                                                @if ($inscripcionFirma->imagen_registro_mercantil)
+                                                    <img src="{{ asset('storage/' . $inscripcionFirma->imagen_registro_mercantil) }}" alt="Registro mercantil de la firma" style="width: 100px;">
+                                                @else
+                                                    No disponible
+                                                @endif
+                                            </td>
+
+                                            <td>
+                                                @if ($inscripcionFirma->imagen_rtn_firma_auditora)
+                                                    <img src="{{ asset('storage/' . $inscripcionFirma->imagen_rtn_firma_auditora) }}" alt="RTN de la firma" style="width: 100px;">
                                                 @else
                                                     No disponible
                                                 @endif

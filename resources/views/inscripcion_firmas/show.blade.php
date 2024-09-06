@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header text-white text-center">
-                    <h3 class="card-title">
+                    <h3 class="card-title" style="text-decoration: underline;">
                         <strong>SOLICITUD DE INSCRIPCIÓN DE FIRMA</strong>
                     </h3>
                 </div>
@@ -303,6 +303,56 @@
                                     </div>
                                 </div>
                             </div>                    
+                        </div>
+
+                    </div>
+
+                    <!-- III. DOCUMENTOS -->
+                    <div class="row">
+
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
+                                <div class="card-header bg-warning text-white text-center">
+                                    <h4 class="card-title" ><strong>ESCRITURA DE CONSTITUCIÓN</strong></h4>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_escritura_constitucion)
+                                        <img src="{{ asset('storage/'.$inscripcionFirma->imagen_escritura_constitucion) }}" alt="Escritura de constitución de la firma" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
+                                <div class="card-header bg-warning text-white text-center">
+                                    <h4 class="card-title" ><strong>REGISTRO MERCANTIL</strong></h4>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_registro_mercantil)
+                                        <img src="{{ asset('storage/'.$inscripcionFirma->imagen_registro_mercantil) }}" alt="Registro mercantil de la firma" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
+                                <div class="card-header bg-warning text-white text-center">
+                                    <h4 class="card-title" ><strong>RTN DE LA FIRMA</strong></h4>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_rtn_firma_auditora)
+                                        <img src="{{ asset('storage/'.$inscripcionFirma->imagen_rtn_firma_auditora) }}" alt="RTN de la firma" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
 
                     </div>
