@@ -152,7 +152,7 @@
                     <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_socio1) }}" alt="Firma Socio 1" class="img-small">
                 </div>
             @endif
-            <div class="section text-center" style="margin-top: -32px">
+            <div class="section text-center" style="margin-top: -40px">
                 <p><strong></strong> _________________________________ </p>
                 <p><strong></strong> Firma</p>
             </div>
@@ -168,7 +168,7 @@
                     <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_socio2) }}" alt="Firma Socio 2" class="img-small">
                 </div>
             @endif
-            <div class="section text-center" style="margin-top: -32px">
+            <div class="section text-center" style="margin-top: -40px">
                 <p><strong></strong> _________________________________ </p>
                 <p><strong></strong> Firma</p>
             </div>
@@ -184,7 +184,7 @@
                     <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_socio3) }}" alt="Firma Socio 3" class="img-small">
                 </div>
             @endif
-            <div class="section text-center" style="margin-top: -32px">
+            <div class="section text-center" style="margin-top: -40px">
                 <p><strong></strong> _________________________________ </p>
                 <p><strong></strong> Firma</p>
             </div>
@@ -200,38 +200,46 @@
                     <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_socio4) }}" alt="Firma Socio 4" class="img-small">
                 </div>
             @endif
-            <div class="section text-center" style="margin-top: -32px">
+            <div class="section text-center" style="margin-top: -40px">
                 <p><strong></strong> _________________________________ </p>
                 <p><strong></strong> Firma</p>
             </div>
         </div>
 
-        <!-- Firma social -->
-        @if($inscripcionFirma->imagen_firma_social)
-                <div class="text-center">
-                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_social) }}" alt="Firma Social" class="img-small">
-                </div>
-            @endif
-        <div class="section text-center" style="margin-top: -32px">
-            <p><strong></strong> ______________________________________________________ </p>
-            <p><strong></strong> Nombre del Representante Legal o Firma Social</p>
+        <div class="section socio-page-break">
+            <!-- Firma social -->
+            @if($inscripcionFirma->imagen_firma_social)
+                    <div class="text-center">
+                        <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_social) }}" alt="Firma Social" class="img-small">
+                    </div>
+                @endif
+            <div class="section text-center" style="margin-top: -40px">
+                <p><strong></strong> ______________________________________________________ </p>
+                <p><strong></strong> Nombre del Representante Legal o Firma Social</p>
+            </div><br><br>
+
+            <!-- Firma del representante legal -->
+            @if($inscripcionFirma->imagen_firma_representante_legal)
+                    <div class="text-center">
+                        <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_representante_legal) }}" alt="Firma representante legal" class="img-small">
+                    </div>
+                @endif
+            <div class="section text-center" style="margin-top: -40px">
+                <p><strong></strong> _________________________________ </p>
+                <p><strong></strong> Firma del Representante Legal</p>
+            </div><br><br>
+
+            <div class="section text-center" style="margin-top: -40px">
+                <p><strong></strong> _________________________________ </p>
+                <p><strong></strong> Secretario(a) del Colegio</p>
+            </div><br><br>
+
+            <div class="section text-center">
+                <!-- Fecha -->
+                <p><strong></strong> {{ $inscripcionFirma->municipio_realiza_solicitud }}. {{ \Carbon\Carbon::now()->format('d') }} de {{ \Carbon\Carbon::now()->translatedFormat('F') }} del {{ \Carbon\Carbon::now()->format('Y') }}</p>
+            </div>
         </div>
 
-        <!-- Firma del representante legal -->
-        @if($inscripcionFirma->imagen_firma_representante_legal)
-                <div class="text-center">
-                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_representante_legal) }}" alt="Firma representante legal" class="img-small">
-                </div>
-            @endif
-        <div class="section text-center" style="margin-top: -32px">
-            <p><strong></strong> _________________________________ </p>
-            <p><strong></strong> Firma del Representante Legal</p>
-        </div><br>
-
-        <div class="section text-center">
-            <!-- Fecha -->
-            <p><strong></strong> {{ $inscripcionFirma->municipio_realiza_solicitud }}. {{ \Carbon\Carbon::now()->format('d') }} de {{ \Carbon\Carbon::now()->translatedFormat('F') }} del {{ \Carbon\Carbon::now()->format('Y') }}</p>
-        </div>
     </div>
 </body>
 </html>
