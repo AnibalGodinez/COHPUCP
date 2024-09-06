@@ -313,7 +313,7 @@
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-warning text-white text-center">
-                                    <h4 class="card-title" ><strong>ESCRITURA DE CONSTITUCIÓN</strong></h4>
+                                    <h4 class="card-title" ><strong>ESCRITURA DE CONSTITUCIÓN ORIGINAL</strong></h4>
                                 </div>
                                 <div class="card-body d-flex justify-content-center align-items-center p-0">
                                     @if($inscripcionFirma->imagen_escritura_constitucion)

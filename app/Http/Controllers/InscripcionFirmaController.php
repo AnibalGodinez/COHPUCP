@@ -53,6 +53,7 @@ class InscripcionFirmaController extends Controller
             'primer_apellido_socio1' => 'required|string|max:255',
             'segundo_apellido_socio1' => 'nullable|string|max:255',
             'num_colegiacion_socio1' => 'nullable|string|max:255',
+            'cv_socio1' => 'nullable|mimes:pdf',
             'imagen_firma_socio1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
             'primer_nombre_socio2' => 'required|string|max:255',
@@ -60,6 +61,7 @@ class InscripcionFirmaController extends Controller
             'primer_apellido_socio2' => 'required|string|max:255',
             'segundo_apellido_socio2' => 'nullable|string|max:255',
             'num_colegiacion_socio2' => 'nullable|string|max:255',
+            'cv_socio2' => 'nullable|mimes:pdf',
             'imagen_firma_socio2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
             'primer_nombre_socio3' => 'required|string|max:255',
@@ -67,6 +69,7 @@ class InscripcionFirmaController extends Controller
             'primer_apellido_socio3' => 'required|string|max:255',
             'segundo_apellido_socio3' => 'nullable|string|max:255',
             'num_colegiacion_socio3' => 'nullable|string|max:255',
+            'cv_socio3' => 'nullable|mimes:pdf',
             'imagen_firma_socio3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
             'primer_nombre_socio4' => 'required|string|max:255',
@@ -74,6 +77,7 @@ class InscripcionFirmaController extends Controller
             'primer_apellido_socio4' => 'required|string|max:255',
             'segundo_apellido_socio4' => 'nullable|string|max:255',
             'num_colegiacion_socio4' => 'nullable|string|max:255',
+            'cv_socio4' => 'nullable|mimes:pdf',
             'imagen_firma_socio4' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
             // III. Documentos
@@ -150,6 +154,9 @@ class InscripcionFirmaController extends Controller
             'primer_apellido_socio1' => $request->primer_apellido_socio1,
             'segundo_apellido_socio1' => $request->segundo_apellido_socio1,
             'num_colegiacion_socio1' => $request->num_colegiacion_socio1,
+            'cv_socio1' => $request->hasFile('cv_socio1') 
+                ? $this->storeFile($request->file('cv_socio1'), 'cv_socio1_inscripcion_firma') 
+                : null,
             'imagen_firma_socio1' => $request->hasFile('imagen_firma_socio1') 
                 ? $this->storeImage($request->file('imagen_firma_socio1'), 'img_firma_socio1_inscripcion_firma') 
                 : null,
@@ -159,6 +166,9 @@ class InscripcionFirmaController extends Controller
             'primer_apellido_socio2' => $request->primer_apellido_socio2,
             'segundo_apellido_socio2' => $request->segundo_apellido_socio2,
             'num_colegiacion_socio2' => $request->num_colegiacion_socio2,
+            'cv_socio2' => $request->hasFile('cv_socio2') 
+                ? $this->storeFile($request->file('cv_socio2'), 'cv_socio2_inscripcion_firma') 
+                : null,
             'imagen_firma_socio2' => $request->hasFile('imagen_firma_socio2') 
                 ? $this->storeImage($request->file('imagen_firma_socio2'), 'img_firma_socio2_inscripcion_firma') 
                 : null,
@@ -168,6 +178,9 @@ class InscripcionFirmaController extends Controller
             'primer_apellido_socio3' => $request->primer_apellido_socio3,
             'segundo_apellido_socio3' => $request->segundo_apellido_socio3,
             'num_colegiacion_socio3' => $request->num_colegiacion_socio3,
+            'cv_socio3' => $request->hasFile('cv_socio3') 
+                ? $this->storeFile($request->file('cv_socio3'), 'cv_socio3_inscripcion_firma') 
+                : null,
             'imagen_firma_socio3' => $request->hasFile('imagen_firma_socio3') 
                 ? $this->storeImage($request->file('imagen_firma_socio3'), 'img_firma_socio3_inscripcion_firma') 
                 : null,
@@ -177,6 +190,9 @@ class InscripcionFirmaController extends Controller
             'primer_apellido_socio4' => $request->primer_apellido_socio4,
             'segundo_apellido_socio4' => $request->segundo_apellido_socio4,
             'num_colegiacion_socio4' => $request->num_colegiacion_socio4,
+            'cv_socio4' => $request->hasFile('cv_socio4') 
+                ? $this->storeFile($request->file('cv_socio4'), 'cv_socio4_inscripcion_firma') 
+                : null,
             'imagen_firma_socio4' => $request->hasFile('imagen_firma_socio4') 
                 ? $this->storeImage($request->file('imagen_firma_socio4'), 'img_firma_socio4_inscripcion_firma') 
                 : null,
@@ -202,7 +218,7 @@ class InscripcionFirmaController extends Controller
 
         ]);
 
-        return redirect()->back()->with('success', 'La inscripción de la firma ha sido registrada con éxito.');
+        return redirect()->back()->with('success', '¡La inscripción de la firma enviada con éxito!');
     }
 
     // Método auxiliar para almacenar imágenes
@@ -211,4 +227,11 @@ class InscripcionFirmaController extends Controller
         $nombreArchivo = time() . '_' . $file->getClientOriginalName();
         return $file->storeAs($folder, $nombreArchivo, 'public');
     }
+
+    // Método auxiliar para guardar archivos de CV
+    private function storeFile($file, $folder)
+    {
+        return $file->store($folder, 'public');
+    }
+
 }

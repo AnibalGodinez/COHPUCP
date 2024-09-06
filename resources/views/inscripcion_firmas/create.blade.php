@@ -276,7 +276,21 @@
                                 <input type="file" class="form-control-file" id="imagen_firma_socio1" name="imagen_firma_socio1" onchange="previewImage(event, 'preview_socio1')">
                                 <img id="preview_socio1" src="#" alt="Vista previa de la firma del Socio 1" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
+
+                            <!-- SUBIR CV DEL SOCIO 1 -->
+                            <div class="col-md-12 text-center">
+                                <label for="cv_socio1" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
+                                    Subir CV Socio 1 (PDF)
+                                </label>
+                                <input type="file" class="form-control-file" id="cv_socio1" name="cv_socio1" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_socio1')">
+                                
+                                <!-- Vista previa del PDF -->
+                                <embed id="pdf_preview_socio1" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
+                            </div>
+
                         </div>
+
 
                         <!-- DATOS DEL SOCIO 2 -->
                         <div class="form-group row">
@@ -377,7 +391,21 @@
                                 <input type="file" class="form-control-file" id="imagen_firma_socio2" name="imagen_firma_socio2" onchange="previewImage(event, 'preview_socio2')">
                                 <img id="preview_socio2" src="#" alt="Vista previa de la firma del Socio 2" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
+
+                            <!-- SUBIR CV DEL SOCIO 2 -->
+                            <div class="col-md-12 text-center">
+                                <label for="cv_socio2" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
+                                    Subir CV Socio 2 (PDF)
+                                </label>
+                                <input type="file" class="form-control-file" id="cv_socio2" name="cv_socio2" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_socio2')">
+                                
+                                <!-- Vista previa del PDF -->
+                                <embed id="pdf_preview_socio2" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
+                            </div>
+
                         </div>
+
 
                         <!-- SOCIO 3 -->
                         <div class="form-group row">
@@ -478,7 +506,21 @@
                                 <input type="file" class="form-control-file d-none" id="imagen_firma_socio3" name="imagen_firma_socio3" onchange="previewImage(event, 'preview_socio3')">
                                 <img id="preview_socio3" src="#" alt="Vista previa de la firma del Socio 3" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
+
+                            <!-- SUBIR CV DEL SOCIO 3 -->
+                            <div class="col-md-12 text-center">
+                                <label for="cv_socio3" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
+                                    Subir CV Socio 3 (PDF)
+                                </label>
+                                <input type="file" class="form-control-file" id="cv_socio3" name="cv_socio3" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_socio3')">
+                                
+                                <!-- Vista previa del PDF -->
+                                <embed id="pdf_preview_socio3" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
+                            </div>
+
                         </div>
+
 
                         <!-- SOCIO 4 -->
                         <div class="form-group row">
@@ -579,7 +621,21 @@
                                 <input type="file" class="form-control-file d-none" id="imagen_firma_socio4" name="imagen_firma_socio4" onchange="previewImage(event, 'preview_socio4')">
                                 <img id="preview_socio4" src="#" alt="Vista previa de la firma del Socio 4" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
+
+                            <!-- SUBIR CV DEL SOCIO 4 -->
+                            <div class="col-md-12 text-center">
+                                <label for="cv_socio4" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
+                                    Subir CV Socio 4 (PDF)
+                                </label>
+                                <input type="file" class="form-control-file" id="cv_socio4" name="cv_socio4" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_socio4')">
+                                
+                                <!-- Vista previa del PDF -->
+                                <embed id="pdf_preview_socio4" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
+                            </div>
+
                         </div>
+
 
                         <div class="form-group row">
                             <!-- IV. DOCUMENTOS -->
@@ -590,7 +646,7 @@
                             <div class="col-md-12 text-center mb-4">
                                 <label for="imagen_escritura_constitucion" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    Subir escritura de constitución
+                                    Subir escritura de constitución original
                                 </label>
                                 <input type="file" class="form-control-file" id="imagen_escritura_constitucion" name="imagen_escritura_constitucion" onchange="previewImage(event, 'preview_escritura')">
                                 <img id="preview_escritura" src="#" alt="Vista previa de la escritura de constitucion" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
@@ -599,7 +655,7 @@
                             <div class="col-md-12 text-center">
                                 <label for="imagen_registro_mercantil" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    Subir registro mercantil
+                                    Subir registro mercantil original
                                 </label>
                                 <input type="file" class="form-control-file d-none" id="imagen_registro_mercantil" name="imagen_registro_mercantil" onchange="previewImage(event, 'preview_registro')">
                                 <div class="mt-2">
@@ -610,7 +666,7 @@
                             <div class="col-md-12 text-center">
                                 <label for="imagen_rtn_firma_auditora" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    Subir rtn de la firma
+                                    Subir rtn de la firma original
                                 </label>
                                 <input type="file" class="form-control-file d-none" id="imagen_rtn_firma_auditora" name="imagen_rtn_firma_auditora" onchange="previewImage(event, 'preview_rtn')">
                                 <div class="mt-2">
@@ -664,6 +720,7 @@
 </div>
 
 <script>
+    // Script para previsualizar las imágenes
     function previewImage(event, previewId) {
         var reader = new FileReader();
         reader.onload = function(){
@@ -675,7 +732,22 @@
         };
         reader.readAsDataURL(event.target.files[0]);
     }
-</script>
 
+    // Script para previsualizar el PDF
+    function previewPdf(event, previewId) {
+        var file = event.target.files[0];
+        if (file && file.type === "application/pdf") {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var output = document.getElementById(previewId);
+                output.src = e.target.result;
+                output.style.display = 'block';  // Mostrar el PDF cargado
+            };
+            reader.readAsDataURL(file);  // Leer el archivo PDF
+        } else {
+            alert("Por favor seleccione un archivo PDF.");
+        }
+    }
+</script>
 
 @endsection

@@ -33,6 +33,7 @@ class InscripcionFirma extends Model
         'primer_apellido_socio1',
         'segundo_apellido_socio1',
         'num_colegiacion_socio1',
+        'cv_socio1',
         'imagen_firma_socio1',
 
         'primer_nombre_socio2',
@@ -40,6 +41,7 @@ class InscripcionFirma extends Model
         'primer_apellido_socio2',
         'segundo_apellido_socio2',
         'num_colegiacion_socio2',
+        'cv_socio2',
         'imagen_firma_socio2',
 
         'primer_nombre_socio3',
@@ -47,6 +49,7 @@ class InscripcionFirma extends Model
         'primer_apellido_socio3',
         'segundo_apellido_socio3',
         'num_colegiacion_socio3',
+        'cv_socio3',
         'imagen_firma_socio3',
 
         'primer_nombre_socio4',
@@ -54,6 +57,7 @@ class InscripcionFirma extends Model
         'primer_apellido_socio4',
         'segundo_apellido_socio4',
         'num_colegiacion_socio4',
+        'cv_socio4',
         'imagen_firma_socio4',
 
         // III. Documentos
