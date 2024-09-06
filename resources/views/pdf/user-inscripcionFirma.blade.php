@@ -36,6 +36,13 @@
             height: auto;
             object-fit: contain;
         }
+        .img-small {
+            width: 150px; /* Ajusta el tamaño según tus necesidades */
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto; /* Centra la imagen */
+        }
         .number-colegiacion {
             border: 1px solid #000;
             padding: 5px;
@@ -75,8 +82,9 @@
             opacity: 0.9; /* Ajusta la opacidad para un efecto de marca de agua */
             z-index: -1; /* Asegura que el contenido esté sobre la imagen */
         }
-
-
+        .socio-page-break {
+            page-break-before: always;
+        }
     </style>
 </head>
 <body>
@@ -132,15 +140,19 @@
         <!-- II. DATOS DE LOS SOCIOS -->
 
         <!--SOCIO 1 -->
-        <div class="section">
+        <div class="section socio-page-break">
             <div class="section text-center">
-                <h4 style="text-decoration: underline;">DATOS DEL SOCIOS</h4>
+                <h4 style="text-decoration: underline;">II. DATOS DEL SOCIOS</h4>
             </div>
                 <h5 style="text-decoration: underline;">Socio 1:</h5>
             <p><strong>Nombre completo:</strong> {{ $inscripcionFirma->primer_nombre_socio1 }} {{ $inscripcionFirma->segundo_nombre_socio1 }} {{ $inscripcionFirma->primer_apellido_socio1 }} {{ $inscripcionFirma->segundo_apellido_socio1 }}</p>
             <p><strong>Número Colegiación:</strong> {{ $inscripcionFirma->num_colegiacion_socio1 }}</p>
-            <div class="section text-center">
-                <!-- Firma solicitante -->
+            @if($inscripcionFirma->imagen_firma_socio1)
+                <div class="text-center">
+                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_socio1) }}" alt="Firma Socio 1" class="img-small">
+                </div>
+            @endif
+            <div class="section text-center" style="margin-top: -32px">
                 <p><strong></strong> _________________________________ </p>
                 <p><strong></strong> Firma</p>
             </div>
@@ -151,8 +163,12 @@
             <h5 style="text-decoration: underline;">Socio 2:</h5>
             <p><strong>Nombre completo:</strong> {{ $inscripcionFirma->primer_nombre_socio2 }} {{ $inscripcionFirma->segundo_nombre_socio2 }} {{ $inscripcionFirma->primer_apellido_socio2 }} {{ $inscripcionFirma->segundo_apellido_socio2 }}</p>
             <p><strong>Número Colegiación:</strong> {{ $inscripcionFirma->num_colegiacion_socio2 }}</p>
-            <div class="section text-center">
-                <!-- Firma solicitante -->
+            @if($inscripcionFirma->imagen_firma_socio2)
+                <div class="text-center">
+                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_socio2) }}" alt="Firma Socio 2" class="img-small">
+                </div>
+            @endif
+            <div class="section text-center" style="margin-top: -32px">
                 <p><strong></strong> _________________________________ </p>
                 <p><strong></strong> Firma</p>
             </div>
@@ -163,8 +179,12 @@
             <h5 style="text-decoration: underline;">Socio 3:</h5>
             <p><strong>Nombre completo:</strong> {{ $inscripcionFirma->primer_nombre_socio3 }} {{ $inscripcionFirma->segundo_nombre_socio3 }} {{ $inscripcionFirma->primer_apellido_socio3 }} {{ $inscripcionFirma->segundo_apellido_socio3 }}</p>
             <p><strong>Número Colegiación:</strong> {{ $inscripcionFirma->num_colegiacion_socio3 }}</p>
-            <div class="section text-center">
-                <!-- Firma solicitante -->
+            @if($inscripcionFirma->imagen_firma_socio3)
+                <div class="text-center">
+                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_socio3) }}" alt="Firma Socio 3" class="img-small">
+                </div>
+            @endif
+            <div class="section text-center" style="margin-top: -32px">
                 <p><strong></strong> _________________________________ </p>
                 <p><strong></strong> Firma</p>
             </div>
@@ -175,21 +195,35 @@
             <h5 style="text-decoration: underline;">Socio 4:</h5>
             <p><strong>Nombre completo:</strong> {{ $inscripcionFirma->primer_nombre_socio4 }} {{ $inscripcionFirma->segundo_nombre_socio4 }} {{ $inscripcionFirma->primer_apellido_socio4 }} {{ $inscripcionFirma->segundo_apellido_socio4 }}</p>
             <p><strong>Número Colegiación:</strong> {{ $inscripcionFirma->num_colegiacion_socio4 }}</p>
-            <div class="section text-center">
-                <!-- Firma solicitante -->
+            @if($inscripcionFirma->imagen_firma_socio4)
+                <div class="text-center">
+                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_socio4) }}" alt="Firma Socio 4" class="img-small">
+                </div>
+            @endif
+            <div class="section text-center" style="margin-top: -32px">
                 <p><strong></strong> _________________________________ </p>
                 <p><strong></strong> Firma</p>
             </div>
         </div>
 
-        <div class="section text-center">
-            <!-- Firma solicitante -->
+        <!-- Firma social -->
+        @if($inscripcionFirma->imagen_firma_social)
+                <div class="text-center">
+                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_social) }}" alt="Firma Social" class="img-small">
+                </div>
+            @endif
+        <div class="section text-center" style="margin-top: -32px">
             <p><strong></strong> ______________________________________________________ </p>
             <p><strong></strong> Nombre del Representante Legal o Firma Social</p>
         </div>
 
-        <div class="section text-center">
-            <!-- Firma solicitante -->
+        <!-- Firma del representante legal -->
+        @if($inscripcionFirma->imagen_firma_representante_legal)
+                <div class="text-center">
+                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_representante_legal) }}" alt="Firma representante legal" class="img-small">
+                </div>
+            @endif
+        <div class="section text-center" style="margin-top: -32px">
             <p><strong></strong> _________________________________ </p>
             <p><strong></strong> Firma del Representante Legal</p>
         </div><br>
