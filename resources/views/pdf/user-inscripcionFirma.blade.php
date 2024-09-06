@@ -206,13 +206,48 @@
             </div>
         </div>
 
+        <!-- Documentos -->
+        <!-- ESCRITURA DE CONSTITUCIÓN -->
+        <div class="section socio-page-break">
+            <h5 style="text-decoration: underline;">ESCRITURA DE CONSTITUCIÓN</h5>
+            @if($inscripcionFirma->imagen_escritura_constitucion)
+                <div class="text-center">
+                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_escritura_constitucion) }}" alt="Escritura de constitución de la firma" class="img-fluid" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+            @else
+                <p>No disponible</p>
+            @endif
+        </div>
+        <!-- REGISTRO MERCANTIL -->
+        <div class="section socio-page-break">
+            <h5 style="text-decoration: underline; margin-bottom: 6em;">REGISTRO MERCANTIL</h5>
+            @if($inscripcionFirma->imagen_registro_mercantil)
+                <div class="text-center">
+                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_registro_mercantil) }}" alt="Registro mercantil de la firma" class="img-fluid" style="width: 100%; height: auto; object-fit: contain;">
+                </div>
+            @else
+                <p>No disponible</p>
+            @endif
+        </div>
+        <!-- RTN DE LA FIRMA -->
+        <div class="section socio-page-break">
+            <h5 style="text-decoration: underline; margin-bottom: 6em;">RTN DE LA FIRMA</h5>
+            @if($inscripcionFirma->imagen_rtn_firma_auditora)
+                <div class="text-center">
+                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_rtn_firma_auditora) }}" alt="RTN de la firma" class="img-fluid" style="width: 100%; height: auto; object-fit: contain;">
+                </div>
+            @else
+                <p>No disponible</p>
+            @endif
+        </div>
+
         <div class="section socio-page-break">
             <!-- Firma social -->
             @if($inscripcionFirma->imagen_firma_social)
-                    <div class="text-center">
-                        <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_social) }}" alt="Firma Social" class="img-small">
-                    </div>
-                @endif
+                <div class="text-center">
+                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_social) }}" alt="Firma Social" class="img-small">
+                </div>
+            @endif
             <div class="section text-center" style="margin-top: -40px">
                 <p><strong></strong> ______________________________________________________ </p>
                 <p><strong></strong> Nombre del Representante Legal o Firma Social</p>
@@ -220,10 +255,10 @@
 
             <!-- Firma del representante legal -->
             @if($inscripcionFirma->imagen_firma_representante_legal)
-                    <div class="text-center">
-                        <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_representante_legal) }}" alt="Firma representante legal" class="img-small">
-                    </div>
-                @endif
+                <div class="text-center">
+                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_firma_representante_legal) }}" alt="Firma representante legal" class="img-small">
+                </div>
+            @endif
             <div class="section text-center" style="margin-top: -40px">
                 <p><strong></strong> _________________________________ </p>
                 <p><strong></strong> Firma del Representante Legal</p>

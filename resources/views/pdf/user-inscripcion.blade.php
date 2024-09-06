@@ -235,7 +235,7 @@
                     $imagenes = json_decode($inscripcion->imagen_titulo);
                 @endphp
                 @if(!empty($imagenes))
-                    <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del Título Universitario Frontal" class="img-fluid" style="width: 100%; height: 94%; object-fit: contain;">
+                    <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del Título Universitario Frontal" class="img-fluid" style="width: 100%; height: 90%; object-fit: contain;">
                 @else
                     <p>No disponible</p>
                 @endif
