@@ -115,19 +115,18 @@
                         </div>
                     </div>
 
-
+                    <h3 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 1</h3>
                     <!-- II. DATOS DE LOS SOCIOS -->
                     <div class="row">
                         
-                        {{-- Socio 1 --}}
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-lg">
+                        {{-- SOCIO 1 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-dark text-white text-center">
-                                    <h4 class="card-title" style="color: white">
-                                        <strong>DATOS DEL SOCIO 1</strong>
-                                    </h4>
-                                </div>                        
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>INFORMACIÓN / CV / FIRMA DIGITAL</strong></h4>
+                                </div>
                                 <div class="row p-3">
+                                    {{-- columna 0 (espacio) --}}
                                     <div class="col-md-1 d-flex flex-column">                                                   
                                     </div>
                                     {{-- columna 1 --}}
@@ -155,9 +154,9 @@
 
                                     {{-- Curriculum Vitae del socio 1 --}}
                                     <div class="col-md-12 text-center">
-                                        <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 21.4cm;">
+                                        <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 20cm;">
                                             <div class="card-header bg-default text-white text-center">
-                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE</strong></h5>
+                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE DEL SOCIO 1</strong></h5>
                                             </div>
                                             <div class="card-body p-0" style="overflow: hidden; height: 100%;">
                                                 @if($inscripcionFirma->cv_socio1)
@@ -177,116 +176,104 @@
                                     <div class="col-md-12 text-center">
                                         <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
                                         @if($inscripcionFirma->imagen_firma_socio1)
-                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio1) }}" alt="Firma Digital Socio 1" class="img-fluid rounded" style="max-width: 400px; max-height: 200px;">
+                                            <div class="d-flex justify-content-center">
+                                                <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio1) }}" 
+                                                    alt="Firma Digital Socio 1" 
+                                                    class="img-fluid rounded" 
+                                                    style="max-width: 100%; height: auto; max-height: 100px; object-fit: contain;">
+                                            </div>
                                         @else
                                             <p>No se ha subido firma digital.</p>
                                         @endif
                                     </div>
+
                                 </div>
-                            </div>                    
+                            </div>
                         </div>
 
-                        {{-- Socio 1 --}}
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-lg">
+                        {{-- Título universitario frontal | Socio 1 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-dark text-white text-center">
-                                    <h4 class="card-title" style="color: white">
-                                        <strong>DATOS DEL SOCIO 1</strong>
-                                    </h4>
-                                </div>                        
-                                <div class="row p-3">
-                                    <div class="col-md-1 d-flex flex-column">                                                   
-                                    </div>
-                                    {{-- columna 1 --}}
-                                    <div class="col-md-5">
-                                        <p class="mb-4">
-                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
-                                            @if($inscripcionFirma->primer_nombre_socio1 || $inscripcionFirma->segundo_nombre_socio1 || $inscripcionFirma->primer_apellido_socio1 || $inscripcionFirma->segundo_apellido_socio1)
-                                                {{ $inscripcionFirma->primer_nombre_socio1 }} {{ $inscripcionFirma->segundo_nombre_socio1 }} {{ $inscripcionFirma->primer_apellido_socio1 }} {{ $inscripcionFirma->segundo_apellido_socio1 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna 2 --}}
-                                    <div class="col-md-6">
-                                        <p>
-                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
-                                            @if($inscripcionFirma->num_colegiacion_socio1)
-                                                {{ $inscripcionFirma->num_colegiacion_socio1 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- Firma digital del socio 1 --}}
-                                    <div class="col-md-12 text-center">
-                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
-                                        @if($inscripcionFirma->imagen_firma_socio1)
-                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio1) }}" alt="Firma Digital Socio 1" class="img-fluid rounded" style="max-width: 500px; max-height: 300px;">
-                                        @else
-                                            <p>No se ha subido firma digital.</p>
-                                        @endif
-                                    </div>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
                                 </div>
-                            </div>                    
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_titulo_socio1)
+                                        @php
+                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio1);
+                                        @endphp
+                                        @if(count($imagenes) > 0)
+                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 1" 
+                                                style="width: 90%; height: 90%; object-fit: contain;">
+                                        @else
+                                            <p>No Disponible</p>
+                                        @endif
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
 
-                        {{-- Socio 1 --}}
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-lg">
+                        {{-- Título universitario frontal | Socio 1 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-dark text-white text-center">
-                                    <h4 class="card-title" style="color: white">
-                                        <strong>DATOS DEL SOCIO 1</strong>
-                                    </h4>
-                                </div>                        
-                                <div class="row p-3">
-                                    <div class="col-md-1 d-flex flex-column">                                                   
-                                    </div>
-                                    {{-- columna 1 --}}
-                                    <div class="col-md-5">
-                                        <p class="mb-4">
-                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
-                                            @if($inscripcionFirma->primer_nombre_socio1 || $inscripcionFirma->segundo_nombre_socio1 || $inscripcionFirma->primer_apellido_socio1 || $inscripcionFirma->segundo_apellido_socio1)
-                                                {{ $inscripcionFirma->primer_nombre_socio1 }} {{ $inscripcionFirma->segundo_nombre_socio1 }} {{ $inscripcionFirma->primer_apellido_socio1 }} {{ $inscripcionFirma->segundo_apellido_socio1 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna 2 --}}
-                                    <div class="col-md-6">
-                                        <p>
-                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
-                                            @if($inscripcionFirma->num_colegiacion_socio1)
-                                                {{ $inscripcionFirma->num_colegiacion_socio1 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna de la firma digital --}}
-                                    <div class="col-md-12 text-center">
-                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
-                                        @if($inscripcionFirma->imagen_firma_socio1)
-                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio1) }}" alt="Firma Digital Socio 1" class="img-fluid rounded" style="max-width: 500px; max-height: 300px;">
-                                        @else
-                                            <p>No se ha subido firma digital.</p>
-                                        @endif
-                                    </div>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
                                 </div>
-                            </div>                    
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_titulo_socio1)
+                                        @php
+                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio1);
+                                        @endphp
+                                        @if(count($imagenes) > 0)
+                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 1" 
+                                                style="width: 90%; height: 90%; object-fit: contain;">
+                                        @else
+                                            <p>No Disponible</p>
+                                        @endif
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
 
-                        {{-- Socio 2 --}}
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-lg">
+                        {{-- Título universitario reverso | Socio 1 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
+                                <div class="card-header bg-dark text-white text-center">
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (REVERSO)</strong></h4>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_titulo_socio1)
+                                        @php
+                                        $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio1);
+                                        @endphp
+                                        @if(count($imagenes) > 1)
+                                            <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Título Universitario Reverso del socio 1" 
+                                                style="width: 90%; height: 90%; object-fit: contain;">
+                                        @else
+                                            <p>No Disponible</p>
+                                        @endif
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 2</h3>
+                    <div class="row">                     
+                        {{-- SOCIO 2 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-info text-white text-center">
-                                    <h4 class="card-title">
-                                        <strong>DATOS DEL SOCIO 2</strong>
-                                    </h4>
-                                </div>                        
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>INFORMACIÓN / CV / FIRMA DIGITAL</strong></h4>
+                                </div>
                                 <div class="row p-3">
+                                    {{-- columna 0 (espacio) --}}
                                     <div class="col-md-1 d-flex flex-column">                                                   
                                     </div>
                                     {{-- columna 1 --}}
@@ -314,7 +301,7 @@
 
                                     {{-- Curriculum Vitae del socio 2 --}}
                                     <div class="col-md-12 text-center">
-                                        <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 21.4cm;">
+                                        <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 20cm;">
                                             <div class="card-header bg-default text-white text-center">
                                                 <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE DEL SOCIO 2</strong></h5>
                                             </div>
@@ -336,114 +323,103 @@
                                     <div class="col-md-12 text-center">
                                         <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
                                         @if($inscripcionFirma->imagen_firma_socio2)
-                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio2) }}" alt="Firma Digital Socio 2" class="img-fluid rounded" style="max-width: 400px; max-height: 200px;">
+                                            <div class="d-flex justify-content-center">
+                                                <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio2) }}" 
+                                                    alt="Firma Digital Socio 2" 
+                                                    class="img-fluid rounded" 
+                                                    style="max-width: 100%; height: auto; max-height: 100px; object-fit: contain;">
+                                            </div>
                                         @else
                                             <p>No se ha subido firma digital.</p>
                                         @endif
                                     </div>
                                 </div>
-                            </div>                    
+                            </div>
                         </div>
 
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-lg">
+                        {{-- Título universitario frontal | Socio 2 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-info text-white text-center">
-                                    <h4 class="card-title">
-                                        <strong>DATOS DEL SOCIO 2</strong>
-                                    </h4>
-                                </div>                        
-                                <div class="row p-3">
-                                    <div class="col-md-1 d-flex flex-column">                                                   
-                                    </div>
-                                    {{-- columna 1 --}}
-                                    <div class="col-md-5">
-                                        <p class="mb-4">
-                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
-                                            @if($inscripcionFirma->primer_nombre_socio2 || $inscripcionFirma->segundo_nombre_socio2 || $inscripcionFirma->primer_apellido_socio2 || $inscripcionFirma->segundo_apellido_socio2)
-                                                {{ $inscripcionFirma->primer_nombre_socio2 }} {{ $inscripcionFirma->segundo_nombre_socio2 }} {{ $inscripcionFirma->primer_apellido_socio2 }} {{ $inscripcionFirma->segundo_apellido_socio2 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna 2 --}}
-                                    <div class="col-md-6">
-                                        <p>
-                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
-                                            @if($inscripcionFirma->num_colegiacion_socio2)
-                                                {{ $inscripcionFirma->num_colegiacion_socio2 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna de la firma digital --}}
-                                    <div class="col-md-12 text-center">
-                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
-                                        @if($inscripcionFirma->imagen_firma_socio2)
-                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio2) }}" alt="Firma Digital Socio 2" class="img-fluid rounded" style="max-width: 500px; max-height: 300px;">
-                                        @else
-                                            <p>No se ha subido firma digital.</p>
-                                        @endif
-                                    </div>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
                                 </div>
-                            </div>                    
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_titulo_socio2)
+                                        @php
+                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio2);
+                                        @endphp
+                                        @if(count($imagenes) > 0)
+                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 2" 
+                                                style="width: 90%; height: 90%; object-fit: contain;">
+                                        @else
+                                            <p>No Disponible</p>
+                                        @endif
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-lg">
+                        {{-- Título universitario frontal | Socio 2 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-info text-white text-center">
-                                    <h4 class="card-title">
-                                        <strong>DATOS DEL SOCIO 2</strong>
-                                    </h4>
-                                </div>                        
-                                <div class="row p-3">
-                                    <div class="col-md-1 d-flex flex-column">                                                   
-                                    </div>
-                                    {{-- columna 1 --}}
-                                    <div class="col-md-5">
-                                        <p class="mb-4">
-                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
-                                            @if($inscripcionFirma->primer_nombre_socio2 || $inscripcionFirma->segundo_nombre_socio2 || $inscripcionFirma->primer_apellido_socio2 || $inscripcionFirma->segundo_apellido_socio2)
-                                                {{ $inscripcionFirma->primer_nombre_socio2 }} {{ $inscripcionFirma->segundo_nombre_socio2 }} {{ $inscripcionFirma->primer_apellido_socio2 }} {{ $inscripcionFirma->segundo_apellido_socio2 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna 2 --}}
-                                    <div class="col-md-6">
-                                        <p>
-                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
-                                            @if($inscripcionFirma->num_colegiacion_socio2)
-                                                {{ $inscripcionFirma->num_colegiacion_socio2 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna de la firma digital --}}
-                                    <div class="col-md-12 text-center">
-                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
-                                        @if($inscripcionFirma->imagen_firma_socio2)
-                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio2) }}" alt="Firma Digital Socio 2" class="img-fluid rounded" style="max-width: 500px; max-height: 300px;">
-                                        @else
-                                            <p>No se ha subido firma digital.</p>
-                                        @endif
-                                    </div>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
                                 </div>
-                            </div>                    
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_titulo_socio2)
+                                        @php
+                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio2);
+                                        @endphp
+                                        @if(count($imagenes) > 0)
+                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 2" 
+                                                style="width: 90%; height: 90%; object-fit: contain;">
+                                        @else
+                                            <p>No Disponible</p>
+                                        @endif
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
 
-                        {{-- Socio 3 --}}
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-lg">
+                        {{-- Título universitario reverso | Socio 2 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
+                                <div class="card-header bg-info text-white text-center">
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (REVERSO)</strong></h4>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_titulo_socio2)
+                                        @php
+                                        $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio2);
+                                        @endphp
+                                        @if(count($imagenes) > 1)
+                                            <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Título Universitario Reverso del socio 2" 
+                                                style="width: 90%; height: 90%; object-fit: contain;">
+                                        @else
+                                            <p>No Disponible</p>
+                                        @endif
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 3</h3>
+                    <div class="row">
+                        {{-- SOCIO 3 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-success text-white text-center">
-                                    <h4 class="card-title">
-                                        <strong>DATOS DEL SOCIO 3</strong>
-                                    </h4>
-                                </div>                        
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>INFORMACIÓN / CV / FIRMA DIGITAL</strong></h4>
+                                </div>
                                 <div class="row p-3">
+                                    {{-- columna 0 (espacio) --}}
                                     <div class="col-md-1 d-flex flex-column">                                                   
                                     </div>
                                     {{-- columna 1 --}}
@@ -469,9 +445,9 @@
                                         </p>
                                     </div>
 
-                                    {{-- Curruiculum vitae socio 3 --}}
+                                    {{-- Curriculum Vitae del socio 3 --}}
                                     <div class="col-md-12 text-center">
-                                        <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 21.4cm;">
+                                        <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 20cm;">
                                             <div class="card-header bg-default text-white text-center">
                                                 <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE DEL SOCIO 3</strong></h5>
                                             </div>
@@ -491,116 +467,106 @@
 
                                     {{-- Firma digital del socio 3 --}}
                                     <div class="col-md-12 text-center">
-                                        <p style="text-decoration: underline;"><strong>FIRMA DIGITAL</strong></p>
+                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
                                         @if($inscripcionFirma->imagen_firma_socio3)
-                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio3) }}" alt="Firma Digital Socio 3" class="img-fluid rounded" style="max-width: 400px; max-height: 200px;">
+                                            <div class="d-flex justify-content-center">
+                                                <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio3) }}" 
+                                                    alt="Firma Digital Socio 3" 
+                                                    class="img-fluid rounded" 
+                                                    style="max-width: 100%; height: auto; max-height: 100px; object-fit: contain;">
+                                            </div>
                                         @else
                                             <p>No se ha subido firma digital.</p>
                                         @endif
                                     </div>
                                 </div>
-                            </div>                    
+                            </div>
                         </div>
 
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-lg">
+                        {{-- Título universitario frontal | Socio 3 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-success text-white text-center">
-                                    <h4 class="card-title">
-                                        <strong>DATOS DEL SOCIO 3</strong>
-                                    </h4>
-                                </div>                        
-                                <div class="row p-3">
-                                    <div class="col-md-1 d-flex flex-column">                                                   
-                                    </div>
-                                    {{-- columna 1 --}}
-                                    <div class="col-md-5">
-                                        <p class="mb-4">
-                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
-                                            @if($inscripcionFirma->primer_nombre_socio3 || $inscripcionFirma->segundo_nombre_socio3 || $inscripcionFirma->primer_apellido_socio3 || $inscripcionFirma->segundo_apellido_socio3)
-                                                {{ $inscripcionFirma->primer_nombre_socio3 }} {{ $inscripcionFirma->segundo_nombre_socio3 }} {{ $inscripcionFirma->primer_apellido_socio3 }} {{ $inscripcionFirma->segundo_apellido_socio3 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna 2 --}}
-                                    <div class="col-md-6">
-                                        <p>
-                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
-                                            @if($inscripcionFirma->num_colegiacion_socio3)
-                                                {{ $inscripcionFirma->num_colegiacion_socio3 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna de la firma digital --}}
-                                    <div class="col-md-12 text-center">
-                                        <p style="text-decoration: underline;"><strong>FIRMA DIGITAL</strong></p>
-                                        @if($inscripcionFirma->imagen_firma_socio3)
-                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio3) }}" alt="Firma Digital Socio 3" class="img-fluid rounded" style="max-width: 500px; max-height: 300px;">
-                                        @else
-                                            <p>No se ha subido firma digital.</p>
-                                        @endif
-                                    </div>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
                                 </div>
-                            </div>                    
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_titulo_socio3)
+                                        @php
+                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio3);
+                                        @endphp
+                                        @if(count($imagenes) > 0)
+                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 3" 
+                                            style="width: 90%; height: 90%; object-fit: contain;">
+                                        @else
+                                            <p>No Disponible</p>
+                                        @endif
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-lg">
+                        {{-- Título universitario frontal | Socio 3 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-success text-white text-center">
-                                    <h4 class="card-title">
-                                        <strong>DATOS DEL SOCIO 3</strong>
-                                    </h4>
-                                </div>                        
-                                <div class="row p-3">
-                                    <div class="col-md-1 d-flex flex-column">                                                   
-                                    </div>
-                                    {{-- columna 1 --}}
-                                    <div class="col-md-5">
-                                        <p class="mb-4">
-                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
-                                            @if($inscripcionFirma->primer_nombre_socio3 || $inscripcionFirma->segundo_nombre_socio3 || $inscripcionFirma->primer_apellido_socio3 || $inscripcionFirma->segundo_apellido_socio3)
-                                                {{ $inscripcionFirma->primer_nombre_socio3 }} {{ $inscripcionFirma->segundo_nombre_socio3 }} {{ $inscripcionFirma->primer_apellido_socio3 }} {{ $inscripcionFirma->segundo_apellido_socio3 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna 2 --}}
-                                    <div class="col-md-6">
-                                        <p>
-                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
-                                            @if($inscripcionFirma->num_colegiacion_socio3)
-                                                {{ $inscripcionFirma->num_colegiacion_socio3 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna de la firma digital --}}
-                                    <div class="col-md-12 text-center">
-                                        <p style="text-decoration: underline;"><strong>FIRMA DIGITAL</strong></p>
-                                        @if($inscripcionFirma->imagen_firma_socio3)
-                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio3) }}" alt="Firma Digital Socio 3" class="img-fluid rounded" style="max-width: 500px; max-height: 300px;">
-                                        @else
-                                            <p>No se ha subido firma digital.</p>
-                                        @endif
-                                    </div>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
                                 </div>
-                            </div>                    
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_titulo_socio3)
+                                        @php
+                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio3);
+                                        @endphp
+                                        @if(count($imagenes) > 0)
+                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 3" 
+                                                style="width: 90%; height: 90%; object-fit: contain;">
+                                        @else
+                                            <p>No Disponible</p>
+                                        @endif
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
 
-                        {{-- Socio 4 --}}
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-lg">
-                                <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: white">
-                                        <strong>DATOS DEL SOCIO 4</strong>
-                                    </h4>
-                                </div>                        
+                        {{-- Título universitario reverso | Socio 2 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
+                                <div class="card-header bg-success text-white text-center">
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (REVERSO)</strong></h4>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_titulo_socio3)
+                                        @php
+                                        $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio3);
+                                        @endphp
+                                        @if(count($imagenes) > 1)
+                                            <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Título Universitario Reverso del socio 3" 
+                                                style="width: 90%; height: 90%; object-fit: contain;">
+                                        @else
+                                            <p>No Disponible</p>
+                                        @endif
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 4</h3>
+                    <div class="row">
+                        
+                        {{-- SOCIO 4 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
+                                <div class="card-header bg-warning text-white text-center">
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>INFORMACIÓN / CV / FIRMA DIGITAL</strong></h4>
+                                </div>
                                 <div class="row p-3">
+                                    {{-- columna 0 (espacio) --}}
                                     <div class="col-md-1 d-flex flex-column">                                                   
                                     </div>
                                     {{-- columna 1 --}}
@@ -626,11 +592,11 @@
                                         </p>
                                     </div>
 
-                                    {{-- Curruiculum vitae socio 3 --}}
+                                    {{-- Curriculum Vitae del socio 4 --}}
                                     <div class="col-md-12 text-center">
-                                        <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 21.4cm;">
+                                        <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 20cm;">
                                             <div class="card-header bg-default text-white text-center">
-                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE DEL SOCIO 4</strong></h5>
+                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE DEL SOCIO 1</strong></h5>
                                             </div>
                                             <div class="card-body p-0" style="overflow: hidden; height: 100%;">
                                                 @if($inscripcionFirma->cv_socio4)
@@ -650,106 +616,95 @@
                                     <div class="col-md-12 text-center">
                                         <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
                                         @if($inscripcionFirma->imagen_firma_socio4)
-                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio4) }}" alt="Firma Digital Socio 4" class="img-fluid rounded" style="max-width: 400px; max-height: 200px;">
+                                            <div class="d-flex justify-content-center">
+                                                <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio4) }}" 
+                                                    alt="Firma Digital Socio 4" 
+                                                    class="img-fluid rounded" 
+                                                    style="max-width: 100%; height: auto; max-height: 100px; object-fit: contain;">
+                                            </div>
                                         @else
                                             <p>No se ha subido firma digital.</p>
                                         @endif
                                     </div>
+
                                 </div>
-                            </div>                    
+                            </div>
                         </div>
 
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-lg">
-                                <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: white">
-                                        <strong>DATOS DEL SOCIO 4</strong>
-                                    </h4>
-                                </div>                        
-                                <div class="row p-3">
-                                    <div class="col-md-1 d-flex flex-column">                                                   
-                                    </div>
-                                    {{-- columna 1 --}}
-                                    <div class="col-md-5">
-                                        <p class="mb-4">
-                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
-                                            @if($inscripcionFirma->primer_nombre_socio4 || $inscripcionFirma->segundo_nombre_socio4 || $inscripcionFirma->primer_apellido_socio4 || $inscripcionFirma->segundo_apellido_socio4)
-                                                {{ $inscripcionFirma->primer_nombre_socio4 }} {{ $inscripcionFirma->segundo_nombre_socio4 }} {{ $inscripcionFirma->primer_apellido_socio4 }} {{ $inscripcionFirma->segundo_apellido_socio4 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna 2 --}}
-                                    <div class="col-md-6">
-                                        <p>
-                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
-                                            @if($inscripcionFirma->num_colegiacion_socio4)
-                                                {{ $inscripcionFirma->num_colegiacion_socio4 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna 1 --}}
-                                    <div class="col-md-12 text-center">
-                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
-                                        @if($inscripcionFirma->imagen_firma_socio4)
-                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio4) }}" alt="Firma Digital Socio 4" class="img-fluid rounded" style="max-width: 500px; max-height: 300px;">
+                        {{-- Título universitario frontal | Socio 4 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
+                                <div class="card-header bg-warning text-white text-center">
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_titulo_socio4)
+                                        @php
+                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio4);
+                                        @endphp
+                                        @if(count($imagenes) > 0)
+                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 4" 
+                                                style="width: 90%; height: 90%; object-fit: contain;">
                                         @else
-                                            <p>No se ha subido firma digital.</p>
+                                            <p>No Disponible</p>
                                         @endif
-                                    </div>
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
                                 </div>
-                            </div>                    
+                            </div>
                         </div>
 
-                        <div class="col-md-4 mb-4">
-                            <div class="card shadow-lg">
-                                <div class="card-header bg-default text-white text-center">
-                                    <h4 class="card-title" style="color: white">
-                                        <strong>DATOS DEL SOCIO 4</strong>
-                                    </h4>
-                                </div>                        
-                                <div class="row p-3">
-                                    <div class="col-md-1 d-flex flex-column">                                                   
-                                    </div>
-                                    {{-- columna 1 --}}
-                                    <div class="col-md-5">
-                                        <p class="mb-4">
-                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
-                                            @if($inscripcionFirma->primer_nombre_socio4 || $inscripcionFirma->segundo_nombre_socio4 || $inscripcionFirma->primer_apellido_socio4 || $inscripcionFirma->segundo_apellido_socio4)
-                                                {{ $inscripcionFirma->primer_nombre_socio4 }} {{ $inscripcionFirma->segundo_nombre_socio4 }} {{ $inscripcionFirma->primer_apellido_socio4 }} {{ $inscripcionFirma->segundo_apellido_socio4 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna 2 --}}
-                                    <div class="col-md-6">
-                                        <p>
-                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
-                                            @if($inscripcionFirma->num_colegiacion_socio4)
-                                                {{ $inscripcionFirma->num_colegiacion_socio4 }}
-                                            @else
-                                                <span style="text-decoration: line-through;">No disponible</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                    {{-- columna 1 --}}
-                                    <div class="col-md-12 text-center">
-                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
-                                        @if($inscripcionFirma->imagen_firma_socio4)
-                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio4) }}" alt="Firma Digital Socio 4" class="img-fluid rounded" style="max-width: 400px; max-height: 200px;">
+                        {{-- Título universitario frontal | Socio 4 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
+                                <div class="card-header bg-warning text-white text-center">
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_titulo_socio4)
+                                        @php
+                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio4);
+                                        @endphp
+                                        @if(count($imagenes) > 0)
+                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 4" 
+                                                style="width: 90%; height: 90%; object-fit: contain;">
                                         @else
-                                            <p>No se ha subido firma digital.</p>
+                                            <p>No Disponible</p>
                                         @endif
-                                    </div>
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
                                 </div>
-                            </div>                    
+                            </div>
                         </div>
 
+                        {{-- Título universitario reverso | Socio 4 --}}
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
+                                <div class="card-header bg-warning text-white text-center">
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (REVERSO)</strong></h4>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->imagen_titulo_socio4)
+                                        @php
+                                        $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio4);
+                                        @endphp
+                                        @if(count($imagenes) > 1)
+                                            <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Título Universitario Reverso del socio 4" 
+                                                style="width: 90%; height: 90%; object-fit: contain;">
+                                        @else
+                                            <p>No Disponible</p>
+                                        @endif
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                </div>
 
                     <!-- III. DOCUMENTOS -->
                     <div class="row">

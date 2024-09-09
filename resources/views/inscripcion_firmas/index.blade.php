@@ -29,21 +29,25 @@
 
                                         <th class="text-center" style="color: white;">Nombre completo Socio 1</th>
                                         <th class="text-center" style="color: white;">Número Colegiación Socio 1</th>
+                                        <th class="text-center" style="color: white;">Titulo universitario Socio 1</th>
                                         <th class="text-center" style="color: white;">CV Socio 1</th>
                                         <th class="text-center" style="color: white;">Imagen Firma Socio 1</th>
 
                                         <th class="text-center" style="color: white;">Nombre completo Socio 2</th>                               
                                         <th class="text-center" style="color: white;">Número Colegiación Socio 2</th>
+                                        <th class="text-center" style="color: white;">Titulo universitario Socio 2</th>
                                         <th class="text-center" style="color: white;">CV Socio 2</th>
                                         <th class="text-center" style="color: white;">Imagen Firma Socio 2</th>
 
                                         <th class="text-center" style="color: white;">Nombre completo Socio 3</th>
                                         <th class="text-center" style="color: white;">Número Colegiación Socio 3</th>
+                                        <th class="text-center" style="color: white;">Titulo universitario Socio 3</th>
                                         <th class="text-center" style="color: white;">CV Socio 3</th>
                                         <th class="text-center" style="color: white;">Imagen Firma Socio 3</th>
 
                                         <th class="text-center" style="color: white;">Nombre completo Socio 4</th>
                                         <th class="text-center" style="color: white;">Número Colegiación Socio 4</th>
+                                        <th class="text-center" style="color: white;">Titulo universitario Socio 4</th>
                                         <th class="text-center" style="color: white;">CV Socio 4</th>
                                         <th class="text-center" style="color: white;">Imagen Firma Socio 4</th>
 
@@ -77,6 +81,13 @@
 
                                             <td>{{ $inscripcionFirma->primer_nombre_socio1 }} {{ $inscripcionFirma->segundo_nombre_socio1 }} {{ $inscripcionFirma->primer_apellido_socio1 }} {{ $inscripcionFirma->segundo_apellido_socio1 }}</td>
                                             <td>{{ $inscripcionFirma->num_colegiacion_socio1 }}</td>
+                                            <td>
+                                                @if ($inscripcionFirma->imagen_titulo_socio1)
+                                                    <img src="{{ asset('storage/' . $inscripcionFirma->imagen_titulo_socio1) }}" alt="Imagen titulo socio 1" style="width: 100px;">
+                                                @else
+                                                    No disponible
+                                                @endif
+                                            </td>
                                             <td>{{ $inscripcionFirma->cv_socio1 }}</td>
                                             <td>
                                                 @if ($inscripcionFirma->imagen_firma_socio1)
@@ -88,6 +99,13 @@
 
                                             <td>{{ $inscripcionFirma->primer_nombre_socio2 }} {{ $inscripcionFirma->segundo_nombre_socio2 }} {{ $inscripcionFirma->primer_apellido_socio2 }} {{ $inscripcionFirma->segundo_apellido_socio2 }}</td>
                                             <td>{{ $inscripcionFirma->num_colegiacion_socio2 }}</td>
+                                            <td>
+                                                @if ($inscripcionFirma->imagen_titulo_socio2)
+                                                    <img src="{{ asset('storage/' . $inscripcionFirma->imagen_titulo_socio2) }}" alt="Imagen titulo socio 2" style="width: 100px;">
+                                                @else
+                                                    No disponible
+                                                @endif
+                                            </td>
                                             <td>{{ $inscripcionFirma->cv_socio2 }}</td>
                                             <td>
                                                 @if ($inscripcionFirma->imagen_firma_socio2)
@@ -99,6 +117,13 @@
                                             
                                             <td>{{ $inscripcionFirma->primer_nombre_socio3 }} {{ $inscripcionFirma->segundo_nombre_socio3 }} {{ $inscripcionFirma->primer_apellido_socio3 }} {{ $inscripcionFirma->segundo_apellido_socio3 }}</td>
                                             <td>{{ $inscripcionFirma->num_colegiacion_socio3 }}</td>
+                                            <td>
+                                                @if ($inscripcionFirma->imagen_titulo_socio3)
+                                                    <img src="{{ asset('storage/' . $inscripcionFirma->imagen_titulo_socio3) }}" alt="Imagen titulo socio 3" style="width: 100px;">
+                                                @else
+                                                    No disponible
+                                                @endif
+                                            </td>
                                             <td>{{ $inscripcionFirma->cv_socio3 }}</td>
                                             <td>
                                                 @if ($inscripcionFirma->imagen_firma_socio3)
@@ -110,10 +135,17 @@
 
                                             <td>{{ $inscripcionFirma->primer_nombre_socio4 }} {{ $inscripcionFirma->segundo_nombre_socio4 }} {{ $inscripcionFirma->primer_apellido_socio4 }} {{ $inscripcionFirma->segundo_apellido_socio4 }}</td>
                                             <td>{{ $inscripcionFirma->num_colegiacion_socio4 }}</td>
+                                            <td>
+                                                @if ($inscripcionFirma->imagen_titulo_socio4)
+                                                    <img src="{{ asset('storage/' . $inscripcionFirma->imagen_titulo_socio4) }}" alt="Imagen titulo socio 4" style="width: 100px;">
+                                                @else
+                                                    No disponible
+                                                @endif
+                                            </td>
                                             <td>{{ $inscripcionFirma->cv_socio4 }}</td>
                                             <td>
                                                 @if ($inscripcionFirma->imagen_firma_socio4)
-                                                    <img src="{{ asset('storage/' . $inscripcionFirma->imagen_firma_socio4) }}" alt="Firma Socio 3" style="width: 100px;">
+                                                    <img src="{{ asset('storage/' . $inscripcionFirma->imagen_firma_socio4) }}" alt="Firma Socio 4" style="width: 100px;">
                                                 @else
                                                     No disponible
                                                 @endif
