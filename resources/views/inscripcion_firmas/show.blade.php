@@ -120,10 +120,123 @@
                     <div class="row">
                         
                         {{-- Socio 1 --}}
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-4 mb-4">
                             <div class="card shadow-lg">
-                                <div class="card-header bg-warning text-white text-center">
-                                    <h4 class="card-title">
+                                <div class="card-header bg-dark text-white text-center">
+                                    <h4 class="card-title" style="color: white">
+                                        <strong>DATOS DEL SOCIO 1</strong>
+                                    </h4>
+                                </div>                        
+                                <div class="row p-3">
+                                    <div class="col-md-1 d-flex flex-column">                                                   
+                                    </div>
+                                    {{-- columna 1 --}}
+                                    <div class="col-md-5">
+                                        <p class="mb-4">
+                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
+                                            @if($inscripcionFirma->primer_nombre_socio1 || $inscripcionFirma->segundo_nombre_socio1 || $inscripcionFirma->primer_apellido_socio1 || $inscripcionFirma->segundo_apellido_socio1)
+                                                {{ $inscripcionFirma->primer_nombre_socio1 }} {{ $inscripcionFirma->segundo_nombre_socio1 }} {{ $inscripcionFirma->primer_apellido_socio1 }} {{ $inscripcionFirma->segundo_apellido_socio1 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                    {{-- columna 2 --}}
+                                    <div class="col-md-6">
+                                        <p>
+                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
+                                            @if($inscripcionFirma->num_colegiacion_socio1)
+                                                {{ $inscripcionFirma->num_colegiacion_socio1 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+
+                                    {{-- Curriculum Vitae del socio 1 --}}
+                                    <div class="col-md-12 text-center">
+                                        <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 21.4cm;">
+                                            <div class="card-header bg-default text-white text-center">
+                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE</strong></h5>
+                                            </div>
+                                            <div class="card-body p-0" style="overflow: hidden; height: 100%;">
+                                                @if($inscripcionFirma->cv_socio1)
+                                                    <iframe src="{{ asset('storage/' . $inscripcionFirma->cv_socio1) }}" 
+                                                            style="width: 100%; height: 100%; border: none;" 
+                                                            frameborder="0">
+                                                        Este navegador no soporta PDFs. Por favor, descargue el PDF para verlo: <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio1) }}">Descargar PDF</a>.
+                                                    </iframe>
+                                                @else
+                                                    <p>No Disponible</p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{-- Firma digital del socio 1 --}}
+                                    <div class="col-md-12 text-center">
+                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
+                                        @if($inscripcionFirma->imagen_firma_socio1)
+                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio1) }}" alt="Firma Digital Socio 1" class="img-fluid rounded" style="max-width: 400px; max-height: 200px;">
+                                        @else
+                                            <p>No se ha subido firma digital.</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>                    
+                        </div>
+
+                        {{-- Socio 1 --}}
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-lg">
+                                <div class="card-header bg-dark text-white text-center">
+                                    <h4 class="card-title" style="color: white">
+                                        <strong>DATOS DEL SOCIO 1</strong>
+                                    </h4>
+                                </div>                        
+                                <div class="row p-3">
+                                    <div class="col-md-1 d-flex flex-column">                                                   
+                                    </div>
+                                    {{-- columna 1 --}}
+                                    <div class="col-md-5">
+                                        <p class="mb-4">
+                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
+                                            @if($inscripcionFirma->primer_nombre_socio1 || $inscripcionFirma->segundo_nombre_socio1 || $inscripcionFirma->primer_apellido_socio1 || $inscripcionFirma->segundo_apellido_socio1)
+                                                {{ $inscripcionFirma->primer_nombre_socio1 }} {{ $inscripcionFirma->segundo_nombre_socio1 }} {{ $inscripcionFirma->primer_apellido_socio1 }} {{ $inscripcionFirma->segundo_apellido_socio1 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                    {{-- columna 2 --}}
+                                    <div class="col-md-6">
+                                        <p>
+                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
+                                            @if($inscripcionFirma->num_colegiacion_socio1)
+                                                {{ $inscripcionFirma->num_colegiacion_socio1 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                    {{-- Firma digital del socio 1 --}}
+                                    <div class="col-md-12 text-center">
+                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
+                                        @if($inscripcionFirma->imagen_firma_socio1)
+                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio1) }}" alt="Firma Digital Socio 1" class="img-fluid rounded" style="max-width: 500px; max-height: 300px;">
+                                        @else
+                                            <p>No se ha subido firma digital.</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>                    
+                        </div>
+
+                        {{-- Socio 1 --}}
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-lg">
+                                <div class="card-header bg-dark text-white text-center">
+                                    <h4 class="card-title" style="color: white">
                                         <strong>DATOS DEL SOCIO 1</strong>
                                     </h4>
                                 </div>                        
@@ -166,9 +279,75 @@
                         </div>
 
                         {{-- Socio 2 --}}
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-4 mb-4">
                             <div class="card shadow-lg">
-                                <div class="card-header bg-warning text-white text-center">
+                                <div class="card-header bg-info text-white text-center">
+                                    <h4 class="card-title">
+                                        <strong>DATOS DEL SOCIO 2</strong>
+                                    </h4>
+                                </div>                        
+                                <div class="row p-3">
+                                    <div class="col-md-1 d-flex flex-column">                                                   
+                                    </div>
+                                    {{-- columna 1 --}}
+                                    <div class="col-md-5">
+                                        <p class="mb-4">
+                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
+                                            @if($inscripcionFirma->primer_nombre_socio2 || $inscripcionFirma->segundo_nombre_socio2 || $inscripcionFirma->primer_apellido_socio2 || $inscripcionFirma->segundo_apellido_socio2)
+                                                {{ $inscripcionFirma->primer_nombre_socio2 }} {{ $inscripcionFirma->segundo_nombre_socio2 }} {{ $inscripcionFirma->primer_apellido_socio2 }} {{ $inscripcionFirma->segundo_apellido_socio2 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                    {{-- columna 2 --}}
+                                    <div class="col-md-6">
+                                        <p>
+                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
+                                            @if($inscripcionFirma->num_colegiacion_socio2)
+                                                {{ $inscripcionFirma->num_colegiacion_socio2 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+
+                                    {{-- Curriculum Vitae del socio 2 --}}
+                                    <div class="col-md-12 text-center">
+                                        <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 21.4cm;">
+                                            <div class="card-header bg-default text-white text-center">
+                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE DEL SOCIO 2</strong></h5>
+                                            </div>
+                                            <div class="card-body p-0" style="overflow: hidden; height: 100%;">
+                                                @if($inscripcionFirma->cv_socio2)
+                                                    <iframe src="{{ asset('storage/' . $inscripcionFirma->cv_socio2) }}" 
+                                                            style="width: 100%; height: 100%; border: none;" 
+                                                            frameborder="0">
+                                                        Este navegador no soporta PDFs. Por favor, descargue el PDF para verlo: <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio2) }}">Descargar PDF</a>.
+                                                    </iframe>
+                                                @else
+                                                    <p>No Disponible</p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{-- Firma digital del socio 2 --}}
+                                    <div class="col-md-12 text-center">
+                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
+                                        @if($inscripcionFirma->imagen_firma_socio2)
+                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio2) }}" alt="Firma Digital Socio 2" class="img-fluid rounded" style="max-width: 400px; max-height: 200px;">
+                                        @else
+                                            <p>No se ha subido firma digital.</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>                    
+                        </div>
+
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-lg">
+                                <div class="card-header bg-info text-white text-center">
                                     <h4 class="card-title">
                                         <strong>DATOS DEL SOCIO 2</strong>
                                     </h4>
@@ -211,11 +390,121 @@
                             </div>                    
                         </div>
 
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-lg">
+                                <div class="card-header bg-info text-white text-center">
+                                    <h4 class="card-title">
+                                        <strong>DATOS DEL SOCIO 2</strong>
+                                    </h4>
+                                </div>                        
+                                <div class="row p-3">
+                                    <div class="col-md-1 d-flex flex-column">                                                   
+                                    </div>
+                                    {{-- columna 1 --}}
+                                    <div class="col-md-5">
+                                        <p class="mb-4">
+                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
+                                            @if($inscripcionFirma->primer_nombre_socio2 || $inscripcionFirma->segundo_nombre_socio2 || $inscripcionFirma->primer_apellido_socio2 || $inscripcionFirma->segundo_apellido_socio2)
+                                                {{ $inscripcionFirma->primer_nombre_socio2 }} {{ $inscripcionFirma->segundo_nombre_socio2 }} {{ $inscripcionFirma->primer_apellido_socio2 }} {{ $inscripcionFirma->segundo_apellido_socio2 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                    {{-- columna 2 --}}
+                                    <div class="col-md-6">
+                                        <p>
+                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
+                                            @if($inscripcionFirma->num_colegiacion_socio2)
+                                                {{ $inscripcionFirma->num_colegiacion_socio2 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                    {{-- columna de la firma digital --}}
+                                    <div class="col-md-12 text-center">
+                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
+                                        @if($inscripcionFirma->imagen_firma_socio2)
+                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio2) }}" alt="Firma Digital Socio 2" class="img-fluid rounded" style="max-width: 500px; max-height: 300px;">
+                                        @else
+                                            <p>No se ha subido firma digital.</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>                    
+                        </div>
 
                         {{-- Socio 3 --}}
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-4 mb-4">
                             <div class="card shadow-lg">
-                                <div class="card-header bg-warning text-white text-center">
+                                <div class="card-header bg-success text-white text-center">
+                                    <h4 class="card-title">
+                                        <strong>DATOS DEL SOCIO 3</strong>
+                                    </h4>
+                                </div>                        
+                                <div class="row p-3">
+                                    <div class="col-md-1 d-flex flex-column">                                                   
+                                    </div>
+                                    {{-- columna 1 --}}
+                                    <div class="col-md-5">
+                                        <p class="mb-4">
+                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
+                                            @if($inscripcionFirma->primer_nombre_socio3 || $inscripcionFirma->segundo_nombre_socio3 || $inscripcionFirma->primer_apellido_socio3 || $inscripcionFirma->segundo_apellido_socio3)
+                                                {{ $inscripcionFirma->primer_nombre_socio3 }} {{ $inscripcionFirma->segundo_nombre_socio3 }} {{ $inscripcionFirma->primer_apellido_socio3 }} {{ $inscripcionFirma->segundo_apellido_socio3 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                    {{-- columna 2 --}}
+                                    <div class="col-md-6">
+                                        <p>
+                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
+                                            @if($inscripcionFirma->num_colegiacion_socio3)
+                                                {{ $inscripcionFirma->num_colegiacion_socio3 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+
+                                    {{-- Curruiculum vitae socio 3 --}}
+                                    <div class="col-md-12 text-center">
+                                        <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 21.4cm;">
+                                            <div class="card-header bg-default text-white text-center">
+                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE DEL SOCIO 3</strong></h5>
+                                            </div>
+                                            <div class="card-body p-0" style="overflow: hidden; height: 100%;">
+                                                @if($inscripcionFirma->cv_socio3)
+                                                    <iframe src="{{ asset('storage/' . $inscripcionFirma->cv_socio3) }}" 
+                                                            style="width: 100%; height: 100%; border: none;" 
+                                                            frameborder="0">
+                                                        Este navegador no soporta PDFs. Por favor, descargue el PDF para verlo: <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio3) }}">Descargar PDF</a>.
+                                                    </iframe>
+                                                @else
+                                                    <p>No Disponible</p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{-- Firma digital del socio 3 --}}
+                                    <div class="col-md-12 text-center">
+                                        <p style="text-decoration: underline;"><strong>FIRMA DIGITAL</strong></p>
+                                        @if($inscripcionFirma->imagen_firma_socio3)
+                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio3) }}" alt="Firma Digital Socio 3" class="img-fluid rounded" style="max-width: 400px; max-height: 200px;">
+                                        @else
+                                            <p>No se ha subido firma digital.</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>                    
+                        </div>
+
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-lg">
+                                <div class="card-header bg-success text-white text-center">
                                     <h4 class="card-title">
                                         <strong>DATOS DEL SOCIO 3</strong>
                                     </h4>
@@ -258,12 +547,122 @@
                             </div>                    
                         </div>
 
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-lg">
+                                <div class="card-header bg-success text-white text-center">
+                                    <h4 class="card-title">
+                                        <strong>DATOS DEL SOCIO 3</strong>
+                                    </h4>
+                                </div>                        
+                                <div class="row p-3">
+                                    <div class="col-md-1 d-flex flex-column">                                                   
+                                    </div>
+                                    {{-- columna 1 --}}
+                                    <div class="col-md-5">
+                                        <p class="mb-4">
+                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
+                                            @if($inscripcionFirma->primer_nombre_socio3 || $inscripcionFirma->segundo_nombre_socio3 || $inscripcionFirma->primer_apellido_socio3 || $inscripcionFirma->segundo_apellido_socio3)
+                                                {{ $inscripcionFirma->primer_nombre_socio3 }} {{ $inscripcionFirma->segundo_nombre_socio3 }} {{ $inscripcionFirma->primer_apellido_socio3 }} {{ $inscripcionFirma->segundo_apellido_socio3 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                    {{-- columna 2 --}}
+                                    <div class="col-md-6">
+                                        <p>
+                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
+                                            @if($inscripcionFirma->num_colegiacion_socio3)
+                                                {{ $inscripcionFirma->num_colegiacion_socio3 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                    {{-- columna de la firma digital --}}
+                                    <div class="col-md-12 text-center">
+                                        <p style="text-decoration: underline;"><strong>FIRMA DIGITAL</strong></p>
+                                        @if($inscripcionFirma->imagen_firma_socio3)
+                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio3) }}" alt="Firma Digital Socio 3" class="img-fluid rounded" style="max-width: 500px; max-height: 300px;">
+                                        @else
+                                            <p>No se ha subido firma digital.</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>                    
+                        </div>
 
                         {{-- Socio 4 --}}
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-4 mb-4">
                             <div class="card shadow-lg">
-                                <div class="card-header bg-warning text-white text-center">
-                                    <h4 class="card-title">
+                                <div class="card-header bg-default text-white text-center">
+                                    <h4 class="card-title" style="color: white">
+                                        <strong>DATOS DEL SOCIO 4</strong>
+                                    </h4>
+                                </div>                        
+                                <div class="row p-3">
+                                    <div class="col-md-1 d-flex flex-column">                                                   
+                                    </div>
+                                    {{-- columna 1 --}}
+                                    <div class="col-md-5">
+                                        <p class="mb-4">
+                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
+                                            @if($inscripcionFirma->primer_nombre_socio4 || $inscripcionFirma->segundo_nombre_socio4 || $inscripcionFirma->primer_apellido_socio4 || $inscripcionFirma->segundo_apellido_socio4)
+                                                {{ $inscripcionFirma->primer_nombre_socio4 }} {{ $inscripcionFirma->segundo_nombre_socio4 }} {{ $inscripcionFirma->primer_apellido_socio4 }} {{ $inscripcionFirma->segundo_apellido_socio4 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                    {{-- columna 2 --}}
+                                    <div class="col-md-6">
+                                        <p>
+                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
+                                            @if($inscripcionFirma->num_colegiacion_socio4)
+                                                {{ $inscripcionFirma->num_colegiacion_socio4 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+
+                                    {{-- Curruiculum vitae socio 3 --}}
+                                    <div class="col-md-12 text-center">
+                                        <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 21.4cm;">
+                                            <div class="card-header bg-default text-white text-center">
+                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE DEL SOCIO 4</strong></h5>
+                                            </div>
+                                            <div class="card-body p-0" style="overflow: hidden; height: 100%;">
+                                                @if($inscripcionFirma->cv_socio4)
+                                                    <iframe src="{{ asset('storage/' . $inscripcionFirma->cv_socio4) }}" 
+                                                            style="width: 100%; height: 100%; border: none;" 
+                                                            frameborder="0">
+                                                        Este navegador no soporta PDFs. Por favor, descargue el PDF para verlo: <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio4) }}">Descargar PDF</a>.
+                                                    </iframe>
+                                                @else
+                                                    <p>No Disponible</p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {{-- Firma digital del socio 4 --}}
+                                    <div class="col-md-12 text-center">
+                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
+                                        @if($inscripcionFirma->imagen_firma_socio4)
+                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio4) }}" alt="Firma Digital Socio 4" class="img-fluid rounded" style="max-width: 400px; max-height: 200px;">
+                                        @else
+                                            <p>No se ha subido firma digital.</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>                    
+                        </div>
+
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-lg">
+                                <div class="card-header bg-default text-white text-center">
+                                    <h4 class="card-title" style="color: white">
                                         <strong>DATOS DEL SOCIO 4</strong>
                                     </h4>
                                 </div>                        
@@ -297,6 +696,51 @@
                                         <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
                                         @if($inscripcionFirma->imagen_firma_socio4)
                                             <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio4) }}" alt="Firma Digital Socio 4" class="img-fluid rounded" style="max-width: 500px; max-height: 300px;">
+                                        @else
+                                            <p>No se ha subido firma digital.</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>                    
+                        </div>
+
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-lg">
+                                <div class="card-header bg-default text-white text-center">
+                                    <h4 class="card-title" style="color: white">
+                                        <strong>DATOS DEL SOCIO 4</strong>
+                                    </h4>
+                                </div>                        
+                                <div class="row p-3">
+                                    <div class="col-md-1 d-flex flex-column">                                                   
+                                    </div>
+                                    {{-- columna 1 --}}
+                                    <div class="col-md-5">
+                                        <p class="mb-4">
+                                            <strong><strong>NOMBRE COMPLETO</strong></strong><br>
+                                            @if($inscripcionFirma->primer_nombre_socio4 || $inscripcionFirma->segundo_nombre_socio4 || $inscripcionFirma->primer_apellido_socio4 || $inscripcionFirma->segundo_apellido_socio4)
+                                                {{ $inscripcionFirma->primer_nombre_socio4 }} {{ $inscripcionFirma->segundo_nombre_socio4 }} {{ $inscripcionFirma->primer_apellido_socio4 }} {{ $inscripcionFirma->segundo_apellido_socio4 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                    {{-- columna 2 --}}
+                                    <div class="col-md-6">
+                                        <p>
+                                            <strong><strong>NÚMERO DE COLEGIACIÓN</strong></strong><br>
+                                            @if($inscripcionFirma->num_colegiacion_socio4)
+                                                {{ $inscripcionFirma->num_colegiacion_socio4 }}
+                                            @else
+                                                <span style="text-decoration: line-through;">No disponible</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                    {{-- columna 1 --}}
+                                    <div class="col-md-12 text-center">
+                                        <p style="text-decoration: underline;"><strong><strong>FIRMA DIGITAL</strong></strong></p>
+                                        @if($inscripcionFirma->imagen_firma_socio4)
+                                            <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_socio4) }}" alt="Firma Digital Socio 4" class="img-fluid rounded" style="max-width: 400px; max-height: 200px;">
                                         @else
                                             <p>No se ha subido firma digital.</p>
                                         @endif

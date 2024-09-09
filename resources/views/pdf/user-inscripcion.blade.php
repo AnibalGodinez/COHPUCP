@@ -444,7 +444,7 @@
                 @if($inscripcion->cv)
                     <iframe src="{{ asset('storage/' . $inscripcion->cv) }}" 
                         style="width: 100%; height: 100%; border: none;" frameborder="0">
-                        Para ver el Curriculum Vitae, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcion->cv) }}"><br><br>Ver curriculun vitae</a>
+                        Para ver el Curriculum Vitae, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcion->cv) }}"><br><br>Ver currículum vitae</a>
                     </iframe>
                 @else
                     <p>No disponible</p>

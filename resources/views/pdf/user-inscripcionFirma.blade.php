@@ -140,7 +140,7 @@
         <!-- II. DATOS DE LOS SOCIOS -->
 
         <!--SOCIO 1 -->
-        <div class="section socio-page-break">
+        <div class="section page-break">
             <div class="section text-center">
                 <h4 style="text-decoration: underline;">II. DATOS DEL SOCIOS</h4>
             </div>
@@ -175,7 +175,7 @@
         </div>
 
         <!--SOCIO 3 -->
-        <div class="section">
+        <div class="section page-break">
             <h5 style="text-decoration: underline;">Socio 3:</h5>
             <p><strong>Nombre completo:</strong> {{ $inscripcionFirma->primer_nombre_socio3 }} {{ $inscripcionFirma->segundo_nombre_socio3 }} {{ $inscripcionFirma->primer_apellido_socio3 }} {{ $inscripcionFirma->segundo_apellido_socio3 }}</p>
             <p><strong>Número Colegiación:</strong> {{ $inscripcionFirma->num_colegiacion_socio3 }}</p>
@@ -206,9 +206,58 @@
             </div>
         </div>
 
+        <!-- Curriculun Vitae los socios -->
+        <div class="section page-break">
+            
+            <!-- Link del socio 1 -->
+            <h5 class="text-center" style="text-decoration: underline;">Curriculum vitae:</h5>
+            @if($inscripcionFirma->cv_socio1)
+                <iframe src="{{ asset('storage/' . $inscripcionFirma->cv_socio1) }}" 
+                    style="width: 100%; height: 100%; border: none;" frameborder="0">
+                    Para ver el Curriculum Vitae del socio 1, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio1) }}"><br><br>ver cv del socio 1</a>
+                </iframe>
+            @else
+                <p>No disponible</p>
+            @endif
+
+            <!-- Link del socio 2 -->
+            <h5 class="text-center" style="text-decoration: underline;">Curriculum vitae:</h5>
+            @if($inscripcionFirma->cv_socio2)
+                <iframe src="{{ asset('storage/' . $inscripcionFirma->cv_socio2) }}" 
+                    style="width: 100%; height: 100%; border: none;" frameborder="0">
+                    Para ver el Curriculum Vitae del socio 2, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio2) }}"><br><br>ver cv del socio 2</a>
+                </iframe>
+            @else
+                <p>No disponible</p>
+            @endif
+
+            <!-- Link del socio 3 -->
+            <h5 class="text-center" style="text-decoration: underline;">Curriculum vitae:</h5>
+            @if($inscripcionFirma->cv_socio3)
+                <iframe src="{{ asset('storage/' . $inscripcionFirma->cv_socio3) }}" 
+                    style="width: 100%; height: 100%; border: none;" frameborder="0">
+                    Para ver el Curriculum Vitae del socio 3, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio3) }}"><br><br>ver cv del socio 3</a>
+                </iframe>
+            @else
+                <p>No disponible</p>
+            @endif
+
+            <!-- Link del socio 4 -->
+            <h5 class="text-center" style="text-decoration: underline;">Curriculum vitae:</h5>
+            @if($inscripcionFirma->cv_socio4)
+                <iframe src="{{ asset('storage/' . $inscripcionFirma->cv_socio4) }}" 
+                    style="width: 100%; height: 100%; border: none;" frameborder="0">
+                    Para ver el Curriculum Vitae del socio 4, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio4) }}"><br><br>ver cv del socio 4</a>
+                </iframe>
+            @else
+                <p>No disponible</p>
+            @endif
+        </div>
+
+
         <!-- Documentos -->
         <!-- ESCRITURA DE CONSTITUCIÓN -->
-        <div class="section socio-page-break">
+        <div class="section page-break">
             <h5 style="text-decoration: underline;">ESCRITURA DE CONSTITUCIÓN</h5>
             @if($inscripcionFirma->imagen_escritura_constitucion)
                 <div class="text-center">
@@ -219,7 +268,7 @@
             @endif
         </div>
         <!-- REGISTRO MERCANTIL -->
-        <div class="section socio-page-break">
+        <div class="section page-break">
             <h5 style="text-decoration: underline; margin-bottom: 6em;">REGISTRO MERCANTIL</h5>
             @if($inscripcionFirma->imagen_registro_mercantil)
                 <div class="text-center">
@@ -230,7 +279,7 @@
             @endif
         </div>
         <!-- RTN DE LA FIRMA -->
-        <div class="section socio-page-break">
+        <div class="section page-break">
             <h5 style="text-decoration: underline; margin-bottom: 6em;">RTN DE LA FIRMA</h5>
             @if($inscripcionFirma->imagen_rtn_firma_auditora)
                 <div class="text-center">
@@ -241,7 +290,7 @@
             @endif
         </div>
 
-        <div class="section socio-page-break">
+        <div class="section page-break">
             <!-- Firma social -->
             @if($inscripcionFirma->imagen_firma_social)
                 <div class="text-center">
