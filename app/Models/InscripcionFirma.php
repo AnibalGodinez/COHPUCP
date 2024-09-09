@@ -33,6 +33,7 @@ class InscripcionFirma extends Model
         'primer_apellido_socio1',
         'segundo_apellido_socio1',
         'num_colegiacion_socio1',
+        'imagen_titulo_socio1',
         'cv_socio1',
         'imagen_firma_socio1',
 
@@ -41,6 +42,7 @@ class InscripcionFirma extends Model
         'primer_apellido_socio2',
         'segundo_apellido_socio2',
         'num_colegiacion_socio2',
+        'imagen_titulo_socio2',
         'cv_socio2',
         'imagen_firma_socio2',
 
@@ -49,6 +51,7 @@ class InscripcionFirma extends Model
         'primer_apellido_socio3',
         'segundo_apellido_socio3',
         'num_colegiacion_socio3',
+        'imagen_titulo_socio3',
         'cv_socio3',
         'imagen_firma_socio3',
 
@@ -57,6 +60,7 @@ class InscripcionFirma extends Model
         'primer_apellido_socio4',
         'segundo_apellido_socio4',
         'num_colegiacion_socio4',
+        'imagen_titulo_socio4',
         'cv_socio4',
         'imagen_firma_socio4',
 
@@ -76,6 +80,10 @@ class InscripcionFirma extends Model
 
     protected $casts = [
         'fecha_constitucion' => 'date',
+        'imagen_titulo_socio1' => 'array',
+        'imagen_titulo_socio2' => 'array',
+        'imagen_titulo_socio3' => 'array',
+        'imagen_titulo_socio4' => 'array',
     ];
 
     // Relación con el modelo User

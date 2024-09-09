@@ -267,13 +267,24 @@
                                 });
                             </script>
 
+                            <!-- IMÁGENES DE TÍTULO DEL SOCIO 1 -->
+                            <div class="col-md-12">
+                                <label for="imagen_titulo_socio1[]" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir imágenes del título del Socio 1
+                                </label>
+                                <input type="file" class="form-control-file" id="imagen_titulo_socio1" name="imagen_titulo_socio1[]" multiple onchange="previewImages(event, 'preview_socio1')">
+                                <div id="preview_socio1" class="mt-3"></div>
+                                <small class="form-text text-muted">Seleccione varias imágenes (por ejemplo, .jpg, .png).</small>
+                            </div>
+
                             <!-- IMAGEN DE FIRMA DEL SOCIO 1 -->
                             <div class="col-md-12 text-center">
                                 <label for="imagen_firma_socio1" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma digital socio 1
                                 </label>
-                                <input type="file" class="form-control-file" id="imagen_firma_socio1" name="imagen_firma_socio1" onchange="previewImage(event, 'preview_socio1')">
+                                <input type="file" class="form-control-file" id="imagen_firma_socio1" name="imagen_firma_socio1" onchange="previewImages(event, 'preview_socio1')">
                                 <img id="preview_socio1" src="#" alt="Vista previa de la firma del Socio 1" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
@@ -382,13 +393,24 @@
                                 });
                             </script>
 
+                            <!-- IMÁGENES DE TÍTULO DEL SOCIO 2 -->
+                            <div class="col-md-12 mt-3">
+                                <label for="imagen_titulo_socio2[]" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir imágenes del título del Socio 2
+                                </label>
+                                <input type="file" class="form-control-file" id="imagen_titulo_socio2" name="imagen_titulo_socio2[]" multiple onchange="previewImages(event, 'preview_socio2')">
+                                <div id="preview_socio2" class="mt-3"></div>
+                                <small class="form-text text-muted">Seleccione varias imágenes (por ejemplo, .jpg, .png).</small>
+                            </div>
+
                             <!-- IMAGEN DE FIRMA DEL SOCIO 2 -->
                             <div class="col-md-12 text-center">
                                 <label for="imagen_firma_socio2" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma digital socio 2
                                 </label>
-                                <input type="file" class="form-control-file" id="imagen_firma_socio2" name="imagen_firma_socio2" onchange="previewImage(event, 'preview_socio2')">
+                                <input type="file" class="form-control-file" id="imagen_firma_socio2" name="imagen_firma_socio2" onchange="previewImages(event, 'preview_socio2')">
                                 <img id="preview_socio2" src="#" alt="Vista previa de la firma del Socio 2" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
@@ -497,13 +519,24 @@
                                 });
                             </script>
 
+                            <!-- IMÁGENES DE TÍTULO DEL SOCIO 3 -->
+                            <div class="col-md-12 mt-3">
+                                <label for="imagen_titulo_socio3[]" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir imágenes del título del Socio 3
+                                </label>
+                                <input type="file" class="form-control-file" id="imagen_titulo_socio3" name="imagen_titulo_socio3[]" multiple onchange="previewImages(event, 'preview_socio3')">
+                                <div id="preview_socio3" class="mt-3"></div>
+                                <small class="form-text text-muted">Seleccione varias imágenes (por ejemplo, .jpg, .png).</small>
+                            </div>
+
                             <!-- IMAGEN DE FIRMA DEL SOCIO 3 -->
                             <div class="col-md-12 text-center mb-4">
                                 <label for="imagen_firma_socio3" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma digital socio 3
                                 </label>
-                                <input type="file" class="form-control-file d-none" id="imagen_firma_socio3" name="imagen_firma_socio3" onchange="previewImage(event, 'preview_socio3')">
+                                <input type="file" class="form-control-file d-none" id="imagen_firma_socio3" name="imagen_firma_socio3" onchange="previewImages(event, 'preview_socio3')">
                                 <img id="preview_socio3" src="#" alt="Vista previa de la firma del Socio 3" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
@@ -612,13 +645,24 @@
                                 });
                             </script>
 
+                            <!-- IMÁGENES DE TÍTULO DEL SOCIO 4 -->
+                            <div class="col-md-12 mt-3">
+                                <label for="imagen_titulo_socio4[]" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir imágenes del título del Socio 4
+                                </label>
+                                <input type="file" class="form-control-file" id="imagen_titulo_socio4" name="imagen_titulo_socio4[]" multiple onchange="previewImages(event, 'preview_socio4')">
+                                <div id="preview_socio4" class="mt-3"></div>
+                                <small class="form-text text-muted">Seleccione varias imágenes (por ejemplo, .jpg, .png).</small>
+                            </div>
+
                             <!-- IMAGEN DE FIRMA DEL SOCIO 4 -->
                             <div class="col-md-12 text-center mb-4">
                                 <label for="imagen_firma_socio4" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma digital socio 4
                                 </label>
-                                <input type="file" class="form-control-file d-none" id="imagen_firma_socio4" name="imagen_firma_socio4" onchange="previewImage(event, 'preview_socio4')">
+                                <input type="file" class="form-control-file d-none" id="imagen_firma_socio4" name="imagen_firma_socio4" onchange="previewImages(event, 'preview_socio4')">
                                 <img id="preview_socio4" src="#" alt="Vista previa de la firma del Socio 4" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
@@ -648,7 +692,7 @@
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir escritura de constitución original
                                 </label>
-                                <input type="file" class="form-control-file" id="imagen_escritura_constitucion" name="imagen_escritura_constitucion" onchange="previewImage(event, 'preview_escritura')">
+                                <input type="file" class="form-control-file" id="imagen_escritura_constitucion" name="imagen_escritura_constitucion" onchange="previewImages(event, 'preview_escritura')">
                                 <img id="preview_escritura" src="#" alt="Vista previa de la escritura de constitucion" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
@@ -657,7 +701,7 @@
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir registro mercantil original
                                 </label>
-                                <input type="file" class="form-control-file d-none" id="imagen_registro_mercantil" name="imagen_registro_mercantil" onchange="previewImage(event, 'preview_registro')">
+                                <input type="file" class="form-control-file d-none" id="imagen_registro_mercantil" name="imagen_registro_mercantil" onchange="previewImages(event, 'preview_registro')">
                                 <div class="mt-2">
                                     <img id="preview_registro" src="#" alt="Vista previa del registro mercantil" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                                 </div>
@@ -668,7 +712,7 @@
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir rtn de la firma original
                                 </label>
-                                <input type="file" class="form-control-file d-none" id="imagen_rtn_firma_auditora" name="imagen_rtn_firma_auditora" onchange="previewImage(event, 'preview_rtn')">
+                                <input type="file" class="form-control-file d-none" id="imagen_rtn_firma_auditora" name="imagen_rtn_firma_auditora" onchange="previewImages(event, 'preview_rtn')">
                                 <div class="mt-2">
                                     <img id="preview_rtn" src="#" alt="Vista previa del registro mercantil" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                                 </div>
@@ -687,7 +731,7 @@
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma Social
                                 </label>
-                                <input type="file" class="form-control-file" id="imagen_firma_social" name="imagen_firma_social" onchange="previewImage(event, 'preview_social')">
+                                <input type="file" class="form-control-file" id="imagen_firma_social" name="imagen_firma_social" onchange="previewImages(event, 'preview_social')">
                                 <img id="preview_social" src="#" alt="Vista previa de la firma social" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
@@ -696,7 +740,7 @@
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma digital del Representante Legal
                                 </label>
-                                <input type="file" class="form-control-file d-none" id="imagen_firma_representante_legal" name="imagen_firma_representante_legal" onchange="previewImage(event, 'preview_representante')">
+                                <input type="file" class="form-control-file d-none" id="imagen_firma_representante_legal" name="imagen_firma_representante_legal" onchange="previewImages(event, 'preview_representante')">
                                 <div class="mt-2">
                                     <img id="preview_representante" src="#" alt="Vista previa de la firma del representante legal" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                                 </div>
@@ -720,17 +764,33 @@
 </div>
 
 <script>
-    // Script para previsualizar las imágenes
-    function previewImage(event, previewId) {
-        var reader = new FileReader();
-        reader.onload = function(){
-            var output = document.getElementById(previewId);
-            output.src = reader.result;
-            output.style.display = 'block';
-            output.style.maxWidth = '700px';  // Ajusta el ancho máximo
-            output.style.maxHeight = '700px'; // Ajusta la altura máxima
-        };
-        reader.readAsDataURL(event.target.files[0]);
+    // Script para previsualizar múltiples imágenes
+    function previewImages(event, previewContainerId) {
+        var files = event.target.files;
+        var previewContainer = document.getElementById(previewContainerId);
+
+        // Limpiar el contenedor de previsualización
+        previewContainer.innerHTML = '';
+
+        // Iterar sobre cada archivo seleccionado
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var reader = new FileReader();
+            
+            reader.onload = (function(file) {
+                return function(e) {
+                    // Crear un elemento de imagen
+                    var img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.maxWidth = '150px';  // Ajusta el ancho máximo
+                    img.style.maxHeight = '150px'; // Ajusta la altura máxima
+                    img.style.margin = '5px';
+                    previewContainer.appendChild(img);
+                };
+            })(file);
+
+            reader.readAsDataURL(file);
+        }
     }
 
     // Script para previsualizar el PDF

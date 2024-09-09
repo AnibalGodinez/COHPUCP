@@ -27,35 +27,44 @@ class CreateInscripcionFirmasTable extends Migration
             $table->string('email')->unique();
 
             // II. Datos de los socios
+
+            // socio 1
             $table->string('primer_nombre_socio1');
             $table->string('segundo_nombre_socio1')->nullable();
             $table->string('primer_apellido_socio1');
             $table->string('segundo_apellido_socio1')->nullable();
             $table->string('num_colegiacion_socio1')->nullable();
+            $table->json('imagen_titulo_socio1')->nullable();
             $table->string('cv_socio1')->nullable();
             $table->string('imagen_firma_socio1')->nullable();
 
+            // socio 2
             $table->string('primer_nombre_socio2');
             $table->string('segundo_nombre_socio2')->nullable();
             $table->string('primer_apellido_socio2');
             $table->string('segundo_apellido_socio2')->nullable();
             $table->string('num_colegiacion_socio2')->nullable();
+            $table->json('imagen_titulo_socio2')->nullable();
             $table->string('cv_socio2')->nullable();
             $table->string('imagen_firma_socio2')->nullable();
             
+            // socio 3
             $table->string('primer_nombre_socio3');
             $table->string('segundo_nombre_socio3')->nullable();
             $table->string('primer_apellido_socio3');
             $table->string('segundo_apellido_socio3')->nullable();
             $table->string('num_colegiacion_socio3')->nullable();
+            $table->json('imagen_titulo_socio3')->nullable();
             $table->string('cv_socio3')->nullable();
             $table->string('imagen_firma_socio3')->nullable();
             
+            // socio 4
             $table->string('primer_nombre_socio4');
             $table->string('segundo_nombre_socio4')->nullable();
             $table->string('primer_apellido_socio4');
             $table->string('segundo_apellido_socio4')->nullable();
             $table->string('num_colegiacion_socio4')->nullable();
+            $table->json('imagen_titulo_socio4')->nullable();
             $table->string('cv_socio4')->nullable();
             $table->string('imagen_firma_socio4')->nullable();
             
