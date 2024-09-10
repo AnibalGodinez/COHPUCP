@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header text-white text-center">
-                    <h3 class="card-title" style="text-decoration: underline;">
+                    <h3 class="card-title">
                         <strong>SOLICITUD DE INSCRIPCIÓN DE FIRMA</strong>
                     </h3>
                 </div>
@@ -17,7 +17,7 @@
                     <div class="col-md-12 mb-4">
                         <div class="card shadow-lg">
                             <div class="card-header bg-warning text-white text-center">
-                                <h4 class="card-title">
+                                <h4 class="card-title" style="text-decoration: underline;">
                                     <strong>DATOS DE LA SOCIEDAD</strong>
                                 </h4>
                             </div>
@@ -115,7 +115,7 @@
                         </div>
                     </div>
 
-                    <h3 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 1</h3>
+                    <h4 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 1</h4>
                     <!-- II. DATOS DE LOS SOCIOS -->
                     <div class="row">
                         
@@ -264,7 +264,7 @@
                         </div>
                     </div>
 
-                    <h3 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 2</h3>
+                    <h4 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 2</h4>
                     <div class="row">                     
                         {{-- SOCIO 2 --}}
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
@@ -410,7 +410,7 @@
                         </div>
                     </div>
 
-                    <h3 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 3</h3>
+                    <h4 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 3</h4>
                     <div class="row">
                         {{-- SOCIO 3 --}}
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
@@ -556,7 +556,7 @@
                         </div>
                     </div>
 
-                    <h3 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 4</h3>
+                    <h4 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 4</h4>
                     <div class="row">
                         
                         {{-- SOCIO 4 --}}
