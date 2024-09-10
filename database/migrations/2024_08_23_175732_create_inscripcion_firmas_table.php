@@ -34,9 +34,10 @@ class CreateInscripcionFirmasTable extends Migration
             $table->string('primer_apellido_socio1');
             $table->string('segundo_apellido_socio1')->nullable();
             $table->string('num_colegiacion_socio1')->nullable();
-            $table->json('imagen_titulo_socio1')->nullable();
             $table->string('cv_socio1')->nullable();
             $table->string('imagen_firma_socio1')->nullable();
+            $table->string('constancia_solvencia_socio1')->nullable();
+            $table->json('imagen_titulo_socio1')->nullable();
 
             // socio 2
             $table->string('primer_nombre_socio2');
@@ -44,9 +45,10 @@ class CreateInscripcionFirmasTable extends Migration
             $table->string('primer_apellido_socio2');
             $table->string('segundo_apellido_socio2')->nullable();
             $table->string('num_colegiacion_socio2')->nullable();
-            $table->json('imagen_titulo_socio2')->nullable();
             $table->string('cv_socio2')->nullable();
             $table->string('imagen_firma_socio2')->nullable();
+            $table->string('constancia_solvencia_socio2')->nullable();
+            $table->json('imagen_titulo_socio2')->nullable();
             
             // socio 3
             $table->string('primer_nombre_socio3');
@@ -54,9 +56,10 @@ class CreateInscripcionFirmasTable extends Migration
             $table->string('primer_apellido_socio3');
             $table->string('segundo_apellido_socio3')->nullable();
             $table->string('num_colegiacion_socio3')->nullable();
-            $table->json('imagen_titulo_socio3')->nullable();
             $table->string('cv_socio3')->nullable();
             $table->string('imagen_firma_socio3')->nullable();
+            $table->string('constancia_solvencia_socio3')->nullable();
+            $table->json('imagen_titulo_socio3')->nullable();
             
             // socio 4
             $table->string('primer_nombre_socio4');
@@ -64,14 +67,16 @@ class CreateInscripcionFirmasTable extends Migration
             $table->string('primer_apellido_socio4');
             $table->string('segundo_apellido_socio4')->nullable();
             $table->string('num_colegiacion_socio4')->nullable();
-            $table->json('imagen_titulo_socio4')->nullable();
             $table->string('cv_socio4')->nullable();
             $table->string('imagen_firma_socio4')->nullable();
+            $table->string('constancia_solvencia_socio4')->nullable();
+            $table->json('imagen_titulo_socio4')->nullable();
             
             // III. Documentos
             $table->string('imagen_escritura_constitucion')->nullable();
             $table->string('imagen_registro_mercantil')->nullable();
             $table->string('imagen_rtn_firma_auditora')->nullable();
+            $table->string('nomina_pago_firma')->nullable();
 
             // IV. Firmas digitales
             $table->string('imagen_firma_social')->nullable();

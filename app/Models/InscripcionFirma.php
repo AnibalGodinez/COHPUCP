@@ -28,46 +28,56 @@ class InscripcionFirma extends Model
         'email',
 
         // II. Datos de los socios
+
+            // socio 1
         'primer_nombre_socio1',
         'segundo_nombre_socio1',
         'primer_apellido_socio1',
         'segundo_apellido_socio1',
         'num_colegiacion_socio1',
-        'imagen_titulo_socio1',
         'cv_socio1',
         'imagen_firma_socio1',
+        'constancia_solvencia_socio1',
+        'imagen_titulo_socio1',
 
+            // socio 2
         'primer_nombre_socio2',
         'segundo_nombre_socio2',
         'primer_apellido_socio2',
         'segundo_apellido_socio2',
         'num_colegiacion_socio2',
-        'imagen_titulo_socio2',
         'cv_socio2',
         'imagen_firma_socio2',
+        'constancia_solvencia_socio2',
+        'imagen_titulo_socio2',
 
+            // socio 3
         'primer_nombre_socio3',
         'segundo_nombre_socio3',
         'primer_apellido_socio3',
         'segundo_apellido_socio3',
         'num_colegiacion_socio3',
-        'imagen_titulo_socio3',
         'cv_socio3',
         'imagen_firma_socio3',
+        'constancia_solvencia_socio3',
+        'imagen_titulo_socio3',
 
+            // socio 4
         'primer_nombre_socio4',
         'segundo_nombre_socio4',
         'primer_apellido_socio4',
         'segundo_apellido_socio4',
         'num_colegiacion_socio4',
-        'imagen_titulo_socio4',
         'cv_socio4',
         'imagen_firma_socio4',
+        'constancia_solvencia_socio4',
+        'imagen_titulo_socio4',
 
         // III. Documentos
         'imagen_escritura_constitucion',
         'imagen_registro_mercantil',
         'imagen_rtn_firma_auditora',
+        'nomina_pago_firma',
 
         // IV. Firmas digitales
         'imagen_firma_social',
