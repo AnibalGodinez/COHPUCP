@@ -727,36 +727,34 @@
                                 <h4 style="text-decoration: underline;"><strong>III. DOCUMENTOS</strong></h4>
                             </div>
 
-                            <div class="col-md-6 text-center">
+                            <div class="col-md-12 text-center mb-4">
                                 <label for="imagen_escritura_constitucion" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir escritura de constitución original
                                 </label>
-                                <input type="file" class="form-control-file" id="imagen_escritura_constitucion" name="imagen_escritura_constitucion" accept="image/*" onchange="previewSingleImage(event, 'preview_escritura')">
-                                <div class="mt-2">
-                                    <img id="preview_escritura" src="#" alt="Vista previa de la escritura de constitucion" style="display: none; width: auto; height: 900px; margin: 0 auto;">
-                                </div>
+                                <input type="file" class="form-control-file" id="imagen_escritura_constitucion" name="imagen_escritura_constitucion" onchange="previewImage(event, 'preview_escritura')">
+                                <img id="preview_escritura" src="#" alt="Vista previa de la escritura de constitucion" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <div class="col-md-6 text-center">
+                            <div class="col-md-12 text-center">
                                 <label for="imagen_registro_mercantil" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir registro mercantil original
                                 </label>
-                                <input type="file" class="form-control-file" id="imagen_registro_mercantil" name="imagen_registro_mercantil" accept="image/*" onchange="previewSingleImage(event, 'preview_registro')">
+                                <input type="file" class="form-control-file d-none" id="imagen_registro_mercantil" name="imagen_registro_mercantil" onchange="previewImage(event, 'preview_registro')">
                                 <div class="mt-2">
-                                    <img id="preview_registro" src="#" alt="Vista previa del registro mercantil" style="display: none; width: auto; height: 900px; margin: 0 auto;">
+                                    <img id="preview_registro" src="#" alt="Vista previa del registro mercantil" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                                 </div>
                             </div> 
 
-                            <div class="col-md-6 text-center">
+                            <div class="col-md-12 text-center">
                                 <label for="imagen_rtn_firma_auditora" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir rtn de la firma original
                                 </label>
-                                <input type="file" class="form-control-file" id="imagen_rtn_firma_auditora" name="imagen_rtn_firma_auditora" accept="image/*" onchange="previewSingleImage(event, 'preview_rtn')">
+                                <input type="file" class="form-control-file d-none" id="imagen_rtn_firma_auditora" name="imagen_rtn_firma_auditora" onchange="previewImage(event, 'preview_rtn')">
                                 <div class="mt-2">
-                                    <img id="preview_rtn" src="#" alt="Vista previa del rtn de la firma" style="display: none; width: auto; height: 900px; margin: 0 auto;">
+                                    <img id="preview_rtn" src="#" alt="Vista previa del registro mercantil" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                                 </div>
                             </div>
 
@@ -779,23 +777,23 @@
                                 <h4 style="text-decoration: underline;"><strong>III. FIRMAS DIGITALES</strong></h4>
                             </div>
 
-                            <div class="col-md-6 text-center mb-4">
+                            <div class="col-md-12 text-center mb-4">
                                 <label for="imagen_firma_social" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma Social
                                 </label>
-                                <input type="file" class="form-control-file" id="imagen_firma_social" name="imagen_firma_social" accept="image/*" onchange="previewSingleImage(event, 'preview_social')">
-                                <img id="preview_social" src="#" alt="Vista previa de la firma social" style="display: none; width: auto; height: 200px; margin: 0 auto;">
+                                <input type="file" class="form-control-file" id="imagen_firma_social" name="imagen_firma_social" onchange="previewImage(event, 'preview_social')">
+                                <img id="preview_social" src="#" alt="Vista previa de la firma social" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <div class="col-md-6 text-center">
+                            <div class="col-md-12 text-center">
                                 <label for="imagen_firma_representante_legal" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma digital del Representante Legal
                                 </label>
-                                <input type="file" class="form-control-file" id="imagen_firma_representante_legal" name="imagen_firma_representante_legal" accept="image/*" onchange="previewSingleImage(event, 'preview_representante')"><input type="file" class="form-control-file d-none" id="imagen_firma_representante_legal" name="imagen_firma_representante_legal" onchange="previewImages(event, 'preview_representante')">
+                                <input type="file" class="form-control-file d-none" id="imagen_firma_representante_legal" name="imagen_firma_representante_legal" onchange="previewImage(event, 'preview_representante')">
                                 <div class="mt-2">
-                                    <img id="preview_representante" src="#" alt="Vista previa de la firma del representante legal" style="display: none; width: auto; height: 200px; margin: 0 auto;">
+                                    <img id="preview_representante" src="#" alt="Vista previa de la firma del representante legal" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                                 </div>
                             </div> 
 
@@ -817,6 +815,19 @@
 </div>
 
 <script>
+        // Script para previsualizar las imágenes
+        function previewImage(event, previewId) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                var output = document.getElementById(previewId);
+                output.src = reader.result;
+                output.style.display = 'block';
+                output.style.maxWidth = '700px';  // Ajusta el ancho máximo
+                output.style.maxHeight = '700px'; // Ajusta la altura máxima
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
         // Función para previsualizar una imagen única
         function previewSingleImage(event, previewId) {
         var file = event.target.files[0]; // Seleccionar el primer archivo

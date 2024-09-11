@@ -88,9 +88,9 @@
             z-index: -1; /* Asegura que el contenido esté sobre la imagen */
         }
 
-
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Encabezado -->

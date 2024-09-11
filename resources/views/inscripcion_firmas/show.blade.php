@@ -166,7 +166,7 @@
                                                         Este navegador no soporta PDFs. Por favor, descargue el PDF para verlo: <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio1) }}">Descargar PDF</a>.
                                                     </iframe>
                                                 @else
-                                                    <p>No Disponible</p>
+                                                    <span style="text-decoration: line-through;">No se ha subido el curriculum Vitae</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -183,7 +183,7 @@
                                                     style="max-width: 100%; height: auto; max-height: 100px; object-fit: contain;">
                                             </div>
                                         @else
-                                            <p>No se ha subido firma digital.</p>
+                                            <span style="text-decoration: line-through;">No se ha subido firma digital</span>
                                         @endif
                                     </div>
 
@@ -191,25 +191,22 @@
                             </div>
                         </div>
 
-                        {{-- Título universitario frontal | Socio 1 --}}
+                        {{-- Constancia de solvencia | Socio 1 --}}
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-dark text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>CONSTANCIA DE SOLVENCIA</strong></h4>
                                 </div>
                                 <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcionFirma->imagen_titulo_socio1)
-                                        @php
-                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio1);
-                                        @endphp
-                                        @if(count($imagenes) > 0)
-                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 1" 
-                                                style="width: 90%; height: 90%; object-fit: contain;">
-                                        @else
-                                            <p>No Disponible</p>
-                                        @endif
+                                    @if($inscripcionFirma->constancia_solvencia_socio1)
+                                            <div class="d-flex justify-content-center">
+                                            <img src="{{ asset('storage/'.$inscripcionFirma->constancia_solvencia_socio1) }}" 
+                                                alt="Constancia de solvencia del Socio 1" 
+                                                class="img-fluid rounded" 
+                                                style="width: auto; height: 900px; object-fit: contain;">
+                                        </div>
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido la constancia de solvencia</span>
                                     @endif
                                 </div>
                             </div>
@@ -230,10 +227,10 @@
                                             <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 1" 
                                                 style="width: 90%; height: 90%; object-fit: contain;">
                                         @else
-                                            <p>No Disponible</p>
+                                            <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
                                         @endif
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
                                     @endif
                                 </div>
                             </div>
@@ -254,10 +251,10 @@
                                             <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Título Universitario Reverso del socio 1" 
                                                 style="width: 90%; height: 90%; object-fit: contain;">
                                         @else
-                                            <p>No Disponible</p>
+                                            <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
                                         @endif
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
                                     @endif
                                 </div>
                             </div>
@@ -313,7 +310,7 @@
                                                         Este navegador no soporta PDFs. Por favor, descargue el PDF para verlo: <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio2) }}">Descargar PDF</a>.
                                                     </iframe>
                                                 @else
-                                                    <p>No Disponible</p>
+                                                    <span style="text-decoration: line-through;">No se ha subido el Curriculum Vitae</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -330,32 +327,29 @@
                                                     style="max-width: 100%; height: auto; max-height: 100px; object-fit: contain;">
                                             </div>
                                         @else
-                                            <p>No se ha subido firma digital.</p>
+                                            <span style="text-decoration: line-through;">No se ha subido la firma digital</span>
                                         @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {{-- Título universitario frontal | Socio 2 --}}
+                        {{-- Constancia de solvencia | Socio 2 --}}
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-info text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>CONSTANCIA DE SOLVENCIA</strong></h4>
                                 </div>
                                 <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcionFirma->imagen_titulo_socio2)
-                                        @php
-                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio2);
-                                        @endphp
-                                        @if(count($imagenes) > 0)
-                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 2" 
-                                                style="width: 90%; height: 90%; object-fit: contain;">
-                                        @else
-                                            <p>No Disponible</p>
-                                        @endif
+                                    @if($inscripcionFirma->constancia_solvencia_socio2)
+                                            <div class="d-flex justify-content-center">
+                                            <img src="{{ asset('storage/'.$inscripcionFirma->constancia_solvencia_socio2) }}" 
+                                                alt="Constancia de solvencia del Socio 2" 
+                                                class="img-fluid rounded" 
+                                                style="width: auto; height: 900px; object-fit: contain;">
+                                        </div>
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido la constancia de solvencia</span>
                                     @endif
                                 </div>
                             </div>
@@ -376,10 +370,10 @@
                                             <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 2" 
                                                 style="width: 90%; height: 90%; object-fit: contain;">
                                         @else
-                                            <p>No Disponible</p>
+                                            <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
                                         @endif
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
                                     @endif
                                 </div>
                             </div>
@@ -400,10 +394,10 @@
                                             <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Título Universitario Reverso del socio 2" 
                                                 style="width: 90%; height: 90%; object-fit: contain;">
                                         @else
-                                            <p>No Disponible</p>
+                                            <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
                                         @endif
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
                                     @endif
                                 </div>
                             </div>
@@ -459,7 +453,7 @@
                                                         Este navegador no soporta PDFs. Por favor, descargue el PDF para verlo: <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio3) }}">Descargar PDF</a>.
                                                     </iframe>
                                                 @else
-                                                    <p>No Disponible</p>
+                                                    <span style="text-decoration: line-through;">No se ha subido el Curriculum Vitae</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -476,32 +470,29 @@
                                                     style="max-width: 100%; height: auto; max-height: 100px; object-fit: contain;">
                                             </div>
                                         @else
-                                            <p>No se ha subido firma digital.</p>
+                                            <span style="text-decoration: line-through;">No se ha subido firma digital</span>
                                         @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {{-- Título universitario frontal | Socio 3 --}}
+                        {{-- Constancia de solvencia | Socio 3 --}}
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-success text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>CONSTANCIA DE SOLVENCIA</strong></h4>
                                 </div>
                                 <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcionFirma->imagen_titulo_socio3)
-                                        @php
-                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio3);
-                                        @endphp
-                                        @if(count($imagenes) > 0)
-                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 3" 
-                                            style="width: 90%; height: 90%; object-fit: contain;">
-                                        @else
-                                            <p>No Disponible</p>
-                                        @endif
+                                    @if($inscripcionFirma->constancia_solvencia_socio3)
+                                            <div class="d-flex justify-content-center">
+                                            <img src="{{ asset('storage/'.$inscripcionFirma->constancia_solvencia_socio3) }}" 
+                                                alt="Constancia de solvencia del Socio 3" 
+                                                class="img-fluid rounded" 
+                                                style="width: auto; height: 900px; object-fit: contain;">
+                                        </div>
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido la constacia de solvencia</span>
                                     @endif
                                 </div>
                             </div>
@@ -522,10 +513,10 @@
                                             <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 3" 
                                                 style="width: 90%; height: 90%; object-fit: contain;">
                                         @else
-                                            <p>No Disponible</p>
+                                            <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
                                         @endif
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
                                     @endif
                                 </div>
                             </div>
@@ -546,10 +537,10 @@
                                             <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Título Universitario Reverso del socio 3" 
                                                 style="width: 90%; height: 90%; object-fit: contain;">
                                         @else
-                                            <p>No Disponible</p>
+                                            <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
                                         @endif
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
                                     @endif
                                 </div>
                             </div>
@@ -606,7 +597,7 @@
                                                         Este navegador no soporta PDFs. Por favor, descargue el PDF para verlo: <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio4) }}">Descargar PDF</a>.
                                                     </iframe>
                                                 @else
-                                                    <p>No Disponible</p>
+                                                    <span style="text-decoration: line-through;">No se ha subido Curriculum Vitae</span>
                                                 @endif
                                             </div>
                                         </div>
@@ -623,7 +614,7 @@
                                                     style="max-width: 100%; height: auto; max-height: 100px; object-fit: contain;">
                                             </div>
                                         @else
-                                            <p>No se ha subido firma digital.</p>
+                                            <span style="text-decoration: line-through;">No se ha subido firma digital</span>
                                         @endif
                                     </div>
 
@@ -631,25 +622,22 @@
                             </div>
                         </div>
 
-                        {{-- Título universitario frontal | Socio 4 --}}
+                        {{-- Constancia de solvencia | Socio 4 --}}
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-warning text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>CONSTANCIA DE SOLVENCIA</strong></h4>
                                 </div>
                                 <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcionFirma->imagen_titulo_socio4)
-                                        @php
-                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio4);
-                                        @endphp
-                                        @if(count($imagenes) > 0)
-                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 4" 
-                                                style="width: 90%; height: 90%; object-fit: contain;">
-                                        @else
-                                            <p>No Disponible</p>
-                                        @endif
+                                    @if($inscripcionFirma->constancia_solvencia_socio4)
+                                            <div class="d-flex justify-content-center">
+                                            <img src="{{ asset('storage/'.$inscripcionFirma->constancia_solvencia_socio4) }}" 
+                                                alt="Constancia de solvencia del Socio 4" 
+                                                class="img-fluid rounded" 
+                                                style="width: auto; height: 900px; object-fit: contain;">
+                                        </div>
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido la constancia de solvencia</span>
                                     @endif
                                 </div>
                             </div>
@@ -670,10 +658,10 @@
                                             <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 4" 
                                                 style="width: 90%; height: 90%; object-fit: contain;">
                                         @else
-                                            <p>No Disponible</p>
+                                            <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
                                         @endif
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
                                     @endif
                                 </div>
                             </div>
@@ -694,10 +682,10 @@
                                             <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Título Universitario Reverso del socio 4" 
                                                 style="width: 90%; height: 90%; object-fit: contain;">
                                         @else
-                                            <p>No Disponible</p>
+                                            <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
                                         @endif
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
                                     @endif
                                 </div>
                             </div>
@@ -718,7 +706,7 @@
                                     @if($inscripcionFirma->imagen_escritura_constitucion)
                                         <img src="{{ asset('storage/'.$inscripcionFirma->imagen_escritura_constitucion) }}" alt="Escritura de constitución de la firma" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido la escritura de constitución</span>
                                     @endif
                                 </div>
                             </div>
@@ -733,7 +721,7 @@
                                     @if($inscripcionFirma->imagen_registro_mercantil)
                                         <img src="{{ asset('storage/'.$inscripcionFirma->imagen_registro_mercantil) }}" alt="Registro mercantil de la firma" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido el registro mercantil</span>
                                     @endif
                                 </div>
                             </div>
@@ -748,7 +736,7 @@
                                     @if($inscripcionFirma->imagen_rtn_firma_auditora)
                                         <img src="{{ asset('storage/'.$inscripcionFirma->imagen_rtn_firma_auditora) }}" alt="RTN de la firma" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                                     @else
-                                        <p>No Disponible</p>
+                                        <span style="text-decoration: line-through;">No se ha subido el RTN de la firma</span>
                                     @endif
                                 </div>
                             </div>
@@ -769,7 +757,7 @@
                                     @if($inscripcionFirma->imagen_firma_social)
                                         <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_social) }}" alt="Firma Digital de la firma social" class="img-fluid rounded" style="max-width: 200px; max-height: 200px;">
                                     @else
-                                        <p><span style="text-decoration: line-through;">No disponible</span></p>
+                                        <span style="text-decoration: line-through;">No se ha subido la firma social</span>
                                     @endif
                                 </div>
                             </div>
@@ -786,7 +774,7 @@
                                     @if($inscripcionFirma->imagen_firma_representante_legal)
                                         <img src="{{ asset('storage/'.$inscripcionFirma->imagen_firma_representante_legal) }}" alt="Firma Digital del representante legal" class="img-fluid rounded" style="max-width: 200px; max-height: 200px;">
                                     @else
-                                        <p><span style="text-decoration: line-through;">No disponible</span></p>
+                                    <span style="text-decoration: line-through;">No se ha subido la firma del representante legal</span>
                                     @endif
                                 </div>
                             </div>
