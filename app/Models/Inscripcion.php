@@ -27,6 +27,7 @@ class Inscripcion extends Model
         'telefono',
         'telefono_celular',
         'email',
+        'municipio_realiza_solicitud',
 
         // II. Datos Profesionales
         'fecha_graduacion',
@@ -80,6 +81,7 @@ class Inscripcion extends Model
         'imagen_dni_beneficiario2',
         'imagen_dni_beneficiario3',
         'imagen_rtn',
+        'imagen_firma_solicitante',
 
         // IX. Estado de la inscripción
         'estado',

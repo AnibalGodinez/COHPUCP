@@ -129,7 +129,7 @@
                                         <i class="fas fa-map-marker-alt" style="margin-right: 8px; color:rgb(235, 13, 13)"></i>
                                         <strong>LUGAR DE NACIMIENTO</strong>
                                     </label>
-                                    <input type="text" class="form-control" id="lugar_nacimiento" name="lugar_nacimiento" value="{{ old('lugar_nacimiento') }}">
+                                    <input type="text" class="form-control" id="lugar_nacimiento" name="lugar_nacimiento" value="{{ old('lugar_nacimiento') }}" placeholder="Ingrese su lugar de nacimiento">
                                     @if ($errors->has('lugar_nacimiento'))
                                         <div class="alert alert-danger">
                                             {{ $errors->first('lugar_nacimiento') }}
@@ -143,7 +143,7 @@
                                         <i class="fas fa-home" style="margin-right: 8px;"></i>
                                         <strong>DIRECCIÓN DE RESIDENCIA</strong>
                                     </label>
-                                    <input type="text" class="form-control" id="direccion_residencia" name="direccion_residencia" value="{{ old('direccion_residencia') }}">
+                                    <input type="text" class="form-control" id="direccion_residencia" name="direccion_residencia" value="{{ old('direccion_residencia') }}" placeholder="Ingrese su dirección de residencia">
                                     @if ($errors->has('direccion_residencia'))
                                         <div class="alert alert-danger">
                                             {{ $errors->first('direccion_residencia') }}
@@ -152,7 +152,7 @@
                                 </div>
 
                                 <!-- TELÉFONO FIJO (readonly) -->
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="telefono">
                                         <i class="fas fa-phone" style="margin-right: 8px;"></i>
                                         <strong>TELÉFONO FIJO</strong>
@@ -161,7 +161,7 @@
                                 </div>
 
                                 <!-- CELULAR (readonly) -->
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="telefono_celular">
                                         <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
                                         <strong>CELULAR *</strong>
@@ -170,11 +170,26 @@
                                 </div>
 
                                 <!-- CORREO ELECTRÓNICO (readonly) -->
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="email">
+                                        <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                                         <strong>CORREO ELECTRÓNICO *</strong>
                                     </label>
                                     <input type="email" class="form-control" id="email" name="email" readonly>
+                                </div>
+                                
+                                <!-- CAMPO DEL MUNICIPIO DONDE REALIZA LA SOLICITUD -->
+                                <div class="col-md-3">
+                                    <label for="municipio_realiza_solicitud">
+                                        <i class="fas fa-city" style="margin-right: 8px; color:rgb(20, 17, 204)"></i>
+                                        <strong>MUNICIPIO DONDE REALIZA LA SOLICITUD</strong>
+                                    </label>
+                                    <input type="text" class="form-control @error('municipio_realiza_solicitud') is-invalid @enderror" id="municipio_realiza_solicitud" name="municipio_realiza_solicitud" value="{{ old('municipio_realiza_solicitud') }}" placeholder="Ingrese el municipio">
+                                    @error('municipio_realiza_solicitud')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
 
                             </div>
@@ -238,7 +253,7 @@
                                         <i class="fas fa-building" style="margin-right: 8px;"></i>
                                         <strong>EMPRESA DONDE LABORA ACTUALMENTE</strong>
                                     </label>
-                                    <input type="text" name="nombre_empresa_trabajo_actual" id="nombre_empresa_trabajo_actual" class="form-control" value="{{ old('nombre_empresa_trabajo_actual') }}">
+                                    <input type="text" name="nombre_empresa_trabajo_actual" id="nombre_empresa_trabajo_actual" class="form-control" value="{{ old('nombre_empresa_trabajo_actual') }}" placeholder="Ingrese el nombre de la empresa donde labora actualmente">
                                     @if ($errors->has('nombre_empresa_trabajo_actual'))
                                         <div class="alert alert-danger">
                                             {{ $errors->first('nombre_empresa_trabajo_actual') }}
@@ -252,7 +267,7 @@
                                         <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
                                         <strong>CARGO</strong>
                                     </label>
-                                    <input type="text" name="cargo" id="cargo" class="form-control" value="{{ old('cargo') }}">
+                                    <input type="text" name="cargo" id="cargo" class="form-control" value="{{ old('cargo') }}" placeholder="Ingrese su cargo">
                                     @if ($errors->has('cargo'))
                                         <div class="alert alert-danger">
                                             {{ $errors->first('cargo') }}
@@ -266,7 +281,7 @@
                                         <i class="fas fa-location-arrow" style="margin-right: 8px;"></i>
                                         <strong>DIRECCIÓN DE LA EMPRESA</strong>
                                     </label>
-                                    <input type="text" name="direccion_empresa" id="direccion_empresa" class="form-control" value="{{ old('direccion_empresa') }}">
+                                    <input type="text" name="direccion_empresa" id="direccion_empresa" class="form-control" value="{{ old('direccion_empresa') }}" placeholder="Ingrese la dirección de la empresa">
                                     @if ($errors->has('direccion_empresa'))
                                         <div class="alert alert-danger">
                                             {{ $errors->first('direccion_empresa') }}
@@ -280,12 +295,12 @@
                                         <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                                         <strong>CORREO DE LA EMPRESA</strong>
                                     </label>
-                                    <input type="email" name="correo_empresa" id="correo_empresa" class="form-control" value="{{ old('correo_empresa') }}">
-                                    @if ($errors->has('correo_empresa'))
-                                        <div class="alert alert-danger">
-                                            {{ $errors->first('correo_empresa') }}
-                                        </div>
-                                    @endif
+                                    <input type="email" name="correo_empresa" id="correo_empresa" class="form-control" value="{{ old('correo_empresa') }}" placeholder="Ingrese el correo de la empresa">
+                                    @error('correo_empresa')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <!-- TELÉFONO DE LA EMPRESA -->
@@ -294,7 +309,7 @@
                                         <i class="fas fa-phone" style="margin-right: 8px;"></i>
                                         <strong>TELÉFONO DE LA EMPRESA</strong>
                                     </label>
-                                    <input type="text" name="telefono_empresa" id="telefono_empresa" class="form-control" value="{{ old('telefono_empresa') }}">
+                                    <input type="text" name="telefono_empresa" id="telefono_empresa" class="form-control" value="{{ old('telefono_empresa') }}" placeholder="Ingrese el teléfono de la empresa">
                                     @if ($errors->has('telefono_empresa'))
                                         <div class="alert alert-danger">
                                             {{ $errors->first('telefono_empresa') }}
@@ -308,13 +323,14 @@
                                         <i class="fas fa-phone" style="margin-right: 8px;"></i>
                                         <strong>EXTENSIÓN TELEFÓNICA</strong>
                                     </label>
-                                    <input type="text" name="extension_telefono_empresa" id="extension_telefono_empresa" class="form-control" value="{{ old('extension_telefono_empresa') }}">
+                                    <input type="text" name="extension_telefono_empresa" id="extension_telefono_empresa" class="form-control" value="{{ old('extension_telefono_empresa') }}" placeholder="Ingrese la extensión telefónica">
                                     @if ($errors->has('extension_telefono_empresa'))
                                         <div class="alert alert-danger">
                                             {{ $errors->first('extension_telefono_empresa') }}
                                         </div>
                                     @endif
                                 </div>
+
 
                             </div>
 
@@ -330,7 +346,7 @@
                                         <i class="fas fa-stethoscope" style="margin-right: 8px;"></i>
                                         <strong>ESPECIALIDAD 1</strong>
                                     </label>
-                                    <input type="text" name="especialidad_1" id="especialidad_1" class="form-control @error('especialidad_1') is-invalid @enderror" value="{{ old('especialidad_1') }}">
+                                    <input type="text" name="especialidad_1" id="especialidad_1" class="form-control @error('especialidad_1') is-invalid @enderror" value="{{ old('especialidad_1') }}" placeholder="Ingrese la especialidad 1">
                                     @error('especialidad_1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -344,7 +360,7 @@
                                         <i class="fas fa-building" style="margin-right: 8px;"></i>
                                         <strong>LUGAR DONDE REALIZÓ ESPECIALIZACIÓN</strong>
                                     </label>
-                                    <input type="text" name="lugar_especialidad_1" id="lugar_especialidad_1" class="form-control @error('lugar_especialidad_1') is-invalid @enderror" value="{{ old('lugar_especialidad_1') }}">
+                                    <input type="text" name="lugar_especialidad_1" id="lugar_especialidad_1" class="form-control @error('lugar_especialidad_1') is-invalid @enderror" value="{{ old('lugar_especialidad_1') }}" placeholder="Ingrese el lugar donde realizó la especialización">
                                     @error('lugar_especialidad_1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -388,7 +404,7 @@
                                         <i class="fas fa-stethoscope" style="margin-right: 8px;"></i>
                                         <strong>ESPECIALIDAD 2</strong>
                                     </label>
-                                    <input type="text" name="especialidad_2" id="especialidad_2" class="form-control @error('especialidad_2') is-invalid @enderror" value="{{ old('especialidad_2') }}">
+                                    <input type="text" name="especialidad_2" id="especialidad_2" class="form-control @error('especialidad_2') is-invalid @enderror" value="{{ old('especialidad_2') }}" placeholder="Ingrese la especialidad 2">
                                     @error('especialidad_2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -402,7 +418,7 @@
                                         <i class="fas fa-building" style="margin-right: 8px;"></i>
                                         <strong>LUGAR DONDE REALIZÓ ESPECIALIZACIÓN</strong>
                                     </label>
-                                    <input type="text" name="lugar_especialidad_2" id="lugar_especialidad_2" class="form-control @error('lugar_especialidad_2') is-invalid @enderror" value="{{ old('lugar_especialidad_2') }}">
+                                    <input type="text" name="lugar_especialidad_2" id="lugar_especialidad_2" class="form-control @error('lugar_especialidad_2') is-invalid @enderror" value="{{ old('lugar_especialidad_2') }}" placeholder="Ingrese el lugar donde realizó la especialización">
                                     @error('lugar_especialidad_2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -455,7 +471,7 @@
                                         <i class="fas fa-book" style="margin-right: 8px;"></i>
                                         <strong>NOMBRE DEL CURSO DE ESPECIALIZACIÓN</strong>
                                     </label>
-                                    <input type="text" name="nombre_curso_especializacion" id="nombre_curso_especializacion" class="form-control @error('nombre_curso_especializacion') is-invalid @enderror" value="{{ old('nombre_curso_especializacion') }}">
+                                    <input type="text" name="nombre_curso_especializacion" id="nombre_curso_especializacion" class="form-control @error('nombre_curso_especializacion') is-invalid @enderror" value="{{ old('nombre_curso_especializacion') }}" placeholder="Ingrese el nombre del curso de la especialización">
                                     @error('nombre_curso_especializacion')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -469,7 +485,7 @@
                                         <i class="fas fa-building" style="margin-right: 8px;"></i>
                                         <strong>LUGAR DEL CURSO</strong>
                                     </label>
-                                    <input type="text" name="lugar_curso" id="lugar_curso" class="form-control @error('lugar_curso') is-invalid @enderror" value="{{ old('lugar_curso') }}">
+                                    <input type="text" name="lugar_curso" id="lugar_curso" class="form-control @error('lugar_curso') is-invalid @enderror" value="{{ old('lugar_curso') }}" placeholder="Ingrese el lugar donde realizó el curso de la especialización">
                                     @error('lugar_curso')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -522,7 +538,7 @@
                                         <i class="fas fa-building" style="margin-right: 8px;"></i>
                                         <strong>NOMBRE DE LA EMPRESA 1</strong>
                                     </label>
-                                    <input type="text" name="nombre_empresa1" id="nombre_empresa1" class="form-control @error('nombre_empresa1') is-invalid @enderror" value="{{ old('nombre_empresa1') }}">
+                                    <input type="text" name="nombre_empresa1" id="nombre_empresa1" class="form-control @error('nombre_empresa1') is-invalid @enderror" value="{{ old('nombre_empresa1') }}" placeholder="Ingrese el nombre de la empresa">
                                     @error('nombre_empresa1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -536,7 +552,7 @@
                                         <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
                                         <strong>CARGO DE LA EMPRESA 1</strong>
                                     </label>
-                                    <input type="text" name="cargo_empresa1" id="cargo_empresa1" class="form-control @error('cargo_empresa1') is-invalid @enderror" value="{{ old('cargo_empresa1') }}">
+                                    <input type="text" name="cargo_empresa1" id="cargo_empresa1" class="form-control @error('cargo_empresa1') is-invalid @enderror" value="{{ old('cargo_empresa1') }}" placeholder="Ingrese el cargo de la empresa">
                                     @error('cargo_empresa1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -550,7 +566,7 @@
                                         <i class="fas fa-hourglass-half" style="margin-right: 8px;"></i>
                                         <strong>DURACIÓN DE LA EMPRESA 1</strong>
                                     </label>
-                                    <input type="text" name="duración_empresa1" id="duración_empresa1" class="form-control @error('duración_empresa1') is-invalid @enderror" value="{{ old('duración_empresa1') }}">
+                                    <input type="text" name="duración_empresa1" id="duración_empresa1" class="form-control @error('duración_empresa1') is-invalid @enderror" value="{{ old('duración_empresa1') }}" placeholder="Ingrese la duración de la empresa">
                                     @error('duración_empresa1')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -564,7 +580,7 @@
                                         <i class="fas fa-building" style="margin-right: 8px;"></i>
                                         <strong>NOMBRE DE LA EMPRESA 2</strong>
                                     </label>
-                                    <input type="text" name="nombre_empresa2" id="nombre_empresa2" class="form-control @error('nombre_empresa2') is-invalid @enderror" value="{{ old('nombre_empresa2') }}">
+                                    <input type="text" name="nombre_empresa2" id="nombre_empresa2" class="form-control @error('nombre_empresa2') is-invalid @enderror" value="{{ old('nombre_empresa2') }}" placeholder="Ingrese el nombre de la empresa">
                                     @error('nombre_empresa2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -578,7 +594,7 @@
                                         <i class="fas fa-briefcase" style="margin-right: 8px;"></i>
                                         <strong>CARGO DE LA EMPRESA 2</strong>
                                     </label>
-                                    <input type="text" name="cargo_empresa2" id="cargo_empresa2" class="form-control @error('cargo_empresa2') is-invalid @enderror" value="{{ old('cargo_empresa2') }}">
+                                    <input type="text" name="cargo_empresa2" id="cargo_empresa2" class="form-control @error('cargo_empresa2') is-invalid @enderror" value="{{ old('cargo_empresa2') }}" placeholder="Ingrese el cargo en la empresa">
                                     @error('cargo_empresa2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -592,7 +608,7 @@
                                         <i class="fas fa-hourglass-half" style="margin-right: 8px;"></i>
                                         <strong>DURACIÓN DE LA EMPRESA 2</strong>
                                     </label>
-                                    <input type="text" name="duración_empresa2" id="duración_empresa2" class="form-control @error('duración_empresa2') is-invalid @enderror" value="{{ old('duración_empresa2') }}">
+                                    <input type="text" name="duración_empresa2" id="duración_empresa2" class="form-control @error('duración_empresa2') is-invalid @enderror" value="{{ old('duración_empresa2') }}" placeholder="Ingrese la duración de la empresa">
                                     @error('duración_empresa2')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -615,7 +631,7 @@
                                         <i class="fas fa-clipboard-list" style="margin-right: 8px;"></i>
                                         <strong>COMISIONES</strong>
                                     </label>
-                                    <textarea name="comisiones" id="comisiones" class="form-control @error('comisiones') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;">{{ old('comisiones') }}</textarea>
+                                    <textarea name="comisiones" id="comisiones" class="form-control @error('comisiones') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;" placeholder="Ingrese una pequeña descripción de las comisiones que ha realizado">{{ old('comisiones') }}</textarea>
                                     @error('comisiones')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -629,7 +645,7 @@
                                         <i class="fas fa-user-tie" style="margin-right: 8px;"></i>
                                         <strong>REPRESENTACIONES</strong>
                                     </label>
-                                    <textarea name="representaciones" id="representaciones" class="form-control @error('representaciones') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;">{{ old('representaciones') }}</textarea>
+                                    <textarea name="representaciones" id="representaciones" class="form-control @error('representaciones') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;" placeholder="Ingrese una pequeña descripción de las representaciones que ha realizado">{{ old('representaciones') }}</textarea>
                                     @error('representaciones')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -643,7 +659,7 @@
                                         <i class="fas fa-handshake" style="margin-right: 8px;"></i>
                                         <strong>DELEGACIONES</strong>
                                     </label>
-                                    <textarea name="delegaciones" id="delegaciones" class="form-control @error('delegaciones') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;">{{ old('delegaciones') }}</textarea>
+                                    <textarea name="delegaciones" id="delegaciones" class="form-control @error('delegaciones') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;" placeholder="Ingrese una pequeña descripción de las delegaciones que ha realizado">{{ old('delegaciones') }}</textarea>
                                     @error('delegaciones')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -666,7 +682,7 @@
                                     <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
                                     <strong>PUBLICACIÓN DE DOCUMENTOS</strong>
                                 </label>
-                                <textarea name="publicacion_documentos" id="publicacion_documentos" class="form-control @error('publicacion_documentos') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;">{{ old('publicacion_documentos') }}</textarea>
+                                <textarea name="publicacion_documentos" id="publicacion_documentos" class="form-control @error('publicacion_documentos') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;" placeholder="Ingrese una pequeña descripción de publicaciones de documentos que ha realizado">{{ old('publicacion_documentos') }}</textarea>
                                 @error('publicacion_documentos')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -680,7 +696,7 @@
                                     <i class="fas fa-newspaper" style="margin-right: 8px;"></i>
                                     <strong>PUBLICACIONES</strong>
                                 </label>
-                                <textarea name="publicaciones" id="publicaciones" class="form-control @error('publicaciones') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;">{{ old('publicaciones') }}</textarea>
+                                <textarea name="publicaciones" id="publicaciones" class="form-control @error('publicaciones') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;" placeholder="Ingrese una pequeña descripción de las publicaciones que ha realizado">{{ old('publicaciones') }}</textarea>
                                 @error('publicaciones')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -694,7 +710,7 @@
                                     <i class="fas fa-book" style="margin-right: 8px;"></i>
                                     <strong>PUBLICACIÓN DE UN LIBRO</strong>
                                 </label>
-                                <textarea name="publicacion_libro" id="publicacion_libro" class="form-control @error('publicacion_libro') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;">{{ old('publicacion_libro') }}</textarea>
+                                <textarea name="publicacion_libro" id="publicacion_libro" class="form-control @error('publicacion_libro') is-invalid @enderror" style="min-height: 150px; border: 1px solid #898b91;" placeholder="Ingrese una pequeña descripción de las publicaciones de libros que ha realizado">{{ old('publicacion_libro') }}</textarea>
                                 @error('publicacion_libro')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -848,6 +864,21 @@
                                     </div>
                                 </div>
 
+                                <!-- Campo para subir imagen de la firma digital -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="imagen_firma_solicitante" class="btn btn-default btn-simple">
+                                        <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                        <strong>Subir firma digital</strong> 
+                                    </label>
+                                    <input type="file" id="imagen_firma_solicitante" name="imagen_firma_solicitante[]" accept="image/*" multiple>
+                                    <div id="previewImagenFirma"></div>
+                                    @error('imagen_firma_solicitante.*')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
                             </div>                            
 
                             <div class="form-group row mb-0">
@@ -939,6 +970,10 @@
 
     document.getElementById('imagen_rtn').addEventListener('change', function() {
         previewImages(this, 'previewImagenRtn');
+    });
+
+    document.getElementById('imagen_firma_solicitante').addEventListener('change', function() {
+        previewImages(this, 'previewImagenFirma');
     });
 
     // Función para previsualizar el curriculum vitae

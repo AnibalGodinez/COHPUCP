@@ -248,7 +248,7 @@
                     $imagenes = json_decode($inscripcion->imagen_titulo);
                 @endphp
                 @if(count($imagenes) > 1)
-                    <img src="{{ public_path('storage/' . $imagenes[1]) }}" alt="Foto del Título Universitario Reverso" class="img-fluid" style="width: 100%; height: 100%; object-fit: contain;">
+                    <img src="{{ public_path('storage/' . $imagenes[1]) }}" alt="Foto del Título Universitario Reverso" class="img-fluid" style="width: 100%; height: 90%; object-fit: contain;">
                 @else
                     <p>No disponible</p>
                 @endif
@@ -267,7 +267,7 @@
                         $imagenes = json_decode($inscripcion->imagen_dni);
                     @endphp
                     @if(!empty($imagenes))
-                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del DNI Frontal" class="img-fluid" style="width: 80%; height: auto; object-fit: contain; margin-bottom: 80px;">
+                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del DNI Frontal" class="img-fluid" style="width: 80%; height: auto; object-fit: contain; margin-bottom: 20px;">
                     @else
                         <p>No disponible</p>
                     @endif
@@ -299,7 +299,7 @@
                         $imagenes = json_decode($inscripcion->imagen_tamano_carnet);
                     @endphp
                     @if(!empty($imagenes))
-                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto tamaño carnet 1" class="img-fluid" style="width: 50%; height: auto; object-fit: contain; margin-bottom: 60px;">
+                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto tamaño carnet 1" class="img-fluid" style="width: 50%; height: auto; object-fit: contain; margin-bottom: 40px;">
                     @else
                         <p>No disponible</p>
                     @endif
@@ -314,10 +314,10 @@
                     @if(count($imagenes) > 1)
                         <img src="{{ public_path('storage/' . $imagenes[1]) }}" alt="Foto tamaño carnet 2" class="img-fluid" style="width: 50%; height: auto; object-fit: contain;">
                     @else
-                        <p>No disponible</p>
+                        <p>Foto carnet</p>
                     @endif
                 @else
-                    <p>No disponible</p>
+                    <p>Foto carnet</p>
                 @endif
             </div>
         </div>
@@ -331,7 +331,7 @@
                         $imagenes = json_decode($inscripcion->imagen_dni_beneficiario1);
                     @endphp
                     @if(!empty($imagenes))
-                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del DNI del beneficiario 1 Frontal" class="img-fluid" style="width: 80%; height: auto; object-fit: contain; margin-bottom: 80px;">
+                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del DNI del beneficiario 1 Frontal" class="img-fluid" style="width: 80%; height: auto; object-fit: contain; margin-bottom: 20px;">
                     @else
                         <p>No disponible</p>
                     @endif
@@ -363,7 +363,7 @@
                         $imagenes = json_decode($inscripcion->imagen_dni_beneficiario2);
                     @endphp
                     @if(!empty($imagenes))
-                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del DNI del beneficiario 2 Frontal" class="img-fluid" style="width: 80%; height: auto; object-fit: contain; margin-bottom: 80px;">
+                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del DNI del beneficiario 2 Frontal" class="img-fluid" style="width: 80%; height: auto; object-fit: contain; margin-bottom: 20px;">
                     @else
                         <p>No disponible</p>
                     @endif
@@ -395,7 +395,7 @@
                         $imagenes = json_decode($inscripcion->imagen_dni_beneficiario3);
                     @endphp
                     @if(!empty($imagenes))
-                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del DNI del beneficiario 3 Frontal" class="img-fluid" style="width: 80%; height: auto; object-fit: contain; margin-bottom: 80px;">
+                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del DNI del beneficiario 3 Frontal" class="img-fluid" style="width: 80%; height: auto; object-fit: contain; margin-bottom: 20px;">
                     @else
                         <p>No disponible</p>
                     @endif
@@ -421,13 +421,13 @@
         <!-- Imágenes del rtn -->
         <div class="page-break">
             <div class="section text-center">
-                <h4 style="text-decoration: underline;">FOTO DEL RTN</h4><br><br>
+                <h4 style="text-decoration: underline; margin-bottom: 60px;">FOTO DEL RTN</h4>
                 @if($inscripcion->imagen_rtn)
                     @php
                         $imagenes = json_decode($inscripcion->imagen_rtn);
                     @endphp
                     @if(!empty($imagenes))
-                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del RTN Frontal" class="img-fluid" style="width: 100%; height: auto; object-fit: contain; margin-bottom: 80px;">
+                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="Foto del RTN Frontal" class="img-fluid" style="width: 100%; height: auto; object-fit: contain;">
                     @else
                         <p>No disponible</p>
                     @endif

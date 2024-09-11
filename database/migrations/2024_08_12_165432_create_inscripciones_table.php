@@ -27,6 +27,7 @@ class CreateInscripcionesTable extends Migration
             $table->string('telefono')->nullable();
             $table->string('telefono_celular');
             $table->string('email')->unique();
+            $table->string('municipio_realiza_solicitud')->nullable();
 
             // II. Datos Personales
             $table->date('fecha_graduacion');
@@ -34,7 +35,7 @@ class CreateInscripcionesTable extends Migration
             $table->string('nombre_empresa_trabajo_actual')->nullable();
             $table->string('cargo')->nullable();
             $table->string('direccion_empresa')->nullable();
-            $table->string('correo_empresa')->nullable();
+            $table->string('correo_empresa')->nullable()->unique();
             $table->string('telefono_empresa')->nullable();
             $table->string('extension_telefono_empresa')->nullable();
 
@@ -79,7 +80,8 @@ class CreateInscripcionesTable extends Migration
             $table->json('imagen_dni_beneficiario1');
             $table->json('imagen_dni_beneficiario2')->nullable();
             $table->json('imagen_dni_beneficiario3')->nullable();
-            $table->json('imagen_rtn');
+            $table->json('imagen_rtn')->nullable();
+            $table->json('imagen_firma_solicitante')->nullable();
 
             // IX. Estado de la inscripción
             $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente');

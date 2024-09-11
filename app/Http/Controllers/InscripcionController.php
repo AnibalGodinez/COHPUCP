@@ -47,6 +47,7 @@ class InscripcionController extends Controller
             'telefono' => 'nullable|string|max:40',
             'telefono_celular' => 'required|string|max:40',
             'email' => 'required|email|max:255|unique:inscripciones,email',
+            'municipio_realiza_solicitud' => 'nullable|string|max:255',
 
             // II. Datos Profesionales
             'fecha_graduacion' => 'required|date',
@@ -54,7 +55,7 @@ class InscripcionController extends Controller
             'nombre_empresa_trabajo_actual' => 'nullable|string|max:255',
             'cargo' => 'nullable|string|max:255',
             'direccion_empresa' => 'nullable|string|max:255',
-            'correo_empresa' => 'nullable|email|max:255',
+            'correo_empresa' => 'nullable|email|max:255|unique:inscripciones,correo_empresa',
             'telefono_empresa' => 'nullable|string|max:255',
             'extension_telefono_empresa' => 'nullable|string|max:255',
 
@@ -115,31 +116,47 @@ class InscripcionController extends Controller
             'imagen_rtn' => 'required|array',
             'imagen_rtn.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
 
+            'imagen_firma_solicitante' => 'required|array',
+            'imagen_firma_solicitante.*' => 'image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
+
             // IX. Estado de la inscripción
             'descripcion_estado_solicitud' => 'nullable|string',
         ], [
+            'correo_empresa.unique' => 'El correo electrónico ya está en uso',
+
             'imagen_titulo.*.image' => 'El archivo del título universitario debe ser una imagen.',
             'imagen_titulo.*.mimes' => 'El título universitario debe estar en formato jpeg, png, jpg o gif.',
             'imagen_titulo.*.max' => 'El título universitario no debe exceder 10MB.',
+
             'imagen_dni.*.image' => 'El archivo del DNI debe ser una imagen.',
             'imagen_dni.*.mimes' => 'El DNI debe estar en formato jpeg, png, jpg o gif.',
             'imagen_dni.*.max' => 'El DNI no debe exceder 10MB.',
+            
             'imagen_tamano_carnet.*.image' => 'El archivo de la foto tamaño carnet debe ser una imagen.',
             'imagen_tamano_carnet.*.mimes' => 'La foto tamaño carnet debe estar en formato jpeg, png, jpg o gif.',
             'imagen_tamano_carnet.*.max' => 'La foto tamaño carnet no debe exceder 10MB.',
             'imagen_tamano_carnet.*.dimensions' => 'La foto tamaño carnet debe tener un tamaño máximo de 35 mm x 45 mm.',
+
             'imagen_dni_beneficiario1.*.image' => 'El archivo del DNI del beneficiario 1 debe ser una imagen.',
             'imagen_dni_beneficiario1.*.mimes' => 'El DNI del beneficiario 1 debe estar en formato jpeg, png, jpg o gif.',
             'imagen_dni_beneficiario1.*.max' => 'El DNI del beneficiario 1 no debe exceder 10MB.',
+
             'imagen_dni_beneficiario2.*.image' => 'El archivo del DNI del beneficiario 2 debe ser una imagen.',
             'imagen_dni_beneficiario2.*.mimes' => 'El DNI del beneficiario 2 debe estar en formato jpeg, png, jpg o gif.',
             'imagen_dni_beneficiario2.*.max' => 'El DNI del beneficiario 2 no debe exceder 10MB.',
+
             'imagen_dni_beneficiario3.*.image' => 'El archivo del DNI del beneficiario 3 debe ser una imagen.',
             'imagen_dni_beneficiario3.*.mimes' => 'El DNI del beneficiario 3 debe estar en formato jpeg, png, jpg o gif.',
             'imagen_dni_beneficiario3.*.max' => 'El DNI del beneficiario 3 no debe exceder 10MB.',
+
             'imagen_rtn.*.image' => 'El archivo del RTN debe ser una imagen.',
             'imagen_rtn.*.mimes' => 'El RTN debe estar en formato jpeg, png, jpg o gif.',
             'imagen_rtn.*.max' => 'El RTN no debe exceder 10MB.',
+
+            'imagen_firma_solicitante.*.image' => 'El archivo del RTN debe ser una imagen.',
+            'imagen_firma_solicitante.*.mimes' => 'El RTN debe estar en formato jpeg, png, jpg o gif.',
+            'imagen_firma_solicitante.*.max' => 'El RTN no debe exceder 10MB.',
+
             'cv.required' => 'El Currículum Vitae es obligatorio.',
             'cv.mimes' => 'El Currículum Vitae debe estar en formato PDF.',
         ]);
@@ -222,6 +239,16 @@ class InscripcionController extends Controller
             }
         }
 
+        // Manejo de la imagen de la firma del soli
+        $rutasArchivosFirmaSolicitante = [];
+        if ($request->hasFile('imagen_firma_solicitante')) {
+            foreach ($request->file('imagen_firma_solicitante') as $imagenFirmaSolicitante) {
+                $nombreArchivoFirmaSolicitante = time() . '_' . $imagenFirmaSolicitante->getClientOriginalName();
+                $rutaArchivoFirmaSolicitante = $imagenFirmaSolicitante->storeAs('imgs_firma_socicitante_inscripcion', $nombreArchivoFirmaSolicitante, 'public');
+                $rutasArchivosFirmaSolicitante[] = $rutaArchivoFirmaSolicitante;
+            }
+        }
+
         Inscripcion::create([
             'user_id' => Auth::id(), 
             'fecha_inscripcion' => Carbon::now()->toDateString(),
@@ -238,6 +265,7 @@ class InscripcionController extends Controller
             'telefono' => $request->telefono,
             'telefono_celular' => $request->telefono_celular,
             'email' => $request->email,
+            'municipio_realiza_solicitud' => $request->municipio_realiza_solicitud,
 
             // II. Datos Profesionales
             'fecha_graduacion' => $request->fecha_graduacion,
@@ -291,6 +319,7 @@ class InscripcionController extends Controller
             'imagen_dni_beneficiario2' => json_encode($rutasArchivosDNIbeneficiario2),
             'imagen_dni_beneficiario3' => json_encode($rutasArchivosDNIbeneficiario3),
             'imagen_rtn' => json_encode($rutasArchivosRTN ),
+            'imagen_firma_solicitante' => json_encode($rutasArchivosFirmaSolicitante ),
         ]);
 
         return redirect()->route('inscripciones.create')->with('status', '¡Solicitud de inscripción enviada con éxito!');
