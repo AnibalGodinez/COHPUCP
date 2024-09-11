@@ -742,6 +742,24 @@
                             </div>
                         </div>
 
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
+                                <div class="card-header bg-warning text-white text-center">
+                                    <h4 class="card-title" ><strong>NÓMINA DE PAGO PROYECTADA DE LA FIRMA</strong></h4>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcionFirma->nomina_pago_firma)
+                                        <iframe src="{{ asset('storage/' . $inscripcionFirma->nomina_pago_firma) }}" 
+                                                style="width: 100%; height: 100%; border: none;" frameborder="0">
+                                                    Este navegador no soporta PDFs. Por favor, descargue el PDF para verlo: <a href="{{ asset('storage/' . $inscripcionFirma->nomina_pago_firma) }}">Descargar PDF</a>.
+                                        </iframe>
+                                    @else
+                                        <span style="text-decoration: line-through;">No se ha subido la nómina de pago proyectada</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <!-- FIRMA DIGITAL DE LA FIRMA SOCIAL -->
