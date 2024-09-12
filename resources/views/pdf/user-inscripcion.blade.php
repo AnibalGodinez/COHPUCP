@@ -293,7 +293,7 @@
         <!-- Imágenes tamaño carnet -->
         <div class="page-break">
             <div class="section text-center">
-                <h4 style="text-decoration: underline;">FOTOS TAMAÑO CARNET</h4><br><br>
+                <h4 style="text-decoration: underline;">FOTO TAMAÑO CARNET</h4><br><br>
                 @if($inscripcion->imagen_tamano_carnet)
                     @php
                         $imagenes = json_decode($inscripcion->imagen_tamano_carnet);
@@ -444,7 +444,7 @@
                 @if($inscripcion->cv)
                     <iframe src="{{ asset('storage/' . $inscripcion->cv) }}" 
                         style="width: 100%; height: 100%; border: none;" frameborder="0">
-                        Para ver el Curriculum Vitae, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcion->cv) }}"><br><br>Ver currículum vitae</a>
+                        Para ver el Curriculum Vitae, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcion->cv) }}"><br><br>ver currículum</a>
                     </iframe>
                 @else
                     <p>No disponible</p>
@@ -475,21 +475,49 @@
                 </p>
             </div><br><br><br>
 
-            <div class="section text-center" style="margin-left: -350px;">
+            <div class="section text-center" style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
                 <!-- Firma solicitante -->
-                <p><strong></strong> _________________________________ </p>
-                <p><strong></strong> Firma del solicitante</p>
+                @if($inscripcion->imagen_firma_solicitante)
+                    @php
+                        $imagenes = json_decode($inscripcion->imagen_firma_solicitante);
+                    @endphp
+                    @if(!empty($imagenes))
+                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="firma del solicitante" class="img-fluid" style="width: 20%; height: auto; object-fit: contain;">
+                    @else
+                        <p>No disponible</p>
+                    @endif
+                @else
+                    <p>No disponible</p>
+                @endif
+                <div class="section text-center" style="margin-top: -50px;">
+                    <p><strong></strong> _________________________________ </p>
+                    <p><strong></strong> Firma del solicitante</p>
+                </div>
             </div>
-
-            <div class="section text-center" style="margin-left: 350px; margin-top:-250px">
+            
+            <div class="section text-center" style="display: flex; justify-content: center; flex-direction: column; align-items: center; margin-top: 50px;">
                 <!-- Firma secretario -->
-                <p><strong></strong> _________________________________ </p>
-                <p><strong></strong> Firma del secretario(a)</p><br><br>
-            </div>
-
+                @if($inscripcion->imagen_firma_solicitante)
+                    @php
+                        $imagenes = json_decode($inscripcion->imagen_firma_solicitante);
+                    @endphp
+                    @if(!empty($imagenes))
+                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="firma del solicitante" class="img-fluid" style="width: 20%; height: auto; object-fit: contain;">
+                    @else
+                        <p>No disponible</p>
+                    @endif
+                @else
+                    <p>No disponible</p>
+                @endif
+                <div class="section text-center" style="margin-top: -50px;">
+                    <p><strong></strong> _________________________________ </p>
+                    <p><strong></strong> Firma del secretario(a)</p>
+                </div>
+            </div><br><br>
+            
             <div class="section text-center">
                 <!-- Fecha -->
-                <p><strong></strong> {{ \Carbon\Carbon::now()->format('d') }} de {{ \Carbon\Carbon::now()->translatedFormat('F') }} del {{ \Carbon\Carbon::now()->format('Y') }}</p>
+                <p><strong></strong> {{ $inscripcion->municipio_realiza_solicitud }}. {{ \Carbon\Carbon::now()->format('d') }} de {{ \Carbon\Carbon::now()->translatedFormat('F') }} del {{ \Carbon\Carbon::now()->format('Y') }}</p>
             </div>
         </div>
 

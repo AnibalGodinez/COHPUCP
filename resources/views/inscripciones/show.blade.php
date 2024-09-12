@@ -38,6 +38,7 @@
                                         <p><strong><strong>FECHA DE NACIMIENTO</strong></strong><br> {{ $inscripcion->fecha_nacimiento }}</p>
                                         <p><strong><strong>DIRECCIÓN DE RESIDENCIA</strong></strong><br> {{ $inscripcion->lugar_nacimiento }}</p>
                                         <p><strong><strong>CELULAR</strong></strong><br> {{ $inscripcion->telefono_celular }}</p>
+                                        <p><strong><strong>MUNICIPIO DONDE REALIZÓ SOLICITUD</strong></strong><br> {{ $inscripcion->municipio_realiza_solicitud }}</p>
                                     </div>
                                 </div><br>
                             </div>
@@ -440,6 +441,30 @@
                                                 frameborder="0">
                                             Este navegador no soporta PDFs. Por favor, descargue el PDF para verlo: <a href="{{ asset('storage/' . $inscripcion->cv) }}">Descargar PDF</a>.
                                         </iframe>
+                                    @else
+                                        <p>No Disponible</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FIRMA DIGITAL DEL SOLICITANTE -->
+                        <div class="col-md-6 mb-4 d-flex justify-content-center">
+                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
+                                <div class="card-header bg-default text-white text-center">
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong> FIRMA DIGITAL DEL SOLICITANTE</strong></h4>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center p-0">
+                                    @if($inscripcion->imagen_firma_solicitante)
+                                        @php
+                                            $imagenes = json_decode($inscripcion->imagen_firma_solicitante);
+                                        @endphp
+                                        @if(count($imagenes) > 0)
+                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="RTN Frontal" 
+                                                style="width: 50%; height: 50%; object-fit: contain;">
+                                        @else
+                                            <p>No Disponible</p>
+                                        @endif
                                     @else
                                         <p>No Disponible</p>
                                     @endif
