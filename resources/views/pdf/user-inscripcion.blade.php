@@ -497,18 +497,7 @@
             
             <div class="section text-center" style="display: flex; justify-content: center; flex-direction: column; align-items: center; margin-top: 50px;">
                 <!-- Firma secretario -->
-                @if($inscripcion->imagen_firma_solicitante)
-                    @php
-                        $imagenes = json_decode($inscripcion->imagen_firma_solicitante);
-                    @endphp
-                    @if(!empty($imagenes))
-                        <img src="{{ public_path('storage/' . $imagenes[0]) }}" alt="firma del solicitante" class="img-fluid" style="width: 20%; height: auto; object-fit: contain;">
-                    @else
-                        <p>No disponible</p>
-                    @endif
-                @else
-                    <p>No disponible</p>
-                @endif
+
                 <div class="section text-center" style="margin-top: -50px;">
                     <p><strong></strong> _________________________________ </p>
                     <p><strong></strong> Firma del secretario(a)</p>
