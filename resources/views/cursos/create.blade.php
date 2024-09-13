@@ -160,7 +160,7 @@
                                     
                                 <!-- Imagen de previsualización -->
                                 <div class="form-group">
-                                    <img id="imagePreview" src="#" alt="Vista previa de la imagen" style="display: none; height: 500px; width: 600px;">
+                                    <img id="imagePreview" src="#" alt="Vista previa de la imagen" style="display: none; height: 500px; width: auto;">
                                 </div>
                             </div>
                         </div>

@@ -134,7 +134,7 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-uppercase font-weight-bold 
-                    {{  request()->routeIs('cursos.index') || 
+                    {{ request()->routeIs('cursos.*') || 
                         request()->routeIs('capacitaciones.index') ? 'text-warning' : '' }}" 
                         href="#" 
                         id="navbarDropdown" 
@@ -144,13 +144,55 @@
                         Desarrollo Profesional
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.view') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('cursos.view')}}">Cursos</a>
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('capacitaciones.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.view') ? 'text-warning font-weight-bold' : ''}}" 
+                        id="cursosLink" href="{{ route('cursos.view') }}">Cursos</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('capacitaciones.index') ? 'text-warning font-weight-bold' : ''}}" 
+                        href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
                         <a class="dropdown-item text-uppercase" href="#">Certificaciones</a>
                         <a class="dropdown-item text-uppercase" href="#">Talleres</a>
                         <a class="dropdown-item text-uppercase" href="#">Diplomados</a>
                     </div>
+
+                    <!-- Submenú para Cursos -->
+                    <div class="dropdown-menu" id="subMenuCursos" style="position: absolute; top: 0; left: 100%; display: none; margin-left:-60px">
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.ver') ? 'text-warning font-weight-bold' : ''}}" 
+                        href="{{ route('cursos.view') }}">Ver cursos</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.create') ? 'text-warning font-weight-bold' : ''}}" 
+                        href="{{ route('cursos.create') }}">Crear curso</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.index') ? 'text-warning font-weight-bold' : ''}}" 
+                        href="{{ route('cursos.index') }}">Gestionar cursos</a>
+                    </div>
+                    
                 </li>
+
+                <script>
+                    // Obtener los elementos del DOM
+                    const cursosLink = document.getElementById('cursosLink');
+                    const subMenuCursos = document.getElementById('subMenuCursos');
+
+                    // Función para mostrar el submenú de Cursos
+                    const showSubMenuCursos = () => {
+                        subMenuCursos.style.display = 'block';
+                    };
+
+                    // Función para ocultar los submenús
+                    const hideSubMenusCursos = () => {
+                        subMenuCursos.style.display = 'none';
+                    };
+
+                    // Mostrar el submenú de Cursos cuando el cursor está sobre el enlace de Cursos
+                    cursosLink.addEventListener('mouseenter', showSubMenuCursos);
+
+                    // Mantener visible el submenú de Cursos mientras el cursor esté sobre él
+                    subMenuCursos.addEventListener('mouseenter', showSubMenuCursos);
+
+                    // Ocultar el submenú de Cursos cuando el cursor salga de él
+                    subMenuCursos.addEventListener('mouseleave', hideSubMenusCursos);
+
+                    // Ocultar los submenús cuando el cursor no esté sobre "Desarrollo Profesional" o "Cursos"
+                    document.getElementById('navbarDropdown').addEventListener('mouseleave', hideSubMenusCursos);
+                </script>
+
 
                 {{-- ----------------------------------------------------------------------------------------------------------------------------------------------------- --}}
 
@@ -404,7 +446,6 @@
                         <a class="dropdown-item text-uppercase {{request()->routeIs('pais.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('pais.index') }}">Países</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('idiomas.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('idiomas.index') }}">Idiomas</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('universidades.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('universidades.index') }}">Universidades</a>
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('cursos.index') }}">Cursos</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('numero_colegiacion.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('numero_colegiacion.index') }}">Asignar Nº colegiación</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('categorias.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('categorias.index') }}">Categorías</a> 
                         <a class="dropdown-item text-uppercase {{request()->routeIs('dashboard-content.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('dashboard-content.index') }}">Dasboard</a>
