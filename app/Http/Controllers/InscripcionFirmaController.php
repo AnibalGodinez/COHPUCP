@@ -88,6 +88,7 @@ class InscripcionFirmaController extends Controller
             'imagen_escritura_constitucion' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
             'imagen_registro_mercantil' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
             'imagen_rtn_firma_auditora' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
+            'nomina_pago_firma' => 'nullable|mimes:pdf',
 
             // IV. Firmas digitales
             'imagen_firma_social' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
@@ -98,34 +99,55 @@ class InscripcionFirmaController extends Controller
             'descripcion_estado_solicitud' => 'nullable|string',
         ], [
             // Mensajes de error personalizados
+            // socio 1
+            'cv_socio1.mimes' => 'El Currículum Vitae debe estar en formato PDF.',
             'imagen_firma_socio1.image' => 'El archivo de la firma digital del socio 1 debe ser una imagen.',
             'imagen_firma_socio1.mimes' => 'El archivo de la firma digital del socio 1 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
             'imagen_firma_socio1.max' => 'El archivo de la firma digital del socio 1 no debe exceder 10MB.',
-
+            'constancia_solvencia_socio1.image' => 'El archivo de la constancia de solvencia del socio 1 debe ser una imagen.',
+            'constancia_solvencia_socio1.mimes' => 'El archivo de la constancia de solvencia del socio 1 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
+            'constancia_solvencia_socio1.max' => 'El archivo de la constancia de solvencia del socio 1 no debe exceder 10MB.',
+            // socio 2
+            'cv_socio2.mimes' => 'El Currículum Vitae debe estar en formato PDF.',
             'imagen_firma_socio2.image' => 'El archivo de la firma digital del socio 2 debe ser una imagen.',
             'imagen_firma_socio2.mimes' => 'El archivo de la firma digital del socio 2 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
             'imagen_firma_socio2.max' => 'El archivo de la firma digital del socio 2 no debe exceder 10MB.',
-
+            'constancia_solvencia_socio2.image' => 'El archivo de la constancia de solvencia del socio 2 debe ser una imagen.',
+            'constancia_solvencia_socio2.mimes' => 'El archivo de la constancia de solvencia del socio 2 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
+            'constancia_solvencia_socio2.max' => 'El archivo de la constancia de solvencia del socio 2 no debe exceder 10MB.',
+            //socio 3
+            'cv_socio3.mimes' => 'El Currículum Vitae debe estar en formato PDF.',
             'imagen_firma_socio3.image' => 'El archivo de la firma digital del socio 3 debe ser una imagen.',
             'imagen_firma_socio3.mimes' => 'El archivo de la firma digital del socio 3 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
             'imagen_firma_socio3.max' => 'El archivo de la firma digital del socio 3 no debe exceder 10MB.',
-
+            'constancia_solvencia_socio3.image' => 'El archivo de la constancia de solvencia del socio 3 debe ser una imagen.',
+            'constancia_solvencia_socio3.mimes' => 'El archivo de la constancia de solvencia del socio 3 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
+            'constancia_solvencia_socio3.max' => 'El archivo de la constancia de solvencia del socio 3 no debe exceder 10MB.',
+            // socio 4
+            'cv_socio4.mimes' => 'El Currículum Vitae debe estar en formato PDF.',
             'imagen_firma_socio4.image' => 'El archivo de la firma digital del socio 4 debe ser una imagen.',
             'imagen_firma_socio4.mimes' => 'El archivo de la firma digital del socio 4 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
             'imagen_firma_socio4.max' => 'El archivo de la firma digital del socio 4 no debe exceder 10MB.',
+            'constancia_solvencia_socio4.image' => 'El archivo de la constancia de solvencia del socio 4 debe ser una imagen.',
+            'constancia_solvencia_socio4.mimes' => 'El archivo de la constancia de solvencia del socio 4 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
+            'constancia_solvencia_socio4.max' => 'El archivo de la constancia de solvencia del socio 4 no debe exceder 10MB.',
 
-            'imagen_escritura_constitucion.image' => 'El archivo de la firma digital del socio 4 debe ser una imagen.',
-            'imagen_escritura_constitucion.mimes' => 'El archivo de la firma digital del socio 4 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
-            'imagen_escritura_constitucion.max' => 'El archivo de la firma digital del socio 4 no debe exceder 10MB.',            
+            // documentos
+            'imagen_escritura_constitucion.image' => 'El archivo de la escritura de constitución debe ser una imagen.',
+            'imagen_escritura_constitucion.mimes' => 'El archivo de la escritura de constitución debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
+            'imagen_escritura_constitucion.max' => 'El archivo de la escritura de constitución no debe exceder 10MB.',            
 
-            'imagen_registro_mercantil.image' => 'El archivo de la firma digital del socio 4 debe ser una imagen.',
-            'imagen_registro_mercantil.mimes' => 'El archivo de la firma digital del socio 4 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
-            'imagen_registro_mercantil.max' => 'El archivo de la firma digital del socio 4 no debe exceder 10MB.',
+            'imagen_registro_mercantil.image' => 'El archivo del registro mercantil debe ser una imagen.',
+            'imagen_registro_mercantil.mimes' => 'El archivo del registro mercantil debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
+            'imagen_registro_mercantil.max' => 'El archivo del registro mercantil no debe exceder 10MB.',
 
-            'imagen_rtn_firma_auditora.image' => 'El archivo de la firma digital del socio 4 debe ser una imagen.',
-            'imagen_rtn_firma_auditora.mimes' => 'El archivo de la firma digital del socio 4 debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
-            'imagen_rtn_firma_auditora.max' => 'El archivo de la firma digital del socio 4 no debe exceder 10MB.',
+            'imagen_rtn_firma_auditora.image' => 'El archivo del rtn de la firma debe ser una imagen.',
+            'imagen_rtn_firma_auditora.mimes' => 'El archivo del rtn de la firma debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
+            'imagen_rtn_firma_auditora.max' => 'El archivo del rtn de la firma no debe exceder 10MB.',
 
+            'nomina_pago_firma.mimes' => 'El Currículum Vitae debe estar en formato PDF.',
+
+            // firmas
             'imagen_firma_social.image' => 'El archivo de la firma digital social debe ser una imagen.',
             'imagen_firma_social.mimes' => 'El archivo de la firma digital social debe estar en formato jpeg, png, jpg, gif, svg, webp, bmp, tiff, tif, ico o avif.',
             'imagen_firma_social.max' => 'El archivo de la firma digital social no debe exceder 10MB.',
@@ -222,6 +244,9 @@ class InscripcionFirmaController extends Controller
                 : null,
             'imagen_rtn_firma_auditora' => $request->hasFile('imagen_rtn_firma_auditora') 
                 ? $this->storeImage($request->file('imagen_rtn_firma_auditora'), 'img_firma_rtn') 
+                : null,
+            'nomina_pago_firma' => $request->hasFile('nomina_pago_firma') 
+                ? $this->storeFile($request->file('nomina_pago_firma'), 'nomina_pago_firma_inscripcion_firma') 
                 : null,     
 
             // IV. Firmas digitales

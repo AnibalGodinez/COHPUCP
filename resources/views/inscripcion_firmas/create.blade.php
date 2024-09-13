@@ -682,7 +682,8 @@
                                 <h4 style="text-decoration: underline;"><strong>III. DOCUMENTOS</strong></h4>
                             </div>
 
-                            <div class="col-md-12 text-center mb-4">
+                            <!-- ESCRITURA DE CONSTITUCIÓN -->
+                            <div class="col-md-6 text-center mb-4">
                                 <label for="imagen_escritura_constitucion" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir escritura de constitución original
@@ -691,7 +692,8 @@
                                 <img id="preview_escritura" src="#" alt="Vista previa de la escritura de constitucion" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <div class="col-md-12 text-center">
+                            <!-- REGISTRO MERCANTIL -->
+                            <div class="col-md-6 text-center">
                                 <label for="imagen_registro_mercantil" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir registro mercantil original
@@ -702,7 +704,8 @@
                                 </div>
                             </div> 
 
-                            <div class="col-md-12 text-center">
+                            <!-- RTN DE LA FIRMA -->
+                            <div class="col-md-6 text-center">
                                 <label for="imagen_rtn_firma_auditora" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir rtn de la firma original
@@ -711,6 +714,18 @@
                                 <div class="mt-2">
                                     <img id="preview_rtn" src="#" alt="Vista previa del registro mercantil" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                                 </div>
+                            </div>
+
+                            <!-- NÓMINA DE PAGO PROYECTADA - PLANILLA -->
+                            <div class="col-md-6 text-center">
+                                <label for="nomina_pago_firma" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
+                                    Subir nómina de pago preoyectada | Planilla (PDF)
+                                </label>
+                                <input type="file" class="form-control-file" id="nomina_pago_firma" name="nomina_pago_firma" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_nomina')">
+                                
+                                <!-- Vista previa del PDF -->
+                                <embed id="pdf_preview_nomina" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
                             </div>
 
                         </div><br>

@@ -67,6 +67,7 @@ class CreateInscripcionFirmasTable extends Migration
             $table->string('imagen_escritura_constitucion')->nullable();
             $table->string('imagen_registro_mercantil')->nullable();
             $table->string('imagen_rtn_firma_auditora')->nullable();
+            $table->string('nomina_pago_firma')->nullable();
 
             // IV. Firmas digitales
             $table->string('imagen_firma_social')->nullable();
