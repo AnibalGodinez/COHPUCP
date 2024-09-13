@@ -276,7 +276,7 @@
                                 <input type="file" class="form-control-file" id="cv_socio1" name="cv_socio1" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_socio1')">
                                 
                                 <!-- Vista previa del PDF -->
-                                <embed id="pdf_preview_socio1" src="#" type="application/pdf" style="display: none; width: 100%; height: 700px;" />
+                                <embed id="pdf_preview_socio1" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
                             </div>
 
                             <!-- IMAGEN DE FIRMA DEL SOCIO 1 -->
@@ -285,30 +285,19 @@
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma digital socio 1
                                 </label>
-                                <input type="file" class="form-control-file" id="imagen_firma_socio1" name="imagen_firma_socio1" accept="image/*" onchange="previewSingleImage(event, 'preview_firma_socio1')">
-                                <img id="preview_firma_socio1" src="#" alt="Vista previa de la firma del Socio 1" style="display: none; width: auto; height: 200px; margin: 0 auto;">
+                                <input type="file" class="form-control-file" id="imagen_firma_socio1" name="imagen_firma_socio1" onchange="previewImage(event, 'preview_socio1')">
+                                <img id="preview_socio1" src="#" alt="Vista previa de la firma del Socio 1" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <!-- IMAGEN DE LA CONSTANCIA DE SOLVENCIA DEL SOCIO 1 -->
-                            <div class="col-md-4 text-center">
+                            <!-- IMAGEN DE LA CONSTACNIA DE SOLVENCIA DEL SOCIO 1 -->
+                            <div class="col-md-4 text-center mb-4">
                                 <label for="constancia_solvencia_socio1" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    Subir constancia de solvencia socio 1
+                                    Subir constancia de solvencia
                                 </label>
-                                <input type="file" class="form-control-file" id="constancia_solvencia_socio1" name="constancia_solvencia_socio1" accept="image/*" onchange="previewSingleImage(event, 'preview_constancia_solvencia_socio1')">
-                                <img id="preview_constancia_solvencia_socio1" src="#" alt="Vista previa de la constancia de colvencia del Socio 1" style="display: none; width: auto; height: 700px; margin: 0 auto;">
+                                <input type="file" class="form-control-file" id="constancia_solvencia_socio1" name="constancia_solvencia_socio1" onchange="previewImage(event, 'preview_constancia1')">
+                                <img id="preview_constancia1" src="#" alt="Vista previa de la constancia de sovencia" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
-
-                            <!-- IMÁGENES DE TÍTULO DEL SOCIO 1 -->
-                            <div class="col-md-12 text-center">
-                                <label for="imagen_titulo_socio1[]" class="btn btn-info btn-simple">
-                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    Subir imágenes del título del Socio 1
-                                </label>
-                                <input type="file" class="form-control-file" id="imagen_titulo_socio1" name="imagen_titulo_socio1[]" multiple onchange="previewImages(event, 'preview_titulo_socio1')">
-                                <div id="preview_titulo_socio1" class="mt-6"></div>
-                                <small class="form-text text-muted">Subir revés y derecho del título</small>
-                            </div>                          
 
                         </div>
 
@@ -412,7 +401,7 @@
                                 <input type="file" class="form-control-file" id="cv_socio2" name="cv_socio2" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_socio2')">
                                 
                                 <!-- Vista previa del PDF -->
-                                <embed id="pdf_preview_socio2" src="#" type="application/pdf" style="display: none; width: 100%; height: 700px;" />
+                                <embed id="pdf_preview_socio2" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
                             </div>
 
                             <!-- IMAGEN DE FIRMA DEL SOCIO 2 -->
@@ -421,33 +410,21 @@
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma digital socio 2
                                 </label>
-                                <input type="file" class="form-control-file" id="imagen_firma_socio2" name="imagen_firma_socio2" accept="image/*" onchange="previewSingleImage(event, 'preview_firma_socio2')">
-                                <img id="preview_firma_socio2" src="#" alt="Vista previa de la firma del Socio 1" style="display: none; width: auto; height: 200px; margin: 0 auto;">
+                                <input type="file" class="form-control-file" id="imagen_firma_socio2" name="imagen_firma_socio2" onchange="previewImage(event, 'preview_socio2')">
+                                <img id="preview_socio2" src="#" alt="Vista previa de la firma del Socio 2" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <!-- IMAGEN DE LA CONSTANCIA DE SOLVENCIA DEL SOCIO 2 -->
-                            <div class="col-md-4 text-center">
+                            <!-- IMAGEN DE LA CONSTACNIA DE SOLVENCIA DEL SOCIO 2 -->
+                            <div class="col-md-4 text-center mb-4">
                                 <label for="constancia_solvencia_socio2" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    Subir constancia de solvencia socio 2
+                                    Subir constancia de solvencia
                                 </label>
-                                <input type="file" class="form-control-file" id="constancia_solvencia_socio2" name="constancia_solvencia_socio2" accept="image/*" onchange="previewSingleImage(event, 'preview_constancia_solvencia_socio2')">
-                                <img id="preview_constancia_solvencia_socio2" src="#" alt="Vista previa de la constancia de solvencia del Socio 2" style="display: none; width: auto; height: 700px; margin: 0 auto;">
+                                <input type="file" class="form-control-file" id="constancia_solvencia_socio2" name="constancia_solvencia_socio2" onchange="previewImage(event, 'preview_constancia2')">
+                                <img id="preview_constancia2" src="#" alt="Vista previa de la constancia de sovencia" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <!-- IMÁGENES DE TÍTULO DEL SOCIO 2 -->
-                            <div class="col-md-12 text-center">
-                                <label for="imagen_titulo_socio2[]" class="btn btn-info btn-simple">
-                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    Subir imágenes del título del Socio 2
-                                </label>
-                                <input type="file" class="form-control-file" id="imagen_titulo_socio2" name="imagen_titulo_socio2[]" multiple onchange="previewImages(event, 'preview_socio2')">
-                                <div id="preview_socio2" class="mt-6"></div>
-                                <small class="form-text text-muted">Subir revés y derecho del título</small>
-                            </div>
-                  
                         </div>
-
 
                         <!-- SOCIO 3 -->
                         <div class="form-group row">
@@ -548,7 +525,7 @@
                                 <input type="file" class="form-control-file" id="cv_socio3" name="cv_socio3" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_socio3')">
                                 
                                 <!-- Vista previa del PDF -->
-                                <embed id="pdf_preview_socio3" src="#" type="application/pdf" style="display: none; width: 100%; height: 700px;" />
+                                <embed id="pdf_preview_socio3" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
                             </div>
 
                             <!-- IMAGEN DE FIRMA DEL SOCIO 3 -->
@@ -557,31 +534,20 @@
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma digital socio 3
                                 </label>
-                                <input type="file" class="form-control-file" id="imagen_firma_socio3" name="imagen_firma_socio3" accept="image/*" onchange="previewSingleImage(event, 'preview_firma_socio3')">
-                                <img id="preview_firma_socio3" src="#" alt="Vista previa de la firma del Socio 1" style="display: none; width: auto; height: 200px; margin: 0 auto;">
+                                <input type="file" class="form-control-file d-none" id="imagen_firma_socio3" name="imagen_firma_socio3" onchange="previewImage(event, 'preview_socio3')">
+                                <img id="preview_socio3" src="#" alt="Vista previa de la firma del Socio 3" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <!-- IMAGEN DE LA CONSTANCIA DE SOLVENCIA DEL SOCIO 3 -->
-                            <div class="col-md-4 text-center">
+                            <!-- IMAGEN DE LA CONSTACNIA DE SOLVENCIA DEL SOCIO 3 -->
+                            <div class="col-md-4 text-center mb-4">
                                 <label for="constancia_solvencia_socio3" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    Subir constancia de solvencia socio 3
+                                    Subir constancia de solvencia
                                 </label>
-                                <input type="file" class="form-control-file" id="constancia_solvencia_socio3" name="constancia_solvencia_socio3" accept="image/*" onchange="previewSingleImage(event, 'preview_constancia_solvencia_socio3')">
-                                <img id="preview_constancia_solvencia_socio3" src="#" alt="Vista previa de la constancia de solvencia del Socio 3" style="display: none; width: auto; height: 700px; margin: 0 auto;">
+                                <input type="file" class="form-control-file" id="constancia_solvencia_socio3" name="constancia_solvencia_socio3" onchange="previewImage(event, 'preview_constancia3')">
+                                <img id="preview_constancia3" src="#" alt="Vista previa de la constancia de sovencia" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
-
-                            <!-- IMÁGENES DE TÍTULO DEL SOCIO 3 -->
-                            <div class="col-md-12 text-center">
-                                <label for="imagen_titulo_socio3[]" class="btn btn-info btn-simple">
-                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    Subir imágenes del título del Socio 3
-                                </label>
-                                <input type="file" class="form-control-file" id="imagen_titulo_socio3" name="imagen_titulo_socio3[]" multiple onchange="previewImages(event, 'preview_socio3')">
-                                <div id="preview_socio3" class="mt-6"></div>
-                                <small class="form-text text-muted">Subir revés y derecho del título</small>
-                            </div>
-
+                       
                         </div>
 
 
@@ -684,7 +650,7 @@
                                 <input type="file" class="form-control-file" id="cv_socio4" name="cv_socio4" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_socio4')">
                                 
                                 <!-- Vista previa del PDF -->
-                                <embed id="pdf_preview_socio4" src="#" type="application/pdf" style="display: none; width: 100%; height: 700px;" />
+                                <embed id="pdf_preview_socio4" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
                             </div>
 
                             <!-- IMAGEN DE FIRMA DEL SOCIO 4 -->
@@ -693,29 +659,18 @@
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma digital socio 4
                                 </label>
-                                <input type="file" class="form-control-file" id="imagen_firma_socio4" name="imagen_firma_socio4" accept="image/*" onchange="previewSingleImage(event, 'preview_firma_socio4')">
-                                <img id="preview_firma_socio4" src="#" alt="Vista previa de la firma del Socio 4" style="display: none; width: auto; height: 200px; margin: 0 auto;">
+                                <input type="file" class="form-control-file d-none" id="imagen_firma_socio4" name="imagen_firma_socio4" onchange="previewImage(event, 'preview_socio4')">
+                                <img id="preview_socio4" src="#" alt="Vista previa de la firma del Socio 4" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <!-- IMAGEN DE LA CONSTANCIA DE SOLVENCIA DEL SOCIO 4 -->
-                            <div class="col-md-4 text-center">
+                            <!-- IMAGEN DE LA CONSTACNIA DE SOLVENCIA DEL SOCIO 3 -->
+                            <div class="col-md-4 text-center mb-4">
                                 <label for="constancia_solvencia_socio4" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    Subir constancia de solvencia socio 4
+                                    Subir constancia de solvencia
                                 </label>
-                                <input type="file" class="form-control-file" id="constancia_solvencia_socio4" name="constancia_solvencia_socio4" accept="image/*" onchange="previewSingleImage(event, 'preview_constancia_solvencia_socio4')">
-                                <img id="preview_constancia_solvencia_socio4" src="#" alt="Vista previa de la constancia de solvencia del Socio 4" style="display: none; width: auto; height: 700px; margin: 0 auto;">
-                            </div>
-
-                            <!-- IMÁGENES DE TÍTULO DEL SOCIO 4 -->
-                            <div class="col-md-12 text-center">
-                                <label for="imagen_titulo_socio4[]" class="btn btn-info btn-simple">
-                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    Subir imágenes del título del Socio 4
-                                </label>
-                                <input type="file" class="form-control-file" id="imagen_titulo_socio4" name="imagen_titulo_socio4[]" multiple onchange="previewImages(event, 'preview_socio4')">
-                                <div id="preview_socio4" class="mt-6"></div>
-                                <small class="form-text text-muted">Subir revés y derecho del título</small>
+                                <input type="file" class="form-control-file" id="constancia_solvencia_socio4" name="constancia_solvencia_socio4" onchange="previewImage(event, 'preview_constancia4')">
+                                <img id="preview_constancia4" src="#" alt="Vista previa de la constancia de sovencia" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
                         </div>
@@ -727,7 +682,7 @@
                                 <h4 style="text-decoration: underline;"><strong>III. DOCUMENTOS</strong></h4>
                             </div>
 
-                            <div class="col-md-6 text-center mb-4">
+                            <div class="col-md-12 text-center mb-4">
                                 <label for="imagen_escritura_constitucion" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir escritura de constitución original
@@ -736,7 +691,7 @@
                                 <img id="preview_escritura" src="#" alt="Vista previa de la escritura de constitucion" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <div class="col-md-6 text-center">
+                            <div class="col-md-12 text-center">
                                 <label for="imagen_registro_mercantil" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir registro mercantil original
@@ -747,7 +702,7 @@
                                 </div>
                             </div> 
 
-                            <div class="col-md-6 text-center">
+                            <div class="col-md-12 text-center">
                                 <label for="imagen_rtn_firma_auditora" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir rtn de la firma original
@@ -756,17 +711,6 @@
                                 <div class="mt-2">
                                     <img id="preview_rtn" src="#" alt="Vista previa del registro mercantil" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                                 </div>
-                            </div>
-
-                            <div class="col-md-6 text-center">
-                                <label for="nomina_pago_firma" class="btn btn-info btn-simple">
-                                    <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
-                                    Subir nómina de pago de la firma (PDF)
-                                </label>
-                                <input type="file" class="form-control-file" id="nomina_pago_firma" name="nomina_pago_firma" accept="application/pdf" onchange="previewPdf(event, 'pdf_nomina_pago_firma')">
-                                
-                                <!-- Vista previa del PDF -->
-                                <embed id="pdf_nomina_pago_firma" src="#" type="application/pdf" style="display: none; width: 100%; height: 900px;" />
                             </div>
 
                         </div><br>
@@ -815,67 +759,17 @@
 </div>
 
 <script>
-        // Script para previsualizar las imágenes
-        function previewImage(event, previewId) {
-            var reader = new FileReader();
-            reader.onload = function(){
-                var output = document.getElementById(previewId);
-                output.src = reader.result;
-                output.style.display = 'block';
-                output.style.maxWidth = '700px';  // Ajusta el ancho máximo
-                output.style.maxHeight = '700px'; // Ajusta la altura máxima
-            };
-            reader.readAsDataURL(event.target.files[0]);
-        }
-
-        // Función para previsualizar una imagen única
-        function previewSingleImage(event, previewId) {
-        var file = event.target.files[0]; // Seleccionar el primer archivo
-        var previewImage = document.getElementById(previewId); // Obtener el elemento img para la previsualización
-
-        // Verificar si se seleccionó un archivo y si es una imagen
-        if (file && file.type.startsWith('image/')) {
-            var reader = new FileReader(); // Crear un nuevo FileReader
-
-            reader.onload = function(e) {
-                previewImage.src = e.target.result; // Asignar la imagen cargada al elemento img
-                previewImage.style.display = 'block'; // Mostrar la imagen
-            };
-
-            reader.readAsDataURL(file); // Leer el archivo como Data URL
-        } else {
-            previewImage.style.display = 'none'; // Ocultar la previsualización si no es una imagen
-            alert("Por favor seleccione un archivo de imagen válido.");
-        }
-    }
-
-    // Función modificada para previsualizar múltiples imágenes (en caso de ser necesario)
-    function previewImages(event, previewContainerId) {
-        var files = event.target.files;
-        var previewContainer = document.getElementById(previewContainerId);
-
-        // Limpiar el contenedor de previsualización
-        previewContainer.innerHTML = '';
-
-        // Iterar sobre cada archivo seleccionado
-        for (var i = 0; i < files.length; i++) {
-            var file = files[i];
-            var reader = new FileReader();
-            
-            reader.onload = (function(file) {
-                return function(e) {
-                    // Crear un elemento de imagen
-                    var img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.maxWidth = '600px';  // Ajusta el ancho máximo
-                    img.style.maxHeight = 'auto'; // Ajusta la altura máxima
-                    img.style.margin = '10px';
-                    previewContainer.appendChild(img);
-                };
-            })(file);
-
-            reader.readAsDataURL(file);
-        }
+    // Script para previsualizar las imágenes
+    function previewImage(event, previewId) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById(previewId);
+            output.src = reader.result;
+            output.style.display = 'block';
+            output.style.maxWidth = '700px';  // Ajusta el ancho máximo
+            output.style.maxHeight = '700px'; // Ajusta la altura máxima
+        };
+        reader.readAsDataURL(event.target.files[0]);
     }
 
     // Script para previsualizar el PDF
