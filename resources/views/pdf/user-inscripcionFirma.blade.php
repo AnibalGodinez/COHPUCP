@@ -112,11 +112,11 @@
                     <p style="margin: 0;">No disponible</p>
                 @endif
             </div>
-            <p style="margin: 0;">La Sociedad <strong>{{ $inscripcionFirma->nombre_sociedad }}</strong>, 
+            <p style="text-align: justify; margin: 0;">La Sociedad <strong>{{ $inscripcionFirma->nombre_sociedad }}</strong>, 
                 por este medio solicita al Colegio Hondureño de Profesionales Universitarios en Contaduría Publica ser
                 inscrito como sociedad mercantil de ese colegio y se compromete al estricto cumplimiento de los
                 establecido en la Ley Orgánica, contenida en el Decreto 19/93, publicado en el Diario Oficial La Gaceta
-                número 27043 de la fecha 14 de mayo de 1993.</p>   
+                número 27043 de la fecha 14 de mayo de 1993.</p>
         </div>
  
         <img src="white/img/logo-empresa.png" alt="Logo" style="margin-left: -5px; margin-top:-340px; width: 90px; height: auto;">
@@ -434,7 +434,7 @@
             <h4 class="text-center" style="text-decoration: underline;">ESCRITURA DE CONSTITUCIÓN</h4>
             @if($inscripcionFirma->imagen_escritura_constitucion)
                 <div class="text-center">
-                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_escritura_constitucion) }}" alt="Escritura de constitución de la firma" class="img-fluid" style="width: 100%; height: auto; object-fit: contain;">
+                    <img src="{{ public_path('storage/' . $inscripcionFirma->imagen_escritura_constitucion) }}" alt="Escritura de constitución de la firma" class="img-fluid" style="width: 100%; height: 90%; object-fit: contain;">
                 </div>
             @else
                 <span style="text-decoration: line-through;">No disponible</span>

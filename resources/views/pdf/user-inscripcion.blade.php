@@ -131,7 +131,7 @@
                     <p style="margin: 0;">No disponible</p>
                 @endif
             </div>
-            <p style="margin: 0;">El abajo firmante licenciado(a) en Contaduría Pública por este medio solicita al Colegio Hondureño de
+            <p style="text-align: justify; margin: 0;">El abajo firmante licenciado(a) en Contaduría Pública por este medio solicita al Colegio Hondureño de
                 Profesionales Universitarios en Contaduría Pública (COHPUCP) ser inscrito como miembro de este Colegio y se
                 compromete al estricto cumplimiento de lo establecido en la Ley Orgánica, contenida en el Decreto 19-93
                 publicado en el Diario Oficial la Gaceta número 27043 de fecha 16 de mayo de 1993, para tal efecto proporciona la
