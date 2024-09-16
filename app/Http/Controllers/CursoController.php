@@ -35,10 +35,16 @@ class CursoController extends Controller
                    ->orWhere('precio', 'LIKE', "%{$search}%");
         }
 
-        $cursos = $cursos->paginate(5);
+        $cursos = $cursos->paginate(3);
 
         return view('cursos.index', compact('cursos', 'search'));
     }
+
+    public function show(Curso $curso)
+    {
+        return view('cursos.show', compact('curso'));
+    }
+
 
     public function create()
     {
@@ -55,7 +61,7 @@ class CursoController extends Controller
             'titulo' => 'nullable|string|max:255',
             'nombre' => 'nullable|string|max:255',
             'descripcion' => 'nullable|string',
-            'precio' => 'nullable|numeric|min:0',
+            'precio' => 'nullable|string|max:255',
             'enlace' => 'nullable|url',
             'icono' => 'nullable|url',
             'calificacion' => 'nullable|numeric|min:0|max:10',
@@ -103,7 +109,7 @@ class CursoController extends Controller
             'titulo' => 'nullable|string|max:255',
             'nombre' => 'nullable|string|max:255',
             'descripcion' => 'nullable|string',
-            'precio' => 'nullable|numeric|min:0',
+            'precio' => 'nullable|string|max:255',
             'enlace' => 'nullable|url',
             'icono' => 'nullable|url',
             'calificacion' => 'nullable|numeric|min:0|max:10',
@@ -161,7 +167,8 @@ class CursoController extends Controller
 
     public function viewCursos()
     {
-        $cursos = Curso::all();
+        $cursos = Curso::with(['idioma', 'categoria', 'user'])->get();
         return view('cursos.view', compact('cursos'));
     }
+
 }

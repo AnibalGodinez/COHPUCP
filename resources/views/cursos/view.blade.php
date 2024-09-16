@@ -37,8 +37,8 @@
 @endif
 
 @if ($curso->layout === 'Imagen a la derecha')
-    <div class="container-fluid mb-4">
-        <div class="card h-20">
+    <div class="container-fluid mb-8">
+        <div class="card h-180">
             <div class="row no-gutters">
                 <div class="col-md-8 d-flex justify-content-center align-items-center">
                     <div class="card-body text-box">
@@ -79,12 +79,12 @@
             <div class="card-body">
                 <h4 class="card-title text-center" style="text-transform: uppercase;"><strong><strong>{{ $curso->nombre }}</strong></strong></h4>
                 <p class="card-text">{{ Str::limit($curso->descripcion, 100) }}</p><br>
-                <p class="card-text"><strong>PRECIO:</strong> <span style="color: green"><strong><strong>{{ $curso->precio }} Lps.</strong></strong></span></p>
+                <p class="card-text"><strong>PRECIO:</strong> <span style="color: green"><strong><strong>{{ $curso->precio }}</strong></strong></span></p>
                 <p class="card-text"><strong>CALIFICACIÓN:</strong> {{ $curso->calificacion }}</p>
                 <p class="card-text"><strong>IDIOMA:</strong> {{ $curso->idioma ? $curso->idioma->nombre : 'No disponible' }}</p>
                 <p class="card-text"><strong>CATEGORÍA:</strong> {{ $curso->categoria ? $curso->categoria->nombre : 'No disponible' }}</p>
-                <div class="text-center mt-3">
-                    <a href="{{ $curso->enlace }}" class="btn btn-info" target="_blank">Ver Curso</a>
+                <div class="text-center mt-4">
+                    <a href="{{ route('cursos.show', $curso->id) }}" class="btn btn-info">Más información</a>
                 </div>
             </div>
         </div>

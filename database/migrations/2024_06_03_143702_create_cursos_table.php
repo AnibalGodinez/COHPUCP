@@ -13,15 +13,15 @@ class CreateCursosTable extends Migration
             $table->string('layout')->nullable();
             $table->string('titulo')->nullable();
             $table->string('nombre')->nullable();
-            $table->text('descripcion')->nullable(); // Cambiado a 'text' para descripciones más largas
-            $table->string('precio')->nullable(); // Campo para el precio del curso, es string porque puede agregar 'Gratis'
-            $table->text('enlace')->nullable(); // Campo opcional para un enlace relacionado con el curso
-            $table->text('icono')->nullable(); // Campo opcional para un icono relacionado con el curso
-            $table->decimal('calificacion', 3, 1)->nullable(); // Campo opcional para la calificación del curso (1 decimal)
-            $table->unsignedBigInteger('user_id'); // Campo para relacionar con la tabla de usuarios
-            $table->unsignedBigInteger('idioma_id')->nullable(); // Nuevo campo para relacionar con la tabla de idiomas
-            $table->unsignedBigInteger('categoria_id')->nullable(); // Nuevo campo para relacionar con la tabla de categorías
-            $table->string('imagen')->nullable(); // Campo opcional para la imagen del curso
+            $table->text('descripcion')->nullable();
+            $table->string('precio')->nullable();
+            $table->text('enlace')->nullable();
+            $table->text('icono')->nullable(); 
+            $table->decimal('calificacion', 3, 1)->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('idioma_id')->nullable();
+            $table->unsignedBigInteger('categoria_id')->nullable(); 
+            $table->string('imagen')->nullable();
             $table->timestamps();
 
             // Define la restricción de clave externa con acciones en cascada

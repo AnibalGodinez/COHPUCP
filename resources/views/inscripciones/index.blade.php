@@ -31,17 +31,17 @@
                             </div>
                         @else
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <thead>
+                                <table class="table table-bordered table-striped" style="table-layout: fixed; width: 100%;">
+                                    <thead style="background-color: #3288af;">
                                         <tr>
-                                            <th class="text-center">ID</th>
-                                            <th class="text-center">Nombre del solicitante</th>
-                                            <th class="text-center">DNI</th>
-                                            <th class="text-center">Correo electrónico</th>
-                                            <th class="text-center">Nº Celular</th>
-                                            <th class="text-center">Estado</th>
-                                            <th class="text-center">Descripción del estado de la solicitud</th>
-                                            <th class="text-center">Ver inscripción</th>
+                                            <th class="text-center" style="color: white;">ID</th>
+                                            <th class="text-center" style="color: white;">Nombre del solicitante</th>
+                                            <th class="text-center" style="color: white;">DNI</th>
+                                            <th class="text-center" style="color: white;">Correo electrónico</th>
+                                            <th class="text-center" style="color: white;">Nº Celular</th>
+                                            <th class="text-center" style="color: white;">Estado</th>
+                                            <th class="text-center" style="color: white;">Descripción Estado Solicitud</th>
+                                            <th class="text-center" style="color: white;">Ver inscripción</th>
                                         </tr>
                                     </thead>
 

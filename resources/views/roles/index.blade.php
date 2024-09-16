@@ -36,35 +36,37 @@
                                 No hay ningún resultado de su búsqueda.
                             </div>
                         @else
-                        <table class="table table-bordered table-striped">
-                            <thead style="background-color: #3288af;">
-                                <tr>
-                                    <th class="text-center" style="color: white;">Nombre del rol</th>
-                                    <th class="text-center" style="color: white;">Descripción</th>
-                                    <th class="text-center" style="color: white;">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($roles as $role)
-                                <tr>
-                                    <td class="text-center">{{ $role->name }}</td>
-                                    <td>{{ $role->description }}</td>
-                                    <td class="text-center">
-                                        <a href="{{ url('roles/'.$role->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
-                                            <i class="tim-icons icon-settings"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('roles/'.$role->id.'/delete') }}')">
-                                            <i class="tim-icons icon-simple-remove"></i>
-                                        </a>
 
-                                        <a href="{{ url('roles/'.$role->id.'/agregar-permisos') }}" class="btn btn-info btn-sm">
-                                            Asignar permisos
-                                        </a>
-                                    </td>
-                                </tr>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead style="background-color: #3288af;">
+                                    <tr>
+                                        <th class="text-center" style="color: white;">Nombre del rol</th>
+                                        <th class="text-center" style="color: white;">Descripción</th>
+                                        <th class="text-center" style="color: white;">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($roles as $role)
+                                        <tr>
+                                            <td class="text-center">{{ $role->name }}</td>
+                                            <td>{{ $role->description }}</td>
+                                            <td class="text-center">
+                                                <a href="{{ url('roles/'.$role->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
+                                                    <i class="tim-icons icon-settings"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('roles/'.$role->id.'/delete') }}')">
+                                                    <i class="tim-icons icon-simple-remove"></i>
+                                                </a>
+                                                <a href="{{ url('roles/'.$role->id.'/agregar-permisos') }}" class="btn btn-info btn-sm">
+                                                    Asignar permisos
+                                                </a>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                        </div>
                             {{ $roles->links('paginacion.simple-bootstrap-4') }}
                         @endif
                     </div>

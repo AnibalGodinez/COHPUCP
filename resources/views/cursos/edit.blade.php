@@ -69,7 +69,7 @@
                                     <i class="fas fa-dollar-sign" style="margin-right: 8px;"></i>
                                     <strong>PRECIO DEL CURSO</strong>
                                 </label>
-                                <input type="number" name="precio" id="precio" class="form-control" value="{{ old('precio', $curso->precio) }}" placeholder="Ingrese el precio del curso">
+                                <input type="text" name="precio" id="precio" class="form-control" value="{{ old('precio', $curso->precio) }}" placeholder="Ingrese el precio del curso">
                             </div>
 
                             <div class="col-md-3">

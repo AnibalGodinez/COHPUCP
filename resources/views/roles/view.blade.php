@@ -31,11 +31,12 @@
                             </button>
                         </form><br>
 
-                            @if($roles->isEmpty())
-                                <div class="alert alert-default text-center" role="alert">
-                                    No hay ningún resultado de su búsqueda.
-                                </div>
-                            @else
+                        @if($roles->isEmpty())
+                            <div class="alert alert-default text-center" role="alert">
+                                No hay ningún resultado de su búsqueda.
+                            </div>
+                        @else
+                        <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead style="background-color: #3288af;">
                                     <tr>
@@ -52,7 +53,8 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{ $roles->links('paginacion.simple-bootstrap-4') }}
+                        </div>
+                        {{ $roles->links('paginacion.simple-bootstrap-4') }}
                     @endif
                 </div>
             </div>

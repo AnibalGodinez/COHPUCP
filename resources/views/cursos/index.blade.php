@@ -41,7 +41,7 @@
 
 
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
+                                <table class="table table-bordered table-striped" style="table-layout: fixed; width: 100%;">
                                     <thead style="background-color: #3288af;">
                                         <tr>
                                             <th class="text-center" style="color: white;">Diseño</th>

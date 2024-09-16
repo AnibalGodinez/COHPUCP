@@ -18,8 +18,9 @@ class Curso extends Model
         'enlace',
         'icono',
         'calificacion',
-        'idioma_id', // Corregido para usar el campo de clave foránea
-        'categoria_id', // Corregido para usar el campo de clave foránea
+        'idioma_id',
+        'categoria_id',
+        'user_id',
         'imagen',
     ];
 
