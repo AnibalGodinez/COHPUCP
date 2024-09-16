@@ -38,7 +38,6 @@ class InscripcionFirma extends Model
         'cv_socio1',
         'imagen_firma_socio1',
         'constancia_solvencia_socio1',
-        'imagen_titulo_socio1',
 
             // socio 2
         'primer_nombre_socio2',
@@ -49,7 +48,6 @@ class InscripcionFirma extends Model
         'cv_socio2',
         'imagen_firma_socio2',
         'constancia_solvencia_socio2',
-        'imagen_titulo_socio2',
 
             // socio 3
         'primer_nombre_socio3',
@@ -60,7 +58,6 @@ class InscripcionFirma extends Model
         'cv_socio3',
         'imagen_firma_socio3',
         'constancia_solvencia_socio3',
-        'imagen_titulo_socio3',
 
             // socio 4
         'primer_nombre_socio4',
@@ -71,7 +68,6 @@ class InscripcionFirma extends Model
         'cv_socio4',
         'imagen_firma_socio4',
         'constancia_solvencia_socio4',
-        'imagen_titulo_socio4',
 
         // III. Documentos
         'imagen_escritura_constitucion',
@@ -90,10 +86,6 @@ class InscripcionFirma extends Model
 
     protected $casts = [
         'fecha_constitucion' => 'date',
-        'imagen_titulo_socio1' => 'array',
-        'imagen_titulo_socio2' => 'array',
-        'imagen_titulo_socio3' => 'array',
-        'imagen_titulo_socio4' => 'array',
     ];
 
     // Relación con el modelo User

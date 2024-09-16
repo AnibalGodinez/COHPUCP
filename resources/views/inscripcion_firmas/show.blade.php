@@ -212,53 +212,6 @@
                             </div>
                         </div>
 
-                        {{-- Título universitario frontal | Socio 1 --}}
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-dark text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcionFirma->imagen_titulo_socio1)
-                                        @php
-                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio1);
-                                        @endphp
-                                        @if(count($imagenes) > 0)
-                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 1" 
-                                                style="width: 90%; height: 90%; object-fit: contain;">
-                                        @else
-                                            <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
-                                        @endif
-                                    @else
-                                        <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Título universitario reverso | Socio 1 --}}
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-dark text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (REVERSO)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcionFirma->imagen_titulo_socio1)
-                                        @php
-                                        $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio1);
-                                        @endphp
-                                        @if(count($imagenes) > 1)
-                                            <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Título Universitario Reverso del socio 1" 
-                                                style="width: 90%; height: 90%; object-fit: contain;">
-                                        @else
-                                            <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
-                                        @endif
-                                    @else
-                                        <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <h4 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 2</h4>
@@ -355,53 +308,6 @@
                             </div>
                         </div>
 
-                        {{-- Título universitario frontal | Socio 2 --}}
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-info text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcionFirma->imagen_titulo_socio2)
-                                        @php
-                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio2);
-                                        @endphp
-                                        @if(count($imagenes) > 0)
-                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 2" 
-                                                style="width: 90%; height: 90%; object-fit: contain;">
-                                        @else
-                                            <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
-                                        @endif
-                                    @else
-                                        <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Título universitario reverso | Socio 2 --}}
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-info text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (REVERSO)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcionFirma->imagen_titulo_socio2)
-                                        @php
-                                        $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio2);
-                                        @endphp
-                                        @if(count($imagenes) > 1)
-                                            <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Título Universitario Reverso del socio 2" 
-                                                style="width: 90%; height: 90%; object-fit: contain;">
-                                        @else
-                                            <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
-                                        @endif
-                                    @else
-                                        <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <h4 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 3</h4>
@@ -498,53 +404,6 @@
                             </div>
                         </div>
 
-                        {{-- Título universitario frontal | Socio 3 --}}
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-success text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcionFirma->imagen_titulo_socio3)
-                                        @php
-                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio3);
-                                        @endphp
-                                        @if(count($imagenes) > 0)
-                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 3" 
-                                                style="width: 90%; height: 90%; object-fit: contain;">
-                                        @else
-                                            <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
-                                        @endif
-                                    @else
-                                        <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Título universitario reverso | Socio 2 --}}
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-success text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (REVERSO)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcionFirma->imagen_titulo_socio3)
-                                        @php
-                                        $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio3);
-                                        @endphp
-                                        @if(count($imagenes) > 1)
-                                            <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Título Universitario Reverso del socio 3" 
-                                                style="width: 90%; height: 90%; object-fit: contain;">
-                                        @else
-                                            <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
-                                        @endif
-                                    @else
-                                        <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <h4 class="text-center" style="text-decoration: underline;">DATOS DEL SOCIO 4</h4>
@@ -643,53 +502,6 @@
                             </div>
                         </div>
 
-                        {{-- Título universitario frontal | Socio 4 --}}
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-warning text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (FRONTAL)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcionFirma->imagen_titulo_socio4)
-                                        @php
-                                            $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio4);
-                                        @endphp
-                                        @if(count($imagenes) > 0)
-                                            <img src="{{ asset('storage/' . $imagenes[0]) }}" alt="Título Universitario Frontal del socio 4" 
-                                                style="width: 90%; height: 90%; object-fit: contain;">
-                                        @else
-                                            <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
-                                        @endif
-                                    @else
-                                        <span style="text-decoration: line-through;">No se ha subido la parte frontal del título</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Título universitario reverso | Socio 4 --}}
-                        <div class="col-md-6 mb-4 d-flex justify-content-center">
-                            <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
-                                <div class="card-header bg-warning text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>TÍTULO UNIVERSITARIO (REVERSO)</strong></h4>
-                                </div>
-                                <div class="card-body d-flex justify-content-center align-items-center p-0">
-                                    @if($inscripcionFirma->imagen_titulo_socio4)
-                                        @php
-                                        $imagenes = json_decode($inscripcionFirma->imagen_titulo_socio4);
-                                        @endphp
-                                        @if(count($imagenes) > 1)
-                                            <img src="{{ asset('storage/' . $imagenes[1]) }}" alt="Título Universitario Reverso del socio 4" 
-                                                style="width: 90%; height: 90%; object-fit: contain;">
-                                        @else
-                                            <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
-                                        @endif
-                                    @else
-                                        <span style="text-decoration: line-through;">No se ha subido el reverso del título</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                 </div>
