@@ -30,7 +30,7 @@
                             <table class="table table-bordered table-striped mt-4">
                                 <thead style="background-color: #3288af;">
                                     <tr>
-                                        @foreach (['ID', 'Title', 'Description', 'Links', 'Facebook', 'Twitter', 'YouTube', 'WhatsApp', 'Instagram', 'Telegram', 'LinkedIn', 'Button', 'User', 'Actions'] as $header)
+                                        @foreach (['ID', 'Título', 'Descripción', 'Link', 'Facebook', 'Twitter', 'YouTube', 'WhatsApp', 'Instagram', 'Telegram', 'LinkedIn', 'Botón', 'Acciones'] as $header)
                                             <th class="text-center" style="width: 120px; color: white;">{{ $header }}</th>
                                         @endforeach
                                     </tr>
@@ -65,7 +65,6 @@
                                                 <a href="{{ $footerContent->linkendin_link }}" target="_blank">LinkedIn</a>
                                             </td>
                                             <td style="width: 120px;">{{ $footerContent->boton }}</td>
-                                            <td style="width: 120px;">{{ $footerContent->user->name }}</td>
                                             <td class="text-center" style="width: 120px;">
                                                 <a href="{{ route('footer-content.edit', $footerContent->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                                 <form action="{{ route('footer-content.destroy', $footerContent->id) }}" method="POST" style="display:inline;">

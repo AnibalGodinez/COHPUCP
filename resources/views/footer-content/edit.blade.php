@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card m-7">
                 <div class="card-body">
-                    <h3 class="card-title text-center w-100">Edit Footer Content</h3>
+                    <h3 class="card-title text-center w-100">EDITAR CONTENIDO DEL PÍE DE PÁGINA</h3>
                     <form action="{{ route('footer-content.update', $footerContent->id) }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -56,7 +56,7 @@
                             <input type="text" name="boton" id="boton" class="form-control" value="{{ old('boton', $footerContent->boton) }}">
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-success">Guardar</button>
                     </form>
                 </div>
             </div>
