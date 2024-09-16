@@ -1,47 +1,47 @@
-<footer class="footer text-white py-4" style="background-color: #0A152F;">
-    <div class="container-fluid">
-        <ul class="nav">
-            <li class="nav-item">
-                <a href="https://www.cohpucphn.org" target="_blank" class="nav-link text-white font-weight-bold">
-                    COHPUCP
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link text-white font-weight-bold">
-                    SOBRE NOSOTROS
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link text-white font-weight-bold">
-                    BLOG
-                </a>
-            </li>
-        </ul>
-    </div>
+{{-- resources/views/layouts/footer.blade.php --}}
+<div class="footer-content text-center py-4" style="background-color: #0A152F;">
+    @foreach($footerContents as $footerContent)
+        <div class="footer-item mb-4">
+            <h4 style="color: white;">{{ $footerContent->title }}</h4>
+            <p style="color: white;">{{ $footerContent->description }}</p>
 
-    <div class="text-center mt-4">
-        <p class="text-white font-weight-bold" style="font-size: 12px;">NUESTRAS REDES SOCIALES</p>
-    </div>
-
-    <div class="social-icons text-center mt-2">
-        <!-- Replace # with your actual social media links -->
-        <a href="https://www.facebook.com/share/xcP8gQUMYwfeVb52/?mibextid=LQQJ4d" target="_blank" class="mr-3">
-            <i class="fab fa-facebook fa-lg" style="color: rgb(8, 102, 255);"></i>
-        </a>
-        <a href="https://www.instagram.com/cohpucphn/" target="_blank" class="mr-3">
-            <i class="fab fa-instagram fa-lg" style="color: #c32aa3;"></i>
-        </a>
-        <a href="https://www.youtube.com/channel/UCXh_r9GGeC3ezJqohIkPEAg" target="_blank" class="mr-3">
-            <i class="fab fa-youtube fa-lg" style="color: rgb(254, 0, 0);"></i>
-        </a>
-        <a href="#" target="_blank" class="mr-3">
-            <i class="fab fa-whatsapp fa-lg" style="color: rgb(2, 193, 1);"></i>
-        </a>
-    </div>
-
-    <div class="copyright text-white text-center mt-4 font-weight-bold">
-        &copy; {{ now()->year }} <span class="text-white">ELABORADO POR</span>
-        <a href="#" target="_blank" class="text-white">Anibal Godinez</a> y
-        <a href="https://www.cohpucphn.org" target="_blank" class="text-white">COHPUCP</a> TODOS LOS DERECHOS RESERVADOS.
-    </div>
-</footer>
+            <div class="footer-links d-flex justify-content-center">
+                @if($footerContent->facebook_link)
+                    <a href="{{ $footerContent->facebook_link }}" target="_blank" class="mx-2">
+                        <i class="fab fa-facebook" style="color: rgb(8, 102, 255); font-size: 1.5em"></i>
+                    </a>
+                @endif
+                @if($footerContent->twitter_link)
+                    <a href="{{ $footerContent->twitter_link }}" target="_blank" class="mx-2">
+                        <img src="{{ asset('icons/X_red_social.svg') }}" alt="X" style="width: 1.5em; height: 1.5em;">
+                    </a>
+                @endif
+                @if($footerContent->youtube_link)
+                    <a href="{{ $footerContent->youtube_link }}" target="_blank" class="mx-2">
+                        <i class="fab fa-youtube" style="color: rgb(254, 0, 0); font-size: 1.5em"></i>
+                    </a>
+                @endif
+                @if($footerContent->whatsapp_link)
+                    <a href="{{ $footerContent->whatsapp_link }}" target="_blank" class="mx-2">
+                        <i class="fab fa-whatsapp" style="color: rgb(2, 193, 1); font-size: 1.5em"></i>
+                    </a>
+                @endif
+                @if($footerContent->instagram_link)
+                    <a href="{{ $footerContent->instagram_link }}" target="_blank" class="mx-2">
+                        <i class="fab fa-instagram" style="color: #c32aa3; font-size: 1.5em"></i>
+                    </a>
+                @endif
+                @if($footerContent->telegram_link)
+                    <a href="{{ $footerContent->telegram_link }}" target="_blank" class="mx-2">
+                        <i class="fab fa-telegram" style="color: #c32aa3; font-size: 1.5em"></i>
+                    </a>
+                @endif
+                @if($footerContent->linkendin_link)
+                    <a href="{{ $footerContent->linkendin_link }}" target="_blank" class="mx-2">
+                        <i class="fab fa-linkedin" style="color: #c32aa3; font-size:1.5em"></i>
+                    </a>
+                @endif
+            </div>
+        </div>
+    @endforeach
+</div>

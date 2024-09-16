@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Providers;
-
-use Illuminate\Contracts\Pagination\Paginator;
+;
 use Illuminate\Support\ServiceProvider;
+use App\Models\FooterContent;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,13 +17,10 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
-        //
+        view()->composer('layouts.footer', function ($view) {
+            $view->with('footerContents', FooterContent::all());
+        });
     }
 }

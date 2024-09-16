@@ -12,13 +12,20 @@ class FooterContentController extends Controller
     public function index()
     {
         $footerContents = FooterContent::all();
-        return view('footer-content.index', compact('footerContents')); // Ajusta la vista según tus necesidades
+        return view('footer-content.index', compact('footerContents'));
+    }
+
+    // Método para cargar los datos en la vista del pie de página
+    public function loadFooterContent()
+    {
+        $footerContents = FooterContent::all();
+        return view('footer-content.index', compact('footerContents'));
     }
 
     // Mostrar el formulario para crear un nuevo registro
     public function create()
     {
-        return view('footer-content.create'); // Ajusta la vista según tus necesidades
+        return view('footer-content.create'); 
     }
 
     // Almacenar un nuevo registro en la base de datos
@@ -64,7 +71,7 @@ class FooterContentController extends Controller
             'whatsapp_link' => 'nullable|url',
             'instagram_link' => 'nullable|url',
             'telegram_link' => 'nullable|url',
-            'linkendin_link' => 'nullable|url', // Corrección aquí
+            'linkendin_link' => 'nullable|url',
             'boton' => 'nullable|string|max:255',
             'user_id' => 'nullable|exists:users,id',
         ]);

@@ -85,6 +85,10 @@
                 <p class="card-text"><strong>CATEGORÍA:</strong> {{ $curso->categoria ? $curso->categoria->nombre : 'No disponible' }}</p>
                 <div class="text-center mt-4">
                     <a href="{{ route('cursos.show', $curso->id) }}" class="btn btn-info">Más información</a>
+                    <!-- Icono para agregar al carrito -->
+                    <a href="#">
+                        <i class="fas fa-shopping-cart" style="font-size: 24px; color: #FF7F00; margin-left: 25px;"></i>
+                    </a>
                 </div>
             </div>
         </div>
