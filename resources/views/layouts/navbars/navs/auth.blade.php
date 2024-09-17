@@ -76,7 +76,7 @@
                             <a class="dropdown-item text-uppercase {{request()->routeIs('roles.index') ? 'text-warning font-weight-bold' : ''}}" href="{{route('roles.index')}}">Gestionar roles</a>
                         </div>
                         <!-- Submenú para Permisos -->
-                        <div class="dropdown-menu" id="subMenuPermisos" style="position: absolute; top: 0; left: 100%; display: none;">
+                        <div class="dropdown-menu" id="subMenuPermisos" style="position: absolute; top: 0; left: 100%; display: none; margin-top:44px">
                             <a class="dropdown-item text-uppercase {{request()->routeIs('permissions.ver') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('permissions.ver')}}">Ver permisos</a>
                             <a class="dropdown-item text-uppercase {{request()->routeIs('permission.create') ? 'text-warning font-weight-bold' : ''}}" href="{{route('permission.create')}}">Crear permiso</a>
                             <a class="dropdown-item text-uppercase {{request()->routeIs('permission.index') ? 'text-warning font-weight-bold' : ''}}" href="{{ route('permission.index')}}">Gestionar permisos</a>
@@ -147,14 +147,14 @@
                         <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.view') ? 'text-warning font-weight-bold' : ''}}" 
                         id="cursosLink" href="{{ route('cursos.view') }}">Cursos</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('capacitaciones.index') ? 'text-warning font-weight-bold' : ''}}" 
-                        href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
-                        <a class="dropdown-item text-uppercase" href="#">Certificaciones</a>
-                        <a class="dropdown-item text-uppercase" href="#">Talleres</a>
-                        <a class="dropdown-item text-uppercase" href="#">Diplomados</a>
+                        id="capacitacionesLink" href="{{ route('capacitaciones.index') }}">Capacitaciones</a>
+                        <a class="dropdown-item text-uppercase" id="certificacionesLink" href="#">Certificaciones</a>
+                        <a class="dropdown-item text-uppercase" id="talleresLink" href="#">Talleres</a>
+                        <a class="dropdown-item text-uppercase" id="diplomadosLink" href="#">Diplomados</a>
                     </div>
 
                     <!-- Submenú para Cursos -->
-                    <div class="dropdown-menu" id="subMenuCursos" style="position: absolute; top: 0; left: 100%; display: none; margin-left:-60px">
+                    <div class="dropdown-menu" id="subMenuCursos" style="position: absolute; top: 0; left: 100%; display: none; margin-left:-59px">
                         <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.ver') ? 'text-warning font-weight-bold' : ''}}" 
                         href="{{ route('cursos.view') }}">Ver cursos</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.create') ? 'text-warning font-weight-bold' : ''}}" 
@@ -162,37 +162,91 @@
                         <a class="dropdown-item text-uppercase {{request()->routeIs('cursos.index') ? 'text-warning font-weight-bold' : ''}}" 
                         href="{{ route('cursos.index') }}">Gestionar cursos</a>
                     </div>
-                    
+
+                    <!-- Submenú para Capacitaciones -->
+                    <div class="dropdown-menu" id="subMenuCapacitaciones" style="position: absolute; top: 0; left: 100%; display: none; margin-left:-59px; margin-top:45px">
+                        <a class="dropdown-item text-uppercase" href="#">Ver capacitaciones</a>
+                        <a class="dropdown-item text-uppercase" href="#">Crear capacitación</a>
+                        <a class="dropdown-item text-uppercase" href="#">Gestionar capacitaciones</a>
+                    </div>
+
+                    <!-- Submenú para Certificaciones -->
+                    <div class="dropdown-menu" id="subMenuCertificaciones" style="position: absolute; top: 0; left: 100%; display: none; margin-left:-59px; margin-top:85px">
+                        <a class="dropdown-item text-uppercase" href="#">Ver certificaciones</a>
+                        <a class="dropdown-item text-uppercase" href="#">Crear certificación</a>
+                        <a class="dropdown-item text-uppercase" href="#">Gestionar certificaciones</a>
+                    </div>
+
+                    <!-- Submenú para Talleres -->
+                    <div class="dropdown-menu" id="subMenuTalleres" style="position: absolute; top: 0; left: 100%; display: none; margin-left:-59px; margin-top:128px">
+                        <a class="dropdown-item text-uppercase" href="#">Ver talleres</a>
+                        <a class="dropdown-item text-uppercase" href="#">Crear taller</a>
+                        <a class="dropdown-item text-uppercase" href="#">Gestionar talleres</a>
+                    </div>
+
+                    <!-- Submenú para Diplomados -->
+                    <div class="dropdown-menu" id="subMenuDiplomados" style="position: absolute; top: 0; left: 100%; display: none; margin-left:-59px; margin-top:170px">
+                        <a class="dropdown-item text-uppercase" href="#">Ver diplomados</a>
+                        <a class="dropdown-item text-uppercase" href="#">Crear diplomado</a>
+                        <a class="dropdown-item text-uppercase" href="#">Gestionar diplomados</a>
+                    </div>
                 </li>
 
                 <script>
-                    // Obtener los elementos del DOM
-                    const cursosLink = document.getElementById('cursosLink');
-                    const subMenuCursos = document.getElementById('subMenuCursos');
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Obtener los elementos del DOM
+                        const cursosLink = document.getElementById('cursosLink');
+                        const subMenuCursos = document.getElementById('subMenuCursos');
+                        const capacitacionesLink = document.getElementById('capacitacionesLink');
+                        const subMenuCapacitaciones = document.getElementById('subMenuCapacitaciones');
+                        const certificacionesLink = document.getElementById('certificacionesLink');
+                        const subMenuCertificaciones = document.getElementById('subMenuCertificaciones');
+                        const talleresLink = document.getElementById('talleresLink');
+                        const subMenuTalleres = document.getElementById('subMenuTalleres');
+                        const diplomadosLink = document.getElementById('diplomadosLink');
+                        const subMenuDiplomados = document.getElementById('subMenuDiplomados');
+                        const navbarDropdown = document.getElementById('navbarDropdown');
 
-                    // Función para mostrar el submenú de Cursos
-                    const showSubMenuCursos = () => {
-                        subMenuCursos.style.display = 'block';
-                    };
+                        // Función para mostrar el submenú
+                        const showSubMenu = (subMenu) => {
+                            hideSubMenus(); // Ocultar otros submenús antes de mostrar el actual
+                            subMenu.style.display = 'block';
+                        };
 
-                    // Función para ocultar los submenús
-                    const hideSubMenusCursos = () => {
-                        subMenuCursos.style.display = 'none';
-                    };
+                        // Función para ocultar los submenús
+                        const hideSubMenus = () => {
+                            subMenuCursos.style.display = 'none';
+                            subMenuCapacitaciones.style.display = 'none';
+                            subMenuCertificaciones.style.display = 'none';
+                            subMenuTalleres.style.display = 'none';
+                            subMenuDiplomados.style.display = 'none';
+                        };
 
-                    // Mostrar el submenú de Cursos cuando el cursor está sobre el enlace de Cursos
-                    cursosLink.addEventListener('mouseenter', showSubMenuCursos);
+                        // Mostrar el submenú cuando el cursor está sobre el enlace
+                        cursosLink.addEventListener('mouseenter', () => showSubMenu(subMenuCursos));
+                        capacitacionesLink.addEventListener('mouseenter', () => showSubMenu(subMenuCapacitaciones));
+                        certificacionesLink.addEventListener('mouseenter', () => showSubMenu(subMenuCertificaciones));
+                        talleresLink.addEventListener('mouseenter', () => showSubMenu(subMenuTalleres));
+                        diplomadosLink.addEventListener('mouseenter', () => showSubMenu(subMenuDiplomados));
 
-                    // Mantener visible el submenú de Cursos mientras el cursor esté sobre él
-                    subMenuCursos.addEventListener('mouseenter', showSubMenuCursos);
+                        // Mantener visible el submenú mientras el cursor esté sobre él
+                        subMenuCursos.addEventListener('mouseenter', () => showSubMenu(subMenuCursos));
+                        subMenuCapacitaciones.addEventListener('mouseenter', () => showSubMenu(subMenuCapacitaciones));
+                        subMenuCertificaciones.addEventListener('mouseenter', () => showSubMenu(subMenuCertificaciones));
+                        subMenuTalleres.addEventListener('mouseenter', () => showSubMenu(subMenuTalleres));
+                        subMenuDiplomados.addEventListener('mouseenter', () => showSubMenu(subMenuDiplomados));
 
-                    // Ocultar el submenú de Cursos cuando el cursor salga de él
-                    subMenuCursos.addEventListener('mouseleave', hideSubMenusCursos);
+                        // Ocultar el submenú cuando el cursor salga de él
+                        subMenuCursos.addEventListener('mouseleave', hideSubMenus);
+                        subMenuCapacitaciones.addEventListener('mouseleave', hideSubMenus);
+                        subMenuCertificaciones.addEventListener('mouseleave', hideSubMenus);
+                        subMenuTalleres.addEventListener('mouseleave', hideSubMenus);
+                        subMenuDiplomados.addEventListener('mouseleave', hideSubMenus);
 
-                    // Ocultar los submenús cuando el cursor no esté sobre "Desarrollo Profesional" o "Cursos"
-                    document.getElementById('navbarDropdown').addEventListener('mouseleave', hideSubMenusCursos);
+                        // Ocultar los submenús cuando el cursor no esté sobre "Desarrollo Profesional" o los submenús
+                        navbarDropdown.addEventListener('mouseleave', hideSubMenus);
+                    });
                 </script>
-
 
                 {{-- ----------------------------------------------------------------------------------------------------------------------------------------------------- --}}
 
@@ -208,14 +262,14 @@
                     </a>
                 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownGestiones">
-                        <a class="dropdown-item text-uppercase" id="inscribirseCohpucpLink" href="#">Inscripciones en cohpucp</a>
+                        <a class="dropdown-item text-uppercase" id="inscribirseCohpucpLink" href="#">Inscripciones al cohpucp</a>
                         <a class="dropdown-item text-uppercase" id="solicitudesLink" href="#">Solicitudes</a>
                         <a class="dropdown-item text-uppercase" id="comprarLink" href="#">Comprar</a>
-                        <a class="dropdown-item text-uppercase" id="comprarLink" href="#">Actualización de poliza de seguro de vida</a>
+                        <a class="dropdown-item text-uppercase" id="comprarLink" href="#">Poliza de seguro de vida</a>
                     </div>
                 
                     <!-- Submenú para Solicitudes -->
-                    <div class="dropdown-menu" id="subMenuSolicitudes" style="position: absolute; top: 100%; left: 100%; margin-left: 209px; display: none; z-index: 1000;">
+                    <div class="dropdown-menu" id="subMenuSolicitudes" style="position: absolute; top: 100%; left: 100%; margin-left: 105px; margin-top:43px; display: none; z-index: 1000;">
                         <a class="dropdown-item text-uppercase" id="solicitudConstanciasLink" href="#">Solicitud de constancias</a>
                         <a class="dropdown-item text-uppercase" href="#">Solicitud de estado de cuenta</a>
                         <a class="dropdown-item text-uppercase" href="#">Solicitud de plan de pago</a>
@@ -223,28 +277,28 @@
                     </div>
                 
                     <!-- Submenú para Solicitud de constancias -->
-                    <div class="dropdown-menu" id="subMenuConstancias" style="position: absolute; top: 0; left: 100%; margin-left: 454px; display: none; z-index: 1000;">
+                    <div class="dropdown-menu" id="subMenuConstancias" style="position: absolute; top: 0; left: 100%; margin-left: 350px; margin-top:43px; display: none; z-index: 1000;">
                         <a class="dropdown-item text-uppercase" href="#">Constancia de Solvencia</a>
                         <a class="dropdown-item text-uppercase" href="#">Constancia de ética</a>
                     </div>
                 
                     <!-- Submenú para Inscribirse al cohpucp -->
-                    <div class="dropdown-menu" id="subMenuInscribirseCohpucp" style="position: absolute; top: 100%; left: 100%; margin-left: 209px; display: none; z-index: 1000;">
-                        <a class="dropdown-item text-uppercase" href="{{ route('inscripcion_firmas.create') }}">Inscripción de firma de Auditoría</a>
+                    <div class="dropdown-menu" id="subMenuInscribirseCohpucp" style="position: absolute; top: 100%; left: 100%; margin-left: 105px; display: none; z-index: 1000;">
+                        <a class="dropdown-item text-uppercase" href="{{ route('inscripcion_firmas.create') }}">Firma de Auditoría</a>
                         <a class="dropdown-item text-uppercase" href="{{ route('inscripcion_firmas.index') }}">Ver inscripciones de firma</a>
-                        <a class="dropdown-item text-uppercase" href="{{ route('inscripciones.create') }}">Inscripción de agremiado</a>
+                        <a class="dropdown-item text-uppercase" href="{{ route('inscripciones.create') }}">Agremiado</a>
                         <a class="dropdown-item text-uppercase" href="{{ route('inscripciones.index') }}">Ver inscripciones de agremiados</a>
                     </div>
                 
                     <!-- Submenú para Comprar -->
-                    <div class="dropdown-menu" id="subMenuComprar" style="position: absolute; top: 100%; left: 100%; margin-left: 120px; display: none; z-index: 1000;">
+                    <div class="dropdown-menu" id="subMenuComprar" style="position: absolute; top: 100%; left: 100%; margin-left: 105px; margin-top:88px; display: none; z-index: 1000;">
                         <a class="dropdown-item text-uppercase" id="sellosLink" href="#">Sellos</a>
                         <a class="dropdown-item text-uppercase" id="timbresLink" href="#">Timbres</a>
                         <a class="dropdown-item text-uppercase" href="#">Ver compras</a>
                     </div>
                 
                     <!-- Submenú para Sellos -->
-                    <div class="dropdown-menu" id="subMenuSellos" style="position: absolute; top: 0; left: 100%; margin-left: 208px; display: none; z-index: 1000;">
+                    <div class="dropdown-menu" id="subMenuSellos" style="position: absolute; top: 0; left: 100%; margin-left: 270px; margin-top:90px; display: none; z-index: 1000;">
                         <a class="dropdown-item text-uppercase" href="#">Sellos de bolsillo</a>
                         <a class="dropdown-item text-uppercase" href="#">Sellos automáticos</a>
                     </div>
