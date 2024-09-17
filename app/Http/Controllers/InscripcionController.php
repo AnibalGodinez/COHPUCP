@@ -239,7 +239,7 @@ class InscripcionController extends Controller
             }
         }
 
-        // Manejo de la imagen de la firma del soli
+        // Manejo de la imagen de la firma del solicitud
         $rutasArchivosFirmaSolicitante = [];
         if ($request->hasFile('imagen_firma_solicitante')) {
             foreach ($request->file('imagen_firma_solicitante') as $imagenFirmaSolicitante) {

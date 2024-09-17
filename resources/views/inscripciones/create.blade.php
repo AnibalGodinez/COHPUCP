@@ -846,7 +846,7 @@
                                     @enderror
                                 </div>
 
-                                <!-- Campo para subir la imagen del Curriculum Vitae -->
+                                <!-- Campo para el Curriculum Vitae -->
                                 <div class="col-md-6 mb-2">
                                     <label for="cv" class="btn btn-default btn-simple">
                                         <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
