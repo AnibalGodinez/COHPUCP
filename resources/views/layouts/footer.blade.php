@@ -33,12 +33,12 @@
                 @endif
                 @if($footerContent->telegram_link)
                     <a href="{{ $footerContent->telegram_link }}" target="_blank" class="mx-2">
-                        <i class="fab fa-telegram" style="color: #c32aa3; font-size: 1.5em"></i>
+                        <i class="fab fa-telegram" style="color: rgb(41, 170, 236); font-size: 1.5em"></i>
                     </a>
                 @endif
                 @if($footerContent->linkendin_link)
                     <a href="{{ $footerContent->linkendin_link }}" target="_blank" class="mx-2">
-                        <i class="fab fa-linkedin" style="color: #c32aa3; font-size:1.5em"></i>
+                        <i class="fab fa-linkedin" style="color: rgb(0, 119, 183); font-size:1.5em"></i>
                     </a>
                 @endif
             </div>
