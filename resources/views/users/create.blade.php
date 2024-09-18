@@ -99,6 +99,11 @@
                                 maxlength="15" 
                                 pattern="\d{4}-\d{4}-\d{5}" 
                                 required>
+                                @error('numero_identidad')
+                                    <span class="invalid-feedback d-block text-center" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                   </span>
+                                @enderror
                             </div>
                             <script>
                                 document.getElementById('numero_identidad').addEventListener('input', function (e) {
@@ -128,6 +133,11 @@
                                 value="{{ old('numero_colegiacion') }}" 
                                 maxlength="12" 
                                 pattern="\d{4}-\d{2}-\d{4}">
+                                @error('numero_colegiacion')
+                                    <span class="invalid-feedback d-block text-center" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                   </span>
+                                @enderror
                             </div>
                             <script>
                                 document.getElementById('numero_colegiacion').addEventListener('input', function (e) {
@@ -159,6 +169,11 @@
                                 value="{{ old('rtn') }}"
                                 maxlength="16" 
                                 pattern="\d{4}-\d{4}-\d{6}">
+                                @error('rtn')
+                                    <span class="invalid-feedback d-block text-center" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                   </span>
+                                @enderror
                             </div>
                             <script>
                                 document.getElementById('rtn').addEventListener('input', function (e) {
@@ -360,6 +375,11 @@
                                 placeholder="Ingrese el correo electrónico" 
                                 value="{{ old('email') }}" 
                                 required>
+                                @error('email')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- Campo para la confirmación del correo electrónico -->

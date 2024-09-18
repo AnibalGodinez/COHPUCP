@@ -101,6 +101,11 @@
                                     pattern="\d{4}-\d{4}-\d{5}"
                                     title="Formato: 0000-0000-00000"
                                     required>
+                                    @error('numero_identidad')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                             </div>
 
                             <script>
@@ -135,6 +140,11 @@
                                     maxlength="12"
                                     pattern="\d{4}-\d{2}-\d{4}"
                                     title="Formato: 0000-00-0000">
+                                    @error('numero_colegiacion')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                             </div>
 
                             <script>
@@ -192,6 +202,11 @@
                                     maxlength="16"
                                     pattern="\d{4}-\d{4}-\d{6}"
                                     title="Formato: 0000-0000-000000">
+                                    @error('rtn')
+                                        <span class="invalid-feedback d-block" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                             </div>
                             <script>
                             document.addEventListener('DOMContentLoaded', function() {
@@ -396,7 +411,12 @@
                                 name="email" 
                                 class="form-control"
                                 placeholder="Ingrese su correo electrónico"
-                                    value="{{ old('email', $user->email) }}">
+                                value="{{ old('email', $user->email) }}">
+                                @error('email')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- Campo para el Rol -->

@@ -48,13 +48,14 @@ class PermissionController extends Controller
             'name' => ['required', 'string', 'unique:permissions,name'],
             'description' => ['nullable', 'string', 'max:255']
         ], [
-            'name.unique' => 'Este Permiso ya existe'
+            'name.unique' => 'El permiso ya existe',
+            'description.max' => 'La descripción no debe ser mayor que 255 caracteres'
         ]);
 
         try {
             Permission::create([
                 'name' => $request->name,
-                'description' => $request->description // Añadido para guardar la descripción
+                'description' => $request->description
             ]);
 
             return redirect('permission/create')->with('status', '¡El permiso se ha creado con éxito!');
@@ -75,11 +76,14 @@ class PermissionController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'unique:permissions,name,' . $permission->id],
             'description' => ['nullable', 'string', 'max:255']
+        ], [
+            'name.unique' => 'El permiso ya existe',
+            'description.max' => 'La descripción no debe ser mayor que 255 caracteres'
         ]);
 
         $permission->update([
             'name' => $request->name,
-            'description' => $request->description // Añadido para actualizar la descripción
+            'description' => $request->description
         ]);
 
         return redirect('permission')->with('status', '¡El permiso se ha actualizado con éxito!');

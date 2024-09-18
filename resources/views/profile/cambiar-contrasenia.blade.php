@@ -131,7 +131,7 @@
                                         </div>
                                         <!-- Mostrar la imagen al inicio del formulario -->
                                         <div class="text-center mb-4">
-                                            <img src="{{ asset('white/img/user.jpg') }}" alt="Logo de usuario" style="width: 150px; height: auto; margin-left:50px; margin-top:80px;">
+                                            <img src="{{ asset('white/img/cambio-contrasenia.png') }}" alt="Img de cambio de contraseña" style="width: 150px; height: auto; margin-left:50px; margin-top:80px;">
                                         </div>
                                     </form>                                       
                                 </div>

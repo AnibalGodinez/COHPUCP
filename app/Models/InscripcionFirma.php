@@ -36,7 +36,6 @@ class InscripcionFirma extends Model
         'segundo_apellido_socio1',
         'num_colegiacion_socio1',
         'cv_socio1',
-        'titulo_socio1',
         'imagen_firma_socio1',
         'constancia_solvencia_socio1',
 
@@ -47,7 +46,6 @@ class InscripcionFirma extends Model
         'segundo_apellido_socio2',
         'num_colegiacion_socio2',
         'cv_socio2',
-        'titulo_socio2',
         'imagen_firma_socio2',
         'constancia_solvencia_socio2',
 
@@ -58,7 +56,6 @@ class InscripcionFirma extends Model
         'segundo_apellido_socio3',
         'num_colegiacion_socio3',
         'cv_socio3',
-        'titulo_socio3',
         'imagen_firma_socio3',
         'constancia_solvencia_socio3',
 
@@ -69,7 +66,6 @@ class InscripcionFirma extends Model
         'segundo_apellido_socio4',
         'num_colegiacion_socio4',
         'cv_socio4',
-        'titulo_socio4',
         'imagen_firma_socio4',
         'constancia_solvencia_socio4',
 
@@ -89,25 +85,7 @@ class InscripcionFirma extends Model
     ];
 
     protected $casts = [
-        'titulo_socio1' => 'array',
-        'titulo_socio2' => 'array',
-        'titulo_socio3' => 'array',
-        'titulo_socio4' => 'array',
-        'imagen_firma_socio1' => 'array',
-        'imagen_firma_socio2' => 'array',
-        'imagen_firma_socio3' => 'array',
-        'imagen_firma_socio4' => 'array',
-        'constancia_solvencia_socio1' => 'array',
-        'constancia_solvencia_socio2' => 'array',
-        'constancia_solvencia_socio3' => 'array',
-        'constancia_solvencia_socio4' => 'array',
-
-        'imagen_escritura_constitucion' => 'array',
-        'imagen_registro_mercantil' => 'array',
-        'imagen_rtn_firma_auditora' => 'array',
-        
-        'imagen_firma_social' => 'array',
-        'imagen_firma_representante_legal' => 'array',
+        'fecha_constitucion' => 'date',
     ];
 
     // Relación con el modelo User

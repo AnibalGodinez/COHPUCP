@@ -24,17 +24,21 @@
                             class="form-control w-50" 
                             placeholder="Ingrese el nombre del permiso"
                             required>
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="form-group">
                             <label for="description"><strong>DESCRIPCIÓN DEL ROL</strong></label>
                             <textarea 
-                                id="description" 
-                                name="description" 
-                                style="min-height: 150px; border: 1px solid #838588;"  
-                                class="form-control w-70 @error('description') is-invalid @enderror"
-                                placeholder="Ingrese una descripción del permiso">{{ old('description', $permission->description) }}</textarea>
-                            
+                            id="description" 
+                            name="description" 
+                            style="min-height: 150px; border: 1px solid #838588;"  
+                            class="form-control w-70 @error('description') is-invalid @enderror"
+                            placeholder="Ingrese una descripción del permiso">{{ old('description', $permission->description) }}</textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
