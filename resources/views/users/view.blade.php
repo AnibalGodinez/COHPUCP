@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card mt-7">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
                         <h3 class="text-center flex-grow-1">LISTA DE USUARIOS</h3>
                         <a href="{{ route('usuarios.export.excel') }}" class="btn btn-success">
                             <i class="fas fa-file-excel"></i> Descargar Excel

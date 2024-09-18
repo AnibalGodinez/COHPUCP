@@ -1,19 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid mt-8" style="margin-top: 90px">
-    <div class="row">
+<div class="container-fluid mt-5">
+    <div class="row justify-content-center" style="margin-top: 90px;">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card shadow-lg">
+                <div class="card-header bg-info text-white text-center">
+                    <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>CREAR USUARIO</strong></h3>
+                </div><br><br>
+
                 <div class="card-body">
-                    <h3 class="text-center">CREAR USUARIO</h3>
-                    
                     <form action="{{url('usuarios')}}" method="POST">
                         @csrf
-                    
+                        
+                        <h4>Por favor, complete todos los campos marcados con asterisco (<strong>*</strong>) ya que son <strong>obligatorios</strong> y no pueden quedar vacíos al momento de crear el usuario.</h4><br>
                         <div class="form-row">
                             <!-- Campo para el primer nombre -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="name">
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER NOMBRE *</strong>
@@ -30,10 +33,10 @@
                             </div>
 
                             <!-- Campo para el segundo nombre -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="name2">
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                    SEGUNDO NOMBRE
+                                    <strong>SEGUNDO NOMBRE</strong>
                                 </label>
                                 <input 
                                 type="text" 
@@ -46,7 +49,7 @@
                             </div>
 
                             <!-- Campo para el primer apellido -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="apellido">
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER APELLIDO *</strong>
@@ -64,10 +67,10 @@
                             </div>
 
                             <!-- Campo para el segundo apellido -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="apellido2">
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                    SEGUNDO APELLIDO
+                                    <strong>SEGUNDO APELLIDO</strong>
                                 </label>
                                 <input 
                                 type="text" 
@@ -81,7 +84,7 @@
                             </div>
 
                             <!-- Campo para el DNI -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="numero_identidad">
                                     <i class="fas fa-id-card" style="margin-right: 8px;"></i>
                                     <strong>DNI *</strong>
@@ -111,17 +114,17 @@
                                 });
                             </script>
                             <!-- Campo para el número de colegiación -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="numero_colegiacion">
                                     <i class="fas fa-address-card" style="margin-right: 8px;"></i>
-                                    Nº COLEGIACIÓN
+                                    <strong>Nº COLEGIACIÓN</strong>
                                 </label>                                                             
                                 <input 
                                 type="text" 
                                 name="numero_colegiacion" 
                                 class="form-control" 
                                 id="numero_colegiacion" 
-                                placeholder="Nº de colegiación (SIN GUIONES)"
+                                placeholder="Ingrese el Nº de colegiación (SIN GUIONES)"
                                 value="{{ old('numero_colegiacion') }}" 
                                 maxlength="12" 
                                 pattern="\d{4}-\d{2}-\d{4}">
@@ -142,10 +145,10 @@
                             </script>
 
                             <!-- Campo para el RTN -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="rtn">
                                     <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
-                                    RTN
+                                    <strong>RTN</strong>
                                 </label>       
                                 <input 
                                 type="text" 
@@ -174,7 +177,7 @@
                             </script>
 
                             <!-- Campo para el Sexo -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="sexo">
                                     <i class="fas fa-venus-mars" style="margin-right: 8px;"></i>
                                     <strong>SEXO *</strong>
@@ -188,7 +191,7 @@
                             </div>                            
                        
                             <!-- Campo para la Fecha de Nacimiento -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="fecha_nacimiento">
                                     <i class="fas fa-birthday-cake" style="margin-right: 8px;"></i>
                                     <strong>FECHA DE NACIMIENTO *</strong>
@@ -216,20 +219,18 @@
                             </script>
 
                             <!-- Campo para edad -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="edad">
                                     <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
-                                    EDAD
+                                    <strong>EDAD</strong>
                                 </label> 
-                                <div class="input-group">
                                     <input 
-                                        type="text" 
-                                        name="edad" 
-                                        class="form-control"
-                                        placeholder="Edad"
-                                        id="edad" 
-                                        readonly>
-                                </div>
+                                    type="text" 
+                                    name="edad" 
+                                    class="form-control"
+                                    placeholder="Edad"
+                                    id="edad" 
+                                    readonly>
                             </div>
                             <script>
                                 document.getElementById('fecha_nacimiento').addEventListener('change', function() {
@@ -246,13 +247,13 @@
                             </script>
 
                             <!-- Campo para seleccionar el país -->
-                            <div class="col-md-6">
+                            <div class=" form-group col-md-2">
                                 <label for="pais">
                                     <i class="fas fa-globe" style="margin-right: 8px;"></i>
                                     <strong>PAÍS *</strong>
                                 </label>
                                 <select id="pais" name="pais_id" class="form-control">
-                                    <option value="">Seleccione un país</option>
+                                    <option value="">Seleccione el país</option>
                                     @foreach($paises as $pais)
                                         <option value="{{ $pais->id }}" data-codigo="{{ $pais->codigo }}"
                                             {{ old('pais_id') == $pais->id ? 'selected' : '' }}>
@@ -291,10 +292,10 @@
                             </script>
 
                             <!-- Campo para el teléfono fijo -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="telefono">
                                     <i class="fas fa-phone" style="margin-right: 8px;"></i>
-                                    TELÉFONO FIJO
+                                    <strong>TELÉFONO FIJO</strong>
                                 </label>                                                             
                                 <div class="input-group{{ $errors->has('telefono') ? ' has-danger' : '' }}">
                                     <div class="input-group">
@@ -304,7 +305,7 @@
                                         type="text" 
                                         class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" 
                                         name="telefono"
-                                        placeholder="Ingrese su número de teléfono fijo"
+                                        placeholder="Ingrese el número de teléfono fijo"
                                         maxlength="15" 
                                         value="{{ old('telefono') }}"
                                         pattern="^[\d-]*$">                                       
@@ -318,7 +319,7 @@
                             </div>
 
                             <!-- Campo para el teléfono celular -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="telefono_celular">
                                     <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
                                     <strong>CELULAR *</strong>
@@ -331,7 +332,7 @@
                                         type="text" 
                                         class="form-control{{ $errors->has('telefono_celular') ? ' is-invalid' : '' }}" 
                                         name="telefono_celular" 
-                                        placeholder="Ingrese su número de celular"
+                                        placeholder="Ingrese el número de celular"
                                         maxlength="15" 
                                         value="{{ old('telefono_celular') }}"
                                         pattern="^[\d-]*$"
@@ -346,7 +347,7 @@
                             </div>
 
                            <!-- Campo para el correo electrónico -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="email">
                                     <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                                     <strong>CORREO ELECTRÓNICO *</strong>
@@ -362,7 +363,7 @@
                             </div>
 
                             <!-- Campo para la confirmación del correo electrónico -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="email_confirmation">
                                     <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
                                     <strong>CONFIRMAR CORREO ELECTRÓNICO *</strong>
@@ -382,27 +383,8 @@
                                 @enderror
                             </div>
 
-                            <!-- Campo para el Rol -->
-                            <div class="form-group col-md-3">
-                                <label>
-                                    <i class="fas fa-user-tag" style="margin-right: 8px;"></i>
-                                    <strong>ROL *</strong>
-                                </label>
-                                <select name="roles[]" class="form-control @error('roles') is-invalid @enderror" required>
-                                    <option disabled selected>Seleccione un rol</option>
-                                    @foreach ($roles as $role)
-                                        <option value="{{ $role }}" {{ in_array($role, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
-                                    @endforeach
-                                </select>
-                                @error('roles')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
                             <!-- Campo para la contraseña  -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="password">
                                     <i class="fas fa-lock" style="margin-right: 8px;"></i>
                                     <strong>CONTRASEÑA *</strong>
@@ -423,7 +405,7 @@
                             </div>
 
                             <!-- Campo para la confirmación de la contraseña  -->
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-2">
                                 <label for="password_confirmation">
                                     <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
                                     <strong>CONFIRMAR NUEVA CONTRASEÑA *</strong>
@@ -432,11 +414,30 @@
                                     type="password" 
                                     name="password_confirmation" 
                                     class="form-control @error('password_confirmation') is-invalid @enderror" 
-                                    placeholder="Ingrese la confirmación de la contraseña"
+                                    placeholder="Confirme la contraseña"
                                     minlength="8"
                                     maxlength="20" 
                                     required>
                                 @error('password_confirmation')
+                                    <span class="invalid-feedback d-block" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <!-- Campo para el Rol -->
+                            <div class="form-group col-md-2">
+                                <label>
+                                    <i class="fas fa-user-tag" style="margin-right: 8px;"></i>
+                                    <strong>ROL *</strong>
+                                </label>
+                                <select name="roles[]" class="form-control @error('roles') is-invalid @enderror" required>
+                                    <option disabled selected>Seleccione el rol</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role }}" {{ in_array($role, old('roles', [])) ? 'selected' : '' }}>{{ $role }}</option>
+                                    @endforeach
+                                </select>
+                                @error('roles')
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -449,14 +450,14 @@
                             <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-success">
                                     <i class="fas fa-save" style="margin-right: 8px;"></i>
-                                    Guardar
+                                    Guardar usuario
                                 </button>
                                 <a href="{{ route('usuarios.ver') }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
                                     Volver
                                 </a>
                             </div>
-                        </div>
+                        </div><br>
 
                     </form>
                 </div>

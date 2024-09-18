@@ -15,21 +15,20 @@
                                 @csrf
                                 @method('PUT')
 
-                                    <!-- Campo para la foto de perfil -->
-                                    <div class="form-group text-center">
-                                        <label for="profile_image">Foto de Perfil</label>
-                                        <div class="mb-3">
-                                            <input type="file" class="form-control-file" id="profile_image" name="profile_image" accept="image/*" onchange="previewImage(event)">
-                                        </div>
-                                        <div class="d-flex justify-content-center">
-                                            @if (Auth::user()->profile_image)
-                                                <img id="profile_image_preview" src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="Profile Image" class="img-fluid mt-2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
-                                            @else
-                                                <img id="profile_image_preview" src="" alt="Profile Image" class="img-fluid mt-2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; display: none;">
-                                            @endif
-                                        </div>
+                                <!-- Campo para la foto de perfil -->
+                                <div class="form-group text-center mb-5">
+                                    <label for="profile_image">Foto de Perfil</label>
+                                    <div class="mb-3">
+                                        <input type="file" class="form-control-file" id="profile_image" name="profile_image" accept="image/*" onchange="previewImage(event)">
                                     </div>
-
+                                    <div class="d-flex justify-content-center">
+                                        @if (Auth::user()->profile_image)
+                                            <img id="profile_image_preview" src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="Profile Image" class="img-fluid mt-2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
+                                        @else
+                                            <img id="profile_image_preview" src="" alt="Profile Image" class="img-fluid mt-2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; display: none;">
+                                        @endif
+                                    </div>
+                                </div>
                                 <script>
                                     function previewImage(event) {
                                         var reader = new FileReader();
@@ -42,12 +41,18 @@
                                     }
                                 </script>
 
-                                <div class="form-group row">
+                                <h4 class="mb-4">Por favor, complete todos los campos marcados con asterisco (<strong>*</strong>) ya que son <strong>obligatorios</strong> y no pueden quedar vacíos al momento de editar su información.</h4><br>
 
-                                    <!-- Campo para el primer nombre -->
-                                    <div class="col-md-3">
+                                <h5 class="text-center" style="text-decoration: underline;"><strong>DATOS PERSONALES</strong></h5>
+
+                                <div class="form-group row">
+                                    <!-- Campo para el primer nombre -->                                  
+                                    <div class="col-md-2">
                                         <label for="name">
                                             <i class="fas fa-user" style="margin-right: 8px;"></i>
+
+
+
                                             <strong>PRIMER NOMBRE *</strong>
                                         </label>
                                         <input 
@@ -62,7 +67,7 @@
                                     </div>
 
                                     <!-- Campo para el segundo nombre -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label for="name2">
                                             <i class="fas fa-user" style="margin-right: 8px;"></i>
                                             <strong>SEGUNDO NOMBRE</strong>
@@ -78,7 +83,7 @@
                                     </div>
 
                                     <!-- Campo para el primer apellido -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label for="apellido">
                                             <i class="fas fa-user" style="margin-right: 8px;"></i>
                                             <strong>PRIMER APELLIDO *</strong>
@@ -96,7 +101,7 @@
                                     </div>
 
                                     <!-- Campo para el segundo apellido -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label for="apellido2">
                                             <i class="fas fa-user" style="margin-right: 8px;"></i>
                                             <strong>SEGUNDO APELLIDO</strong>
@@ -112,12 +117,8 @@
                                         maxlength="40">
                                     </div>
 
-                                </div>
-
-                                <div class="form-group row">
-
                                     <!-- Campo para el DNI -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label for="numero_identidad">
                                             <i class="fas fa-id-card" style="margin-right: 8px;"></i>
                                             <strong>DNI *</strong>
@@ -134,25 +135,24 @@
                                             title="Formato: 0000-0000-00000"
                                             required>
                                     </div>
-
                                     <script>
-                                    document.addEventListener('DOMContentLoaded', function() {
-                                        var input = document.getElementById('numero_identidad');
-                                        input.addEventListener('input', function(e) {
-                                            var value = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
-                                            var formattedValue = value;
-                                            if (value.length > 8) {
-                                                formattedValue = value.slice(0, 4) + '-' + value.slice(4, 8) + '-' + value.slice(8, 13);
-                                            } else if (value.length > 4) {
-                                                formattedValue = value.slice(0, 4) + '-' + value.slice(4, 8);
-                                            }
-                                            e.target.value = formattedValue;
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            var input = document.getElementById('numero_identidad');
+                                            input.addEventListener('input', function(e) {
+                                                var value = e.target.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+                                                var formattedValue = value;
+                                                if (value.length > 8) {
+                                                    formattedValue = value.slice(0, 4) + '-' + value.slice(4, 8) + '-' + value.slice(8, 13);
+                                                } else if (value.length > 4) {
+                                                    formattedValue = value.slice(0, 4) + '-' + value.slice(4, 8);
+                                                }
+                                                e.target.value = formattedValue;
+                                            });
                                         });
-                                    });
-                                    </script>
+                                        </script>
 
-                                    <!-- Campo para el número de colegiación -->
-                                    <div class="col-md-3">
+                                        <!-- Campo para el número de colegiación -->
+                                    <div class="col-md-2">
                                         <label for="numero_colegiacion">
                                             <i class="fas fa-address-card" style="margin-right: 8px;"></i>
                                             <strong>Nº COLEGIACIÓN</strong>
@@ -168,7 +168,6 @@
                                             pattern="\d{4}-\d{2}-\d{4}"
                                             title="Formato: 0000-00-0000">
                                     </div>
-
                                     <script>
                                     document.addEventListener('DOMContentLoaded', function() {
                                         var input = document.getElementById('numero_colegiacion');
@@ -185,8 +184,12 @@
                                     });
                                     </script>
 
+                                </div>
+
+
+                                <div class="form-group row">
                                     <!-- Campo para el RTN -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label for="rtn">
                                             <i class="fas fa-file-alt" style="margin-right: 8px;"></i>
                                             <strong>RTN</strong>
@@ -220,7 +223,7 @@
                                     </script>
 
                                     <!-- Campo para el Sexo -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-1">
                                         <label for="sexo">
                                             <i class="fas fa-venus-mars" style="margin-right: 8px;"></i>
                                             <strong>SEXO *</strong>
@@ -240,12 +243,8 @@
                                         @enderror
                                     </div>
 
-                                </div>
-
-                                <div class="form-group row">
-
                                     <!-- Campo para la Fecha de Nacimiento -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label for="fecha_nacimiento">
                                             <i class="fas fa-birthday-cake" style="margin-right: 8px;"></i>
                                             <strong>FECHA DE NACIMIENTO *</strong>
@@ -273,7 +272,7 @@
                                     </script>
 
                                     <!-- Campo para la edad -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-1">
                                         <label for="edad">
                                             <i class="fas fa-calendar-day" style="margin-right: 8px;"></i>
                                             <strong>EDAD</strong>
@@ -313,7 +312,7 @@
                                     </script>
 
                                     <!-- Campo para seleccionar el país -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label for="pais">
                                             <i class="fas fa-globe" style="margin-right: 8px;"></i>
                                             <strong>PAÍS *</strong>
@@ -329,7 +328,7 @@
                                     </div>
 
                                     <!-- Campo para el teléfono fijo -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label for="telefono">
                                             <i class="fas fa-phone" style="margin-right: 8px;"></i>
                                             <strong>TELÉFONO FIJO</strong>
@@ -354,12 +353,9 @@
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
-
-                                <div class="form-group row">
 
                                     <!-- Campo para el teléfono celular -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <label for="telefono_celular">
                                             <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
                                             <strong>CELULAR *</strong>
@@ -385,7 +381,6 @@
                                             </span>
                                         @enderror
                                     </div>
-
                                     <script>
                                         document.addEventListener('DOMContentLoaded', function () {
                                             const paisSelect = document.getElementById('pais');
@@ -410,6 +405,11 @@
                                         });
                                     </script>
 
+                                </div><br>
+
+                                <h5 class="text-center" style="text-decoration: underline;"><strong>ENLACES DE MIS REDES SOCIALES</strong></h5>
+
+                                <div class="form-group row">                                                              
                                     <!-- Campo para el link de facebook -->
                                     <div class="col-md-3">
                                         <label for="facebook_link">
@@ -471,7 +471,7 @@
                                     </div>
 
                                     <!-- Campo para el correo electrónico -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-2 mb-4">
                                         <label for="email">
                                             <i class="fas fa-envelope" style="margin-right: 8px;"></i>
                                             <strong>CORREO ELECTRÓNICO *</strong>
@@ -483,7 +483,7 @@
                                             placeholder="Ingrese su correo electrónico"
                                             value="{{ old('email', $user->email) }}"
                                             required>
-                                    </div>
+                                    </div><br>
 
                                     <!-- Campo para el link de descripción -->
                                     <div class="col-md-12">

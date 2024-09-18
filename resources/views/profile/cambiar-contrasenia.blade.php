@@ -31,107 +31,108 @@
                                         <img src="{{ asset('storage/default-profile.png') }}" alt="Default Profile Image" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px;">
                                     @endif
                                     <div class="d-flex justify-content-center mb-3">
-                                        <h4 class="card-title mb-0 mr-2" style="text-transform: uppercase;"><strong><strong>{{ Auth::user()->name }}</strong></strong></h4>
-                                        <h4 class="card-title mb-0 mr-2" style="text-transform: uppercase;"><strong><strong>{{ Auth::user()->name2 }}</strong></strong></h4>
-                                        <h4 class="card-title mb-0" style="text-transform: uppercase;"><strong><strong>{{ Auth::user()->apellido }}</strong></strong></h4>
-                                    </div><br>
+                                        <h4 class="card-title mb-0 mr-2"><strong><strong>{{ Auth::user()->name }}</strong></strong></h4>
+                                        <h4 class="card-title mb-0 mr-2"><strong><strong>{{ Auth::user()->name2 }}</strong></strong></h4>
+                                        <h4 class="card-title"><strong><strong>{{ Auth::user()->apellido }}</strong></strong></h4>
+                                    </div>
                                     <p class="card-text">{!! nl2br(e(Auth::user()->bio)) !!}</p><br>
                                     <div class="mt-3 d-flex justify-content-center">
-                                        <a href="{{ Auth::user()->facebook_link }}" target="_blank" class="mx-2" aria-label="Facebook" style="color: #0865FE">
-                                            <i class="fab fa-facebook fa-2x"></i>
+                                        <a href="{{ Auth::user()->facebook_link }}" target="_blank" class="mx-2" aria-label="Facebook" style="color: #0865FE; ">
+                                            <i class="fab fa-facebook" style="font-size: 1.7em"></i>
                                         </a>
                                         <a href="{{ Auth::user()->instagram_link }}" target="_blank" class="mx-2" aria-label="Facebook" style="color: #C927D0">
-                                            <i class="fab fa-instagram fa-2x"></i>
+                                            <i class="fab fa-instagram" style="font-size: 1.8em"></i>
+                                        </a>
+                                        <a href="{{ Auth::user()->twitter_link }}" target="_blank" class="mx-2">
+                                            <img src="{{ asset('icons/X_red_social.svg') }}" alt="X" style="width: 1.5em; height: 1.5em;">
                                         </a>
                                         <a href="{{ Auth::user()->linkedin_link }}" target="_blank" class="mx-2" aria-label="Facebook" style="color: #0077B7">
-                                            <i class="fab fa-linkedin fa-2x"></i>
+                                            <i class="fab fa-linkedin" style="font-size: 1.7em"></i>
                                         </a>
-                                        <a href="{{ Auth::user()->twitter_link }}" target="_blank" class="mx-2" aria-label="Twitter" style="color: #00A2F3">
-                                            <i class="fab fa-twitter fa-2x"></i>
-                                        </a>
-                                    </div><br><br><br>
+                                    </div><br>
                                 </div>
                             </div>
                         </div>
                                                                                   
-
-                            <!-- Formulario para Cambiar la Contraseña -->
-                            <div class="col-md-9">
-                                <div class="card mb-3">
-                                    <div class="card-body">
-
-                                        <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
-                                            <div class="card-body">
-                                                @csrf
-                                                @method('put')                                           
-                                            
-                                                <div class="form-row justify-content-center">
-                                                    <div class="form-group text-center col-md-3">
-                                                        <label for="old_password"><strong>CONTRASEÑA ACTUAL *</strong></label>
-                                                        <input 
-                                                            type="password" 
-                                                            name="old_password" 
-                                                            class="form-control @error('old_password') is-invalid @enderror" 
-                                                            placeholder="Ingrese la contraseña actual" 
-                                                            value="{{ old('old_password') }}" 
-                                                            style="text-align: center;" 
-                                                            required>
-                                                        @error('old_password')
+                        <!-- Formulario para Cambiar la Contraseña -->
+                        <div class="col-md-9">
+                            <div class="card mb-3" style="border-radius: 15px;">
+                                <div class="card-body">
+                                    <form method="post" action="{{ route('profile.password') }}" autocomplete="off">
+                                        <div class="card-body">
+                                            @csrf
+                                            @method('put')                                               
+                                        
+                                            <div class="form-row justify-content-center">
+                                                <div class="form-group text-center col-md-3">
+                                                    <label for="old_password"><strong>CONTRASEÑA ACTUAL *</strong></label>
+                                                    <input 
+                                                        type="password" 
+                                                        name="old_password" 
+                                                        class="form-control @error('old_password') is-invalid @enderror" 
+                                                        placeholder="Ingrese la contraseña actual" 
+                                                        value="{{ old('old_password') }}" 
+                                                        style="text-align: center;" 
+                                                        required>
+                                                    @error('old_password')
+                                                        <span class="invalid-feedback d-block text-center" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                    
+                                                <!-- Salto de línea -->
+                                                <div class="w-100"></div>
+                                        
+                                                <div class="form-group text-center col-md-3">
+                                                    <label for="password"><strong>NUEVA CONTRASEÑA *</strong></label>
+                                                    <input 
+                                                        type="password" 
+                                                        name="password" 
+                                                        class="form-control @error('password') is-invalid @enderror" 
+                                                        placeholder="Ingrese la nueva contraseña"
+                                                        minlength="8"
+                                                        maxlength="20"
+                                                        value="{{ old('password') }}" 
+                                                        required>                                                
+                                                    </div>
+                                
+                                                <div class="form-group text-center col-md-3">
+                                                    <label for="password_confirmation"><strong>CONFIRMAR LA NUEVA CONTRASEÑA *</strong></label>
+                                                    <input 
+                                                        type="password" 
+                                                        name="password_confirmation" 
+                                                        class="form-control @error('password_confirmation') is-invalid @enderror" 
+                                                        placeholder="Confirme la nueva contraseña"
+                                                        minlength="8"
+                                                        maxlength="20" 
+                                                        value="{{ old('password_confirmation') }}" 
+                                                        required>
+                                                        @error('password')
                                                             <span class="invalid-feedback d-block text-center" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
                                                         @enderror
-                                                    </div>
-                                                    
-                                                    <!-- Salto de línea -->
-                                                    <div class="w-100"></div>
-                                            
-                                                    <div class="form-group text-center col-md-3">
-                                                        <label for="password"><strong>NUEVA CONTRASEÑA *</strong></label>
-                                                        <input 
-                                                            type="password" 
-                                                            name="password" 
-                                                            class="form-control @error('password') is-invalid @enderror" 
-                                                            placeholder="Ingrese la nueva contraseña"
-                                                            minlength="8"
-                                                            maxlength="20"
-                                                            value="{{ old('password') }}" 
-                                                            required>
-                                                        
-                                                    </div>
-                                
-                                                    <div class="form-group text-center col-md-3">
-                                                        <label for="password_confirmation"><strong>CONFIRMAR LA NUEVA CONTRASEÑA *</strong></label>
-                                                        <input 
-                                                            type="password" 
-                                                            name="password_confirmation" 
-                                                            class="form-control @error('password_confirmation') is-invalid @enderror" 
-                                                            placeholder="Confirme la nueva contraseña"
-                                                            minlength="8"
-                                                            maxlength="20" 
-                                                            value="{{ old('password_confirmation') }}" 
-                                                            required>
-                                                            @error('password')
-                                                                <span class="invalid-feedback d-block text-center" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                    </div>
-                                                </div>
-                                            </div>                    
-                            
-                                            <div class="form-group row mb-0">
-                                                <div class="col-md-12 text-center">
-                                                    <button type="submit" class="btn btn-success">
-                                                        <i class="fas fa-save" style="margin-right: 8px;"></i>
-                                                        Guardar nueva contraseña
-                                                    </button>
-                                                    <a href="{{ route('profile.show') }}" class="btn btn-secondary">
-                                                        <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
-                                                        Volver
-                                                    </a>
                                                 </div>
                                             </div>
+                                        </div>                    
+                            
+                                        <div class="form-group row mb-0">
+                                            <div class="col-md-12 text-center">
+                                                <button type="submit" class="btn btn-success">
+                                                    <i class="fas fa-save" style="margin-right: 8px;"></i>
+                                                    Guardar nueva contraseña
+                                                </button>
+                                                <a href="{{ route('profile.show') }}" class="btn btn-secondary">
+                                                    <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                                                    Volver
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- Mostrar la imagen al inicio del formulario -->
+                                        <div class="text-center mb-4">
+                                            <img src="{{ asset('white/img/user.jpg') }}" alt="Logo de usuario" style="width: 150px; height: auto; margin-left:50px; margin-top:80px;">
+                                        </div>
                                     </form>                                       
                                 </div>
                             </div>
