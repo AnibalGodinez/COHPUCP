@@ -267,68 +267,37 @@
                                 });
                             </script>
 
-                            <!-- Campo para el Curriculum Vitae del socio 1 -->
-                            <div class="col-md-6 mb-2">
-                                <label for="cv_socio1" class="btn btn-default btn-simple">
+                            <!-- SUBIR CV DEL SOCIO 1 -->
+                            <div class="col-md-4 text-center">
+                                <label for="cv_socio1" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
-                                    <strong>Currículum vitae</strong>
+                                    Subir Curriculum y título (PDF)
                                 </label>
-                                PDF (Mínimo 3 páginas)
-                                <input type="file" class="form-control @error('cv_socio1') is-invalid @enderror" id="cv_socio1" name="cv_socio1" aria-label="Currículum vitae socio 1" accept="application/pdf" onchange="previewFile('cv_socio1', 'pdfPreviewSocio1', false)">
-                                @error('cv_socio1')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <div class="form-group mt-3">
-                                    <iframe id="pdfPreviewSocio1" src="#" type="application/pdf" style="display: none; width: 90%; height: 900px;" frameborder="0"></iframe>
-                                </div>
+                                    Subir estos archivos en el mismo PDF
+                                <input type="file" class="form-control-file" id="cv_socio1" name="cv_socio1" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_socio1')">
+                                
+                                <!-- Vista previa del PDF -->
+                                <embed id="pdf_preview_socio1" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
                             </div>
 
-                            <!-- Campo para subir las imágenes del Título Universitario del socio 1-->
-                            <div class="col-md-6 mb-3">
-                                <label for="titulo_socio1" class="btn btn-default btn-simple">
+                            <!-- IMAGEN DE FIRMA DEL SOCIO 1 -->
+                            <div class="col-md-4 text-center">
+                                <label for="imagen_firma_socio1" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir título universitario</strong>
+                                    Subir firma digital socio 1
                                 </label>
-                                (frontal y reverso)
-                                <input type="file" id="titulo_socio1" name="titulo_socio1[]" accept="image/*" multiple>
-                                <div id="previewTituloSocio1"></div>
-                                @error('titulo_socio1.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input type="file" class="form-control-file" id="imagen_firma_socio1" name="imagen_firma_socio1" onchange="previewImage(event, 'preview_socio1')">
+                                <img id="preview_socio1" src="#" alt="Vista previa de la firma del Socio 1" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <!-- Campo para subir imagen de la firma digital del socio 1 -->
-                            <div class="col-md-6 mb-3">
-                                <label for="imagen_firma_socio1" class="btn btn-default btn-simple">
+                            <!-- IMAGEN DE LA CONSTACNIA DE SOLVENCIA DEL SOCIO 1 -->
+                            <div class="col-md-4 text-center mb-4">
+                                <label for="constancia_solvencia_socio1" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir firma digital</strong> 
+                                    Subir constancia de solvencia
                                 </label>
-                                <input type="file" id="imagen_firma_socio1" name="imagen_firma_socio1[]" accept="image/*">
-                                <div id="preview_firma_socio1"></div>
-                                @error('imagen_firma_socio1.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <!-- Campo para subir imagen de la constancia del socio 1 -->
-                            <div class="col-md-6 mb-3">
-                                <label for="constancia_solvencia_socio1" class="btn btn-default btn-simple">
-                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir constancia de solvencia</strong> 
-                                </label>
-                                <input type="file" id="constancia_solvencia_socio1" name="constancia_solvencia_socio1[]" accept="image/*">
-                                <div id="previewSolvenciaSocio1"></div>
-                                @error('constancia_solvencia_socio1.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input type="file" class="form-control-file" id="constancia_solvencia_socio1" name="constancia_solvencia_socio1" onchange="previewImage(event, 'preview_constancia1')">
+                                <img id="preview_constancia1" src="#" alt="Vista previa de la constancia de sovencia" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
                         </div>
@@ -346,7 +315,7 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER NOMBRE</strong>
                                 </label>
-                                <input type="text" class="form-control @error('primer_nombre_socio2') is-invalid @enderror" id="primer_nombre_socio2" name="primer_nombre_socio2" value="{{ old('primer_nombre_socio2') }}" placeholder="Ingrese el primer nombre">
+                                <input type="text" class="form-control @error('primer_nombre_socio2') is-invalid @enderror" id="primer_nombre_socio2" name="primer_nombre_socio2" value="{{ old('primer_nombre_socio2') }}" placeholder="Ingrese el primer nombre" required>
                                 @error('primer_nombre_socio2')
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -374,7 +343,7 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER APELLIDO</strong>
                                 </label>
-                                <input type="text" class="form-control @error('primer_apellido_socio2') is-invalid @enderror" id="primer_apellido_socio2" name="primer_apellido_socio2" value="{{ old('primer_apellido_socio2') }}" placeholder="Ingrese el primer apellido">
+                                <input type="text" class="form-control @error('primer_apellido_socio2') is-invalid @enderror" id="primer_apellido_socio2" name="primer_apellido_socio2" value="{{ old('primer_apellido_socio2') }}" placeholder="Ingrese el primer apellido" required>
                                 @error('primer_apellido_socio2')
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -424,68 +393,37 @@
                                 });
                             </script>
 
-                            <!-- Campo para el Curriculum Vitae del socio 2 -->
-                            <div class="col-md-6 mb-2">
-                                <label for="cv_socio2" class="btn btn-default btn-simple">
+                            <!-- SUBIR CV DEL SOCIO 2 -->
+                            <div class="col-md-4 text-center">
+                                <label for="cv_socio2" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
-                                    <strong>Currículum vitae</strong>
+                                    Subir Curriculum y título (PDF)
                                 </label>
-                                PDF (Mínimo 3 páginas)
-                                <input type="file" class="form-control @error('cv_socio2') is-invalid @enderror" id="cv_socio2" name="cv_socio2" aria-label="Currículum vitae socio 2" accept="application/pdf" onchange="previewFile('cv_socio2', 'pdfPreviewSocio2', false)">
-                                @error('cv_socio2')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <div class="form-group mt-3">
-                                    <iframe id="pdfPreviewSocio2" src="#" type="application/pdf" style="display: none; width: 90%; height: 900px;" frameborder="0"></iframe>
-                                </div>
+                                    Subir estos archivos en el mismo PDF
+                                <input type="file" class="form-control-file" id="cv_socio2" name="cv_socio2" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_socio2')">
+                                
+                                <!-- Vista previa del PDF -->
+                                <embed id="pdf_preview_socio2" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
                             </div>
 
-                            <!-- Campo para subir las imágenes del Título Universitario del socio 2-->
-                            <div class="col-md-6 mb-3">
-                                <label for="titulo_socio2" class="btn btn-default btn-simple">
+                            <!-- IMAGEN DE FIRMA DEL SOCIO 2 -->
+                            <div class="col-md-4 text-center">
+                                <label for="imagen_firma_socio2" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir título universitario</strong>
+                                    Subir firma digital socio 2
                                 </label>
-                                (frontal y reverso)
-                                <input type="file" id="titulo_socio2" name="titulo_socio2[]" accept="image/*" multiple>
-                                <div id="previewTituloSocio2"></div>
-                                @error('titulo_socio2.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input type="file" class="form-control-file" id="imagen_firma_socio2" name="imagen_firma_socio2" onchange="previewImage(event, 'preview_socio2')">
+                                <img id="preview_socio2" src="#" alt="Vista previa de la firma del Socio 2" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <!-- Campo para subir imagen de la firma digital del socio 2 -->
-                            <div class="col-md-6 mb-3">
-                                <label for="imagen_firma_socio2" class="btn btn-default btn-simple">
+                            <!-- IMAGEN DE LA CONSTACNIA DE SOLVENCIA DEL SOCIO 2 -->
+                            <div class="col-md-4 text-center mb-4">
+                                <label for="constancia_solvencia_socio2" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir firma digital</strong> 
+                                    Subir constancia de solvencia
                                 </label>
-                                <input type="file" id="imagen_firma_socio2" name="imagen_firma_socio2[]" accept="image/*">
-                                <div id="preview_firma_socio2"></div>
-                                @error('imagen_firma_socio2.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <!-- Campo para subir imagen de la constancia del socio 2 -->
-                            <div class="col-md-6 mb-3">
-                                <label for="constancia_solvencia_socio2" class="btn btn-default btn-simple">
-                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir constancia de solvencia</strong> 
-                                </label>
-                                <input type="file" id="constancia_solvencia_socio2" name="constancia_solvencia_socio2[]" accept="image/*">
-                                <div id="previewSolvenciaSocio2"></div>
-                                @error('constancia_solvencia_socio2.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input type="file" class="form-control-file" id="constancia_solvencia_socio2" name="constancia_solvencia_socio2" onchange="previewImage(event, 'preview_constancia2')">
+                                <img id="preview_constancia2" src="#" alt="Vista previa de la constancia de sovencia" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
                         </div>
@@ -502,7 +440,7 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER NOMBRE</strong>
                                 </label>
-                                <input type="text" class="form-control @error('primer_nombre_socio3') is-invalid @enderror" id="primer_nombre_socio3" name="primer_nombre_socio3" value="{{ old('primer_nombre_socio3') }}" placeholder="Ingrese el primer nombre">
+                                <input type="text" class="form-control @error('primer_nombre_socio3') is-invalid @enderror" id="primer_nombre_socio3" name="primer_nombre_socio3" value="{{ old('primer_nombre_socio3') }}" placeholder="Ingrese el primer nombre" required>
                                 @error('primer_nombre_socio3')
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -530,7 +468,7 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER APELLIDO</strong>
                                 </label>
-                                <input type="text" class="form-control @error('primer_apellido_socio3') is-invalid @enderror" id="primer_apellido_socio3" name="primer_apellido_socio3" value="{{ old('primer_apellido_socio3') }}" placeholder="Ingrese el primer apellido">
+                                <input type="text" class="form-control @error('primer_apellido_socio3') is-invalid @enderror" id="primer_apellido_socio3" name="primer_apellido_socio3" value="{{ old('primer_apellido_socio3') }}" placeholder="Ingrese el primer apellido" required>
                                 @error('primer_apellido_socio3')
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -580,68 +518,37 @@
                                 });
                             </script>
 
-                            <!-- Campo para el Curriculum Vitae del socio 3 -->
-                            <div class="col-md-6 mb-2">
-                                <label for="cv_socio3" class="btn btn-default btn-simple">
+                            <!-- SUBIR CV DEL SOCIO 3 -->
+                            <div class="col-md-4 text-center">
+                                <label for="cv_socio3" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
-                                    <strong>Currículum vitae</strong>
+                                    Subir Curriculum y título (PDF)
                                 </label>
-                                PDF (Mínimo 3 páginas)
-                                <input type="file" class="form-control @error('cv_socio3') is-invalid @enderror" id="cv_socio3" name="cv_socio3" aria-label="Currículum vitae socio 3" accept="application/pdf" onchange="previewFile('cv_socio3', 'pdfPreviewSocio3', false)">
-                                @error('cv_socio3')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <div class="form-group mt-3">
-                                    <iframe id="pdfPreviewSocio3" src="#" type="application/pdf" style="display: none; width: 90%; height: 900px;" frameborder="0"></iframe>
-                                </div>
+                                    Subir estos archivos en el mismo PDF
+                                <input type="file" class="form-control-file" id="cv_socio3" name="cv_socio3" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_socio3')">
+                                
+                                <!-- Vista previa del PDF -->
+                                <embed id="pdf_preview_socio3" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
                             </div>
 
-                            <!-- Campo para subir las imágenes del Título Universitario del socio 3-->
-                            <div class="col-md-6 mb-3">
-                                <label for="titulo_socio3" class="btn btn-default btn-simple">
+                            <!-- IMAGEN DE FIRMA DEL SOCIO 3 -->
+                            <div class="col-md-4 text-center mb-4">
+                                <label for="imagen_firma_socio3" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir título universitario</strong>
+                                    Subir firma digital socio 3
                                 </label>
-                                (frontal y reverso)
-                                <input type="file" id="titulo_socio3" name="titulo_socio3[]" accept="image/*" multiple>
-                                <div id="previewTituloSocio3"></div>
-                                @error('titulo_socio3.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input type="file" class="form-control-file d-none" id="imagen_firma_socio3" name="imagen_firma_socio3" onchange="previewImage(event, 'preview_socio3')">
+                                <img id="preview_socio3" src="#" alt="Vista previa de la firma del Socio 3" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <!-- Campo para subir imagen de la firma digital del socio 3 -->
-                            <div class="col-md-6 mb-3">
-                                <label for="imagen_firma_socio3" class="btn btn-default btn-simple">
+                            <!-- IMAGEN DE LA CONSTACNIA DE SOLVENCIA DEL SOCIO 3 -->
+                            <div class="col-md-4 text-center mb-4">
+                                <label for="constancia_solvencia_socio3" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir firma digital</strong> 
+                                    Subir constancia de solvencia
                                 </label>
-                                <input type="file" id="imagen_firma_socio3" name="imagen_firma_socio3[]" accept="image/*">
-                                <div id="preview_firma_socio3"></div>
-                                @error('imagen_firma_socio3.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <!-- Campo para subir imagen de la constancia del socio 3 -->
-                            <div class="col-md-6 mb-3">
-                                <label for="constancia_solvencia_socio3" class="btn btn-default btn-simple">
-                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir constancia de solvencia</strong> 
-                                </label>
-                                <input type="file" id="constancia_solvencia_socio3" name="constancia_solvencia_socio3[]" accept="image/*">
-                                <div id="previewSolvenciaSocio3"></div>
-                                @error('constancia_solvencia_socio3.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input type="file" class="form-control-file" id="constancia_solvencia_socio3" name="constancia_solvencia_socio3" onchange="previewImage(event, 'preview_constancia3')">
+                                <img id="preview_constancia3" src="#" alt="Vista previa de la constancia de sovencia" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
                        
                         </div>
@@ -659,7 +566,7 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER NOMBRE</strong>
                                 </label>
-                                <input type="text" class="form-control @error('primer_nombre_socio4') is-invalid @enderror" id="primer_nombre_socio4" name="primer_nombre_socio4" value="{{ old('primer_nombre_socio4') }}" placeholder="Ingrese el primer nombre">
+                                <input type="text" class="form-control @error('primer_nombre_socio4') is-invalid @enderror" id="primer_nombre_socio4" name="primer_nombre_socio4" value="{{ old('primer_nombre_socio4') }}" placeholder="Ingrese el primer nombre" required>
                                 @error('primer_nombre_socio4')
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -687,7 +594,7 @@
                                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                                     <strong>PRIMER APELLIDO</strong>
                                 </label>
-                                <input type="text" class="form-control @error('primer_apellido_socio4') is-invalid @enderror" id="primer_apellido_socio4" name="primer_apellido_socio4" value="{{ old('primer_apellido_socio4') }}" placeholder="Ingrese el primer apellido">
+                                <input type="text" class="form-control @error('primer_apellido_socio4') is-invalid @enderror" id="primer_apellido_socio4" name="primer_apellido_socio4" value="{{ old('primer_apellido_socio4') }}" placeholder="Ingrese el primer apellido" required>
                                 @error('primer_apellido_socio4')
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -737,68 +644,37 @@
                                 });
                             </script>
 
-                            <!-- Campo para el Curriculum Vitae del socio 4 -->
-                            <div class="col-md-6 mb-2">
-                                <label for="cv_socio4" class="btn btn-default btn-simple">
+                            <!-- SUBIR CV DEL SOCIO 4 -->
+                            <div class="col-md-4 text-center">
+                                <label for="cv_socio4" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
-                                    <strong>Currículum vitae</strong>
+                                    Subir Curriculum y título (PDF)
                                 </label>
-                                PDF (Mínimo 3 páginas)
-                                <input type="file" class="form-control @error('cv_socio4') is-invalid @enderror" id="cv_socio4" name="cv_socio4" aria-label="Currículum vitae socio 4" accept="application/pdf" onchange="previewFile('cv_socio4', 'pdfPreviewSocio4', false)">
-                                @error('cv_socio4')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <div class="form-group mt-3">
-                                    <iframe id="pdfPreviewSocio4" src="#" type="application/pdf" style="display: none; width: 90%; height: 900px;" frameborder="0"></iframe>
-                                </div>
+                                    Subir estos archivos en el mismo PDF
+                                <input type="file" class="form-control-file" id="cv_socio4" name="cv_socio4" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_socio4')">
+                                
+                                <!-- Vista previa del PDF -->
+                                <embed id="pdf_preview_socio4" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
                             </div>
 
-                            <!-- Campo para subir las imágenes del Título Universitario del socio 4 -->
-                            <div class="col-md-6 mb-3">
-                                <label for="titulo_socio4" class="btn btn-default btn-simple">
+                            <!-- IMAGEN DE FIRMA DEL SOCIO 4 -->
+                            <div class="col-md-4 text-center mb-4">
+                                <label for="imagen_firma_socio4" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir título universitario</strong>
+                                    Subir firma digital socio 4
                                 </label>
-                                (frontal y reverso)
-                                <input type="file" id="titulo_socio4" name="titulo_socio4[]" accept="image/*" multiple>
-                                <div id="previewTituloSocio4"></div>
-                                @error('titulo_socio4.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input type="file" class="form-control-file d-none" id="imagen_firma_socio4" name="imagen_firma_socio4" onchange="previewImage(event, 'preview_socio4')">
+                                <img id="preview_socio4" src="#" alt="Vista previa de la firma del Socio 4" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <!-- Campo para subir imagen de la firma digital del socio 4 -->
-                            <div class="col-md-6 mb-3">
-                                <label for="imagen_firma_socio4" class="btn btn-default btn-simple">
+                            <!-- IMAGEN DE LA CONSTACNIA DE SOLVENCIA DEL SOCIO 3 -->
+                            <div class="col-md-4 text-center mb-4">
+                                <label for="constancia_solvencia_socio4" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir firma digital</strong> 
+                                    Subir constancia de solvencia
                                 </label>
-                                <input type="file" id="imagen_firma_socio4" name="imagen_firma_socio4[]" accept="image/*">
-                                <div id="preview_firma_socio4"></div>
-                                @error('imagen_firma_socio4.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <!-- Campo para subir imagen de la constancia del socio 4 -->
-                            <div class="col-md-6 mb-3">
-                                <label for="constancia_solvencia_socio4" class="btn btn-default btn-simple">
-                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir constancia de solvencia</strong> 
-                                </label>
-                                <input type="file" id="constancia_solvencia_socio4" name="constancia_solvencia_socio4[]" accept="image/*">
-                                <div id="previewSolvenciaSocio4"></div>
-                                @error('constancia_solvencia_socio4.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input type="file" class="form-control-file" id="constancia_solvencia_socio4" name="constancia_solvencia_socio4" onchange="previewImage(event, 'preview_constancia4')">
+                                <img id="preview_constancia4" src="#" alt="Vista previa de la constancia de sovencia" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
                         </div>
@@ -810,67 +686,50 @@
                                 <h4 style="text-decoration: underline;"><strong>III. DOCUMENTOS</strong></h4>
                             </div>
 
-                            <!-- Campo para subir la imagen de la escritura de constitución -->
-                            <div class="col-md-6 mb-3">
-                                <label for="imagen_escritura_constitucion" class="btn btn-default btn-simple">
+                            <!-- ESCRITURA DE CONSTITUCIÓN -->
+                            <div class="col-md-6 text-center mb-4">
+                                <label for="imagen_escritura_constitucion" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir escritura de constitución original</strong> 
+                                    Subir escritura de constitución original
                                 </label>
-                                <input type="file" id="imagen_escritura_constitucion" name="imagen_escritura_constitucion[]" accept="image/*">
-                                <div id="previewImagenEscrituraConstitucion"></div>
-                                @error('imagen_escritura_constitucion.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input type="file" class="form-control-file" id="imagen_escritura_constitucion" name="imagen_escritura_constitucion" onchange="previewImage(event, 'preview_escritura')">
+                                <img id="preview_escritura" src="#" alt="Vista previa de la escritura de constitucion" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <!-- Campo para subir la imagen del registro mercantil -->
-                            <div class="col-md-6 mb-3">
-                                <label for="imagen_registro_mercantil" class="btn btn-default btn-simple">
+                            <!-- REGISTRO MERCANTIL -->
+                            <div class="col-md-6 text-center">
+                                <label for="imagen_registro_mercantil" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir registro mercantil original</strong> 
+                                    Subir registro mercantil original
                                 </label>
-                                <input type="file" id="imagen_registro_mercantil" name="imagen_registro_mercantil[]" accept="image/*">
-                                <div id="previewImagenRegistroMercantil"></div>
-                                @error('imagen_registro_mercantil.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <!-- Campo para subir la imagen del RTN de la firma -->
-                            <div class="col-md-6 mb-3">
-                                <label for="imagen_rtn_firma_auditora" class="btn btn-default btn-simple">
-                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir rtn de la firma original</strong> 
-                                </label>
-                                <input type="file" id="imagen_rtn_firma_auditora" name="imagen_rtn_firma_auditora[]" accept="image/*">
-                                <div id="previewImagenRTN"></div>
-                                @error('imagen_rtn_firma_auditora.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <!-- Campo para subir la nómina de pago proyectada (Planilla) -->
-                            <div class="col-md-6 mb-2">
-                                <label for="nomina_pago_firma" class="btn btn-default btn-simple">
-                                    <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
-                                    <strong>Subir nómina de pago</strong>
-                                </label>
-                                PDF (Mínimo 3 páginas)
-                                <input type="file" class="form-control @error('nomina_pago_firma') is-invalid @enderror" id="nomina_pago_firma" name="nomina_pago_firma" aria-label="Currículum vitae" accept="application/pdf" onchange="previewFile('nomina_pago_firma', 'previewPdfNominaPago', false)">
-                                @error('nomina_pago_firma')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <div class="form-group mt-3">
-                                    <iframe id="previewPdfNominaPago" src="#" type="application/pdf" style="display: none; width: 90%; height: 900px;" frameborder="0"></iframe>
+                                <input type="file" class="form-control-file d-none" id="imagen_registro_mercantil" name="imagen_registro_mercantil" onchange="previewImage(event, 'preview_registro')">
+                                <div class="mt-2">
+                                    <img id="preview_registro" src="#" alt="Vista previa del registro mercantil" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                                 </div>
+                            </div> 
+
+                            <!-- RTN DE LA FIRMA -->
+                            <div class="col-md-6 text-center">
+                                <label for="imagen_rtn_firma_auditora" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-image" style="margin-right: 8px;"></i>
+                                    Subir rtn de la firma original
+                                </label>
+                                <input type="file" class="form-control-file d-none" id="imagen_rtn_firma_auditora" name="imagen_rtn_firma_auditora" onchange="previewImage(event, 'preview_rtn')">
+                                <div class="mt-2">
+                                    <img id="preview_rtn" src="#" alt="Vista previa del registro mercantil" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
+                                </div>
+                            </div>
+
+                            <!-- NÓMINA DE PAGO PROYECTADA - PLANILLA -->
+                            <div class="col-md-6 text-center">
+                                <label for="nomina_pago_firma" class="btn btn-info btn-simple">
+                                    <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
+                                    Subir nómina de pago preoyectada | Planilla (PDF)
+                                </label>
+                                <input type="file" class="form-control-file" id="nomina_pago_firma" name="nomina_pago_firma" accept="application/pdf" onchange="previewPdf(event, 'pdf_preview_nomina')">
+                                
+                                <!-- Vista previa del PDF -->
+                                <embed id="pdf_preview_nomina" src="#" type="application/pdf" style="display: none; width: 100%; height: 500px;" />
                             </div>
 
                         </div><br>
@@ -881,35 +740,25 @@
                                 <h4 style="text-decoration: underline;"><strong>III. FIRMAS DIGITALES</strong></h4>
                             </div>
 
-                            <!-- Campo para subir la imagen de la firma social-->
-                            <div class="col-md-6 mb-3">
-                                <label for="imagen_firma_social" class="btn btn-default btn-simple">
+                            <div class="col-md-12 text-center mb-4">
+                                <label for="imagen_firma_social" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir firma social</strong> 
+                                    Subir firma Social
                                 </label>
-                                <input type="file" id="imagen_firma_social" name="imagen_firma_social[]" accept="image/*">
-                                <div id="previewFirmaSocial"></div>
-                                @error('imagen_firma_social.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input type="file" class="form-control-file" id="imagen_firma_social" name="imagen_firma_social" onchange="previewImage(event, 'preview_social')">
+                                <img id="preview_social" src="#" alt="Vista previa de la firma social" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <!-- Campo para subir la imagen de la firma del representante legal-->
-                            <div class="col-md-6 mb-3">
-                                <label for="imagen_firma_representante_legal" class="btn btn-default btn-simple">
+                            <div class="col-md-12 text-center">
+                                <label for="imagen_firma_representante_legal" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
-                                    <strong>Subir firma digital del Representante Legal</strong> 
+                                    Subir firma digital del Representante Legal
                                 </label>
-                                <input type="file" id="imagen_firma_representante_legal" name="imagen_firma_representante_legal[]" accept="image/*">
-                                <div id="previewFirmaSocial"></div>
-                                @error('imagen_firma_representante_legal.*')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                                <input type="file" class="form-control-file d-none" id="imagen_firma_representante_legal" name="imagen_firma_representante_legal" onchange="previewImage(event, 'preview_representante')">
+                                <div class="mt-2">
+                                    <img id="preview_representante" src="#" alt="Vista previa de la firma del representante legal" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
+                                </div>
+                            </div> 
 
                         </div><br>
 
@@ -929,93 +778,34 @@
 </div>
 
 <script>
-    function previewImages(input, previewContainerId) {
-        var previewContainer = document.getElementById(previewContainerId);
-        previewContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevas imágenes
-
-        if (input.files) {
-            var filesAmount = input.files.length;
-            for (let i = 0; i < filesAmount; i++) {
-                var reader = new FileReader();
-                reader.onload = function(event) {
-                    var imgElement = document.createElement('img');
-                    imgElement.src = event.target.result;
-                    imgElement.style.maxWidth = '500px';
-                    imgElement.style.margin = '5px';
-                    previewContainer.appendChild(imgElement);
-                }
-                reader.readAsDataURL(input.files[i]);
-            }
-        }
+    // Script para previsualizar las imágenes
+    function previewImage(event, previewId) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById(previewId);
+            output.src = reader.result;
+            output.style.display = 'block';
+            output.style.maxWidth = '700px';  // Ajusta el ancho máximo
+            output.style.maxHeight = '700px'; // Ajusta la altura máxima
+        };
+        reader.readAsDataURL(event.target.files[0]);
     }
-    // SOCIO 1
-    document.getElementById('titulo_socio1').addEventListener('change', function() {
-        previewImages(this, 'previewTituloSocio1');
-    });
-    document.getElementById('imagen_firma_socio1').addEventListener('change', function() {
-        previewImages(this, 'preview_firma_socio1');
-    });
-    document.getElementById('constancia_solvencia_socio1').addEventListener('change', function() {
-        previewImages(this, 'previewSolvenciaSocio1');
-    });
 
-    // SOCIO 2
-    document.getElementById('titulo_socio2').addEventListener('change', function() {
-        previewImages(this, 'previewTituloSocio2');
-    });
-    document.getElementById('imagen_firma_socio2').addEventListener('change', function() {
-        previewImages(this, 'preview_firma_socio2');
-    });
-    document.getElementById('constancia_solvencia_socio2').addEventListener('change', function() {
-        previewImages(this, 'previewSolvenciaSocio2');
-    });
-
-    // SOCIO 3
-    document.getElementById('titulo_socio3').addEventListener('change', function() {
-        previewImages(this, 'previewTituloSocio3');
-    });
-    document.getElementById('imagen_firma_socio3').addEventListener('change', function() {
-        previewImages(this, 'preview_firma_socio3');
-    });
-    document.getElementById('constancia_solvencia_socio3').addEventListener('change', function() {
-        previewImages(this, 'previewSolvenciaSocio3');
-    });
-
-    // SOCIO 4
-    document.getElementById('titulo_socio4').addEventListener('change', function() {
-        previewImages(this, 'previewTituloSocio4');
-    });
-    document.getElementById('imagen_firma_socio4').addEventListener('change', function() {
-        previewImages(this, 'preview_firma_socio4');
-    });
-    document.getElementById('constancia_solvencia_socio4').addEventListener('change', function() {
-        previewImages(this, 'previewSolvenciaSocio4');
-    });
-
-    // Función para previsualizar el curriculum vitae
-    function previewFile(inputId, previewId, isImage = true) {
-        const file = document.getElementById(inputId).files[0];
-        const preview = document.getElementById(previewId);
-
-        if (file) {
-            const reader = new FileReader();
+    // Script para previsualizar el PDF
+    function previewPdf(event, previewId) {
+        var file = event.target.files[0];
+        if (file && file.type === "application/pdf") {
+            var reader = new FileReader();
             reader.onload = function(e) {
-                preview.src = e.target.result;
-                preview.style.display = 'block';
-            }
-            reader.readAsDataURL(file);
+                var output = document.getElementById(previewId);
+                output.src = e.target.result;
+                output.style.display = 'block';  // Mostrar el PDF cargado
+            };
+            reader.readAsDataURL(file);  // Leer el archivo PDF
         } else {
-            preview.src = '#';
-            preview.style.display = 'none';
+            alert("Por favor seleccione un archivo PDF.");
         }
     }
-
-    document.getElementById('cv_socio1').addEventListener('change', () => previewFile('cv_socio2', 'pdfPreviewSocio1', false));
-    document.getElementById('cv_socio2').addEventListener('change', () => previewFile('cv_socio2', 'pdfPreviewSocio2', false));
-    document.getElementById('cv_socio3').addEventListener('change', () => previewFile('cv_socio3', 'pdfPreviewSocio3', false));
-    document.getElementById('cv_socio4').addEventListener('change', () => previewFile('cv_socio4', 'pdfPreviewSocio4', false));
-    document.getElementById('nomina_pago_firma').addEventListener('change', () => previewFile('nomina_pago_firma', 'previewPdfNominaPago', false));
-
 </script>
 
 @endsection

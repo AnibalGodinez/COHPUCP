@@ -190,7 +190,7 @@
 
                 <div class="form-group row mb-0 px-3">
                     <div class="col-md-12 text-center">
-                        <a href="{{ route('usuarios.index') }}" class="btn btn-info">
+                        <a href="{{ route('usuarios.ver') }}" class="btn btn-info">
                             <i class="fas fa-arrow-left"></i>
                             Volver
                         </a>

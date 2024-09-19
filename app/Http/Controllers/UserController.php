@@ -62,19 +62,18 @@ class UserController extends Controller
             ],
         ], [
             // Mensajes personalizados de validación
-            'name.required' => 'El campo nombre es obligatorio',
-            'apellido.required' => 'El campo apellido es obligatorio',
-            'numero_identidad.required' => 'El campo número de identidad es obligatorio',
+            // campos únicos
             'numero_identidad.unique' => 'El número de identidad ya está en uso',
-            'fecha_nacimiento.required' => 'El campo fecha de nacimiento es obligatorio',
-            'telefono_celular.required' => 'El campo teléfono celular es obligatorio',
-            'email.required' => 'El campo correo electrónico es obligatorio',
+            'numero_colegiacion.unique' => 'El número de colegiación ya está en uso',
+            'rtn.unique' => 'El RTN ya está en uso',
             'email.unique' => 'El correo electrónico ya está en uso',
-            'email_confirmation' => 'La confirmación del correo electrónico no coincide',
-            'password.required' => 'El campo contraseña es obligatorio',
+            // confirmacion del correo
+            'email_confirmation' => 'La confirmación del correo no coincide',
+            // contraseña
             'password.min' => 'La contraseña debe tener al menos 8 caracteres',
             'password.confirmed' => 'La confirmación de la contraseña no coincide',
-            'password.regex' => 'La contraseña debe contener al menos un símbolo o carácter especial, como por Ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
+            'password.regex' => 'La contraseña debe contener al menos un símbolo o carácter especial, como por ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
+            // teléfonos
             'telefono.regex' => 'El número de teléfono fijo sólo debe contener números y guiones',
             'telefono_celular.regex' => 'El número de celular sólo debe contener números y guiones',
         ]);
@@ -98,7 +97,7 @@ class UserController extends Controller
 
         $user->syncRoles($request->roles);
 
-        return redirect('/usuarios')->with('status', '¡El usuario se ha creado con éxito!');
+        return redirect('/usuarios')->with('status', '¡Usuario creado con éxito!');
     }
 
     public function edit($id)
@@ -121,19 +120,39 @@ class UserController extends Controller
             'numero_identidad' => 'required|string|max:15|unique:users,numero_identidad,' . $userId,
             'numero_colegiacion' => 'nullable|string|max:12|unique:users,numero_colegiacion,' . $userId,
             'rtn' => 'nullable|string|max:16|unique:users,rtn,' . $userId,
-            'sexo' => 'required|exists:sexos,id', // Cambiado a 'sexo'
+            'sexo_id' => 'required|integer',
             'fecha_nacimiento' => 'required|date',
             'telefono' => 'nullable|string|max:20|regex:/^[\d-]*$/',
             'telefono_celular' => 'required|string|max:20|regex:/^[\d-]*$/',
             'email' => 'required|string|email|max:255|unique:users,email,' . $userId,
+            'email_confirmation' => 'required|email|same:email',
             'pais_id' => 'nullable|exists:pais,id',
             'roles' => 'required|array',
             'estado' => 'required|in:activo,inactivo',
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'max:20',
+                'confirmed',
+                'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/',
+            ],
         ], [
-            'sexo.exists' => 'El sexo seleccionado es inválido', // Cambiado a 'sexo'
-            'pais_id.exists' => 'El país seleccionado es inválido',
-            'telefono.regex' => 'El número de teléfono fijo debe contener solo números y guiones',
-            'telefono_celular.regex' => 'El número de celular debe contener solo números y guiones',
+            // Mensajes personalizados de validación
+            // campos únicos
+            'numero_identidad.unique' => 'El número de identidad ya está en uso',
+            'numero_colegiacion.unique' => 'El número de colegiación ya está en uso',
+            'rtn.unique' => 'El RTN ya está en uso',
+            'email.unique' => 'El correo electrónico ya está en uso',
+            // confirmacion del correo
+            'email_confirmation' => 'La confirmación del correo no coincide',
+            // contraseña
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres',
+            'password.confirmed' => 'La confirmación de la contraseña no coincide',
+            'password.regex' => 'La contraseña debe contener al menos un símbolo o carácter especial, como por ejemplo: ^?=.,[]{}()!@#$%^&*"|<:>\ ',
+            // teléfonos
+            'telefono.regex' => 'El número de teléfono fijo sólo debe contener números y guiones',
+            'telefono_celular.regex' => 'El número de celular sólo debe contener números y guiones',
         ]);
 
         $user = User::findOrFail($userId);
@@ -159,7 +178,7 @@ class UserController extends Controller
             $user->syncRoles($request->roles);
         }
 
-        return redirect('/usuarios')->with('status', '¡El usuario se ha actualizado con éxito!');
+        return redirect('/usuarios')->with('status', '¡Usuario actualizado con éxito!');
     }
 
     public function destroy($id)
@@ -167,7 +186,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect('/usuarios')->with('status', '¡El usuario se ha eliminado con éxito!');
+        return redirect('/usuarios')->with('status', '¡Usuario eliminado con éxito!');
     }
 
     public function show($id)

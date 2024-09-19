@@ -27,63 +27,51 @@ class CreateInscripcionFirmasTable extends Migration
             $table->string('email')->unique();
 
             // II. Datos de los socios
-            // SOCIO 1
             $table->string('primer_nombre_socio1');
             $table->string('segundo_nombre_socio1')->nullable();
             $table->string('primer_apellido_socio1');
             $table->string('segundo_apellido_socio1')->nullable();
             $table->string('num_colegiacion_socio1')->nullable();
-            // documentos del socio 1
             $table->string('cv_socio1')->nullable();
-            $table->json('titulo_socio1')->nullable();
-            $table->json('imagen_firma_socio1')->nullable();
-            $table->json('constancia_solvencia_socio1')->nullable();
+            $table->string('imagen_firma_socio1')->nullable();
+            $table->string('constancia_solvencia_socio1')->nullable();
 
-            // SOCIO 2
             $table->string('primer_nombre_socio2')->nullable();
             $table->string('segundo_nombre_socio2')->nullable();
             $table->string('primer_apellido_socio2')->nullable();
             $table->string('segundo_apellido_socio2')->nullable();
             $table->string('num_colegiacion_socio2')->nullable();
-            // documentos del socio 2
             $table->string('cv_socio2')->nullable();
-            $table->json('titulo_socio2')->nullable();
-            $table->json('imagen_firma_socio2')->nullable();
-            $table->json('constancia_solvencia_socio2')->nullable();
+            $table->string('imagen_firma_socio2')->nullable();
+            $table->string('constancia_solvencia_socio2')->nullable();
             
-            // SOCIO 3
             $table->string('primer_nombre_socio3')->nullable();
             $table->string('segundo_nombre_socio3')->nullable();
             $table->string('primer_apellido_socio3')->nullable();
             $table->string('segundo_apellido_socio3')->nullable();
             $table->string('num_colegiacion_socio3')->nullable();
-            // documentos del socio 3
             $table->string('cv_socio3')->nullable();
-            $table->json('titulo_socio3')->nullable();
-            $table->json('imagen_firma_socio3')->nullable();
-            $table->json('constancia_solvencia_socio3')->nullable();
+            $table->string('imagen_firma_socio3')->nullable();
+            $table->string('constancia_solvencia_socio3')->nullable();
             
-            // SOCIO 4
             $table->string('primer_nombre_socio4')->nullable();
             $table->string('segundo_nombre_socio4')->nullable();
             $table->string('primer_apellido_socio4')->nullable();
             $table->string('segundo_apellido_socio4')->nullable();
             $table->string('num_colegiacion_socio4')->nullable();
-            // documentos del socio 4
             $table->string('cv_socio4')->nullable();
-            $table->json('titulo_socio4')->nullable();
-            $table->json('imagen_firma_socio4')->nullable();
-            $table->json('constancia_solvencia_socio4')->nullable();
+            $table->string('imagen_firma_socio4')->nullable();
+            $table->string('constancia_solvencia_socio4')->nullable();
             
             // III. Documentos
-            $table->json('imagen_escritura_constitucion')->nullable();
-            $table->json('imagen_registro_mercantil')->nullable();
-            $table->json('imagen_rtn_firma_auditora')->nullable();
+            $table->string('imagen_escritura_constitucion')->nullable();
+            $table->string('imagen_registro_mercantil')->nullable();
+            $table->string('imagen_rtn_firma_auditora')->nullable();
             $table->string('nomina_pago_firma')->nullable();
 
             // IV. Firmas digitales
-            $table->json('imagen_firma_social')->nullable();
-            $table->json('imagen_firma_representante_legal')->nullable();
+            $table->string('imagen_firma_social')->nullable();
+            $table->string('imagen_firma_representante_legal')->nullable();
 
             // V. Estado de la inscripción de la firma
             $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente');

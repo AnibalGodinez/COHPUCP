@@ -156,7 +156,7 @@
                                     <div class="col-md-12 text-center">
                                         <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 20cm;">
                                             <div class="card-header bg-default text-white text-center">
-                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE DEL SOCIO 1</strong></h5>
+                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM Y TÍTULO DEL SOCIO 1</strong></h5>
                                             </div>
                                             <div class="card-body p-0" style="overflow: hidden; height: 100%;">
                                                 @if($inscripcionFirma->cv_socio1)
@@ -253,7 +253,7 @@
                                     <div class="col-md-12 text-center">
                                         <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 20cm;">
                                             <div class="card-header bg-default text-white text-center">
-                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE DEL SOCIO 2</strong></h5>
+                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM Y TÍTULO DEL SOCIO 2</strong></h5>
                                             </div>
                                             <div class="card-body p-0" style="overflow: hidden; height: 100%;">
                                                 @if($inscripcionFirma->cv_socio2)
@@ -349,7 +349,7 @@
                                     <div class="col-md-12 text-center">
                                         <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 20cm;">
                                             <div class="card-header bg-default text-white text-center">
-                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE DEL SOCIO 3</strong></h5>
+                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM Y TÍTULO VITAE DEL SOCIO 3</strong></h5>
                                             </div>
                                             <div class="card-body p-0" style="overflow: hidden; height: 100%;">
                                                 @if($inscripcionFirma->cv_socio3)
@@ -446,7 +446,7 @@
                                     <div class="col-md-12 text-center">
                                         <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 20cm;">
                                             <div class="card-header bg-default text-white text-center">
-                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM VITAE DEL SOCIO 1</strong></h5>
+                                                <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM Y TÍTULO DEL SOCIO 4</strong></h5>
                                             </div>
                                             <div class="card-body p-0" style="overflow: hidden; height: 100%;">
                                                 @if($inscripcionFirma->cv_socio4)

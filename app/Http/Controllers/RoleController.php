@@ -53,7 +53,8 @@ class RoleController extends Controller
         'name' => ['required', 'string', 'unique:roles,name'],
         'description' => ['nullable', 'string', 'max:255']
     ], [
-        'name.unique' => 'Este Rol ya existe.'
+        'name.unique' => 'El rol ya existe',
+        'description.max' => 'La descripción no debe ser mayor que 255 caracteres'
     ]);
 
     try {
@@ -75,7 +76,7 @@ class RoleController extends Controller
     $roleName = strtolower($role->name);
 
     Route::group(['middleware' => ['auth', "role:$roleName"]], function () {
-        // Aquí puedes definir las rutas específicas para este nuevo rol si lo deseas
+        // Aquí se puede definir las rutas específicas para este nuevo rol si lo deseas
     });
     
     }
@@ -90,17 +91,17 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         $request->validate([
-            'name' => [
-                'required', 
-                'string', 
-                'unique:roles,name,' . $role->id
-            ],
-            'description' => ['nullable', 'string', 'max:255'] // Validación para el campo description
+            'name' => ['required', 'string', 'unique:roles,name,' . $role->id],
+            'description' => ['nullable', 'string', 'max:255'],
+        ], 
+        [
+            'name.unique' => 'El rol ya existe',
+            'description.max' => 'La descripción no debe ser mayor que 255 caracteres'
         ]);
 
         $role->update([
             'name' => $request->name,
-            'description' => $request->description // Actualización del campo description
+            'description' => $request->description 
         ]);
 
         return redirect('roles')->with('status', '¡El rol se ha actualizado con éxito!');

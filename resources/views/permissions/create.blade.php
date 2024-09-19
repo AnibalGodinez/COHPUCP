@@ -46,6 +46,11 @@
                             value="{{ old('name') }}" 
                             placeholder="Ingrese el nombre del permiso"
                             required>
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         
                         <div class="form-group">
@@ -56,6 +61,11 @@
                             class="form-control" 
                             style="min-height: 150px; border: 1px solid #838588;" 
                             placeholder="Ingrese la descripción del permiso">{{ old('description') }}</textarea>
+                            @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="form-group row mb-0">

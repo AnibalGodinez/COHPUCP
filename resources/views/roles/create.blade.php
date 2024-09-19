@@ -9,16 +9,6 @@
                     <h3 class="card-title"><strong>CREAR NUEVO ROL</strong></h3>
                 </div>
 
-                @if($errors->any())
-                    <div class="alert alert-danger mx-4 mt-3">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
                 <div class="card-body">
                     <form action="{{ url('roles') }}" method="POST">
                         @csrf
@@ -34,6 +24,11 @@
                             value="{{ old('name') }}" 
                             placeholder="Ingrese el nombre del rol"
                             required>
+                            @error('name')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         
                         <div class="form-group">
@@ -44,6 +39,11 @@
                             class="form-control" 
                             style="min-height: 150px; border: 1px solid #838588;" 
                             placeholder="Ingrese una descripción del rol">{{ old('description') }}</textarea>
+                            @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         
                         <div class="form-group row mb-0">
