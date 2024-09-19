@@ -26,9 +26,9 @@
                                 <div class="card mb-3" style="border: 1px solid #0e7ddf; border-radius: 30px; margin-left: 15px;">
                                     <div class="card-body text-center">
                                         @if(Auth::user()->profile_image)
-                                            <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="Profile Image" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                                            <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="Imagen de perfil" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;">
                                         @else
-                                            <img src="{{ asset('storage/default-profile.png') }}" alt="Default Profile Image" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px;">
+                                            <img src="{{ asset('white/img/user.jpg') }}" alt="Imagen de perfil por defecto" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px;">
                                         @endif
                                         <div class="d-flex justify-content-center mb-3">
                                             <h4 class="card-title mb-0 mr-2"><strong><strong>{{ Auth::user()->name }}</strong></strong></h4>

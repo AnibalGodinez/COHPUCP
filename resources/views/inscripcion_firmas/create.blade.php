@@ -740,7 +740,7 @@
                                 <h4 style="text-decoration: underline;"><strong>III. FIRMAS DIGITALES</strong></h4>
                             </div>
 
-                            <div class="col-md-12 text-center mb-4">
+                            <div class="col-md-6 text-center mb-4">
                                 <label for="imagen_firma_social" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma Social
@@ -749,7 +749,7 @@
                                 <img id="preview_social" src="#" alt="Vista previa de la firma social" style="display: none; max-width: 100px; max-height: 100px; margin: 0 auto;">
                             </div>
 
-                            <div class="col-md-12 text-center">
+                            <div class="col-md-6 text-center">
                                 <label for="imagen_firma_representante_legal" class="btn btn-info btn-simple">
                                     <i class="fas fa-file-image" style="margin-right: 8px;"></i>
                                     Subir firma digital del Representante Legal

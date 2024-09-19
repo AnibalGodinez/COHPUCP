@@ -45,7 +45,7 @@ class UserController extends Controller
             'numero_identidad' => 'required|string|unique:users,numero_identidad',
             'numero_colegiacion' => 'nullable|string|unique:users,numero_colegiacion',
             'rtn' => 'nullable|string|max:20|unique:users,rtn',
-            'sexo_id' => 'required|integer',
+            'sexo_id' => 'required|exists:sexos,id',
             'fecha_nacimiento' => 'required|date',
             'telefono' => 'nullable|string|max:40|regex:/^[\d-]*$/',
             'telefono_celular' => 'required|string|max:40|regex:/^[\d-]*$/',
@@ -165,7 +165,7 @@ class UserController extends Controller
             'numero_identidad' => $request->numero_identidad,
             'numero_colegiacion' => $request->numero_colegiacion,
             'rtn' => $request->rtn,
-            'sexo_id' => $request->sexo, // Cambiado a 'sexo'
+            'sexo_id' => $request->sexo,
             'fecha_nacimiento' => $request->fecha_nacimiento,
             'telefono' => $request->telefono,
             'telefono_celular' => $request->telefono_celular,
