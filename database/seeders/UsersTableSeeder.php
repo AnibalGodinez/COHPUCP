@@ -19,6 +19,23 @@ class UsersTableSeeder extends Seeder
 
         // Crear el usuario administrador
         $adminUser = User::create([
+            // [
+            // 'name' => 'Javier',
+            // 'name2' => ' ',
+            // 'apellido' => 'Mejia',
+            // 'apellido2' => ' ',
+            // 'numero_identidad' => '0801-1998-03622',
+            // 'numero_colegiacion' => '2010-01-2120',
+            // 'rtn' => '0801-1984-155782',
+            // 'sexo_id' => $sexoMasculino,
+            // 'pais_id' => '89',
+            // 'fecha_nacimiento' => '1998-12-31',
+            // 'telefono' => '2255-1122',
+            // 'telefono_celular' => '3342-5033',
+            // 'email' => 'javiermejia3112@gmail.com',
+            // 'estado' => 'activo',
+            // 'password' => Hash::make('Jorge.31'),
+            // ],
             'name' => 'Anibal',
             'name2' => 'Johan',
             'apellido' => 'Godinez',
@@ -31,7 +48,7 @@ class UsersTableSeeder extends Seeder
             'fecha_nacimiento' => '1984-06-25',
             'telefono' => '2255-1123',
             'telefono_celular' => '3356-0773',
-            'email' => 'anibalgodinez64@gmail.com',
+            'email' => 'javiermejia3112@gmail.com',
             'estado' => 'activo',
             'password' => Hash::make('Prueba%291'),
         ]);
