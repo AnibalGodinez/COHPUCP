@@ -160,28 +160,6 @@
                 <p>_________________________________</p>
                 <p><strong>Firma</strong></p>
             </div>
-
-            <!-- Imágenes del título universitario -->
-            <div class="page-break">
-                <div class="section text-center">
-                    <h4 style="text-decoration: underline;">TÍTULO UNIVERSITARIO</h4>
-
-                    @php
-                        $imagenesTitulo = json_decode($inscripcionFirma->imagen_titulo_socio1);
-                    @endphp
-
-                    @if($imagenesTitulo && !empty($imagenesTitulo))
-                        <img src="{{ public_path('storage/' . $imagenesTitulo[0]) }}" alt="Foto del Título Universitario Frontal" class="img-fluid" style="width: 100%; height: 90%; object-fit: contain;">
-                        
-                        @if(count($imagenesTitulo) > 1)
-                            <img src="{{ public_path('storage/' . $imagenesTitulo[1]) }}" alt="Foto del Título Universitario Reverso" class="img-fluid" style="width: 100%; height: 100%; object-fit: contain;">
-                        @endif
-                    @else
-                        <p>No disponible</p>
-                    @endif
-                </div>
-            </div>
-
             <!-- Constancia de solvencia -->
             <div class="page-break">
                 <div class="section text-center" style="page-break-inside: avoid;">
@@ -218,28 +196,6 @@
                 <p>_________________________________</p>
                 <p><strong>Firma</strong></p>
             </div>
-
-            <!-- Imágenes del título universitario -->
-            <div class="page-break">
-                <div class="section text-center">
-                    <h4 style="text-decoration: underline;">TÍTULO UNIVERSITARIO</h4>
-
-                    @php
-                        $imagenesTitulo2 = json_decode($inscripcionFirma->imagen_titulo_socio2);
-                    @endphp
-
-                    @if($imagenesTitulo2 && !empty($imagenesTitulo2))
-                        <img src="{{ public_path('storage/' . $imagenesTitulo2[0]) }}" alt="Foto del Título Universitario Frontal" class="img-fluid" style="width: 100%; height: 90%; object-fit: contain;">
-                        
-                        @if(count($imagenesTitulo2) > 1)
-                            <img src="{{ public_path('storage/' . $imagenesTitulo2[1]) }}" alt="Foto del Título Universitario Reverso" class="img-fluid" style="width: 100%; height: 100%; object-fit: contain;">
-                        @endif
-                    @else
-                        <p>No disponible</p>
-                    @endif
-                </div>
-            </div>
-
             <!-- Constancia de solvencia -->
             <div class="page-break">
                 <div class="section text-center" style="page-break-inside: avoid;">
@@ -276,28 +232,6 @@
                 <p>_________________________________</p>
                 <p><strong>Firma</strong></p>
             </div>
-
-            <!-- Imágenes del título universitario -->
-            <div class="page-break">
-                <div class="section text-center">
-                    <h4 style="text-decoration: underline;">TÍTULO UNIVERSITARIO</h4>
-
-                    @php
-                        $imagenesTitulo3 = json_decode($inscripcionFirma->imagen_titulo_socio3);
-                    @endphp
-
-                    @if($imagenesTitulo3 && !empty($imagenesTitulo3))
-                        <img src="{{ public_path('storage/' . $imagenesTitulo3[0]) }}" alt="Foto del Título Universitario Frontal" class="img-fluid" style="width: 100%; height: 90%; object-fit: contain;">
-                        
-                        @if(count($imagenesTitulo3) > 1)
-                            <img src="{{ public_path('storage/' . $imagenesTitulo3[1]) }}" alt="Foto del Título Universitario Reverso" class="img-fluid" style="width: 100%; height: 100%; object-fit: contain;">
-                        @endif
-                    @else
-                        <p>No disponible</p>
-                    @endif
-                </div>
-            </div>
-
             <!-- Constancia de solvencia -->
             <div class="page-break">
                 <div class="section text-center" style="page-break-inside: avoid;">
@@ -334,28 +268,6 @@
                 <p>_________________________________</p>
                 <p><strong>Firma</strong></p>
             </div>
-
-            <!-- Imágenes del título universitario -->
-            <div class="page-break">
-                <div class="section text-center">
-                    <h4 style="text-decoration: underline;">TÍTULO UNIVERSITARIO</h4>
-
-                    @php
-                        $imagenesTitulo4 = json_decode($inscripcionFirma->imagen_titulo_socio4);
-                    @endphp
-
-                    @if($imagenesTitulo4 && !empty($imagenesTitulo4))
-                        <img src="{{ public_path('storage/' . $imagenesTitulo4[0]) }}" alt="Foto del Título Universitario Frontal" class="img-fluid" style="width: 100%; height: 90%; object-fit: contain;">
-                        
-                        @if(count($imagenesTitulo4) > 1)
-                            <img src="{{ public_path('storage/' . $imagenesTitulo4[1]) }}" alt="Foto del Título Universitario Reverso" class="img-fluid" style="width: 100%; height: 100%; object-fit: contain;">
-                        @endif
-                    @else
-                        <p>No disponible</p>
-                    @endif
-                </div>
-            </div>
-
             <!-- Constancia de solvencia -->
             <div class="page-break">
                 <div class="section text-center" style="page-break-inside: avoid;">
@@ -377,13 +289,13 @@
 
         <!-- Curriculun Vitae los socios -->
         <div class="section page-break">
-            <h4 class="text-center" style="text-decoration: underline;">CURRICULUM VITAE DE LOS SOCIOS</h4><br>
+            <h4 class="text-center" style="text-decoration: underline;">LINKS PARA VER LOS CURRICULUMS Y TÍTULOS DE LOS SOCIOS</h4><br>
 
             <!-- Link del socio 1 -->
             @if($inscripcionFirma->cv_socio1)
                 <iframe src="{{ asset('storage/' . $inscripcionFirma->cv_socio1) }}" 
                     style="width: 100%; height: 100%; border: none;" frameborder="0">
-                    1) Para ver el Curriculum Vitae del socio 1, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio1) }}"><br>ver cv del socio 1</a>
+                    1) Para ver el curriculum vitae con su respectivo título universitario del socio 1, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio1) }}">ver cv y título del socio 1</a>
                 </iframe>
             @else
                 <p>No disponible</p>
@@ -395,7 +307,7 @@
             @if($inscripcionFirma->cv_socio2)
                 <iframe src="{{ asset('storage/' . $inscripcionFirma->cv_socio2) }}" 
                     style="width: 100%; height: 100%; border: none;" frameborder="0">
-                    2) Para ver el Curriculum Vitae del socio 2, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio2) }}"><br>ver cv del socio 2</a>
+                    2) Para ver el curriculum vitae con su respectivo título universitario del socio 2, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio2) }}">ver cv y título del socio 2</a>
                 </iframe>
             @else
                 <p>No disponible</p>
@@ -407,7 +319,7 @@
             @if($inscripcionFirma->cv_socio3)
                 <iframe src="{{ asset('storage/' . $inscripcionFirma->cv_socio3) }}" 
                     style="width: 100%; height: 100%; border: none;" frameborder="0">
-                    3) Para ver el Curriculum Vitae del socio 3, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio3) }}"><br>ver cv del socio 3</a>
+                    3) Para ver el curriculum vitae con su respectivo título universitario del socio 3, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio3) }}">ver cv y título del socio 3</a>
                 </iframe>
             @else
                 <p>No disponible</p>
@@ -419,7 +331,7 @@
             @if($inscripcionFirma->cv_socio4)
                 <iframe src="{{ asset('storage/' . $inscripcionFirma->cv_socio4) }}" 
                     style="width: 100%; height: 100%; border: none;" frameborder="0">
-                    4) Para ver el Curriculum Vitae del socio 4, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio4) }}"><br>ver cv del socio 4</a>
+                    4) Para ver el curriculum vitae con su respectivo título universitario del socio 4, haz clic en el enlace y luego podrás descargarlo. <a href="{{ asset('storage/' . $inscripcionFirma->cv_socio4) }}">ver cv y título del socio 4</a>
                 </iframe>
             @else
                 <p>No disponible</p>

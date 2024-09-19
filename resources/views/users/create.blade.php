@@ -100,7 +100,7 @@
                                 pattern="\d{4}-\d{4}-\d{5}" 
                                 required>
                                 @error('numero_identidad')
-                                    <span class="invalid-feedback d-block text-center" role="alert">
+                                    <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
                                    </span>
                                 @enderror
@@ -134,7 +134,7 @@
                                 maxlength="12" 
                                 pattern="\d{4}-\d{2}-\d{4}">
                                 @error('numero_colegiacion')
-                                    <span class="invalid-feedback d-block text-center" role="alert">
+                                    <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
                                    </span>
                                 @enderror
@@ -170,7 +170,7 @@
                                 maxlength="16" 
                                 pattern="\d{4}-\d{4}-\d{6}">
                                 @error('rtn')
-                                    <span class="invalid-feedback d-block text-center" role="alert">
+                                    <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
                                    </span>
                                 @enderror

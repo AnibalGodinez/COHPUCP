@@ -120,23 +120,14 @@ class UserController extends Controller
             'numero_identidad' => 'required|string|max:15|unique:users,numero_identidad,' . $userId,
             'numero_colegiacion' => 'nullable|string|max:12|unique:users,numero_colegiacion,' . $userId,
             'rtn' => 'nullable|string|max:16|unique:users,rtn,' . $userId,
-            'sexo_id' => 'required|integer',
+            'sexo' => 'required|exists:sexos,id', // Cambiado a 'sexo'
             'fecha_nacimiento' => 'required|date',
             'telefono' => 'nullable|string|max:20|regex:/^[\d-]*$/',
             'telefono_celular' => 'required|string|max:20|regex:/^[\d-]*$/',
             'email' => 'required|string|email|max:255|unique:users,email,' . $userId,
-            'email_confirmation' => 'required|email|same:email',
             'pais_id' => 'nullable|exists:pais,id',
             'roles' => 'required|array',
             'estado' => 'required|in:activo,inactivo',
-            'password' => [
-                'required',
-                'string',
-                'min:8',
-                'max:20',
-                'confirmed',
-                'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/',
-            ],
         ], [
             // Mensajes personalizados de validación
             // campos únicos
@@ -153,6 +144,8 @@ class UserController extends Controller
             // teléfonos
             'telefono.regex' => 'El número de teléfono fijo sólo debe contener números y guiones',
             'telefono_celular.regex' => 'El número de celular sólo debe contener números y guiones',
+            'telefono.regex' => 'El número de teléfono fijo debe contener solo números y guiones',
+            'telefono_celular.regex' => 'El número de celular debe contener solo números y guiones',
         ]);
 
         $user = User::findOrFail($userId);
@@ -165,7 +158,7 @@ class UserController extends Controller
             'numero_identidad' => $request->numero_identidad,
             'numero_colegiacion' => $request->numero_colegiacion,
             'rtn' => $request->rtn,
-            'sexo_id' => $request->sexo,
+            'sexo_id' => $request->sexo, // Cambiado a 'sexo'
             'fecha_nacimiento' => $request->fecha_nacimiento,
             'telefono' => $request->telefono,
             'telefono_celular' => $request->telefono_celular,

@@ -25,7 +25,7 @@
                                         @if (Auth::user()->profile_image)
                                             <img id="profile_image_preview" src="{{ asset('storage/' . Auth::user()->profile_image) }}" alt="Profile Image" class="img-fluid mt-2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
                                         @else
-                                            <img id="profile_image_preview" src="" alt="Profile Image" class="img-fluid mt-2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; display: none;">
+                                            <img src="{{ asset('white/img/user.jpg') }}" alt="Imagen de perfil por defecto" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px;">
                                         @endif
                                     </div>
                                 </div>
@@ -134,6 +134,11 @@
                                             pattern="\d{4}-\d{4}-\d{5}"
                                             title="Formato: 0000-0000-00000"
                                             required>
+                                            @error('numero_identidad')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <script>
                                         document.addEventListener('DOMContentLoaded', function() {
