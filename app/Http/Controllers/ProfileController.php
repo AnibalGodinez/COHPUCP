@@ -53,7 +53,7 @@ class ProfileController extends Controller
             'telefono' => 'nullable|string|max:40|regex:/^[\d-]*$/',
             'telefono_celular' => 'required|string|max:40|regex:/^[\d-]*$/',
             'email' => 'required|email|max:255|unique:users,email',
-            'email_confirmation' => 'required|email|same:email',
+            'email_confirmation' => 'required|email|same:email',    
             'password' => 'required|string|min:8|max:20|confirmed|regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/',
             'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
             'facebook_link' => 'nullable|url',
@@ -93,7 +93,6 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $user = Auth::user();
-
         $request->validate([
             'name' => 'required|string|max:255',
             'name2' => 'nullable|string|max:255',
@@ -108,8 +107,7 @@ class ProfileController extends Controller
             'telefono' => 'nullable|string|max:40|regex:/^[\d-]*$/',
             'telefono_celular' => 'required|string|max:40|regex:/^[\d-]*$/',
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-            'email_confirmation' => 'required|email|same:email',
-            'password' => 'required|string|min:8|max:20|confirmed|regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/',
+            
             'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,bmp,tiff,tif,ico,avif|max:10240',
             'facebook_link' => 'nullable|url',
             'instagram_link' => 'nullable|url',
@@ -143,7 +141,7 @@ class ProfileController extends Controller
             // reseña biográfica
             'bio.max' => 'La biografía no debe exceder los 1000 caracteres.',
         ]);
-
+        
         $user->update($request->only([
             'name',
             'name2',
