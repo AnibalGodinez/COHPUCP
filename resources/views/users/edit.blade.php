@@ -274,14 +274,14 @@
                                     <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
                                     <strong>EDAD</strong>
                                 </label>
-                                    <input 
-                                        type="text" 
-                                        name="edad" 
-                                        class="form-control"
-                                        placeholder="Edad"
-                                        id="edad" 
-                                        value="{{ $user->edad }}"
-                                        readonly>
+                                <input 
+                                    type="text" 
+                                    name="edad" 
+                                    class="form-control"
+                                    placeholder="Edad"
+                                    id="edad" 
+                                    value="{{ $user->edad . ' años' }}"
+                                    readonly>
                             </div>
 
                             <script>
@@ -299,11 +299,11 @@
                                     }
                                     // Actualiza la edad cuando cambia la fecha de nacimiento
                                     document.getElementById('fecha_nacimiento').addEventListener('change', function() {
-                                        var edad = calcularEdad(this.value);
+                                        var edad = calcularEdad(this.value) + ' años';
                                         document.getElementById('edad').value = edad;
                                     });
                                     // Calcula y muestra la edad inicialmente
-                                    var edadInicial = calcularEdad(document.getElementById('fecha_nacimiento').value);
+                                    var edadInicial = calcularEdad(document.getElementById('fecha_nacimiento').value) + ' años';
                                     document.getElementById('edad').value = edadInicial;
                                 });
                             </script>

@@ -298,7 +298,7 @@
                                             class="form-control"
                                             placeholder="Edad"
                                             id="edad"
-                                            value="{{ old('edad', $user->edad) }}"
+                                            value="{{ old('edad', $user->edad . ' años') }}"
                                             readonly>
                                     </div>
 
@@ -317,14 +317,15 @@
                                             }
                                             // Actualiza la edad cuando cambia la fecha de nacimiento
                                             document.getElementById('fecha_nacimiento').addEventListener('change', function() {
-                                                var edad = calcularEdad(this.value);
+                                                var edad = calcularEdad(this.value) + ' años';
                                                 document.getElementById('edad').value = edad;
                                             });
                                             // Calcula y muestra la edad inicialmente
-                                            var edadInicial = calcularEdad(document.getElementById('fecha_nacimiento').value);
+                                            var edadInicial = calcularEdad(document.getElementById('fecha_nacimiento').value) + ' años';
                                             document.getElementById('edad').value = edadInicial;
                                         });
                                     </script>
+
 
                                     <!-- Campo para seleccionar el país -->
                                     <div class="col-md-2">

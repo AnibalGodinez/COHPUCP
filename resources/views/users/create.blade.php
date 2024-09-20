@@ -239,7 +239,7 @@
                                     <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i>
                                     <strong>EDAD</strong>
                                 </label> 
-                                    <input 
+                                <input 
                                     type="text" 
                                     name="edad" 
                                     class="form-control"
@@ -247,17 +247,28 @@
                                     id="edad" 
                                     readonly>
                             </div>
+
                             <script>
-                                document.getElementById('fecha_nacimiento').addEventListener('change', function() {
-                                    var birthDate = new Date(this.value);
-                                    var today = new Date();
-                                    var age = today.getFullYear() - birthDate.getFullYear();
-                                    var monthDifference = today.getMonth() - birthDate.getMonth();                
-                                    // Ajusta la edad si aún no ha pasado el cumpleaños este año
-                                    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-                                        age--;
-                                    }                
-                                    document.getElementById('edad').value = age;
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    function calcularEdad(fechaNacimiento) {
+                                        var birthDate = new Date(fechaNacimiento);
+                                        var today = new Date();
+                                        var age = today.getFullYear() - birthDate.getFullYear();
+                                        var monthDifference = today.getMonth() - birthDate.getMonth();                
+                                        // Ajusta la edad si aún no ha pasado el cumpleaños este año
+                                        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                                            age--;
+                                        }                
+                                        return age;
+                                    }
+                                    // Actualiza la edad cuando cambia la fecha de nacimiento
+                                    document.getElementById('fecha_nacimiento').addEventListener('change', function() {
+                                        var edad = calcularEdad(this.value) + ' años';
+                                        document.getElementById('edad').value = edad;
+                                    });
+                                    // Calcula y muestra la edad inicialmente
+                                    var edadInicial = calcularEdad(document.getElementById('fecha_nacimiento').value) + ' años';
+                                    document.getElementById('edad').value = edadInicial;
                                 });
                             </script>
 
