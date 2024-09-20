@@ -5,8 +5,8 @@
     <div class="row" style="margin-top: 90px">
         <div class="col-md-12">
             <div class="card shadow-lg">
-                <div class="card-header bg-default text-white text-center">
-                    <h3 class="card-title" style="color:aliceblue"><strong>EDITAR ROL</strong></h3>
+                <div class="card-header bg-info text-white text-center">
+                    <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>EDITAR ROL</strong></h3>
                 </div>
 
                 <div class="card-body">

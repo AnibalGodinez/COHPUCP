@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     <div class="row" style="margin-top: 90px">
         <div class="col-md-12">
             <div class="card shadow-lg">
-                <div class="card-header bg-warning text-white text-center">
-                    <h3>ASIGNAR PERMISOS : Rol {{ $role->name }}</h3>
+                <div class="card-header bg-info text-white text-center">
+                    <h3 style="color: rgb(255, 255, 255)">ASIGNAR PERMISOS : Rol {{ $role->name }}</h3>
                 </div><br>
 
                 <!-- Mensaje de éxito -->
@@ -27,7 +27,7 @@
                         @csrf
                         @method('PUT')
                         
-                        <div class="mb-3">
+                        <div class="mb-2">
                             @error('permission')
                                 <span class="tex-danger">{{ $message }}</span>
                             @enderror
@@ -41,7 +41,7 @@
 
                                 @foreach ($permissions as $permission)
                                 
-                                <div class="col-md-2">
+                                <div class="col-md-1" style="margin-bottom: 20px;">
                                     <label class="form-check-label">
                                         <input
                                             type="checkbox" 

@@ -5,8 +5,8 @@
     <div class="row" style="margin-top: 90px">
         <div class="col-md-12">
             <div class="card shadow-lg">
-                <div class="card-header bg-warning text-white text-center">
-                    <h3 class="card-title"><strong>CREAR NUEVO ROL</strong></h3>
+                <div class="card-header bg-info text-white text-center">
+                    <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>CREAR NUEVO ROL</strong></h3>
                 </div>
 
                 <div class="card-body">
@@ -52,7 +52,7 @@
                                     <i class="fas fa-save" style="margin-right: 8px;"></i>
                                     Guardar
                                 </button>
-                                <a href="{{ route('roles.index') }}" class="btn btn-secondary">
+                                <a href="{{ route('roles.ver') }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
                                     Volver
                                 </a>
