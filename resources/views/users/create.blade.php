@@ -409,14 +409,20 @@
                                     <i class="fas fa-lock" style="margin-right: 8px;"></i>
                                     <strong>CONTRASEÑA *</strong>
                                 </label>
-                                <input 
+                                <div class="input-group">
+                                    <input 
                                     type="password" 
                                     name="password" 
+                                    id="password" 
                                     class="form-control @error('password') is-invalid @enderror" 
                                     placeholder="Ingrese la contraseña"
                                     minlength="8"
                                     maxlength="20"
                                     required>
+                                    <span class="input-group-text">
+                                        <i class="fas fa-eye" id="togglePasswordIcon" onclick="togglePassword('password')" style="cursor: pointer;"></i>
+                                    </span>
+                                </div>
                                 @error('password')
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -430,20 +436,43 @@
                                     <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
                                     <strong>CONFIRMAR NUEVA CONTRASEÑA *</strong>
                                 </label>
-                                <input 
+                                <div class="input-group">
+                                    <input 
                                     type="password" 
                                     name="password_confirmation" 
+                                    id="password_confirmation"
                                     class="form-control @error('password_confirmation') is-invalid @enderror" 
                                     placeholder="Confirme la contraseña"
                                     minlength="8"
                                     maxlength="20" 
                                     required>
+                                    <span class="input-group-text">
+                                        <i class="fas fa-eye" id="togglePasswordConfirmIcon" onclick="togglePassword('password_confirmation')" style="cursor: pointer;"></i>
+                                    </span>
+                                </div>
                                 @error('password_confirmation')
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+                            
+                            <script>
+                                function togglePassword(fieldId) {
+                                    const passwordField = document.getElementById(fieldId);
+                                    const icon = passwordField.parentElement.querySelector('i');
+                                    
+                                    if (passwordField.type === 'password') {
+                                        passwordField.type = 'text';
+                                        icon.classList.remove('fa-eye');
+                                        icon.classList.add('fa-eye-slash');
+                                    } else {
+                                        passwordField.type = 'password';
+                                        icon.classList.remove('fa-eye-slash');
+                                        icon.classList.add('fa-eye');
+                                    }
+                                }
+                            </script>
 
                             <!-- Campo para el Rol -->
                             <div class="form-group col-md-2">

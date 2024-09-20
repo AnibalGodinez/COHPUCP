@@ -134,7 +134,7 @@
                                             pattern="\d{4}-\d{4}-\d{5}"
                                             title="Formato: 0000-0000-00000"
                                             required>
-                                            @error('numero_identidad')
+                                        @error('numero_identidad')
                                             <span class="invalid-feedback d-block" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -172,6 +172,11 @@
                                             maxlength="12"
                                             pattern="\d{4}-\d{2}-\d{4}"
                                             title="Formato: 0000-00-0000">
+                                        @error('numero_colegiacion')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <script>
                                     document.addEventListener('DOMContentLoaded', function() {
@@ -209,6 +214,11 @@
                                             maxlength="16"
                                             pattern="\d{4}-\d{4}-\d{6}"
                                             title="Formato: 0000-0000-000000">
+                                        @error('rtn')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <script>
@@ -428,6 +438,11 @@
                                             name="facebook_link"
                                             placeholder="Agrega el enlace de tu red social de FACEBOOK" 
                                             value="{{ old('facebook_link', $user->facebook_link) }}">
+                                        @error('facebook_link')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <!-- Campo para el link de instagram -->
@@ -443,6 +458,11 @@
                                             name="instagram_link"
                                             placeholder="Agrega el enlace de tu red social de INSTAGRAM"  
                                             value="{{ old('instagram_link', $user->instagram_link) }}">
+                                        @error('instagram_link')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <!-- Campo para el link de linkedin -->
@@ -458,6 +478,11 @@
                                             name="linkedin_link" 
                                             placeholder="Agrega el enlace de tu red social de LINKENDIN" 
                                             value="{{ old('linkedin_link', $user->linkedin_link) }}">
+                                        @error('linkedin_link')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <!-- Campo para el link de twitter -->
@@ -473,6 +498,11 @@
                                             name="twitter_link"
                                             placeholder="Agrega el enlace de tu red social X" 
                                             value="{{ old('twitter_link', $user->twitter_link) }}">
+                                        @error('twitter_link')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <!-- Campo para el correo electrónico -->
@@ -488,9 +518,14 @@
                                             placeholder="Ingrese su correo electrónico"
                                             value="{{ old('email', $user->email) }}"
                                             required>
+                                        @error('email')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div><br>
 
-                                    <!-- Campo para el link de descripción -->
+                                    <!-- Campo para la descripción personal -->
                                     <div class="col-md-12">
                                         <label for="bio">
                                             <i class="fas fa-align-left" style="margin-right: 8px;"></i>
@@ -503,6 +538,11 @@
                                         placeholder="Ingrese una pequeña reseña" 
                                         style="min-height: 150px; border: 1px solid #838588;" 
                                         rows="12">{{ old('bio', $user->bio) }}</textarea>
+                                        @error('bio')
+                                            <span class="invalid-feedback d-block" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                 </div>

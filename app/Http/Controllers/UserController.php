@@ -47,11 +47,11 @@ class UserController extends Controller
             'rtn' => 'nullable|string|max:20|unique:users,rtn',
             'sexo_id' => 'required|exists:sexos,id',
             'fecha_nacimiento' => 'required|date',
+            'pais_id' => 'nullable|exists:pais,id',
             'telefono' => 'nullable|string|max:40|regex:/^[\d-]*$/',
             'telefono_celular' => 'required|string|max:40|regex:/^[\d-]*$/',
             'email' => 'required|email|max:255|unique:users,email',
             'email_confirmation' => 'required|email|same:email',
-            'pais_id' => 'nullable|exists:pais,id',
             'password' => [
                 'required',
                 'string',
@@ -61,7 +61,6 @@ class UserController extends Controller
                 'regex:/^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/',
             ],
         ], [
-            // Mensajes personalizados de validación
             // campos únicos
             'numero_identidad.unique' => 'El número de identidad ya está en uso',
             'numero_colegiacion.unique' => 'El número de colegiación ya está en uso',

@@ -66,56 +66,120 @@
                                             <div class="form-row justify-content-center">
                                                 <div class="form-group text-center col-md-3">
                                                     <label for="old_password"><strong>CONTRASEÑA ACTUAL *</strong></label>
-                                                    <input 
+                                                    <div class="input-group">
+                                                        <input 
                                                         type="password" 
                                                         name="old_password" 
+                                                        id="old_password"
                                                         class="form-control @error('old_password') is-invalid @enderror" 
                                                         placeholder="Ingrese la contraseña actual" 
                                                         value="{{ old('old_password') }}" 
                                                         style="text-align: center;" 
                                                         required>
+                                                        <span class="input-group-text">
+                                                            <i class="far fa-eye" id="toggleOldPassword" style="cursor: pointer;"></i>
+                                                        </span>
+                                                    </div>
                                                     @error('old_password')
                                                         <span class="invalid-feedback d-block text-center" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
                                                     @enderror
                                                 </div>                                             
-                                                    
-                                                <!-- Salto de línea -->
+                                                
                                                 <div class="w-100"></div>
-                                        
+                                                
                                                 <div class="form-group text-center col-md-3">
                                                     <label for="password"><strong>NUEVA CONTRASEÑA *</strong></label>
-                                                    <input 
+                                                    <div class="input-group">
+                                                        <input 
                                                         type="password" 
                                                         name="password" 
+                                                        id="password"
                                                         class="form-control @error('password') is-invalid @enderror" 
                                                         placeholder="Ingrese la nueva contraseña"
                                                         minlength="8"
                                                         maxlength="20"
                                                         value="{{ old('password') }}" 
-                                                        required>                                                
+                                                        required>
+                                                        <span class="input-group-text">
+                                                            <i class="far fa-eye" id="togglePassword" style="cursor: pointer;"></i>
+                                                        </span>
                                                     </div>
-                                
+                                                </div>
+                                                
                                                 <div class="form-group text-center col-md-3">
                                                     <label for="password_confirmation"><strong>CONFIRMAR LA NUEVA CONTRASEÑA *</strong></label>
-                                                    <input 
+                                                    <div class="input-group">
+                                                        <input 
                                                         type="password" 
                                                         name="password_confirmation" 
+                                                        id="password_confirmation"
                                                         class="form-control @error('password_confirmation') is-invalid @enderror" 
                                                         placeholder="Confirme la nueva contraseña"
                                                         minlength="8"
                                                         maxlength="20" 
                                                         value="{{ old('password_confirmation') }}" 
                                                         required>
-                                                        @error('password')
-                                                            <span class="invalid-feedback d-block text-center" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                        @enderror
+                                                        <span class="input-group-text">
+                                                            <i class="far fa-eye" id="toggleConfirmPassword" style="cursor: pointer;"></i>
+                                                        </span>
+                                                    </div>
+                                                    @error('password')
+                                                        <span class="invalid-feedback d-block text-center" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
+                                                
                                             </div>
-                                        </div>                    
+                                        </div>
+                                        
+                                        <script>
+                                            document.getElementById('toggleOldPassword').addEventListener('click', function() {
+                                                const passwordField = document.getElementById('old_password');
+                                                const icon = this;
+                                                // Alterna el tipo de input
+                                                if (passwordField.type === 'password') {
+                                                    passwordField.type = 'text';
+                                                    icon.classList.remove('fa-eye');
+                                                    icon.classList.add('fa-eye-slash');
+                                                } else {
+                                                    passwordField.type = 'password';
+                                                    icon.classList.remove('fa-eye-slash');
+                                                    icon.classList.add('fa-eye');
+                                                }
+                                            });
+                                        
+                                            document.getElementById('togglePassword').addEventListener('click', function() {
+                                                const passwordField = document.getElementById('password');
+                                                const icon = this;
+                                                if (passwordField.type === 'password') {
+                                                    passwordField.type = 'text';
+                                                    icon.classList.remove('fa-eye');
+                                                    icon.classList.add('fa-eye-slash');
+                                                } else {
+                                                    passwordField.type = 'password';
+                                                    icon.classList.remove('fa-eye-slash');
+                                                    icon.classList.add('fa-eye');
+                                                }
+                                            });
+                                        
+                                            document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
+                                                const passwordField = document.getElementById('password_confirmation');
+                                                const icon = this;
+                                                if (passwordField.type === 'password') {
+                                                    passwordField.type = 'text';
+                                                    icon.classList.remove('fa-eye');
+                                                    icon.classList.add('fa-eye-slash');
+                                                } else {
+                                                    passwordField.type = 'password';
+                                                    icon.classList.remove('fa-eye-slash');
+                                                    icon.classList.add('fa-eye');
+                                                }
+                                            });
+                                        </script>
+                                        
                             
                                         <div class="form-group row mb-0">
                                             <div class="col-md-12 text-center">
