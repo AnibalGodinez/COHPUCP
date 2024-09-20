@@ -108,9 +108,17 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Sexo::class);
     }
 
+    // Relación con el modelo numero de colegiacion
     public function numeroColegiacion()
     {
         return $this->hasOne(NumeroColegiacion::class);
     }
+
+    // Relación con el modelo solicitudes de vacantes
+    public function solicitudesVacantes()
+    {
+        return $this->hasMany(SolicitudVacante::class);
+    }
+
 
 }

@@ -475,10 +475,63 @@
                         Bolsa de empleos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-uppercase" href='#'>Vacantes</a>
-                        <a class="dropdown-item text-uppercase" href='#'>Perfiles de Agremiados</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('vacantes.*') ? 'text-warning' : ''}}" 
+                            id="vacantesLink" href="#">Vacantes</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('perfiles-agremiados.*') ? 'text-warning' : ''}}" 
+                            id="perfilesAgremiadosLink" href="#">Perfiles de Agremiados</a>
+                    </div>
+                
+                    <!-- Submenú para Vacantes -->
+                    <div class="dropdown-menu" id="subMenuVacantes" style="position: absolute; top: 0; left: 100%; display: none; margin-left:30px">
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('solicitudes-vacantes.index') ? 'text-warning font-weight-bold' : ''}}" 
+                            href="{{ route('solicitudes-vacantes.index') }}">Ver vacantes</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('solicitudes-vacantes.create') ? 'text-warning font-weight-bold' : ''}}" 
+                            href="{{ route('solicitudes-vacantes.create') }}">Crear vacante</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('solicitudes-vacantes.index') ? 'text-warning font-weight-bold' : ''}}" 
+                            href="{{ route('solicitudes-vacantes.index') }}">Gestionar vacantes</a>
+                    </div>
+                
+                    <!-- Submenú para Perfiles de Agremiados -->
+                    <div class="dropdown-menu" id="subMenuPerfilesAgremiados" style="position: absolute; top: 0; left: 100%; display: none; margin-left:30px; margin-top:45px">
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('perfiles-agremiados.ver') ? 'text-warning font-weight-bold' : ''}}" 
+                            href="#">Ver perfiles</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('perfiles-agremiados.create') ? 'text-warning font-weight-bold' : ''}}" 
+                            href="#">Crear perfil</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('perfiles-agremiados.index') ? 'text-warning font-weight-bold' : ''}}" 
+                            href="#">Gestionar perfiles</a>
                     </div>
                 </li>
+                
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const vacantesLink = document.getElementById('vacantesLink');
+                        const subMenuVacantes = document.getElementById('subMenuVacantes');
+                        const perfilesAgremiadosLink = document.getElementById('perfilesAgremiadosLink');
+                        const subMenuPerfilesAgremiados = document.getElementById('subMenuPerfilesAgremiados');
+                        const navbarDropdown = document.getElementById('navbarDropdown');
+                
+                        const showSubMenu = (subMenu) => {
+                            hideSubMenus(); // Ocultar otros submenús antes de mostrar el actual
+                            subMenu.style.display = 'block';
+                        };
+                
+                        const hideSubMenus = () => {
+                            subMenuVacantes.style.display = 'none';
+                            subMenuPerfilesAgremiados.style.display = 'none';
+                        };
+                
+                        vacantesLink.addEventListener('mouseenter', () => showSubMenu(subMenuVacantes));
+                        perfilesAgremiadosLink.addEventListener('mouseenter', () => showSubMenu(subMenuPerfilesAgremiados));
+                
+                        subMenuVacantes.addEventListener('mouseenter', () => showSubMenu(subMenuVacantes));
+                        subMenuPerfilesAgremiados.addEventListener('mouseenter', () => showSubMenu(subMenuPerfilesAgremiados));
+                
+                        subMenuVacantes.addEventListener('mouseleave', hideSubMenus);
+                        subMenuPerfilesAgremiados.addEventListener('mouseleave', hideSubMenus);
+                        navbarDropdown.addEventListener('mouseleave', hideSubMenus);
+                    });
+                </script>
+                
      
                 @can('ver boton mantenimientos')
                 <li class="nav-item dropdown">

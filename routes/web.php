@@ -23,6 +23,7 @@ use App\Http\Controllers\WelcomeContentController;
 use App\Http\Controllers\DashboardContentController;
 use App\Http\Controllers\InscripcionFirmaController;
 use App\Http\Controllers\SecurityQuestionController;
+use App\Http\Controllers\SolicitudVacanteController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\NumeroColegiacionController;
 use App\Http\Controllers\PDFInscripcionFirmaController;
@@ -131,6 +132,10 @@ use App\Http\Controllers\PDFInscripcionFirmaController;
 
     // RUTAS DE NÚMERO DE COLEGIACIÓN
     Route::resource('numero_colegiacion', NumeroColegiacionController::class);
+
+    // RUTAS DE SOLICITUD DE VACANTES
+    Route::resource('solicitudes-vacantes', SolicitudVacanteController::class);
+
 });
 
 // RUTAS DE RECUPERACIÓN DE CONTRASEÑA MEDIANTE PREGUNTAS DE SEGURIDAD
