@@ -135,9 +135,6 @@ use App\Http\Controllers\PDFInscripcionFirmaController;
 
     // RUTAS DE SOLICITUD DE VACANTES
     Route::resource('vacantes', SolicitudVacanteController::class);
-    Route::put('/vacantes/{solicitud}', [SolicitudVacanteController::class, 'update'])->name('vacantes.update');
-
-
 });
 
 // RUTAS DE RECUPERACIÓN DE CONTRASEÑA MEDIANTE PREGUNTAS DE SEGURIDAD

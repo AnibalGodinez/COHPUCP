@@ -16,12 +16,12 @@
                                 {{-- ESPACIO --}}
                             </div>
                             <div class="col-md-10 mb-4">
-                                <p class="mb-4"><strong><strong>NOMBRE DE LA VACANTE</strong></strong><br> {{ $solicitud->nombre_vacante }}</p>
-                                <p class="mb-4"><strong><strong>DESCRIPCIÓN</strong></strong><br> {{ $solicitud->descripcion }}</p>
-                                <p class="mb-4"><strong><strong>RESPONSABILIDADES</strong></strong><br>  {!! nl2br(e($solicitud->responsabilidades)) !!}</p>
-                                <p class="mb-4"><strong><strong>REQUISITOS</strong></strong><br> {!! nl2br(e($solicitud->requisitos)) !!}</p>
-                                <p class="mb-4"><strong><strong>EXPERIENCIA</strong></strong><br> {{ $solicitud->experiencia }}</p>
-                                <p class="mb-4"><strong><strong>UBICACIÓN</strong></strong><br> {{ $solicitud->ubicacion }}</p>
+                                <p class="mb-4"><strong><strong>NOMBRE DE LA VACANTE</strong></strong><br> {{ $solicitud->nombre_vacante }} </p>
+                                <p class="mb-4"><strong><strong>DESCRIPCIÓN</strong></strong><br>  {!! nl2br(e($solicitud->descripcion )) !!} </p>
+                                <p class="mb-4"><strong><strong>RESPONSABILIDADES</strong></strong><br> {!! nl2br(e($solicitud->responsabilidades)) !!} </p>
+                                <p class="mb-4"><strong><strong>REQUISITOS</strong></strong><br> {!! nl2br(e($solicitud->requisitos)) !!} </p>
+                                <p class="mb-4"><strong><strong>EXPERIENCIA</strong></strong><br> {!! nl2br(e($solicitud->experiencia )) !!} </p>
+                                <p class="mb-4"><strong><strong>UBICACIÓN</strong></strong><br> {!! nl2br(e($solicitud->ubicacion )) !!} </p>
                             </div>
                             <div class="col-md-1">
                                 {{-- ESPACIO --}}

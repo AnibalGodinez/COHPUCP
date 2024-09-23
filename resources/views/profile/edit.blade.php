@@ -41,7 +41,12 @@
                                     }
                                 </script>
 
-                                <h4 class="mb-4">Por favor, complete todos los campos marcados con asterisco (<strong>*</strong>) ya que son <strong>obligatorios</strong> y no pueden quedar vacíos al momento de editar su información.</h4><br>
+                                <h4 class="mb-4">Por favor, complete todos los campos marcados con asterisco (<strong><strong>*</strong></strong>) ya que son <strong>obligatorios</strong> y no pueden quedar vacíos al momento de editar su información.</h4><br>
+                                <style>
+                                    h4 {
+                                        font-family: 'Arial', sans-serif; /* Cambiar 'Arial' por la fuente que prefieras */
+                                    }
+                                </style>
 
                                 <h5 class="text-center" style="text-decoration: underline;"><strong>DATOS PERSONALES</strong></h5>
 

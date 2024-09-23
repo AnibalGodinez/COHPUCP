@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container-fluid mt-5">
     <div class="row justify-content-center" style="margin-top: 90px">
         <div class="col-md-12">
@@ -26,7 +27,14 @@
                         @csrf
                         @method('PUT')
 
-                        <h4>Por favor, complete todos los campos marcados con asterisco (<strong>*</strong>) ya que son <strong>obligatorios</strong> y no pueden quedar vacíos al momento de editar la vacante.</h4><br>
+                        <h4>Por favor, complete todos los campos marcados con asterisco (<strong><strong>*</strong></strong>) ya que son <strong>obligatorios</strong> y no pueden quedar vacíos al momento de editar la vacante.</h4><br>
+                        
+                        <style>
+                            h4 {
+                                font-family: 'Arial', sans-serif; /* Cambiar 'Arial' por la fuente que prefieras */
+                            }
+                        </style>
+                        
                         <div class="form-group row">
 
                             <div class="col-md-4">

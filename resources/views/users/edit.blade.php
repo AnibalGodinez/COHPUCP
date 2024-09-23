@@ -14,7 +14,13 @@
                         @csrf
                         @method('PUT')
 
-                        <h4>Por favor, complete todos los campos marcados con asterisco (<strong>*</strong>) ya que son <strong>obligatorios</strong> y no pueden quedar vacíos al momento de editar la información del usuario.</h4><br>
+                        <h4>Por favor, complete todos los campos marcados con asterisco (<strong><strong>*</strong></strong>) ya que son <strong>obligatorios</strong> y no pueden quedar vacíos al momento de editar la información del usuario.</h4><br>
+                        <style>
+                            h4 {
+                                font-family: 'Arial', sans-serif; /* Cambiar 'Arial' por la fuente que prefieras */
+                            }
+                        </style>
+                        
                         <div class="form-row">
                             <!-- Campo para el primer nombre -->
                             <div class="form-group col-md-2">
