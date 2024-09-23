@@ -506,7 +506,7 @@
                         
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-2">
                             <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-success">
                                     <i class="fas fa-save" style="margin-right: 8px;"></i>
@@ -517,7 +517,7 @@
                                     Volver
                                 </a>
                             </div>
-                        </div><br>
+                        </div>
 
                     </form>
                 </div>

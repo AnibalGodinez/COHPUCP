@@ -762,14 +762,15 @@
 
                         </div><br>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-2">
                             <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-success">
                                     <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
                                     Inviar solicitud de inscripción
                                 </button>
                             </div>
-                        </div><br>
+                        </div>
+                        
                     </form>
                 </div>
             </div>

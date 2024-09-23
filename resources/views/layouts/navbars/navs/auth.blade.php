@@ -483,12 +483,12 @@
                 
                     <!-- Submenú para Vacantes -->
                     <div class="dropdown-menu" id="subMenuVacantes" style="position: absolute; top: 0; left: 100%; display: none; margin-left:30px">
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('solicitudes-vacantes.index') ? 'text-warning font-weight-bold' : ''}}" 
-                            href="{{ route('solicitudes-vacantes.index') }}">Ver vacantes</a>
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('solicitudes-vacantes.create') ? 'text-warning font-weight-bold' : ''}}" 
-                            href="{{ route('solicitudes-vacantes.create') }}">Crear vacante</a>
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('solicitudes-vacantes.index') ? 'text-warning font-weight-bold' : ''}}" 
-                            href="{{ route('solicitudes-vacantes.index') }}">Gestionar vacantes</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('vacantes.index') ? 'text-warning font-weight-bold' : ''}}" 
+                            href="{{ route('vacantes.index') }}">Ver solicitudes</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('vacantes.create') ? 'text-warning font-weight-bold' : ''}}" 
+                            href="{{ route('vacantes.create') }}">Crear vacante</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('vacantes.index') ? 'text-warning font-weight-bold' : ''}}" 
+                            href="{{ route('vacantes.index') }}">Gestionar vacantes</a>
                     </div>
                 
                     <!-- Submenú para Perfiles de Agremiados -->

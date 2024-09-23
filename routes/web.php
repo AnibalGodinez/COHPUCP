@@ -134,7 +134,9 @@ use App\Http\Controllers\PDFInscripcionFirmaController;
     Route::resource('numero_colegiacion', NumeroColegiacionController::class);
 
     // RUTAS DE SOLICITUD DE VACANTES
-    Route::resource('solicitudes-vacantes', SolicitudVacanteController::class);
+    Route::resource('vacantes', SolicitudVacanteController::class);
+    Route::put('/vacantes/{solicitud}', [SolicitudVacanteController::class, 'update'])->name('vacantes.update');
+
 
 });
 
