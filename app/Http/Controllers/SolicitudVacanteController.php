@@ -58,7 +58,7 @@ class SolicitudVacanteController extends Controller
             'estado' => 'pendiente',
         ]);
 
-        return redirect()->route('vacantes.index')->with('success', '¡Solicitud de vacante enviada con éxito!');
+        return redirect()->route('vacantes.create')->with('success', '¡Solicitud de vacante enviada con éxito!');
     }
 
     // Mostrar el detalle de una solicitud

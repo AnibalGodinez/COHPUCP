@@ -32,7 +32,7 @@
                                         <th class="text-center" style="color: white;">ID</th>
                                         <th class="text-center" style="color: white;">Nombre de la empresa</th>
                                         <th class="text-center" style="color: white;">Nombre de la vacante</th>
-                                        <th class="text-center" style="color: white;">Estado</th>
+                                        <th class="text-center" style="color: white;">Ubicación</th>
                                         <th class="text-center" style="color: white;">Acciones</th>
                                     </tr>
                                 </thead>
@@ -42,8 +42,8 @@
                                             <td class="text-center">{{ $solicitud->id }}</td>
                                             <td class="text-center">{{ $solicitud->nombre_empresa }}</td>
                                             <td class="text-center">{{ $solicitud->nombre_vacante }}</td>
-                                            <td class="text-center">{{ $solicitud->estado }}</td>
-                                            
+                                            <td class="text-center">{{ $solicitud->ubicacion }}</td>
+                                
                                             <td class="text-center">
                                                 <!-- Botón Ver con icono del ojo -->
                                                 <a href="{{ route('vacantes.show', $solicitud->id) }}" class="btn btn-info btn-sm btn-icon">
