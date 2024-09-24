@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Log;
+
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\SolicitudVacante;
+use App\Notifications\VacanteAprobada;
 
 class SolicitudVacanteController extends Controller
 {
@@ -119,6 +121,14 @@ class SolicitudVacanteController extends Controller
 
         // Guardar los cambios
         $solicitud->save();
+
+         // Si el estado es aprobado, envía la notificación
+         if ($solicitud->estado == 'aprobado') {
+            $usuario = User::where('email', $solicitud->correo)->first();
+            if ($usuario) {
+                $usuario->notify(new VacanteAprobada($solicitud));
+            }
+        }        
 
         return redirect()->route('vacantes.index')->with('success', 'Vacante actualizada con éxito.');
     }
