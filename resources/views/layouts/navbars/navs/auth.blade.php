@@ -487,8 +487,8 @@
                             href="{{ route('vacantes.index') }}">Ver solicitudes</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('vacantes.create') ? 'text-warning font-weight-bold' : ''}}" 
                             href="{{ route('vacantes.create') }}">Crear vacante</a>
-                        <a class="dropdown-item text-uppercase {{request()->routeIs('vacantes.index') ? 'text-warning font-weight-bold' : ''}}" 
-                            href="{{ route('vacantes.index') }}">Gestionar vacantes</a>
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('vacantes.ver') ? 'text-warning font-weight-bold' : ''}}" 
+                            href="{{ route('vacantes.ver') }}">Ver vacantes</a>
                     </div>
                 
                     <!-- Submenú para Perfiles de Agremiados -->

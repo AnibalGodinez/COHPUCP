@@ -22,48 +22,54 @@
                             </div>
                         @endif
 
-                        <table class="table table-bordered table-striped" style="border-spacing: 8cm;">
-                            <thead style="background-color: #3288af;">
-                                <tr>
-                                    <th class="text-center" style="color: white;">ID</th>
-                                    <th class="text-center" style="color: white;">Nombre de la empresa</th>
-                                    <th class="text-center" style="color: white;">Nombre de la vacante</th>
-                                    <th class="text-center" style="color: white;">Estado</th>
-                                    <th class="text-center" style="color: white;">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($solicitudes as $solicitud)
+                        @if($solicitudes->isEmpty())
+                            <div class="text-center">
+                                <p>No hay solicitudes pendientes en este momento.</p>
+                            </div>
+                        @else
+                            <table class="table table-bordered table-striped" style="border-spacing: 8cm;">
+                                <thead style="background-color: #3288af;">
                                     <tr>
-                                        <td class="text-center">{{ $solicitud->id }}</td>
-                                        <td class="text-center">{{ $solicitud->nombre_empresa }}</td>
-                                        <td class="text-center">{{ $solicitud->nombre_vacante }}</td>
-                                        <td class="text-center">{{ $solicitud->estado }}</td>
-                                        
-                                        <td class="text-center">
-                                            <!-- Botón Ver con icono del ojo -->
-                                            <a href="{{ route('vacantes.show', $solicitud->id) }}" class="btn btn-info btn-sm btn-icon">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-
-                                            <!-- Botón Editar con icono de engranaje -->
-                                            <a href="{{ route('vacantes.edit', $solicitud->id) }}" class="btn btn-success btn-sm btn-icon">
-                                                <i class="tim-icons icon-settings"></i>
-                                            </a>
-
-                                            <!-- Botón Eliminar con confirmación -->
-                                            <form action="{{ route('vacantes.destroy', $solicitud->id) }}" method="POST" style="display:inline-block;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm btn-icon" onclick="return confirm('¿Estás seguro de eliminar esta solicitud?')">
-                                                    Eliminar
-                                                </button>
-                                            </form>
-                                        </td>
+                                        <th class="text-center" style="color: white;">ID</th>
+                                        <th class="text-center" style="color: white;">Nombre de la empresa</th>
+                                        <th class="text-center" style="color: white;">Nombre de la vacante</th>
+                                        <th class="text-center" style="color: white;">Estado</th>
+                                        <th class="text-center" style="color: white;">Acciones</th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($solicitudes as $solicitud)
+                                        <tr>
+                                            <td class="text-center">{{ $solicitud->id }}</td>
+                                            <td class="text-center">{{ $solicitud->nombre_empresa }}</td>
+                                            <td class="text-center">{{ $solicitud->nombre_vacante }}</td>
+                                            <td class="text-center">{{ $solicitud->estado }}</td>
+                                            
+                                            <td class="text-center">
+                                                <!-- Botón Ver con icono del ojo -->
+                                                <a href="{{ route('vacantes.show', $solicitud->id) }}" class="btn btn-info btn-sm btn-icon">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+
+                                                <!-- Botón Editar con icono de engranaje -->
+                                                <a href="{{ route('vacantes.edit', $solicitud->id) }}" class="btn btn-success btn-sm btn-icon">
+                                                    <i class="tim-icons icon-settings"></i>
+                                                </a>
+
+                                                <!-- Botón Eliminar con confirmación -->
+                                                <form action="{{ route('vacantes.destroy', $solicitud->id) }}" method="POST" style="display:inline-block;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm btn-icon" onclick="return confirm('¿Estás seguro de eliminar esta solicitud?')">
+                                                        <i class="tim-icons icon-simple-remove"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endif
                     </div>
                 </div>
             </div>

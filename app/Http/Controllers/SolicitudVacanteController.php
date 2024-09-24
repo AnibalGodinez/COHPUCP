@@ -74,48 +74,57 @@ class SolicitudVacanteController extends Controller
 
     // Actualizar una solicitud en la base de datos
     public function update(Request $request, $id)
-{
-    // Validación de los datos
-    $request->validate([
-        'nombre_empresa' => 'required|string|max:255',
-        'nombre_vacante' => 'required|string|max:255',
-        'descripcion' => 'required',
-        'responsabilidades' => 'required',
-        'requisitos' => 'required',
-        'experiencia' => 'required',
-        'tiempo' => 'required|string',
-        'ubicacion' => 'required',
-        'correo' => 'required|email',
-        'telefono' => 'required',
-        'celular' => 'required',
-        'enlace' => 'nullable|url',
-        'estado' => 'required|string',
-    ]);
+    {
+        // Validación de los datos
+        $request->validate([
+            'nombre_empresa' => 'required|string|max:255',
+            'nombre_vacante' => 'required|string|max:255',
+            'descripcion' => 'required',
+            'responsabilidades' => 'required',
+            'requisitos' => 'required',
+            'experiencia' => 'required',
+            'tiempo' => 'required|string',
+            'ubicacion' => 'required',
+            'correo' => 'required|email',
+            'telefono' => 'required',
+            'celular' => 'required',
+            'enlace' => 'nullable|url',
+            'estado' => 'required|string',
+        ]);
 
-    // Buscar la solicitud
-    $solicitud = SolicitudVacante::findOrFail($id);
+        // Buscar la solicitud
+        $solicitud = SolicitudVacante::findOrFail($id);
 
-    // Actualizar los campos
-    $solicitud->nombre_empresa = $request->nombre_empresa;
-    $solicitud->nombre_vacante = $request->nombre_vacante;
-    $solicitud->descripcion = $request->descripcion;
-    $solicitud->responsabilidades = $request->responsabilidades;
-    $solicitud->requisitos = $request->requisitos;
-    $solicitud->experiencia = $request->experiencia;
-    $solicitud->ubicacion = $request->ubicacion;
-    $solicitud->tiempo = $request->tiempo;
-    $solicitud->correo = $request->correo;
-    $solicitud->telefono = $request->telefono;
-    $solicitud->celular = $request->celular;
-    $solicitud->enlace = $request->enlace;
-    $solicitud->estado = $request->estado;
+        // Actualizar los campos
+        $solicitud->nombre_empresa = $request->nombre_empresa;
+        $solicitud->nombre_vacante = $request->nombre_vacante;
+        $solicitud->descripcion = $request->descripcion;
+        $solicitud->responsabilidades = $request->responsabilidades;
+        $solicitud->requisitos = $request->requisitos;
+        $solicitud->experiencia = $request->experiencia;
+        $solicitud->ubicacion = $request->ubicacion;
+        $solicitud->tiempo = $request->tiempo;
+        $solicitud->correo = $request->correo;
+        $solicitud->telefono = $request->telefono;
+        $solicitud->celular = $request->celular;
+        $solicitud->enlace = $request->enlace;
+        $solicitud->estado = $request->estado;
 
-    // Guardar los cambios
-    $solicitud->save();
+        // Guardar los cambios
+        $solicitud->save();
 
-    return redirect()->route('vacantes.index')->with('success', 'Vacante actualizada con éxito.');
-}
+        return redirect()->route('vacantes.index')->with('success', 'Vacante actualizada con éxito.');
+    }
 
+    // Mostrar todas las vacantes disponibles
+    public function verVacantes()
+    {
+        // Obtener todas las solicitudes de vacantes en estado 'aprobado'
+        $vacantes = SolicitudVacante::where('estado', 'aprobado')->get();
+
+        // Retornar la vista 'vacantes.ver' con las vacantes
+        return view('vacantes.ver', compact('vacantes'));
+    }
 
     // Eliminar una solicitud de la base de datos
     public function destroy(SolicitudVacante $solicitud)
