@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SolicitudVacante;
+use Log;
 use Illuminate\Http\Request;
+use App\Models\SolicitudVacante;
 
 class SolicitudVacanteController extends Controller
 {
@@ -61,9 +62,15 @@ class SolicitudVacanteController extends Controller
     // Mostrar el detalle de una solicitud
     public function show($id)
     {
-        $solicitud = SolicitudVacante::find($id);
+        $solicitud = SolicitudVacante::find($id); // O el método correcto que estés utilizando para obtener la solicitud
+        
+        if (!$solicitud) {
+            return redirect()->route('vacantes.index')->with('error', 'Solicitud no encontrada');
+        }
+
         return view('vacantes.show', compact('solicitud'));
     }
+
 
     // Mostrar el formulario de edición de una solicitud de vacante
     public function edit($id)
@@ -125,6 +132,16 @@ class SolicitudVacanteController extends Controller
         // Retornar la vista 'vacantes.ver' con las vacantes
         return view('vacantes.ver', compact('vacantes'));
     }
+
+    public function vacantesAprobadas()
+    {
+        // Obtener todas las solicitudes de vacantes que han sido aprobadas
+        $vacantesAprobadas = SolicitudVacante::where('estado', 'aprobado')->get();
+
+        // Retornar la vista con las vacantes aprobadas
+        return view('vacantes.aprobadas', compact('vacantesAprobadas'));
+    }
+
 
     // Eliminar una solicitud de la base de datos
     public function destroy(SolicitudVacante $solicitud)

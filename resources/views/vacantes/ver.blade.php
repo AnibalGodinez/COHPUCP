@@ -6,11 +6,14 @@
         <div class="col-md-12">
             <div class="card mt-7">
                 <div class="card-body">
-                    <h2 class="text-center"><strong>VACANTES DISPONIBLES</strong></h2>
+                    <h3 class="text-center">VACANTES DISPONIBLES</h3>
 
                     @if($vacantes->isEmpty())
+                    <div class="text-center">
                         <p>No hay vacantes disponibles en este momento</p>
+                    </div>
                     @else
+
                         <div class="list-group">
                             @foreach($vacantes as $vacante)
 

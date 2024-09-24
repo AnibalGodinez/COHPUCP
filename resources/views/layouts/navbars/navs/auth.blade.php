@@ -489,6 +489,10 @@
                             href="{{ route('vacantes.create') }}">Crear vacante</a>
                         <a class="dropdown-item text-uppercase {{request()->routeIs('vacantes.ver') ? 'text-warning font-weight-bold' : ''}}" 
                             href="{{ route('vacantes.ver') }}">Ver vacantes</a>
+                        <a class="dropdown-item text-uppercase {{ request()->routeIs('vacantes.aprobadas') ? 'text-warning font-weight-bold' : '' }}" 
+                            href="{{ route('vacantes.aprobadas') }}">Solicitudes aprobadas</a>                                    
+                        <a class="dropdown-item text-uppercase {{request()->routeIs('vacantes.historial') ? 'text-warning font-weight-bold' : ''}}" 
+                            href="#">Historial</a> <!-- Asegúrate de agregar la ruta del historial -->
                     </div>
                 
                     <!-- Submenú para Perfiles de Agremiados -->
@@ -530,8 +534,7 @@
                         subMenuPerfilesAgremiados.addEventListener('mouseleave', hideSubMenus);
                         navbarDropdown.addEventListener('mouseleave', hideSubMenus);
                     });
-                </script>
-                
+                </script>                                
      
                 @can('ver boton mantenimientos')
                 <li class="nav-item dropdown">

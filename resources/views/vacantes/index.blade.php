@@ -1,14 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid mt-8">
-        <div class="row" style="margin-top: 90px">
-            <div class="col-md-12">
-                <div class="card m-7">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-center align-items-center mb-3">
-                            <h3 class="card-title">LISTA DE SOLICITUDES | VACANTES PENDIENTES</h3>
-                        </div>
+<div class="container-fluid mt-5">
+    <div class="row" style="margin-top: 90px">
+        <div class="col-md-12">
+            <div class="card mt-7">
+                <div class="card-body">
+                    <h3 class="text-center">LISTA DE SOLICITUDES - VACANTES PENDIENTES</h3>
 
                         <!-- Mensaje de éxito -->
                         @if(session('success'))
@@ -27,6 +25,7 @@
                                 <p>No hay solicitudes pendientes en este momento.</p>
                             </div>
                         @else
+
                             <table class="table table-bordered table-striped" style="border-spacing: 8cm;">
                                 <thead style="background-color: #3288af;">
                                     <tr>
