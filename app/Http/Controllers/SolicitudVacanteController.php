@@ -61,10 +61,10 @@ class SolicitudVacanteController extends Controller
         return redirect()->route('vacantes.create')->with('success', '¡Solicitud de vacante enviada con éxito!');
     }
 
-    // Mostrar el detalle de una solicitud
+    // Mostrar el detalle de la vacante
     public function show($id)
     {
-        $solicitud = SolicitudVacante::find($id); // O el método correcto que estés utilizando para obtener la solicitud
+        $solicitud = SolicitudVacante::find($id);
         
         if (!$solicitud) {
             return redirect()->route('vacantes.index')->with('error', 'Solicitud no encontrada');
