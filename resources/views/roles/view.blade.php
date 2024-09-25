@@ -7,7 +7,7 @@
 
                 <div class="card shadow-lg">
                     <div class="card-header text-white text-center">
-                        <h3 class="card-title"><strong>LISTA DE ROLES</strong></h3>
+                        <h3 class="card-title"><strong>Lista de roles</strong></h3>
                     </div>
 
                     <!-- Mensaje de éxito -->
@@ -25,7 +25,7 @@
                     <div class="card-body">
                         {{-- Formulario de búsqueda --}}
                         <form method="GET" action="{{ route('roles.ver') }}" class="form-inline mt-3">
-                            <input type="text" name="search" class="form-control mr-2 col-2" placeholder="Buscar rol..." value="{{ request()->query('search') }}">
+                            <input type="text" name="search" class="form-control mr-2 col-4" placeholder="Buscar roles..." value="{{ request()->query('search') }}">
                             <button class="btn btn-info btn-round btn-simple">
                                 <i class="tim-icons icon-zoom-split"></i> Buscar
                             </button>
@@ -36,10 +36,11 @@
                                 No hay ningún resultado de su búsqueda.
                             </div>
                         @else
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="overflow: hidden;">
                             <table class="table table-bordered table-striped">
                                 <thead style="background-color: #3288af;">
                                     <tr>
+                                        <th class="text-center" style="color: white;">ID</th>
                                         <th class="text-center" style="color: white;">Nombre del rol</th>
                                         <th class="text-center" style="color: white;">Descripción</th>
                                     </tr>
@@ -47,7 +48,8 @@
                                 <tbody>
                                     @foreach ($roles as $role)
                                         <tr>
-                                            <td>{{ $role->name }}</td>
+                                            <td class="text-center">{{ $role->id }}</td>
+                                            <td class="text-center">{{ $role->name }}</td>
                                             <td>{{ $role->description }}</td>
                                         </tr>
                                     @endforeach

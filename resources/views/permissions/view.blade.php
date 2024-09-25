@@ -7,7 +7,7 @@
 
                 <div class="card shadow-lg">
                     <div class="card-header text-white text-center">
-                        <h3 class="card-title"><strong>LISTA DE PERMISOS</strong></h3>
+                        <h3 class="card-title"><strong>Lista de permisos</strong></h3>
                     </div>
 
                         <!-- Mensaje de éxito -->
@@ -25,7 +25,7 @@
                     <div class="card-body">     
                         {{-- Formulario de búsqueda --}}
                         <form method="GET" action="{{ route('permissions.ver') }}" class="form-inline mt-3">
-                            <input type="text" name="search" class="form-control mr-2 col-2" placeholder="Buscar permisos" value="{{ request()->query('search') }}">
+                            <input type="text" name="search" class="form-control mr-2 col-4" placeholder="Buscar permisos..." value="{{ request()->query('search') }}">
                             <button class="btn btn-info btn-round btn-simple">
                                 <i class="tim-icons icon-zoom-split"></i> Buscar
                             </button>
@@ -39,6 +39,7 @@
                                     <table class="table table-bordered table-striped">
                                         <thead style="background-color: #3288af;">
                                             <tr>
+                                                <th class="text-center" style="color: white;">ID</th>
                                                 <th class="text-center" style="color: white;">Nombre del permiso</th>
                                                 <th class="text-center" style="color: white;">Descripción del permiso</th>
                                             </tr>
@@ -46,8 +47,9 @@
                                         <tbody>
                                             @foreach ($permissions  as $permission)
                                                 <tr>
+                                                    <td class="text-center">{{ $permission->id }}</td>
                                                     <td class="text-center">{{ $permission->name }}</td>
-                                                    <td class="text-center">{{ $permission->description }}</td>
+                                                    <td>{{ $permission->description }}</td>
                                                 </tr>
                                             @endforeach
                                             </tbody>

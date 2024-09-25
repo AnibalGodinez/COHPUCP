@@ -7,7 +7,7 @@
 
                 <div class="card shadow-lg">
                     <div class="card-header text-white text-center">
-                        <h3 class="card-title"><strong>GESTIONAR PERMISOS</strong></h3>
+                        <h3 class="card-title"><strong>Gestionar permisos</strong></h3>
                     </div>
 
                     <!-- Mensaje de éxito -->
@@ -25,7 +25,7 @@
                     <div class="card-body">
                         {{-- Formulario de búsqueda --}}
                         <form action="{{ url('permission') }}" method="GET" class="form-inline mt-3">
-                            <input type="text" name="search" class="form-control mr-2 col-2" placeholder="Buscar permisos" value="{{ request()->query('search') }}">
+                            <input type="text" name="search" class="form-control mr-2 col-4" placeholder="Buscar permisos" value="{{ request()->query('search') }}">
                             <button class="btn btn-info btn-round btn-simple">
                                 <i class="tim-icons icon-zoom-split"></i> Buscar
                             </button>
@@ -48,15 +48,17 @@
                                     @foreach ($permissions as $permission)
                                     <tr>
                                         <td class="text-center">{{ $permission->name }}</td>
-                                        <td class="text-center">{{ $permission->description }}</td>
-                                        <td class="text-center">
+                                        <td>{{ $permission->description }}</td>
+                                        
+                                        <td class="text-center" style="white-space: nowrap;">
                                             <a href="{{ url('permission/'.$permission->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                                 <i class="tim-icons icon-settings"></i>
                                             </a>
                                             <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('permission/'.$permission->id.'/delete') }}')">
                                                 <i class="tim-icons icon-simple-remove"></i>
                                             </a>
-                                        </td>
+                                        </td>                                       
+
                                     </tr>
                                     @endforeach
                                 </tbody>
