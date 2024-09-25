@@ -6,6 +6,12 @@
             </a>
         </div>
 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span style="color: white;">
+                <i class="fas fa-bars"></i>
+            </span>
+        </button>
+
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -14,8 +20,8 @@
                         <i class="fas fa-home"></i> Página principal
                     </a>
                 </li>
-                
 
+                
                 <li class="nav-item">
                     <a href="{{ route('register') }}" class="nav-link font-weight-bold {{ request()->routeIs('register') ? 'text-warning active' : '' }} custom-hover">
                         <i class="tim-icons icon-laptop"></i> Registrarse
@@ -31,4 +37,3 @@
         </div>
     </div>
 </nav>
-

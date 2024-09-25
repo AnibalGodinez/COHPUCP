@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="col-lg-4 col-md-6 ml-auto mr-auto" style="margin-top: -70px;">
+    <div class="col-lg-4 col-md-6 ml-auto mr-auto" style="margin-top: 20px;">
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
