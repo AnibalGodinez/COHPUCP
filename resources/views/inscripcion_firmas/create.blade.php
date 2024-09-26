@@ -5,7 +5,7 @@
     <div class="row justify-content-center" style="margin-top: 90px">
         <div class="col-md-12">
             <div class="card shadow-lg">
-                <div class="card-header bg-warning text-white text-center">
+                <div class="card-header bg-info text-white text-center">
                     <h3 class="card-title" style="color: rgb(247, 247, 247)"><strong>SOLICITUD DE INSCRIPCIÓN DE FIRMA AL COLEGIO</strong></h3>
                 </div><br>
 

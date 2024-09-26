@@ -123,7 +123,7 @@
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-dark text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>INFORMACIÓN / CV / FIRMA DIGITAL</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>INFORMACIÓN / CV | TÍTULO / FIRMA DIGITAL</strong></h4>
                                 </div>
                                 <div class="row p-3">
                                     {{-- columna 0 (espacio) --}}
@@ -154,7 +154,7 @@
 
                                     {{-- Curriculum Vitae del socio 1 --}}
                                     <div class="col-md-12 text-center">
-                                        <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 20cm;">
+                                        <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 17cm;">
                                             <div class="card-header bg-default text-white text-center">
                                                 <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM Y TÍTULO DEL SOCIO 1</strong></h5>
                                             </div>
@@ -220,7 +220,7 @@
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-info text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>INFORMACIÓN / CV / FIRMA DIGITAL</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>INFORMACIÓN / CV | TÍTULO / FIRMA DIGITAL</strong></h4>
                                 </div>
                                 <div class="row p-3">
                                     {{-- columna 0 (espacio) --}}
@@ -251,7 +251,7 @@
 
                                     {{-- Curriculum Vitae del socio 2 --}}
                                     <div class="col-md-12 text-center">
-                                        <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 20cm;">
+                                        <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 17cm;">
                                             <div class="card-header bg-default text-white text-center">
                                                 <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM Y TÍTULO DEL SOCIO 2</strong></h5>
                                             </div>
@@ -316,7 +316,7 @@
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-success text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>INFORMACIÓN / CV / FIRMA DIGITAL</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>INFORMACIÓN / CV | TÍTULO / FIRMA DIGITAL</strong></h4>
                                 </div>
                                 <div class="row p-3">
                                     {{-- columna 0 (espacio) --}}
@@ -347,7 +347,7 @@
 
                                     {{-- Curriculum Vitae del socio 3 --}}
                                     <div class="col-md-12 text-center">
-                                        <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 20cm;">
+                                        <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 17cm;">
                                             <div class="card-header bg-default text-white text-center">
                                                 <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM Y TÍTULO VITAE DEL SOCIO 3</strong></h5>
                                             </div>
@@ -413,7 +413,7 @@
                         <div class="col-md-6 mb-4 d-flex justify-content-center">
                             <div class="card shadow-lg" style="width: 100%; max-width: 21.59cm; height: 27.94cm;">
                                 <div class="card-header bg-warning text-white text-center">
-                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>INFORMACIÓN / CV / FIRMA DIGITAL</strong></h4>
+                                    <h4 class="card-title" style="color: rgb(255, 255, 255)"><strong>INFORMACIÓN / CV | TÍTULO / FIRMA DIGITAL</strong></h4>
                                 </div>
                                 <div class="row p-3">
                                     {{-- columna 0 (espacio) --}}
@@ -444,7 +444,7 @@
 
                                     {{-- Curriculum Vitae del socio 4 --}}
                                     <div class="col-md-12 text-center">
-                                        <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 20cm;">
+                                        <div class="card shadow-lg" style="width: 100%; max-width: 21cm; height: 17cm;">
                                             <div class="card-header bg-default text-white text-center">
                                                 <h5 class="card-title" style="color: rgb(255, 255, 255)"><strong>CURRICULUM Y TÍTULO DEL SOCIO 4</strong></h5>
                                             </div>
