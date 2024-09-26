@@ -7,7 +7,7 @@
                 <div class="card m-7">
                     <div class="card-body">
                         <div class="d-flex justify-content-center align-items-center mb-3">
-                            <h3 class="card-title"><strong>Lista de usuarios</strong></h3>
+                            <h3 class="card-title"><strong>Gestión de usuarios</strong></h3>
                         </div>
 
                         <!-- Mensaje de éxito -->
@@ -21,6 +21,8 @@
                             </div>
                         </div>
                         @endif
+
+                        <hr style="border: 1px solid #ddd;"> <!-- Línea horizontal -->
 
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped mt-4">

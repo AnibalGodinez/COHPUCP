@@ -69,30 +69,28 @@
         <div class="row justify-content-center">
     @endif
 
-    <div class="col-md-3 mb-4">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4 px-3">
         <div class="card rounded h-100">
             @if ($curso->imagen)
-                <div class="image-container" style="overflow: hidden; height: 225px;">
+                <div class="image-container" style="overflow: hidden; height: 200px; width: 100%;">
                     <img src="{{ asset('storage/cursos_images/' . $curso->imagen) }}" class="card-img-top rounded-top curso-image" alt="{{ $curso->nombre }}">
                 </div>
             @endif
             <div class="card-body">
-                <h4 class="card-title text-center" style="text-transform: uppercase;"><strong><strong>{{ $curso->nombre }}</strong></strong></h4>
-                <p class="card-text">{{ Str::limit($curso->descripcion, 100) }}</p><br>
-                <p class="card-text"><strong>PRECIO:</strong> <span style="color: green"><strong><strong>{{ $curso->precio }}</strong></strong></span></p>
-                <p class="card-text"><strong>CALIFICACIÓN:</strong> {{ $curso->calificacion }}</p>
-                <p class="card-text"><strong>IDIOMA:</strong> {{ $curso->idioma ? $curso->idioma->nombre : 'No disponible' }}</p>
-                <p class="card-text"><strong>CATEGORÍA:</strong> {{ $curso->categoria ? $curso->categoria->nombre : 'No disponible' }}</p>
+                <h4 class="card-title text-center text-uppercase"><strong><strong>{{ $curso->nombre }}</strong></strong></h4>
+                <hr style="border: 2px solid #ddd;"> <!-- Línea horizontal -->
+                <p class="card-text">{{ Str::limit($curso->descripcion, 130) }}</p>
+                <p class="card-text"><strong>Precio:</strong> <span style="color: green"><strong>{{ $curso->precio }}</strong></span></p>
+                <p class="card-text"><strong>Calificación:</strong> {{ $curso->calificacion }}</p>
+                <p class="card-text"><strong>Idioma:</strong> {{ $curso->idioma ? $curso->idioma->nombre : 'No disponible' }}</p>
+                <p class="card-text"><strong>Categoría:</strong> {{ $curso->categoria ? $curso->categoria->nombre : 'No disponible' }}</p>
                 <div class="text-center mt-4">
-                    <a href="{{ route('cursos.show', $curso->id) }}" class="btn btn-info">Más información</a>
-                    <!-- Icono para agregar al carrito -->
-                    <a href="#">
-                        <i class="fas fa-shopping-cart" style="font-size: 24px; color: #FF7F00; margin-left: 25px;"></i>
-                    </a>
+                    <a href="{{ route('cursos.show', $curso->id) }}" class="btn btn-info btn-sm">Más información</a>
+                    <a href="#"><i class="fas fa-shopping-cart" style="font-size: 20px; color: #FF7F00; margin-left: 10px;"></i></a>
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
 
     @php
         $counter++;
@@ -101,6 +99,7 @@
     @if ($counter % 3 == 0)
         </div>
     @endif
+
 @endif
 
 @endforeach
@@ -113,19 +112,36 @@
 
 <style>
     .curso-image {
-        transition: transform 0.5s ease; /* Transición suave de 0.5 segundos */
+        transition: transform 0.3s ease;
+        width: 100%;           /* La imagen ocupará todo el ancho del contenedor */
+        height: 100%;          /* La imagen se adaptará a la altura del contenedor */
+        object-fit: cover;     /* Mantiene la proporción de la imagen sin distorsión */
+        object-position: center; /* Centra la imagen en caso de recorte */
     }
 
     .image-container:hover .curso-image {
-        transform: scale(1.05); /* Efecto de zoom/movimiento al pasar el cursor sobre la imagen */
+        transform: scale(1.05);
     }
 
-    .text-box {
-        transition: transform 0.5s ease, opacity 0.5s ease;
+    .card:hover {
+        transform: translateY(-3px); /* Eleva la tarjeta al pasar el cursor */
     }
 
-    .image-container:hover .text-box {
-        transform: translateY(-10px); /* Mueve el contenido hacia arriba al hacer hover sobre la imagen */
-        opacity: 1; /* Cambia la opacidad si deseas agregar este efecto */
+    /* Ajuste adicional de márgenes para pantallas pequeñas */
+    @media (max-width: 768px) {
+        .card-body {
+            font-size: 0.9rem;
+        }
+        .card-title {
+            font-size: 1.1rem;
+        }
+        .card-text {
+            font-size: 0.85rem;
+        }
+        .col-sm-6 {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
     }
+
 </style>

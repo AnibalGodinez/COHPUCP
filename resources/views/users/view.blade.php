@@ -12,7 +12,7 @@
                                 <i class="fas fa-file-excel"></i> Descargar Excel
                             </a>
                         </div>
-
+                 
                         <!-- Mensaje de éxito -->
                         @if(session('status'))
                         <div class="text-center">
@@ -24,6 +24,8 @@
                             </div>
                         </div>
                         @endif
+
+                        <hr style="border: 1px solid #ddd;"> <!-- Línea horizontal -->
 
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped mt-4">

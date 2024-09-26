@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid mt-5">
-        <div class="row" style="margin-top: 90px">
-            <div class="col-md-12">
-
-                <div class="card shadow-lg">
-                    <div class="card-header text-white text-center">
+<div class="container-fluid mt-8">
+    <div class="row" style="margin-top: 90px">
+        <div class="col-md-12">
+            <div class="card m-7">
+                <div class="card-body">
+                    
+                    <div class="d-flex justify-content-center align-items-center mb-3">
                         <h3 class="card-title"><strong>Lista de roles</strong></h3>
                     </div>
 
@@ -22,6 +23,8 @@
                     </div>
                     @endif
 
+                    <hr style="border: 1px solid #ddd;"> <!-- Línea horizontal -->
+
                     <div class="card-body">
                         {{-- Formulario de búsqueda --}}
                         <form method="GET" action="{{ route('roles.ver') }}" class="form-inline mt-3">
@@ -36,28 +39,29 @@
                                 No hay ningún resultado de su búsqueda.
                             </div>
                         @else
-                        <div class="table-responsive" style="overflow: hidden;">
-                            <table class="table table-bordered table-striped">
-                                <thead style="background-color: #3288af;">
-                                    <tr>
-                                        <th class="text-center" style="color: white;">ID</th>
-                                        <th class="text-center" style="color: white;">Nombre del rol</th>
-                                        <th class="text-center" style="color: white;">Descripción</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($roles as $role)
+                            <div class="table-responsive" style="overflow: hidden;">
+                                <table class="table table-bordered table-striped">
+                                    <thead style="background-color: #3288af;">
                                         <tr>
-                                            <td class="text-center">{{ $role->id }}</td>
-                                            <td class="text-center">{{ $role->name }}</td>
-                                            <td>{{ $role->description }}</td>
+                                            <th class="text-center" style="color: white;">ID</th>
+                                            <th class="text-center" style="color: white;">Nombre del rol</th>
+                                            <th class="text-center" style="color: white;">Descripción</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        {{ $roles->links('paginacion.simple-bootstrap-4') }}
-                    @endif
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($roles as $role)
+                                            <tr>
+                                                <td class="text-center">{{ $role->id }}</td>
+                                                <td class="text-center">{{ $role->name }}</td>
+                                                <td>{{ $role->description }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            {{ $roles->links('paginacion.simple-bootstrap-4') }}
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

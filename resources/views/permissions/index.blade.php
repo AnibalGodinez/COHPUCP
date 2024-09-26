@@ -1,26 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid mt-5">
-        <div class="row" style="margin-top: 90px">
-            <div class="col-md-12">
-
-                <div class="card shadow-lg">
-                    <div class="card-header text-white text-center">
-                        <h3 class="card-title"><strong>Gestionar permisos</strong></h3>
+<div class="container-fluid mt-8">
+    <div class="row" style="margin-top: 90px">
+        <div class="col-md-12">
+            <div class="card m-7">
+                <div class="card-body">
+                    
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <h3 class="card-title"><strong>Gestión de permisos</strong></h3>
                     </div>
 
                     <!-- Mensaje de éxito -->
                     @if(session('status'))
-                    <div class="text-center">
-                        <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
-                            {{ session('status') }}
-                            <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
+                        <div class="text-center">
+                            <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
+                                {{ session('status') }}
+                                <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
                         </div>
-                    </div>
                     @endif
+
+                    <hr style="border: 1px solid #ddd;"> <!-- Línea horizontal -->
 
                     <div class="card-body">
                         {{-- Formulario de búsqueda --}}
@@ -46,20 +49,19 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($permissions as $permission)
-                                    <tr>
-                                        <td class="text-center">{{ $permission->name }}</td>
-                                        <td>{{ $permission->description }}</td>
+                                        <tr>
+                                            <td class="text-center">{{ $permission->name }}</td>
+                                            <td>{{ $permission->description }}</td>
                                         
-                                        <td class="text-center" style="white-space: nowrap;">
-                                            <a href="{{ url('permission/'.$permission->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
-                                                <i class="tim-icons icon-settings"></i>
-                                            </a>
-                                            <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('permission/'.$permission->id.'/delete') }}')">
-                                                <i class="tim-icons icon-simple-remove"></i>
-                                            </a>
-                                        </td>                                       
-
-                                    </tr>
+                                            <td class="text-center" style="white-space: nowrap;">
+                                                <a href="{{ url('permission/'.$permission->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
+                                                    <i class="tim-icons icon-settings"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('permission/'.$permission->id.'/delete') }}')">
+                                                    <i class="tim-icons icon-simple-remove"></i>
+                                                </a>
+                                            </td>                                       
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -70,11 +72,12 @@
             </div>
         </div>
     </div>
-    <script>
-        function confirmarEliminacion(url) {
-            if (confirm('¿Estás seguro que quieres eliminar el permiso?')) {
-                window.location.href = url;
-            }
+</div>
+<script>
+    function confirmarEliminacion(url) {
+        if (confirm('¿Estás seguro que quieres eliminar el permiso?')) {
+            window.location.href = url;
         }
-    </script>
+    }
+</script>
 @endsection
