@@ -45,28 +45,34 @@
                                     <thead style="background-color: #3288af;">
                                         <tr>
                                             <th class="text-center" style="color: white;">ID</th>
+                                            <th class="text-center" style="color: white;">Editar</th>
+                                            <th class="text-center" style="color: white;">Eliminar</th>
+                                            <th class="text-center" style="color: white;">Asignar permisos</th>
                                             <th class="text-center" style="color: white;">Nombre del rol</th>
                                             <th class="text-center" style="color: white;">Descripción</th>
-                                            <th class="text-center" style="color: white;">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($roles as $role)
                                             <tr>
                                                 <td class="text-center">{{ $role->id }}</td>
-                                                <td class="text-center">{{ $role->name }}</td>
-                                                <td>{{ $role->description }}</td>
                                                 <td class="text-center">
                                                     <a href="{{ url('roles/'.$role->id.'/edit') }}" class="btn btn-success btn-sm btn-icon mb-2">
                                                         <i class="tim-icons icon-settings"></i>
                                                     </a>
+                                                </td>
+                                                <td class="text-center">
                                                     <a href="#" class="btn btn-danger btn-sm btn-icon mb-2" onclick="confirmarEliminacion('{{ url('roles/'.$role->id.'/delete') }}')">
                                                         <i class="tim-icons icon-simple-remove"></i>
                                                     </a>
+                                                </td>
+                                                <td class="text-center">
                                                     <a href="{{ url('roles/'.$role->id.'/agregar-permisos') }}" class="btn btn-info btn-sm">
                                                         Asignar permisos
                                                     </a>
                                                 </td>
+                                                <td class="text-center">{{ $role->name }}</td>
+                                                <td>{{ $role->description }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

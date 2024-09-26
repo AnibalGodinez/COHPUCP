@@ -1,14 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid mt-8">
-        <div class="row" style="margin-top: 90px">
-            <div class="col-md-12">
-                <div class="card m-7">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h3 class="card-title text-center" style="margin-left: 600px;">LISTA DE SOLICITUDES DE INSCRIPCIÓN AL COHPUCP</h3>
+<div class="container-fluid mt-8">
+    <div class="row" style="margin-top: 90px;">
+        <div class="col-md-12">
+            <div class="card m-7">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                            <h3 class="card-title">Lista de solicitudes de agremiados para inscripción al colegio</h3>
                         </div>
+
+                        <hr style="border: 1px solid #ddd;"> <!-- Línea horizontal -->
 
                         {{-- Mensajes de éxito --}}
                         @if (session('success'))
@@ -31,7 +33,7 @@
                             </div>
                         @else
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped" style="table-layout: fixed; width: 100%;">
+                                <table class="table table-bordered table-striped mt-2">
                                     <thead style="background-color: #3288af;">
                                         <tr>
                                             <th class="text-center" style="color: white;">ID</th>
@@ -48,19 +50,19 @@
                                     <tbody>
                                         @foreach ($inscripciones as $inscripcion)
                                             <tr>
-                                                <td class="text-center">{{ $inscripcion->id }}</td>
-                                                <td class="text-center">
+                                                <td class="text-center" style="white-space: nowrap;">{{ $inscripcion->id }}</td>
+                                                <td class="text-center" style="white-space: nowrap;">
                                                     {{ $inscripcion->name }} 
                                                     @if($inscripcion->name2) {{ $inscripcion->name2 }} @endif
                                                     {{ $inscripcion->apellido }} 
                                                     @if($inscripcion->apellido2) {{ $inscripcion->apellido2 }} @endif
                                                 </td>
-                                                <td class="text-center">{{ $inscripcion->numero_identidad }}</td>
-                                                <td class="text-center">{{ $inscripcion->email }}</td>
-                                                <td class="text-center">{{ $inscripcion->telefono_celular }}</td>
-                                                <td class="text-center">{{ $inscripcion->estado }}</td>
-                                                <td class="text-center">{{ $inscripcion->descripcion_estado_solicitud }}</td>
-                                                <td class="text-center">
+                                                <td class="text-center" style="white-space: nowrap;">{{ $inscripcion->numero_identidad }}</td>
+                                                <td class="text-center" style="white-space: nowrap;">{{ $inscripcion->email }}</td>
+                                                <td class="text-center" style="white-space: nowrap;">{{ $inscripcion->telefono_celular }}</td>
+                                                <td class="text-center" style="white-space: nowrap;">{{ $inscripcion->estado }}</td>
+                                                <td class="text-center" >{{ $inscripcion->descripcion_estado_solicitud }}</td>
+                                                <td class="text-center" style="white-space: nowrap;">
                                                     <!-- Botón para ver los detalles de la inscripción -->
                                                     <a href="{{ route('inscripciones.show', $inscripcion->id) }}" class="btn btn-danger btn-sm">
                                                         <i class="fas fa-eye"></i>

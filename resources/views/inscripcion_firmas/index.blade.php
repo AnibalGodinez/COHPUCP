@@ -2,21 +2,23 @@
 
 @section('content')
     <div class="container-fluid mt-8">
-        <div class="row" style="margin-top: 90px">
+        <div class="row" style="margin-top: 90px;">
             <div class="col-md-12">
                 <div class="card m-7">
                     <div class="card-body">
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center align-items-center mb-3">
                             <h3>LISTA DE SOLICITUDES DE INSCRIPCIÓN DE FIRMAS</h3>
                         </div>
-            
+
+                        <!-- Línea horizontal -->
+                        <hr style="border: 1px solid #ddd;">
+
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped" style="table-layout: fixed; width: 100%;">
-                                
+                            <table class="table table-bordered table-striped mt-4">
                                 <thead style="background-color: #3288af;">
                                     <tr>
                                         <th class="text-center" style="color: white;">ID</th>
-                                        <th class="text-center" style="color: white;">Nombre del Solictante</th>
+                                        <th class="text-center" style="color: white;">Nombre del Solicitante</th>
                                         <th class="text-center" style="color: white;">Nombre Sociedad</th>
                                         <th class="text-center" style="color: white;">Celular</th>
                                         <th class="text-center" style="color: white;">Correo electrónico</th>
@@ -27,26 +29,35 @@
                                 </thead>
 
                                 <tbody>
-
                                     @foreach ($inscripcionFirmas as $inscripcionFirma)
                                         <tr>
-                                            <td>{{ $inscripcionFirma->id }}</td>
-                                            <td>{{ $inscripcionFirma->user->name }} {{ $inscripcionFirma->user->name2 }} {{ $inscripcionFirma->user->apellido }} {{ $inscripcionFirma->user->apellido2 }}</td>
-                                            <td>{{ $inscripcionFirma->nombre_sociedad }}</td>
-                                            <td>{{ $inscripcionFirma->celular }}</td>
-                                            <td>{{ $inscripcionFirma->email }}</td>
-                                            <td>{{ ($inscripcionFirma->estado) }}</td>
+                                            <td class="text-center" style="white-space: nowrap;">{{ $inscripcionFirma->id }}</td>
+                                            <td class="text-center" style="white-space: nowrap;">
+                                                {{ $inscripcionFirma->user->name }} 
+                                                {{ $inscripcionFirma->user->name2 }} 
+                                                {{ $inscripcionFirma->user->apellido }} 
+                                                {{ $inscripcionFirma->user->apellido2 }}
+                                            </td>
+                                            <td class="text-center" style="white-space: nowrap;">
+                                                {{ $inscripcionFirma->nombre_sociedad }}
+                                            </td>
+                                            <td class="text-center" style="white-space: nowrap;">
+                                                {{ $inscripcionFirma->celular }}
+                                            </td>
+                                            <td class="text-center" style="white-space: nowrap;">
+                                                {{ $inscripcionFirma->email }}
+                                            </td>
+                                            <td class="text-center" style="white-space: nowrap;">
+                                                {{ $inscripcionFirma->estado }}
+                                            </td>
                                             <td>{{ $inscripcionFirma->descripcion_estado_solicitud }}</td>
-
                                             <td class="text-center">
-                                                <!-- Botón para ver los detalles de la inscripción -->
                                                 <a href="{{ route('inscripcion_firmas.show', $inscripcionFirma->id) }}" class="btn btn-danger btn-sm">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>
