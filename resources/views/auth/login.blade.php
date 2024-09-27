@@ -7,7 +7,7 @@
     <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center text-white p-5 section-blue position-relative">
         <div class="text-center" style="z-index: 4; position: relative;">
             <img src="{{ asset('white/img/favicon.png') }}" alt="Logo" class="img-fluid mb-3" style="max-width: 150px;">
-            <p class="mt-3"><strong><strong>Si no tienes cuenta, por favor regístrese aquí antes de iniciar sesión</strong></strong></p>
+            <p class="mt-3"><strong>Si no tienes cuenta, por favor regístrese aquí antes de iniciar sesión</strong></p>
         </div>
 
         <img src="{{ asset('white/img/login-image.png') }}" alt="Imagen Login" class="img-fluid position-absolute" style="bottom: 20px; right: 20px; max-width: 200px; z-index: 10;">

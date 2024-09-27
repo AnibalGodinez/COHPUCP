@@ -30,8 +30,8 @@
                             <div class="row no-gutters">
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h1 class="card-title text-center"><strong>{{ $content->title }}</strong></h1>
-                                        <p class="card-text" style="font-size: 1.2rem;">{!! nl2br(e($content->description)) !!}</p>
+                                        <h3 class="card-title text-center"><strong>{{ $content->title }}</strong></h3>
+                                        <p class="card-text" style="font-size: 1.1rem;">{!! nl2br(e($content->description)) !!}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-4 d-flex align-items-center justify-content-center">
@@ -53,8 +53,8 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h1 class="card-title text-center"><strong>{{ $content->title }}</strong></h1>
-                                        <p class="card-text" style="font-size: 1.2rem;">{!! nl2br(e($content->description)) !!}</p>
+                                        <h3 class="card-title text-center"><strong>{{ $content->title }}</strong></h3>
+                                        <p class="card-text" style="font-size: 1.1rem;">{!! nl2br(e($content->description)) !!}</p>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
 
                     {{-- CONTENEDOR IMAGEN --}}
                     @elseif($content->layout == 'Imagen')
-                        <div class="card border-0 position-relative p-0">
+                        <div class="card border-0 position-relative p-0" style="margin-top: 70px">
                             @if($content->image_path)
                                 <img src="{{ asset('storage/' . $content->image_path) }}" alt="{{ $content->title }}" class="img-fluid w-100 h-100" style="object-fit: cover;">
                             @endif

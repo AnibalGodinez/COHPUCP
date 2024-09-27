@@ -1,89 +1,111 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="col-lg-4 col-md-6 ml-auto mr-auto" style="margin-top: 20px;">
+<div class="container-fluid d-flex flex-column flex-md-row position-relative" style="min-height: 100vh; margin-top: -65px">
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+    <!-- Sección con fondo azul y logo -->
+    <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center text-white p-5 section-blue position-relative">
+        <div class="text-center" style="z-index: 4; position: relative;">
+            <img src="{{ asset('white/img/favicon.png') }}" alt="Logo" class="img-fluid mb-3" style="max-width: 150px;">
+            <p class="mt-3"><strong>¡Bienvenido! Regístrate para crear una cuenta.</strong></p>
+        </div>
 
-            <div class="card card-register card-white" style="border-radius: 14px">
-                <div class="card-header">
-                    <img src="{{ asset('white/img/background-vector.jpg')}}" class="card-img-top" alt="Card image">
-                    <h3 class="card-title" style="position: absolute; top: 20px; left: 72px; text-transform: none; font-size: 46px;">Registrarse</h3>
-                </div>
+        <img src="{{ asset('white/img/login-image.png') }}" alt="Imagen Registro" class="img-fluid position-absolute" style="bottom: 20px; right: 20px; max-width: 200px; z-index: 10;">
 
-                <div class="card-body" style="margin-top: -80px;">
-                    <p class="text-dark mb-2" style="margin-bottom: 50px;">Registrate para que ingreses a la <strong>Plataforma Tecnológica del COHPUCP</strong></p><br>
-                    <div class="form-row">
-                        <!-- Campo para el primer nombre -->
-                        <div class="form-group col-md-6">
-                            <label for="name">
-                                <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                <strong>Primer nombre *</strong>
-                            </label>
-                                <input 
-                                type="text" 
-                                name="name"
-                                class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"  
-                                placeholder="Ingrese su primer nombre" 
-                                value="{{ old('name') }}"                         
-                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
-                                title="En este campo sólo se permiten letras"
-                                maxlength="40"
-                                required>
-                        </div>
-    
-                        <!-- Campo para el segundo nombre -->
-                        <div class="form-group col-md-6">
-                            <label for="name2">
-                                <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                Segundo nombre
-                            </label>
-                                <input 
-                                type="text" 
-                                name="name2"
-                                class="form-control{{ $errors->has('name2') ? ' is-invalid' : '' }}"  
-                                placeholder="Ingrese su segundo nombre" 
-                                value="{{ old('name2') }}"                         
-                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
-                                title="En este campo sólo se permiten letras"
-                                maxlength="40">
-                        </div>
+        <svg class="curve" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" preserveAspectRatio="none">
+            <path d="M100,0 C95,70 30,100 0,100 L110,100 Z" fill="white"/>
+        </svg>
+    </div>
 
-                        <!-- Campo para el primer apellido -->
-                        <div class="form-group col-md-6">
-                            <label for="apellido">
-                                <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                <strong>Primer apellido *</strong>
-                            </label>
-                                <input 
-                                type="text" 
-                                name="apellido" 
-                                class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" 
-                                placeholder="Ingrese su primer apellido" 
-                                value="{{ old('apellido') }}"                         
-                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
-                                title="En este campo sólo se permiten letras"
-                                maxlength="40" 
-                                required>
-                        </div>
+    <!-- Sección con el formulario de Registro -->
+    <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-5 section-white position-relative">
+        <!-- Imagen de fondo -->
+        <div class="background-image position-absolute" style="z-index: 1;"></div>
 
-                        <!-- Campo para el segundo apellido -->
-                        <div class="form-group col-md-6">
-                            <label for="apellido2">
-                                <i class="fas fa-user" style="margin-right: 8px;"></i>
-                                Segundo apellido
-                            </label>
-                                <input 
-                                type="text" 
-                                name="apellido2" 
-                                class="form-control{{ $errors->has('apellido2') ? ' is-invalid' : '' }}" 
-                                placeholder="Ingrese su segundo apellido" 
-                                value="{{ old('apellido2') }}"                         
-                                pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
-                                title="En este campo sólo se permiten letras"
-                                maxlength="40">
-                        </div>
+        <div class="text-center p-4" style="width: 100%; max-width: 600px; z-index: 2;">
+            <h1 class="text-dark"><strong>Registro</strong></h1>
+            <form method="POST" action="{{ route('register') }}" class="mt-4">
+                @csrf
+
+                <h4 class="justify-content-center align-items-left">Por favor, complete todos los campos marcados con asterisco (<strong>*</strong>) ya que son <strong>obligatorios</strong> y no pueden quedar vacíos al momento de registrarse.</h4>
+                <style>
+                    h4 {
+                        font-family: 'Arial', sans-serif; /* Cambiar 'Arial' por la fuente que prefieras */
+                    }
+                </style>
+
+                <br>
+
+                <div class="form-row">
+                    <!-- Campo para el primer nombre -->
+                    <div class="form-group col-md-6">
+                        <label for="name">
+                            <i class="fas fa-user" style="margin-right: 8px;"></i>
+                            <strong>Primer nombre *</strong>
+                        </label>
+                        <input 
+                            type="text" 
+                            name="name"
+                            class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"  
+                            placeholder="Ingrese su primer nombre" 
+                            value="{{ old('name') }}"                         
+                            pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
+                            title="En este campo sólo se permiten letras"
+                            maxlength="40"
+                            required>
+                    </div>
+
+                    <!-- Campo para el segundo nombre -->
+                    <div class="form-group col-md-6">
+                        <label for="name2">
+                            <i class="fas fa-user" style="margin-right: 8px;"></i>
+                            Segundo nombre
+                        </label>
+                        <input 
+                            type="text" 
+                            name="name2"
+                            class="form-control{{ $errors->has('name2') ? ' is-invalid' : '' }}"  
+                            placeholder="Ingrese su segundo nombre" 
+                            value="{{ old('name2') }}"                         
+                            pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
+                            title="En este campo sólo se permiten letras"
+                            maxlength="40">
+                    </div>
+
+                    <!-- Campo para el primer apellido -->
+                    <div class="form-group col-md-6">
+                        <label for="apellido">
+                            <i class="fas fa-user" style="margin-right: 8px;"></i>
+                            <strong>Primer apellido *</strong>
+                        </label>
+                        <input 
+                            type="text" 
+                            name="apellido" 
+                            class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" 
+                            placeholder="Ingrese su primer apellido" 
+                            value="{{ old('apellido') }}"                         
+                            pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
+                            title="En este campo sólo se permiten letras"
+                            maxlength="40" 
+                            required>
+                    </div>
+
+                    <!-- Campo para el segundo apellido -->
+                    <div class="form-group col-md-6">
+                        <label for="apellido2">
+                            <i class="fas fa-user" style="margin-right: 8px;"></i>
+                            Segundo apellido
+                        </label>
+                        <input 
+                            type="text" 
+                            name="apellido2" 
+                            class="form-control{{ $errors->has('apellido2') ? ' is-invalid' : '' }}" 
+                            placeholder="Ingrese su segundo apellido" 
+                            value="{{ old('apellido2') }}"                         
+                            pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+" 
+                            title="En este campo sólo se permiten letras"
+                            maxlength="40">
+                    </div>
 
                         <!-- Campo para el DNI -->
                         <div class="form-group col-md-6">
@@ -380,96 +402,126 @@
                                     </span>
                                 @endif
                         </div>
-                    
-                        <!-- Campo para la contraseña -->
-                        <div class="form-group col-md-6">
-                            <label for="password">
-                                <i class="fas fa-lock" style="margin-right: 8px;"></i>
-                                <strong>Contraseña *</strong>
-                            </label>
-                                <input 
-                                    type="password" 
-                                    name="password" 
-                                    id="password" 
-                                    class="form-control" 
-                                    placeholder="Ingrese su contraseña"
-                                    minlength="8"
-                                    maxlength="20" 
-                                    value="{{ old('password') }}" 
-                                    required>
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                        </div>
-                        @push('scripts')
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function () {
-                                document.getElementById('password').addEventListener('input', function () {
-                                    var password = this.value;
-                                    var regex = /^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
-                                    var isValid = regex.test(password);
 
-                                    if (!isValid) {
-                                        this.setCustomValidity('La contraseña debe contener al menos un símbolo o caracter especial.');
-                                    } else {
-                                        this.setCustomValidity('');
-                                    }
-                                });
-                            });
-                        </script>
-                        @endpush
-
-                        <!-- Campo para la confirmación de la contraseña -->
-                            <div class="form-group col-md-6">
-                                <label for="password_confirmation">
-                                    <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
-                                    <strong>Confirmar Contraseña *</strong>
-                                </label>
-                                    <input 
-                                    type="password" 
-                                    name="password_confirmation" 
-                                    class="form-control" 
-                                    placeholder="Confirme su contraseña"
-                                    minlength="8"
-                                    maxlength="20"
-                                    required>
-                                    @error('password_confirmation')
-                                    <span class="invalid-feedback d-block" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                        <!-- Campo para los términos y condiciones -->
-                        <div class="form-group col-md-8 mt-3 {{ $errors->has('agree_terms_and_conditions') ? ' has-danger' : '' }}">
-                            <div class="form-check-label text-center">
-                                <label class="form-check-label">
-                                    <input class="form-check-input {{ $errors->has('agree_terms_and_conditions') ? ' is-invalid' : '' }}" name="agree_terms_and_conditions" type="checkbox" {{ old('agree_terms_and_conditions') ? 'checked' : '' }}>
-                                    <span class="form-check-sign"></span> HE LEÍDO Y ACEPTO 
-                                    <a href="{{ route('register') }}" style="color: rgb(38, 119, 246); font-weight: bold;">TÉRMINOS Y CONDICIONES</a>
-                                    @include('alerts.feedback', ['field' => 'agree_terms_and_conditions'])
-                                </label>
-                            </div>
-                        </div>
-                    </div>                                   
-                </div> 
-
-                <div class="card-footer" style="margin-top: -10px;">
-                    <button type="submit" class="btn btn-info btn-lg btn-block mb-3">Registrarse</button>
-                    <div class="pull-left">
-                        <h6>
-                            <a><strong><strong>¿Ya tienes cuenta?</strong></strong></a>
-                        </h6>
+                    <!-- Campo para la contraseña -->
+                    <div class="form-group col-md-6">
+                        <label for="password">
+                            <i class="fas fa-lock" style="margin-right: 8px;"></i>
+                            <strong>Contraseña *</strong>
+                        </label>
+                        <input 
+                            type="password" 
+                            name="password" 
+                            id="password" 
+                            class="form-control" 
+                            placeholder="Ingrese su contraseña"
+                            minlength="8"
+                            maxlength="20" 
+                            value="{{ old('password') }}" 
+                            required>
+                        @if ($errors->has('password'))
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
                     </div>
-                    <div class="pull-right">
-                        <h6>
-                            <a href="{{ route('login') }}" class="link footer-info" style="color: rgb(38, 119, 246); font-weight: bold">Inicia sesión aquí</a>
-                        </h6>
-                    </div>                  
-                </div>
-            </div>
-        </form>
+                    @push('scripts')
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            document.getElementById('password').addEventListener('input', function () {
+                                var password = this.value;
+                                var regex = /^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
+                                var isValid = regex.test(password);
+
+                                if (!isValid) {
+                                    this.setCustomValidity('La contraseña debe contener al menos un símbolo o caracter especial.');
+                                } else {
+                                    this.setCustomValidity('');
+                                }
+                            });
+                        });
+                    </script>
+                    @endpush
+
+                    <!-- Campo para la confirmación de la contraseña -->
+                    <div class="form-group col-md-6">
+                        <label for="password_confirmation">
+                            <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                            <strong>Confirmar Contraseña *</strong>
+                        </label>
+                        <input 
+                            type="password" 
+                            name="password_confirmation" 
+                            class="form-control" 
+                            placeholder="Confirme su contraseña"
+                            minlength="8"
+                            maxlength="20"
+                            required>
+                        @error('password_confirmation')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+
+                    <!-- Campo para los términos y condiciones -->
+                    <div class="form-group col-md-12 mt-3 {{ $errors->has('agree_terms_and_conditions') ? ' has-danger' : '' }}">
+                        <div class="form-check-label text-center">
+                            <label class="form-check-label">
+                                <input class="form-check-input {{ $errors->has('agree_terms_and_conditions') ? ' is-invalid' : '' }}" name="agree_terms_and_conditions" type="checkbox" {{ old('agree_terms_and_conditions') ? 'checked' : '' }}>
+                                <span class="form-check-sign"></span> HE LEÍDO Y ACEPTO 
+                                <a href="{{ route('register') }}" style="color: rgb(38, 119, 246); font-weight: bold;">TÉRMINOS Y CONDICIONES</a>
+                                @include('alerts.feedback', ['field' => 'agree_terms_and_conditions'])
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <button type="submit" class="btn btn-info btn-lg btn-block">REGISTRARSE</button>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-4 col-md-12">
+                        <strong>¿Ya tienes cuenta?</strong> <a href="{{ route('login') }}" class="text-info font-weight-bold"> Inicia sesión</a>
+                    </div>
+                </div>                                              
+            </form>
+        </div>
     </div>
+</div>
+
+<style>
+    /* Sección azul con logo */
+    .section-blue {
+        background: linear-gradient(to bottom, #0A4CA0, #1D83E5);
+        min-height: 50vh; /* 50% de la altura de la ventana */
+        position: relative;
+        z-index: 0; /* Asegúrate de que el fondo azul esté detrás */
+    }
+    
+    .curve {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    /* Imagen de fondo en la sección derecha */
+    .background-image {
+        background-image: url('{{ asset('white/img/Fondo-blanco-moderno.png') }}');
+        background-size: cover;
+        background-position: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.9; /* Ajusta la opacidad de la imagen de fondo */
+        z-index: 1; /* Asegúrate de que la imagen de fondo esté detrás del formulario */
+    }
+    
+    .text-center {
+        z-index: 4; /* Asegurar que el texto y el botón estén delante */
+        position: relative;
+    }
+</style>  
 @endsection
