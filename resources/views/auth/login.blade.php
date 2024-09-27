@@ -1,83 +1,108 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="col-lg-3 col-md-6 ml-auto mr-auto" style="margin-top: 20px;">
+<div class="container-fluid d-flex flex-column flex-md-row position-relative" style="min-height: 100vh; margin-top:-65px">
+    
+    <!-- Sección con fondo azul y logo -->
+    <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center text-white p-5 section-blue position-relative">
+        <div class="text-center" style="z-index: 4; position: relative;">
+            <img src="{{ asset('white/img/favicon.png') }}" alt="Logo" class="img-fluid mb-3" style="max-width: 150px;">
+            <p class="mt-3"><strong><strong>Si no tienes cuenta, por favor regístrese aquí antes de iniciar sesión</strong></strong></p>
+        </div>
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+        <img src="{{ asset('white/img/login-image.png') }}" alt="Imagen Login" class="img-fluid position-absolute" style="bottom: 20px; right: 20px; max-width: 200px; z-index: 10;">
 
-        <div class="card card-register card-white" style="border-radius: 14px">
-            <div class="card-header">
-                <img src="{{ asset('white/img/background-vector.jpg')}}" class="card-img-top" alt="Card image">
-                <h3 class="card-title" style="position: absolute; top: 20px; left: 54px; text-transform: none; font-size: 34px;">Inicio de sesión</h3>
-            </div>
-            
-            <div class="card-body" style="margin-top: -70px;">
-                <p class="text-dark mb-2" style="margin-bottom: 50px;">Inicia sesión con tu <strong>correo electrónico </strong> y <strong>contraseña secreta </strong></p><br>
+        <svg class="curve" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" preserveAspectRatio="none">
+            <path d="M100,0 C95,70 30,100 0,100 L110,100 Z" fill="white"/>
+        </svg>
+    </div>
 
-                <div class="form-row">
-                    
-                    <div class="input-group{{ $errors->has('login_type') ? ' has-danger' : '' }}">
+    <!-- Sección con el formulario de Login -->
+    <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-5 section-white position-relative">
+        <!-- Imagen de fondo -->
+        <div class="background-image position-absolute" style="z-index: 1;"></div>
+
+        <div class="text-center p-4" style="width: 100%; max-width: 400px; z-index: 2;">
+            <h1 class="text-dark"><strong>Inicio sesión</strong></h1>
+            <form method="POST" action="{{ route('login') }}" class="mt-4">
+                @csrf
+                <div class="form-group">
+                    <label for="login_type" class="text-dark">Correo o Número de colegiación</label>
+                    <div class="input-group">
                         <div class="input-group-prepend">
-                            <div class="input-group-text">
+                            <span class="input-group-text">
                                 <i class="tim-icons icon-email-85"></i>
-                            </div>
-                        </div>
-                        <input 
-                        type="text" 
-                        name="login_type" 
-                        class="form-control{{ $errors->has('login_type') ? ' is-invalid' : '' }}" 
-                        placeholder="{{ _('Correo electrónico o número de colegiación') }}" 
-                        value="{{ old('login_type') }}"
-                        required>
-                        @error('login_type')
-                            <span class="invalid-feedback d-block" role="alert">
-                                <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
+                        </div>
+                        <input type="text" name="login_type" class="form-control" placeholder="Ingresa el correo o Número de colegiación" value="{{ old('login_type') }}" required>
                     </div>
-                    
-                    <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="tim-icons icon-lock-circle"></i>
-                            </div>
-                        </div>
-                        <input 
-                        type="password" 
-                        placeholder="{{ _('Contraseña') }}" 
-                        name="password" 
-                        class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                        required>
-                        @error('password')
-                            <span class="invalid-feedback d-block" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div><br>
-                    @error('estado')
+                    @error('login_type')
                         <span class="invalid-feedback d-block" role="alert">
                             <strong>{{ $message }}</strong>
-                            </span>
+                        </span>
                     @enderror
                 </div>
 
-                <div class="card-footer" style="margin-top: -10px;">
-                    <button type="submit" href="" class="btn btn-info btn-lg btn-block mb-3">Ingresar</button>
-                    <div class="pull-left">
-                        <h6>
-                            <a href="{{ route('register') }}" class="link footer-link" style="color: rgb(38, 119, 246); font-weight: bold;">Crear una cuenta</a>
-                        </h6>
-                    </div>
-                    <div class="pull-right">
-                        <h6>
-                            <a href="{{ route('opcion.recuperacion') }}" style="color: rgb(38, 119, 246); font-weight: bold;">¿Has olvidado tu contraseña?</a>
-                        </h6>
-                    </div>
-                </div>                
-                
-            </div>
+                <div class="form-group">
+                    <label for="password" class="text-dark">Contraseña</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="tim-icons icon-lock-circle"></i>
+                            </span>
+                        </div>
+                        <input type="password" name="password" class="form-control" placeholder="Ingresa la contraseña" required>
+                    @error('password')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info btn-lg btn-block">INGRESAR</button>
+                </div>
+                <div class="d-flex justify-content-between mb-4">
+                    <a href="{{ route('register') }}" class="text-info font-weight-bold">Crea una cuenta</a>
+                    <a href="{{ route('password.request') }}" class="text-info font-weight-bold">¿Olvidaste tu contraseña?</a>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
+<style>
+    /* Sección azul con logo */
+    .section-blue {
+        background: linear-gradient(to bottom, #0A4CA0, #1D83E5);
+        min-height: 50vh; /* 50% de la altura de la ventana */
+        position: relative;
+        z-index: 0; /* Asegúrate de que el fondo azul esté detrás */
+    }
+    
+    .curve {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    /* Imagen de fondo en la sección derecha */
+    .background-image {
+        background-image: url('{{ asset('white/img/Fondo-blanco-moderno.png') }}');
+        background-size: cover;
+        background-position: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.9; /* Ajusta la opacidad de la imagen de fondo */
+        z-index: 1; /* Asegúrate de que la imagen de fondo esté detrás del formulario */
+    }
+    
+    .text-center {
+        z-index: 4; /* Asegurar que el texto y el botón estén delante */
+        position: relative;
+    }
+</style>  
 @endsection
