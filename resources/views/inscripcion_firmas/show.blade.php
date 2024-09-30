@@ -7,7 +7,7 @@
             <div class="card shadow-lg">
                 <div class="card-header text-white text-center">
                     <h3 class="card-title">
-                        <strong>SOLICITUD DE INSCRIPCIÓN DE FIRMA</strong>
+                        <strong>SOLICITUD DE INSCRIPCIÓN DE FIRMA DE AUDITORÍA</strong>
                     </h3>
                 </div>
 

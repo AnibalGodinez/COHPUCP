@@ -5,30 +5,27 @@
     <div class="row" style="margin-top: 90px">
         <div class="col-md-12">
             <div class="card m-7">
-                <div class="card-body">
                     
-                    <div class="d-flex justify-content-center align-items-center mb-3">
-                        <h3 class="card-title"><strong>Gestión de permisos</strong></h3>
-                    </div>
+                <div class="card-header d-flex justify-content-center align-items-center py-3" style="background-color: #b1b3b6; border-bottom: 1px solid #7e7979;">
+                    <h3 class="card-title"><strong>Gestión de permisos</strong></h3>
+                </div>
 
-                    <!-- Mensaje de éxito -->
-                    @if(session('status'))
-                        <div class="text-center">
-                            <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
-                                {{ session('status') }}
-                                <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
+                <!-- Mensaje de éxito -->
+                @if(session('status'))
+                    <div class="text-center">
+                        <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
+                            {{ session('status') }}
+                            <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
                         </div>
-                    @endif
+                    </div>
+                @endif
 
-                    <hr style="border: 1px solid #ddd;"> <!-- Línea horizontal -->
-
-                    <div class="card-body">
-                        {{-- Formulario de búsqueda --}}
-                        <form action="{{ url('permission') }}" method="GET" class="form-inline mt-3">
-                            <input type="text" name="search" class="form-control mr-2 col-4" placeholder="Buscar permisos" value="{{ request()->query('search') }}">
+                <div class="card-body">
+                    {{-- Formulario de búsqueda --}}
+                    <form action="{{ url('permission') }}" method="GET" class="form-inline mt-3">
+                            <input type="text" name="search" class="form-control mr-2 col-4" placeholder="Buscar permisos..." value="{{ request()->query('search') }}">
                             <button class="btn btn-info btn-round btn-simple">
                                 <i class="tim-icons icon-zoom-split"></i> Buscar
                             </button>
@@ -42,25 +39,29 @@
                             <table class="table table-bordered table-striped">
                                 <thead style="background-color: #3288af;">
                                     <tr>
+                                        <th class="text-center" style="color: white;">ID</th>
+                                        <th class="text-center" style="color: white;">Editar</th>
+                                        <th class="text-center" style="color: white;">Eliminar</th>
                                         <th class="text-center" style="color: white;">Nombre del permiso</th>
                                         <th class="text-center" style="color: white;">Descripción del permiso</th>
-                                        <th class="text-center" style="color: white;">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($permissions as $permission)
                                         <tr>
-                                            <td class="text-center">{{ $permission->name }}</td>
-                                            <td>{{ $permission->description }}</td>
-                                        
-                                            <td class="text-center" style="white-space: nowrap;">
+                                            <td class="text-center">{{ $permission->id }}</td>
+                                            <td>
                                                 <a href="{{ url('permission/'.$permission->id.'/edit') }}" class="btn btn-success btn-sm btn-icon">
                                                     <i class="tim-icons icon-settings"></i>
                                                 </a>
+                                            </td>
+                                            <td>
                                                 <a href="#" class="btn btn-danger btn-sm btn-icon" onclick="confirmarEliminacion('{{ url('permission/'.$permission->id.'/delete') }}')">
                                                     <i class="tim-icons icon-simple-remove"></i>
                                                 </a>
-                                            </td>                                       
+                                            </td>
+                                            <td class="text-center"><strong>{{ $permission->name }}</strong></td>
+                                            <td>{{ $permission->description }}</td>                                      
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -68,7 +69,6 @@
                             {{ $permissions->links('paginacion.simple-bootstrap-4') }}
                         @endif
                     </div>
-                </div>
             </div>
         </div>
     </div>

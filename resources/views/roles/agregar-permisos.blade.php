@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-6">
     <div class="row" style="margin-top: 90px">
         <div class="col-md-12">
-            <div class="card shadow-lg">
-                <div class="card-header bg-info text-white text-center">
-                    <h3 style="color: rgb(255, 255, 255)">ASIGNAR PERMISOS : Rol {{ $role->name }}</h3>
-                </div><br>
+            <div class="card m-7">
+
+                <div class="card-header d-flex justify-content-center align-items-center py-3" style="background-color: #b1b3b6; border-bottom: 1px solid #7e7979;">
+                    <h3 class="card-title"><strong>Asignar permisos al rol {{ $role->name }}</strong></h3>
+                </div>
 
                 <!-- Mensaje de éxito -->
                 @if(session('status'))
@@ -26,7 +27,7 @@
                     <form action="{{ url('roles/'.$role->id.'/agregar-permisos') }}" method="POST">
                         @csrf
                         @method('PUT')
-                        
+                            
                         <div class="mb-2">
                             @error('permission')
                                 <span class="tex-danger">{{ $message }}</span>
@@ -35,30 +36,27 @@
                             <div class="text-center" style="text-decoration: underline;">
                                 <strong>LISTA DE PERMISOS</strong>
                             </div>
-                            
+                                
                             <div style="margin-bottom: 20px;"></div> 
+
                             <div class="row">
-
-                                @foreach ($permissions as $permission)
-                                
-                                <div class="col-md-3" style="margin-bottom: 20px;">
-                                    <label class="form-check-label" style="display: flex; align-items: center;">
-                                        <input
-                                            type="checkbox" 
-                                            name="permission[]" 
-                                            value="{{ $permission->name }}" 
-                                            class="form-control"
-                                            id="permission_{{ $permission->id }}"
-                                            style="width: 20px; height: 20px; margin-right: 7px;"
-                                            @if($role->hasPermissionTo($permission->name)) checked @endif
-                                            {{in_array($permission->id, $rolePermissions) ? 'checked':''}}
-                                        />
-                                        <strong>{{$permission->name}}</strong>
-                                    </label>
-                                </div>
-                                
+                                @foreach ($permissions as $permission)                                  
+                                    <div class="col-md-3" style="margin-bottom: 20px;">
+                                        <label class="form-check-label" style="display: flex; align-items: center;">
+                                            <input
+                                                type="checkbox" 
+                                                name="permission[]" 
+                                                value="{{ $permission->name }}" 
+                                                class="form-control"
+                                                id="permission_{{ $permission->id }}"
+                                                style="width: 20px; height: 20px; margin-right: 7px;"
+                                                @if($role->hasPermissionTo($permission->name)) checked @endif
+                                                {{in_array($permission->id, $rolePermissions) ? 'checked':''}}
+                                            />
+                                            <strong>{{$permission->name}}</strong>
+                                        </label>
+                                    </div>                                
                                 @endforeach
-
                             </div>
                         </div>
 

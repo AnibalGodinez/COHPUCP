@@ -5,16 +5,16 @@
         <div class="row" style="margin-top: 90px">
             <div class="col-md-12">
                 <div class="card m-7">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h3 class="card-title text-center" style="margin-left: 824px;">LISTA DE IDIOMAS</h3>
-                            <a href="{{ route('idiomas.create') }}" class="btn btn-info btn-round btn-simple">
-                                <i class="fas fa-plus-circle"></i> Agregar nuevo idioma
-                            </a>
-                        </div><br>
+
+                    <div class="card-header d-flex justify-content-between align-items-center py-3" style="background-color: #b1b3b6; border-bottom: 1px solid #7e7979;">
+                        <h3 class="card-title"><strong>Lista de idiomas</strong></h3>
+                        <a href="{{ route('idiomas.create') }}" class="btn btn-round btn-simple" style="color:black">
+                            <i class="fas fa-plus-circle" style="color:black"></i> Agregar nuevo idioma
+                        </a>
+                    </div>
                     
-                        <!-- Mensaje de éxito -->
-                        @if(session('status'))
+                    <!-- Mensaje de éxito -->
+                    @if(session('status'))
                         <div class="text-center">
                             <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
                                 {{ session('status') }}
@@ -23,46 +23,51 @@
                                 </button>
                             </div>
                         </div>
-                        @endif
+                    @endif
 
-                        <table class="table table-bordered table-striped">
-                            <thead style="background-color: #3288af;">
-                                <tr>
-                                    <th class="text-center" style="color: white;">ID</th>
-                                    <th class="text-center" style="color: white;">Nombre del idioma</th>
-                                    <th class="text-center" style="color: white;">Acciones</th>
-                                </tr>
-                            </thead>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped mt-4">
+                                    <thead style="background-color: #3288af;">
+                                        <tr>
+                                            <th class="text-center" style="color: white;">ID</th>
+                                            <th class="text-center" style="color: white;">Editar</th>
+                                            <th class="text-center" style="color: white;">Eliminar</th>
+                                            <th class="text-center" style="color: white;">Nombre del idioma</th> 
+                                        </tr>
+                                    </thead>
 
-                            <tbody>
-                                @foreach ($idiomas as $idioma)
-                                    <tr>
-                                        <td class="text-center">{{ $idioma->id }}</td>
-                                        <td class="text-center">{{ $idioma->nombre }}</td>
-
-                                        <td class="text-center">
-                                            <a href="{{ route('idiomas.edit', $idioma) }}" class="btn btn-success btn-sm btn-icon">
-                                                <i class="tim-icons icon-settings"></i>
-                                            </a>
-
-                                            <form action="{{ route('idiomas.destroy', $idioma) }}" method="POST" style="display:inline-block;" id="delete-form-{{ $idioma->id }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm btn-icon" onclick="return confirmDelete({{ $idioma->id }})">
-                                                    <i class="tim-icons icon-simple-remove"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                    <tbody>
+                                        @foreach ($idiomas as $idioma)
+                                            <tr>
+                                                <td class="text-center" style="white-space: nowrap;">{{ $idioma->id }}</td>
+                                                <td class="text-center" style="white-space: nowrap;">
+                                                    <a href="{{ route('idiomas.edit', $idioma) }}" class="btn btn-success btn-sm btn-icon">
+                                                        <i class="tim-icons icon-settings"></i>
+                                                    </a>
+                                                </td>
+                                                <td class="text-center" style="white-space: nowrap;">
+                                                    <form action="{{ route('idiomas.destroy', $idioma) }}" method="POST" style="display:inline-block;" id="delete-form-{{ $idioma->id }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm btn-icon" onclick="return confirmDelete({{ $idioma->id }})">
+                                                            <i class="tim-icons icon-simple-remove"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                                <td class="text-center" style="white-space: nowrap;">{{ $idioma->nombre }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 
 <script>
     function confirmDelete(idiomaId) {

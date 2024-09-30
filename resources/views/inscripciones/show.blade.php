@@ -7,7 +7,7 @@
             <div class="card shadow-lg">
                 <div class="card-header text-white text-center">
                     <h3 class="card-title" style="text-decoration: underline;">
-                        <strong>SOLICITUD DE INSCRIPCIÓN</strong>
+                        <strong>SOLICITUD DE INSCRIPCIÓN AGREMIADO</strong>
                     </h3>
                 </div>
                 

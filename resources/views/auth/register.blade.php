@@ -10,8 +10,6 @@
             <p class="mt-3"><strong>¡Bienvenido! Regístrate para crear una cuenta.</strong></p>
         </div>
 
-        <img src="{{ asset('white/img/login-image.png') }}" alt="Imagen Registro" class="img-fluid position-absolute" style="bottom: 20px; right: 20px; max-width: 200px; z-index: 10;">
-
         <svg class="curve" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" preserveAspectRatio="none">
             <path d="M100,0 C95,70 30,100 0,100 L110,100 Z" fill="white"/>
         </svg>

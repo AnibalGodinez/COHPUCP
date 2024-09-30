@@ -5,7 +5,7 @@
     <div class="row" style="margin-top: 90px">
         <div class="col-md-12">
             <div class="card shadow-lg">
-                <div class="card-header bg-default text-white text-center">
+                <div class="card-header bg-info text-white text-center mb-4">
                     <h3 style="color: white">ASIGNAR NÚMERO DE COLEGIACIÓN AL USUARIO</h3>
                 </div>
                 <div class="card-body">
@@ -92,7 +92,7 @@
                         </script>
 
                         <!-- Botones de acción -->
-                        <div class="form-group row mb-0 text-center">
+                        <div class="form-group row mb-4 text-center">
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-success">
                                     <i class="fas fa-save" style="margin-right: 8px;"></i>

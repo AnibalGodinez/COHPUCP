@@ -5,8 +5,9 @@
     <div class="row" style="margin-top: 90px">
         <div class="col-md-12">
             <div class="card shadow-lg">
-                <div class="card-header text-white text-center">
-                    <h3 class="card-title"><strong>CREAR NUEVA PREGUNTA DE SEGURIDAD</strong></h3>
+
+                <div class="card-header bg-info text-center mb-4">
+                    <h3 class="card-title" style="color:white"><strong>CREAR NUEVA PREGUNTA DE SEGURIDAD</strong></h3>
                 </div><br>
 
                 <div class="card-body">
@@ -23,7 +24,7 @@
                             @enderror
                         </div><br>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-4">
                             <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-success">
                                     <i class="fas fa-save" style="margin-right: 8px;"></i>

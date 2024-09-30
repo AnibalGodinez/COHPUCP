@@ -48,7 +48,7 @@
 
                     <div class="card-footer text-center">
                         <a href="{{ route('vacantes.ver') }}" class="btn btn-secondary">
-                            <i class="fas fa-arrow-left mr-2"></i> Volver a la lista
+                            <i class="fas fa-arrow-left mr-2"></i> Volver
                         </a>
                     </div>
                 </div>

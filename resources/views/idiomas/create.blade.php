@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -5,8 +6,9 @@
     <div class="row justify-content-center" style="margin-top: 90px">
         <div class="col-md-8">
             <div class="card shadow-lg">
-                <div class="card-header bg-warning text-white text-center">
-                    <h3 class="card-title"><strong>AGREGAR NUEVO IDIOMA</strong></h3>
+                
+                <div class="card-header bg-info text-white text-center mb-4">
+                    <h3 class="card-title" style="color: white"><strong>AGREGAR NUEVO IDIOMA</strong></h3>
                 </div>
 
                 <div class="card-body">
@@ -32,18 +34,18 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-success">
-                                <i class="fas fa-save" style="margin-right: 8px;"></i>
-                                Guardar
-                            </button>
-
-                            <a href="{{ route('idiomas.index') }}" class="btn btn-secondary">
-                                <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
-                                Volver
-                            </a>
+                        <div class="form-group row mb-4">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fas fa-save" style="margin-right: 8px;"></i>
+                                    Guardar
+                                </button>
+                                <a href="{{ route('idiomas.index') }}" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                                    Volver
+                                </a>
+                            </div>
                         </div>
-
                     </form>
                 </div>
             </div>

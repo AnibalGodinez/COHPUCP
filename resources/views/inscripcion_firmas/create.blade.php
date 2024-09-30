@@ -5,25 +5,32 @@
     <div class="row justify-content-center" style="margin-top: 90px">
         <div class="col-md-12">
             <div class="card shadow-lg">
-                <div class="card-header bg-info text-white text-center">
+                <div class="card-header bg-info text-white text-center mb-4">
                     <h3 class="card-title" style="color: rgb(247, 247, 247)"><strong>SOLICITUD DE INSCRIPCIÓN DE FIRMA AL COLEGIO</strong></h3>
-                </div><br>
+                </div>
 
                 <!-- Mensaje de éxito -->
                 @if(session('success'))
-                <div class="text-center mb-3">
-                    <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
-                        {{ session('success') }}
-                        <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
+                    <div class="text-center mb-3">
+                        <div class="alert alert-success alert-dismissible fade show d-inline-block position-relative" role="alert" style="padding-right: 2.3rem;">
+                            {{ session('success') }}
+                            <button type="button" class="close position-absolute" style="top: 0.5rem; right: 0.5rem; font-size: 1.5rem; margin-top: 0.5rem;" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
                     </div>
-                </div>
                 @endif
-
+                
                 <div class="card-body">
                     <form action="{{ route('inscripcion_firmas.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+
+                        <h4>Por favor, complete todos los campos marcados con asterisco (<strong><strong>*</strong></strong>) ya que son <strong>obligatorios</strong> y no pueden quedar vacíos al momento de solicitar la inscripción de la Firma Auditora al colegio.</h4><br>
+                        <style>
+                            h4 {
+                                font-family: 'Arial', sans-serif; /* Cambiar 'Arial' por la fuente que prefieras */
+                            }
+                        </style>
                       
                         <div class="form-group row">
                             <!-- I. DATOS DE LA SOCIEDAD -->

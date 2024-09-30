@@ -133,7 +133,7 @@
                             
                             <!-- Imagen de previsualización -->
                             <div class="form-group">
-                                <img id="imagePreview" src="{{ $curso->imagen ? asset('storage/cursos_images/' . $curso->imagen) : 'https://via.placeholder.com/600x500?text=Vista+Previa' }}" alt="Vista previa de la imagen" style="display: {{ $curso->imagen ? 'block' : 'none' }}; height: 400px; width: 900px;">
+                                <img id="imagePreview" src="{{ $curso->imagen ? asset('storage/cursos_images/' . $curso->imagen) : 'https://via.placeholder.com/600x500?text=Vista+Previa' }}" alt="Vista previa de la imagen" style="display: {{ $curso->imagen ? 'block' : 'none' }}; height: 400px; width: auto;">
                             </div>
                             @error('imagen')
                                 <div class="alert alert-danger">{{ $message }}</div>

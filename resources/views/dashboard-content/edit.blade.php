@@ -5,7 +5,7 @@
     <div class="row justify-content-center" style="margin-top: 90px">
         <div class="col-md-12">
             <div class="card shadow-lg">
-                <div class="card-header bg-default text-white text-center">
+                <div class="card-header bg-info text-white text-center">
                     <h3 class="card-title" style="color: rgb(255, 255, 255)"><strong>EDITAR CONTENIDO DEL DASHBOARD</strong></h3>
                 </div>
 

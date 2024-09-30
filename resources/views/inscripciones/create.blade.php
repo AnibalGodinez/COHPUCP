@@ -25,7 +25,7 @@
                     <form action="{{ route('inscripciones.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="form-group">
+                        <div class="form-group mb-4">
                             <label for="user_identifier">
                                 <strong>ID o DNI *</strong>
                             </label>
@@ -39,8 +39,15 @@
 
                         <div id="userData" style="display: none;">
 
-                            <div class="form-group row">
+                            <h4>Por favor, complete todos los campos marcados con asterisco (<strong><strong>*</strong></strong>) ya que son <strong>obligatorios</strong> y no pueden quedar vacíos al momento de solicitar la inscripción al colegio.</h4><br>
+                                    <style>
+                                        h4 {
+                                            font-family: 'Arial', sans-serif; /* Cambiar 'Arial' por la fuente que prefieras */
+                                        }
+                                    </style>
 
+                            <div class="form-group row">
+                           
                                 <!-- I. Datos Personales -->
                                 <div class="col-12 text-center mb-0">
                                     <h4 style="text-decoration: underline;">I. DATOS PERSONALES</h4>

@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-info text-white text-center">
-                    <h3 class="card-title" style="color: rgb(247, 247, 247)"><strong>CREAR NUEVA SOLICITUD DE VACANTE</strong></h3>
+                    <h3 class="card-title" style="color: rgb(247, 247, 247)"><strong>CREAR SOLICITUD DE VACANTE</strong></h3>
                 </div><br>
 
                 <!-- Mensaje de éxito -->
@@ -26,6 +26,12 @@
                         @csrf
 
                         <h4>Por favor, complete todos los campos marcados con asterisco (<strong>*</strong>) ya que son <strong>obligatorios</strong> y no pueden quedar vacíos al momento de crear una vacante.</h4><br>
+                        <style>
+                            h4 {
+                                font-family: 'Arial', sans-serif; /* Cambiar 'Arial' por la fuente que prefieras */
+                            }
+                        </style>
+                        
                         <div class="form-group row">
 
                             <div class="col-md-4">
@@ -79,7 +85,7 @@
                             <div class="col-md-6">
                                 <label for="responsabilidades">
                                     <i class="fas fa-tasks" style="margin-right: 8px;"></i>
-                                    <strong>RESPONSABILIDADES DE LA VACANTE *</strong> 
+                                    <strong>FUNCIONES / RESPONSABILIDADES DE LA VACANTE *</strong> 
                                 </label>
                                 <textarea 
                                 name="responsabilidades" 
